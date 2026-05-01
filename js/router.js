@@ -245,7 +245,7 @@
       if (hash) {
         setTimeout(function () {
           const target    = document.getElementById(hash);
-          const navHeight = document.getElementById('siteNav')?.offsetHeight || 80;
+          const navHeight = document.getElementById('siteNav')?.offsetHeight || 80) + 80;
           if (target) window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - navHeight, behavior: 'smooth' });
         }, 100);
       } else {
@@ -298,7 +298,7 @@
         // Same-page hash link — smooth scroll only, no page re-render or flash
         if (samePage && hashPart) {
           const target    = document.getElementById(hashPart);
-          const navHeight = document.getElementById('siteNav')?.offsetHeight || 80;
+          const navHeight = document.getElementById('siteNav')?.offsetHeight || 80) + 80;
           if (target) window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - navHeight, behavior: 'smooth' });
           if (typeof window.closeMobileMenu === 'function') window.closeMobileMenu();
           return;
