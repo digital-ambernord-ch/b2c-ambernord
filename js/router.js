@@ -228,7 +228,7 @@ if (!isLanding && !isProduct && !isThankYou) {
 } else {
   subpageHero.classList.remove('is-visible');
 }
-
+}
     killGSAP();
 
     const app = document.getElementById('app');
