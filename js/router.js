@@ -22,15 +22,15 @@
       schema:      null
     },
 
-'/about/': {
-      page:        '/pages/about.html',
-      title:       'Über uns | AmberNord',
-      description: 'Vom falschen Kick zur echten Klarheit. Erfahren Sie mehr über Gründer Eriks Matisons und die Vision hinter der kompromisslosen AmberNord Sanddorn-Essenz.',
-      canonical:   'https://ambernord.ch/ueber-uns/',
-      type:        'about',
-      sticky:      null,
-      schema:      null
-    },
+'/ueber-uns/': {
+  page:        '/pages/about.html',
+  title:       'Über uns | AmberNord',
+  description: 'Vom falschen Kick zur echten Klarheit. Erfahren Sie mehr über Gründer Eriks Matisons und die Vision hinter der kompromisslosen AmberNord Sanddorn-Essenz.',
+  canonical:   'https://ambernord.ch/ueber-uns/',
+  type:        'about',
+  sticky:      null,
+  schema:      null
+},
 
     '/the-starter/': {
       page:        '/pages/the-starter.html',
