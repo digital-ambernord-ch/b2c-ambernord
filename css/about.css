@@ -1,8 +1,11 @@
 /* ==========================================================================
    ABOUT PAGE — AmberNord
    Scope: .about-page-container and all children.
-   Depends on: main.css (tokens: --color-gold, --nav-height, --font-serif,
-   --font-sans, --color-bg)
+   Design language mirrors landing.css: spacing, border-radius, image
+   treatment, typography scale, and CSS token usage.
+   Depends on: main.css tokens — --color-gold, --color-bg, --color-text,
+   --color-border-gold, --color-surface, --nav-height, --font-serif,
+   --font-sans, --container-pad, --t-fast, --t-slow
    ========================================================================== */
 
 
@@ -17,8 +20,10 @@
 
 .about-page-container {
     width: 100%;
-    padding: calc(var(--nav-height) + 40px) 20px 100px;
+    padding: calc(var(--nav-height) + 60px) 0 120px;
     animation: aboutReveal 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+    position: relative;
+    z-index: 10;
 }
 
 
@@ -28,7 +33,9 @@
 
 .about-header {
     text-align: center;
-    margin-bottom: 80px;
+    max-width: 700px;
+    margin: 0 auto 80px;
+    padding: 0 var(--container-pad);
 }
 
 .about-subtitle {
@@ -45,12 +52,12 @@
 }
 
 .about-page-container h1 {
-    color: #fff;
+    color: var(--color-text);
     font-family: var(--font-serif);
-    font-size: clamp(32px, 4vw, 46px);
+    font-size: clamp(32px, 4vw, 52px);
     font-weight: 400;
     line-height: 1.2;
-    margin: 0 0 20px;
+    margin: 0;
 }
 
 .about-page-container h1 span {
@@ -60,30 +67,51 @@
 
 
 /* --------------------------------------------------------------------------
-   STORY SECTION — FLEX LAYOUT
+   STORY SECTION — mirrors wide-split-row from landing.css
    -------------------------------------------------------------------------- */
 
 .about-story-flex {
     display: flex;
-    flex-wrap: wrap;
-    gap: 80px;
     align-items: center;
-    margin-bottom: 120px;
+    gap: 80px;
+    max-width: 1400px;
+    margin: 0 auto 120px;
+    padding: 0 var(--container-pad);
 }
 
 .about-text-col {
-    flex: 1 1 500px;
+    flex: 1;
+    max-width: 500px;
 }
 
 .about-img-col {
-    flex: 1 1 400px;
+    flex: 1;
+    height: 600px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
     position: relative;
+}
+
+.about-img-col img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    filter: grayscale(20%) contrast(105%) brightness(0.85);
+    transition: transform var(--t-slow) ease, filter var(--t-slow) ease;
+}
+
+.about-img-col:hover img {
+    transform: scale(1.03);
+    filter: grayscale(0%) contrast(105%) brightness(0.9);
 }
 
 .about-text-col h3 {
     color: var(--color-gold);
     font-family: var(--font-serif);
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 400;
     margin: 0 0 25px;
 }
@@ -91,7 +119,7 @@
 .about-page-container p {
     font-family: var(--font-sans);
     color: #d0d0d0;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 300;
     line-height: 1.8;
     margin: 0 0 20px;
@@ -103,24 +131,24 @@
 
 
 /* --------------------------------------------------------------------------
-   QUOTE BOX
+   QUOTE BOX — matches float-card aesthetic from landing
    -------------------------------------------------------------------------- */
 
 .about-quote-box {
-    background: rgba(255, 255, 255, 0.02);
+    background: var(--color-surface, rgba(255, 255, 255, 0.02));
     padding: 30px;
     border-radius: 4px;
     border-left: 3px solid var(--color-gold);
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    border-right: 1px solid rgba(255, 255, 255, 0.05);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid var(--color-border-gold);
+    border-right: 1px solid var(--color-border-gold);
+    border-bottom: 1px solid var(--color-border-gold);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .about-quote-box h4 {
-    color: #fff;
+    color: var(--color-text);
     font-family: var(--font-sans);
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -129,7 +157,7 @@
 }
 
 .about-quote-box .quote-text {
-    color: #fff;
+    color: var(--color-text);
     font-style: italic;
     margin-bottom: 20px;
     line-height: 1.7;
@@ -154,38 +182,13 @@
 
 
 /* --------------------------------------------------------------------------
-   FOUNDER IMAGE
-   -------------------------------------------------------------------------- */
-
-.about-img-border {
-    position: absolute;
-    top: -20px;
-    right: -20px;
-    width: 100%;
-    height: 100%;
-    border: 1px solid rgba(237, 163, 35, 0.3);
-    z-index: 0;
-}
-
-.about-img-col img {
-    width: 100%;
-    height: auto;
-    display: block;
-    position: relative;
-    z-index: 1;
-    filter: grayscale(30%) contrast(110%) brightness(0.8);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
-}
-
-
-/* --------------------------------------------------------------------------
    TIMELINE SECTION
    -------------------------------------------------------------------------- */
 
 .about-timeline-section {
     max-width: 900px;
     margin: 0 auto;
-    padding-top: 20px;
+    padding: 20px var(--container-pad) 0;
 }
 
 .about-timeline-header {
@@ -194,9 +197,9 @@
 }
 
 .about-timeline-section h2 {
-    color: #fff;
+    color: var(--color-text);
     font-family: var(--font-serif);
-    font-size: 32px;
+    font-size: clamp(28px, 3vw, 38px);
     font-weight: 400;
     margin-bottom: 15px;
 }
@@ -210,6 +213,7 @@
     color: #888;
     font-size: 14px;
     font-weight: 300;
+    margin: 0;
 }
 
 .timeline-container {
@@ -233,11 +237,17 @@
 
 .timeline-item {
     position: relative;
-    margin-bottom: 60px;
+    margin-bottom: 50px;
     background: rgba(255, 255, 255, 0.01);
     padding: 25px 30px;
     border-radius: 4px;
-    border: 1px solid rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--color-border-gold, rgba(255, 255, 255, 0.03));
+    transition: border-color var(--t-fast) ease, background var(--t-fast) ease;
+}
+
+.timeline-item:hover {
+    background: rgba(237, 163, 35, 0.03);
+    border-color: rgba(237, 163, 35, 0.15);
 }
 
 .timeline-item--last {
@@ -271,10 +281,11 @@
 
 .timeline-item p {
     margin-bottom: 0;
+    font-size: 15px;
 }
 
 .timeline-item strong {
-    color: #fff;
+    color: var(--color-text);
     font-weight: 500;
 }
 
@@ -303,14 +314,31 @@
    RESPONSIVE
    -------------------------------------------------------------------------- */
 
-@media (max-width: 768px) {
+@media (max-width: 991px) {
     .about-story-flex {
-        gap: 60px;
+        flex-direction: column-reverse;
+        gap: 40px;
         margin-bottom: 80px;
     }
 
-    .about-img-border {
-        display: none;
+    .about-img-col {
+        width: 100%;
+        height: 420px;
+        border-radius: 16px;
+    }
+
+    .about-text-col {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-page-container {
+        padding-top: calc(var(--nav-height) + 40px);
+    }
+
+    .about-img-col {
+        height: 320px;
     }
 
     .about-timeline-section h2 {
@@ -319,5 +347,9 @@
 
     .timeline-item {
         padding: 20px;
+    }
+
+    .timeline-container {
+        padding-left: 35px;
     }
 }
