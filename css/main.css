@@ -67,7 +67,7 @@
 }
 
 html {
-  overflow-x: hidden;
+  overflow-x: clip; /* clip not hidden — hidden creates a new scroll container that breaks position:sticky */
   scroll-behavior: auto;
 }
 
@@ -76,7 +76,7 @@ body {
   padding: 0;
   background-color: var(--color-bg);
   color: var(--color-text);
-  overflow-x: hidden;
+  overflow-x: clip; /* clip not hidden — hidden creates a new scroll container that breaks position:sticky */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
