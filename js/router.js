@@ -245,8 +245,9 @@
       if (hash) {
         setTimeout(function () {
           const target    = document.getElementById(hash);
-          const navHeight = document.getElementById('siteNav')?.offsetHeight || 80) + 80;
-          if (target) window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - navHeight, behavior: 'smooth' });
+          const navHeight = document.getElementById('siteNav')?.offsetHeight || 80;
+          const extraOffset = hash === 'shop' ? 160 : 0;
+if (target) window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - navHeight - extraOffset, behavior: 'smooth' });
         }, 100);
       } else {
         scrollToTop();
@@ -298,8 +299,10 @@
         // Same-page hash link — smooth scroll only, no page re-render or flash
         if (samePage && hashPart) {
           const target    = document.getElementById(hashPart);
-          const navHeight = document.getElementById('siteNav')?.offsetHeight || 80) + 80;
-          if (target) window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - navHeight, behavior: 'smooth' });
+          const navHeight = document.getElementById('siteNav')?.offsetHeight || 80;
+          const extraOffset = hash === 'shop' ? 160 : 0;
+const extraOffset = hashPart === 'shop' ? 160 : 0;
+if (target) window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - navHeight - extraOffset, behavior: 'smooth' });
           if (typeof window.closeMobileMenu === 'function') window.closeMobileMenu();
           return;
         }
