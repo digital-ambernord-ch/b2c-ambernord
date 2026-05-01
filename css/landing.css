@@ -92,6 +92,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;   /* clip hero & card exit cleanly within the pinned area */
+  z-index: 20;        /* stay above the rising product section during animation */
+}
+
+/* Product section rises immediately when hero exits — no dark gap */
+.conversion-booster-wrapper {
+  position: relative;
+  z-index: 1;
+  margin-top: calc(-100vh + var(--nav-height));
+  background-color: var(--color-bg);
 }
 
 .scalable-hero {

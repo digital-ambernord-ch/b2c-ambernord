@@ -41,8 +41,8 @@ window.initLanding = function () {
       }
     });
 
-    /* Phase 1: Hero shrinks in center, text fades */
-    tl.to('.scalable-hero',     { width: '380px', height: '55vh', borderRadius: '28px', duration: 3, ease: 'power2.inOut' }, 0)
+    /* Phase 1: Hero shrinks to center — y:0 explicitly keeps it pinned in place */
+    tl.to('.scalable-hero',     { width: '380px', height: '55vh', borderRadius: '28px', y: 0, duration: 3, ease: 'power2.inOut' }, 0)
       .to('#heroText',          { opacity: 0, duration: 1, ease: 'power1.in' }, 0.3)
       .to('#ambernordHeroShade',{ opacity: 0, duration: 1, ease: 'none' }, 0.8)
 
@@ -50,11 +50,11 @@ window.initLanding = function () {
       .fromTo('.float-img',     { scale: 0.1, opacity: 0 },
                                 { scale: 1, opacity: 1, duration: 1.5, stagger: 0.12, ease: 'back.out(1.4)' }, 3.2)
 
-    /* Phase 3: Cards slide upward fast */
+    /* Phase 3: Cards exit upward fast */
       .to('.float-img',         { y: '-140vh', duration: 2.5, ease: 'power2.in' }, 5.2)
 
-    /* Phase 4: Hero starts moving up SLOWER than cards, begins after cards start */
-      .to('.scalable-hero',     { y: '-110vh', duration: 3.5, ease: 'power1.inOut' }, 6.0);
+    /* Phase 4: Hero rises only after bottom cards have already cleared its position */
+      .to('.scalable-hero',     { y: '-100vh', duration: 2.5, ease: 'power2.in' }, 7.0);
   });
 
   mm.add('(max-width: 991px)', function () {
