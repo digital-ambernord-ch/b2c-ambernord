@@ -21,6 +21,17 @@
       sticky:      null,
       schema:      null
     },
+
+'/about/': {
+      page:        '/pages/about.html',
+      title:       'Über uns | AmberNord',
+      description: 'Vom falschen Kick zur echten Klarheit. Erfahren Sie mehr über Gründer Eriks Matisons und die Vision hinter der kompromisslosen AmberNord Sanddorn-Essenz.',
+      canonical:   'https://ambernord.ch/about/',
+      type:        'about',
+      sticky:      null,
+      schema:      null
+    },
+
     '/the-starter/': {
       page:        '/pages/the-starter.html',
       title:       'The Starter (1x 250ml) | AmberNord Sanddorn Elixier',
@@ -273,6 +284,8 @@ if (target) window.scrollTo({ top: target.getBoundingClientRect().top + window.s
         window.initLanding();
       } else if (route.type === 'product' && typeof window.initProduct === 'function') {
         window.initProduct();
+        } else if (route.type === 'about' && typeof window.initAbout === 'function') {
+        window.initAbout();
       }
 
     } catch (err) {
