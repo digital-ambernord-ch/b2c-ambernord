@@ -573,6 +573,8 @@ h1 span, h2 span {
   padding: 50px var(--container-pad) 30px var(--container-pad);
   border-top: 1px solid var(--color-border);
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .ambernord-footer-social {
