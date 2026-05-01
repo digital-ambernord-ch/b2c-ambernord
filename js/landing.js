@@ -54,7 +54,7 @@ window.initLanding = function () {
       .to('.float-img',         { y: '-140vh', duration: 2.5, ease: 'power2.in' }, 5.2)
 
     /* Phase 4: Hero starts rising when bottom cards reach its lower edge — cards still visible */
-      .to('.scalable-hero',     { y: '-100vh', duration: 4.5, ease: 'power2.in' }, 5.0);
+      .to('.scalable-hero',     { y: '-70vh', duration: 4.5, ease: 'power2.in' }, 5.0);
   });
 
   mm.add('(max-width: 991px)', function () {
