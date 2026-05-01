@@ -1,0 +1,172 @@
+<!-- =========================================================================
+     THE HABIT — pages/the-habit.html
+     Router injects this into #app on the "/the-habit/" route.
+     ========================================================================= -->
+
+<div class="product-page-container">
+
+  <!-- LEFT: IMAGE GALLERY -->
+  <div class="product-gallery">
+    <div class="main-image-box" id="swipe-container">
+
+      <img
+        src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_800/v1774798926/ambernord-sanddornsaft-kur-3er-pack-longevity-biohacking.webp_cg74qe.png"
+        alt="The Habit — 3x 250ml Sanddorn Elixier"
+        fetchpriority="high"
+        loading="eager"
+        decoding="async"
+        srcset="
+          https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_400/v1774798926/ambernord-sanddornsaft-kur-3er-pack-longevity-biohacking.webp_cg74qe.png 400w,
+          https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_800/v1774798926/ambernord-sanddornsaft-kur-3er-pack-longevity-biohacking.webp_cg74qe.png 800w,
+          https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_1200/v1774798926/ambernord-sanddornsaft-kur-3er-pack-longevity-biohacking.webp_cg74qe.png 1200w
+        "
+        sizes="(max-width:991px) 100vw, 500px"
+        id="main-product-image">
+    </div>
+
+    <div class="thumb-container">
+      <img
+        src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:low,w_150/v1774798926/ambernord-sanddornsaft-kur-3er-pack-longevity-biohacking.webp_cg74qe.png"
+        alt="Thumbnail 1"
+        loading="eager" decoding="async" sizes="75px"
+        class="active-thumb" style="border-color:#EDA323;"
+        data-main-src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_800/v1774798926/ambernord-sanddornsaft-kur-3er-pack-longevity-biohacking.webp_cg74qe.png"
+        data-main-srcset="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_400/v1774798926/ambernord-sanddornsaft-kur-3er-pack-longevity-biohacking.webp_cg74qe.png 400w, https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_800/v1774798926/ambernord-sanddornsaft-kur-3er-pack-longevity-biohacking.webp_cg74qe.png 800w, https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_1200/v1774798926/ambernord-sanddornsaft-kur-3er-pack-longevity-biohacking.webp_cg74qe.png 1200w">
+      <img
+        src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:low,w_150/v1774798904/ambernord-zelt-edition-sanddornbeeren-direktsaft-kaltgepresst.webp_qs7s4i.png"
+        alt="Thumbnail 2"
+        loading="lazy" decoding="async" sizes="75px"
+        data-main-src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_800/v1774798904/ambernord-zelt-edition-sanddornbeeren-direktsaft-kaltgepresst.webp_qs7s4i.png"
+        data-main-srcset="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_400/v1774798904/ambernord-zelt-edition-sanddornbeeren-direktsaft-kaltgepresst.webp_qs7s4i.png 400w, https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_800/v1774798904/ambernord-zelt-edition-sanddornbeeren-direktsaft-kaltgepresst.webp_qs7s4i.png 800w, https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_1200/v1774798904/ambernord-zelt-edition-sanddornbeeren-direktsaft-kaltgepresst.webp_qs7s4i.png 1200w">
+      <img
+        src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:low,w_150/v1774798917/ambernord-sanddornsaft-naehrwerte-vitamine-omega-7-gehalt.webp_puorxi.png"
+        alt="Thumbnail 3"
+        loading="lazy" decoding="async" sizes="75px"
+        data-main-src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_800/v1774798917/ambernord-sanddornsaft-naehrwerte-vitamine-omega-7-gehalt.webp_puorxi.png"
+        data-main-srcset="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_400/v1774798917/ambernord-sanddornsaft-naehrwerte-vitamine-omega-7-gehalt.webp_puorxi.png 400w, https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_800/v1774798917/ambernord-sanddornsaft-naehrwerte-vitamine-omega-7-gehalt.webp_puorxi.png 800w, https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_1200/v1774798917/ambernord-sanddornsaft-naehrwerte-vitamine-omega-7-gehalt.webp_puorxi.png 1200w">
+      <img
+        src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:low,w_150/v1774807731/ambernord-sanddornsaft-naehrwerte-vitamine--energy-omega-7-biohacking-elixier.webp_c8kzyp.png"
+        alt="Thumbnail 4"
+        loading="lazy" decoding="async" sizes="75px"
+        data-main-src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_800/v1774807731/ambernord-sanddornsaft-naehrwerte-vitamine--energy-omega-7-biohacking-elixier.webp_c8kzyp.png"
+        data-main-srcset="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_400/v1774807731/ambernord-sanddornsaft-naehrwerte-vitamine--energy-omega-7-biohacking-elixier.webp_c8kzyp.png 400w, https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_800/v1774807731/ambernord-sanddornsaft-naehrwerte-vitamine--energy-omega-7-biohacking-elixier.webp_c8kzyp.png 800w, https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_1200/v1774807731/ambernord-sanddornsaft-naehrwerte-vitamine--energy-omega-7-biohacking-elixier.webp_c8kzyp.png 1200w">
+    </div>
+  </div>
+
+  <!-- RIGHT: PRODUCT INFO -->
+  <div class="product-info-column">
+
+    <h1 class="p-top-title">The Habit <span class="p-title-volume">(3x 250ml)</span></h1>
+    <div class="p-main-price">69.00 CHF</div>
+
+    <div>
+      <h3 style="color:#ffffff; font-size:26px; margin-top:0;">
+        Das 30-Tage-Ritual:<br>
+        <span style="color:#EDA323; font-size:22px; font-style:italic;">Wahre Energie statt künstlicher Kicks.</span>
+      </h3>
+      <p style="margin-bottom:25px; font-weight:300; color:#e0e0e0; line-height:1.6;">
+        Herkömmliche Energy-Drinks kosten Sie im Schnitt 3 Franken pro Dose – und zahlen Ihnen nur Müdigkeit und Dehydration zurück. Mit «The Habit» investieren Sie in eine völlig andere Liga. Für nur <strong style="color:#ffffff; font-weight:600;">2.30 CHF pro Tag</strong> führen Sie Ihrem Körper eine hochkonzentrierte Essenz zu, die kein synthetisches Koffein benötigt.
+      </p>
+    </div>
+
+    <!-- Primary CTA — hidden on mobile (mobile sticky bar takes over) -->
+    <a href="https://buy.stripe.com/cNi3cx3PB2Ot6SB4rdbQY01" class="order-btn-stripe inline-main-btn" target="_blank" rel="noopener">
+      3x Elixier Bestellen
+    </a>
+
+    <div>
+      <h4 style="color:#ffffff; font-family:'Playfair Display',serif; font-size:20px; font-weight:400; margin-top:10px; margin-bottom:15px;">
+        Ein biologisches Upgrade
+      </h4>
+      <p style="margin-bottom:30px; font-weight:300; color:#e0e0e0; line-height:1.6;">
+        Unsere exklusive Zelt-Selektion nutzt die seltene <span style="color:#EDA323; font-weight:500;">Omega-7-Fettsäure</span> (bis zu 42% Konzentration), 18 essenzielle Aminosäuren und über 190 bioaktive Verbindungen, um Ihre Zellen von innen heraus zu regenerieren. Es ist kein kurzfristiger Rausch, sondern ein nachhaltiges Fundament für Ihren Fokus und Ihr Immunsystem.
+      </p>
+
+      <div class="science-box">
+        <h4>Das Paket beinhaltet</h4>
+        <ul>
+          <li>
+            <span style="color:#EDA323; margin-right:10px; font-size:18px; line-height:1;" aria-hidden="true">•</span>
+            <span><span style="color:#ffffff; font-weight:600;">3x 250 ml</span> reinste, kaltgepresste Bio-Essenz (Zelt-Selektion).</span>
+          </li>
+          <li>
+            <span style="color:#EDA323; margin-right:10px; font-size:18px; line-height:1;" aria-hidden="true">•</span>
+            <span><span style="color:#ffffff; font-weight:600;">30 Tage</span> volle Unterstützung für Fokus und Regeneration.</span>
+          </li>
+          <li>
+            <span style="color:#EDA323; margin-right:10px; font-size:18px; line-height:1;" aria-hidden="true">•</span>
+            <span>Ergibt bis zu <span style="color:#EDA323; font-weight:600;">9 Liter</span> vitalisierendes Premium-Getränk.</span>
+          </li>
+          <li>
+            <span style="color:#EDA323; margin-right:10px; font-size:18px; line-height:1;" aria-hidden="true">•</span>
+            <span><span style="color:#ffffff; font-weight:600;">Kostenloser Premium-Versand</span> direkt aus Aarau.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Subscription box -->
+    <a href="#" class="abo-wrapper" aria-label="Mit Abo sparen — jederzeit kündbar">
+      <div class="abo-top">Mit Abo Sparen (-7.7%)</div>
+      <div class="abo-bottom">
+        <div class="abo-price-box">
+          <div class="abo-price">63.00 CHF</div>
+          <div class="abo-subtext">Pro Monat</div>
+        </div>
+        <div class="abo-guarantee">✓ Jederzeit kündbar</div>
+      </div>
+    </a>
+
+    <div class="product-shipping-note">
+      <span class="product-shipping-label">Versand &amp; Logistik</span>
+      Kostenloser Premium-Versand innerhalb der Schweiz.<br>
+      Direktversand aus unserem Logistikzentrum in Aarau.
+    </div>
+
+  </div>
+</div>
+
+<!-- RELATED PRODUCTS -->
+<div class="ambernord-related-wrapper" id="related">
+  <h2 class="ambernord-related-title">Ergänzen Sie Ihr Ritual</h2>
+  <div class="ambernord-related-grid">
+
+    <a href="/the-starter/" class="ambernord-product-card" data-link>
+      <div class="ambernord-product-img-wrapper">
+        <div class="badge-voucher" style="position:absolute; top:10px; right:10px; padding:5px 10px; font-size:10px; font-weight:bold; border-radius:2px; border:1px solid #EDA323; color:#EDA323; background:#121212;">INKL. 10 CHF VOUCHER</div>
+        <img src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_400/v1774514853/ambernord-sanddornsaft-einzel-250ml_c0vwjx.jpg"
+             alt="The Starter"
+             loading="lazy" decoding="async"
+             srcset="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:low,w_250/v1774514853/ambernord-sanddornsaft-einzel-250ml_c0vwjx.jpg 250w, https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_400/v1774514853/ambernord-sanddornsaft-einzel-250ml_c0vwjx.jpg 400w"
+             sizes="(max-width:991px) 250px, 400px">
+      </div>
+      <div class="ambernord-product-info">
+        <h3>The Starter</h3>
+        <p class="p-subtitle">(1x 250ml)</p>
+        <p class="p-price">24.90 CHF</p>
+        <p class="p-extra">Zum Kennenlernen</p>
+        <p class="p-daily-price">Nur 2.49 CHF / Tag</p>
+        <p class="p-shipping">Inkl. 10 CHF Voucher</p>
+      </div>
+    </a>
+
+    <a href="/the-protocol/" class="ambernord-product-card" data-link>
+      <div class="ambernord-product-img-wrapper">
+        <img src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_400/v1774514800/ambernord-sanddornsaft-6er-pack-250ml_ofvtkj.jpg"
+             alt="The Protocol — 6er Pack"
+             loading="lazy" decoding="async"
+             srcset="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:low,w_250/v1774514800/ambernord-sanddornsaft-6er-pack-250ml_ofvtkj.jpg 250w, https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_400/v1774514800/ambernord-sanddornsaft-6er-pack-250ml_ofvtkj.jpg 400w"
+             sizes="(max-width:991px) 250px, 400px">
+      </div>
+      <div class="ambernord-product-info">
+        <h3>The Protocol</h3>
+        <p class="p-subtitle">(6x 250ml)</p>
+        <p class="p-price">129.00 CHF</p>
+        <p class="p-extra">Für Familie &amp; Fokus</p>
+        <p class="p-daily-price">Nur 2.15 CHF / Tag</p>
+        <p class="p-shipping">Gratis Versand | Spar-Abo verfügbar</p>
+      </div>
+    </a>
+
+  </div>
+</div>
