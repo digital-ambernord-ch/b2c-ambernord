@@ -144,7 +144,18 @@
       schemaEl.textContent = JSON.stringify(route.schema);
       document.head.appendChild(schemaEl);
     }
+    
+  }// Subpage hero — rāda visur izņemot landing un thank-you
+const subpageHero = document.getElementById('ambernord-subpage-hero-bg');
+if (subpageHero) {
+  const isLanding  = route.type === 'landing';
+  const isThankYou = cleanPath.includes('vielen-dank') || cleanPath.includes('thank');
+  if (!isLanding && !isThankYou) {
+    subpageHero.classList.add('is-visible');
+  } else {
+    subpageHero.classList.remove('is-visible');
   }
+}
 
   /* =========================================================================
      MOBILE STICKY CTA MANAGER
