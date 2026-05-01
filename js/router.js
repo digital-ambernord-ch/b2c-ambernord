@@ -244,8 +244,9 @@
 
       if (hash) {
         setTimeout(function () {
-          const target = document.getElementById(hash);
-          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          const target    = document.getElementById(hash);
+          const navHeight = document.getElementById('siteNav')?.offsetHeight || 80;
+          if (target) window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - navHeight, behavior: 'smooth' });
         }, 100);
       } else {
         scrollToTop();
@@ -289,13 +290,25 @@
 
         e.preventDefault();
 
-        const path = href.replace('https://ambernord.ch', '');
+        const normalised = href.replace('https://ambernord.ch', '');
+        const pathPart   = normalised.split('#')[0];
+        const hashPart   = normalised.includes('#') ? normalised.split('#')[1] : null;
+        const samePage   = pathPart === '' || pathPart === window.location.pathname;
+
+        // Same-page hash link — smooth scroll only, no page re-render or flash
+        if (samePage && hashPart) {
+          const target    = document.getElementById(hashPart);
+          const navHeight = document.getElementById('siteNav')?.offsetHeight || 80;
+          if (target) window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - navHeight, behavior: 'smooth' });
+          if (typeof window.closeMobileMenu === 'function') window.closeMobileMenu();
+          return;
+        }
 
         if (typeof window.closeMobileMenu === 'function') {
           window.closeMobileMenu();
         }
 
-        navigate(path, true);
+        navigate(normalised, true);
       });
     });
   }

@@ -53,8 +53,8 @@ window.initLanding = function () {
     /* Phase 3: Cards exit upward fast */
       .to('.float-img',         { y: '-140vh', duration: 2.5, ease: 'power2.in' }, 5.2)
 
-    /* Phase 4: Hero rises only after bottom cards have already cleared its position */
-      .to('.scalable-hero',     { y: '-100vh', duration: 2.5, ease: 'power2.in' }, 7.0);
+    /* Phase 4: Hero starts rising when bottom cards reach its lower edge — cards still visible */
+      .to('.scalable-hero',     { y: '-100vh', duration: 3.5, ease: 'power2.in' }, 6.0);
   });
 
   mm.add('(max-width: 991px)', function () {
