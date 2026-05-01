@@ -216,7 +216,7 @@
 
     updateMeta(route);
 
-    }// Subpage hero — rāda visur izņemot landing un thank-you
+    // Subpage hero — rāda visur izņemot landing un thank-you
 const subpageHero = document.getElementById('ambernord-subpage-hero-bg');
 if (subpageHero) {
   const isLanding  = route.type === 'landing';
