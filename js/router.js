@@ -32,6 +32,16 @@
   schema:      null
 },
 
+'/faq/': {
+  page:        '/pages/faq.html',
+  title:       'FAQ | AmberNord',
+  description: 'Häufige Fragen zum AmberNord Sanddorn-Elixier: Anwendung, Inhaltsstoffe, Verträglichkeit und Herkunft.',
+  canonical:   'https://ambernord.ch/faq/',
+  type:        'faq',
+  sticky:      null,
+  schema:      null
+},
+
     '/the-starter/': {
       page:        '/pages/the-starter.html',
       title:       'The Starter (1x 250ml) | AmberNord Sanddorn Elixier',
@@ -288,6 +298,9 @@ if (target) window.scrollTo({ top: target.getBoundingClientRect().top + window.s
         } else if (route.type === 'about' && typeof window.initAbout === 'function') {
         window.initAbout();
       }
+      } else if (route.type === 'faq' && typeof window.initFaq === 'function') {
+  window.initFaq();
+}
 
     } catch (err) {
       console.error('[Router] Navigation failed:', err);

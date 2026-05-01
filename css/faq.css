@@ -1,0 +1,308 @@
+/* ==========================================================================
+   FAQ — AmberNord
+
+   Scope: .faq-page-container and all children.
+
+   Depends on: main.css tokens — --color-gold, --color-bg, --color-text,
+   --color-border-gold, --color-surface, --nav-height, --font-serif,
+   --font-sans, --container-pad, --t-fast, --t-slow
+
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   ENTRANCE ANIMATION
+
+   Keyframe + animation applied to the root container on page load.
+   -------------------------------------------------------------------------- */
+
+@keyframes faqReveal {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.faq-page-container {
+    padding: calc(var(--nav-height) + 60px) 0 120px;
+    position: relative;
+    z-index: 10;
+    animation: faqReveal 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+}
+
+/* --------------------------------------------------------------------------
+   LAYOUT WRAPPER
+
+   Constrains content width and centres it.
+   -------------------------------------------------------------------------- */
+
+.faq-container {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 var(--container-pad);
+}
+
+/* --------------------------------------------------------------------------
+   PAGE HEADER
+
+   Centred subtitle + h1 with muted second line.
+   -------------------------------------------------------------------------- */
+
+.faq-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.faq-premium-subtitle {
+    color: var(--color-gold);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.faq-heading {
+    font-size: clamp(28px, 4vw, 36px);
+    line-height: 1.2;
+    margin: 0;
+    color: var(--color-text);
+    font-family: var(--font-serif);
+    font-weight: 400;
+}
+
+.faq-heading__muted {
+    color: #b0b0b0;
+}
+
+/* --------------------------------------------------------------------------
+   CATEGORY LABELS
+
+   Gold uppercase dividers between question groups.
+   -------------------------------------------------------------------------- */
+
+.faq-category {
+    color: var(--color-gold);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-top: 80px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(237, 163, 35, 0.4);
+    padding-bottom: 12px;
+}
+
+/* --------------------------------------------------------------------------
+   ACCORDION ITEMS
+
+   Each item wraps a button trigger and an animated answer wrapper.
+   -------------------------------------------------------------------------- */
+
+.faq-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: border-color var(--t-slow) ease;
+}
+
+.faq-item.active {
+    border-bottom: 1px solid rgba(237, 163, 35, 0.5);
+}
+
+/* --------------------------------------------------------------------------
+   ACCORDION BUTTON
+
+   Full-width trigger row with question text and +/× icon.
+   -------------------------------------------------------------------------- */
+
+.faq-btn {
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: none;
+    padding: 25px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.faq-question {
+    color: var(--color-text);
+    margin: 0;
+    font-size: 18px;
+    font-weight: 400;
+    font-family: var(--font-sans);
+    transition: color var(--t-fast) ease;
+    padding-right: 20px;
+    line-height: 1.4;
+}
+
+.faq-btn:hover .faq-question,
+.faq-item.active .faq-question {
+    color: var(--color-gold);
+}
+
+/* --------------------------------------------------------------------------
+   ACCORDION ICON
+
+   SVG plus sign that rotates to a cross when item is active.
+   -------------------------------------------------------------------------- */
+
+.faq-icon {
+    color: var(--color-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(45deg);
+}
+
+/* --------------------------------------------------------------------------
+   ACCORDION ANSWER
+
+   Height-animated wrapper + padded inner content.
+   -------------------------------------------------------------------------- */
+
+.faq-answer-wrapper {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.faq-answer-content {
+    padding-bottom: 30px;
+    padding-right: 40px;
+    color: #d0d0d0;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.8;
+}
+
+.faq-answer-content p {
+    margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   FOOTER CTA
+
+   Centred contact prompt + gold pill button.
+   -------------------------------------------------------------------------- */
+
+.faq-footer {
+    text-align: center;
+    margin-top: 100px;
+    padding-top: 60px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.faq-footer p {
+    color: #b0b0b0;
+    margin-bottom: 30px;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.8;
+}
+
+.faq-footer__link {
+    color: var(--color-gold);
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-gold);
+    transition: opacity var(--t-fast) ease;
+}
+
+.faq-footer__link:hover {
+    opacity: 0.8;
+}
+
+.faq-footer__cta {
+    background: var(--color-gold);
+    color: #000000;
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(237, 163, 35, 0.3);
+    padding: 16px 45px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: var(--font-sans);
+    text-decoration: none;
+    display: inline-block;
+    transition: background var(--t-fast) ease, box-shadow var(--t-fast) ease, transform var(--t-fast) ease;
+    cursor: pointer;
+}
+
+.faq-footer__cta:hover {
+    background: #f5b53f;
+    box-shadow: 0 6px 20px rgba(237, 163, 35, 0.4);
+    transform: translateY(-2px);
+}
+
+/* --------------------------------------------------------------------------
+   SCROLL REVEAL
+
+   JS adds .about-reveal to target elements, then uses IntersectionObserver
+   to toggle .is-visible as they enter the viewport.
+   -------------------------------------------------------------------------- */
+
+.about-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.about-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE
+
+   Mobile breakpoints: 991px (tablet), 768px (mobile).
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 991px) {
+    .faq-heading {
+        font-size: clamp(24px, 3vw, 30px);
+    }
+}
+
+@media (max-width: 768px) {
+    .faq-page-container {
+        padding-top: calc(var(--nav-height) + 40px);
+    }
+
+    .faq-btn {
+        padding: 20px 0;
+    }
+
+    .faq-question {
+        font-size: 16px;
+    }
+
+    .faq-answer-content {
+        font-size: 15px;
+        padding-right: 20px;
+    }
+
+    .faq-category {
+        margin-top: 60px;
+    }
+
+    .faq-footer__cta {
+        padding: 14px 35px;
+        font-size: 15px;
+    }
+}
