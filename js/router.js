@@ -297,7 +297,6 @@ if (target) window.scrollTo({ top: target.getBoundingClientRect().top + window.s
         window.initProduct();
         } else if (route.type === 'about' && typeof window.initAbout === 'function') {
         window.initAbout();
-      }
       } else if (route.type === 'faq' && typeof window.initFaq === 'function') {
   window.initFaq();
 }
