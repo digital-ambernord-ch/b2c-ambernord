@@ -221,7 +221,7 @@ async function navigate(path, pushState) {
     const cleanPath = rawPath === '/' ? '/' : rawPath.endsWith('/') ? rawPath : rawPath + '/';
     const hash      = path.includes('#') ? path.split('#')[1] : null;
 
-    const route = ROUTES[cleanPath] || ROUTES['/'];
+    const route = ROUTES[cleanPath] || ROUTES[cleanPath + '/'] || ROUTES[cleanPath.replace(/\/$/, '')] || ROUTES['/'];
 
     if (pushState) {
       history.pushState({ path: cleanPath }, route.title, path);
