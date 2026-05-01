@@ -216,8 +216,9 @@
      NAVIGATE — core function: fetch fragment, inject, init
      ========================================================================= */
 
-  async function navigate(path, pushState) {
-    const cleanPath = path.split('#')[0] || '/';
+async function navigate(path, pushState) {
+    const rawPath   = path.split('#')[0] || '/';
+    const cleanPath = rawPath === '/' ? '/' : rawPath.endsWith('/') ? rawPath : rawPath + '/';
     const hash      = path.includes('#') ? path.split('#')[1] : null;
 
     const route = ROUTES[cleanPath] || ROUTES['/'];
