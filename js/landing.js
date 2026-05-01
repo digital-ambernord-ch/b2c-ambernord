@@ -51,7 +51,7 @@ window.initLanding = function () {
                                 { scale: 1, opacity: 1, duration: 1.5, stagger: 0.12, ease: 'back.out(1.4)' }, 3.2)
 
     /* Phase 3: Cards exit upward fast */
-      .to('.float-img',         { y: '-140vh', duration: 2.5, ease: 'power2.in' }, 5.2)
+      .to('.float-img',         { y: '-80vh', duration: 2.5, ease: 'power2.in' }, 5.2)
 
     /* Phase 4: Hero starts rising when bottom cards reach its lower edge — cards still visible */
       .to('.scalable-hero',     { y: '-20vh', duration: 2.5, ease: 'power2.in' }, 5.0);
