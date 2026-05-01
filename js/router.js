@@ -144,7 +144,8 @@
       schemaEl.textContent = JSON.stringify(route.schema);
       document.head.appendChild(schemaEl);
     }
-
+ }
+ 
   /* =========================================================================
      MOBILE STICKY CTA MANAGER
      Shows on product pages, hidden on landing page
