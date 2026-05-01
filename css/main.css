@@ -614,6 +614,8 @@ h1 span, h2 span {
 }
 #app {
   min-height: 100vh;
+position: relative;
+  z-index: 1;
 }
 
 .ambernord-footer-social {
