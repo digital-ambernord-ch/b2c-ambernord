@@ -82,7 +82,7 @@
 .custom-badge-position {
   position: absolute;
   top: 95px;
-  left: 25%;
+  left: 10px;
   z-index: var(--z-above);
 }
 

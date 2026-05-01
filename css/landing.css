@@ -92,7 +92,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
 }
 
 .scalable-hero {
@@ -445,7 +444,8 @@
   z-index: var(--z-above);
   padding: 20px var(--container-pad) 0;
   max-width: 1100px;
-  margin: 0 auto;
+  margin: -200px auto 0 auto;
+  padding-top: 220px;
 }
 
 .trust-ribbon {
@@ -859,13 +859,29 @@
   transition: background var(--t-base) ease;
 }
 
+/* ✅ JAUNS */
 .nature-hero-content {
   position: relative;
   z-index: 2;
-  padding: 40px 50px;
+  padding: 50px 60px;
   margin-top: auto;
   width: 100%;
   box-sizing: border-box;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nature-hero-content .ambernord-content-title,
+.nature-hero-content .ambernord-content-subtitle,
+.nature-hero-content .ambernord-content-text {
+  max-width: 700px;
+}
+
+.nature-hero-content .card-hidden-content {
+  max-width: 700px;
+  text-align: center;
 }
 
 /* Accordion trigger */

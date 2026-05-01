@@ -37,16 +37,24 @@ window.initLanding = function () {
         trigger: '.scroll-track',
         start:   'top top',
         end:     'bottom bottom',
-        scrub:   1
+        scrub:   1.5
       }
     });
 
-    tl.to('.scalable-hero',    { width: '400px', height: '60vh', borderRadius: '32px', duration: 4, ease: 'power2.inOut' }, 0)
-      .to('#heroText',         { opacity: 0, duration: 1.5 }, 1.0)
-      .to('#ambernordHeroShade',{ opacity: 0, duration: 0.8, ease: 'none' }, 1.5)
-      .fromTo('.float-img',    { scale: 0.2, opacity: 0 }, { scale: 1, opacity: 1, duration: 2, stagger: 0.15, ease: 'back.out(1.2)' }, 3.0)
-      .to('.float-img',        { y: '-120vh', duration: 3, ease: 'power1.in' }, 5.0)
-      .to('.scalable-hero',    { y: '-20vh', duration: 1.5, ease: 'power1.in' }, 6.0);
+    /* Phase 1: Hero shrinks in center, text fades */
+    tl.to('.scalable-hero',     { width: '380px', height: '55vh', borderRadius: '28px', duration: 3, ease: 'power2.inOut' }, 0)
+      .to('#heroText',          { opacity: 0, duration: 1, ease: 'power1.in' }, 0.3)
+      .to('#ambernordHeroShade',{ opacity: 0, duration: 1, ease: 'none' }, 0.8)
+
+    /* Phase 2: 6 cards pop in around the shrunk hero */
+      .fromTo('.float-img',     { scale: 0.1, opacity: 0 },
+                                { scale: 1, opacity: 1, duration: 1.5, stagger: 0.12, ease: 'back.out(1.4)' }, 3.2)
+
+    /* Phase 3: Cards slide upward fast */
+      .to('.float-img',         { y: '-140vh', duration: 2.5, ease: 'power2.in' }, 5.2)
+
+    /* Phase 4: Hero starts moving up SLOWER than cards, begins after cards start */
+      .to('.scalable-hero',     { y: '-110vh', duration: 3.5, ease: 'power1.inOut' }, 6.0);
   });
 
   mm.add('(max-width: 991px)', function () {

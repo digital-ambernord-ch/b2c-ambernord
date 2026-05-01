@@ -13,7 +13,7 @@
 
   const ROUTES = {
     '/': {
-      page:        'pages/home.html',
+      page:        '/pages/home.html',
       title:       'AmberNord | Sanddorn Biohacking & Longevity Schweiz',
       description: 'Entdecken Sie die Kraft von Sanddorn. AmberNord bietet natürliche Biohacking- und Longevity-Essenzen aus der Schweiz für Ihr tägliches Ritual.',
       canonical:   'https://ambernord.ch/',
@@ -22,7 +22,7 @@
       schema:      null
     },
     '/the-starter/': {
-      page:        'pages/the-starter.html',
+      page:        '/pages/the-starter.html',
       title:       'The Starter (1x 250ml) | AmberNord Sanddorn Elixier',
       description: 'The Starter: Ihr Einstieg in die Welt von AmberNord. Zellschutz und Vitalität durch 190+ Bioaktivstoffe. Kaltgepresst. Bio-zertifiziert.',
       canonical:   'https://ambernord.ch/the-starter/',
@@ -52,7 +52,7 @@
       }
     },
     '/the-habit/': {
-      page:        'pages/the-habit.html',
+      page:        '/pages/the-habit.html',
       title:       'The Habit (3x 250ml) | AmberNord Sanddorn Elixier',
       description: 'The Habit: Das 30-Tage-Ritual für nachhaltigen Fokus, Energie und Zellregeneration. Bio-zertifiziert, Omega-7, 190+ Bioaktivstoffe.',
       canonical:   'https://ambernord.ch/the-habit/',
@@ -79,7 +79,7 @@
       }
     },
     '/the-protocol/': {
-      page:        'pages/the-protocol.html',
+      page:        '/pages/the-protocol.html',
       title:       'The Protocol (6x 250ml) | AmberNord Sanddorn Elixier',
       description: 'The Protocol: Dauerhafte zelluläre Versorgung für Familie und Höchstleister. Bester Preis pro Tagesration.',
       canonical:   'https://ambernord.ch/the-protocol/',
