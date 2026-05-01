@@ -616,11 +616,12 @@ h1 span, h2 span {
 .ambernord-footer {
   background-color: var(--color-bg);
   padding: 50px var(--container-pad) 30px var(--container-pad);
-  
+  padding-bottom: 80px;
   text-align: center;
   position: relative;
   z-index: 1;
 }
+
 #app {
   min-height: 100vh;
 }
@@ -791,7 +792,7 @@ h1 span, h2 span {
   transform: translateY(100%);
   transition: transform var(--t-base) var(--ease-smooth);
   box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.5);
-  border-radius: 18px 18px 0 0;
+  border-radius: 18px;
   display: none;
 }
 
