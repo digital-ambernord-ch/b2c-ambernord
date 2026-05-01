@@ -41,6 +41,9 @@
   position: relative;
   touch-action: pan-y;
   border-radius: 20px;
+  overflow: visible;
+  padding: 20px;
+  box-sizing: border-box;
   background: radial-gradient(
     ellipse at center,
     rgba(237, 163, 35, 0.12) 0%,
