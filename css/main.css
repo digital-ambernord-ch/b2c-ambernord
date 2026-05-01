@@ -239,7 +239,33 @@ h1 span, h2 span {
    6. NAVIGATION
    ========================================================================= */
 
-.ambernord-topbar {
+
+.ambernord-subpage-hero {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  display: none;
+}
+
+.ambernord-subpage-hero.is-visible {
+  display: block;
+}
+
+.ambernord-subpage-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.ambernord-subpage-hero-gradient {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+   .ambernord-topbar {
   position: fixed;
   top: 0;
   left: 0;
@@ -441,7 +467,17 @@ h1 span, h2 span {
    7. MOBILE OVERLAY MENU
    ========================================================================= */
 
-.mobile-menu-overlay {
+@media (max-width: 991px) {
+  .ambernord-subpage-hero img {
+    object-position: 60% center; /* ← ja attēls mobilā jāpabīda */
+  }
+
+  .ambernord-subpage-hero-gradient {
+    background: rgba(0, 0, 0, 0.55); /* ← mobilā nedaudz tumšāks */
+  }
+}
+
+   .mobile-menu-overlay {
   position: fixed;
   top: 0;
   left: 0;
