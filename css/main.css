@@ -241,11 +241,11 @@ h1 span, h2 span {
 
 
 .ambernord-subpage-hero {
-  position: fixed;
+  position: absolute;
   top: 90px;
   left: 12px;
   right: 12px;
-  height: 38vh;
+  height: 90vh;
   z-index: 0;
   display: none;
   border-radius: 20px;
@@ -268,9 +268,10 @@ h1 span, h2 span {
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 0.18) 0%,
-    rgba(0, 0, 0, 0.25) 40%,
-    rgba(0, 0, 0, 0.85) 75%,
+    rgba(0, 0, 0, 0.30) 0%,
+    rgba(0, 0, 0, 0.50) 35%,
+    rgba(0, 0, 0, 0.90) 42%,
+    rgba(0, 0, 0, 1.00) 45%,
     rgba(0, 0, 0, 1.00) 100%
   );
 }
@@ -481,7 +482,6 @@ h1 span, h2 span {
     top: 80px;
     left: 8px;
     right: 8px;
-    height: 32vh;
     border-radius: 16px;
   }
 }
