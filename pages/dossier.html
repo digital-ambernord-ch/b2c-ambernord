@@ -1,0 +1,345 @@
+<!-- ==========================================================================
+     DOSSIER PAGE FRAGMENT
+     Route: /dossier/  |  Init: window.initDossier()
+     Injected into #app by router.js. No <html>, <head>, or <body> tags.
+     ========================================================================== -->
+
+<div class="dossier-page">
+
+    <!-- PAGE HERO
+         Transparent — inherits the global hero background set by the router.
+         ------------------------------------------------------------------ -->
+    <header class="dossier-hero">
+        <div class="dossier-container">
+            <span class="dossier-hero__subtitle">Wissenschaft &amp; Philosophie</span>
+            <h1 class="dossier-hero__heading">
+                Das Sanddorn-Dossier<br>
+                <span class="dossier-gold-italic">der AmberNord Methodik.</span>
+            </h1>
+            <p class="dossier-hero__lead">
+                Pharmakologie, Phytochemie und funktionelle Ernährung<br>(Hippophae rhamnoides)
+            </p>
+        </div>
+    </header>
+
+    <!-- SECTION: EVOLUTION & HISTORISCHE NUTZUNG
+         Two-column layout: text + bullet list on the left, image on the right.
+         ------------------------------------------------------------------ -->
+    <section class="dossier-section" id="dossier-history">
+        <div class="dossier-container">
+            <h2 class="dossier-section-title">Evolution &amp; Historische Nutzung</h2>
+            <div class="dossier-grid-2">
+                <div>
+                    <p class="dossier-body-text">
+                        Sanddorn blickt als evolutionäre Pionierpflanze (Ursprung Himalaya) auf eine extreme Toleranz (-40°C bis +40°C) und eine jahrtausendealte ethnobotanische Nutzung zurück.
+                    </p>
+                    <ul class="dossier-list">
+                        <li><strong>Altindisches Ayurveda (5000 v. Chr.):</strong> Dokumentierte Nutzung zur Steigerung von Vitalität.</li>
+                        <li><strong>Tibetische Medizin (8. Jhd.):</strong> Systematische Erfassung in der "RGyud Bzi" Pharmakopöe.</li>
+                        <li><strong>Antike:</strong> Der botanische Name <em>Hippophae</em> leitet sich von "leuchtendes Pferd" ab (Futter der Antike für glänzendes Fell).</li>
+                        <li><strong>Neuzeit:</strong> Integration in historische Ernährungsprogramme als natürliche Vitaminquelle unter extremen Bedingungen.</li>
+                    </ul>
+                </div>
+                <div class="dossier-image-wrapper dossier-reveal">
+                    <img src="https://images.unsplash.com/photo-1599580782029-3f71e2988c45?q=80&w=1000&auto=format&fit=crop"
+                         alt="Historical botanical illustration of sea buckthorn">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: PHYTOCHEMISCHE MATRIX
+         Two glass cards side by side.
+         ------------------------------------------------------------------ -->
+    <section class="dossier-section" id="dossier-phyto">
+        <div class="dossier-container">
+            <h2 class="dossier-section-title">Die Phytochemische Matrix</h2>
+            <div class="dossier-grid-2">
+                <div class="dossier-card dossier-reveal">
+                    <h3>Die Komplexität der Inhaltsstoffe</h3>
+                    <p>Wissenschaftlich betrachtet ist Sanddorn ein extrem komplexes Phytosystem. Es wurden bis zu 95 Flavonoide, 17 Phenolsäuren, über 20 organische Säuren, 18 Aminosäuren und komplexe Fettsäuren identifiziert.</p>
+                    <p><strong>Die Herausforderung:</strong> Die chemische Zusammensetzung schwankt extrem je nach Genotyp, Terroir und Extraktionsverfahren. AmberNord setzt auf standardisierte, schonende Verfahren, um dieses Spektrum optimal zu erhalten.</p>
+                </div>
+                <div class="dossier-card dossier-reveal">
+                    <h3>Das Trennungs-Paradigma</h3>
+                    <p>Die präzise anatomische Trennung der Bestandteile ist für das Verständnis zwingend erforderlich:</p>
+                    <ul class="dossier-list dossier-card__list">
+                        <li><strong>Wässrige Fraktion (Saft):</strong> Wasserlösliche Antioxidantien, Vitamin C (matrixgebunden), organische Säuren.</li>
+                        <li><strong>Fruchtfleischöl (Pulp):</strong> Reich an MUFAs (einfach ungesättigten Fettsäuren) und Carotinoiden.</li>
+                        <li><strong>Kernöl (Seed):</strong> Dominiert von PUFAs (mehrfach ungesättigte essenzielle Fettsäuren).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: LIPIDE & VITAMINE
+         Three media cards — image on top, text below, no card background/border.
+         ------------------------------------------------------------------ -->
+    <section class="dossier-section" id="dossier-lipids">
+        <div class="dossier-container">
+            <h2 class="dossier-section-title">Anatomie der Lipide &amp; Spezifische Vitamine</h2>
+            <div class="dossier-grid-3">
+                <div class="dossier-card dossier-card--media dossier-reveal">
+                    <div class="dossier-card__image-wrap">
+                        <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?q=80&w=800&auto=format&fit=crop"
+                             alt="Drop of orange sea buckthorn oil">
+                    </div>
+                    <h3>Fruchtfleischöl (Omega-7)</h3>
+                    <p>Eine der seltensten pflanzlichen Quellen für Palmitoleinsäure (Omega-7), die einen wesentlichen Teil der Lipide ausmacht. Ein wichtiger natürlicher Baustein für Haut und Schleimhäute.</p>
+                </div>
+                <div class="dossier-card dossier-card--media dossier-reveal">
+                    <div class="dossier-card__image-wrap">
+                        <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?q=80&w=800&auto=format&fit=crop"
+                             alt="Sea buckthorn seeds and rustic powder">
+                    </div>
+                    <h3>Kernöl (Omega-3 &amp; 6)</h3>
+                    <p>Das blassgelbe Kernöl enthält praktisch kein Omega-7. Es liefert stattdessen Linolsäure (Omega-6) und Alpha-Linolensäure (Omega-3) in einem physiologisch idealen Verhältnis.</p>
+                </div>
+                <div class="dossier-card dossier-card--media dossier-reveal">
+                    <div class="dossier-card__image-wrap">
+                        <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?q=80&w=800&auto=format&fit=crop"
+                             alt="Scientific lab setting with amber liquid">
+                    </div>
+                    <h3>Vitamine &amp; Nährstoffe</h3>
+                    <p>Neben dem aussergewöhnlich hohen Vitamin-C-Gehalt ist Sanddornsaft bekannt für sein komplexes Spektrum an B-Vitaminen und sekundären Pflanzenstoffen, die synergistisch wirken.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: WISSENSCHAFTLICHE ERKENNTNISSE (ATMOSPHERIC PARALLAX)
+         Full-bleed section with fixed background image and overlay.
+         Three icon cards inside.
+         ------------------------------------------------------------------ -->
+    <section class="dossier-atmospheric" id="dossier-science">
+        <div class="dossier-container">
+            <h2 class="dossier-section-title">Wissenschaftliche Erkenntnisse zu Sanddorn</h2>
+            <div class="dossier-grid-3">
+                <div class="dossier-card dossier-reveal">
+                    <div class="dossier-card__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    </div>
+                    <h3>Stoffwechsel &amp; Vitalität</h3>
+                    <p>Sanddorn liefert essenzielle Nährstoffe und Antioxidantien. Studien deuten darauf hin, dass die enthaltenen pflanzlichen Sterole und Fettsäuren eine funktionelle Ernährung optimal unterstützen und zum allgemeinen Wohlbefinden beitragen können.</p>
+                </div>
+                <div class="dossier-card dossier-reveal">
+                    <div class="dossier-card__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12h6"/><path d="M12 9v6"/></svg>
+                    </div>
+                    <h3>Haut &amp; Dermatologie</h3>
+                    <p>Omega-7 ist ein wichtiger physiologischer Baustein der menschlichen Hautbarriere. Sanddornextrakte werden in der Forschung intensiv auf ihre unterstützenden Eigenschaften bei der natürlichen Hautregeneration untersucht.</p>
+                </div>
+                <div class="dossier-card dossier-reveal">
+                    <div class="dossier-card__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    </div>
+                    <h3>Schleimhäute</h3>
+                    <p>Die spezifische Lipidmatrix aus dem Fruchtfleischöl ist dafür bekannt, die natürliche Feuchtigkeitsbalance von Schleimhäuten (wie Augen, Mund oder Intimbereich) auf ernährungsphysiologischer Ebene zu unterstützen.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: MARKT-INNOVATIONEN
+         Three glass cards covering gastronomy, nutracosmetics, and food-tech.
+         ------------------------------------------------------------------ -->
+    <section class="dossier-section" id="dossier-innovations">
+        <div class="dossier-container">
+            <h2 class="dossier-section-title">Moderne Applikationen &amp; Markt-Innovationen</h2>
+            <div class="dossier-grid-3">
+                <div class="dossier-card dossier-reveal">
+                    <h3>Haute Cuisine &amp; Mixologie</h3>
+                    <p>In der Spitzengastronomie etabliert sich Sanddorn rasant als "Zitrone des Nordens". Das komplexe, mehrdimensionale Säureprofil ersetzt zunehmend exotische Importe wie Yuzu oder Maracuja und verleiht alkoholfreien Premium-Cocktails die nötige Struktur und Adstringenz.</p>
+                </div>
+                <div class="dossier-card dossier-reveal">
+                    <h3>Nutrakosmetik &amp; Clean Beauty</h3>
+                    <p>Die in Sanddornöl enthaltene Palmitoleinsäure (Omega-7) weist eine einzigartige strukturelle Ähnlichkeit zu den hauteigenen Lipiden des Stratum corneum auf. Dies ermöglicht eine extrem schnelle Penetration zur Stärkung der Hautbarriere und Reduktion des transepidermalen Wasserverlusts.</p>
+                </div>
+                <div class="dossier-card dossier-reveal">
+                    <h3>Food-Tech &amp; Upcycling</h3>
+                    <p>Die Mikroverkapselung mit Natriumalginat ermöglicht heute den Schutz temperaturempfindlicher Carotinoide für die Backwarenindustrie. Zudem eröffnete die EU-Novel-Food-Zulassung für Sanddornblätter (2020) völlig neue Wege für Premium-Tees, reich am zellschützenden Antioxidans PC-8.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: SOURCING
+         Two-column layout: text + bullet list left, image right.
+         ------------------------------------------------------------------ -->
+    <section class="dossier-section" id="dossier-sourcing">
+        <div class="dossier-container">
+            <h2 class="dossier-section-title">AmberNord Sourcing: Terroir &amp; Partnerschaft</h2>
+            <div class="dossier-grid-2">
+                <div>
+                    <p class="dossier-body-text">
+                        Die aussergewöhnliche Qualität der AmberNord-Produkte basiert auf einer strengen Selektion. Als Vertreter in der DACH-Region haben wir uns gezielt für einen exklusiven Produktionspartner in nördlichen Breitengraden entschieden.
+                    </p>
+                    <ul class="dossier-list">
+                        <li><strong>Premium-Monosorte:</strong> Wir setzen auf die Verarbeitung einer genetisch selektierten Sorte mit maximiertem Nährstoff- und Lipidgehalt.</li>
+                        <li><strong>Nordisches Terroir:</strong> Das spezifische Mikroklima unserer Partner-Plantage (kaltes Klima, lange Sonnenscheindauer im Sommer) erzeugt jenen Stress, der für die Synthese komplexer Pflanzenstoffe essenziell ist.</li>
+                        <li><strong>Biologische Integrität:</strong> Kompromissloser Verzicht auf synthetische Düngemittel; die Natur wird respektiert und geschützt.</li>
+                    </ul>
+                </div>
+                <div class="dossier-image-wrapper dossier-reveal">
+                    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1000&auto=format&fit=crop"
+                         alt="Sea buckthorn plantation rows at golden hour">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: HANDWERK VS. INDUSTRIE (BLEED LAYOUT)
+         Full-width card with text left, image bleeds to the right edge on desktop.
+         ------------------------------------------------------------------ -->
+    <section class="dossier-bleed" id="dossier-harvest">
+        <div class="dossier-bleed__inner">
+            <div class="dossier-bleed__content dossier-reveal">
+                <h2 class="dossier-section-title dossier-section-title--flush">Handwerk vs. Industrie</h2>
+                <h3 class="dossier-bleed__subtitle">Die 100-Hände Ernte</h3>
+                <p class="dossier-body-text">
+                    Die Ernte von Sanddorn ist hochkomplex, da die Beeren bei mechanischem Druck sofort platzen und extrem schnell oxidieren (24-48h Zeitfenster).
+                </p>
+                <ul class="dossier-list">
+                    <li>Industrielle Grossanlagen nutzen oft destruktive Verfahren, welche dem Strauch Kohlenhydratreserven rauben.</li>
+                    <li>Unser Produktionspartner setzt ausschliesslich auf behutsame Handlese im August.</li>
+                    <li>Ein routinierter Pflücker erntet manuell nur ca. 7 kg Beeren pro Stunde.</li>
+                    <li>Diese schonende Methode schützt die Architektur der Pflanze und sichert die höchste Qualität der nativen Lipide.</li>
+                </ul>
+            </div>
+            <div class="dossier-bleed__image-wrap">
+                <img src="https://images.unsplash.com/photo-1595856467364-8848d70b7415?q=80&w=1000&auto=format&fit=crop"
+                     alt="Careful hand picking of sea buckthorn berries">
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: ZERO-WASTE MATRIX
+         Icon-driven list describing the full processing chain.
+         ------------------------------------------------------------------ -->
+    <section class="dossier-section" id="dossier-zerowaste">
+        <div class="dossier-container">
+            <h2 class="dossier-section-title">Verarbeitung &amp; Die Zero-Waste Matrix</h2>
+            <div class="dossier-icon-list-wrapper">
+                <ul class="dossier-icon-list">
+                    <li class="dossier-reveal">
+                        <svg class="dossier-icon-list__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6"/><path d="M10 9l-3 9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l-3-9"/><path d="M12 3v6"/></svg>
+                        <div>
+                            <strong>Das Elixier (Unfiltrierter Direktsaft)</strong>
+                            Um 1 Liter des 100% puren Elixiers zu gewinnen, werden 1,3–1,6 kg handgelesene Beeren benötigt. Eine schonende Pasteurisierung sichert die Haltbarkeit und schützt die wertvollen Vitamine.
+                        </div>
+                    </li>
+                    <li class="dossier-reveal">
+                        <svg class="dossier-icon-list__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg>
+                        <div>
+                            <strong>Mechanische Ölextraktion</strong>
+                            Die Industrie extrahiert oft chemisch. Hier garantiert die kalte, mechanische Pressung den Erhalt hitzeempfindlicher Fettsäuren. Die Ressourcenintensität ist immens: Bis zu 200 kg frische Beeren für 1 Liter reines Öl.
+                        </div>
+                    </li>
+                    <li class="dossier-reveal">
+                        <svg class="dossier-icon-list__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+                        <div>
+                            <strong>Pressrückstand (Der Trester)</strong>
+                            Samen und Schalen werden nach der Entölung thermisch schonend getrocknet. Durch gezielte enzymatische Hydrolyse wird das Ballaststoffprofil optimiert, wodurch ein hochfunktionales 'Upcycled Ingredient' für die industrielle Lebensmittelproduktion entsteht.
+                        </div>
+                    </li>
+                    <li class="dossier-reveal">
+                        <svg class="dossier-icon-list__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22v-6"/><path d="M12 8v4"/><path d="M8 12h8"/><path d="M12 2s-4 2-4 6 4 4 4 4"/><path d="M12 2s4 2 4 6-4 4-4 4"/></svg>
+                        <div>
+                            <strong>Ganzheitliche Verwertung</strong>
+                            Auch Schnittholz und Rinde werden lückenlos verwertet. Neueste Analysen belegen in der Rinde einen Phytoserotonin-Gehalt, der jenen von Bananen um ein Vielfaches übertrifft – ein massives Potenzial für natürliche "Mood-Support"-Extrakte.
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: FAZIT (CONCLUSION)
+         Centered text block with logo lockup at the bottom.
+         ------------------------------------------------------------------ -->
+    <section class="dossier-section dossier-section--conclusion" id="dossier-conclusion">
+        <div class="dossier-container dossier-container--narrow">
+            <p class="dossier-conclusion-tag">Wissenschaftliches Resümee</p>
+            <h2 class="dossier-conclusion-heading">
+                Von der Pionierpflanze zur<br>
+                <span class="dossier-gold-italic">Funktionellen Ernährung</span>
+            </h2>
+            <p class="dossier-conclusion-text dossier-reveal">
+                Die Datenlage bestätigt Sanddorn als eines der phytochemisch komplexesten Nutzpflanzensysteme der Welt. Der ernährungsphysiologische Nutzen liegt zweifelsfrei im aussergewöhnlichen Profil an Vitaminen und seltenen Lipiden.
+            </p>
+            <p class="dossier-conclusion-text dossier-conclusion-text--last dossier-reveal">
+                AmberNord und seine Partner überführen dieses Potenzial ohne qualitative Kompromisse in ein hochwertiges, tägliches Ritual für mehr Wohlbefinden.
+            </p>
+            <div class="dossier-logo-wrapper dossier-reveal">
+                <img class="dossier-logo-img"
+                     src="https://res.cloudinary.com/dt6ksxuqf/image/upload/v1774774341/Logo_AmberNord_500x500_Biohacking_Longevity_Ritual_psis7f.png"
+                     alt="AmberNord Logo">
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<!-- JSON-LD SCHEMA
+     Article schema for the dossier editorial content + BreadcrumbList for
+     site hierarchy. Keep dateModified in sync with content updates.
+     ------------------------------------------------------------------ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Das Sanddorn-Dossier der AmberNord Methodik",
+  "description": "Pharmakologie, Phytochemie und funktionelle Ernährung: das wissenschaftliche Dossier zu Hippophae rhamnoides — Lipide, Vitamine, Sourcing und Verarbeitung.",
+  "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_2560,c_limit/v1773096179/Smiltserksku_sula_gemini_2_iecozy.png",
+  "author": {
+    "@type": "Organization",
+    "name": "AmberNord",
+    "url": "https://ambernord.ch"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "AmberNord",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://res.cloudinary.com/dt6ksxuqf/image/upload/v1774774341/Logo_AmberNord_500x500_Biohacking_Longevity_Ritual_psis7f.png"
+    }
+  },
+  "datePublished": "2025-01-01",
+  "dateModified": "2025-05-01",
+  "inLanguage": "de-CH",
+  "url": "https://ambernord.ch/dossier/",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://ambernord.ch/dossier/"
+  },
+  "about": {
+    "@type": "Thing",
+    "name": "Hippophae rhamnoides",
+    "alternateName": "Sanddorn",
+    "sameAs": "https://en.wikipedia.org/wiki/Hippophae_rhamnoides"
+  },
+  "keywords": "Sanddorn, Hippophae rhamnoides, Omega-7, Palmitoleinsäure, Phytochemie, funktionelle Ernährung, Sanddornöl, Vitamin C, AmberNord"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://ambernord.ch/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Das Sanddorn-Dossier",
+      "item": "https://ambernord.ch/dossier/"
+    }
+  ]
+}
+</script>

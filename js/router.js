@@ -42,6 +42,16 @@
   schema:      null
 },
 
+'/dossier/': {
+  page:        '/pages/dossier.html',
+  title:       'Das Sanddorn-Dossier | AmberNord',
+  description: 'Pharmakologie, Phytochemie und funktionelle Ernährung: das wissenschaftliche Dossier zur AmberNord Methodik rund um Hippophae rhamnoides.',
+  canonical:   'https://ambernord.ch/dossier/',
+  type:        'dossier',
+  sticky:      null,
+  schema:      null
+},
+
     '/the-starter/': {
       page:        '/pages/the-starter.html',
       title:       'The Starter (1x 250ml) | AmberNord Sanddorn Elixier',
@@ -299,6 +309,8 @@ if (target) window.scrollTo({ top: target.getBoundingClientRect().top + window.s
         window.initAbout();
       } else if (route.type === 'faq' && typeof window.initFaq === 'function') {
   window.initFaq();
+  } else if (route.type === 'dossier' && typeof window.initDossier === 'function') {
+  window.initDossier();
 }
 
     } catch (err) {

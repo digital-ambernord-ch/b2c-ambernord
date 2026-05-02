@@ -1,0 +1,691 @@
+/* ==========================================================================
+
+   DOSSIER — AmberNord
+
+   Scope: .dossier-page and all children.
+
+   Depends on: main.css tokens — --color-gold, --color-bg, --color-text,
+   --color-border-gold, --color-surface, --nav-height, --font-serif,
+   --font-sans, --container-pad, --t-fast, --t-slow
+
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+
+   LOCAL DESIGN TOKENS
+
+   Scoped aliases derived from global main.css tokens. Never use raw hex
+   values outside this block — reference these local vars instead.
+
+   -------------------------------------------------------------------------- */
+
+.dossier-page {
+    --d-accent:        var(--color-gold);
+    --d-accent-faint:  rgba(237, 163, 35, 0.15);
+    --d-accent-border: rgba(237, 163, 35, 0.2);
+    --d-card-bg:       rgba(25, 25, 25, 0.6);
+    --d-card-border:   rgba(255, 255, 255, 0.1);
+    --d-text-muted:    #d0d0d0;
+    --d-overlay-dark:  rgba(20, 20, 20, 0.85);
+    --d-overlay-mid:   rgba(20, 20, 20, 0.4);
+}
+
+
+/* --------------------------------------------------------------------------
+
+   ENTRANCE ANIMATION
+
+   Keyframe + animation applied to the root container on page load.
+
+   -------------------------------------------------------------------------- */
+
+@keyframes dossierReveal {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dossier-page {
+    animation: dossierReveal 0.6s ease both;
+    position: relative;
+    z-index: 10;
+    padding: 0 0 120px;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(60px, 8vw, 100px);
+    color: var(--color-text);
+}
+
+
+/* --------------------------------------------------------------------------
+
+   SHARED CONTAINER
+
+   Centered max-width wrapper used across all sections.
+
+   -------------------------------------------------------------------------- */
+
+.dossier-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--container-pad);
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.dossier-container--narrow {
+    max-width: 900px;
+}
+
+
+/* --------------------------------------------------------------------------
+
+   PAGE HEADER
+
+   Centered subtitle + h1 with italic gold span. Transparent background
+   inherits the global subpage hero set by the router.
+
+   -------------------------------------------------------------------------- */
+
+.dossier-hero {
+    text-align: center;
+    padding: clamp(140px, 15vw, 220px) var(--container-pad) clamp(100px, 12vw, 160px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: transparent;
+}
+
+.dossier-hero__subtitle {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: clamp(11px, 2vw, 14px);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--d-accent);
+    margin-bottom: 24px;
+    font-weight: 500;
+    border-top: 1px solid rgba(237, 163, 35, 0.6);
+    border-bottom: 1px solid rgba(237, 163, 35, 0.6);
+    padding: 8px 16px;
+}
+
+.dossier-hero__heading {
+    font-family: var(--font-serif);
+    font-size: clamp(40px, 6vw, 72px);
+    line-height: 1.15;
+    margin-bottom: 0;
+    font-weight: 400;
+    color: var(--color-text);
+}
+
+.dossier-hero__lead {
+    font-family: var(--font-sans);
+    font-size: clamp(18px, 3vw, 22px);
+    color: var(--d-text-muted);
+    max-width: 800px;
+    margin: 24px auto 0;
+    line-height: 1.6;
+}
+
+.dossier-gold-italic {
+    color: var(--d-accent);
+    font-style: italic;
+    display: block;
+}
+
+
+/* --------------------------------------------------------------------------
+
+   SECTION SHARED STYLES
+
+   Title underline rule + shared section positioning.
+
+   -------------------------------------------------------------------------- */
+
+.dossier-section {
+    position: relative;
+}
+
+.dossier-section-title {
+    font-family: var(--font-serif);
+    font-size: clamp(28px, 4vw, 42px);
+    margin-bottom: clamp(32px, 5vw, 48px);
+    text-align: left;
+    border-bottom: 1px solid var(--d-accent-faint);
+    padding-bottom: 16px;
+    font-weight: 400;
+    color: var(--color-text);
+}
+
+.dossier-section-title--flush {
+    border-bottom: none;
+    margin-bottom: 24px;
+    padding-bottom: 0;
+}
+
+.dossier-body-text {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--d-text-muted);
+    margin-bottom: 24px;
+    line-height: 1.8;
+}
+
+
+/* --------------------------------------------------------------------------
+
+   GRID LAYOUTS
+
+   Two and three column responsive grids.
+
+   -------------------------------------------------------------------------- */
+
+.dossier-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(32px, 5vw, 60px);
+    align-items: start;
+}
+
+.dossier-grid-3 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    align-items: stretch;
+}
+
+@media (min-width: 768px) {
+    .dossier-grid-2 { grid-template-columns: 1fr 1fr; }
+    .dossier-grid-3 { grid-template-columns: repeat(3, 1fr); }
+}
+
+
+/* --------------------------------------------------------------------------
+
+   GLASS CARDS
+
+   Standard frosted-glass content card used across multiple sections.
+
+   -------------------------------------------------------------------------- */
+
+.dossier-card {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 16px;
+    border: 1px solid var(--d-accent-border);
+    border-left: 3px solid var(--d-accent);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    padding: clamp(32px, 4vw, 40px);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform var(--t-slow), box-shadow var(--t-slow);
+}
+
+.dossier-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.dossier-card h3 {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    color: var(--d-accent);
+    margin-bottom: 16px;
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+.dossier-card p {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--d-text-muted);
+    line-height: 1.8;
+    margin-bottom: 16px;
+}
+
+.dossier-card p:last-child {
+    margin-bottom: 0;
+}
+
+.dossier-card__icon {
+    color: var(--d-accent);
+    margin-bottom: 24px;
+    display: flex;
+}
+
+.dossier-card__icon svg {
+    width: 38px;
+    height: 38px;
+}
+
+.dossier-card__list {
+    margin-top: 16px;
+}
+
+
+/* --------------------------------------------------------------------------
+
+   MEDIA CARDS
+
+   Variant of .dossier-card with image on top, no glass background or border.
+   Used in the Lipide & Vitamine section.
+
+   -------------------------------------------------------------------------- */
+
+.dossier-card--media {
+    background: transparent;
+    border: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
+    padding: 0;
+}
+
+.dossier-card--media h3 {
+    margin-top: 0;
+}
+
+.dossier-card__image-wrap {
+    height: 240px;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 24px;
+    border: 1px solid var(--d-card-border);
+}
+
+.dossier-card__image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    inset: 0;
+    filter: brightness(0.9) contrast(1.05);
+    transition: filter var(--t-slow), transform var(--t-slow);
+}
+
+.dossier-card__image-wrap:hover img {
+    filter: brightness(1) contrast(1.1);
+    transform: scale(1.03);
+}
+
+
+/* --------------------------------------------------------------------------
+
+   IMAGE WRAPPER
+
+   Fixed-height image column used in two-column sections (History, Sourcing).
+
+   -------------------------------------------------------------------------- */
+
+.dossier-image-wrapper {
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--d-card-border);
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 300px;
+}
+
+.dossier-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    inset: 0;
+    filter: brightness(0.9) contrast(1.05);
+    transition: filter var(--t-slow), transform var(--t-slow);
+}
+
+.dossier-image-wrapper:hover img {
+    filter: brightness(1) contrast(1.1);
+    transform: scale(1.03);
+}
+
+
+/* --------------------------------------------------------------------------
+
+   BULLET LIST
+
+   Gold-dot custom bullet list used across content sections.
+
+   -------------------------------------------------------------------------- */
+
+.dossier-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dossier-list li {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    font-weight: 300;
+    margin-bottom: 20px;
+    position: relative;
+    padding-left: 28px;
+    color: var(--d-text-muted);
+    line-height: 1.8;
+}
+
+.dossier-list li::before {
+    content: '•';
+    color: var(--d-accent);
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 24px;
+    line-height: 1.2;
+}
+
+.dossier-list li strong {
+    color: var(--color-text);
+    font-weight: 500;
+}
+
+
+/* --------------------------------------------------------------------------
+
+   ATMOSPHERIC SECTION
+
+   Full-bleed parallax section with fixed background image and gradient overlay.
+   Contains the Wissenschaftliche Erkenntnisse grid.
+
+   -------------------------------------------------------------------------- */
+
+.dossier-atmospheric {
+    position: relative;
+    padding: clamp(80px, 10vw, 120px) 0;
+    background-image: url('https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_2560,c_limit/v1773096179/Smiltserksku_sula_gemini_2_iecozy.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    border-top: 1px solid var(--d-card-border);
+    border-bottom: 1px solid var(--d-card-border);
+}
+
+.dossier-atmospheric::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(20, 20, 20, 0.85) 0%,
+        rgba(20, 20, 20, 0.4) 50%,
+        rgba(20, 20, 20, 0.85) 100%
+    );
+    z-index: 1;
+}
+
+.dossier-atmospheric .dossier-container {
+    z-index: 2;
+}
+
+.dossier-atmospheric .dossier-section-title {
+    color: var(--color-text);
+}
+
+
+/* --------------------------------------------------------------------------
+
+   BLEED LAYOUT (HANDWERK VS INDUSTRIE)
+
+   Text column left, image bleeds to the viewport right edge on desktop.
+
+   -------------------------------------------------------------------------- */
+
+.dossier-bleed {
+    background: rgba(25, 25, 25, 0.6);
+    border-top: 1px solid var(--d-card-border);
+    border-bottom: 1px solid var(--d-card-border);
+    position: relative;
+    overflow: hidden;
+}
+
+.dossier-bleed__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: clamp(40px, 8vw, 80px) var(--container-pad);
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    position: relative;
+    z-index: 2;
+}
+
+.dossier-bleed__content {
+    width: 100%;
+}
+
+.dossier-bleed__subtitle {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    color: var(--d-accent);
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+
+.dossier-bleed__content .dossier-body-text {
+    margin-bottom: 24px;
+}
+
+.dossier-bleed__image-wrap {
+    width: 100%;
+    height: clamp(300px, 50vw, 500px);
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+}
+
+.dossier-bleed__image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.9);
+    transition: filter var(--t-slow);
+}
+
+@media (min-width: 992px) {
+    .dossier-bleed__inner {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .dossier-bleed__content {
+        width: 50%;
+        padding-right: 60px;
+    }
+
+    .dossier-bleed__image-wrap {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: 50vw;
+        height: 100%;
+        border-radius: 0;
+    }
+}
+
+
+/* --------------------------------------------------------------------------
+
+   ICON LIST (ZERO-WASTE SECTION)
+
+   SVG icon anchored left, text content right. Each item reveals on scroll.
+
+   -------------------------------------------------------------------------- */
+
+.dossier-icon-list-wrapper {
+    max-width: 800px;
+}
+
+.dossier-icon-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dossier-icon-list li {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 32px;
+    font-family: var(--font-sans);
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--d-text-muted);
+    line-height: 1.8;
+    align-items: flex-start;
+}
+
+.dossier-icon-list__icon {
+    color: var(--d-accent);
+    flex-shrink: 0;
+    margin-top: 4px;
+    width: 24px;
+    height: 24px;
+}
+
+.dossier-icon-list li strong {
+    color: var(--color-text);
+    font-weight: 400;
+    display: block;
+    margin-bottom: 8px;
+    font-size: 20px;
+}
+
+
+/* --------------------------------------------------------------------------
+
+   CONCLUSION SECTION
+
+   Centered text block with logo lockup. Text alignment and max-width
+   controlled by modifier classes.
+
+   -------------------------------------------------------------------------- */
+
+.dossier-section--conclusion {
+    text-align: center;
+}
+
+.dossier-conclusion-tag {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--d-accent);
+    margin-bottom: 24px;
+    font-weight: 500;
+    border-bottom: 1px solid var(--d-accent);
+    display: inline-block;
+    padding-bottom: 6px;
+}
+
+.dossier-conclusion-heading {
+    font-family: var(--font-serif);
+    font-size: clamp(32px, 5vw, 48px);
+    margin-bottom: 32px;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--color-text);
+}
+
+.dossier-conclusion-text {
+    font-family: var(--font-sans);
+    font-size: clamp(16px, 2vw, 18px);
+    font-weight: 300;
+    color: var(--d-text-muted);
+    line-height: 1.8;
+    margin-bottom: 24px;
+}
+
+.dossier-conclusion-text--last {
+    margin-bottom: 48px;
+}
+
+.dossier-logo-wrapper {
+    border-top: 1px solid var(--d-card-border);
+    padding-top: clamp(40px, 8vw, 60px);
+}
+
+.dossier-logo-img {
+    height: 120px;
+    width: auto;
+    object-fit: contain;
+    display: inline-block;
+}
+
+
+/* --------------------------------------------------------------------------
+
+   SCROLL REVEAL
+
+   JS adds .dossier-reveal to target elements on init, then IntersectionObserver
+   toggles .is-visible as each element enters the viewport.
+
+   -------------------------------------------------------------------------- */
+
+.dossier-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.dossier-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* --------------------------------------------------------------------------
+
+   RESPONSIVE
+
+   Mobile breakpoints: 991px (tablet), 768px (mobile).
+
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 991px) {
+    .dossier-bleed__inner {
+        flex-direction: column;
+    }
+
+    .dossier-bleed__content {
+        width: 100%;
+        padding-right: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .dossier-hero__heading {
+        font-size: clamp(32px, 8vw, 48px);
+    }
+
+    .dossier-section-title {
+        font-size: clamp(24px, 5vw, 32px);
+    }
+
+    .dossier-card {
+        padding: 24px;
+    }
+
+    .dossier-icon-list li {
+        gap: 14px;
+    }
+
+    .dossier-atmospheric {
+        background-attachment: scroll;
+    }
+}
