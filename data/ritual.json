@@ -6,72 +6,41 @@
     "slug": "/ritual/"
   },
   "header": {
-    "subtitle": "Anwendung & Wirkung",
-    "h1": "Die Wissenschaft",
-    "h1Italic": "hinter dem Ritual."
+    "eyebrow": "Anwendung & Wirkung",
+    "h1": "Die Wissenschaft <span>hinter dem Ritual.</span>"
   },
-  "benefits": [
-    {
-      "number": "01",
-      "title": "Zelluläre Energie & Vitalität",
-      "desc": "Natürliche Vitamine und Mineralien mindern Ermüdung und liefern einen langanhaltenden Energie-Boost. Perfekt für anhaltende Performance im Alltag."
-    },
-    {
-      "number": "02",
-      "title": "Zelluläres Skin-Revival",
-      "desc": "Reich an Vitaminen A und E sowie der seltenen Omega-7-Fettsäure. Diese Synergie kurbelt die Kollagensynthese an und verleiht der Haut einen tiefen, natürlichen Glow."
-    },
-    {
-      "number": "03",
-      "title": "Kognitive Klarheit & Fokus",
-      "desc": "B-Vitamine und Tryptophan (die Vorstufe von Serotonin) helfen nachweislich, Stress abzubauen, die Stimmung aufzuhellen und mentale Schärfe zu fördern."
-    },
-    {
-      "number": "04",
-      "title": "Absolute Immun-Resilienz",
-      "desc": "Mit einer extrem hohen, bioverfügbaren Vitamin-C-Konzentration stärkt das Elixier das Immunsystem und senkt das Risiko für Infektionen spürbar."
-    },
-    {
-      "number": "05",
-      "title": "Mikrobiom-Balance",
-      "desc": "Bioaktive Pflanzenstoffe und Ballaststoffe fördern gezielt eine gesunde Darmflora, optimieren die Verdauung und unterstützen den Schutz der Magenschleimhaut."
-    },
-    {
-      "number": "06",
-      "title": "Aktive Zellprotektion",
-      "desc": "Hochkonzentrierte Antioxidantien bekämpfen freie Radikale auf zellulärer Ebene, dämpfen chronische Entzündungsprozesse und beschleunigen die körperliche Erholung."
-    },
-    {
-      "number": "07",
-      "title": "Deep Detox & Leberfunktion",
-      "desc": "Unterstützt die natürlichen Entgiftungsprozesse des Körpers, fördert aktiv die Regeneration der Leberzellen und schützt vor oxidativen Umwelteinflüssen."
-    },
-    {
-      "number": "08",
-      "title": "Kardiovaskuläre Langlebigkeit",
-      "desc": "Flavonoide sowie hochdosierte Omega-Fettsäuren helfen, das Cholesterin-Profil zu optimieren und die Elastizität der Blutgefässe nachhaltig zu verbessern."
-    },
-    {
-      "number": "09",
-      "title": "Der Digitale Schild",
-      "desc": "Hochkonzentriertes Vitamin A und Carotinoide wirken als natürlicher zellulärer Filter gegen Blaulicht und mindern das Risiko digitaler Augenermüdung."
-    }
-  ],
-  "stats": [
-    { "value": "190+", "label": "Bioaktive\nVerbindungen" },
-    { "value": "18",   "label": "Essenzielle\nAminosäuren" },
-    { "value": "4",    "label": "Omega Fettsäuren\n(3, 6, 7 & 9)" },
-    { "value": "9x",   "label": "Mehr Vitamin C\nals Zitrusfrüchte" }
-  ],
+  "benefits": {
+    "ariaLabel": "Die 9 Wirkungsbereiche",
+    "srHeading": "Die 9 Wirkungsbereiche",
+    "items": [
+      { "number": "01", "title": "Zelluläre Energie & Vitalität", "desc": "Natürliche Vitamine und Mineralien mindern Ermüdung und liefern einen langanhaltenden Energie-Boost. Perfekt für anhaltende Performance im Alltag." },
+      { "number": "02", "title": "Zelluläres Skin-Revival", "desc": "Reich an Vitaminen A und E sowie der seltenen Omega-7-Fettsäure. Diese Synergie kurbelt die Kollagensynthese an und verleiht der Haut einen tiefen, natürlichen Glow." },
+      { "number": "03", "title": "Kognitive Klarheit & Fokus", "desc": "B-Vitamine und Tryptophan (die Vorstufe von Serotonin) helfen nachweislich, Stress abzubauen, die Stimmung aufzuhellen und mentale Schärfe zu fördern." },
+      { "number": "04", "title": "Absolute Immun-Resilienz", "desc": "Mit einer extrem hohen, bioverfügbaren Vitamin-C-Konzentration stärkt das Elixier das Immunsystem und senkt das Risiko für Infektionen spürbar." },
+      { "number": "05", "title": "Mikrobiom-Balance", "desc": "Bioaktive Pflanzenstoffe und Ballaststoffe fördern gezielt eine gesunde Darmflora, optimieren die Verdauung und unterstützen den Schutz der Magenschleimhaut." },
+      { "number": "06", "title": "Aktive Zellprotektion", "desc": "Hochkonzentrierte Antioxidantien bekämpfen freie Radikale auf zellulärer Ebene, dämpfen chronische Entzündungsprozesse und beschleunigen die körperliche Erholung." },
+      { "number": "07", "title": "Deep Detox & Leberfunktion", "desc": "Unterstützt die natürlichen Entgiftungsprozesse des Körpers, fördert aktiv die Regeneration der Leberzellen und schützt vor oxidativen Umwelteinflüssen." },
+      { "number": "08", "title": "Kardiovaskuläre Langlebigkeit", "desc": "Flavonoide sowie hochdosierte Omega-Fettsäuren helfen, das Cholesterin-Profil zu optimieren und die Elastizität der Blutgefässe nachhaltig zu verbessern." },
+      { "number": "09", "title": "Der Digitale Schild", "desc": "Hochkonzentriertes Vitamin A und Carotinoide wirken als natürlicher zellulärer Filter gegen Blaulicht und mindern das Risiko digitaler Augenermüdung." }
+    ]
+  },
+  "stats": {
+    "ariaLabel": "Produktstatistiken",
+    "items": [
+      { "value": "190+", "label": "Bioaktive\nVerbindungen" },
+      { "value": "18",   "label": "Essenzielle\nAminosäuren" },
+      { "value": "4",    "label": "Omega Fettsäuren\n(3, 6, 7 & 9)" },
+      { "value": "9x",   "label": "Mehr Vitamin C\nals Zitrusfrüchte" }
+    ]
+  },
   "video": {
     "eyebrow": "Visuelle Erfahrung",
-    "heading": "Das Elixier in",
-    "headingItalic": "Bewegung.",
-    "placeholderText": "Video Platzhalter"
+    "heading": "Das Elixier in <span>Bewegung.</span>",
+    "placeholderText": "Video Platzhalter",
+    "placeholderAriaLabel": "Video-Platzhalter: AmberNord Elixier Präsentation"
   },
   "protocol": {
-    "heading": "Das tägliche",
-    "headingItalic": "Protokoll.",
+    "heading": "Das tägliche <span>Protokoll.</span>",
     "steps": [
       {
         "step": "Schritt 01",
@@ -81,108 +50,52 @@
       {
         "step": "Schritt 02",
         "title": "Die perfekte Alchemie",
-        "desc": "AmberNord ist kein gewöhnliches Getränk, sondern eine hochkonzentrierte Rohessenz. Für maximale Hydratation mischen Sie {highlight} (still oder prickelnd).",
-        "highlight": "1 Teil der Essenz mit 10 Teilen Wasser"
+        "desc": "AmberNord ist kein gewöhnliches Getränk, sondern eine hochkonzentrierte Rohessenz. Für maximale Hydratation mischen Sie <strong class=\"ritual-protocol__highlight\">1 Teil der Essenz mit 10 Teilen Wasser</strong> (still oder prickelnd)."
       },
       {
         "step": "Schritt 03",
         "title": "Die 10-Tage-Regel",
-        "desc": "Da wir vollständig auf künstliche Konservierungsstoffe verzichten, bewahren Sie die Flasche nach dem Öffnen zwingend im Kühlschrank auf und geniessen Sie das Elixier {highlight}.",
-        "highlight": "innerhalb von 10 Tagen"
+        "desc": "Da wir vollständig auf künstliche Konservierungsstoffe verzichten, bewahren Sie die Flasche nach dem Öffnen zwingend im Kühlschrank auf und geniessen Sie das Elixier <strong class=\"ritual-protocol__highlight\">innerhalb von 10 Tagen</strong>."
       }
     ]
   },
   "recipes": {
     "eyebrow": "Inspiration & Alltag",
-    "heading": "Rezepte &",
-    "headingItalic": "Variationen.",
+    "heading": "Rezepte & <span>Variationen.</span>",
+    "tabsAriaLabel": "Rezept-Kategorien",
     "cta": {
       "label": "Das Elixier sichern",
       "href": "/the-starter/"
     },
-    "tabs": {
-      "kalt": {
+    "tabs": [
+      {
+        "id": "kalt",
         "label": "Kalt & Erfrischend",
         "items": [
-          {
-            "tag": "Mixologie",
-            "title": "Nordic Spritz (No-ABV)",
-            "desc": "Die avantgardistische Alternative zum Aperol. Nutzen Sie die komplexe Säure und Textur der AmberNord Essenz, gemischt mit herbem Tonic Water auf Eis und garniert mit frischem Rosmarin. Ein hochkomplexes, alkoholfreies Profil für anspruchsvolle Abende."
-          },
-          {
-            "tag": "Exotisch & Cremig",
-            "title": "Amber Coconut Sour",
-            "desc": "Ein seidiges Erlebnis: Mischen Sie cremige Kokosmilch, etwas Mangosüsse und die lebendige Säure der Sanddorn-Essenz auf Eis. Ein Getränk, das mit jedem Schluck tropische Weichheit und nordischen Biss perfekt ausbalanciert."
-          },
-          {
-            "tag": "Alltag",
-            "title": "Sparkling Afternoon",
-            "desc": "1 Teil AmberNord mit eiskaltem Mineralwasser (Sprudel) und einem Zweig frischer Minze. Perfekt als schnelle Erfrischung und gesunder, zuckerfreier Ersatz für konventionelle Nachmittagsgetränke."
-          },
-          {
-            "tag": "Gesundheit",
-            "title": "Vitality Smoothie",
-            "desc": "Für den perfekten Start ins Training: Pürieren Sie frischen Karottensaft, ein Stück Ingwer, eine halbe Banane für die Textur und 20ml AmberNord Essenz. Ein antioxidativer Schutzschild in flüssiger Form."
-          }
+          { "tag": "Mixologie",       "title": "Nordic Spritz (No-ABV)", "desc": "Die avantgardistische Alternative zum Aperol. Nutzen Sie die komplexe Säure und Textur der AmberNord Essenz, gemischt mit herbem Tonic Water auf Eis und garniert mit frischem Rosmarin. Ein hochkomplexes, alkoholfreies Profil für anspruchsvolle Abende." },
+          { "tag": "Exotisch & Cremig", "title": "Amber Coconut Sour",  "desc": "Ein seidiges Erlebnis: Mischen Sie cremige Kokosmilch, etwas Mangosüsse und die lebendige Säure der Sanddorn-Essenz auf Eis. Ein Getränk, das mit jedem Schluck tropische Weichheit und nordischen Biss perfekt ausbalanciert." },
+          { "tag": "Alltag",          "title": "Sparkling Afternoon",   "desc": "1 Teil AmberNord mit eiskaltem Mineralwasser (Sprudel) und einem Zweig frischer Minze. Perfekt als schnelle Erfrischung und gesunder, zuckerfreier Ersatz für konventionelle Nachmittagsgetränke." },
+          { "tag": "Gesundheit",      "title": "Vitality Smoothie",     "desc": "Für den perfekten Start ins Training: Pürieren Sie frischen Karottensaft, ein Stück Ingwer, eine halbe Banane für die Textur und 20ml AmberNord Essenz. Ein antioxidativer Schutzschild in flüssiger Form." }
         ]
       },
-      "warm": {
+      {
+        "id": "warm",
         "label": "Warm & Holistisch",
         "items": [
-          {
-            "tag": "Ayurveda & Balance",
-            "title": "Amber Golden Milk",
-            "desc": "Eine wärmende Tasse Pflanzenmilch, ein Teelöffel Kurkuma, ein Hauch schwarzer Pfeffer und 10ml AmberNord Essenz. Die perfekte Synergie an Phytonährstoffen, um das Nervensystem am Abend zu beruhigen und Entzündungen über Nacht abzubauen."
-          },
-          {
-            "tag": "Wohlbefinden",
-            "title": "Der Amber Buzz",
-            "desc": "Spielen Sie mit Wärme und Säure: Ein Schuss AmberNord Essenz, aufgegossen mit heissem (nicht kochendem) Wasser, etwas Manuka-Honig und einer Prise Zimt. Ein beruhigendes, wärmendes Ritual für kühle Herbst- und Wintertage."
-          },
-          {
-            "tag": "Immunsystem",
-            "title": "High-End Ingwer-Shot",
-            "desc": "Eine hochkonzentrierte Kombination aus der puren AmberNord Essenz, gepaart mit frisch gepresstem Ingwer- und Kurkumasaft sowie einer Prise schwarzem Pfeffer. Ein intensiver, scharfer Shot für die maximale Immunabwehr."
-          },
-          {
-            "tag": "Ritual",
-            "title": "Alpiner Detox-Tee",
-            "desc": "Ein Ritual der Entschleunigung: Geben Sie einige Tropfen reines Sanddorn-Fruchtfleischöl oder Essenz in warmes Wasser mit frischen Kräutern, um den Stoffwechsel aktiv zu unterstützen und Zelllipide zu schützen."
-          }
+          { "tag": "Ayurveda & Balance", "title": "Amber Golden Milk",    "desc": "Eine wärmende Tasse Pflanzenmilch, ein Teelöffel Kurkuma, ein Hauch schwarzer Pfeffer und 10ml AmberNord Essenz. Die perfekte Synergie an Phytonährstoffen, um das Nervensystem am Abend zu beruhigen und Entzündungen über Nacht abzubauen." },
+          { "tag": "Wohlbefinden",       "title": "Der Amber Buzz",       "desc": "Spielen Sie mit Wärme und Säure: Ein Schuss AmberNord Essenz, aufgegossen mit heissem (nicht kochendem) Wasser, etwas Manuka-Honig und einer Prise Zimt. Ein beruhigendes, wärmendes Ritual für kühle Herbst- und Wintertage." },
+          { "tag": "Immunsystem",        "title": "High-End Ingwer-Shot", "desc": "Eine hochkonzentrierte Kombination aus der puren AmberNord Essenz, gepaart mit frisch gepresstem Ingwer- und Kurkumasaft sowie einer Prise schwarzem Pfeffer. Ein intensiver, scharfer Shot für die maximale Immunabwehr." },
+          { "tag": "Ritual",             "title": "Alpiner Detox-Tee",   "desc": "Ein Ritual der Entschleunigung: Geben Sie einige Tropfen reines Sanddorn-Fruchtfleischöl oder Essenz in warmes Wasser mit frischen Kräutern, um den Stoffwechsel aktiv zu unterstützen und Zelllipide zu schützen." }
         ]
       },
-      "kulinarik": {
+      {
+        "id": "kulinarik",
         "label": "Kulinarik & Desserts",
         "items": [
-          {
-            "tag": "Haute Cuisine",
-            "title": "Sanddorn Posset",
-            "desc": "Ein Beweis dafür, dass Einfachheit am meisten beeindruckt. Ein britisches Dessert, neu interpretiert: Vollrahm, Zucker und die pure AmberNord Essenz. Die Säure des Sanddorns lässt den Rahm auf natürliche Weise zu einer seidigen Creme stocken."
-          },
-          {
-            "tag": "Alltagsküche",
-            "title": "Golden Vinaigrette",
-            "desc": "Verwandeln Sie jeden Salat: Verwenden Sie AmberNord anstelle von Essig oder Zitrone. Mischen Sie hochwertiges Olivenöl, Sanddorn-Essenz, einen Teelöffel Dijon-Senf, Salz, Pfeffer und einen Tropfen Agavendicksaft für ein spektakulär leuchtendes Dressing."
-          }
+          { "tag": "Haute Cuisine", "title": "Sanddorn Posset",    "desc": "Ein Beweis dafür, dass Einfachheit am meisten beeindruckt. Ein britisches Dessert, neu interpretiert: Vollrahm, Zucker und die pure AmberNord Essenz. Die Säure des Sanddorns lässt den Rahm auf natürliche Weise zu einer seidigen Creme stocken." },
+          { "tag": "Alltagsküche", "title": "Golden Vinaigrette", "desc": "Verwandeln Sie jeden Salat: Verwenden Sie AmberNord anstelle von Essig oder Zitrone. Mischen Sie hochwertiges Olivenöl, Sanddorn-Essenz, einen Teelöffel Dijon-Senf, Salz, Pfeffer und einen Tropfen Agavendicksaft für ein spektakulär leuchtendes Dressing." }
         ]
       }
-    }
-  },
-  "schema": {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Wirkung & Ritual | AmberNord",
-    "description": "Die Wissenschaft hinter dem AmberNord Ritual: 9 Wirkungsbereiche, tägliches Anwendungsprotokoll und Rezeptideen mit Sanddorn-Elixier.",
-    "url": "https://ambernord.ch/ritual/",
-    "isPartOf": {
-      "@type": "WebSite",
-      "name": "AmberNord",
-      "url": "https://ambernord.ch/"
-    },
-    "about": {
-      "@type": "Product",
-      "name": "AmberNord Elixier",
-      "description": "Hochkonzentrierte Sanddorn-Rohessenz mit 190+ bioaktiven Verbindungen, 18 essenziellen Aminosäuren und 4 Omega-Fettsäuren."
-    }
+    ]
   }
 }
