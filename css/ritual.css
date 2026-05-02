@@ -1,0 +1,724 @@
+/* ==========================================================================
+
+   RITUAL — AmberNord
+
+   Scope: .ritual-page-container and all children.
+
+   Depends on: main.css tokens — --color-gold, --color-bg, --color-text,
+
+   --color-border-gold, --color-surface, --nav-height, --font-serif,
+
+   --font-sans, --container-pad, --t-fast, --t-slow
+
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+
+   ENTRANCE ANIMATION
+
+   Keyframe + animation applied to the root container on page load.
+
+   -------------------------------------------------------------------------- */
+
+@keyframes ritualReveal {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.ritual-page-container {
+    padding: calc(var(--nav-height) + 60px) 0 120px;
+    position: relative;
+    z-index: 10;
+    animation: ritualReveal 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+
+/* --------------------------------------------------------------------------
+
+   PAGE HEADER
+
+   Centered subtitle label + h1 with italic gold span. Matches the Über uns
+
+   pattern exactly: 11px uppercase label with gold underline, then serif h1.
+
+   -------------------------------------------------------------------------- */
+
+.subpage-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 80px;
+    padding: 0 var(--container-pad);
+}
+
+.subpage-subtitle {
+    display: inline-block;
+    color: var(--color-gold);
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(237, 163, 35, 0.4);
+    padding-bottom: 10px;
+}
+
+.subpage-header h1 {
+    color: var(--color-text);
+    font-family: var(--font-serif);
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 400;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.subpage-header h1 span {
+    font-style: italic;
+    color: var(--color-gold);
+}
+
+
+/* --------------------------------------------------------------------------
+
+   SCREEN-READER ONLY
+
+   Hides the benefits section h2 visually while remaining accessible.
+
+   -------------------------------------------------------------------------- */
+
+.ritual-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+
+/* --------------------------------------------------------------------------
+
+   SHARED SECTION ELEMENTS
+
+   Eyebrow label and h2 heading reused across video, protocol, and recipes.
+
+   -------------------------------------------------------------------------- */
+
+.ritual-section-eyebrow {
+    display: inline-block;
+    color: var(--color-gold);
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(237, 163, 35, 0.4);
+    padding-bottom: 10px;
+}
+
+.ritual-section-heading {
+    color: var(--color-text);
+    font-family: var(--font-serif);
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 400;
+    line-height: 1.1;
+    text-align: center;
+    margin: 0 auto 70px;
+}
+
+.ritual-section-heading span {
+    font-style: italic;
+    color: var(--color-gold);
+}
+
+
+/* --------------------------------------------------------------------------
+
+   BENEFITS GRID
+
+   9-item bento grid with ghost number watermarks and glass card effect.
+
+   -------------------------------------------------------------------------- */
+
+.ritual-benefits {
+    max-width: 1200px;
+    margin: 0 auto 140px;
+    padding: 0 var(--container-pad);
+}
+
+.ritual-benefits__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 1fr;
+    gap: 30px;
+}
+
+.ritual-benefits__item {
+    position: relative;
+    padding: 40px 35px;
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(237, 163, 35, 0.2);
+    border-left: 3px solid var(--color-gold);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    overflow: hidden;
+    transition: transform var(--t-slow) ease, border-color var(--t-slow) ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    z-index: 1;
+}
+
+.ritual-benefits__item::before {
+    content: attr(data-number);
+    position: absolute;
+    top: -15px;
+    right: 10px;
+    font-family: var(--font-serif);
+    font-size: 140px;
+    line-height: 1;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.03);
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.ritual-benefits__item-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+}
+
+.ritual-benefits__item-title {
+    color: var(--color-text);
+    font-family: var(--font-serif);
+    font-size: 22px;
+    margin: 0 0 15px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    line-height: 1.3;
+    min-height: 58px;
+    display: flex;
+    align-items: center;
+}
+
+.ritual-benefits__item-desc {
+    color: #d0d0d0;
+    font-size: 14px;
+    line-height: 1.8;
+    font-weight: 300;
+    margin: 0;
+}
+
+@media (min-width: 992px) {
+    .ritual-benefits__item:hover {
+        transform: translateY(-4px);
+        border-color: rgba(237, 163, 35, 0.35);
+        z-index: 2;
+    }
+
+    .ritual-benefits__item:hover::before {
+        color: rgba(255, 255, 255, 0.05);
+        transform: scale(1.05) translate(-5px, 5px);
+    }
+}
+
+
+/* --------------------------------------------------------------------------
+
+   STATS GRID
+
+   Four-column trust badge strip with gold italic numbers. Collapses to 2x2
+
+   on tablet.
+
+   -------------------------------------------------------------------------- */
+
+.ritual-stats {
+    max-width: 1200px;
+    margin: 0 auto 120px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 60px var(--container-pad);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: radial-gradient(ellipse at center, rgba(237, 163, 35, 0.03) 0%, transparent 80%);
+}
+
+.ritual-stats__item {
+    text-align: center;
+    padding: 0 20px;
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ritual-stats__item:last-child {
+    border-right: none;
+}
+
+.ritual-stats__highlight {
+    font-family: var(--font-serif);
+    font-size: clamp(32px, 4vw, 48px);
+    color: var(--color-gold);
+    margin-bottom: 10px;
+    line-height: 1;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.ritual-stats__detail {
+    font-size: 12px;
+    color: #a0a0a0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 1.5;
+    font-family: var(--font-sans);
+}
+
+
+/* --------------------------------------------------------------------------
+
+   VIDEO SECTION
+
+   Centered eyebrow + h2 + 16:9 glass placeholder box.
+
+   -------------------------------------------------------------------------- */
+
+.ritual-video {
+    max-width: 1200px;
+    margin: 0 auto 140px;
+    padding: 0 var(--container-pad);
+    text-align: center;
+}
+
+.ritual-video__placeholder {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(237, 163, 35, 0.2);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #555;
+    font-style: italic;
+    font-family: var(--font-serif);
+    font-size: clamp(18px, 3vw, 24px);
+    overflow: hidden;
+}
+
+
+/* --------------------------------------------------------------------------
+
+   PROTOCOL SECTION
+
+   Three-column card grid for the daily usage steps with glass card effect.
+
+   -------------------------------------------------------------------------- */
+
+.ritual-protocol {
+    max-width: 1200px;
+    margin: 0 auto 120px;
+    padding: 0 var(--container-pad);
+}
+
+.ritual-protocol__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 1fr;
+    gap: 30px;
+}
+
+.ritual-protocol__card {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(237, 163, 35, 0.2);
+    border-left: 3px solid var(--color-gold);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    padding: 40px 35px;
+    transition: transform var(--t-slow) ease, border-color var(--t-slow) ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.ritual-protocol__step {
+    font-size: 10px;
+    color: var(--color-gold);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: block;
+    font-weight: 600;
+    font-family: var(--font-sans);
+}
+
+.ritual-protocol__title {
+    color: var(--color-text);
+    font-family: var(--font-serif);
+    font-size: 26px;
+    margin: 0 0 20px;
+    font-weight: 400;
+}
+
+.ritual-protocol__desc {
+    color: #d0d0d0;
+    font-size: 15px;
+    line-height: 1.8;
+    font-weight: 300;
+    margin: 0;
+}
+
+.ritual-protocol__highlight {
+    color: var(--color-text);
+    font-weight: 500;
+}
+
+@media (min-width: 992px) {
+    .ritual-protocol__card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(237, 163, 35, 0.35);
+    }
+}
+
+
+/* --------------------------------------------------------------------------
+
+   RECIPES SECTION
+
+   Full-bleed section with a parallax background overlay that fades and
+
+   de-zooms when .is-in-view is toggled by JS. Tabbed grid of recipe cards.
+
+   Background image URL should be replaced with a Cloudinary asset when
+
+   available.
+
+   -------------------------------------------------------------------------- */
+
+.ritual-recipes {
+    position: relative;
+    padding: 100px 0;
+    overflow: hidden;
+}
+
+.ritual-recipes__bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://images.unsplash.com/photo-1556679343-c7306c1976bc?q=80&w=2000&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transform: scale(1.15);
+    transition: opacity 1.5s cubic-bezier(0.165, 0.84, 0.44, 1), transform 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.ritual-recipes__bg-overlay::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--color-bg) 0%, rgba(10, 10, 10, 0.7) 40%, rgba(10, 10, 10, 0.7) 60%, var(--color-bg) 100%);
+}
+
+.ritual-recipes.is-in-view .ritual-recipes__bg-overlay {
+    opacity: 0.6;
+    transform: scale(1);
+}
+
+.ritual-recipes__container {
+    position: relative;
+    z-index: 2;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 var(--container-pad);
+}
+
+.ritual-recipes__header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.ritual-recipes__tabs-nav {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+}
+
+.ritual-recipes__tab-btn {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--color-text);
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--t-fast) ease;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.ritual-recipes__tab-btn:hover {
+    border-color: rgba(237, 163, 35, 0.4);
+}
+
+.ritual-recipes__tab-btn:focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+}
+
+.ritual-recipes__tab-btn--active {
+    background: var(--color-gold);
+    color: #0a0a0a;
+    border-color: var(--color-gold);
+    font-weight: 600;
+}
+
+@keyframes fadeTabIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.ritual-recipes__tab-content {
+    display: none;
+}
+
+.ritual-recipes__tab-content--active {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    animation: fadeTabIn 0.5s ease forwards;
+}
+
+.ritual-recipe-card {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(237, 163, 35, 0.2);
+    border-left: 3px solid var(--color-gold);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    padding: 40px;
+    transition: border-color var(--t-fast) ease, transform var(--t-fast) ease;
+}
+
+.ritual-recipe-card:hover {
+    border-color: rgba(237, 163, 35, 0.4);
+    transform: translateY(-2px);
+}
+
+.ritual-recipe-card__tag {
+    display: inline-block;
+    font-size: 10px;
+    color: var(--color-gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    font-weight: 600;
+    font-family: var(--font-sans);
+}
+
+.ritual-recipe-card__title {
+    color: var(--color-text);
+    font-family: var(--font-serif);
+    font-size: 24px;
+    margin: 0 0 15px;
+    line-height: 1.3;
+    font-weight: 400;
+}
+
+.ritual-recipe-card__desc {
+    color: #d0d0d0;
+    font-size: 14.5px;
+    line-height: 1.7;
+    font-weight: 300;
+    margin: 0;
+}
+
+.ritual-recipes__cta {
+    text-align: center;
+    margin-top: 80px;
+}
+
+.ritual-recipes__cta-btn {
+    background: var(--color-gold);
+    color: #0a0a0a;
+    padding: 16px 45px;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-decoration: none;
+    border-radius: 50px;
+    display: inline-block;
+    transition: background var(--t-fast) ease, transform var(--t-fast) ease, box-shadow var(--t-fast) ease;
+    box-shadow: 0 4px 15px rgba(237, 163, 35, 0.2);
+}
+
+.ritual-recipes__cta-btn:hover {
+    background: #f5b53f;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(237, 163, 35, 0.3);
+}
+
+.ritual-recipes__cta-btn:focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+}
+
+
+/* --------------------------------------------------------------------------
+
+   SCROLL REVEAL
+
+   JS adds .page-reveal to targets, IntersectionObserver toggles .is-visible.
+
+   -------------------------------------------------------------------------- */
+
+.page-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.page-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* --------------------------------------------------------------------------
+
+   RESPONSIVE
+
+   Breakpoints: 991px (tablet), 768px (mobile).
+
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 991px) {
+    .ritual-benefits__grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .ritual-benefits__item {
+        padding: 25px 20px;
+        border-radius: 14px;
+    }
+
+    .ritual-benefits__item-title {
+        font-size: 19px;
+        margin-bottom: 8px;
+        min-height: auto;
+        display: block;
+    }
+
+    .ritual-benefits__item::before {
+        font-size: 70px;
+        top: -5px;
+        right: 12px;
+    }
+
+    .ritual-stats {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 40px var(--container-pad);
+    }
+
+    .ritual-stats__item {
+        border-right: 1px solid rgba(255, 255, 255, 0.08);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 20px 10px;
+    }
+
+    .ritual-stats__item:nth-child(2n) {
+        border-right: none;
+    }
+
+    .ritual-stats__item:nth-child(3),
+    .ritual-stats__item:nth-child(4) {
+        border-bottom: none;
+    }
+
+    .ritual-stats__highlight {
+        font-size: 36px;
+    }
+
+    .ritual-protocol__grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .ritual-protocol__card {
+        padding: 30px 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .ritual-recipes__tab-content--active {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .ritual-recipe-card {
+        padding: 30px 25px;
+    }
+
+    .ritual-recipes {
+        padding: 60px 0;
+    }
+}
+
+
+/* --------------------------------------------------------------------------
+
+   REDUCED MOTION
+
+   Disables all animations and transitions for users with that preference.
+
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+    .page-reveal,
+    .ritual-page-container {
+        animation: none;
+        transition: none;
+        opacity: 1;
+        transform: none;
+    }
+
+    .ritual-recipes__bg-overlay,
+    .ritual-benefits__item,
+    .ritual-protocol__card,
+    .ritual-recipe-card,
+    .ritual-recipes__cta-btn {
+        transition: none;
+        transform: none;
+    }
+
+    .ritual-recipes__tab-content--active {
+        animation: none;
+    }
+}

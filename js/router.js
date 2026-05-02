@@ -52,6 +52,16 @@
   schema:      null
 },
 
+'/ritual/': {
+  page:        '/pages/ritual.html',
+  title:       'Wirkung & Ritual | AmberNord',
+  description: 'Die Wissenschaft hinter dem AmberNord Ritual: 9 Wirkungsbereiche, tägliches Anwendungsprotokoll und Rezeptideen mit Sanddorn-Elixier.',
+  canonical:   'https://ambernord.ch/ritual/',
+  type:        'ritual',
+  sticky:      null,
+  schema:      null
+},
+
     '/the-starter/': {
       page:        '/pages/the-starter.html',
       title:       'The Starter (1x 250ml) | AmberNord Sanddorn Elixier',
@@ -311,6 +321,9 @@ if (target) window.scrollTo({ top: target.getBoundingClientRect().top + window.s
   window.initFaq();
   } else if (route.type === 'dossier' && typeof window.initDossier === 'function') {
   window.initDossier();
+  } else if (route.type === 'ritual' && typeof window.initRitual === 'function') {
+  window.initRitual();
+
 }
 
     } catch (err) {
