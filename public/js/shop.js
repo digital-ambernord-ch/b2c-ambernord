@@ -60,8 +60,7 @@ window.initShop = async function () {
     /* Builds the two-tone Abo button; returns empty string if product has no sub. */
     if (!sub) return '';
 
-    return `
-      <a class="shop-card__btn-abo" href="${sub.href}" target="_blank" rel="noopener noreferrer">
+    return `<a class="shop-card__btn-abo" href="${sub.href}" target="_blank" rel="noopener noreferrer">
         <div class="shop-card__abo-top">${sub.discountLabel}</div>
         <div class="shop-card__abo-bottom">
           <div class="shop-card__abo-price-wrap">
@@ -131,12 +130,8 @@ window.initShop = async function () {
 
             <div class="shop-card__action">
               
-                class="shop-card__btn-primary"
-                href="${p.buttons.primary.href}"
-                target="_blank"
-                rel="noopener noreferrer">
-                ${p.buttons.primary.label}
-              </a>
+                // PĒC (LABOTS):
+      <a class="shop-card__btn-primary" href="${p.buttons.primary.href}" target="_blank" rel="noopener noreferrer">${p.buttons.primary.label}</a>
               ${renderAboBtn(p.buttons.subscription)}
               <p class="shop-card__shipping">
                 <span class="shop-card__shipping-highlight">${p.shipping.highlight}</span>${p.shipping.text}
