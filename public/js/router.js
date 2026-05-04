@@ -73,12 +73,12 @@
   schema: null
 },
 // 1. router.js — ROUTES
-'/elixier/': { 
-  page: '/pages/elixier.html', 
-  title: 'Elixier | AmberNord', 
+'/shop/': { 
+  page: '/pages/shop.html', 
+  title: 'Shop | AmberNord', 
   description: 'Sanddorn-Essenzen wählen – The Starter, The Habit, The Protocol.', 
-  canonical: 'https://ambernord.ch/elixier/', 
-  type: 'elixier', 
+  canonical: 'https://ambernord.ch/shop/', 
+  type: 'shop', 
   sticky: null, 
   schema: null 
 },
@@ -346,8 +346,8 @@ if (target) window.scrollTo({ top: target.getBoundingClientRect().top + window.s
   window.initRitual();
   } else if (route.type === 'b2b' && typeof window.initB2b === 'function') {
   window.initB2b();
-  } else if (route.type === 'elixier' && typeof window.initElixier === 'function') {
-  window.initElixier(); 
+  } else if (route.type === 'shop' && typeof window.initShop === 'function') {
+  window.initShop(); 
   }
 
     } catch (err) {
