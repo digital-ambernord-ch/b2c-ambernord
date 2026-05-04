@@ -1,0 +1,143 @@
+{
+  "meta": {
+    "title": "Materie Prime B2B | AmberNord",
+    "description": "Materie prime di olivello spinoso certificate alla rinfusa per l'industria alimentare, cosmetica e farmaceutica. Certificato ISO 22000 e Bio UE.",
+    "canonical": "https://ambernord.ch/it/b2b/",
+    "slug": "/it/b2b/",
+    "robots": "index, follow",
+    "og": {
+      "title": "Materie Prime B2B & Estratti Clinici | AmberNord",
+      "description": "Accesso diretto alle nostre essenze grezze di olivello spinoso certificate per brand premium e industria alimentare.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/v1776938257/Ambernord-Sanddorngarden-Elixier-Ritual-BIO_y5isxg",
+      "type": "website"
+    },
+    "hreflang": {
+      "de": "https://ambernord.ch/b2b/",
+      "en": "https://ambernord.ch/en/b2b/",
+      "fr": "https://ambernord.ch/fr/b2b/",
+      "it": "https://ambernord.ch/it/b2b/",
+      "x-default": "https://ambernord.ch/b2b/"
+    }
+  },
+  "header": {
+    "eyebrow": "Corporate & Industria",
+    "h1": "Materie Prime Cliniche & <span>Fornitore B2B</span>",
+    "lead": "Accesso diretto alle nostre essenze grezze esclusive per l'industria alimentare, i brand cosmetici, i centri di longevità e le aziende visionarie."
+  },
+  "trust": {
+    "heading": "Certificazioni & Standard di Qualità",
+    "logo": { "alt": "Bio UE – marchio certificato per l'agricoltura biologica" },
+    "items": [
+      { "value": "ISO 22000", "label": "Certificato FSSC", "sub": "Massimi standard per la sicurezza alimentare" },
+      { "value": "100%", "label": "Logo Bio UE", "sub": "Coltivazione biologica certificata" },
+      { "value": "180+", "label": "Composti Bioattivi", "sub": "Vitamine, minerali & omega" },
+      { "value": "ZERO", "label": "Produzione di rifiuti", "sub": "Circolarità senza residui" }
+    ]
+  },
+  "products": [
+    {
+      "id": "elixier",
+      "eyebrow": "PREMIUM LIQUIDS",
+      "heading": "Elisir di Olivello Spinoso 100%",
+      "body": "L'elisir non diluito e puro come base per prodotti premium. Con polpa naturale e oli nativi per la massima densità nutritiva.",
+      "reverse": false, "imgLayout": "single", "imageIndexes": [1],
+      "specs": [
+        { "key": "Formato", "val": "Fusti da 200 L" },
+        { "key": "Specifiche", "val": "100% puro, non filtrato, non diluito, pastorizzato delicatamente" },
+        { "key": "Applicazione", "val": "Bevande funzionali, nutraceutici, industria alimentare" },
+        { "key": "Principi attivi", "val": "Omega 3, 6, 7, 9 – Vitamina C – Carotenoidi" }
+      ]
+    },
+    {
+      "id": "oils",
+      "eyebrow": "ACTIVE LIPIDS",
+      "heading": "Oli Nativi di Olivello Spinoso",
+      "body": "Lipidi botanici altamente concentrati da estrazione isolata di polpa e semi per la massima biodisponibilità.",
+      "reverse": true, "imgLayout": "single", "imageIndexes": [2],
+      "specs": [
+        { "key": "Formato", "val": "Fusti da 10 kg, 20 kg, 100 kg" },
+        { "key": "Profilo", "val": "Olio di polpa rosso intenso (Omega-7) & olio di seme (equilibrio Omega-3/-6)" },
+        { "key": "Estrazione", "val": "Pressatura meccanica a freddo, senza solventi" },
+        { "key": "Applicazione", "val": "Cosmetica premium, farmaceutica, dermatologia" }
+      ]
+    },
+    {
+      "id": "powder",
+      "eyebrow": "FIBER & PROTEIN",
+      "heading": "Polvere di Bacche & Residui di Pressatura",
+      "body": "100% naturale, prodotto da semi macinati e bucce di bacche dopo l'estrazione dell'olio. Preziosa fonte di fibre e proteine senza additivi.",
+      "reverse": false, "imgLayout": "dual", "imageIndexes": [3, 4],
+      "specs": [
+        { "key": "Formato", "val": "Sacchi da 10 kg, 20 kg, 100 kg" },
+        { "key": "Specifiche", "val": "Ricco in vitamine (A, B2, C, E), privo di additivi E" },
+        { "key": "Applicazione", "val": "Panifici, yogurt, integratori, cosmetica (scrub)" }
+      ]
+    },
+    {
+      "id": "botanicals",
+      "eyebrow": "BOTANICALS & SEEDS",
+      "heading": "Foglie & Semi di Olivello Spinoso",
+      "body": "Materiale essiccato di alta qualità con forti proprietà antiossidanti. Semi per la produzione di olio e foglie come tè funzionale o estratto.",
+      "reverse": true, "imgLayout": "dual", "imageIndexes": [5, 6],
+      "specs": [
+        { "key": "Formato", "val": "Sacchi da 10 kg, 20 kg, 100 kg" },
+        { "key": "Profilo (Foglie)", "val": "Antiossidante, antinfiammatorio, contiene serotonina" },
+        { "key": "Profilo (Semi)", "val": "Altissimo contenuto di Omega-3 e Omega-6" },
+        { "key": "Applicazione", "val": "Tè, gastronomia, cura della pelle, scrub" }
+      ]
+    },
+    {
+      "id": "phyto",
+      "eyebrow": "PHYTO-ACTIVES & EXTRACTS",
+      "heading": "Corteccia & Polvere di Succo",
+      "body": "Rimedi botanici e superfood altamente concentrati. Polvere di succo liofilizzata e corteccia ricca di serotonina per applicazioni specializzate.",
+      "reverse": false, "imgLayout": "dual", "imageIndexes": [7, 8],
+      "specs": [
+        { "key": "Formato", "val": "Sacchi da 10 kg, 20 kg, 100 kg" },
+        { "key": "Spec. (Corteccia)", "val": "Contiene fito-serotonina, ideale per tinture & unguenti" },
+        { "key": "Spec. (Polvere)", "val": "Liofilizzata, massima conservazione di Vitamina C & Omega" },
+        { "key": "Applicazione", "val": "Integratori alimentari, preparati per la salute" }
+      ]
+    }
+  ],
+  "process": {
+    "eyebrow": "PROCESS & STANDARDS",
+    "heading": "Dal Raccolto all'Estrazione",
+    "steps": [
+      { "num": "01", "title": "Raccolta Manuale", "text": "Raccolta precisa a mano da 100+ specialisti per evitare danni meccanici alla delicata buccia delle bacche." },
+      { "num": "02", "title": "Immediate Processing", "text": "Lavorazione entro 24–48 ore garantisce la massima densità nutritiva e previene l'ossidazione." },
+      { "num": "03", "title": "Pressatura a Freddo", "text": "Separazione meccanica delicata senza calore né solventi aggressivi – 100% privo di esano." },
+      { "num": "04", "title": "Sistema Zero Rifiuti", "text": "Valorizzazione integrale della pianta (elisir, olio, polvere, corteccia) per una filiera irrinunciabilmente sostenibile." }
+    ]
+  },
+  "benchmark": {
+    "eyebrow": "QUALITY BENCHMARK",
+    "heading": "Industria vs. Standard AmberNord",
+    "headers": ["Criterio", "Standard Industriale", "Qualità AmberNord"],
+    "subheaders": ["", "Mercato di massa", "Premium B2B"],
+    "rows": [
+      { "criterion": "Materia prima", "industry": "Varietà miste dal mercato globale", "ambernord": "Piantagione single-origin selezionata" },
+      { "criterion": "Purezza", "industry": "Diluito & filtrato più volte", "ambernord": "Elisir 100% puro (incl. oli nativi)" },
+      { "criterion": "Estrazione", "industry": "Estrazione con solvente (esano)", "ambernord": "Pressatura meccanica delicata a freddo" },
+      { "criterion": "Ecologia", "industry": "Elevata percentuale di rifiuti industriali", "ambernord": "Circolarità 100% zero rifiuti" }
+    ]
+  },
+  "cta": {
+    "heading": "Inizia con AmberNord",
+    "body": "Materie prime certificate per prodotti senza compromessi.",
+    "btn1": { "label": "Scarica il catalogo PDF", "href": "#download-catalog" },
+    "btn2": { "label": "Richiedi prezzi all'ingrosso", "href": "#request-pricing" }
+  },
+  "images": [
+    { "cloudinaryId": "v1776937251/ambernord-sanddornbeeren-frisch-am-zweig_izbzdn", "alt": "Bacche fresche di olivello spinoso sul ramo" },
+    { "cloudinaryId": "v1776937253/ambernord-sanddorn-muttersaft-100-prozent_oo2pxp", "alt": "Elisir di olivello spinoso 100% in contenitore sfuso" },
+    { "cloudinaryId": "v1776937248/ambernord-premium-sanddornoel-kaltgepresst_jw2ofc", "alt": "Oli nativi di olivello spinoso pressati a freddo" },
+    { "cloudinaryId": "v1776937252/ambernord-sanddornbeerenpulver-ballaststoffe_jwfpoy", "alt": "Polvere di bacche di olivello spinoso ricca di fibre" },
+    { "cloudinaryId": "v1776937252/ambernord-sanddorn-trester-pressrueckstaende_pihu6b", "alt": "Residui di pressatura di olivello spinoso" },
+    { "cloudinaryId": "v1776937250/ambernord-sanddornblaetter-getrocknet_xwlmp7", "alt": "Foglie essiccate di olivello spinoso – botanicals" },
+    { "cloudinaryId": "v1776937249/ambernord-sanddornkerne-getrocknet_cxttwd", "alt": "Semi essiccati di olivello spinoso per produzione di olio" },
+    { "cloudinaryId": "v1776937248/ambernord-sanddornrinde-zweige_ghpgsu", "alt": "Corteccia e rami di olivello spinoso con fito-serotonina" },
+    { "cloudinaryId": "v1776937249/ambernord-sanddornsaftpulver-gefriergetrocknet_lxkgwt", "alt": "Polvere di succo di olivello spinoso liofilizzata" },
+    { "cloudinaryId": "v1776938257/Ambernord-Sanddorngarden-Elixier-Ritual-BIO_y5isxg", "alt": "Giardino di olivello spinoso AmberNord con rituale elisir bio" }
+  ]
+}
