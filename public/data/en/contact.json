@@ -1,0 +1,76 @@
+{
+  "meta": {
+    "title": "Contact | AmberNord",
+    "description": "Contact AmberNord – questions about our organic sea buckthorn juice, orders, B2B partnerships or personal advice. We respond within 24–48 hours.",
+    "canonical": "https://ambernord.ch/en/kontakt/",
+    "slug": "/en/kontakt/",
+    "robots": "index, follow",
+    "og": {
+      "title": "Contact | AmberNord",
+      "description": "We welcome your enquiry – whether about products, orders or B2B partnerships.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/ambernord-og",
+      "type": "website"
+    },
+    "hreflang": {
+      "de": "https://ambernord.ch/kontakt/",
+      "en": "https://ambernord.ch/en/kontakt/",
+      "fr": "https://ambernord.ch/fr/kontakt/",
+      "it": "https://ambernord.ch/it/kontakt/",
+      "x-default": "https://ambernord.ch/kontakt/"
+    }
+  },
+  "header": {
+    "eyebrow": "Contact",
+    "h1": "We look forward<br><span>to hearing from you</span>"
+  },
+  "intro": {
+    "heading": "Introduction",
+    "p1": "Do you have questions about our organic sea buckthorn juice, need information about your order, or have another concern? Do not hesitate to reach out. Your satisfaction and uncompromising quality are our top priorities.",
+    "p2": "Whether you are seeking personal advice or are interested in a B2B partnership – we are happy to assist you openly and transparently."
+  },
+  "card": {
+    "heading": "How to reach us",
+    "email": {
+      "label": "Email",
+      "value": "info@ambernord.ch",
+      "href": "mailto:info@ambernord.ch",
+      "subtext": "We endeavour to respond to all enquiries within 24 to 48 hours."
+    },
+    "address": {
+      "label": "Postal address",
+      "html": "Matisons Selection (AmberNord)<br>Alte Gasse 8<br>5034 Suhr<br>Switzerland"
+    }
+  },
+  "form": {
+    "heading": "Contact form",
+    "intro": "The easiest and quickest way to reach us is through the form below. Simply leave us your message and we will get back to you promptly.",
+    "hiddenSubject": "New contact enquiry from AmberNord.ch",
+    "fields": {
+      "name": {
+        "label": "Your name",
+        "placeholder": "Name"
+      },
+      "email": {
+        "label": "Your email address",
+        "placeholder": "Email"
+      },
+      "phone": {
+        "label": "Your phone number",
+        "placeholder": "Phone (optional)"
+      },
+      "message": {
+        "label": "Your message",
+        "placeholder": "Message"
+      }
+    },
+    "submit": {
+      "label": "SEND MESSAGE",
+      "sending": "SENDING …"
+    },
+    "success": "Thank you for your message. Our team will be in touch with you shortly.",
+    "error": "An error occurred. Please try again later."
+  },
+  "b2b": {
+    "message": "Dear AmberNord team,\n\nI am interested in the B2B terms for AmberNord products. Please send me further information on the following areas:\n\n• The Master Box (20-bottle edition for clinics & practices)\n• Raw essences & industrial organic raw material quantities (ZELT Edition)\n• Individual corporate solutions\n\nKind regards,\n\n"
+  }
+}

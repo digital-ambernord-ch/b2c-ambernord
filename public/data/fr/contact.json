@@ -1,0 +1,76 @@
+{
+  "meta": {
+    "title": "Contact | AmberNord",
+    "description": "Contactez AmberNord – questions sur notre jus d'argousier bio, commandes, partenariats B2B ou conseils personnalisés. Nous répondons sous 24 à 48 heures.",
+    "canonical": "https://ambernord.ch/fr/kontakt/",
+    "slug": "/fr/kontakt/",
+    "robots": "index, follow",
+    "og": {
+      "title": "Contact | AmberNord",
+      "description": "Nous nous réjouissons de votre demande – produits, commandes ou partenariats B2B.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/ambernord-og",
+      "type": "website"
+    },
+    "hreflang": {
+      "de": "https://ambernord.ch/kontakt/",
+      "en": "https://ambernord.ch/en/kontakt/",
+      "fr": "https://ambernord.ch/fr/kontakt/",
+      "it": "https://ambernord.ch/it/kontakt/",
+      "x-default": "https://ambernord.ch/kontakt/"
+    }
+  },
+  "header": {
+    "eyebrow": "Contact",
+    "h1": "Nous sommes ravis<br><span>de vous entendre</span>"
+  },
+  "intro": {
+    "heading": "Introduction",
+    "p1": "Vous avez des questions sur notre jus d'argousier bio, besoin d'informations sur votre commande ou d'autres questions ? N'hésitez pas à nous contacter. Votre satisfaction et une qualité irréprochable sont notre priorité absolue.",
+    "p2": "Que vous souhaitiez un conseil personnalisé ou que vous soyez intéressé par un partenariat B2B – nous sommes heureux de vous aider avec clarté et transparence."
+  },
+  "card": {
+    "heading": "Comment nous joindre",
+    "email": {
+      "label": "E-mail",
+      "value": "info@ambernord.ch",
+      "href": "mailto:info@ambernord.ch",
+      "subtext": "Nous nous efforçons de répondre à toutes les demandes dans un délai de 24 à 48 heures."
+    },
+    "address": {
+      "label": "Adresse postale",
+      "html": "Matisons Selection (AmberNord)<br>Alte Gasse 8<br>5034 Suhr<br>Suisse"
+    }
+  },
+  "form": {
+    "heading": "Formulaire de contact",
+    "intro": "Le moyen le plus simple et le plus rapide de nous contacter est le formulaire ci-dessous. Laissez-nous votre message et nous vous répondrons dans les plus brefs délais.",
+    "hiddenSubject": "Nouvelle demande de contact depuis AmberNord.ch",
+    "fields": {
+      "name": {
+        "label": "Votre nom",
+        "placeholder": "Nom"
+      },
+      "email": {
+        "label": "Votre adresse e-mail",
+        "placeholder": "E-mail"
+      },
+      "phone": {
+        "label": "Votre numéro de téléphone",
+        "placeholder": "Téléphone (facultatif)"
+      },
+      "message": {
+        "label": "Votre message",
+        "placeholder": "Message"
+      }
+    },
+    "submit": {
+      "label": "ENVOYER LE MESSAGE",
+      "sending": "ENVOI EN COURS …"
+    },
+    "success": "Merci pour votre message. Notre équipe vous contactera dans les plus brefs délais.",
+    "error": "Une erreur s'est produite. Veuillez réessayer ultérieurement."
+  },
+  "b2b": {
+    "message": "Bonjour,\n\nJe suis intéressé(e) par les conditions B2B des produits AmberNord. Merci de m'envoyer des informations sur les points suivants :\n\n• The Master Box (édition 20 bouteilles pour cliniques & cabinets)\n• Essences brutes & quantités industrielles de matières premières bio (édition ZELT)\n• Solutions corporate sur mesure\n\nCordialement,\n\n"
+  }
+}

@@ -91,6 +91,15 @@
   sticky: null,
   schema: null
 },
+'/kontakt/': {
+  page:        '/pages/contact.html',
+  title:       'Kontakt | AmberNord',
+  description: 'Kontaktieren Sie AmberNord – Fragen zu unserem Bio-Sanddornsaft, Bestellungen oder B2B-Partnerschaften.',
+  canonical:   'https://ambernord.ch/kontakt/',
+  type:        'contact',
+  sticky:      null,
+  schema:      null,
+},
 
     '/the-starter/': {
       page:        '/pages/the-starter.html',
@@ -361,6 +370,10 @@ if (target) window.scrollTo({ top: target.getBoundingClientRect().top + window.s
   else if (route.type === 'the-master-box' && typeof window.initTheMasterBox === 'function') {
   window.initTheMasterBox();
   }
+  else if (route.type === 'contact' && typeof window.initContact === 'function') {
+  window.initContact();
+  }
+
 
     } catch (err) {
       console.error('[Router] Navigation failed:', err);

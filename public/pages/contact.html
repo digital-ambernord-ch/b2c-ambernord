@@ -1,0 +1,178 @@
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<div class="contact-page-container">
+
+  <div class="subpage-header">
+    <span class="subpage-subtitle" data-i18n-html="header.eyebrow"></span>
+    <h1 data-i18n-html="header.h1"></h1>
+  </div>
+
+  <main id="main-content">
+
+    <!-- ================================================================
+         INTRO — Two lead paragraphs introducing the contact page.
+         ================================================================ -->
+    <section
+      class="contact-intro"
+      aria-labelledby="contact-intro-heading"
+    >
+      <h2 id="contact-intro-heading" class="sr-only" data-i18n="intro.heading"></h2>
+      <div class="contact-intro__inner">
+        <p class="contact-body" data-i18n="intro.p1"></p>
+        <p class="contact-body" data-i18n="intro.p2"></p>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         CONTACT CARD — Glass card showing email address and postal address.
+         ================================================================ -->
+    <section
+      class="contact-card-section"
+      aria-labelledby="contact-card-heading"
+    >
+      <div class="contact-card">
+        <h2
+          id="contact-card-heading"
+          class="contact-card__heading"
+          data-i18n="card.heading"
+        ></h2>
+
+        <div class="contact-grid">
+
+          <div class="contact-col">
+            <span class="contact-label" data-i18n="card.email.label"></span>
+            <div class="contact-value">
+              <a
+                class="contact-email-link"
+                data-i18n="card.email.value"
+                data-i18n-attr="href:card.email.href"
+              ></a>
+              <p class="contact-subtext" data-i18n="card.email.subtext"></p>
+            </div>
+          </div>
+
+          <div class="contact-col">
+            <span class="contact-label" data-i18n="card.address.label"></span>
+            <address
+              class="contact-value contact-address"
+              data-i18n-html="card.address.html"
+            ></address>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         FORM — Web3Forms contact form; JS injects hidden config fields.
+         ================================================================ -->
+    <section
+      class="contact-form-section"
+      aria-labelledby="contact-form-heading"
+    >
+      <div class="contact-form-header">
+        <h2
+          id="contact-form-heading"
+          class="contact-form-header__heading"
+          data-i18n="form.heading"
+        ></h2>
+        <p class="contact-body" data-i18n="form.intro"></p>
+      </div>
+
+      <form id="contact-form" class="contact-form" novalidate>
+
+        <div class="contact-form__group">
+          <label for="contact-name" class="sr-only" data-i18n="form.fields.name.label"></label>
+          <input
+            type="text"
+            id="contact-name"
+            name="name"
+            class="contact-form__input"
+            data-i18n-attr="placeholder:form.fields.name.placeholder"
+            required
+            autocomplete="name"
+          >
+        </div>
+
+        <div class="contact-form__group">
+          <label for="contact-email-input" class="sr-only" data-i18n="form.fields.email.label"></label>
+          <input
+            type="email"
+            id="contact-email-input"
+            name="email"
+            class="contact-form__input"
+            data-i18n-attr="placeholder:form.fields.email.placeholder"
+            required
+            autocomplete="email"
+          >
+        </div>
+
+        <div class="contact-form__group">
+          <label for="contact-phone" class="sr-only" data-i18n="form.fields.phone.label"></label>
+          <input
+            type="tel"
+            id="contact-phone"
+            name="phone"
+            class="contact-form__input"
+            data-i18n-attr="placeholder:form.fields.phone.placeholder"
+            autocomplete="tel"
+          >
+        </div>
+
+        <div class="contact-form__group">
+          <label for="contact-message" class="sr-only" data-i18n="form.fields.message.label"></label>
+          <textarea
+            id="contact-message"
+            name="message"
+            class="contact-form__input contact-form__textarea"
+            data-i18n-attr="placeholder:form.fields.message.placeholder"
+            rows="8"
+            required
+          ></textarea>
+        </div>
+
+        <div class="contact-form__actions">
+          <button type="submit" id="contact-submit" class="contact-btn">
+            <span id="contact-submit-text" data-i18n="form.submit.label"></span>
+          </button>
+        </div>
+
+      </form>
+
+      <div
+        id="contact-success"
+        class="contact-success"
+        role="alert"
+        aria-live="polite"
+        hidden
+      >
+        <p data-i18n="form.success"></p>
+      </div>
+
+    </section>
+
+  </main>
+
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Kontakt | AmberNord",
+  "url": "https://ambernord.ch/kontakt/",
+  "description": "Kontaktieren Sie AmberNord – Fragen zu unserem Bio-Sanddornsaft, Bestellungen oder B2B-Partnerschaften.",
+  "mainEntity": {
+    "@type": "Organization",
+    "name": "AmberNord – Matisons Selection",
+    "email": "info@ambernord.ch",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Alte Gasse 8",
+      "addressLocality": "Suhr",
+      "postalCode": "5034",
+      "addressCountry": "CH"
+    }
+  }
+}
+</script>

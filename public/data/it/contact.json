@@ -1,0 +1,76 @@
+{
+  "meta": {
+    "title": "Contatto | AmberNord",
+    "description": "Contattate AmberNord – domande sul nostro succo di olivello spinoso biologico, ordini, partnership B2B o consulenza personale. Rispondiamo entro 24–48 ore.",
+    "canonical": "https://ambernord.ch/it/kontakt/",
+    "slug": "/it/kontakt/",
+    "robots": "index, follow",
+    "og": {
+      "title": "Contatto | AmberNord",
+      "description": "Siamo lieti di ricevere la vostra richiesta – prodotti, ordini o partnership B2B.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/ambernord-og",
+      "type": "website"
+    },
+    "hreflang": {
+      "de": "https://ambernord.ch/kontakt/",
+      "en": "https://ambernord.ch/en/kontakt/",
+      "fr": "https://ambernord.ch/fr/kontakt/",
+      "it": "https://ambernord.ch/it/kontakt/",
+      "x-default": "https://ambernord.ch/kontakt/"
+    }
+  },
+  "header": {
+    "eyebrow": "Contatto",
+    "h1": "Siamo lieti<br><span>di sentirvi</span>"
+  },
+  "intro": {
+    "heading": "Introduzione",
+    "p1": "Avete domande sul nostro succo di olivello spinoso biologico, avete bisogno di informazioni sul vostro ordine o avete un'altra richiesta? Non esitate a contattarci. La vostra soddisfazione e la qualità premium sono la nostra priorità assoluta.",
+    "p2": "Che desideriate una consulenza personalizzata o siate interessati a una partnership B2B – siamo lieti di assistervi con chiarezza e trasparenza."
+  },
+  "card": {
+    "heading": "Come raggiungerci",
+    "email": {
+      "label": "E-mail",
+      "value": "info@ambernord.ch",
+      "href": "mailto:info@ambernord.ch",
+      "subtext": "Ci impegniamo a rispondere a tutte le richieste entro 24–48 ore."
+    },
+    "address": {
+      "label": "Indirizzo postale",
+      "html": "Matisons Selection (AmberNord)<br>Alte Gasse 8<br>5034 Suhr<br>Svizzera"
+    }
+  },
+  "form": {
+    "heading": "Modulo di contatto",
+    "intro": "Il modo più semplice e rapido per contattarci è tramite il modulo sottostante. Lasciateci il vostro messaggio e vi risponderemo al più presto.",
+    "hiddenSubject": "Nuova richiesta di contatto da AmberNord.ch",
+    "fields": {
+      "name": {
+        "label": "Il vostro nome",
+        "placeholder": "Nome"
+      },
+      "email": {
+        "label": "Il vostro indirizzo e-mail",
+        "placeholder": "E-mail"
+      },
+      "phone": {
+        "label": "Il vostro numero di telefono",
+        "placeholder": "Telefono (facoltativo)"
+      },
+      "message": {
+        "label": "Il vostro messaggio",
+        "placeholder": "Messaggio"
+      }
+    },
+    "submit": {
+      "label": "INVIA MESSAGGIO",
+      "sending": "INVIO IN CORSO …"
+    },
+    "success": "Grazie per il vostro messaggio. Il nostro team vi contatterà a breve.",
+    "error": "Si è verificato un errore. Riprovate più tardi."
+  },
+  "b2b": {
+    "message": "Buongiorno,\n\nSono interessato/a alle condizioni B2B dei prodotti AmberNord. Vi chiedo di inviarmi ulteriori informazioni sui seguenti ambiti:\n\n• The Master Box (edizione 20 bottiglie per cliniche & studi)\n• Essenze grezze & quantità industriali di materie prime biologiche (edizione ZELT)\n• Soluzioni corporate personalizzate\n\nCordiali saluti,\n\n"
+  }
+}
