@@ -78,7 +78,7 @@
   title: 'Elixier | AmberNord', 
   description: 'Sanddorn-Essenzen wählen – The Starter, The Habit, The Protocol.', 
   canonical: 'https://ambernord.ch/elixier/', 
-  ype: 'elixier', 
+  type: 'elixier', 
   sticky: null, 
   schema: null 
 },
@@ -344,14 +344,11 @@ if (target) window.scrollTo({ top: target.getBoundingClientRect().top + window.s
   window.initDossier();
   } else if (route.type === 'ritual' && typeof window.initRitual === 'function') {
   window.initRitual();
-  // 2. router.js — dispatch
-} else if (route.type === 'b2b' && typeof window.initB2b === 'function') {
+  } else if (route.type === 'b2b' && typeof window.initB2b === 'function') {
   window.initB2b();
-}
-// 2. router.js — dispatch
-} else if (route.type === 'elixier' && typeof window.initElixier === 'function') { 
-  window.initShop(); 
-}
+  } else if (route.type === 'elixier' && typeof window.initElixier === 'function') {
+  window.initElixier(); 
+  }
 
     } catch (err) {
       console.error('[Router] Navigation failed:', err);
