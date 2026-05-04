@@ -1,0 +1,280 @@
+/* ==========================================================================
+   THANK YOU — AmberNord
+   Scope: .thankyou-page-container and children.
+   Tokens: --color-gold --color-bg --color-text --color-border-gold
+   --color-surface --nav-height --font-serif --font-sans
+   --container-pad --t-fast --t-slow
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   ROOT — page wrapper clears the fixed nav and anchors z-index stacking.
+   -------------------------------------------------------------------------- */
+
+.thankyou-page-container {
+  padding: calc(var(--nav-height) + 60px) 0 120px;
+  position: relative;
+  z-index: 10;
+}
+
+/* --------------------------------------------------------------------------
+   ENTRANCE — single upward reveal animates the container on first paint.
+   -------------------------------------------------------------------------- */
+
+@keyframes thankyouReveal {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.thankyou-page-container {
+  animation: thankyouReveal 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+/* --------------------------------------------------------------------------
+   SCROLL REVEAL — elements fade up as they cross the viewport threshold.
+   -------------------------------------------------------------------------- */
+
+.page-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.page-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* --------------------------------------------------------------------------
+   REDUCED MOTION — removes all animation for users who prefer it.
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .page-reveal,
+  .thankyou-page-container {
+    animation: none;
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   SECTION — constrains the confirmation block to the standard max width.
+   -------------------------------------------------------------------------- */
+
+.thankyou-section {
+  max-width: 1400px;
+  padding: 0 var(--container-pad);
+  margin: 0 auto 120px;
+}
+
+/* --------------------------------------------------------------------------
+   INNER — centred column layout for icon, copy, tagline and CTA.
+   -------------------------------------------------------------------------- */
+
+.thankyou-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+  gap: 32px;
+}
+
+/* --------------------------------------------------------------------------
+   ICON — amber botanical SVG positioned above the body copy.
+   -------------------------------------------------------------------------- */
+
+.thankyou-icon {
+  opacity: 0.9;
+}
+
+.thankyou-icon__branch {
+  stroke: var(--color-gold);
+  fill: none;
+}
+
+.thankyou-icon__drop {
+  fill: var(--color-gold);
+}
+
+/* --------------------------------------------------------------------------
+   BODY — lead paragraph and secondary shipping note with restrained opacity.
+   -------------------------------------------------------------------------- */
+
+.thankyou-body {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: #d0d0d0;
+  max-width: 650px;
+  margin: 0;
+}
+
+.thankyou-body--primary {
+  font-size: 18px;
+}
+
+.thankyou-body--secondary {
+  color: #a3a3a3;
+}
+
+/* --------------------------------------------------------------------------
+   TAGLINE — Swiss German closing phrase styled in serif italic for warmth.
+   -------------------------------------------------------------------------- */
+
+.thankyou-tagline {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  font-style: italic;
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: var(--color-text);
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   CTA — gold outlined call-to-action filled on hover.
+   -------------------------------------------------------------------------- */
+
+.thankyou-cta {
+  display: inline-block;
+  padding: 14px 40px;
+  border: 1px solid var(--color-gold);
+  color: var(--color-gold);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: background-color var(--t-fast), color var(--t-fast);
+}
+
+.thankyou-cta:hover {
+  background-color: var(--color-gold);
+  color: #000;
+}
+
+/* --------------------------------------------------------------------------
+   SUBPAGE HEADER — centred eyebrow and h1 shared across all subpages.
+   -------------------------------------------------------------------------- */
+
+.subpage-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 80px;
+  padding: 0 var(--container-pad);
+}
+
+.subpage-subtitle {
+  display: inline-block;
+  color: var(--color-gold);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(237, 163, 35, 0.4);
+  padding-bottom: 10px;
+}
+
+.subpage-header h1 {
+  color: var(--color-text);
+  font-family: var(--font-serif);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.subpage-header h1 span {
+  font-style: italic;
+  color: var(--color-gold);
+}
+
+/* --------------------------------------------------------------------------
+   SKIP LINK — keyboard shortcut to bypass nav, visible only on focus.
+   -------------------------------------------------------------------------- */
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  background: var(--color-gold);
+  color: #000;
+  padding: 0.5rem 1rem;
+  font-weight: 700;
+  z-index: 9999;
+  border-radius: 4px;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* --------------------------------------------------------------------------
+   FOCUS — gold ring applied to all keyboard-navigable elements.
+   -------------------------------------------------------------------------- */
+
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   SCREEN READER ONLY — accessible label hidden from sighted users.
+   -------------------------------------------------------------------------- */
+
+.thankyou-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --------------------------------------------------------------------------
+   WILL-CHANGE — applied only during active entrance animation, then removed.
+   -------------------------------------------------------------------------- */
+
+.thankyou-page-container.animating {
+  will-change: opacity, transform;
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE — collapses spacing and type scale for tablet and mobile.
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 991px) {
+  .thankyou-section {
+    margin-bottom: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .thankyou-inner {
+    gap: 24px;
+  }
+
+  .thankyou-body--primary {
+    font-size: 16px;
+  }
+
+  .thankyou-tagline {
+    font-size: 20px;
+  }
+
+  .thankyou-section {
+    margin-bottom: 60px;
+  }
+}

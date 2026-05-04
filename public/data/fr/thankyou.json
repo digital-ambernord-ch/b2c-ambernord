@@ -1,0 +1,38 @@
+{
+  "meta": {
+    "title": "Commande confirmée | AmberNord",
+    "description": "Votre commande AmberNord est confirmée. Nous préparons votre élixir d'ambre personnel avec le plus grand soin et la plus grande précision.",
+    "canonical": "https://ambernord.ch/danke/",
+    "slug": "/danke/",
+    "robots": "noindex, nofollow",
+    "og": {
+      "title": "Commande confirmée | AmberNord",
+      "description": "L'or liquide du Nord est en route vers vous.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/ambernord-og",
+      "type": "website"
+    },
+    "hreflang": {
+      "de": "https://ambernord.ch/danke/",
+      "en": "https://ambernord.ch/en/danke/",
+      "fr": "https://ambernord.ch/fr/danke/",
+      "it": "https://ambernord.ch/it/danke/",
+      "x-default": "https://ambernord.ch/danke/"
+    }
+  },
+  "header": {
+    "eyebrow": "Commande confirmée",
+    "h1": "La nature prend le relais.<br><span>Votre rituel commence.</span>"
+  },
+  "confirmation": {
+    "heading": "Confirmation de commande"
+  },
+  "body": {
+    "primary": "Vous avez choisi l'or liquide du Nord. Nous préparons maintenant votre élixir personnel avec le plus grand soin – avec la précision et la pureté que vous méritez.",
+    "secondary": "Dès que votre colis sera en route, nous vous contacterons. Savourez l'anticipation du renouvellement cellulaire."
+  },
+  "tagline": "Grand merci pour votre confiance.",
+  "cta": {
+    "label": "Retour à la boutique",
+    "href": "https://ambernord-ritual-v2.dashnexpages.net/startseite/?go=ritual-products"
+  }
+}

@@ -109,7 +109,15 @@
   sticky: null,
   schema: null,
 },
-
+'/danke/': {
+  page: '/pages/thankyou.html',
+  title: 'Bestellung bestätigt | AmberNord',
+  description: 'Deine Bestellung ist eingegangen. AmberNord bereitet dein Elixier vor.',
+  canonical: 'https://ambernord.ch/danke/',
+  type: 'thankyou',
+  sticky: null,
+  schema: null
+},
     '/the-starter/': {
       page:        '/pages/the-starter.html',
       title:       'The Starter (1x 250ml) | AmberNord Sanddorn Elixier',
@@ -385,7 +393,9 @@ if (target) window.scrollTo({ top: target.getBoundingClientRect().top + window.s
   else if (route.type === 'bestellstatus' && typeof window.initBestellstatus === 'function') {
   window.initBestellstatus();
   }
-
+  else if (route.type === 'thankyou' && typeof window.initThankyou === 'function') {
+  window.initThankyou();
+  }
 
     } catch (err) {
       console.error('[Router] Navigation failed:', err);
