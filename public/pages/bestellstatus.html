@@ -1,0 +1,59 @@
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<div class="subpage-header">
+  <span class="subpage-subtitle" data-i18n-html="header.eyebrow"></span>
+  <h1 data-i18n-html="header.h1"></h1>
+</div>
+
+<main id="main-content">
+
+  <section class="bestellstatus-section" aria-labelledby="lookup-heading">
+
+    <h2 class="sr-only" id="lookup-heading" data-i18n="form.sectionHeading"></h2>
+
+    <p class="bestellstatus-intro" data-i18n="intro.body"></p>
+
+    <div class="bestellstatus-card">
+
+      <form class="bestellstatus-form" id="bestellstatus-form" novalidate>
+
+        <label class="bestellstatus-label" for="order-input" data-i18n="form.label"></label>
+
+        <input
+          class="bestellstatus-input"
+          type="text"
+          id="order-input"
+          name="orderNumber"
+          data-i18n-attr="placeholder:form.placeholder"
+          autocomplete="off"
+          required>
+
+        <button class="ambernord-btn bestellstatus-btn" type="submit" data-i18n="form.submit"></button>
+
+      </form>
+
+      <div class="bestellstatus-msg" id="bestellstatus-msg" role="status" aria-live="polite" hidden>
+        <p data-i18n-html="form.fallback"></p>
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Bestellstatus | AmberNord",
+  "url": "https://ambernord.ch/bestellstatus/",
+  "description": "Prüfen Sie den Status Ihrer AmberNord-Bestellung schnell und einfach mit Ihrer Bestellnummer.",
+  "inLanguage": "de",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "AmberNord",
+    "url": "https://ambernord.ch/"
+  }
+}
+</script>

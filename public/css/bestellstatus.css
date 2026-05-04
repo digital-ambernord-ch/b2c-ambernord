@@ -1,0 +1,286 @@
+/* ==========================================================================
+   BESTELLSTATUS — AmberNord
+   Scope: .bestellstatus-page-container and children.
+   Tokens: --color-gold --color-bg --color-text --color-border-gold
+   --color-surface --nav-height --font-serif --font-sans
+   --container-pad --t-fast --t-slow
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   ROOT — positions container below the fixed nav with entrance animation.
+   -------------------------------------------------------------------------- */
+
+.bestellstatus-page-container {
+  padding: calc(var(--nav-height) + 60px) 0 120px;
+  position: relative;
+  z-index: 10;
+}
+
+/* --------------------------------------------------------------------------
+   ENTRANCE — single fade-up reveal triggered on page load.
+   -------------------------------------------------------------------------- */
+
+@keyframes bestellstatusReveal {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.bestellstatus-page-container {
+  animation: bestellstatusReveal 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+/* --------------------------------------------------------------------------
+   SCROLL REVEAL — base hidden state, toggled by IntersectionObserver in JS.
+   -------------------------------------------------------------------------- */
+
+.page-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.page-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* --------------------------------------------------------------------------
+   REDUCED MOTION — respects prefers-reduced-motion user preference.
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .page-reveal,
+  .bestellstatus-page-container {
+    animation: none;
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   WILL-CHANGE — only on actively animating container, removed after.
+   -------------------------------------------------------------------------- */
+
+.bestellstatus-page-container.animating {
+  will-change: opacity, transform;
+}
+
+/* --------------------------------------------------------------------------
+   SUBPAGE HEADER — centered eyebrow + h1 block above main content.
+   -------------------------------------------------------------------------- */
+
+.subpage-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 80px;
+  padding: 0 var(--container-pad);
+}
+
+.subpage-subtitle {
+  display: inline-block;
+  color: var(--color-gold);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(237, 163, 35, 0.4);
+  padding-bottom: 10px;
+}
+
+.subpage-header h1 {
+  color: var(--color-text);
+  font-family: var(--font-serif);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.subpage-header h1 span {
+  font-style: italic;
+  color: var(--color-gold);
+}
+
+/* --------------------------------------------------------------------------
+   SKIP LINK — offscreen until focused, supports keyboard navigation.
+   -------------------------------------------------------------------------- */
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  background: var(--color-gold);
+  color: #000;
+  padding: 0.5rem 1rem;
+  font-weight: 700;
+  z-index: 9999;
+  border-radius: 4px;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* --------------------------------------------------------------------------
+   FOCUS — gold ring applied to all interactive elements on keyboard focus.
+   -------------------------------------------------------------------------- */
+
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   SCREEN READER ONLY — visually hidden but accessible to assistive tech.
+   -------------------------------------------------------------------------- */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --------------------------------------------------------------------------
+   SECTION — narrows and centers the lookup card on the page.
+   -------------------------------------------------------------------------- */
+
+.bestellstatus-section {
+  max-width: 560px;
+  padding: 0 var(--container-pad);
+  margin: 0 auto 120px;
+  text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   INTRO — supporting paragraph below the page heading.
+   -------------------------------------------------------------------------- */
+
+.bestellstatus-intro {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: #d0d0d0;
+  margin: 0 0 40px;
+}
+
+/* --------------------------------------------------------------------------
+   CARD — glass-morphism container holding the form and status message.
+   -------------------------------------------------------------------------- */
+
+.bestellstatus-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(237, 163, 35, 0.2);
+  border-left: 3px solid var(--color-gold);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  padding: 40px;
+  text-align: left;
+}
+
+/* --------------------------------------------------------------------------
+   FORM — stacks label, input, and submit button in a vertical column.
+   -------------------------------------------------------------------------- */
+
+.bestellstatus-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bestellstatus-label {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.bestellstatus-input {
+  width: 100%;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--color-border-gold);
+  color: var(--color-text);
+  border-radius: 4px;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color var(--t-fast);
+}
+
+.bestellstatus-input:focus {
+  border-color: var(--color-gold);
+}
+
+.bestellstatus-btn {
+  width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   STATUS MESSAGE — gold-accented feedback panel, hidden until form submits.
+   -------------------------------------------------------------------------- */
+
+.bestellstatus-msg {
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(237, 163, 35, 0.05);
+  border-left: 2px solid var(--color-gold);
+  border-radius: 4px;
+}
+
+.bestellstatus-msg[hidden] {
+  display: none;
+}
+
+.bestellstatus-msg p {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: #d0d0d0;
+  margin: 0;
+}
+
+.bestellstatus-msg p a {
+  color: var(--color-gold);
+  text-underline-offset: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   TABLET — minor spacing adjustments for mid-range viewports.
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 991px) {
+  .bestellstatus-section {
+    margin-bottom: 80px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   MOBILE — reduces card padding and header margin on narrow screens.
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  .subpage-header {
+    margin-bottom: 48px;
+  }
+
+  .bestellstatus-card {
+    padding: 28px 20px;
+  }
+}

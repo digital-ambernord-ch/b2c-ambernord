@@ -1,0 +1,36 @@
+{
+  "meta": {
+    "title": "Statut de commande | AmberNord",
+    "description": "Saisissez votre numéro de commande AmberNord pour consulter instantanément l'état actuel de votre livraison.",
+    "canonical": "https://ambernord.ch/fr/bestellstatus/",
+    "slug": "/fr/bestellstatus/",
+    "robots": "index, follow",
+    "og": {
+      "title": "Statut de commande | AmberNord",
+      "description": "Retrouvez le statut de votre commande AmberNord en quelques secondes.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/ambernord-og-default",
+      "type": "website"
+    },
+    "hreflang": {
+      "de": "https://ambernord.ch/bestellstatus/",
+      "en": "https://ambernord.ch/en/bestellstatus/",
+      "fr": "https://ambernord.ch/fr/bestellstatus/",
+      "it": "https://ambernord.ch/it/bestellstatus/",
+      "x-default": "https://ambernord.ch/bestellstatus/"
+    }
+  },
+  "header": {
+    "eyebrow": "Service",
+    "h1": "Statut de <span>commande</span>"
+  },
+  "intro": {
+    "body": "Saisissez votre numéro de commande pour vérifier l'état actuel de votre livraison."
+  },
+  "form": {
+    "sectionHeading": "Rechercher un numéro de commande",
+    "label": "Numéro de commande",
+    "placeholder": "p. ex. AN-10542",
+    "submit": "Vérifier le statut",
+    "fallback": "Notre système de suivi est en cours de configuration. Veuillez nous contacter via le <a href=\"/kontakt/\" data-link>formulaire de contact</a>."
+  }
+}

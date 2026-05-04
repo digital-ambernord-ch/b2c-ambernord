@@ -1,0 +1,36 @@
+{
+  "meta": {
+    "title": "Bestellstatus prüfen | AmberNord",
+    "description": "Geben Sie Ihre AmberNord-Bestellnummer ein und prüfen Sie den aktuellen Status Ihrer Lieferung schnell und unkompliziert.",
+    "canonical": "https://ambernord.ch/bestellstatus/",
+    "slug": "/bestellstatus/",
+    "robots": "index, follow",
+    "og": {
+      "title": "Bestellstatus | AmberNord",
+      "description": "Status Ihrer AmberNord-Bestellung in wenigen Sekunden nachschlagen.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/ambernord-og-default",
+      "type": "website"
+    },
+    "hreflang": {
+      "de": "https://ambernord.ch/bestellstatus/",
+      "en": "https://ambernord.ch/en/bestellstatus/",
+      "fr": "https://ambernord.ch/fr/bestellstatus/",
+      "it": "https://ambernord.ch/it/bestellstatus/",
+      "x-default": "https://ambernord.ch/bestellstatus/"
+    }
+  },
+  "header": {
+    "eyebrow": "Service",
+    "h1": "Bestell<span>status</span>"
+  },
+  "intro": {
+    "body": "Geben Sie Ihre Bestellnummer ein, um den aktuellen Status Ihrer Lieferung zu prüfen."
+  },
+  "form": {
+    "sectionHeading": "Bestellnummer nachschlagen",
+    "label": "Bestellnummer",
+    "placeholder": "z. B. AN-10542",
+    "submit": "Status prüfen",
+    "fallback": "Das Tracking-System wird aktuell konfiguriert. Bitte kontaktieren Sie uns vorerst über das <a href=\"/kontakt/\" data-link>Kontaktformular</a>."
+  }
+}

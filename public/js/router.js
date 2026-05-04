@@ -100,6 +100,15 @@
   sticky:      null,
   schema:      null,
 },
+'/bestellstatus/': {
+  page: '/pages/bestellstatus.html',
+  title: 'Bestellstatus | AmberNord',
+  description: 'Geben Sie Ihre Bestellnummer ein, um den Status Ihrer Lieferung zu prüfen.',
+  canonical: 'https://ambernord.ch/bestellstatus/',
+  type: 'bestellstatus',
+  sticky: null,
+  schema: null,
+},
 
     '/the-starter/': {
       page:        '/pages/the-starter.html',
@@ -372,6 +381,9 @@ if (target) window.scrollTo({ top: target.getBoundingClientRect().top + window.s
   }
   else if (route.type === 'contact' && typeof window.initContact === 'function') {
   window.initContact();
+  }
+  else if (route.type === 'bestellstatus' && typeof window.initBestellstatus === 'function') {
+  window.initBestellstatus();
   }
 
 

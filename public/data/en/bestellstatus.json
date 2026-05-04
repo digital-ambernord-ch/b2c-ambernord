@@ -1,0 +1,36 @@
+{
+  "meta": {
+    "title": "Track Your Order | AmberNord",
+    "description": "Enter your AmberNord order number to instantly check the current status of your delivery — fast, simple, and straightforward.",
+    "canonical": "https://ambernord.ch/en/bestellstatus/",
+    "slug": "/en/bestellstatus/",
+    "robots": "index, follow",
+    "og": {
+      "title": "Order Status | AmberNord",
+      "description": "Look up the status of your AmberNord order in seconds.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/ambernord-og-default",
+      "type": "website"
+    },
+    "hreflang": {
+      "de": "https://ambernord.ch/bestellstatus/",
+      "en": "https://ambernord.ch/en/bestellstatus/",
+      "fr": "https://ambernord.ch/fr/bestellstatus/",
+      "it": "https://ambernord.ch/it/bestellstatus/",
+      "x-default": "https://ambernord.ch/bestellstatus/"
+    }
+  },
+  "header": {
+    "eyebrow": "Service",
+    "h1": "Order <span>Status</span>"
+  },
+  "intro": {
+    "body": "Enter your order number below to check the current status of your delivery."
+  },
+  "form": {
+    "sectionHeading": "Look up order number",
+    "label": "Order Number",
+    "placeholder": "e.g. AN-10542",
+    "submit": "Check Status",
+    "fallback": "Our tracking system is currently being configured. In the meantime, please reach us via the <a href=\"/kontakt/\" data-link>contact form</a>."
+  }
+}
