@@ -21,6 +21,9 @@
   <link rel="stylesheet" href="css/faq.css">
   <link rel="stylesheet" href="css/dossier.css">
   <link rel="stylesheet" href="css/ritual.css">
+  <link rel="stylesheet" href="css/b2b.css">
+  <!-- 3. index.html <head> -->
+  <link rel="stylesheet" href="css/elixier.css">
 </head>
 <body style="position: relative;">
 
@@ -67,6 +70,8 @@
           <a href="/elixier/" data-link role="menuitem">Alle Elixiere vergleichen</a>
           <a href="/dossier/" data-link>Dossier</a>
           <a href="/ritual/" data-link>Ritual</a>
+          <a href="/b2b/" data-link>B2B</a>
+          <a href="/elixier/" data-link>Elixier</a>
         </div>
       </div>
 
@@ -80,6 +85,13 @@
       <span></span>
       <span></span>
     </button>
+
+    <div class="nav-lang">
+    <button type="button" onclick="window.setLang('de')">DE</button>
+    <button type="button" onclick="window.setLang('en')">EN</button>
+    <button type="button" onclick="window.setLang('fr')">FR</button>
+    <button type="button" onclick="window.setLang('it')">IT</button>
+  </div>
 
   </div>
 </header>
@@ -180,12 +192,18 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 <script src="js/ui.js"></script>
 <script src="js/router.js"></script>
+<script src="js/i18n.js"></script>
 <script src="js/landing.js"></script>
 <script src="js/product.js"></script>
 <script src="js/about.js"></script>
 <script src="js/faq.js"></script>
 <script src="js/dossier.js"></script>
 <script src="js/ritual.js"></script>
+<script src="js/b2b.js"></script>
+<script src="js/elixier.js"></script>
+
+
+
 
 </body>
 </html>

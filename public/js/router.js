@@ -62,6 +62,27 @@
   schema:      null
 },
 
+// 1. router.js — ROUTES
+'/b2b/': {
+  page: '/pages/b2b.html',
+  title: 'B2B Klinische Rohstoffe | AmberNord',
+  description: 'Zertifizierte Sanddorn-Rohstoffe in Bulk-Mengen. ISO 22000, EU-Bio.',
+  canonical: 'https://ambernord.ch/b2b/',
+  type: 'b2b',
+  sticky: null,
+  schema: null
+},
+// 1. router.js — ROUTES
+'/elixier/': { 
+  page: '/pages/elixier.html', 
+  title: 'Elixier | AmberNord', 
+  description: 'Sanddorn-Essenzen wählen – The Starter, The Habit, The Protocol.', 
+  canonical: 'https://ambernord.ch/elixier/', 
+  type: 'elixier', 
+  sticky: null, 
+  schema: null 
+},
+
     '/the-starter/': {
       page:        '/pages/the-starter.html',
       title:       'The Starter (1x 250ml) | AmberNord Sanddorn Elixier',
@@ -323,8 +344,11 @@ if (target) window.scrollTo({ top: target.getBoundingClientRect().top + window.s
   window.initDossier();
   } else if (route.type === 'ritual' && typeof window.initRitual === 'function') {
   window.initRitual();
-
-}
+  } else if (route.type === 'b2b' && typeof window.initB2b === 'function') {
+  window.initB2b();
+  } else if (route.type === 'elixier' && typeof window.initElixier === 'function') {
+  window.initElixier(); 
+  }
 
     } catch (err) {
       console.error('[Router] Navigation failed:', err);
