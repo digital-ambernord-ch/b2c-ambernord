@@ -1,0 +1,848 @@
+/* ==========================================================================
+   B2B — AmberNord
+   Scope: .b2b-page-container and children.
+   Tokens: --color-gold --color-bg --color-text --color-border-gold
+   --color-surface --nav-height --font-serif --font-sans
+   --container-pad --t-fast --t-slow
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   ROOT — page wrapper positioning, entrance animation, and z-stacking.
+   -------------------------------------------------------------------------- */
+
+.b2b-page-container {
+  padding: 0 0 120px;
+  position: relative;
+  z-index: 10;
+}
+
+/* --------------------------------------------------------------------------
+   ENTRANCE — full-page reveal on route load.
+   -------------------------------------------------------------------------- */
+
+@keyframes b2bReveal {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.b2b-page-container {
+  animation: b2bReveal 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+/* --------------------------------------------------------------------------
+   SCROLL REVEAL — IntersectionObserver hook, transitions on .is-visible.
+   -------------------------------------------------------------------------- */
+
+.page-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.page-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* --------------------------------------------------------------------------
+   REDUCED MOTION — disable all animations for users who prefer it.
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .page-reveal,
+  .b2b-page-container,
+  .b2b-header__visual img {
+    animation: none;
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   WILL-CHANGE — applied only during active entrance animation.
+   -------------------------------------------------------------------------- */
+
+.b2b-page-container.animating {
+  will-change: opacity, transform;
+}
+
+/* --------------------------------------------------------------------------
+   SKIP LINK — keyboard navigation shortcut to main content.
+   -------------------------------------------------------------------------- */
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  background: var(--color-gold);
+  color: #000;
+  padding: 0.5rem 1rem;
+  font-weight: 700;
+  z-index: 9999;
+  border-radius: 4px;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* --------------------------------------------------------------------------
+   FOCUS — gold outline on all interactable elements for keyboard users.
+   -------------------------------------------------------------------------- */
+
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   VISUALLY HIDDEN — accessible content invisible to sighted users.
+   -------------------------------------------------------------------------- */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --------------------------------------------------------------------------
+   SUBPAGE HEADER — B2B override: left-aligned flex layout with side image.
+   -------------------------------------------------------------------------- */
+
+.subpage-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 80px;
+  padding: 0 var(--container-pad);
+}
+
+.subpage-header h1 {
+  color: var(--color-text);
+  font-family: var(--font-serif);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.subpage-header h1 span {
+  font-style: italic;
+  color: var(--color-gold);
+}
+
+.subpage-subtitle {
+  display: inline-block;
+  color: var(--color-gold);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(237, 163, 35, 0.4);
+  padding-bottom: 10px;
+}
+
+.b2b-page-header {
+  text-align: left;
+  max-width: none;
+  margin: 0;
+  padding: calc(var(--nav-height) + 60px) var(--container-pad) 60px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.b2b-header__flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.b2b-header__content {
+  max-width: 700px;
+}
+
+.b2b-header__lead {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 620px;
+  margin-top: 24px;
+}
+
+/* --------------------------------------------------------------------------
+   HEADER VISUAL — floating product image with keyframe animation.
+   -------------------------------------------------------------------------- */
+
+.b2b-header__visual {
+  flex-shrink: 0;
+}
+
+.b2b-header__visual img {
+  width: 320px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.6));
+  animation: b2bFloat 6s ease-in-out infinite;
+}
+
+@keyframes b2bFloat {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-15px); }
+  100% { transform: translateY(0); }
+}
+
+/* --------------------------------------------------------------------------
+   CONTAINER — centred max-width wrapper used inside every section.
+   -------------------------------------------------------------------------- */
+
+.b2b-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--container-pad);
+}
+
+/* --------------------------------------------------------------------------
+   EYEBROW — muted uppercase label introducing each content section.
+   -------------------------------------------------------------------------- */
+
+.b2b-eyebrow {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 20px;
+}
+
+/* --------------------------------------------------------------------------
+   SECTION HEADINGS — serif display size for all h2 section titles.
+   -------------------------------------------------------------------------- */
+
+.b2b-section-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--color-gold);
+  margin: 0 0 24px;
+}
+
+.b2b-section-heading--gold {
+  color: var(--color-gold);
+}
+
+/* --------------------------------------------------------------------------
+   BODY TEXT — light-weight paragraph copy used across all sections.
+   -------------------------------------------------------------------------- */
+
+.b2b-body {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: #a0a0a0;
+  max-width: 600px;
+  margin-bottom: 32px;
+}
+
+/* --------------------------------------------------------------------------
+   TRUST GRID — four certification stat cards with glass treatment.
+   -------------------------------------------------------------------------- */
+
+.b2b-trust-section {
+  margin-bottom: 100px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 60px;
+}
+
+.b2b-trust-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.b2b-trust-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(237, 163, 35, 0.2);
+  border: 1px solid var(--color-border-gold);
+  border-top: 2px solid var(--color-gold);
+  border-radius: 8px;
+  padding: 32px 24px;
+  position: relative;
+  box-sizing: border-box;
+  transition: transform var(--t-fast), border-color var(--t-fast);
+}
+
+.b2b-trust-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--color-gold);
+}
+
+.b2b-trust-card__value {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  color: var(--color-gold);
+  line-height: 1.1;
+}
+
+.b2b-trust-card__label {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-text);
+}
+
+.b2b-trust-card__sub {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 1.4;
+  color: #c8c8c8;
+}
+
+.b2b-trust-card__logo {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 75px;
+  height: auto;
+  object-fit: contain;
+  opacity: 0.95;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   PRODUCT ROWS — alternating two-column layout for each raw material.
+   -------------------------------------------------------------------------- */
+
+.b2b-product-section {
+  margin-bottom: 120px;
+}
+
+.b2b-product-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.b2b-product-row--reverse .b2b-text-col { order: 2; }
+.b2b-product-row--reverse .b2b-img-col  { order: 1; }
+
+/* --------------------------------------------------------------------------
+   TEXT COLUMN — product description and specification area.
+   -------------------------------------------------------------------------- */
+
+.b2b-text-col {
+  flex: 1 1 0;
+}
+
+.b2b-product-eyebrow {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 20px;
+}
+
+/* --------------------------------------------------------------------------
+   IMAGE COLUMN — constrained image frame with hover scale or colour.
+   -------------------------------------------------------------------------- */
+
+.b2b-img-col {
+  flex: 0 0 380px;
+}
+
+.b2b-img-wrapper {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  height: 500px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+  background: #111;
+}
+
+.b2b-img-wrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.b2b-img-wrapper--single {
+  display: block;
+}
+
+.b2b-img-wrapper--dual {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  background: var(--color-bg);
+}
+
+.b2b-img-inner {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.b2b-img-inner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 120px 40px rgba(0, 0, 0, 0.95);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.b2b-img-inner__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(20%) contrast(1.1);
+  transition: filter var(--t-slow), transform var(--t-slow);
+}
+
+.b2b-img-wrapper--single:hover .b2b-img-inner__img {
+  transform: scale(1.06);
+  filter: grayscale(0%) contrast(1);
+}
+
+.b2b-img-wrapper--dual:hover .b2b-img-inner__img {
+  filter: grayscale(0%) contrast(1.05);
+}
+
+/* --------------------------------------------------------------------------
+   SPEC LIST — definition list of key/value product specifications.
+   -------------------------------------------------------------------------- */
+
+.b2b-spec-list {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 16px 24px;
+  border-top: 1px solid rgba(237, 163, 35, 0.3);
+  border-top: 1px solid var(--color-border-gold);
+  padding-top: 32px;
+  margin: 0;
+}
+
+.b2b-spec-list__item {
+  display: contents;
+}
+
+.b2b-spec-list__key {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-gold);
+  padding-top: 3px;
+}
+
+.b2b-spec-list__val {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #d8d8d8;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   ATMOSPHERIC DIVIDER — full-bleed parallax image break between sections.
+   -------------------------------------------------------------------------- */
+
+.b2b-atmospheric-divider {
+  width: 100%;
+  height: 400px;
+  position: relative;
+  margin: 120px 0;
+  background-image: url('https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1600/v1776938257/Ambernord-Sanddorngarden-Elixier-Ritual-BIO_y5isxg');
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.b2b-atmospheric-divider__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, var(--color-bg) 0%, rgba(10, 10, 10, 0.4) 50%, var(--color-bg) 100%);
+}
+
+/* --------------------------------------------------------------------------
+   PROCESS GRID — four-column step layout with numbered left-border cards.
+   -------------------------------------------------------------------------- */
+
+.b2b-process-section {
+  margin-bottom: 120px;
+}
+
+.b2b-process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  margin-top: 64px;
+}
+
+.b2b-step-card {
+  border-left: 1px solid rgba(237, 163, 35, 0.4);
+  padding-left: 24px;
+  transition: border-color var(--t-fast);
+}
+
+.b2b-step-card:hover {
+  border-left-color: var(--color-gold);
+}
+
+.b2b-step-card__num {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 32px;
+  color: rgba(255, 255, 255, 0.2);
+  margin-bottom: 16px;
+  transition: color var(--t-fast);
+}
+
+.b2b-step-card:hover .b2b-step-card__num {
+  color: var(--color-gold);
+}
+
+.b2b-step-card__title {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0 0 12px;
+}
+
+.b2b-step-card__text {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: #a0a0a0;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   BENCHMARK TABLE — glass-wrapped comparison table with highlighted column.
+   -------------------------------------------------------------------------- */
+
+.b2b-benchmark-section {
+  margin-bottom: 120px;
+}
+
+.b2b-table-wrapper {
+  background: linear-gradient(145deg, rgba(25, 25, 25, 0.6) 0%, rgba(15, 15, 15, 0.8) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-top: 48px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.b2b-table-scroller {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.b2b-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px;
+}
+
+.b2b-table th,
+.b2b-table td {
+  padding: 24px 32px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.b2b-table th {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #888;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.b2b-table th:nth-child(2) {
+  color: #666;
+}
+
+.b2b-table th:nth-child(3) {
+  color: var(--color-gold);
+  background-color: rgba(237, 163, 35, 0.05);
+}
+
+.b2b-table__header-sub {
+  display: block;
+  font-size: 10px;
+  font-weight: 400;
+  opacity: 0.7;
+  text-transform: none;
+  letter-spacing: 0;
+  margin-top: 4px;
+}
+
+.b2b-table tbody tr {
+  transition: background-color var(--t-fast);
+}
+
+.b2b-table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.b2b-table td:first-child {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.b2b-table__col--industry {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: #666;
+  border-right: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.b2b-table__col--ambernord {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-gold);
+  background-color: rgba(237, 163, 35, 0.02);
+}
+
+/* --------------------------------------------------------------------------
+   CTA BLOCK — centred call-to-action panel with radial glow effect.
+   -------------------------------------------------------------------------- */
+
+.b2b-cta-section {
+  margin-top: 0;
+}
+
+.b2b-cta-block {
+  text-align: center;
+  padding: 80px 40px;
+  background: linear-gradient(145deg, rgba(20, 20, 20, 1) 0%, rgba(10, 10, 10, 1) 100%);
+  border: 1px solid rgba(237, 163, 35, 0.15);
+  border: 1px solid var(--color-border-gold);
+  border-radius: 16px;
+  margin-top: 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.b2b-cta-block__glow {
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, rgba(237, 163, 35, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.b2b-cta-block__body {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--color-text);
+  max-width: 500px;
+  margin: 0 auto 0;
+  position: relative;
+  z-index: 2;
+}
+
+.b2b-cta-block__actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+  position: relative;
+  z-index: 2;
+}
+
+/* --------------------------------------------------------------------------
+   BUTTONS — primary (gold fill) and secondary (ghost) CTA variants.
+   -------------------------------------------------------------------------- */
+
+.b2b-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 36px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  border-radius: 4px;
+  text-decoration: none;
+  width: 300px;
+  box-sizing: border-box;
+  transition: background-color var(--t-fast), border-color var(--t-fast), color var(--t-fast);
+}
+
+.b2b-btn--primary {
+  background: var(--color-gold);
+  color: #0a0a0a;
+  border: 1px solid var(--color-gold);
+}
+
+.b2b-btn--primary:hover {
+  background: var(--color-text);
+  border-color: var(--color-text);
+}
+
+.b2b-btn--secondary {
+  background: transparent;
+  color: var(--color-gold);
+  border: 1px solid rgba(237, 163, 35, 0.4);
+  border: 1px solid var(--color-border-gold);
+}
+
+.b2b-btn--secondary:hover {
+  border-color: var(--color-gold);
+  background: rgba(237, 163, 35, 0.05);
+}
+
+/* --------------------------------------------------------------------------
+   TABLET — 991px breakpoint collapses grids to two columns.
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 991px) {
+  .b2b-header__flex {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .b2b-header__visual img {
+    width: 220px;
+  }
+
+  .b2b-trust-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .b2b-product-row {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .b2b-product-row--reverse .b2b-text-col { order: 1; }
+  .b2b-product-row--reverse .b2b-img-col  { order: 2; }
+
+  .b2b-img-wrapper {
+    height: 450px;
+  }
+
+  .b2b-process-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 48px 32px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   MOBILE — 768px breakpoint collapses to single column, reduces spacing.
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  .b2b-page-header {
+    padding-top: calc(var(--nav-height) + 40px);
+    padding-bottom: 40px;
+  }
+
+  .b2b-header__visual img {
+    width: 180px;
+  }
+
+  .b2b-trust-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .b2b-trust-section {
+    margin-bottom: 64px;
+  }
+
+  .b2b-img-wrapper {
+    height: 350px;
+  }
+
+  .b2b-atmospheric-divider {
+    height: 250px;
+    margin: 80px 0;
+  }
+
+  .b2b-process-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .b2b-table th,
+  .b2b-table td {
+    padding: 16px;
+  }
+
+  .b2b-spec-list {
+    grid-template-columns: 1fr;
+    gap: 4px 0;
+  }
+
+  .b2b-spec-list__key {
+    padding-top: 16px;
+  }
+
+  .b2b-cta-block {
+    padding: 60px 24px;
+  }
+
+  .b2b-cta-block__actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .b2b-btn {
+    width: 100%;
+  }
+}

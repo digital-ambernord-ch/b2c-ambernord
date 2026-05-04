@@ -62,6 +62,17 @@
   schema:      null
 },
 
+// 1. router.js — ROUTES
+'/b2b/': {
+  page: '/pages/b2b.html',
+  title: 'B2B Klinische Rohstoffe | AmberNord',
+  description: 'Zertifizierte Sanddorn-Rohstoffe in Bulk-Mengen. ISO 22000, EU-Bio.',
+  canonical: 'https://ambernord.ch/b2b/',
+  type: 'b2b',
+  sticky: null,
+  schema: null
+},
+
     '/the-starter/': {
       page:        '/pages/the-starter.html',
       title:       'The Starter (1x 250ml) | AmberNord Sanddorn Elixier',
@@ -323,7 +334,9 @@ if (target) window.scrollTo({ top: target.getBoundingClientRect().top + window.s
   window.initDossier();
   } else if (route.type === 'ritual' && typeof window.initRitual === 'function') {
   window.initRitual();
-
+  // 2. router.js — dispatch
+} else if (route.type === 'b2b' && typeof window.initB2b === 'function') {
+  window.initB2b();
 }
 
     } catch (err) {

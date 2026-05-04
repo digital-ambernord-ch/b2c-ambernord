@@ -1,0 +1,143 @@
+{
+  "meta": {
+    "title": "Matières Premières B2B | AmberNord",
+    "description": "Matières premières d'argousier certifiées en vrac pour l'industrie alimentaire, la cosmétique et la pharmacie. Certifié ISO 22000 et Bio UE.",
+    "canonical": "https://ambernord.ch/fr/b2b/",
+    "slug": "/fr/b2b/",
+    "robots": "index, follow",
+    "og": {
+      "title": "Matières Premières B2B & Extraits Cliniques | AmberNord",
+      "description": "Accès direct à nos essences brutes d'argousier certifiées pour les marques premium et l'industrie alimentaire.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/v1776938257/Ambernord-Sanddorngarden-Elixier-Ritual-BIO_y5isxg",
+      "type": "website"
+    },
+    "hreflang": {
+      "de": "https://ambernord.ch/b2b/",
+      "en": "https://ambernord.ch/en/b2b/",
+      "fr": "https://ambernord.ch/fr/b2b/",
+      "it": "https://ambernord.ch/it/b2b/",
+      "x-default": "https://ambernord.ch/b2b/"
+    }
+  },
+  "header": {
+    "eyebrow": "Corporate & Industrie",
+    "h1": "Matières Premières Cliniques & <span>Fournisseur B2B</span>",
+    "lead": "Accès direct à nos essences brutes exclusives pour l'industrie alimentaire, les marques cosmétiques, les centres de longévité et les entreprises visionnaires."
+  },
+  "trust": {
+    "heading": "Certifications & Standards Qualité",
+    "logo": { "alt": "Bio UE – label certifié pour l'agriculture biologique" },
+    "items": [
+      { "value": "ISO 22000", "label": "Certifié FSSC", "sub": "Les plus hauts standards de sécurité alimentaire" },
+      { "value": "100%", "label": "Logo Bio UE", "sub": "Agriculture biologique certifiée" },
+      { "value": "180+", "label": "Composés Bioactifs", "sub": "Vitamines, minéraux & omégas" },
+      { "value": "ZERO", "label": "Production de déchets", "sub": "Circularité sans résidu" }
+    ]
+  },
+  "products": [
+    {
+      "id": "elixier",
+      "eyebrow": "PREMIUM LIQUIDS",
+      "heading": "Élixir d'Argousier 100%",
+      "body": "L'élixir non dilué et naturellement pur, base idéale pour les produits premium. Avec pulpe naturelle et huiles natives pour une densité nutritionnelle maximale.",
+      "reverse": false, "imgLayout": "single", "imageIndexes": [1],
+      "specs": [
+        { "key": "Format", "val": "Fûts de 200 L" },
+        { "key": "Spécification", "val": "100% pur, non filtré, non dilué, pasteurisé en douceur" },
+        { "key": "Application", "val": "Boissons fonctionnelles, nutraceutiques, industrie alimentaire" },
+        { "key": "Actifs", "val": "Oméga 3, 6, 7, 9 – Vitamine C – Caroténoïdes" }
+      ]
+    },
+    {
+      "id": "oils",
+      "eyebrow": "ACTIVE LIPIDS",
+      "heading": "Huiles Natives d'Argousier",
+      "body": "Lipides botaniques hautement concentrés issus d'une extraction isolée de la pulpe et des pépins pour une biodisponibilité maximale.",
+      "reverse": true, "imgLayout": "single", "imageIndexes": [2],
+      "specs": [
+        { "key": "Format", "val": "Fûts de 10 kg, 20 kg, 100 kg" },
+        { "key": "Profil", "val": "Huile de pulpe rouge intense (Oméga-7) & huile de pépin (équilibre Oméga-3/-6)" },
+        { "key": "Extraction", "val": "Pression mécanique à froid, sans solvant" },
+        { "key": "Application", "val": "Cosmétiques premium, pharmaceutiques, dermatologie" }
+      ]
+    },
+    {
+      "id": "powder",
+      "eyebrow": "FIBER & PROTEIN",
+      "heading": "Poudre de Baies & Résidus de Presse",
+      "body": "100% naturel, fabriqué à partir de graines moulues et d'écorces de baies après extraction de l'huile. Source précieuse de fibres et de protéines sans additifs.",
+      "reverse": false, "imgLayout": "dual", "imageIndexes": [3, 4],
+      "specs": [
+        { "key": "Format", "val": "Sacs de 10 kg, 20 kg, 100 kg" },
+        { "key": "Spécification", "val": "Riche en vitamines (A, B2, C, E), sans additifs E" },
+        { "key": "Application", "val": "Boulangerie, yaourt, compléments alimentaires, cosmétiques (gommages)" }
+      ]
+    },
+    {
+      "id": "botanicals",
+      "eyebrow": "BOTANICALS & SEEDS",
+      "heading": "Feuilles & Pépins d'Argousier",
+      "body": "Matières séchées de haute qualité aux propriétés antioxydantes puissantes. Pépins pour la production d'huile, feuilles pour thé fonctionnel ou extrait.",
+      "reverse": true, "imgLayout": "dual", "imageIndexes": [5, 6],
+      "specs": [
+        { "key": "Format", "val": "Sacs de 10 kg, 20 kg, 100 kg" },
+        { "key": "Profil (Feuilles)", "val": "Antioxydant, anti-inflammatoire, contient de la sérotonine" },
+        { "key": "Profil (Pépins)", "val": "Très haute teneur en Oméga-3 et Oméga-6" },
+        { "key": "Application", "val": "Thés, gastronomie, soins de la peau, gommages" }
+      ]
+    },
+    {
+      "id": "phyto",
+      "eyebrow": "PHYTO-ACTIVES & EXTRACTS",
+      "heading": "Écorce & Poudre de Jus d'Argousier",
+      "body": "Remèdes botaniques et superaliments hautement concentrés. Poudre de jus lyophilisée et écorce riche en sérotonine pour des applications spécialisées.",
+      "reverse": false, "imgLayout": "dual", "imageIndexes": [7, 8],
+      "specs": [
+        { "key": "Format", "val": "Sacs de 10 kg, 20 kg, 100 kg" },
+        { "key": "Spéc. (Écorce)", "val": "Contient de la phyto-sérotonine, idéale pour teintures & onguents" },
+        { "key": "Spéc. (Poudre)", "val": "Lyophilisée, préservation maximale de la Vitamine C & Omégas" },
+        { "key": "Application", "val": "Compléments alimentaires, préparations santé" }
+      ]
+    }
+  ],
+  "process": {
+    "eyebrow": "PROCESS & STANDARDS",
+    "heading": "De la Récolte à l'Extraction",
+    "steps": [
+      { "num": "01", "title": "Récolte Manuelle", "text": "Cueillette précise par 100+ spécialistes pour éviter tout endommagement mécanique de la peau délicate des baies." },
+      { "num": "02", "title": "Immediate Processing", "text": "Transformation sous 24 à 48 heures pour garantir une densité nutritionnelle maximale et prévenir l'oxydation." },
+      { "num": "03", "title": "Pression à Froid", "text": "Séparation mécanique douce sans chaleur ni solvants agressifs – 100% sans hexane." },
+      { "num": "04", "title": "Système Zéro Déchet", "text": "Valorisation intégrale de la plante (élixir, huile, poudre, écorce) pour une chaîne d'approvisionnement durablement responsable." }
+    ]
+  },
+  "benchmark": {
+    "eyebrow": "QUALITY BENCHMARK",
+    "heading": "Industrie vs. Standard AmberNord",
+    "headers": ["Critère", "Standard Industriel", "Qualité AmberNord"],
+    "subheaders": ["", "Marché de masse", "Premium B2B"],
+    "rows": [
+      { "criterion": "Matière première", "industry": "Variétés mixtes du marché mondial", "ambernord": "Plantation single-origin sélectionnée" },
+      { "criterion": "Pureté", "industry": "Dilué & filtré plusieurs fois", "ambernord": "Élixir 100% pur (incl. huiles natives)" },
+      { "criterion": "Extraction", "industry": "Extraction par solvant (hexane)", "ambernord": "Pression mécanique douce à froid" },
+      { "criterion": "Écologie", "industry": "Fort taux de déchets industriels", "ambernord": "Circularité 100% zéro déchet" }
+    ]
+  },
+  "cta": {
+    "heading": "Démarrez avec AmberNord",
+    "body": "Matières premières certifiées pour des produits sans compromis.",
+    "btn1": { "label": "Télécharger le catalogue PDF", "href": "#download-catalog" },
+    "btn2": { "label": "Demander les tarifs en gros", "href": "#request-pricing" }
+  },
+  "images": [
+    { "cloudinaryId": "v1776937251/ambernord-sanddornbeeren-frisch-am-zweig_izbzdn", "alt": "Baies d'argousier fraîches sur branche" },
+    { "cloudinaryId": "v1776937253/ambernord-sanddorn-muttersaft-100-prozent_oo2pxp", "alt": "Élixir d'argousier 100% en contenant vrac" },
+    { "cloudinaryId": "v1776937248/ambernord-premium-sanddornoel-kaltgepresst_jw2ofc", "alt": "Huiles natives d'argousier pressées à froid" },
+    { "cloudinaryId": "v1776937252/ambernord-sanddornbeerenpulver-ballaststoffe_jwfpoy", "alt": "Poudre de baies d'argousier riche en fibres" },
+    { "cloudinaryId": "v1776937252/ambernord-sanddorn-trester-pressrueckstaende_pihu6b", "alt": "Résidus de presse d'argousier après extraction" },
+    { "cloudinaryId": "v1776937250/ambernord-sanddornblaetter-getrocknet_xwlmp7", "alt": "Feuilles d'argousier séchées – botanicals" },
+    { "cloudinaryId": "v1776937249/ambernord-sanddornkerne-getrocknet_cxttwd", "alt": "Pépins d'argousier séchés pour production d'huile" },
+    { "cloudinaryId": "v1776937248/ambernord-sanddornrinde-zweige_ghpgsu", "alt": "Écorce et branches d'argousier contenant phyto-sérotonine" },
+    { "cloudinaryId": "v1776937249/ambernord-sanddornsaftpulver-gefriergetrocknet_lxkgwt", "alt": "Poudre de jus d'argousier lyophilisée" },
+    { "cloudinaryId": "v1776938257/Ambernord-Sanddorngarden-Elixier-Ritual-BIO_y5isxg", "alt": "Jardin d'argousier AmberNord avec rituel élixir bio" }
+  ]
+}
