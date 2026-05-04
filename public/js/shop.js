@@ -130,7 +130,6 @@ window.initShop = async function () {
 
             <div class="shop-card__action">
               
-                // PĒC (LABOTS):
       <a class="shop-card__btn-primary" href="${p.buttons.primary.href}" target="_blank" rel="noopener noreferrer">${p.buttons.primary.label}</a>
               ${renderAboBtn(p.buttons.subscription)}
               <p class="shop-card__shipping">
