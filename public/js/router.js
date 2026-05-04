@@ -82,6 +82,15 @@
   sticky: null, 
   schema: null 
 },
+'/the-master-box/': {
+  page: '/pages/the-master-box.html',
+  title: 'The Master Box – Original Edition (20 × 250 ml) | AmberNord',
+  description: 'Die exklusive Original-Edition: 20 × 250 ml kaltgepresster Bio-Sanddornsaft. Über 25% Ersparnis, kostenloser Premium-Versand aus Aarau.',
+  canonical: 'https://ambernord.ch/the-master-box/',
+  type: 'the-master-box',
+  sticky: null,
+  schema: null
+},
 
     '/the-starter/': {
       page:        '/pages/the-starter.html',
@@ -348,6 +357,9 @@ if (target) window.scrollTo({ top: target.getBoundingClientRect().top + window.s
   window.initB2b();
   } else if (route.type === 'shop' && typeof window.initShop === 'function') {
   window.initShop(); 
+  }
+  else if (route.type === 'the-master-box' && typeof window.initTheMasterBox === 'function') {
+  window.initTheMasterBox();
   }
 
     } catch (err) {

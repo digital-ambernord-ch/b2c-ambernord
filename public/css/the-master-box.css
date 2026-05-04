@@ -1,0 +1,546 @@
+/* ==========================================================================
+   THE MASTER BOX — AmberNord
+   Scope: .master-box-page-container and children.
+   Tokens: --color-gold --color-bg --color-text --color-border-gold
+           --color-surface --nav-height --font-serif --font-sans
+           --container-pad --t-fast --t-slow
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   ROOT — page container, vertical rhythm aligned to global nav height.
+   -------------------------------------------------------------------------- */
+.master-box-page-container {
+  padding: calc(var(--nav-height) + 60px) 0 120px;
+  position: relative;
+  z-index: 10;
+  animation: theMasterBoxReveal 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+/* --------------------------------------------------------------------------
+   ENTRANCE — smooth fade-and-rise on first paint.
+   -------------------------------------------------------------------------- */
+@keyframes theMasterBoxReveal {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* --------------------------------------------------------------------------
+   SCROLL REVEAL — observed by IntersectionObserver in JS.
+   -------------------------------------------------------------------------- */
+.page-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.page-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* --------------------------------------------------------------------------
+   REDUCED MOTION — disable all transforms and transitions.
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .page-reveal,
+  .master-box-page-container {
+    animation: none;
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   SUBPAGE HEADER — eyebrow plus h1 above the product layout.
+   -------------------------------------------------------------------------- */
+.subpage-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 80px;
+  padding: 0 var(--container-pad);
+}
+
+.subpage-subtitle {
+  display: inline-block;
+  color: var(--color-gold);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(237, 163, 35, 0.4);
+  padding-bottom: 10px;
+}
+
+.subpage-header h1 {
+  color: var(--color-text);
+  font-family: var(--font-serif);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.subpage-header h1 span {
+  font-style: italic;
+  color: var(--color-gold);
+}
+
+/* --------------------------------------------------------------------------
+   ACCESSIBILITY — skip link, focus ring, visually hidden helper.
+   -------------------------------------------------------------------------- */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  background: var(--color-gold);
+  color: #000;
+  padding: 0.5rem 1rem;
+  font-weight: 700;
+  z-index: 9999;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.skip-link:focus { top: 1rem; }
+
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --------------------------------------------------------------------------
+   SECTION LAYOUT — outer wrapper with max-width and gutters.
+   -------------------------------------------------------------------------- */
+.master-box-section {
+  max-width: 1200px;
+  padding: 0 var(--container-pad);
+  margin: 0 auto 120px;
+}
+
+/* --------------------------------------------------------------------------
+   PRODUCT LAYOUT — two-column flex, gallery left, info right.
+   -------------------------------------------------------------------------- */
+.master-box-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px;
+  align-items: flex-start;
+}
+
+/* --------------------------------------------------------------------------
+   GALLERY — main image plus thumbnail strip.
+   -------------------------------------------------------------------------- */
+.master-box-gallery {
+  flex: 1 1 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+.master-box-main-image {
+  width: 100%;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.master-box-main-image__img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: opacity var(--t-fast);
+}
+
+.master-box-thumbs {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.master-box-thumb {
+  width: 75px;
+  height: 75px;
+  padding: 0;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: border-color var(--t-fast), transform var(--t-fast);
+}
+
+.master-box-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.master-box-thumb:hover {
+  border-color: var(--color-gold);
+  transform: translateY(-2px);
+}
+
+.master-box-thumb--active {
+  border-color: var(--color-gold);
+}
+
+/* --------------------------------------------------------------------------
+   INFO COLUMN — typographic stack right of gallery.
+   -------------------------------------------------------------------------- */
+.master-box-info {
+  flex: 1 1 450px;
+}
+
+.master-box-info__heading {
+  font-family: var(--font-serif);
+  font-size: clamp(22px, 2.4vw, 28px);
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--color-text);
+  margin: 0 0 10px;
+}
+
+.master-box-info__heading span {
+  display: block;
+  font-style: italic;
+  color: var(--color-gold);
+  font-size: 0.85em;
+  margin-top: 6px;
+}
+
+.master-box-info__price {
+  font-family: var(--font-sans);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 40px;
+}
+
+.master-box-info__intro {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: #d0d0d0;
+  margin: 0 0 30px;
+}
+
+.master-box-info__intro strong {
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.master-box-info__intro .is-gold {
+  color: var(--color-gold);
+}
+
+.master-box-info__subheading {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--color-text);
+  margin: 30px 0 15px;
+}
+
+.master-box-info__body {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: #d0d0d0;
+  margin: 0 0 30px;
+}
+
+.master-box-info__body strong {
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+/* --------------------------------------------------------------------------
+   GLASS CARD — frosted panel containing the included list.
+   -------------------------------------------------------------------------- */
+.master-box-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(237, 163, 35, 0.2);
+  border-left: 3px solid var(--color-gold);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+              inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  padding: 18px 20px;
+  margin-bottom: 30px;
+}
+
+.master-box-card__title {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin: 0 0 12px;
+}
+
+.master-box-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.master-box-list__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.6;
+  color: #b0b0b0;
+  margin-bottom: 8px;
+}
+
+.master-box-list__item:last-child {
+  margin-bottom: 0;
+}
+
+.master-box-list__item strong {
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.master-box-list__item .is-gold {
+  color: var(--color-gold);
+  font-weight: 500;
+}
+
+.master-box-list__bullet {
+  color: var(--color-gold);
+  flex: 0 0 auto;
+}
+
+.master-box-list__text {
+  flex: 1 1 auto;
+}
+
+/* --------------------------------------------------------------------------
+   PRIMARY CTA — outlined gold button to one-time Stripe checkout.
+   -------------------------------------------------------------------------- */
+.master-box-cta {
+  display: block;
+  width: 100%;
+  background: #0a0a0a;
+  border: 1px solid var(--color-gold);
+  color: var(--color-gold);
+  text-align: center;
+  padding: 18px 0;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 4px;
+  margin: 30px 0 20px;
+  transition: background var(--t-fast), color var(--t-fast), box-shadow var(--t-fast), transform var(--t-fast);
+}
+
+.master-box-cta:hover {
+  background: #111;
+  color: var(--color-text);
+  box-shadow: 0 5px 20px rgba(237, 163, 35, 0.2);
+  transform: translateY(-2px);
+}
+
+/* --------------------------------------------------------------------------
+   SUBSCRIPTION CTA — gold banner on top, dark price block below.
+   -------------------------------------------------------------------------- */
+.master-box-abo {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--color-gold);
+  border-radius: 4px;
+  text-decoration: none;
+  overflow: hidden;
+  margin-bottom: 30px;
+  transition: transform var(--t-fast), box-shadow var(--t-fast);
+}
+
+.master-box-abo:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(237, 163, 35, 0.25);
+}
+
+.master-box-abo__top {
+  display: block;
+  background: var(--color-gold);
+  color: #000;
+  text-align: center;
+  padding: 18px 10px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.master-box-abo__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0a0a0a;
+  padding: 15px 20px;
+}
+
+.master-box-abo__price-box {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.master-box-abo__price {
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.master-box-abo__subtext {
+  color: #888;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.master-box-abo__guarantee {
+  color: var(--color-gold);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* --------------------------------------------------------------------------
+   SHIPPING NOTE — fine print at the bottom of the info column.
+   -------------------------------------------------------------------------- */
+.master-box-shipping {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: #b0b0b0;
+  line-height: 1.6;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.master-box-shipping__label {
+  display: block;
+  color: var(--color-gold);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 11px;
+  margin-bottom: 4px;
+}
+
+.master-box-shipping__text {
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   WILL-CHANGE — applied only while entrance animation runs, removed in JS.
+   -------------------------------------------------------------------------- */
+.master-box-page-container.animating {
+  will-change: opacity, transform;
+}
+
+/* --------------------------------------------------------------------------
+   TABLET — single-column, smaller main image height.
+   -------------------------------------------------------------------------- */
+@media (max-width: 991px) {
+  .master-box-page-container {
+    padding-top: calc(var(--nav-height) + 30px);
+    padding-bottom: 80px;
+  }
+
+  .subpage-header {
+    margin-bottom: 50px;
+  }
+
+  .master-box-layout {
+    gap: 40px;
+  }
+
+  .master-box-main-image {
+    height: 450px;
+  }
+
+  .master-box-info__heading {
+    font-size: 22px;
+    margin-top: 10px;
+  }
+
+  .master-box-section {
+    margin-bottom: 80px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   MOBILE — tighter rhythm, smaller thumbnails.
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .master-box-main-image {
+    height: 380px;
+  }
+
+  .master-box-thumb {
+    width: 64px;
+    height: 64px;
+  }
+
+  .master-box-info__price {
+    font-size: 22px;
+    margin-bottom: 30px;
+  }
+
+  .master-box-info__intro,
+  .master-box-info__body {
+    font-size: 14px;
+  }
+
+  .master-box-card {
+    padding: 16px;
+  }
+
+  .master-box-cta {
+    padding: 16px 0;
+  }
+
+  .master-box-abo__top {
+    padding: 16px 10px;
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "meta": {
+    "title": "The Master Box – Original Edition (20 × 250 ml) | AmberNord",
+    "description": "L'esclusiva Original Edition: 20 × 250 ml di succo di olivello spinoso bio spremuto a freddo. Risparmio oltre il 25%, spedizione premium gratuita da Aarau.",
+    "canonical": "https://ambernord.ch/it/the-master-box/",
+    "slug": "/the-master-box/",
+    "robots": "index, follow",
+    "og": {
+      "title": "The Master Box – Original Edition | AmberNord",
+      "description": "20 × 250 ml di succo di olivello spinoso bio spremuto a freddo. La confezione originale esclusiva — risparmio oltre il 25%, spedizione premium gratuita.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/v1774798904/ambernord-zelt-edition-sanddornbeeren-direktsaft-kaltgepresst.webp_qs7s4i.png",
+      "type": "website"
+    },
+    "hreflang": {
+      "de": "https://ambernord.ch/the-master-box/",
+      "en": "https://ambernord.ch/en/the-master-box/",
+      "fr": "https://ambernord.ch/fr/the-master-box/",
+      "it": "https://ambernord.ch/it/the-master-box/",
+      "x-default": "https://ambernord.ch/the-master-box/"
+    }
+  },
+  "header": {
+    "skipLink": "Vai al contenuto",
+    "eyebrow": "Original Edition · 20 × 250 ml",
+    "h1": "The Master Box <span>Original Edition</span>"
+  },
+  "product": {
+    "heading": "Direttamente dalla fonte: <span>La definitiva Corporate &amp; Family Edition</span>",
+    "price": "370,00 CHF",
+    "intro": "<strong>The Master Box</strong> è la nostra confezione originale esclusiva, concepita per veri appassionati di longevità, grandi famiglie e aziende visionarie. Sostituite le energy drink zuccherate da ufficio — quelle che danno al vostro team solo una breve scossa prima di farlo crollare nella stanchezza — con vera energia cellulare. La nostra <span class=\"is-gold\">Selezione Tenda</span> fornisce oltre 190 composti bioattivi e il raro acido grasso Omega-7 per una concentrazione cristallina e prestazioni durature.",
+    "savingsHeading": "Il vantaggio di prezzo intelligente",
+    "savingsBody": "Scegliendo la Box Originale evitiamo insieme passaggi logistici superflui. Vi trasferiamo questo vantaggio di efficienza direttamente: risparmiate <strong>oltre il 25 %</strong> rispetto all'acquisto singolo e garantite che il rituale di protezione quotidiano non si interrompa mai — per voi o per il vostro team.",
+    "includedHeading": "Cosa include il pacchetto",
+    "included": [
+      "<strong>20 × 250 ml</strong> della più pura essenza biologica spremuta a freddo (Selezione Tenda).",
+      "Rende fino a <strong class=\"is-gold\">60 litri</strong> di bevanda premium rivitalizzante.",
+      "L'ideale <strong>soluzione corporate wellness</strong> per la vostra azienda.",
+      "<strong>Spedizione premium gratuita</strong> direttamente dal nostro centro logistico di Aarau."
+    ],
+    "cta": {
+      "oneTime": "Assicurati la Master Box",
+      "oneTimeHref": "https://buy.stripe.com/7sYcN7fyj4WB6SB2j5bQY06",
+      "subscribe": {
+        "top": "Risparmia con l'abbonamento (−10 %)",
+        "price": "333,00 CHF",
+        "subtext": "Al mese",
+        "guarantee": "✓ Annullabile in qualsiasi momento",
+        "href": "https://buy.stripe.com/bJedRb5XJ0Gl3Gp1f1bQY07"
+      }
+    },
+    "shipping": {
+      "label": "Spedizione & Logistica",
+      "text": "Spedizione premium gratuita all'interno della Svizzera.<br>Spedizione diretta dal nostro centro logistico di Aarau."
+    }
+  },
+  "images": [
+    {
+      "cloudinaryId": "v1774798904/ambernord-zelt-edition-sanddornbeeren-direktsaft-kaltgepresst.webp_qs7s4i.png",
+      "alt": "The Master Box — 20 × 250 ml di succo di olivello spinoso bio spremuto a freddo, confezione originale",
+      "thumbAlt": "Anteprima: confezione originale The Master Box",
+      "sizes": "(max-width:480px) 100vw,(max-width:991px) 100vw,50vw"
+    },
+    {
+      "cloudinaryId": "v1774798917/ambernord-sanddornsaft-naehrwerte-vitamine-omega-7-gehalt.webp_puorxi.png",
+      "alt": "Succo di olivello spinoso AmberNord — valori nutrizionali, vitamine e contenuto di Omega-7",
+      "thumbAlt": "Anteprima: tabella nutrizionale e vitamine",
+      "sizes": "(max-width:480px) 100vw,(max-width:991px) 100vw,50vw"
+    },
+    {
+      "cloudinaryId": "v1774807731/ambernord-sanddornsaft-naehrwerte-vitamine--energy-omega-7-biohacking-elixier.webp_c8kzyp.png",
+      "alt": "Elisir energetico di olivello spinoso AmberNord — biohacking, Omega-7 e micronutrienti",
+      "thumbAlt": "Anteprima: elisir energetico con bicchiere",
+      "sizes": "(max-width:480px) 100vw,(max-width:991px) 100vw,50vw"
+    }
+  ]
+}

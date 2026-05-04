@@ -1,0 +1,76 @@
+{
+  "meta": {
+    "title": "The Master Box – Original Edition (20 × 250 ml) | AmberNord",
+    "description": "The exclusive Original Edition: 20 × 250 ml of cold-pressed organic sea buckthorn juice. Save over 25%, free premium shipping from Aarau.",
+    "canonical": "https://ambernord.ch/en/the-master-box/",
+    "slug": "/the-master-box/",
+    "robots": "index, follow",
+    "og": {
+      "title": "The Master Box – Original Edition | AmberNord",
+      "description": "20 × 250 ml of cold-pressed organic sea buckthorn juice. The exclusive original packaging — over 25% savings, free premium shipping.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/v1774798904/ambernord-zelt-edition-sanddornbeeren-direktsaft-kaltgepresst.webp_qs7s4i.png",
+      "type": "website"
+    },
+    "hreflang": {
+      "de": "https://ambernord.ch/the-master-box/",
+      "en": "https://ambernord.ch/en/the-master-box/",
+      "fr": "https://ambernord.ch/fr/the-master-box/",
+      "it": "https://ambernord.ch/it/the-master-box/",
+      "x-default": "https://ambernord.ch/the-master-box/"
+    }
+  },
+  "header": {
+    "skipLink": "Skip to content",
+    "eyebrow": "Original Edition · 20 × 250 ml",
+    "h1": "The Master Box <span>Original Edition</span>"
+  },
+  "product": {
+    "heading": "Straight from the source: <span>The ultimate Corporate &amp; Family Edition</span>",
+    "price": "CHF 370.00",
+    "intro": "<strong>The Master Box</strong> is our exclusive original packaging, designed for serious longevity enthusiasts, large families and visionary companies. Replace the sugary office energy drinks — the ones that briefly spike your team and crash them into fatigue — with genuine cellular energy. Our <span class=\"is-gold\">Tent Selection</span> delivers over 190 bioactive compounds and the rare Omega-7 fatty acid for crystal-clear focus and lasting performance.",
+    "savingsHeading": "The smart price advantage",
+    "savingsBody": "By choosing the original box you let us bypass unnecessary logistics steps. We pass that efficiency directly on to you: you save <strong>over 25%</strong> compared with single-bottle purchases and ensure the daily protective ritual never pauses — for you or your team.",
+    "includedHeading": "What the package includes",
+    "included": [
+      "<strong>20 × 250 ml</strong> of the purest, cold-pressed organic essence (Tent Selection).",
+      "Yields up to <strong class=\"is-gold\">60 litres</strong> of revitalising premium beverage.",
+      "The ideal <strong>corporate wellness solution</strong> for your company.",
+      "<strong>Free premium shipping</strong> directly from our logistics centre in Aarau."
+    ],
+    "cta": {
+      "oneTime": "Secure the Master Box",
+      "oneTimeHref": "https://buy.stripe.com/7sYcN7fyj4WB6SB2j5bQY06",
+      "subscribe": {
+        "top": "Save with subscription (−10%)",
+        "price": "CHF 333.00",
+        "subtext": "Per month",
+        "guarantee": "✓ Cancel anytime",
+        "href": "https://buy.stripe.com/bJedRb5XJ0Gl3Gp1f1bQY07"
+      }
+    },
+    "shipping": {
+      "label": "Shipping & Logistics",
+      "text": "Free premium shipping within Switzerland.<br>Direct dispatch from our logistics centre in Aarau."
+    }
+  },
+  "images": [
+    {
+      "cloudinaryId": "v1774798904/ambernord-zelt-edition-sanddornbeeren-direktsaft-kaltgepresst.webp_qs7s4i.png",
+      "alt": "The Master Box — 20 × 250 ml of cold-pressed organic sea buckthorn juice, original packaging",
+      "thumbAlt": "Thumbnail: The Master Box original packaging",
+      "sizes": "(max-width:480px) 100vw,(max-width:991px) 100vw,50vw"
+    },
+    {
+      "cloudinaryId": "v1774798917/ambernord-sanddornsaft-naehrwerte-vitamine-omega-7-gehalt.webp_puorxi.png",
+      "alt": "AmberNord sea buckthorn juice — nutritional values, vitamins and Omega-7 content",
+      "thumbAlt": "Thumbnail: nutrition table and vitamins",
+      "sizes": "(max-width:480px) 100vw,(max-width:991px) 100vw,50vw"
+    },
+    {
+      "cloudinaryId": "v1774807731/ambernord-sanddornsaft-naehrwerte-vitamine--energy-omega-7-biohacking-elixier.webp_c8kzyp.png",
+      "alt": "AmberNord sea buckthorn energy elixir — biohacking, Omega-7 and micronutrients",
+      "thumbAlt": "Thumbnail: energy elixir with glass",
+      "sizes": "(max-width:480px) 100vw,(max-width:991px) 100vw,50vw"
+    }
+  ]
+}

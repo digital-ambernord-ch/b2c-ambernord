@@ -1,0 +1,76 @@
+{
+  "meta": {
+    "title": "The Master Box – Original Edition (20 × 250 ml) | AmberNord",
+    "description": "L'Original Edition exclusive : 20 × 250 ml de jus d'argousier bio pressé à froid. Plus de 25 % d'économie, livraison premium offerte depuis Aarau.",
+    "canonical": "https://ambernord.ch/fr/the-master-box/",
+    "slug": "/the-master-box/",
+    "robots": "index, follow",
+    "og": {
+      "title": "The Master Box – Original Edition | AmberNord",
+      "description": "20 × 250 ml de jus d'argousier bio pressé à froid. Le conditionnement original exclusif — plus de 25 % d'économie, livraison premium offerte.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/v1774798904/ambernord-zelt-edition-sanddornbeeren-direktsaft-kaltgepresst.webp_qs7s4i.png",
+      "type": "website"
+    },
+    "hreflang": {
+      "de": "https://ambernord.ch/the-master-box/",
+      "en": "https://ambernord.ch/en/the-master-box/",
+      "fr": "https://ambernord.ch/fr/the-master-box/",
+      "it": "https://ambernord.ch/it/the-master-box/",
+      "x-default": "https://ambernord.ch/the-master-box/"
+    }
+  },
+  "header": {
+    "skipLink": "Aller au contenu",
+    "eyebrow": "Original Edition · 20 × 250 ml",
+    "h1": "The Master Box <span>Original Edition</span>"
+  },
+  "product": {
+    "heading": "Directement de la source : <span>L'ultime Corporate &amp; Family Edition</span>",
+    "price": "370,00 CHF",
+    "intro": "<strong>The Master Box</strong> est notre conditionnement original exclusif, conçu pour les véritables passionnés de longévité, les grandes familles et les entreprises visionnaires. Remplacez les boissons énergétiques sucrées du bureau — celles qui ne stimulent votre équipe que brièvement avant de la laisser épuisée — par une véritable énergie cellulaire. Notre <span class=\"is-gold\">Sélection Tente</span> apporte plus de 190 composés bioactifs et le rare acide gras Oméga-7 pour une concentration cristalline et une performance durable.",
+    "savingsHeading": "L'avantage prix intelligent",
+    "savingsBody": "En choisissant la boîte originale, nous évitons ensemble des étapes logistiques superflues. Nous vous transmettons cet avantage d'efficacité directement : vous économisez <strong>plus de 25 %</strong> par rapport à l'achat à l'unité et garantissez que le rituel de protection quotidien ne s'interrompe jamais — pour vous ou votre équipe.",
+    "includedHeading": "Ce que contient le coffret",
+    "included": [
+      "<strong>20 × 250 ml</strong> de la plus pure essence biologique pressée à froid (Sélection Tente).",
+      "Donne jusqu'à <strong class=\"is-gold\">60 litres</strong> de boisson premium revitalisante.",
+      "La <strong>solution corporate wellness</strong> idéale pour votre entreprise.",
+      "<strong>Livraison premium offerte</strong> directement depuis notre centre logistique d'Aarau."
+    ],
+    "cta": {
+      "oneTime": "Commander la Master Box",
+      "oneTimeHref": "https://buy.stripe.com/7sYcN7fyj4WB6SB2j5bQY06",
+      "subscribe": {
+        "top": "Économisez avec l'abonnement (−10 %)",
+        "price": "333,00 CHF",
+        "subtext": "Par mois",
+        "guarantee": "✓ Résiliable à tout moment",
+        "href": "https://buy.stripe.com/bJedRb5XJ0Gl3Gp1f1bQY07"
+      }
+    },
+    "shipping": {
+      "label": "Livraison & Logistique",
+      "text": "Livraison premium gratuite en Suisse.<br>Expédition directe depuis notre centre logistique d'Aarau."
+    }
+  },
+  "images": [
+    {
+      "cloudinaryId": "v1774798904/ambernord-zelt-edition-sanddornbeeren-direktsaft-kaltgepresst.webp_qs7s4i.png",
+      "alt": "The Master Box — 20 × 250 ml de jus d'argousier bio pressé à froid, conditionnement original",
+      "thumbAlt": "Vignette : conditionnement original The Master Box",
+      "sizes": "(max-width:480px) 100vw,(max-width:991px) 100vw,50vw"
+    },
+    {
+      "cloudinaryId": "v1774798917/ambernord-sanddornsaft-naehrwerte-vitamine-omega-7-gehalt.webp_puorxi.png",
+      "alt": "Jus d'argousier AmberNord — valeurs nutritionnelles, vitamines et teneur en Oméga-7",
+      "thumbAlt": "Vignette : tableau nutritionnel et vitamines",
+      "sizes": "(max-width:480px) 100vw,(max-width:991px) 100vw,50vw"
+    },
+    {
+      "cloudinaryId": "v1774807731/ambernord-sanddornsaft-naehrwerte-vitamine--energy-omega-7-biohacking-elixier.webp_c8kzyp.png",
+      "alt": "Élixir énergétique d'argousier AmberNord — biohacking, Oméga-7 et micronutriments",
+      "thumbAlt": "Vignette : élixir énergétique avec verre",
+      "sizes": "(max-width:480px) 100vw,(max-width:991px) 100vw,50vw"
+    }
+  ]
+}
