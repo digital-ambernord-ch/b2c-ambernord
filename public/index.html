@@ -45,6 +45,7 @@
   <link rel="stylesheet" href="/css/thankyou.css">
   <link rel="stylesheet" href="/css/datenschutz.css">
   <link rel="stylesheet" href="/css/returns.css">
+  <link rel="stylesheet" href="/css/cookie-consent.css">
 </head>
 <body>
 
@@ -183,6 +184,8 @@
   <nav class="ambernord-footer-links" aria-label="Rechtliches">
     <a href="/datenschutz/" data-link data-i18n="footer.privacy">Datenschutz</a>
     <span class="ambernord-footer-separator" aria-hidden="true">|</span>
+    <button type="button" class="ambernord-footer-link-btn" data-cookie-action="open-settings" data-i18n="cookie.footerLink">Cookie-Einstellungen</button>
+    <span class="ambernord-footer-separator" aria-hidden="true">|</span>
     <a href="/hilfe/rueckgabe/" data-link data-i18n="nav.returns">Rückgabe</a>
     <span class="ambernord-footer-separator" aria-hidden="true">|</span>
     <a href="/hilfe/kontakt/" data-link data-i18n="nav.contact">Kontakt</a>
@@ -211,11 +214,121 @@
   <button type="button" id="lightbox-close" aria-label="Schließen">&times;</button>
 </div>
 
+<!-- ==========================================================================
+     COOKIE CONSENT — GDPR/ePrivacy compliant. Banner + granular modal.
+     The visible text comes from common.json (cookie.*); see cookie-consent.js.
+     ========================================================================== -->
+
+<div id="cookie-banner" class="cookie-banner" role="dialog" aria-labelledby="cookie-banner-title" aria-describedby="cookie-banner-text" hidden>
+  <div class="cookie-banner__inner">
+    <div class="cookie-banner__copy">
+      <h2 id="cookie-banner-title" class="cookie-banner__title" data-i18n="cookie.title">Datenschutz &amp; Cookies</h2>
+      <p id="cookie-banner-text" class="cookie-banner__text" data-i18n="cookie.text">Wir verwenden Cookies, um diese Website zu betreiben sowie — mit Ihrer Einwilligung — Statistiken und Marketingmessungen durchzuführen.</p>
+      <a href="/datenschutz/" class="cookie-banner__link" data-link data-i18n="cookie.policyLink">Datenschutzerklärung</a>
+    </div>
+    <div class="cookie-banner__actions">
+      <button type="button" class="cookie-btn cookie-btn--primary" data-cookie-action="accept-all" data-i18n="cookie.accept">Alle akzeptieren</button>
+      <button type="button" class="cookie-btn cookie-btn--primary" data-cookie-action="reject-all" data-i18n="cookie.reject">Alle ablehnen</button>
+      <button type="button" class="cookie-btn cookie-btn--ghost" data-cookie-action="open-settings" data-i18n="cookie.settings">Einstellungen</button>
+    </div>
+  </div>
+</div>
+
+<div id="cookie-modal" class="cookie-modal" role="dialog" aria-modal="true" aria-labelledby="cookie-modal-title" aria-describedby="cookie-modal-text" hidden>
+  <div class="cookie-modal__backdrop" data-cookie-action="close-settings" aria-hidden="true"></div>
+  <div class="cookie-modal__panel">
+    <header class="cookie-modal__header">
+      <h2 id="cookie-modal-title" class="cookie-modal__title" data-i18n="cookie.title">Datenschutz &amp; Cookies</h2>
+      <button type="button" class="cookie-modal__close" data-cookie-action="close-settings" aria-label="Schließen">&times;</button>
+    </header>
+
+    <p id="cookie-modal-text" class="cookie-modal__intro" data-i18n="cookie.text">Wir verwenden Cookies, um diese Website zu betreiben sowie — mit Ihrer Einwilligung — Statistiken und Marketingmessungen durchzuführen.</p>
+    <p class="cookie-modal__policy"><a href="/datenschutz/" data-link data-i18n="cookie.policyLink">Datenschutzerklärung</a></p>
+
+    <fieldset class="cookie-fieldset">
+      <legend class="cookie-fieldset__legend" data-i18n="cookie.categories.necessary.label">Notwendig</legend>
+      <label class="cookie-toggle">
+        <input type="checkbox" id="cookie-cat-necessary" checked disabled>
+        <span class="cookie-toggle__switch" aria-hidden="true"></span>
+        <span class="cookie-toggle__state" data-i18n="cookie.alwaysOn">Immer aktiv</span>
+      </label>
+      <p class="cookie-fieldset__desc" data-i18n="cookie.categories.necessary.desc">Diese Cookies sind für den Betrieb der Website unerlässlich (z. B. Speicherung Ihrer Cookie-Auswahl).</p>
+      <ul class="cookie-fieldset__list" data-i18n-html="cookie.categories.necessary.list"></ul>
+    </fieldset>
+
+    <fieldset class="cookie-fieldset">
+      <legend class="cookie-fieldset__legend" data-i18n="cookie.categories.analytics.label">Statistik</legend>
+      <label class="cookie-toggle">
+        <input type="checkbox" id="cookie-cat-analytics" data-cookie-category="analytics">
+        <span class="cookie-toggle__switch" aria-hidden="true"></span>
+        <span class="cookie-toggle__state cookie-toggle__state--off" data-i18n="cookie.off">Aus</span>
+      </label>
+      <p class="cookie-fieldset__desc" data-i18n="cookie.categories.analytics.desc">Helfen uns, anonym zu verstehen, wie Besucher die Website nutzen.</p>
+      <ul class="cookie-fieldset__list" data-i18n-html="cookie.categories.analytics.list"></ul>
+    </fieldset>
+
+    <fieldset class="cookie-fieldset">
+      <legend class="cookie-fieldset__legend" data-i18n="cookie.categories.marketing.label">Marketing</legend>
+      <label class="cookie-toggle">
+        <input type="checkbox" id="cookie-cat-marketing" data-cookie-category="marketing">
+        <span class="cookie-toggle__switch" aria-hidden="true"></span>
+        <span class="cookie-toggle__state cookie-toggle__state--off" data-i18n="cookie.off">Aus</span>
+      </label>
+      <p class="cookie-fieldset__desc" data-i18n="cookie.categories.marketing.desc">Erlauben uns, die Wirksamkeit unserer Werbung zu messen.</p>
+      <ul class="cookie-fieldset__list" data-i18n-html="cookie.categories.marketing.list"></ul>
+    </fieldset>
+
+    <footer class="cookie-modal__actions">
+      <button type="button" class="cookie-btn cookie-btn--primary" data-cookie-action="reject-all" data-i18n="cookie.reject">Alle ablehnen</button>
+      <button type="button" class="cookie-btn cookie-btn--primary" data-cookie-action="save-selection" data-i18n="cookie.save">Auswahl speichern</button>
+      <button type="button" class="cookie-btn cookie-btn--primary" data-cookie-action="accept-all" data-i18n="cookie.accept">Alle akzeptieren</button>
+    </footer>
+  </div>
+</div>
+
+<!-- ==========================================================================
+     GATED THIRD-PARTY SCRIPTS (Pattern A)
+     These do NOT execute on page load. cookie-consent.js clones them with
+     type="text/javascript" only when the user grants the matching category.
+     ========================================================================== -->
+
+<script type="text/plain" data-cookie-category="analytics" src="https://www.googletagmanager.com/gtag/js?id=G-VRDSSTW4HR" async></script>
+<script type="text/plain" data-cookie-category="analytics">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-VRDSSTW4HR', { anonymize_ip: true });
+</script>
+
+<script type="text/plain" data-cookie-category="marketing">
+  (function (w, d, t) {
+    w.TiktokAnalyticsObject = t;
+    var ttq = w[t] = w[t] || [];
+    ttq.methods = ['page','track','identify','instances','debug','on','off','once','ready','alias','group','enableCookie','disableCookie','holdConsent','revokeConsent','grantConsent'];
+    ttq.setAndDefer = function (t, e) { t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))); }; };
+    for (var i = 0; i < ttq.methods.length; i++) ttq.setAndDefer(ttq, ttq.methods[i]);
+    ttq.instance = function (t) { for (var e = ttq._i[t] || [], n = 0; n < ttq.methods.length; n++) ttq.setAndDefer(e, ttq.methods[n]); return e; };
+    ttq.load = function (e, n) {
+      var r = 'https://analytics.tiktok.com/i18n/pixel/events.js';
+      ttq._i = ttq._i || {}; ttq._i[e] = []; ttq._i[e]._u = r;
+      ttq._t = ttq._t || {}; ttq._t[e] = +new Date;
+      ttq._o = ttq._o || {}; ttq._o[e] = n || {};
+      var s = document.createElement('script');
+      s.type = 'text/javascript'; s.async = true; s.src = r + '?sdkid=' + e + '&lib=' + t;
+      var c = document.getElementsByTagName('script')[0];
+      c.parentNode.insertBefore(s, c);
+    };
+    ttq.load('D75TCVJC77UD6SV8PER0');
+    ttq.page();
+  })(window, document, 'ttq');
+</script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+<script src="/js/i18n.js" defer></script>
+<script src="/js/cookie-consent.js" defer></script>
 <script src="/js/ui.js" defer></script>
 <script src="/js/router.js" defer></script>
-<script src="/js/i18n.js" defer></script>
 <script src="/js/landing.js" defer></script>
 <script src="/js/product.js" defer></script>
 <script src="/js/about.js" defer></script>

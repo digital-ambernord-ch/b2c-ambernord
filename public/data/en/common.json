@@ -22,5 +22,34 @@
     "startNow": "Start Now",
     "buyNow": "Order Now",
     "discover": "Discover"
+  },
+  "cookie": {
+    "title": "Privacy & Cookies",
+    "text": "We use strictly necessary cookies to operate this website. With your consent, we also use analytics and marketing cookies to measure usage and improve our content. You can change your choice at any time via the “Cookie settings” link in the footer.",
+    "policyLink": "Full privacy policy",
+    "accept": "Accept all",
+    "reject": "Reject all",
+    "settings": "Settings",
+    "save": "Save selection",
+    "footerLink": "Cookie settings",
+    "alwaysOn": "Always on",
+    "off": "Off",
+    "categories": {
+      "necessary": {
+        "label": "Necessary",
+        "desc": "These cookies are essential for the website to function. Without them, the site cannot work properly. They cannot be turned off.",
+        "list": "<li><strong>cookie_consent</strong> — Stores your cookie choice. Provider: AmberNord (first-party). Retention: 12 months.</li>"
+      },
+      "analytics": {
+        "label": "Analytics",
+        "desc": "Help us understand how visitors use the site by collecting and reporting information anonymously.",
+        "list": "<li><strong>_ga</strong> — Google Analytics 4: distinguishes unique users. Provider: Google Ireland Ltd. Retention: 2 years.</li><li><strong>_ga_VRDSSTW4HR</strong> — Stores session state for GA4. Retention: 2 years.</li><li><strong>_gid</strong> — Distinguishes users for 24 hours. Retention: 24 hours.</li><li><strong>_gat</strong> — Throttles request rate to Google Analytics. Retention: 1 minute.</li>"
+      },
+      "marketing": {
+        "label": "Marketing",
+        "desc": "Used to measure the effectiveness of our advertising and to deliver more relevant content to you.",
+        "list": "<li><strong>_ttp</strong> — TikTok Pixel: measures ad performance and conversions. Provider: TikTok Technology Ltd. Retention: 13 months.</li><li><strong>_tt_enable_cookie</strong> — Confirms TikTok cookie consent. Retention: 13 months.</li><li><strong>tt_appInfo / tt_sessionId</strong> — Session and device attributes for conversion measurement. Retention: session to 13 months.</li>"
+      }
+    }
   }
 }

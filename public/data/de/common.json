@@ -22,5 +22,34 @@
     "startNow": "Jetzt starten",
     "buyNow": "Jetzt bestellen",
     "discover": "Entdecken"
+  },
+  "cookie": {
+    "title": "Datenschutz & Cookies",
+    "text": "Wir verwenden ausschliesslich notwendige Cookies, um die Website zu betreiben. Mit Ihrer Einwilligung setzen wir zusätzlich Statistik- und Marketing-Cookies ein, um die Nutzung zu messen und unsere Inhalte zu verbessern. Sie können Ihre Auswahl jederzeit über den Link «Cookie-Einstellungen» im Footer ändern.",
+    "policyLink": "Vollständige Datenschutzerklärung",
+    "accept": "Alle akzeptieren",
+    "reject": "Alle ablehnen",
+    "settings": "Einstellungen",
+    "save": "Auswahl speichern",
+    "footerLink": "Cookie-Einstellungen",
+    "alwaysOn": "Immer aktiv",
+    "off": "Aus",
+    "categories": {
+      "necessary": {
+        "label": "Notwendig",
+        "desc": "Diese Cookies sind für den Betrieb der Website unerlässlich. Ohne sie kann die Seite nicht ordnungsgemäss funktionieren. Sie können nicht deaktiviert werden.",
+        "list": "<li><strong>cookie_consent</strong> — Speichert Ihre Cookie-Auswahl. Anbieter: AmberNord (Erstanbieter). Speicherdauer: 12 Monate.</li>"
+      },
+      "analytics": {
+        "label": "Statistik",
+        "desc": "Helfen uns zu verstehen, wie Besucher die Website nutzen, indem sie Informationen anonym sammeln und melden.",
+        "list": "<li><strong>_ga</strong> — Google Analytics 4: unterscheidet eindeutige Nutzer. Anbieter: Google Ireland Ltd. Speicherdauer: 2 Jahre.</li><li><strong>_ga_VRDSSTW4HR</strong> — Speichert den Sitzungsstatus für GA4. Speicherdauer: 2 Jahre.</li><li><strong>_gid</strong> — Unterscheidet Nutzer für 24 Stunden. Speicherdauer: 24 Stunden.</li><li><strong>_gat</strong> — Begrenzt die Anfragerate an Google Analytics. Speicherdauer: 1 Minute.</li>"
+      },
+      "marketing": {
+        "label": "Marketing",
+        "desc": "Werden eingesetzt, um die Wirksamkeit unserer Werbung zu messen und Ihnen relevantere Inhalte auszuspielen.",
+        "list": "<li><strong>_ttp</strong> — TikTok Pixel: misst Werbeleistung und Konversionen. Anbieter: TikTok Technology Ltd. Speicherdauer: 13 Monate.</li><li><strong>_tt_enable_cookie</strong> — Bestätigt die Cookie-Zustimmung für TikTok. Speicherdauer: 13 Monate.</li><li><strong>tt_appInfo / tt_sessionId</strong> — Sitzungs- und Geräteattribute für die Konversionsmessung. Speicherdauer: Sitzungsende bis 13 Monate.</li>"
+      }
+    }
   }
 }

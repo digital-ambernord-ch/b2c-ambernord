@@ -22,5 +22,34 @@
     "startNow": "Commencer",
     "buyNow": "Commander",
     "discover": "Découvrir"
+  },
+  "cookie": {
+    "title": "Confidentialité & cookies",
+    "text": "Nous utilisons exclusivement des cookies nécessaires au fonctionnement du site. Avec votre consentement, nous utilisons également des cookies de statistiques et de marketing pour mesurer l'utilisation et améliorer nos contenus. Vous pouvez modifier votre choix à tout moment via le lien « Paramètres des cookies » dans le pied de page.",
+    "policyLink": "Politique de confidentialité complète",
+    "accept": "Tout accepter",
+    "reject": "Tout refuser",
+    "settings": "Paramètres",
+    "save": "Enregistrer la sélection",
+    "footerLink": "Paramètres des cookies",
+    "alwaysOn": "Toujours actif",
+    "off": "Désactivé",
+    "categories": {
+      "necessary": {
+        "label": "Nécessaires",
+        "desc": "Ces cookies sont indispensables au fonctionnement du site. Sans eux, la page ne peut fonctionner correctement. Ils ne peuvent pas être désactivés.",
+        "list": "<li><strong>cookie_consent</strong> — Mémorise votre choix de cookies. Fournisseur : AmberNord (interne). Durée de conservation : 12 mois.</li>"
+      },
+      "analytics": {
+        "label": "Statistiques",
+        "desc": "Nous aident à comprendre comment les visiteurs utilisent le site en collectant et en rapportant les informations de manière anonyme.",
+        "list": "<li><strong>_ga</strong> — Google Analytics 4 : distingue les utilisateurs uniques. Fournisseur : Google Ireland Ltd. Durée : 2 ans.</li><li><strong>_ga_VRDSSTW4HR</strong> — Mémorise l'état de session pour GA4. Durée : 2 ans.</li><li><strong>_gid</strong> — Distingue les utilisateurs pendant 24 heures. Durée : 24 heures.</li><li><strong>_gat</strong> — Limite le débit des requêtes vers Google Analytics. Durée : 1 minute.</li>"
+      },
+      "marketing": {
+        "label": "Marketing",
+        "desc": "Utilisés pour mesurer l'efficacité de notre publicité et vous proposer des contenus plus pertinents.",
+        "list": "<li><strong>_ttp</strong> — TikTok Pixel : mesure les performances publicitaires et les conversions. Fournisseur : TikTok Technology Ltd. Durée : 13 mois.</li><li><strong>_tt_enable_cookie</strong> — Confirme le consentement aux cookies TikTok. Durée : 13 mois.</li><li><strong>tt_appInfo / tt_sessionId</strong> — Attributs de session et de l'appareil pour la mesure des conversions. Durée : session à 13 mois.</li>"
+      }
+    }
   }
 }

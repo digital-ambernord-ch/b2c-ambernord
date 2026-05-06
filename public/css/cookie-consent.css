@@ -1,0 +1,433 @@
+/* AmberNord cookie consent UI.
+   Visual styling only — all interaction logic lives in cookie-consent.js. */
+
+/* ==========================================================================
+   BANNER — first-visit prompt anchored to bottom of viewport.
+   ========================================================================== */
+
+.cookie-banner {
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  max-width: 1100px;
+  margin: 0 auto;
+  background: rgba(15, 15, 15, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-border-gold);
+  border-radius: 12px;
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.6);
+  z-index: var(--z-modal);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+}
+
+.cookie-banner[hidden] {
+  display: none;
+}
+
+.cookie-banner__inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 24px;
+  padding: 22px 26px;
+}
+
+.cookie-banner__copy {
+  min-width: 0;
+}
+
+.cookie-banner__title {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 400;
+  margin: 0 0 6px;
+  color: var(--color-text);
+}
+
+.cookie-banner__text {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+  margin: 0 0 6px;
+}
+
+.cookie-banner__link {
+  font-size: 12px;
+  color: var(--color-gold);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.cookie-banner__link:hover,
+.cookie-banner__link:focus-visible {
+  color: var(--color-gold-hover);
+}
+
+.cookie-banner__actions {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .cookie-banner__inner {
+    grid-template-columns: 1fr;
+    padding: 18px 18px;
+  }
+  .cookie-banner__actions {
+    flex-wrap: wrap;
+  }
+}
+
+/* ==========================================================================
+   BUTTONS — CNIL-compliant: Accept and Reject share identical styling.
+   "Settings" is intentionally lower-weight (ghost), as legally permitted.
+   ========================================================================== */
+
+.cookie-btn {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  padding: 12px 22px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color var(--t-fast) ease, color var(--t-fast) ease, border-color var(--t-fast) ease, transform var(--t-fast) ease;
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
+
+.cookie-btn--primary {
+  background: var(--color-gold);
+  color: var(--color-bg);
+  border: 1px solid var(--color-gold);
+}
+
+.cookie-btn--primary:hover,
+.cookie-btn--primary:focus-visible {
+  background: var(--color-gold-hover);
+  border-color: var(--color-gold-hover);
+  transform: translateY(-1px);
+}
+
+.cookie-btn--ghost {
+  background: transparent;
+  color: var(--color-text);
+  border: 1px solid var(--color-border-gold);
+}
+
+.cookie-btn--ghost:hover,
+.cookie-btn--ghost:focus-visible {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+}
+
+/* ==========================================================================
+   MODAL — granular per-category settings.
+   ========================================================================== */
+
+.cookie-modal {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-family: var(--font-sans);
+  color: var(--color-text);
+}
+
+.cookie-modal[hidden] {
+  display: none;
+}
+
+.cookie-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.78);
+  cursor: pointer;
+}
+
+.cookie-modal__panel {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  max-height: 85vh;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-gold);
+  border-radius: 14px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);
+  overflow-y: auto;
+  padding: 32px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-gold-dim) transparent;
+}
+
+.cookie-modal__panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.cookie-modal__panel::-webkit-scrollbar-thumb {
+  background: var(--color-gold-dim);
+  border-radius: 3px;
+}
+
+body.cookie-modal-open {
+  overflow: hidden;
+}
+
+.cookie-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.cookie-modal__title {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.cookie-modal__close {
+  background: transparent;
+  border: none;
+  color: var(--color-text-dim);
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 10px;
+  transition: color var(--t-fast) ease;
+}
+
+.cookie-modal__close:hover,
+.cookie-modal__close:focus-visible {
+  color: var(--color-gold);
+}
+
+.cookie-modal__intro {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--color-text-muted);
+  margin: 0 0 8px;
+}
+
+.cookie-modal__policy {
+  margin: 0 0 24px;
+}
+
+.cookie-modal__policy a {
+  color: var(--color-gold);
+  font-size: 12.5px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ==========================================================================
+   FIELDSETS — one per category.
+   ========================================================================== */
+
+.cookie-fieldset {
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 18px 20px;
+  margin: 0 0 16px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.cookie-fieldset__legend {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--color-gold);
+  padding: 0 8px;
+  margin-left: -8px;
+}
+
+.cookie-fieldset__desc {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  margin: 8px 0 12px;
+}
+
+.cookie-fieldset__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid var(--color-border-subtle);
+  padding-top: 10px;
+}
+
+.cookie-fieldset__list li {
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--color-text-dim);
+  margin: 0 0 6px;
+  padding-left: 14px;
+  position: relative;
+}
+
+.cookie-fieldset__list li::before {
+  content: '·';
+  color: var(--color-gold);
+  position: absolute;
+  left: 4px;
+  top: 0;
+  font-weight: 700;
+}
+
+.cookie-fieldset__list strong {
+  color: var(--color-text);
+  font-weight: 600;
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+  font-size: 11.5px;
+}
+
+/* ==========================================================================
+   TOGGLES — accessible custom switch built on a real <input type="checkbox">.
+   ========================================================================== */
+
+.cookie-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--color-text-muted);
+  user-select: none;
+  margin-top: 6px;
+}
+
+.cookie-toggle input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.cookie-toggle__switch {
+  position: relative;
+  display: inline-block;
+  width: 38px;
+  height: 22px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 22px;
+  transition: background-color var(--t-fast) ease;
+  flex-shrink: 0;
+}
+
+.cookie-toggle__switch::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-text);
+  transition: transform var(--t-fast) ease;
+}
+
+.cookie-toggle input:checked + .cookie-toggle__switch {
+  background: var(--color-gold);
+}
+
+.cookie-toggle input:checked + .cookie-toggle__switch::after {
+  transform: translateX(16px);
+  background: var(--color-bg);
+}
+
+.cookie-toggle input:focus-visible + .cookie-toggle__switch {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+.cookie-toggle input:disabled + .cookie-toggle__switch {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.cookie-toggle__state {
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 10.5px;
+  color: var(--color-gold);
+}
+
+.cookie-toggle__state--off {
+  color: var(--color-text-dim);
+}
+
+.cookie-toggle input:checked ~ .cookie-toggle__state--off {
+  color: var(--color-gold);
+}
+
+/* ==========================================================================
+   MODAL FOOTER ACTIONS
+   ========================================================================== */
+
+.cookie-modal__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+  border-top: 1px solid var(--color-border);
+  padding-top: 18px;
+  margin-top: 12px;
+}
+
+@media (max-width: 480px) {
+  .cookie-modal__panel {
+    padding: 22px 18px;
+  }
+  .cookie-modal__title {
+    font-size: 22px;
+  }
+  .cookie-modal__actions {
+    flex-direction: column-reverse;
+  }
+  .cookie-modal__actions .cookie-btn {
+    width: 100%;
+  }
+}
+
+/* ==========================================================================
+   FOOTER LINK — re-open modal at any time.
+   ========================================================================== */
+
+.ambernord-footer-link-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: var(--color-text-dim);
+  cursor: pointer;
+  text-decoration: none;
+  transition: color var(--t-fast) ease;
+}
+
+.ambernord-footer-link-btn:hover,
+.ambernord-footer-link-btn:focus-visible {
+  color: var(--color-gold);
+}
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .cookie-btn,
+  .cookie-toggle__switch,
+  .cookie-toggle__switch::after {
+    transition: none;
+  }
+}

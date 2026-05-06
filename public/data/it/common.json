@@ -22,5 +22,34 @@
     "startNow": "Inizia ora",
     "buyNow": "Ordina ora",
     "discover": "Scopri"
+  },
+  "cookie": {
+    "title": "Privacy e cookie",
+    "text": "Utilizziamo solo cookie necessari al funzionamento del sito. Con il vostro consenso, utilizziamo anche cookie di statistica e marketing per misurare l'utilizzo e migliorare i nostri contenuti. Potete modificare la vostra scelta in qualsiasi momento tramite il link «Impostazioni cookie» nel piè di pagina.",
+    "policyLink": "Informativa privacy completa",
+    "accept": "Accetta tutti",
+    "reject": "Rifiuta tutti",
+    "settings": "Impostazioni",
+    "save": "Salva selezione",
+    "footerLink": "Impostazioni cookie",
+    "alwaysOn": "Sempre attivo",
+    "off": "Disattivato",
+    "categories": {
+      "necessary": {
+        "label": "Necessari",
+        "desc": "Questi cookie sono indispensabili per il funzionamento del sito. Senza di essi la pagina non può funzionare correttamente. Non possono essere disattivati.",
+        "list": "<li><strong>cookie_consent</strong> — Memorizza la vostra scelta sui cookie. Fornitore: AmberNord (prima parte). Conservazione: 12 mesi.</li>"
+      },
+      "analytics": {
+        "label": "Statistica",
+        "desc": "Ci aiutano a capire come i visitatori utilizzano il sito raccogliendo e segnalando informazioni in forma anonima.",
+        "list": "<li><strong>_ga</strong> — Google Analytics 4: distingue gli utenti unici. Fornitore: Google Ireland Ltd. Conservazione: 2 anni.</li><li><strong>_ga_VRDSSTW4HR</strong> — Memorizza lo stato della sessione per GA4. Conservazione: 2 anni.</li><li><strong>_gid</strong> — Distingue gli utenti per 24 ore. Conservazione: 24 ore.</li><li><strong>_gat</strong> — Limita la frequenza delle richieste a Google Analytics. Conservazione: 1 minuto.</li>"
+      },
+      "marketing": {
+        "label": "Marketing",
+        "desc": "Utilizzati per misurare l'efficacia della nostra pubblicità e per proporvi contenuti più pertinenti.",
+        "list": "<li><strong>_ttp</strong> — TikTok Pixel: misura le prestazioni pubblicitarie e le conversioni. Fornitore: TikTok Technology Ltd. Conservazione: 13 mesi.</li><li><strong>_tt_enable_cookie</strong> — Conferma il consenso ai cookie di TikTok. Conservazione: 13 mesi.</li><li><strong>tt_appInfo / tt_sessionId</strong> — Attributi di sessione e dispositivo per la misurazione delle conversioni. Conservazione: sessione a 13 mesi.</li>"
+      }
+    }
   }
 }
