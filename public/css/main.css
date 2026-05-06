@@ -114,13 +114,17 @@ a:focus:not(:focus-visible) {
    padding-top reserves the same space below the fixed nav for every page,
    regardless of whether the page-specific wrapper adds padding of its own.
    Wrappers that previously added top padding override this back to 0 below. */
+.subpage-header,
+#main-content {
+  position: relative;
+  z-index: var(--z-above);
+}
+
 .subpage-header {
   text-align: center;
   max-width: 700px;
   margin: 0 auto 80px;
   padding: calc(var(--nav-height) + 60px) var(--container-pad) 0;
-  position: relative;
-  z-index: var(--z-above);
 }
 
 .subpage-subtitle {
