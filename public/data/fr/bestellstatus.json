@@ -21,7 +21,7 @@
   },
   "header": {
     "eyebrow": "Service",
-    "h1": "Statut de <span>commande</span>"
+    "h1": "Statut de commande"
   },
   "intro": {
     "body": "Saisissez votre numéro de commande pour vérifier l'état actuel de votre livraison."

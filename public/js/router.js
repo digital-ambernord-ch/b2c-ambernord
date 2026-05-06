@@ -406,9 +406,13 @@
       attachLinkListeners();
       updateMobileSticky(route);
 
+      /* Await the page's init function — most do `await loadI18n(...)` and then
+         apply scroll-reveal classes (opacity:0). If we faded in #app before init
+         finished, those classes would land on already-visible content and cause
+         a "flash → vanish → fade back" flicker. */
       const initName = INITS[route.type];
       if (initName && typeof window[initName] === 'function') {
-        window[initName]();
+        try { await window[initName](); } catch (e) { console.error('[Router] init failed:', e); }
       }
 
       /* Two rAFs: the first commits all DOM/style changes to the next frame,

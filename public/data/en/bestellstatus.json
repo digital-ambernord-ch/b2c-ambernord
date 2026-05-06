@@ -21,7 +21,7 @@
   },
   "header": {
     "eyebrow": "Service",
-    "h1": "Order <span>Status</span>"
+    "h1": "Order Status"
   },
   "intro": {
     "body": "Enter your order number below to check the current status of your delivery."
