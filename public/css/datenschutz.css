@@ -1,0 +1,330 @@
+/* ==========================================================================
+   DATENSCHUTZ — AmberNord
+   Scope: .datenschutz-page-container and children.
+   Tokens: --color-gold --color-bg --color-text --color-border-gold
+           --color-surface --nav-height --font-serif --font-sans
+           --container-pad --t-fast --t-slow
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   ENTRANCE — fade-up reveal applied to the root container on mount.
+   -------------------------------------------------------------------------- */
+
+@keyframes datenschutzReveal {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.datenschutz-page-container {
+  padding: calc(var(--nav-height) + 60px) 0 120px;
+  position: relative;
+  z-index: 10;
+  animation: datenschutzReveal 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+/* --------------------------------------------------------------------------
+   SCROLL REVEAL — IntersectionObserver toggles .is-visible on .page-reveal.
+   -------------------------------------------------------------------------- */
+
+.page-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.page-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* --------------------------------------------------------------------------
+   REDUCED MOTION — disable all transitions and animations for users who
+   prefer reduced motion, making all elements immediately visible.
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .page-reveal,
+  .datenschutz-page-container {
+    animation: none;
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   SKIP LINK — visually hidden until focused, allowing keyboard users to
+   bypass navigation and jump directly to the main content area.
+   -------------------------------------------------------------------------- */
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  background: var(--color-gold);
+  color: #000;
+  padding: 0.5rem 1rem;
+  font-weight: 700;
+  z-index: 9999;
+  border-radius: 4px;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* --------------------------------------------------------------------------
+   FOCUS — gold outline on all interactive elements for keyboard navigation.
+   -------------------------------------------------------------------------- */
+
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   SUBPAGE HEADER — centered eyebrow + h1 hero block above main content.
+   -------------------------------------------------------------------------- */
+
+.subpage-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 80px;
+  padding: 0 var(--container-pad);
+}
+
+.subpage-subtitle {
+  display: inline-block;
+  color: var(--color-gold);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(237, 163, 35, 0.4);
+  padding-bottom: 10px;
+}
+
+.subpage-header h1 {
+  color: var(--color-text);
+  font-family: var(--font-serif);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.subpage-header h1 span {
+  font-style: italic;
+  color: var(--color-gold);
+}
+
+/* --------------------------------------------------------------------------
+   CONTENT WRAPPER — single-column legal layout, narrower than the standard
+   1400px section width to ensure comfortable reading line length.
+   -------------------------------------------------------------------------- */
+
+.datenschutz-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 var(--container-pad);
+}
+
+/* --------------------------------------------------------------------------
+   SECTION ITEMS — each numbered legal section rendered by JS, with bottom
+   margin to separate sections visually and a gold left accent border.
+   -------------------------------------------------------------------------- */
+
+.datenschutz-section-item {
+  margin-bottom: 56px;
+  padding-left: 20px;
+  border-left: 3px solid rgba(237, 163, 35, 0.25);
+  transition: border-color var(--t-fast);
+}
+
+.datenschutz-section-item:hover {
+  border-left-color: var(--color-gold);
+}
+
+/* --------------------------------------------------------------------------
+   SECTION HEADING — h2 for each numbered section, using serif font in gold
+   to maintain visual hierarchy below the page h1.
+   -------------------------------------------------------------------------- */
+
+.datenschutz-section-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(18px, 2.2vw, 22px);
+  font-weight: 400;
+  color: var(--color-gold);
+  margin: 0 0 16px;
+  line-height: 1.3;
+}
+
+/* --------------------------------------------------------------------------
+   SECTION BODY — wrapper for all block-level content within a section,
+   including paragraphs, lists and the address block.
+   -------------------------------------------------------------------------- */
+
+.datenschutz-section-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* --------------------------------------------------------------------------
+   BODY TEXT — standard paragraph style for legal prose.
+   -------------------------------------------------------------------------- */
+
+.datenschutz-body {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: #d0d0d0;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   LIST — custom-styled unordered list replacing browser default bullets
+   with a subtle gold dash for visual cohesion with the brand palette.
+   -------------------------------------------------------------------------- */
+
+.datenschutz-list {
+  list-style: none;
+  padding: 0;
+  margin: 4px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.datenschutz-list__item {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: #d0d0d0;
+  padding-left: 18px;
+  position: relative;
+}
+
+.datenschutz-list__item::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--color-gold);
+  font-size: 13px;
+  top: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   LIST TERM — bold label at the start of a definition-style list item,
+   coloured white to stand out from the muted description text.
+   -------------------------------------------------------------------------- */
+
+.datenschutz-list__term {
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+/* --------------------------------------------------------------------------
+   ADDRESS — contact block for the controller section; resets browser default
+   italic and lays out each line as a stacked column.
+   -------------------------------------------------------------------------- */
+
+.datenschutz-address {
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 8px;
+  padding: 20px 24px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(237, 163, 35, 0.15);
+  border-radius: 8px;
+}
+
+.datenschutz-address__line {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 300;
+  color: #d0d0d0;
+  line-height: 1.7;
+}
+
+.datenschutz-address__link {
+  display: inline-block;
+  margin-top: 8px;
+  color: var(--color-gold);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: none;
+  transition: opacity var(--t-fast);
+}
+
+.datenschutz-address__link:hover {
+  opacity: 0.7;
+}
+
+/* --------------------------------------------------------------------------
+   FOOTER NOTE — last-updated timestamp displayed below all sections with a
+   top border and muted colour to de-emphasise it as secondary information.
+   -------------------------------------------------------------------------- */
+
+.datenschutz-footer-note {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 300;
+  color: #666;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 24px;
+  margin-top: 16px;
+}
+
+/* --------------------------------------------------------------------------
+   WILL-CHANGE — applied only during the entrance animation; the class is
+   removed by JS after the animation ends to free compositor resources.
+   -------------------------------------------------------------------------- */
+
+.datenschutz-page-container.animating {
+  will-change: opacity, transform;
+}
+
+/* --------------------------------------------------------------------------
+   TABLET — 991px breakpoint adjusts section left padding.
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 991px) {
+  .datenschutz-section-item {
+    padding-left: 16px;
+    margin-bottom: 44px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   MOBILE — 768px breakpoint tightens spacing for small viewports.
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  .datenschutz-page-container {
+    padding-bottom: 80px;
+  }
+
+  .subpage-header {
+    margin-bottom: 56px;
+  }
+
+  .datenschutz-section-item {
+    padding-left: 14px;
+    margin-bottom: 36px;
+    border-left-width: 2px;
+  }
+
+  .datenschutz-address {
+    padding: 16px 18px;
+  }
+}

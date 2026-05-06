@@ -118,6 +118,18 @@
   sticky: null,
   schema: null
 },
+// 1. router.js — ROUTES
+'/datenschutz/': { 
+  page: '/pages/datenschutz.html', 
+  title: 'Datenschutzerklärung | AmberNord', 
+  description: 'Datenschutz gemäss revDSG.', 
+  canonical: 'https://ambernord.ch/datenschutz/', 
+  type: 'datenschutz', 
+  sticky: null, 
+  schema: null 
+},
+
+
     '/the-starter/': {
       page:        '/pages/the-starter.html',
       title:       'The Starter (1x 250ml) | AmberNord Sanddorn Elixier',
@@ -395,6 +407,9 @@ if (target) window.scrollTo({ top: target.getBoundingClientRect().top + window.s
   }
   else if (route.type === 'thankyou' && typeof window.initThankyou === 'function') {
   window.initThankyou();
+  }
+  else if (route.type === 'datenschutz' && typeof window.initDatenschutz === 'function') { 
+  window.initDatenschutz(); 
   }
 
     } catch (err) {

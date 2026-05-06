@@ -1,0 +1,221 @@
+{
+  "meta": {
+    "title": "Privacy Policy | AmberNord",
+    "description": "Learn how AmberNord collects, processes and protects your personal data in accordance with the revised Swiss Federal Act on Data Protection (revFADP).",
+    "canonical": "https://ambernord.ch/en/datenschutz/",
+    "slug": "/en/datenschutz/",
+    "robots": "index, follow",
+    "og": {
+      "title": "Privacy Policy | AmberNord",
+      "description": "Learn how AmberNord collects, processes and protects your personal data in accordance with the revised Swiss Federal Act on Data Protection.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/ambernord-og",
+      "type": "website"
+    },
+    "hreflang": {
+      "de": "https://ambernord.ch/datenschutz/",
+      "en": "https://ambernord.ch/en/datenschutz/",
+      "fr": "https://ambernord.ch/fr/datenschutz/",
+      "it": "https://ambernord.ch/it/datenschutz/",
+      "x-default": "https://ambernord.ch/datenschutz/"
+    }
+  },
+  "header": {
+    "eyebrow": "AmberNord Legal",
+    "h1": "Privacy <span>Policy</span>"
+  },
+  "sections": [
+    {
+      "id": "einleitung",
+      "heading": "1. Introduction and Scope",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "We take the protection of your personal data very seriously. This privacy policy informs you about how we collect, process and protect personal data when you visit our website www.ambernord.ch and use our online shop. We comply with the provisions of the revised Swiss Federal Act on Data Protection (revFADP)."
+        }
+      ]
+    },
+    {
+      "id": "verantwortliche",
+      "heading": "2. Controller",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The controller responsible for data processing on this website is:"
+        },
+        {
+          "type": "address",
+          "lines": [
+            "Matisons Selection (AmberNord)",
+            "Eriks Matisons",
+            "Alte Gasse 8",
+            "5034 Suhr, Switzerland",
+            "UID: CHE-226.837.934"
+          ],
+          "emailHref": "mailto:info@ambernord.ch",
+          "emailLabel": "info@ambernord.ch"
+        }
+      ]
+    },
+    {
+      "id": "erhebung",
+      "heading": "3. Collection and Processing of Personal Data",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "We process personal data that you voluntarily provide when using our online shop. This includes in particular:"
+        },
+        {
+          "type": "list",
+          "items": [
+            {
+              "term": "Master data:",
+              "desc": "First and last name, billing and delivery address."
+            },
+            {
+              "term": "Contact data:",
+              "desc": "Email address and phone number."
+            },
+            {
+              "term": "Contract data:",
+              "desc": "Information about your orders (e.g. organic sea buckthorn products purchased) and payment details."
+            },
+            {
+              "term": "Technical data:",
+              "desc": "IP address, date and time of access, browser type and operating system (automatically recorded in log files to ensure the secure operation of the website)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zwecke",
+      "heading": "4. Purposes of Data Processing",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Your data is used exclusively for the following purposes:"
+        },
+        {
+          "type": "list",
+          "items": [
+            {
+              "term": null,
+              "desc": "To fulfil and process purchase contracts and orders in our online shop."
+            },
+            {
+              "term": null,
+              "desc": "For communication with you (e.g. regarding queries about your order)."
+            },
+            {
+              "term": null,
+              "desc": "For the technical provision, maintenance and optimisation of our website."
+            },
+            {
+              "term": null,
+              "desc": "To comply with statutory retention obligations (e.g. accounting requirements under Swiss law)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "weitergabe",
+      "heading": "5. Disclosure of Data to Third Parties",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "We only disclose your personal data to third parties where this is strictly necessary for the performance of the contract. This includes:"
+        },
+        {
+          "type": "list",
+          "items": [
+            {
+              "term": "Logistics partners:",
+              "desc": "Transport and shipping companies (e.g. Swiss Post) for the delivery of ordered goods."
+            },
+            {
+              "term": "Payment service providers:",
+              "desc": "For the secure processing of payments in our online shop (e.g. TWINT, Stripe, PayPal, credit card companies)."
+            },
+            {
+              "term": "IT service providers:",
+              "desc": "Hosting providers who ensure the technical operation of the website."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Our partners are contractually obliged to process your data exclusively on our behalf and in accordance with applicable data protection regulations. Data transfers abroad only take place if the country concerned provides an adequate level of data protection or appropriate guarantees exist (e.g. standard contractual clauses)."
+        }
+      ]
+    },
+    {
+      "id": "cookies",
+      "heading": "6. Cookies",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Our website uses cookies. These are small text files stored on your device. We primarily use technically necessary cookies that are essential for the basic functions of the online shop (such as the shopping basket and secure checkout). You can disable the storage of cookies in your browser settings at any time, although this may limit the functionality of the online shop."
+        }
+      ]
+    },
+    {
+      "id": "datensicherheit",
+      "heading": "7. Data Security",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "We employ appropriate technical and organisational security measures (such as SSL/TLS encryption) to protect your personal data against unauthorised access, loss or misuse."
+        }
+      ]
+    },
+    {
+      "id": "rechte",
+      "heading": "8. Your Rights",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Under Swiss data protection law, you have the right at any time to:"
+        },
+        {
+          "type": "list",
+          "items": [
+            {
+              "term": null,
+              "desc": "Information about your personal data processed by us."
+            },
+            {
+              "term": null,
+              "desc": "Rectification of inaccurate or incomplete data."
+            },
+            {
+              "term": null,
+              "desc": "Deletion of your personal data, provided no statutory retention obligations (e.g. tax requirements) prevent this."
+            },
+            {
+              "term": null,
+              "desc": "Restriction of data processing or objection thereto."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "To exercise your rights, you may contact us at any time at the email address given above."
+        }
+      ]
+    },
+    {
+      "id": "aenderungen",
+      "heading": "9. Amendments to this Privacy Policy",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "We reserve the right to amend this privacy policy as required (e.g. in the event of changes in legislation or new features in the online shop). The current version published on this website shall apply at all times."
+        }
+      ]
+    }
+  ],
+  "footer": {
+    "lastUpdated": "Last updated: February 2026"
+  }
+}

@@ -1,0 +1,221 @@
+{
+  "meta": {
+    "title": "Politique de confidentialité | AmberNord",
+    "description": "Découvrez comment AmberNord collecte, traite et protège vos données personnelles conformément à la loi fédérale suisse révisée sur la protection des données.",
+    "canonical": "https://ambernord.ch/fr/datenschutz/",
+    "slug": "/fr/datenschutz/",
+    "robots": "index, follow",
+    "og": {
+      "title": "Politique de confidentialité | AmberNord",
+      "description": "Découvrez comment AmberNord collecte, traite et protège vos données personnelles conformément à la loi suisse révisée sur la protection des données.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/ambernord-og",
+      "type": "website"
+    },
+    "hreflang": {
+      "de": "https://ambernord.ch/datenschutz/",
+      "en": "https://ambernord.ch/en/datenschutz/",
+      "fr": "https://ambernord.ch/fr/datenschutz/",
+      "it": "https://ambernord.ch/it/datenschutz/",
+      "x-default": "https://ambernord.ch/datenschutz/"
+    }
+  },
+  "header": {
+    "eyebrow": "AmberNord Légal",
+    "h1": "Politique de <span>confidentialité</span>"
+  },
+  "sections": [
+    {
+      "id": "einleitung",
+      "heading": "1. Introduction et champ d'application",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Nous attachons une grande importance à la protection de vos données personnelles. La présente politique de confidentialité vous informe sur la manière dont nous collectons, traitons et protégeons les données personnelles lorsque vous visitez notre site web www.ambernord.ch et utilisez notre boutique en ligne. Nous nous conformons aux dispositions de la loi fédérale suisse révisée sur la protection des données (LPD révisée)."
+        }
+      ]
+    },
+    {
+      "id": "verantwortliche",
+      "heading": "2. Responsable du traitement",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Le responsable du traitement des données sur ce site web est :"
+        },
+        {
+          "type": "address",
+          "lines": [
+            "Matisons Selection (AmberNord)",
+            "Eriks Matisons",
+            "Alte Gasse 8",
+            "5034 Suhr, Suisse",
+            "IDE : CHE-226.837.934"
+          ],
+          "emailHref": "mailto:info@ambernord.ch",
+          "emailLabel": "info@ambernord.ch"
+        }
+      ]
+    },
+    {
+      "id": "erhebung",
+      "heading": "3. Collecte et traitement des données personnelles",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Nous traitons les données personnelles que vous nous communiquez volontairement lors de l'utilisation de notre boutique en ligne. Cela comprend notamment :"
+        },
+        {
+          "type": "list",
+          "items": [
+            {
+              "term": "Données de base :",
+              "desc": "Prénom et nom, adresse de facturation et de livraison."
+            },
+            {
+              "term": "Données de contact :",
+              "desc": "Adresse e-mail et numéro de téléphone."
+            },
+            {
+              "term": "Données contractuelles :",
+              "desc": "Informations relatives à vos commandes (p. ex. produits bio à base d'argousier achetés) et données de paiement."
+            },
+            {
+              "term": "Données techniques :",
+              "desc": "Adresse IP, date et heure d'accès, type de navigateur et système d'exploitation (enregistrés automatiquement dans des fichiers journaux pour assurer le bon fonctionnement sécurisé du site web)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zwecke",
+      "heading": "4. Finalités du traitement des données",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Vos données sont utilisées exclusivement aux fins suivantes :"
+        },
+        {
+          "type": "list",
+          "items": [
+            {
+              "term": null,
+              "desc": "Pour l'exécution et le traitement des contrats d'achat et des commandes dans notre boutique en ligne."
+            },
+            {
+              "term": null,
+              "desc": "Pour la communication avec vous (p. ex. en cas de questions relatives à votre commande)."
+            },
+            {
+              "term": null,
+              "desc": "Pour la mise à disposition technique, la maintenance et l'optimisation de notre site web."
+            },
+            {
+              "term": null,
+              "desc": "Pour le respect des obligations légales de conservation (p. ex. exigences comptables selon le droit suisse)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "weitergabe",
+      "heading": "5. Transmission de données à des tiers",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Nous ne transmettons vos données personnelles à des tiers que si cela est absolument nécessaire pour l'exécution du contrat. Cela concerne :"
+        },
+        {
+          "type": "list",
+          "items": [
+            {
+              "term": "Partenaires logistiques :",
+              "desc": "Entreprises de transport et d'expédition (p. ex. La Poste suisse) pour la livraison des marchandises commandées."
+            },
+            {
+              "term": "Prestataires de services de paiement :",
+              "desc": "Pour le traitement sécurisé des paiements dans notre boutique en ligne (p. ex. TWINT, Stripe, PayPal, instituts de carte de crédit)."
+            },
+            {
+              "term": "Prestataires de services informatiques :",
+              "desc": "Fournisseurs d'hébergement qui assurent le fonctionnement technique du site web."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Nos partenaires sont contractuellement tenus de traiter vos données exclusivement sur notre mandat et conformément aux dispositions légales applicables en matière de protection des données. Un transfert de données à l'étranger n'a lieu que si le pays concerné dispose d'un niveau de protection des données adéquat ou si des garanties appropriées existent (p. ex. clauses contractuelles types)."
+        }
+      ]
+    },
+    {
+      "id": "cookies",
+      "heading": "6. Cookies",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Notre site web utilise des cookies. Il s'agit de petits fichiers texte stockés sur votre appareil. Nous utilisons principalement des cookies techniquement nécessaires, indispensables aux fonctions de base de la boutique en ligne (comme le panier d'achat et le paiement sécurisé). Vous pouvez à tout moment désactiver l'enregistrement des cookies dans les paramètres de votre navigateur, ce qui peut toutefois limiter les fonctionnalités de la boutique en ligne."
+        }
+      ]
+    },
+    {
+      "id": "datensicherheit",
+      "heading": "7. Sécurité des données",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Nous mettons en œuvre des mesures de sécurité techniques et organisationnelles appropriées (telles que le chiffrement SSL/TLS) pour protéger vos données personnelles contre tout accès non autorisé, perte ou utilisation abusive."
+        }
+      ]
+    },
+    {
+      "id": "rechte",
+      "heading": "8. Vos droits",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Conformément à la loi suisse sur la protection des données, vous disposez à tout moment du droit à :"
+        },
+        {
+          "type": "list",
+          "items": [
+            {
+              "term": null,
+              "desc": "Des informations sur vos données personnelles traitées par nos soins."
+            },
+            {
+              "term": null,
+              "desc": "La rectification des données inexactes ou incomplètes."
+            },
+            {
+              "term": null,
+              "desc": "La suppression de vos données personnelles, dans la mesure où aucune obligation légale de conservation (p. ex. exigences fiscales) ne s'y oppose."
+            },
+            {
+              "term": null,
+              "desc": "La limitation du traitement des données ou l'opposition à celui-ci."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Pour exercer vos droits, vous pouvez nous contacter à tout moment à l'adresse e-mail indiquée ci-dessus."
+        }
+      ]
+    },
+    {
+      "id": "aenderungen",
+      "heading": "9. Modifications de la présente politique de confidentialité",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Nous nous réservons le droit d'adapter la présente politique de confidentialité si nécessaire (p. ex. en cas de modifications législatives ou de nouvelles fonctionnalités dans la boutique en ligne). La version actuelle publiée sur ce site web est toujours applicable."
+        }
+      ]
+    }
+  ],
+  "footer": {
+    "lastUpdated": "Dernière mise à jour : février 2026"
+  }
+}
