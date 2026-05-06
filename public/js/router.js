@@ -351,26 +351,15 @@
       history.replaceState({ path: canonicalPath }, route.title, canonicalPath + (hash ? '#' + hash : ''));
     }
 
-    updateMeta(route);
-
-    const subpageHero = document.getElementById('ambernord-subpage-hero-bg');
-    if (subpageHero) {
-      const isLanding  = route.type === 'landing';
-      const isProduct  = route.type === 'product';
-      const isThankYou = route.type === 'thankyou';
-      if (!isLanding && !isProduct && !isThankYou) {
-        subpageHero.classList.add('is-visible');
-      } else {
-        subpageHero.classList.remove('is-visible');
-      }
-    }
-
-    killGSAP();
-
     const app = document.getElementById('app');
     if (!app) return;
 
+    /* Hide #app instantly (no transition) so the previous page does not stay
+       visible while the new one is being prepared. */
+    app.style.transition = 'none';
     app.style.opacity = '0';
+    /* Force layout flush so the browser commits opacity:0 before we swap content. */
+    void app.offsetHeight;
 
     try {
       let html;
@@ -383,12 +372,25 @@
         pageCache[route.page] = html;
       }
 
-      app.innerHTML = html;
+      /* Update meta, hero visibility, and clean GSAP while #app is hidden. */
+      updateMeta(route);
 
-      requestAnimationFrame(function () {
-        app.style.transition = 'opacity 0.3s ease';
-        app.style.opacity    = '1';
-      });
+      const subpageHero = document.getElementById('ambernord-subpage-hero-bg');
+      if (subpageHero) {
+        const isLanding  = route.type === 'landing';
+        const isProduct  = route.type === 'product';
+        const isThankYou = route.type === 'thankyou';
+        if (!isLanding && !isProduct && !isThankYou) {
+          subpageHero.classList.add('is-visible');
+        } else {
+          subpageHero.classList.remove('is-visible');
+        }
+      }
+
+      killGSAP();
+
+      /* Swap DOM, scroll, attach handlers, run init — all while invisible. */
+      app.innerHTML = html;
 
       if (hash) {
         setTimeout(function () {
@@ -408,9 +410,21 @@
       if (initName && typeof window[initName] === 'function') {
         window[initName]();
       }
+
+      /* Two rAFs: the first commits all DOM/style changes to the next frame,
+         the second triggers the actual fade-in. Without this, the transition
+         from opacity:0 to opacity:1 happens instantly because the browser
+         coalesces both writes within the same frame. */
+      requestAnimationFrame(function () {
+        app.style.transition = 'opacity 0.25s ease';
+        requestAnimationFrame(function () {
+          app.style.opacity = '1';
+        });
+      });
     } catch (err) {
       console.error('[Router] Navigation failed:', err);
       app.innerHTML = '<div style="padding:120px 20px;text-align:center;font-family:Montserrat,sans-serif;color:#888;">Seite nicht gefunden.</div>';
+      app.style.transition = 'opacity 0.25s ease';
       app.style.opacity = '1';
     }
   }

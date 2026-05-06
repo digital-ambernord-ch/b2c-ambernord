@@ -44,8 +44,7 @@
     "taglineColdPress": "KALTGEPRESST",
     "taglineBio": "BIO-ZERTIFIZIERT",
     "bioLogoAlt": "EU Organic zertifiziert",
-    "h1Line1": "Der Körper reagiert nicht auf Versprechen.",
-    "h1Line2": "Sondern auf das, was er wirklich aufnehmen kann.",
+    "h1": "Der Körper reagiert nicht auf Versprechen.<br><span>Sondern auf das, was er wirklich aufnehmen kann.</span>",
     "productAlt": "AmberNord Premium-Edition Flasche",
     "benefit1": "✓ Spürbare Energie durch 190+ Bioaktivstoffe",
     "benefit2": "✓ Omega-7 für Haut, Darm & Schutzbarrieren",
@@ -107,31 +106,27 @@
   },
   "manifest": {
     "eyebrow": "Unser Manifest",
-    "h2Line1": "Das Ende der",
-    "h2Line2": "künstlichen Energie.",
+    "h2": "Das Ende der<br><span class=\"ambernord-text-gold\">künstlichen Energie.</span>",
     "lead": "Wir leben in einer Ära der synthetischen Abkürzungen. Herkömmliche Energy-Drinks und künstliche Stimulanzien leihen dem Körper Energie, die er später mit Zinsen zurückzahlen muss.",
     "expand": "Das ganze Manifest lesen",
     "hidden": "Sie erzeugen einen kurzen Rausch, der Ihre Zellen dehydriert und Ihren Fokus langfristig trübt. AmberNord ist die Antwort auf die Forderung nach echter, zellulärer Performance. Es ist kein kurzfristiger Kick, sondern ein <strong class=\"ambernord-fw-500\">biologisches Upgrade</strong>. Wir extrahieren die reinste Essenz der nordischen Wildnis, um Ihnen ein Werkzeug für nachhaltiges Biohacking und tiefgreifende Regeneration direkt in die Schweiz zu bringen."
   },
   "ritualBlock": {
     "eyebrow": "Das Ritual",
-    "h2Line1": "Ein Teil Gold.",
-    "h2Line2": "Zehn Teile Leben.",
+    "h2": "Ein Teil Gold.<br><span class=\"ambernord-text-gold\">Zehn Teile Leben.</span>",
     "lead": "Die meisten Nahrungsergänzungen sind synthetisch isoliert, und herkömmliche Gesundheitsgetränke sind voller verstecktem Zucker. AmberNord geht einen völlig anderen Weg.",
     "expand": "Die Anwendung entdecken",
     "hidden": "Wir bieten Ihnen eine kompromisslos reine, hochkonzentrierte Rohessenz – entworfen für die perfekte zelluläre Alchemie mit Wasser. Das 1:10 Protokoll (1 Teil Essenz, 10 Teile Wasser) ist Ihr täglicher Katalysator. In dieser Symbiose werden die seltenen Omega-Fettsäuren, Aminosäuren und das natürliche Vitamin C vom Körper maximal absorbiert. Das Ergebnis: Tiefe Hydratation, ein messbar schärferer Fokus und robuster Zellschutz."
   },
   "sourcing": {
     "eyebrow": "Exklusives Sourcing",
-    "h2Line1": "Die Quelle des Elixiers.",
-    "h2Line2": "Unsere Plantage.",
+    "h2": "Die Quelle des Elixiers.<br><span class=\"ambernord-text-gold\">Unsere Plantage.</span>",
     "text": "Wir überlassen nichts dem Zufall. Unsere Rohstoffe stammen nicht vom anonymen Weltmarkt, sondern aus einer einzigen, von uns persönlich ausgewählten Bio-Plantage. Nach einer sorgfältigen Selektion entschieden wir uns für genau diese seltene Sorte – gewachsen in einem Mikroklima, dessen Reinheit und Mineralität dem Saft seinen unverwechselbaren Charakter verleihen. Hier entstehen Beeren mit einer Nährstoffdichte, die neue Massstäbe setzt.",
     "imgAlt": "Exklusive Bio-Plantage"
   },
   "craft": {
     "eyebrow": "Handwerk & Reinheit",
-    "h2Line1": "Keine Kompromisse.",
-    "h2Line2": "Nur die Essenz.",
+    "h2": "Keine Kompromisse.<br><span class=\"ambernord-text-gold\">Nur die Essenz.</span>",
     "text": "Vom Moment der behutsamen Handlese bis zur Kaltpressung an der Quelle vergeht nur ein Augenblick. Keine industriellen Erntemaschinen berühren unsere Früchte – so bleibt die empfindliche Haut der Beeren unversehrt. Dabei setzen wir auf ganzheitliche Verwertung: Die gesamte Beere – von der nährstoffreichen Schale bis zum wertvollen Kern – wird vollständig genutzt. Auf diese Weise bewahren wir das kostbare Omega-7-Öl und über 190 bioaktive Wirkstoffe in ihrer reinsten Form.",
     "videoLabel": "Video abspielen: AmberNord Handwerk",
     "videoAlt": "Video: Schonende Ernte und Kaltpressung"
@@ -150,8 +145,7 @@
   },
   "masterBox": {
     "eyebrow": "Kliniken & Corporate",
-    "h2Line1": "The Master Box –",
-    "h2Line2": "Für kompromisslosen Fokus.",
+    "h2": "The Master Box –<br><span class=\"ambernord-text-gold\">Für kompromisslosen Fokus.</span>",
     "p1": "Integrieren Sie das AmberNord-Protokoll in Ihre Praxis oder Ihr Unternehmen. Unsere exklusive 20-Flaschen-Edition bietet massgeschneiderte Partnerschaften für Longevity-Zentren, Biohacking-Einrichtungen und visionäre Corporate-Teams, die in echte kognitive Performance investieren.",
     "p2": "Kompromisslos unverfälschtes Nährstoffprofil und bio-zertifizierte Reinheit, die auf dem europäischen Markt einzigartig sind.",
     "btn": "The Master Box entdecken"

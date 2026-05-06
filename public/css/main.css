@@ -119,6 +119,8 @@ a:focus:not(:focus-visible) {
   max-width: 700px;
   margin: 0 auto 80px;
   padding: calc(var(--nav-height) + 60px) var(--container-pad) 0;
+  position: relative;
+  z-index: var(--z-above);
 }
 
 .subpage-subtitle {
@@ -354,13 +356,17 @@ h1 span, h2 span {
   right: 6px;
   height: 65vh;
   z-index: 0;
-  display: none;
   border-radius: 20px;
   overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
 }
 
 .ambernord-subpage-hero.is-visible {
-  display: block;
+  opacity: 1;
+  visibility: visible;
 }
 
 .ambernord-subpage-hero img {

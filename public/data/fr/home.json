@@ -44,8 +44,7 @@
     "taglineColdPress": "PRESSÉ À FROID",
     "taglineBio": "CERTIFIÉ BIO",
     "bioLogoAlt": "Certifié EU Organic",
-    "h1Line1": "Le corps ne réagit pas aux promesses.",
-    "h1Line2": "Mais à ce qu'il peut véritablement absorber.",
+    "h1": "Le corps ne réagit pas aux promesses.<br><span>Mais à ce qu'il peut véritablement absorber.</span>",
     "productAlt": "Bouteille AmberNord Édition Premium",
     "benefit1": "✓ Énergie tangible grâce à 190+ composés bioactifs",
     "benefit2": "✓ Oméga-7 pour la peau, l'intestin & les barrières protectrices",
@@ -107,31 +106,27 @@
   },
   "manifest": {
     "eyebrow": "Notre Manifeste",
-    "h2Line1": "La fin de",
-    "h2Line2": "l'énergie artificielle.",
+    "h2": "La fin de<br><span class=\"ambernord-text-gold\">l'énergie artificielle.</span>",
     "lead": "Nous vivons dans une ère de raccourcis synthétiques. Les boissons énergisantes conventionnelles et les stimulants artificiels prêtent au corps une énergie qu'il devra rembourser avec intérêts.",
     "expand": "Lire le manifeste complet",
     "hidden": "Ils produisent une brève excitation qui déshydrate vos cellules et brouille votre concentration à long terme. AmberNord est la réponse à l'exigence d'une véritable performance cellulaire. Ce n'est pas un coup de fouet à court terme, mais un <strong class=\"ambernord-fw-500\">upgrade biologique</strong>. Nous extrayons l'essence la plus pure de la nature nordique pour vous offrir un outil de biohacking durable et de régénération profonde, directement en Suisse."
   },
   "ritualBlock": {
     "eyebrow": "Le Rituel",
-    "h2Line1": "Une part d'or.",
-    "h2Line2": "Dix parts de vie.",
+    "h2": "Une part d'or.<br><span class=\"ambernord-text-gold\">Dix parts de vie.</span>",
     "lead": "La plupart des compléments alimentaires sont isolés synthétiquement et les boissons santé conventionnelles sont remplies de sucre caché. AmberNord emprunte une voie totalement différente.",
     "expand": "Découvrir l'application",
     "hidden": "Nous vous proposons une essence brute, pure et hautement concentrée – conçue pour une alchimie cellulaire parfaite avec l'eau. Le protocole 1:10 (1 part d'essence, 10 parts d'eau) est votre catalyseur quotidien. Dans cette symbiose, les rares acides gras Oméga, les acides aminés et la vitamine C naturelle sont absorbés au maximum par le corps. Le résultat : hydratation profonde, concentration mesurablement plus aiguë et protection cellulaire robuste."
   },
   "sourcing": {
     "eyebrow": "Sourcing Exclusif",
-    "h2Line1": "La source de l'élixir.",
-    "h2Line2": "Notre plantation.",
+    "h2": "La source de l'élixir.<br><span class=\"ambernord-text-gold\">Notre plantation.</span>",
     "text": "Nous ne laissons rien au hasard. Nos matières premières ne proviennent pas du marché mondial anonyme, mais d'une seule plantation biologique personnellement sélectionnée par nous. Après une sélection minutieuse, nous avons choisi cette variété rare – cultivée dans un microclimat dont la pureté et la richesse minérale donnent au jus son caractère inimitable. Ici naissent des baies à la densité nutritive qui établit de nouveaux standards.",
     "imgAlt": "Plantation biologique exclusive"
   },
   "craft": {
     "eyebrow": "Artisanat & Pureté",
-    "h2Line1": "Aucun compromis.",
-    "h2Line2": "Que l'essence.",
+    "h2": "Aucun compromis.<br><span class=\"ambernord-text-gold\">Que l'essence.</span>",
     "text": "Du moment de la cueillette manuelle délicate jusqu'à la pression à froid à la source, il ne s'écoule qu'un instant. Aucune machine de récolte industrielle ne touche nos fruits – la peau délicate des baies reste ainsi intacte. Nous misons sur une valorisation intégrale : la baie entière – de la peau riche en nutriments au précieux noyau – est intégralement utilisée. Nous préservons ainsi la précieuse huile d'Oméga-7 et plus de 190 composés bioactifs sous leur forme la plus pure.",
     "videoLabel": "Lire la vidéo : artisanat AmberNord",
     "videoAlt": "Vidéo : récolte délicate et pression à froid"
@@ -150,8 +145,7 @@
   },
   "masterBox": {
     "eyebrow": "Cliniques & Entreprises",
-    "h2Line1": "The Master Box –",
-    "h2Line2": "Pour une concentration sans compromis.",
+    "h2": "The Master Box –<br><span class=\"ambernord-text-gold\">Pour une concentration sans compromis.</span>",
     "p1": "Intégrez le protocole AmberNord dans votre cabinet ou votre entreprise. Notre édition exclusive de 20 bouteilles propose des partenariats sur mesure pour les centres de longévité, les installations de biohacking et les équipes corporate visionnaires qui investissent dans la véritable performance cognitive.",
     "p2": "Profil nutritif intransigeant et pureté certifiée bio, uniques sur le marché européen.",
     "btn": "Découvrir The Master Box"
