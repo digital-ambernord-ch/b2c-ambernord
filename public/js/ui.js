@@ -1,14 +1,6 @@
-/* =========================================================================
-   AMBERNORD — UI ENGINE
-   js/ui.js
-   Mobile menu · Hamburger · Deferred analytics (GA4 + TikTok)
-   ========================================================================= */
+/* AmberNord UI engine — mobile menu, dropdown a11y, language switch, deferred analytics. */
 
 (function () {
-
-  /* =========================================================================
-     MOBILE MENU — open / close logic
-     ========================================================================= */
 
   function setupMobileMenu() {
     const hamburger  = document.getElementById('hamburgerBtn');
@@ -21,6 +13,7 @@
       mobileMenu.classList.add('is-open');
       hamburger.classList.add('is-open');
       hamburger.setAttribute('aria-expanded', 'true');
+      hamburger.setAttribute('aria-label', 'Menü schließen');
       document.body.style.overflow = 'hidden';
     }
 
@@ -28,74 +21,80 @@
       mobileMenu.classList.remove('is-open');
       hamburger.classList.remove('is-open');
       hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.setAttribute('aria-label', 'Menü öffnen');
       document.body.style.overflow = '';
     }
 
     window.closeMobileMenu = closeMenu;
 
     hamburger.addEventListener('click', function () {
-      if (mobileMenu.classList.contains('is-open')) {
-        closeMenu();
-      } else {
-        openMenu();
-      }
+      mobileMenu.classList.contains('is-open') ? closeMenu() : openMenu();
     });
 
-    if (closeBtn) {
-      closeBtn.addEventListener('click', closeMenu);
-    }
+    if (closeBtn) closeBtn.addEventListener('click', closeMenu);
 
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && mobileMenu.classList.contains('is-open')) {
-        closeMenu();
-      }
+      if (e.key === 'Escape' && mobileMenu.classList.contains('is-open')) closeMenu();
     });
   }
 
-  /* =========================================================================
-     DROPDOWN ACCESSIBILITY — keyboard support for desktop dropdown
-     ========================================================================= */
+  function setupDropdowns() {
+    document.querySelectorAll('.ambernord-dropdown').forEach(function (dropdown) {
+      const dropbtn = dropdown.querySelector('.ambernord-dropbtn');
+      if (!dropbtn) return;
 
-  function setupDropdown() {
-    const dropbtn  = document.getElementById('dropbtn');
-    const dropdown = document.querySelector('.ambernord-dropdown');
+      dropbtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        const isExpanded = dropbtn.getAttribute('aria-expanded') === 'true';
+        dropbtn.setAttribute('aria-expanded', String(!isExpanded));
+      });
 
-    if (!dropbtn || !dropdown) return;
-
-    dropbtn.addEventListener('click', function () {
-      const isExpanded = dropbtn.getAttribute('aria-expanded') === 'true';
-      dropbtn.setAttribute('aria-expanded', String(!isExpanded));
+      dropbtn.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') dropbtn.setAttribute('aria-expanded', 'false');
+      });
     });
 
     document.addEventListener('click', function (e) {
-      if (!dropdown.contains(e.target)) {
-        dropbtn.setAttribute('aria-expanded', 'false');
-      }
+      document.querySelectorAll('.ambernord-dropdown').forEach(function (dropdown) {
+        if (!dropdown.contains(e.target)) {
+          const btn = dropdown.querySelector('.ambernord-dropbtn');
+          if (btn) btn.setAttribute('aria-expanded', 'false');
+        }
+      });
     });
   }
 
-  /* =========================================================================
-     DEFERRED ANALYTICS
-     Loads GA4 + TikTok pixel only after first user interaction.
-     This avoids blocking the initial page render.
-     ========================================================================= */
+  function setupLangButtons() {
+    document.querySelectorAll('[data-lang]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const lang = btn.getAttribute('data-lang');
+        if (lang && typeof window.setLang === 'function') {
+          window.setLang(lang);
+        }
+      });
+    });
+
+    const current = (typeof window.getLang === 'function') ? window.getLang() : 'de';
+    const activeBtn = document.querySelector('[data-lang="' + current + '"]');
+    if (activeBtn) activeBtn.setAttribute('aria-current', 'true');
+  }
 
   function setupAnalytics() {
-    let analyticsLoaded = false;
+    let loaded = false;
 
-    function loadAnalytics() {
-      if (analyticsLoaded) return;
-      analyticsLoaded = true;
+    function load() {
+      if (loaded) return;
+      loaded = true;
 
-      const gtagScript   = document.createElement('script');
-      gtagScript.async   = true;
-      gtagScript.src     = 'https://www.googletagmanager.com/gtag/js?id=G-VRDSSTW4HR';
+      const gtagScript = document.createElement('script');
+      gtagScript.async = true;
+      gtagScript.src   = 'https://www.googletagmanager.com/gtag/js?id=G-VRDSSTW4HR';
       document.head.appendChild(gtagScript);
 
       window.dataLayer = window.dataLayer || [];
       function gtag() { dataLayer.push(arguments); }
       gtag('js', new Date());
-      gtag('config', 'G-VRDSSTW4HR');
+      gtag('config', 'G-VRDSSTW4HR', { anonymize_ip: true });
 
       (function (w, d, t) {
         w.TiktokAnalyticsObject = t;
@@ -120,19 +119,16 @@
     }
 
     ['scroll', 'mousemove', 'touchstart', 'click'].forEach(function (event) {
-      window.addEventListener(event, loadAnalytics, { passive: true, once: true });
+      window.addEventListener(event, load, { passive: true, once: true });
     });
 
-    setTimeout(loadAnalytics, 5000);
+    setTimeout(load, 5000);
   }
-
-  /* =========================================================================
-     INIT
-     ========================================================================= */
 
   document.addEventListener('DOMContentLoaded', function () {
     setupMobileMenu();
-    setupDropdown();
+    setupDropdowns();
+    setupLangButtons();
     setupAnalytics();
   });
 

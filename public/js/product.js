@@ -84,14 +84,14 @@ window.initProduct = function () {
   document.querySelectorAll('.ambernord-related-grid a, .ambernord-product-card').forEach(function (el) {
     const href = el.getAttribute('href') || '';
 
-    if (href.includes('the-starter')) {
-      el.setAttribute('href', '/the-starter/');
+    if (href.includes('starter')) {
+      el.setAttribute('href', '/shop/starter/');
       el.setAttribute('data-link', '');
-    } else if (href.includes('the-habit')) {
-      el.setAttribute('href', '/the-habit/');
+    } else if (href.includes('habit')) {
+      el.setAttribute('href', '/shop/habit/');
       el.setAttribute('data-link', '');
-    } else if (href.includes('the-protocol')) {
-      el.setAttribute('href', '/the-protocol/');
+    } else if (href.includes('protocol')) {
+      el.setAttribute('href', '/shop/protocol/');
       el.setAttribute('data-link', '');
     }
   });

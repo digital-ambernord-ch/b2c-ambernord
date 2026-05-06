@@ -2,7 +2,7 @@
   "meta": {
     "title": "Stato dell'ordine | AmberNord",
     "description": "Inserisci il numero d'ordine AmberNord per verificare immediatamente lo stato attuale della tua spedizione.",
-    "canonical": "https://ambernord.ch/it/bestellstatus/",
+    "canonical": "https://ambernord.ch/it/hilfe/bestellstatus/",
     "slug": "/it/bestellstatus/",
     "robots": "index, follow",
     "og": {
@@ -12,11 +12,11 @@
       "type": "website"
     },
     "hreflang": {
-      "de": "https://ambernord.ch/bestellstatus/",
-      "en": "https://ambernord.ch/en/bestellstatus/",
-      "fr": "https://ambernord.ch/fr/bestellstatus/",
-      "it": "https://ambernord.ch/it/bestellstatus/",
-      "x-default": "https://ambernord.ch/bestellstatus/"
+      "de": "https://ambernord.ch/hilfe/bestellstatus/",
+      "en": "https://ambernord.ch/en/hilfe/bestellstatus/",
+      "fr": "https://ambernord.ch/fr/hilfe/bestellstatus/",
+      "it": "https://ambernord.ch/it/hilfe/bestellstatus/",
+      "x-default": "https://ambernord.ch/hilfe/bestellstatus/"
     }
   },
   "header": {

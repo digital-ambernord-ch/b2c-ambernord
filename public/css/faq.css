@@ -48,45 +48,7 @@
     padding: 0 var(--container-pad);
 }
 
-/* --------------------------------------------------------------------------
-   PAGE HEADER
-
-   Centred subtitle + h1 with muted second line.
-   -------------------------------------------------------------------------- */
-
-.faq-header {
-    text-align: center;
-    margin-bottom: 60px;
-}
-
-.faq-premium-subtitle {
-    color: var(--color-gold);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    display: block;
-    margin-bottom: 15px;
-}
-
-.faq-heading {
-    font-size: clamp(28px, 4vw, 36px);
-    line-height: 1.2;
-    margin: 0;
-    color: var(--color-text);
-    font-family: var(--font-serif);
-    font-weight: 400;
-}
-
-.faq-heading__muted {
-    color: #b0b0b0;
-}
-
-/* --------------------------------------------------------------------------
-   CATEGORY LABELS
-
-   Gold uppercase dividers between question groups.
-   -------------------------------------------------------------------------- */
+/* Category labels — gold uppercase dividers between question groups. */
 
 .faq-category {
     color: var(--color-gold);
@@ -272,12 +234,6 @@
 
    Mobile breakpoints: 991px (tablet), 768px (mobile).
    -------------------------------------------------------------------------- */
-
-@media (max-width: 991px) {
-    .faq-heading {
-        font-size: clamp(24px, 3vw, 30px);
-    }
-}
 
 @media (max-width: 768px) {
     .faq-page-container {

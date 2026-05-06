@@ -177,16 +177,13 @@ window.initLanding = function () {
   if (ytFacade) {
     ytFacade.addEventListener('click', function () {
       const iframe = document.createElement('iframe');
-      iframe.src         = 'https://www.youtube.com/embed/j8lfT9kNGK0?autoplay=1&controls=1&rel=0&modestbranding=1&playsinline=1';
-      iframe.frameBorder = '0';
-      iframe.allow       = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      iframe.src             = 'https://www.youtube-nocookie.com/embed/j8lfT9kNGK0?autoplay=1&controls=1&rel=0&modestbranding=1&playsinline=1';
+      iframe.title           = 'AmberNord Sanddorn-Ritual Video';
+      iframe.loading         = 'lazy';
+      iframe.allow           = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen';
       iframe.allowFullscreen = true;
-      iframe.style.position = 'absolute';
-      iframe.style.top  = '0';
-      iframe.style.left = '0';
-      iframe.style.width  = '100%';
-      iframe.style.height = '100%';
-      iframe.style.border = 'none';
+      iframe.referrerPolicy  = 'strict-origin-when-cross-origin';
+      iframe.style.cssText   = 'position:absolute;inset:0;width:100%;height:100%;border:0;';
       ytFacade.parentNode.replaceChild(iframe, ytFacade);
     });
   }

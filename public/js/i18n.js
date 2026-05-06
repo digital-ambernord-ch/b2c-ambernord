@@ -1,3 +1,5 @@
+/* AmberNord i18n — fetch /data/<lang>/<page>.json, populate data-i18n* nodes, update head meta. */
+
 window.loadI18n = async function (lang, page) {
   let data;
   try {
@@ -7,6 +9,8 @@ window.loadI18n = async function (lang, page) {
   } catch {
     data = await (await fetch(`/data/de/${page}.json`)).json();
   }
+
+  document.documentElement.setAttribute('lang', lang);
 
   document.querySelectorAll('[data-i18n]').forEach((el) => {
     const v = getPath(data, el.getAttribute('data-i18n'));
@@ -25,15 +29,23 @@ window.loadI18n = async function (lang, page) {
   });
 
   if (data.meta) {
-    document.title = data.meta.title || document.title;
-    setMeta('description', data.meta.description);
+    if (data.meta.title)       document.title = data.meta.title;
+    if (data.meta.description) setMeta('description', data.meta.description);
     setMeta('robots', data.meta.robots || 'index, follow');
-    if (data.meta.og) {
-      setOg('og:title', data.meta.og.title);
-      setOg('og:description', data.meta.og.description);
-      setOg('og:image', data.meta.og.image);
-      setOg('og:type', data.meta.og.type || 'website');
+
+    if (data.meta.canonical) {
+      const canonical = document.getElementById('canonical-tag');
+      if (canonical) canonical.setAttribute('href', data.meta.canonical);
     }
+
+    if (data.meta.og) {
+      setOg('og:title',       data.meta.og.title);
+      setOg('og:description', data.meta.og.description);
+      setOg('og:image',       data.meta.og.image);
+      setOg('og:type',        data.meta.og.type || 'website');
+    }
+
+    document.querySelectorAll('link[rel="alternate"][hreflang]').forEach((el) => el.remove());
     if (data.meta.hreflang) {
       Object.entries(data.meta.hreflang).forEach(([hl, href]) => setHreflang(hl, href));
     }
@@ -64,7 +76,16 @@ function setOg(property, content) {
 }
 
 function setHreflang(lang, href) {
-  let el = document.querySelector(`link[hreflang="${lang}"]`);
-  if (!el) { el = document.createElement('link'); el.rel = 'alternate'; el.hreflang = lang; document.head.appendChild(el); }
+  const el = document.createElement('link');
+  el.rel = 'alternate';
+  el.hreflang = lang;
   el.href = href;
+  document.head.appendChild(el);
+}
+
+if (typeof document !== 'undefined') {
+  document.addEventListener('DOMContentLoaded', () => {
+    const lang = window.getLang();
+    if (lang) document.documentElement.setAttribute('lang', lang);
+  });
 }

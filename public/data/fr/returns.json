@@ -2,7 +2,7 @@
   "meta": {
     "title": "Politique de retour et remboursement | AmberNord",
     "description": "Notre politique de retour et de remboursement transparente pour le jus d'argousier bio AmberNord – qualité, hygiène et votre confiance avant tout.",
-    "canonical": "https://ambernord.ch/fr/rueckgabe/",
+    "canonical": "https://ambernord.ch/fr/hilfe/rueckgabe/",
     "slug": "/fr/rueckgabe/",
     "robots": "index, follow",
     "og": {
@@ -12,11 +12,11 @@
       "type": "website"
     },
     "hreflang": {
-      "de": "https://ambernord.ch/rueckgabe/",
-      "en": "https://ambernord.ch/en/rueckgabe/",
-      "fr": "https://ambernord.ch/fr/rueckgabe/",
-      "it": "https://ambernord.ch/it/rueckgabe/",
-      "x-default": "https://ambernord.ch/rueckgabe/"
+      "de": "https://ambernord.ch/hilfe/rueckgabe/",
+      "en": "https://ambernord.ch/en/hilfe/rueckgabe/",
+      "fr": "https://ambernord.ch/fr/hilfe/rueckgabe/",
+      "it": "https://ambernord.ch/it/hilfe/rueckgabe/",
+      "x-default": "https://ambernord.ch/hilfe/rueckgabe/"
     }
   },
   "header": {

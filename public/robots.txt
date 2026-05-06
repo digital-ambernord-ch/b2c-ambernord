@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /pages/
+Disallow: /data/
+
+Sitemap: https://ambernord.ch/sitemap.xml

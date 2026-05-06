@@ -2,7 +2,7 @@
   "meta": {
     "title": "Contact | AmberNord",
     "description": "Contact AmberNord – questions about our organic sea buckthorn juice, orders, B2B partnerships or personal advice. We respond within 24–48 hours.",
-    "canonical": "https://ambernord.ch/en/kontakt/",
+    "canonical": "https://ambernord.ch/en/hilfe/kontakt/",
     "slug": "/en/kontakt/",
     "robots": "index, follow",
     "og": {
@@ -12,11 +12,11 @@
       "type": "website"
     },
     "hreflang": {
-      "de": "https://ambernord.ch/kontakt/",
-      "en": "https://ambernord.ch/en/kontakt/",
-      "fr": "https://ambernord.ch/fr/kontakt/",
-      "it": "https://ambernord.ch/it/kontakt/",
-      "x-default": "https://ambernord.ch/kontakt/"
+      "de": "https://ambernord.ch/hilfe/kontakt/",
+      "en": "https://ambernord.ch/en/hilfe/kontakt/",
+      "fr": "https://ambernord.ch/fr/hilfe/kontakt/",
+      "it": "https://ambernord.ch/it/hilfe/kontakt/",
+      "x-default": "https://ambernord.ch/hilfe/kontakt/"
     }
   },
   "header": {

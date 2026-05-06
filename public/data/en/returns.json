@@ -2,7 +2,7 @@
   "meta": {
     "title": "Return & Refund Policy | AmberNord",
     "description": "Our transparent return and refund policy for AmberNord organic sea buckthorn juice – quality, hygiene and your trust come first.",
-    "canonical": "https://ambernord.ch/en/rueckgabe/",
+    "canonical": "https://ambernord.ch/en/hilfe/rueckgabe/",
     "slug": "/en/rueckgabe/",
     "robots": "index, follow",
     "og": {
@@ -12,11 +12,11 @@
       "type": "website"
     },
     "hreflang": {
-      "de": "https://ambernord.ch/rueckgabe/",
-      "en": "https://ambernord.ch/en/rueckgabe/",
-      "fr": "https://ambernord.ch/fr/rueckgabe/",
-      "it": "https://ambernord.ch/it/rueckgabe/",
-      "x-default": "https://ambernord.ch/rueckgabe/"
+      "de": "https://ambernord.ch/hilfe/rueckgabe/",
+      "en": "https://ambernord.ch/en/hilfe/rueckgabe/",
+      "fr": "https://ambernord.ch/fr/hilfe/rueckgabe/",
+      "it": "https://ambernord.ch/it/hilfe/rueckgabe/",
+      "x-default": "https://ambernord.ch/hilfe/rueckgabe/"
     }
   },
   "header": {

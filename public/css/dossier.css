@@ -93,51 +93,13 @@
 
    -------------------------------------------------------------------------- */
 
-.dossier-hero {
-    text-align: center;
-    padding: clamp(140px, 15vw, 220px) var(--container-pad) clamp(100px, 12vw, 160px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: transparent;
-}
-
-.dossier-hero__subtitle {
-    display: inline-block;
-    font-family: var(--font-sans);
-    font-size: clamp(11px, 2vw, 14px);
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--d-accent);
-    margin-bottom: 24px;
-    font-weight: 500;
-    border-top: 1px solid rgba(237, 163, 35, 0.6);
-    border-bottom: 1px solid rgba(237, 163, 35, 0.6);
-    padding: 8px 16px;
-}
-
-.dossier-hero__heading {
-    font-family: var(--font-serif);
-    font-size: clamp(40px, 6vw, 72px);
-    line-height: 1.15;
-    margin-bottom: 0;
-    font-weight: 400;
-    color: var(--color-text);
-}
-
 .dossier-hero__lead {
     font-family: var(--font-sans);
-    font-size: clamp(18px, 3vw, 22px);
+    font-size: clamp(15px, 2vw, 17px);
     color: var(--d-text-muted);
     max-width: 800px;
     margin: 24px auto 0;
     line-height: 1.6;
-}
-
-.dossier-gold-italic {
-    color: var(--d-accent);
-    font-style: italic;
-    display: block;
 }
 
 
@@ -669,10 +631,6 @@
 }
 
 @media (max-width: 768px) {
-    .dossier-hero__heading {
-        font-size: clamp(32px, 8vw, 48px);
-    }
-
     .dossier-section-title {
         font-size: clamp(24px, 5vw, 32px);
     }

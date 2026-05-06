@@ -34,59 +34,6 @@
 }
 
 
-/* --------------------------------------------------------------------------
-
-   PAGE HEADER
-
-   Centered subtitle label + h1 with italic gold span. Matches the Über uns
-
-   pattern exactly: 11px uppercase label with gold underline, then serif h1.
-
-   -------------------------------------------------------------------------- */
-
-.subpage-header {
-    text-align: center;
-    max-width: 700px;
-    margin: 0 auto 80px;
-    padding: 0 var(--container-pad);
-}
-
-.subpage-subtitle {
-    display: inline-block;
-    color: var(--color-gold);
-    font-family: var(--font-sans);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    border-bottom: 1px solid rgba(237, 163, 35, 0.4);
-    padding-bottom: 10px;
-}
-
-.subpage-header h1 {
-    color: var(--color-text);
-    font-family: var(--font-serif);
-    font-size: clamp(32px, 4vw, 52px);
-    font-weight: 400;
-    line-height: 1.2;
-    margin: 0;
-}
-
-.subpage-header h1 span {
-    font-style: italic;
-    color: var(--color-gold);
-}
-
-
-/* --------------------------------------------------------------------------
-
-   SCREEN-READER ONLY
-
-   Hides the benefits section h2 visually while remaining accessible.
-
-   -------------------------------------------------------------------------- */
-
 .ritual-sr-only {
     position: absolute;
     width: 1px;

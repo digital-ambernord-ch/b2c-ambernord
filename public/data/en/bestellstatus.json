@@ -2,7 +2,7 @@
   "meta": {
     "title": "Track Your Order | AmberNord",
     "description": "Enter your AmberNord order number to instantly check the current status of your delivery — fast, simple, and straightforward.",
-    "canonical": "https://ambernord.ch/en/bestellstatus/",
+    "canonical": "https://ambernord.ch/en/hilfe/bestellstatus/",
     "slug": "/en/bestellstatus/",
     "robots": "index, follow",
     "og": {
@@ -12,11 +12,11 @@
       "type": "website"
     },
     "hreflang": {
-      "de": "https://ambernord.ch/bestellstatus/",
-      "en": "https://ambernord.ch/en/bestellstatus/",
-      "fr": "https://ambernord.ch/fr/bestellstatus/",
-      "it": "https://ambernord.ch/it/bestellstatus/",
-      "x-default": "https://ambernord.ch/bestellstatus/"
+      "de": "https://ambernord.ch/hilfe/bestellstatus/",
+      "en": "https://ambernord.ch/en/hilfe/bestellstatus/",
+      "fr": "https://ambernord.ch/fr/hilfe/bestellstatus/",
+      "it": "https://ambernord.ch/it/hilfe/bestellstatus/",
+      "x-default": "https://ambernord.ch/hilfe/bestellstatus/"
     }
   },
   "header": {

@@ -2,7 +2,7 @@
   "meta": {
     "title": "The Master Box – Original Edition (20 × 250 ml) | AmberNord",
     "description": "L'Original Edition exclusive : 20 × 250 ml de jus d'argousier bio pressé à froid. Plus de 25 % d'économie, livraison premium offerte depuis Aarau.",
-    "canonical": "https://ambernord.ch/fr/the-master-box/",
+    "canonical": "https://ambernord.ch/fr/shop/master-box/",
     "slug": "/the-master-box/",
     "robots": "index, follow",
     "og": {
@@ -12,11 +12,11 @@
       "type": "website"
     },
     "hreflang": {
-      "de": "https://ambernord.ch/the-master-box/",
-      "en": "https://ambernord.ch/en/the-master-box/",
-      "fr": "https://ambernord.ch/fr/the-master-box/",
-      "it": "https://ambernord.ch/it/the-master-box/",
-      "x-default": "https://ambernord.ch/the-master-box/"
+      "de": "https://ambernord.ch/shop/master-box/",
+      "en": "https://ambernord.ch/en/shop/master-box/",
+      "fr": "https://ambernord.ch/fr/shop/master-box/",
+      "it": "https://ambernord.ch/it/shop/master-box/",
+      "x-default": "https://ambernord.ch/shop/master-box/"
     }
   },
   "header": {

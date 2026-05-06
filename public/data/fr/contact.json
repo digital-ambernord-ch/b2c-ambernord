@@ -2,7 +2,7 @@
   "meta": {
     "title": "Contact | AmberNord",
     "description": "Contactez AmberNord – questions sur notre jus d'argousier bio, commandes, partenariats B2B ou conseils personnalisés. Nous répondons sous 24 à 48 heures.",
-    "canonical": "https://ambernord.ch/fr/kontakt/",
+    "canonical": "https://ambernord.ch/fr/hilfe/kontakt/",
     "slug": "/fr/kontakt/",
     "robots": "index, follow",
     "og": {
@@ -12,11 +12,11 @@
       "type": "website"
     },
     "hreflang": {
-      "de": "https://ambernord.ch/kontakt/",
-      "en": "https://ambernord.ch/en/kontakt/",
-      "fr": "https://ambernord.ch/fr/kontakt/",
-      "it": "https://ambernord.ch/it/kontakt/",
-      "x-default": "https://ambernord.ch/kontakt/"
+      "de": "https://ambernord.ch/hilfe/kontakt/",
+      "en": "https://ambernord.ch/en/hilfe/kontakt/",
+      "fr": "https://ambernord.ch/fr/hilfe/kontakt/",
+      "it": "https://ambernord.ch/it/hilfe/kontakt/",
+      "x-default": "https://ambernord.ch/hilfe/kontakt/"
     }
   },
   "header": {

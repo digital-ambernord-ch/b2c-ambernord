@@ -159,78 +159,6 @@
   color: #000;
 }
 
-/* --------------------------------------------------------------------------
-   SUBPAGE HEADER — centred eyebrow and h1 shared across all subpages.
-   -------------------------------------------------------------------------- */
-
-.subpage-header {
-  text-align: center;
-  max-width: 700px;
-  margin: 0 auto 80px;
-  padding: 0 var(--container-pad);
-}
-
-.subpage-subtitle {
-  display: inline-block;
-  color: var(--color-gold);
-  font-family: var(--font-sans);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-  border-bottom: 1px solid rgba(237, 163, 35, 0.4);
-  padding-bottom: 10px;
-}
-
-.subpage-header h1 {
-  color: var(--color-text);
-  font-family: var(--font-serif);
-  font-size: clamp(32px, 4vw, 52px);
-  font-weight: 400;
-  line-height: 1.2;
-  margin: 0;
-}
-
-.subpage-header h1 span {
-  font-style: italic;
-  color: var(--color-gold);
-}
-
-/* --------------------------------------------------------------------------
-   SKIP LINK — keyboard shortcut to bypass nav, visible only on focus.
-   -------------------------------------------------------------------------- */
-
-.skip-link {
-  position: absolute;
-  top: -100%;
-  left: 1rem;
-  background: var(--color-gold);
-  color: #000;
-  padding: 0.5rem 1rem;
-  font-weight: 700;
-  z-index: 9999;
-  border-radius: 4px;
-}
-
-.skip-link:focus {
-  top: 1rem;
-}
-
-/* --------------------------------------------------------------------------
-   FOCUS — gold ring applied to all keyboard-navigable elements.
-   -------------------------------------------------------------------------- */
-
-:focus-visible {
-  outline: 2px solid var(--color-gold);
-  outline-offset: 3px;
-  border-radius: 3px;
-}
-
-/* --------------------------------------------------------------------------
-   SCREEN READER ONLY — accessible label hidden from sighted users.
-   -------------------------------------------------------------------------- */
-
 .thankyou-sr-only {
   position: absolute;
   width: 1px;
@@ -242,10 +170,6 @@
   white-space: nowrap;
   border: 0;
 }
-
-/* --------------------------------------------------------------------------
-   WILL-CHANGE — applied only during active entrance animation, then removed.
-   -------------------------------------------------------------------------- */
 
 .thankyou-page-container.animating {
   will-change: opacity, transform;

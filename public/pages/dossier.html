@@ -1,26 +1,14 @@
-<!-- ==========================================================================
-     DOSSIER PAGE FRAGMENT
-     Route: /dossier/  |  Init: window.initDossier()
-     Injected into #app by router.js. No <html>, <head>, or <body> tags.
-     ========================================================================== -->
+﻿<a href="#main-content" class="skip-link">Skip to content</a>
 
 <div class="dossier-page">
 
-    <!-- PAGE HERO
-         Transparent — inherits the global hero background set by the router.
-         ------------------------------------------------------------------ -->
-    <header class="dossier-hero">
-        <div class="dossier-container">
-            <span class="dossier-hero__subtitle">Wissenschaft &amp; Philosophie</span>
-            <h1 class="dossier-hero__heading">
-                Das Sanddorn-Dossier<br>
-                <span class="dossier-gold-italic">der AmberNord Methodik.</span>
-            </h1>
-            <p class="dossier-hero__lead">
-                Pharmakologie, Phytochemie und funktionelle Ernährung<br>(Hippophae rhamnoides)
-            </p>
-        </div>
-    </header>
+    <div class="subpage-header">
+        <span class="subpage-subtitle">Wissenschaft &amp; Philosophie</span>
+        <h1>Das Sanddorn-Dossier<br><span>der AmberNord Methodik.</span></h1>
+        <p class="dossier-hero__lead">Pharmakologie, Phytochemie und funktionelle Ernährung<br>(Hippophae rhamnoides)</p>
+    </div>
+
+    <section id="main-content">
 
     <!-- SECTION: EVOLUTION & HISTORISCHE NUTZUNG
          Two-column layout: text + bullet list on the left, image on the right.
@@ -279,12 +267,9 @@
         </div>
     </section>
 
+    </section>
 </div>
 
-<!-- JSON-LD SCHEMA
-     Article schema for the dossier editorial content + BreadcrumbList for
-     site hierarchy. Keep dateModified in sync with content updates.
-     ------------------------------------------------------------------ -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -308,10 +293,10 @@
   "datePublished": "2025-01-01",
   "dateModified": "2025-05-01",
   "inLanguage": "de-CH",
-  "url": "https://ambernord.ch/dossier/",
+  "url": "https://ambernord.ch/wissenschaft/",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://ambernord.ch/dossier/"
+    "@id": "https://ambernord.ch/wissenschaft/"
   },
   "about": {
     "@type": "Thing",
@@ -338,7 +323,7 @@
       "@type": "ListItem",
       "position": 2,
       "name": "Das Sanddorn-Dossier",
-      "item": "https://ambernord.ch/dossier/"
+      "item": "https://ambernord.ch/wissenschaft/"
     }
   ]
 }

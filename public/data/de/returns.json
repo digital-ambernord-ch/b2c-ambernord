@@ -2,7 +2,7 @@
   "meta": {
     "title": "Rückgabe- & Erstattungsrichtlinie | AmberNord",
     "description": "Unsere transparente Rückgabe- und Erstattungsrichtlinie für AmberNord Bio-Sanddornsaft – Qualität, Hygiene und Ihr Vertrauen stehen für uns an erster Stelle.",
-    "canonical": "https://ambernord.ch/rueckgabe/",
+    "canonical": "https://ambernord.ch/hilfe/rueckgabe/",
     "slug": "/rueckgabe/",
     "robots": "index, follow",
     "og": {
@@ -12,11 +12,11 @@
       "type": "website"
     },
     "hreflang": {
-      "de": "https://ambernord.ch/rueckgabe/",
-      "en": "https://ambernord.ch/en/rueckgabe/",
-      "fr": "https://ambernord.ch/fr/rueckgabe/",
-      "it": "https://ambernord.ch/it/rueckgabe/",
-      "x-default": "https://ambernord.ch/rueckgabe/"
+      "de": "https://ambernord.ch/hilfe/rueckgabe/",
+      "en": "https://ambernord.ch/en/hilfe/rueckgabe/",
+      "fr": "https://ambernord.ch/fr/hilfe/rueckgabe/",
+      "it": "https://ambernord.ch/it/hilfe/rueckgabe/",
+      "x-default": "https://ambernord.ch/hilfe/rueckgabe/"
     }
   },
   "header": {

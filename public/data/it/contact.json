@@ -2,7 +2,7 @@
   "meta": {
     "title": "Contatto | AmberNord",
     "description": "Contattate AmberNord – domande sul nostro succo di olivello spinoso biologico, ordini, partnership B2B o consulenza personale. Rispondiamo entro 24–48 ore.",
-    "canonical": "https://ambernord.ch/it/kontakt/",
+    "canonical": "https://ambernord.ch/it/hilfe/kontakt/",
     "slug": "/it/kontakt/",
     "robots": "index, follow",
     "og": {
@@ -12,11 +12,11 @@
       "type": "website"
     },
     "hreflang": {
-      "de": "https://ambernord.ch/kontakt/",
-      "en": "https://ambernord.ch/en/kontakt/",
-      "fr": "https://ambernord.ch/fr/kontakt/",
-      "it": "https://ambernord.ch/it/kontakt/",
-      "x-default": "https://ambernord.ch/kontakt/"
+      "de": "https://ambernord.ch/hilfe/kontakt/",
+      "en": "https://ambernord.ch/en/hilfe/kontakt/",
+      "fr": "https://ambernord.ch/fr/hilfe/kontakt/",
+      "it": "https://ambernord.ch/it/hilfe/kontakt/",
+      "x-default": "https://ambernord.ch/hilfe/kontakt/"
     }
   },
   "header": {

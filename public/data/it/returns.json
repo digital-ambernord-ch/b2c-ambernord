@@ -2,7 +2,7 @@
   "meta": {
     "title": "Politica di reso e rimborso | AmberNord",
     "description": "La nostra politica di reso e rimborso trasparente per il succo di olivello spinoso bio AmberNord – qualità, igiene e la vostra fiducia al primo posto.",
-    "canonical": "https://ambernord.ch/it/rueckgabe/",
+    "canonical": "https://ambernord.ch/it/hilfe/rueckgabe/",
     "slug": "/it/rueckgabe/",
     "robots": "index, follow",
     "og": {
@@ -12,11 +12,11 @@
       "type": "website"
     },
     "hreflang": {
-      "de": "https://ambernord.ch/rueckgabe/",
-      "en": "https://ambernord.ch/en/rueckgabe/",
-      "fr": "https://ambernord.ch/fr/rueckgabe/",
-      "it": "https://ambernord.ch/it/rueckgabe/",
-      "x-default": "https://ambernord.ch/rueckgabe/"
+      "de": "https://ambernord.ch/hilfe/rueckgabe/",
+      "en": "https://ambernord.ch/en/hilfe/rueckgabe/",
+      "fr": "https://ambernord.ch/fr/hilfe/rueckgabe/",
+      "it": "https://ambernord.ch/it/hilfe/rueckgabe/",
+      "x-default": "https://ambernord.ch/hilfe/rueckgabe/"
     }
   },
   "header": {
