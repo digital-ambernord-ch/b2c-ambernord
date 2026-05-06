@@ -128,7 +128,15 @@
   sticky: null, 
   schema: null 
 },
-
+'/rueckgabe/': {
+  page: '/pages/returns.html',
+  title: 'Rückgabe- & Erstattungsrichtlinie | AmberNord',
+  description: 'Rückgabe- und Erstattungsrichtlinie für AmberNord Bio-Sanddornsaft.',
+  canonical: 'https://ambernord.ch/rueckgabe/',
+  type: 'returns',
+  sticky: null,
+  schema: null
+},
 
     '/the-starter/': {
       page:        '/pages/the-starter.html',
@@ -411,7 +419,9 @@ if (target) window.scrollTo({ top: target.getBoundingClientRect().top + window.s
   else if (route.type === 'datenschutz' && typeof window.initDatenschutz === 'function') { 
   window.initDatenschutz(); 
   }
-
+  else if (route.type === 'returns' && typeof window.initReturns === 'function') {
+  window.initReturns();
+  }
     } catch (err) {
       console.error('[Router] Navigation failed:', err);
       app.innerHTML = '<div style="padding:120px 20px;text-align:center;font-family:\'Montserrat\',sans-serif;color:#888;">Seite nicht gefunden.</div>';

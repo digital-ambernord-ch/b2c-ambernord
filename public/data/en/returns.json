@@ -1,0 +1,63 @@
+{
+  "meta": {
+    "title": "Return & Refund Policy | AmberNord",
+    "description": "Our transparent return and refund policy for AmberNord organic sea buckthorn juice – quality, hygiene and your trust come first.",
+    "canonical": "https://ambernord.ch/en/rueckgabe/",
+    "slug": "/en/rueckgabe/",
+    "robots": "index, follow",
+    "og": {
+      "title": "Return & Refund Policy | AmberNord",
+      "description": "Our transparent return and refund policy for AmberNord organic sea buckthorn juice.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/ambernord-og-default",
+      "type": "website"
+    },
+    "hreflang": {
+      "de": "https://ambernord.ch/rueckgabe/",
+      "en": "https://ambernord.ch/en/rueckgabe/",
+      "fr": "https://ambernord.ch/fr/rueckgabe/",
+      "it": "https://ambernord.ch/it/rueckgabe/",
+      "x-default": "https://ambernord.ch/rueckgabe/"
+    }
+  },
+  "header": {
+    "eyebrow": "AmberNord Legal",
+    "h1": "Return &amp; <span>Refund Policy</span>"
+  },
+  "sections": [
+    {
+      "id": "grundsatz",
+      "heading": "1. Principle: No Right of Return for Food Products",
+      "paragraphs": [
+        "As we operate in the field of premium organic food products (such as organic sea buckthorn juice), quality, hygiene and food safety are our highest priority. For reasons of health protection and hygiene, a general right of return or exchange for our products is excluded. We also note that under Swiss law, no statutory right of withdrawal applies to online retail purchases."
+      ]
+    },
+    {
+      "id": "maengel",
+      "heading": "2. Defects and Transport Damage",
+      "paragraphs": [
+        "Your satisfaction is of course very important to us. Should a product arrive damaged (e.g. broken glass during transport) or show a quality defect, please contact us immediately – no later than 3 days after receipt of the goods.",
+        "Please send us an email with a brief description of the issue and corresponding photographs to: <a href=\"mailto:info@ambernord.ch\">info@ambernord.ch</a>",
+        "We will review your concern as quickly as possible. If a justified defect is confirmed, we will offer you – at our discretion – a free replacement delivery or a full refund of the purchase price."
+      ]
+    },
+    {
+      "id": "ruecksendungen",
+      "heading": "3. Returns (by Prior Agreement Only)",
+      "paragraphs": [
+        "Please do not send any products back to us without prior authorisation. A physical return is only requested in rare exceptional cases and only after our express written confirmation.",
+        "If a return has been explicitly approved by us, please ship the goods to our business address:",
+        "<strong>Matisons Selection (AmberNord)</strong><br>Alte Gasse 8<br>5034 Suhr, Switzerland"
+      ]
+    },
+    {
+      "id": "erstattungen",
+      "heading": "4. Refunds",
+      "paragraphs": [
+        "Once a refund has been approved by us, the corresponding amount will be returned to the original payment method used at the time of purchase within 14 days."
+      ]
+    }
+  ],
+  "footer": {
+    "lastUpdated": "Last updated: February 2026"
+  }
+}

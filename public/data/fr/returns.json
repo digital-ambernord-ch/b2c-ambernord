@@ -1,0 +1,63 @@
+{
+  "meta": {
+    "title": "Politique de retour et remboursement | AmberNord",
+    "description": "Notre politique de retour et de remboursement transparente pour le jus d'argousier bio AmberNord – qualité, hygiène et votre confiance avant tout.",
+    "canonical": "https://ambernord.ch/fr/rueckgabe/",
+    "slug": "/fr/rueckgabe/",
+    "robots": "index, follow",
+    "og": {
+      "title": "Politique de retour et remboursement | AmberNord",
+      "description": "Notre politique de retour et de remboursement transparente pour le jus d'argousier bio AmberNord.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/ambernord-og-default",
+      "type": "website"
+    },
+    "hreflang": {
+      "de": "https://ambernord.ch/rueckgabe/",
+      "en": "https://ambernord.ch/en/rueckgabe/",
+      "fr": "https://ambernord.ch/fr/rueckgabe/",
+      "it": "https://ambernord.ch/it/rueckgabe/",
+      "x-default": "https://ambernord.ch/rueckgabe/"
+    }
+  },
+  "header": {
+    "eyebrow": "AmberNord Legal",
+    "h1": "Politique de <span>retour et remboursement</span>"
+  },
+  "sections": [
+    {
+      "id": "grundsatz",
+      "heading": "1. Principe : Aucun droit de retour pour les denrées alimentaires",
+      "paragraphs": [
+        "Notre activité étant centrée sur des produits alimentaires biologiques haut de gamme (tels que le jus d'argousier bio), la qualité, l'hygiène et la sécurité alimentaire constituent notre priorité absolue. Pour des raisons de protection de la santé et d'hygiène, tout droit général de retour ou d'échange est exclu pour nos produits. Nous précisons également qu'en vertu du droit suisse, aucun droit légal de rétractation n'existe dans le commerce en ligne."
+      ]
+    },
+    {
+      "id": "maengel",
+      "heading": "2. Défauts et dommages de transport",
+      "paragraphs": [
+        "Votre satisfaction nous tient bien entendu à cœur. Si un produit vous parvient endommagé (p. ex. bris de verre lors du transport) ou présente un défaut de qualité, veuillez nous contacter immédiatement et au plus tard dans les 3 jours suivant la réception de la marchandise.",
+        "Merci de nous adresser dans ce cas un e-mail avec une brève description du problème ainsi que des photos à : <a href=\"mailto:info@ambernord.ch\">info@ambernord.ch</a>",
+        "Nous examinerons votre demande dans les meilleurs délais. En cas de défaut avéré, nous vous proposerons, à notre discrétion, une livraison de remplacement gratuite ou un remboursement du prix d'achat."
+      ]
+    },
+    {
+      "id": "ruecksendungen",
+      "heading": "3. Retours (uniquement après accord préalable)",
+      "paragraphs": [
+        "Merci de ne pas nous retourner de produits sans autorisation préalable. Un retour physique n'est demandé que dans de rares cas exceptionnels et uniquement après confirmation écrite expresse de notre part.",
+        "Si un retour a été expressément approuvé par nos soins, veuillez expédier la marchandise à notre adresse commerciale :",
+        "<strong>Matisons Selection (AmberNord)</strong><br>Alte Gasse 8<br>5034 Suhr, Suisse"
+      ]
+    },
+    {
+      "id": "erstattungen",
+      "heading": "4. Remboursements",
+      "paragraphs": [
+        "Lorsqu'un remboursement a été approuvé par nos soins, le montant correspondant sera restitué dans les 14 jours sur le moyen de paiement utilisé lors de l'achat."
+      ]
+    }
+  ],
+  "footer": {
+    "lastUpdated": "Dernière mise à jour : février 2026"
+  }
+}

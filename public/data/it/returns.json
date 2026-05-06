@@ -1,0 +1,63 @@
+{
+  "meta": {
+    "title": "Politica di reso e rimborso | AmberNord",
+    "description": "La nostra politica di reso e rimborso trasparente per il succo di olivello spinoso bio AmberNord – qualità, igiene e la vostra fiducia al primo posto.",
+    "canonical": "https://ambernord.ch/it/rueckgabe/",
+    "slug": "/it/rueckgabe/",
+    "robots": "index, follow",
+    "og": {
+      "title": "Politica di reso e rimborso | AmberNord",
+      "description": "La nostra politica di reso e rimborso trasparente per il succo di olivello spinoso bio AmberNord.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/ambernord-og-default",
+      "type": "website"
+    },
+    "hreflang": {
+      "de": "https://ambernord.ch/rueckgabe/",
+      "en": "https://ambernord.ch/en/rueckgabe/",
+      "fr": "https://ambernord.ch/fr/rueckgabe/",
+      "it": "https://ambernord.ch/it/rueckgabe/",
+      "x-default": "https://ambernord.ch/rueckgabe/"
+    }
+  },
+  "header": {
+    "eyebrow": "AmberNord Legal",
+    "h1": "Politica di <span>reso e rimborso</span>"
+  },
+  "sections": [
+    {
+      "id": "grundsatz",
+      "heading": "1. Principio: Nessun diritto di reso per gli alimenti",
+      "paragraphs": [
+        "Operando nel settore degli alimenti biologici di alta qualità (come il succo di olivello spinoso bio), qualità, igiene e sicurezza alimentare rappresentano la nostra priorità assoluta. Per ragioni di tutela della salute e di igiene, è escluso qualsiasi diritto generale di reso o di cambio per i nostri prodotti. Precisiamo inoltre che, ai sensi del diritto svizzero, non esiste alcun diritto legale di recesso nel commercio online."
+      ]
+    },
+    {
+      "id": "maengel",
+      "heading": "2. Difetti e danni da trasporto",
+      "paragraphs": [
+        "La vostra soddisfazione è ovviamente molto importante per noi. Qualora un prodotto dovesse arrivarvi danneggiato (ad es. rottura del vetro durante il trasporto) o presentasse un difetto di qualità, vi preghiamo di contattarci immediatamente e al più tardi entro 3 giorni dal ricevimento della merce.",
+        "Vi chiediamo di inviarci in tal caso un'e-mail con una breve descrizione del problema e relative fotografie all'indirizzo: <a href=\"mailto:info@ambernord.ch\">info@ambernord.ch</a>",
+        "Esamineremo la vostra richiesta nel più breve tempo possibile. In presenza di un difetto fondato, vi offriremo, a nostra discrezione, una spedizione sostitutiva gratuita oppure il rimborso del prezzo di acquisto."
+      ]
+    },
+    {
+      "id": "ruecksendungen",
+      "heading": "3. Resi (solo previo accordo)",
+      "paragraphs": [
+        "Vi preghiamo di non rispedirci prodotti senza autorizzazione preventiva. Una restituzione fisica viene richiesta solo in rari casi eccezionali e soltanto dopo nostra esplicita conferma scritta.",
+        "Se un reso è stato espressamente approvato da noi, spedite la merce al nostro indirizzo commerciale:",
+        "<strong>Matisons Selection (AmberNord)</strong><br>Alte Gasse 8<br>5034 Suhr, Svizzera"
+      ]
+    },
+    {
+      "id": "erstattungen",
+      "heading": "4. Rimborsi",
+      "paragraphs": [
+        "Una volta approvato il rimborso da parte nostra, l'importo corrispondente verrà restituito entro 14 giorni sul mezzo di pagamento utilizzato al momento dell'acquisto."
+      ]
+    }
+  ],
+  "footer": {
+    "lastUpdated": "Ultimo aggiornamento: febbraio 2026"
+  }
+}
