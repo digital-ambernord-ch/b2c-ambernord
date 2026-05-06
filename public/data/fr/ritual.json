@@ -1,0 +1,89 @@
+{
+  "meta": {
+    "title": "Rituel | AmberNord",
+    "description": "La science derrière le rituel AmberNord : 9 domaines d'action, protocole quotidien et idées de recettes avec l'élixir d'argousier.",
+    "canonical": "https://ambernord.ch/fr/ritual/",
+    "robots": "index, follow",
+    "og": {
+      "title": "Rituel | AmberNord",
+      "description": "La science derrière le rituel AmberNord : 9 domaines d'action, protocole quotidien et idées de recettes.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/v1774787737/AmberNord_Sanddorn_Biohacking_Longevity_Schweiz_Natur_Ritual_Essenz_jwznsd.webp",
+      "type": "website"
+    },
+    "hreflang": {
+      "de": "https://ambernord.ch/ritual/",
+      "en": "https://ambernord.ch/en/ritual/",
+      "fr": "https://ambernord.ch/fr/ritual/",
+      "it": "https://ambernord.ch/it/ritual/",
+      "x-default": "https://ambernord.ch/ritual/"
+    }
+  },
+  "header": {
+    "eyebrow": "Application & Effet",
+    "h1": "La science <span>derrière le rituel.</span>"
+  },
+  "benefits": {
+    "srHeading": "Les 9 domaines d'action",
+    "items": [
+      { "title": "Énergie cellulaire & vitalité", "desc": "Vitamines et minéraux naturels qui réduisent la fatigue et offrent un boost énergétique durable. Parfait pour des performances soutenues au quotidien." },
+      { "title": "Renaissance cellulaire de la peau", "desc": "Riche en vitamines A et E ainsi qu'en rare acide gras Oméga-7. Cette synergie stimule la synthèse du collagène et donne à la peau un éclat profond et naturel." },
+      { "title": "Clarté cognitive & concentration", "desc": "Les vitamines B et le tryptophane (précurseur de la sérotonine) aident démontrablement à réduire le stress, à améliorer l'humeur et à aiguiser l'acuité mentale." },
+      { "title": "Résilience immunitaire absolue", "desc": "Avec une concentration extrêmement élevée et biodisponible en vitamine C, l'élixir renforce le système immunitaire et réduit sensiblement le risque d'infections." },
+      { "title": "Équilibre du microbiote", "desc": "Les composés végétaux bioactifs et les fibres favorisent une flore intestinale saine, optimisent la digestion et soutiennent la protection de la muqueuse gastrique." },
+      { "title": "Protection cellulaire active", "desc": "Antioxydants hautement concentrés qui combattent les radicaux libres au niveau cellulaire, atténuent les processus inflammatoires chroniques et accélèrent la récupération physique." },
+      { "title": "Detox profond & fonction hépatique", "desc": "Soutient les processus naturels de détoxification du corps, favorise activement la régénération des cellules hépatiques et protège des influences environnementales oxydatives." },
+      { "title": "Longévité cardiovasculaire", "desc": "Les flavonoïdes et les acides gras Oméga à haute dose aident à optimiser le profil de cholestérol et à améliorer durablement l'élasticité des vaisseaux sanguins." },
+      { "title": "Le bouclier numérique", "desc": "Vitamine A et caroténoïdes hautement concentrés agissant comme un filtre cellulaire naturel contre la lumière bleue et réduisant le risque de fatigue oculaire numérique." }
+    ]
+  },
+  "stats": {
+    "label": "Statistiques produit",
+    "items": [
+      { "highlight": "190+", "detail": "Composés<br>bioactifs" },
+      { "highlight": "18",   "detail": "Acides aminés<br>essentiels" },
+      { "highlight": "4",    "detail": "Acides gras Oméga<br>(3, 6, 7 & 9)" },
+      { "highlight": "9×",   "detail": "Plus de vitamine C<br>que les agrumes" }
+    ]
+  },
+  "video": {
+    "eyebrow": "Expérience visuelle",
+    "heading": "L'élixir en <span>mouvement.</span>",
+    "alt": "Espace réservé vidéo : présentation de l'élixir AmberNord",
+    "placeholder": "Espace réservé vidéo"
+  },
+  "protocol": {
+    "heading": "Le protocole <span>quotidien.</span>",
+    "items": [
+      { "step": "Étape 01", "title": "La règle dorée du matin", "desc": "En raison de la dose importante de vitamine C naturelle et de l'effet fortement vitalisant, nous recommandons d'intégrer le rituel dans la première moitié de la journée. Évitez la consommation peu avant le coucher." },
+      { "step": "Étape 02", "title": "L'alchimie parfaite", "desc": "AmberNord n'est pas une boisson ordinaire, mais une essence brute hautement concentrée. Pour une hydratation maximale, mélangez <strong class=\"ritual-protocol__highlight\">1 part d'essence avec 10 parts d'eau</strong> (plate ou pétillante)." },
+      { "step": "Étape 03", "title": "La règle des 10 jours", "desc": "Comme nous renonçons totalement aux conservateurs artificiels, conservez impérativement la bouteille au réfrigérateur après ouverture et savourez l'élixir <strong class=\"ritual-protocol__highlight\">dans les 10 jours</strong>." }
+    ]
+  },
+  "recipes": {
+    "eyebrow": "Inspiration & quotidien",
+    "heading": "Recettes & <span>variations.</span>",
+    "tabs": {
+      "kalt": "Froid & Rafraîchissant",
+      "warm": "Chaud & Holistique",
+      "kulinarik": "Cuisine & Desserts",
+      "label": "Catégories de recettes"
+    },
+    "kalt": [
+      { "tag": "Mixologie", "title": "Nordic Spritz (sans alcool)", "desc": "L'alternative avant-gardiste à l'Aperol. Utilisez l'acidité complexe et la texture de l'essence AmberNord, mélangée à un tonic amer sur glace et garnie de romarin frais. Un profil hautement complexe, sans alcool, pour des soirées exigeantes." },
+      { "tag": "Exotique & onctueux", "title": "Amber Coconut Sour", "desc": "Une expérience soyeuse : mélangez du lait de coco crémeux, une touche de douceur de mangue et l'acidité vive de l'essence d'argousier sur glace. Une boisson qui équilibre parfaitement la douceur tropicale et le mordant nordique à chaque gorgée." },
+      { "tag": "Quotidien", "title": "Sparkling Afternoon", "desc": "1 part d'AmberNord avec de l'eau minérale glacée (gazeuse) et une branche de menthe fraîche. Parfait comme rafraîchissement rapide et substitut sain et sans sucre aux boissons d'après-midi conventionnelles." },
+      { "tag": "Santé", "title": "Vitality Smoothie", "desc": "Pour un parfait départ à l'entraînement : mixez du jus de carotte frais, un morceau de gingembre, une demi-banane pour la texture et 20 ml d'essence AmberNord. Un bouclier antioxydant sous forme liquide." }
+    ],
+    "warm": [
+      { "tag": "Ayurveda & équilibre", "title": "Amber Golden Milk", "desc": "Une tasse réconfortante de lait végétal, une cuillère à café de curcuma, une pointe de poivre noir et 10 ml d'essence AmberNord. La synergie parfaite de phyto-nutriments pour apaiser le système nerveux le soir et réduire les inflammations pendant la nuit." },
+      { "tag": "Bien-être", "title": "Le Amber Buzz", "desc": "Jouez avec la chaleur et l'acidité : un trait d'essence AmberNord, infusé avec de l'eau chaude (non bouillante), un peu de miel de manuka et une pincée de cannelle. Un rituel apaisant et chaleureux pour les fraîches journées d'automne et d'hiver." },
+      { "tag": "Système immunitaire", "title": "Shot de gingembre haut de gamme", "desc": "Une combinaison hautement concentrée d'essence AmberNord pure, associée à du jus frais de gingembre et de curcuma ainsi qu'à une pincée de poivre noir. Un shot intense et puissant pour une défense immunitaire maximale." },
+      { "tag": "Rituel", "title": "Thé détox alpin", "desc": "Un rituel de ralentissement : ajoutez quelques gouttes d'huile pure de pulpe d'argousier ou d'essence à de l'eau tiède avec des herbes fraîches pour soutenir activement le métabolisme et protéger les lipides cellulaires." }
+    ],
+    "kulinarik": [
+      { "tag": "Haute cuisine", "title": "Posset à l'argousier", "desc": "La preuve que la simplicité impressionne le plus. Un dessert britannique réinterprété : crème entière, sucre et essence AmberNord pure. L'acidité de l'argousier fait naturellement prendre la crème en une crème soyeuse." },
+      { "tag": "Cuisine du quotidien", "title": "Vinaigrette dorée", "desc": "Transformez n'importe quelle salade : utilisez AmberNord à la place du vinaigre ou du citron. Mélangez de l'huile d'olive de qualité, de l'essence d'argousier, une cuillère à café de moutarde de Dijon, du sel, du poivre et une goutte de sirop d'agave pour un assaisonnement spectaculairement lumineux." }
+    ],
+    "cta": "Obtenir l'élixir"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "meta": {
+    "title": "The Protocol (6× 250 ml) | AmberNord Élixir d'Argousier",
+    "description": "The Protocol : apport cellulaire continu pour la famille et les hauts performeurs. Meilleur prix par dose journalière.",
+    "canonical": "https://ambernord.ch/fr/shop/protocol/",
+    "robots": "index, follow",
+    "og": {
+      "title": "The Protocol (6× 250 ml) | AmberNord",
+      "description": "Apport cellulaire continu pour la famille et les hauts performeurs.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/v1774798936/ambernord-sanddorn-elixier-6er-vorratspack-premium-qualit%C3%A4t.webp_v9c6bd.png",
+      "type": "product"
+    },
+    "hreflang": {
+      "de": "https://ambernord.ch/shop/protocol/",
+      "en": "https://ambernord.ch/en/shop/protocol/",
+      "fr": "https://ambernord.ch/fr/shop/protocol/",
+      "it": "https://ambernord.ch/it/shop/protocol/",
+      "x-default": "https://ambernord.ch/shop/protocol/"
+    }
+  },
+  "gallery": {
+    "mainAlt": "The Protocol — 6× 250 ml élixir d'argousier"
+  },
+  "info": {
+    "title": "The Protocol",
+    "volume": "(6× 250 ml)",
+    "price": "129,00 CHF",
+    "subtitleH3": "Le protocole ultime :",
+    "subtitleSpan": "Pour les hauts performeurs et les familles.",
+    "lead": "Conçu pour ceux qui ne font aucun compromis. « The Protocol » garantit que votre rituel quotidien de protection ne s'interrompt jamais. Pour seulement <strong>2,15 CHF par jour</strong>, c'est la manière la plus efficace de fournir à votre corps plus de 190 composés bioactifs et les quatre acides gras Oméga.",
+    "ctaPrimary": "Commander 6× élixir",
+    "advantageHeading": "Vitalité sans compromis",
+    "advantageBody": "Que ce soit pour l'équipe en télétravail, toute la famille ou comme cure de longue durée pour une régénération cellulaire maximale – <span class=\"p-gold\">ce pack offre la valeur AmberNord exceptionnelle.</span> Protégez vos yeux de la lumière bleue et renforcez votre résilience immunitaire au plus haut niveau naturel.",
+    "scienceHeading": "Le pack comprend",
+    "scienceItem1": "<strong>6× 250 ml</strong> d'essence biologique pure, pressée à froid (Sélection Zelt).",
+    "scienceItem2": "L'<strong>investissement le plus efficace</strong> pour votre santé cellulaire.",
+    "scienceItem3": "Donne jusqu'à <span class=\"p-gold\">18 litres</span> de boisson premium revitalisante.",
+    "scienceItem4": "<strong>Livraison premium gratuite</strong> directement depuis notre centre logistique d'Aarau.",
+    "abo": {
+      "label": "Économisez avec l'abonnement — résiliable à tout moment",
+      "top": "Économisez avec l'abonnement (−9 %)",
+      "price": "119,00 CHF",
+      "subtext": "par mois",
+      "guarantee": "✓ Résiliable à tout moment"
+    },
+    "shippingLabel": "Expédition & Logistique",
+    "shippingText": "Livraison premium gratuite en Suisse. Expédition directe depuis notre centre logistique d'Aarau."
+  },
+  "related": {
+    "heading": "Complétez votre rituel",
+    "starter": {
+      "badge": "BON DE 10 CHF INCLUS",
+      "title": "The Starter",
+      "subtitle": "(1× 250 ml)",
+      "price": "24,90 CHF",
+      "extra": "Pour faire connaissance",
+      "daily": "Seulement 2,49 CHF / jour",
+      "shipping": "Bon de 10 CHF inclus"
+    },
+    "habit": {
+      "badge": "MEILLEURE VENTE",
+      "title": "The Habit",
+      "subtitle": "(3× 250 ml)",
+      "price": "69,00 CHF",
+      "extra": "Le rituel de 30 jours",
+      "daily": "Seulement 2,30 CHF / jour",
+      "shipping": "Livraison gratuite | Abonnement disponible"
+    }
+  }
+}

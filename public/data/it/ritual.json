@@ -1,0 +1,89 @@
+{
+  "meta": {
+    "title": "Rituale | AmberNord",
+    "description": "La scienza dietro il rituale AmberNord: 9 aree d'azione, protocollo quotidiano e idee ricetta con l'elisir di olivello spinoso.",
+    "canonical": "https://ambernord.ch/it/ritual/",
+    "robots": "index, follow",
+    "og": {
+      "title": "Rituale | AmberNord",
+      "description": "La scienza dietro il rituale AmberNord: 9 aree d'azione, protocollo quotidiano e idee ricetta.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/v1774787737/AmberNord_Sanddorn_Biohacking_Longevity_Schweiz_Natur_Ritual_Essenz_jwznsd.webp",
+      "type": "website"
+    },
+    "hreflang": {
+      "de": "https://ambernord.ch/ritual/",
+      "en": "https://ambernord.ch/en/ritual/",
+      "fr": "https://ambernord.ch/fr/ritual/",
+      "it": "https://ambernord.ch/it/ritual/",
+      "x-default": "https://ambernord.ch/ritual/"
+    }
+  },
+  "header": {
+    "eyebrow": "Applicazione & Effetto",
+    "h1": "La scienza <span>dietro il rituale.</span>"
+  },
+  "benefits": {
+    "srHeading": "Le 9 aree d'azione",
+    "items": [
+      { "title": "Energia cellulare & vitalità", "desc": "Vitamine e minerali naturali che riducono l'affaticamento e offrono un boost energetico duraturo. Perfetto per prestazioni sostenute nella quotidianità." },
+      { "title": "Rinascita cellulare della pelle", "desc": "Ricco di vitamine A ed E e del raro acido grasso Omega-7. Questa sinergia stimola la sintesi del collagene e dona alla pelle un bagliore profondo e naturale." },
+      { "title": "Chiarezza cognitiva & concentrazione", "desc": "Le vitamine del gruppo B e il triptofano (precursore della serotonina) aiutano in modo dimostrato a ridurre lo stress, migliorare l'umore e affinare l'acutezza mentale." },
+      { "title": "Resilienza immunitaria assoluta", "desc": "Con una concentrazione estremamente alta e biodisponibile di vitamina C, l'elisir rafforza il sistema immunitario e riduce sensibilmente il rischio di infezioni." },
+      { "title": "Equilibrio del microbiota", "desc": "Composti vegetali bioattivi e fibre favoriscono una flora intestinale sana, ottimizzano la digestione e sostengono la protezione della mucosa gastrica." },
+      { "title": "Protezione cellulare attiva", "desc": "Antiossidanti altamente concentrati che combattono i radicali liberi a livello cellulare, attenuano i processi infiammatori cronici e accelerano il recupero fisico." },
+      { "title": "Detox profondo & funzione epatica", "desc": "Sostiene i processi naturali di disintossicazione del corpo, favorisce attivamente la rigenerazione delle cellule epatiche e protegge dagli influssi ambientali ossidativi." },
+      { "title": "Longevità cardiovascolare", "desc": "Flavonoidi e acidi grassi Omega in alte dosi aiutano a ottimizzare il profilo del colesterolo e a migliorare in modo duraturo l'elasticità dei vasi sanguigni." },
+      { "title": "Lo scudo digitale", "desc": "Vitamina A e carotenoidi altamente concentrati agiscono come filtro cellulare naturale contro la luce blu e riducono il rischio di affaticamento oculare digitale." }
+    ]
+  },
+  "stats": {
+    "label": "Statistiche del prodotto",
+    "items": [
+      { "highlight": "190+", "detail": "Composti<br>bioattivi" },
+      { "highlight": "18",   "detail": "Amminoacidi<br>essenziali" },
+      { "highlight": "4",    "detail": "Acidi grassi Omega<br>(3, 6, 7 & 9)" },
+      { "highlight": "9×",   "detail": "Più vitamina C<br>degli agrumi" }
+    ]
+  },
+  "video": {
+    "eyebrow": "Esperienza visiva",
+    "heading": "L'elisir in <span>movimento.</span>",
+    "alt": "Segnaposto video: presentazione dell'elisir AmberNord",
+    "placeholder": "Segnaposto video"
+  },
+  "protocol": {
+    "heading": "Il protocollo <span>quotidiano.</span>",
+    "items": [
+      { "step": "Passo 01", "title": "La regola dorata del mattino", "desc": "A causa dell'enorme dose di vitamina C naturale e dell'effetto fortemente vitalizzante, raccomandiamo di integrare il rituale nella prima metà della giornata. Evitate il consumo poco prima del riposo notturno." },
+      { "step": "Passo 02", "title": "L'alchimia perfetta", "desc": "AmberNord non è una bevanda comune, ma un'essenza grezza altamente concentrata. Per una massima idratazione, miscelate <strong class=\"ritual-protocol__highlight\">1 parte di essenza con 10 parti di acqua</strong> (naturale o frizzante)." },
+      { "step": "Passo 03", "title": "La regola dei 10 giorni", "desc": "Poiché rinunciamo completamente a conservanti artificiali, conservate la bottiglia in frigorifero dopo l'apertura e gustate l'elisir <strong class=\"ritual-protocol__highlight\">entro 10 giorni</strong>." }
+    ]
+  },
+  "recipes": {
+    "eyebrow": "Ispirazione & quotidianità",
+    "heading": "Ricette & <span>variazioni.</span>",
+    "tabs": {
+      "kalt": "Freddo & Rinfrescante",
+      "warm": "Caldo & Olistico",
+      "kulinarik": "Cucina & Dessert",
+      "label": "Categorie di ricette"
+    },
+    "kalt": [
+      { "tag": "Mixology", "title": "Nordic Spritz (analcolico)", "desc": "L'alternativa avanguardista all'Aperol. Sfruttate l'acidità complessa e la texture dell'essenza AmberNord, miscelata con tonic water amaro su ghiaccio e guarnita con rosmarino fresco. Un profilo altamente complesso e analcolico per serate sofisticate." },
+      { "tag": "Esotico & cremoso", "title": "Amber Coconut Sour", "desc": "Un'esperienza setosa: miscelate latte di cocco cremoso, un tocco di dolcezza di mango e l'acidità vivace dell'essenza di olivello spinoso su ghiaccio. Una bevanda che bilancia perfettamente la morbidezza tropicale e il carattere nordico a ogni sorso." },
+      { "tag": "Quotidianità", "title": "Sparkling Afternoon", "desc": "1 parte di AmberNord con acqua minerale ghiacciata (frizzante) e un rametto di menta fresca. Perfetto come rinfresco rapido e sostituto sano, senza zuccheri, alle bevande pomeridiane convenzionali." },
+      { "tag": "Salute", "title": "Vitality Smoothie", "desc": "Per un perfetto inizio dell'allenamento: frullate succo di carota fresco, un pezzo di zenzero, mezza banana per la consistenza e 20 ml di essenza AmberNord. Uno scudo antiossidante in forma liquida." }
+    ],
+    "warm": [
+      { "tag": "Ayurveda & equilibrio", "title": "Amber Golden Milk", "desc": "Una tazza riscaldante di latte vegetale, un cucchiaino di curcuma, un pizzico di pepe nero e 10 ml di essenza AmberNord. La sinergia perfetta di fito-nutrienti per calmare il sistema nervoso la sera e ridurre le infiammazioni durante la notte." },
+      { "tag": "Benessere", "title": "Il Amber Buzz", "desc": "Giocate con calore e acidità: uno shot di essenza AmberNord versato in acqua calda (non bollente), un po' di miele di manuka e un pizzico di cannella. Un rituale rilassante e riscaldante per le fresche giornate autunnali e invernali." },
+      { "tag": "Sistema immunitario", "title": "Shot di zenzero d'eccellenza", "desc": "Una combinazione altamente concentrata di pura essenza AmberNord, abbinata a succo fresco di zenzero e curcuma e a un pizzico di pepe nero. Uno shot intenso e potente per la massima difesa immunitaria." },
+      { "tag": "Rituale", "title": "Tè detox alpino", "desc": "Un rituale di rallentamento: aggiungete alcune gocce di puro olio di polpa di olivello spinoso o essenza ad acqua tiepida con erbe fresche per sostenere attivamente il metabolismo e proteggere i lipidi cellulari." }
+    ],
+    "kulinarik": [
+      { "tag": "Haute cuisine", "title": "Posset all'olivello spinoso", "desc": "La prova che la semplicità colpisce di più. Un dessert britannico reinterpretato: panna intera, zucchero ed essenza AmberNord pura. L'acidità dell'olivello spinoso fa rapprendere naturalmente la panna in una crema setosa." },
+      { "tag": "Cucina quotidiana", "title": "Vinaigrette dorata", "desc": "Trasformate qualsiasi insalata: utilizzate AmberNord al posto dell'aceto o del limone. Miscelate olio d'oliva di qualità, essenza di olivello spinoso, un cucchiaino di senape di Digione, sale, pepe e una goccia di sciroppo d'agave per un dressing spettacolarmente luminoso." }
+    ],
+    "cta": "Procurati l'elisir"
+  }
+}

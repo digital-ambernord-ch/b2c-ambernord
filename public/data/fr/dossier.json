@@ -1,0 +1,116 @@
+{
+  "meta": {
+    "title": "Science | AmberNord",
+    "description": "Pharmacologie, phytochimie et nutrition fonctionnelle : le dossier scientifique sur la méthodologie AmberNord autour d'Hippophae rhamnoides.",
+    "canonical": "https://ambernord.ch/fr/wissenschaft/",
+    "robots": "index, follow",
+    "og": {
+      "title": "Science | AmberNord",
+      "description": "Pharmacologie, phytochimie et nutrition fonctionnelle : le dossier scientifique sur Hippophae rhamnoides.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_2560,c_limit/v1773096179/Smiltserksku_sula_gemini_2_iecozy.png",
+      "type": "article"
+    },
+    "hreflang": {
+      "de": "https://ambernord.ch/wissenschaft/",
+      "en": "https://ambernord.ch/en/wissenschaft/",
+      "fr": "https://ambernord.ch/fr/wissenschaft/",
+      "it": "https://ambernord.ch/it/wissenschaft/",
+      "x-default": "https://ambernord.ch/wissenschaft/"
+    }
+  },
+  "header": {
+    "eyebrow": "Science & Philosophie",
+    "h1": "Le dossier de l'argousier<br><span>de la méthodologie AmberNord.</span>",
+    "lead": "Pharmacologie, phytochimie et nutrition fonctionnelle<br>(Hippophae rhamnoides)"
+  },
+  "history": {
+    "title": "Évolution & Usage Historique",
+    "lead": "L'argousier, plante pionnière évolutive (originaire de l'Himalaya), témoigne d'une tolérance extrême (-40 °C à +40 °C) et d'un usage ethnobotanique millénaire.",
+    "list": [
+      "<strong>Ayurveda indien ancien (5000 av. J.-C.) :</strong> usage documenté pour stimuler la vitalité.",
+      "<strong>Médecine tibétaine (VIIIᵉ siècle) :</strong> recensement systématique dans la pharmacopée « RGyud Bzi ».",
+      "<strong>Antiquité :</strong> le nom botanique <em>Hippophae</em> dérive de « cheval lumineux » (fourrage antique pour un pelage brillant).",
+      "<strong>Époque moderne :</strong> intégration dans des programmes nutritionnels historiques comme source naturelle de vitamines en conditions extrêmes."
+    ],
+    "imgAlt": "Illustration botanique historique de l'argousier"
+  },
+  "phyto": {
+    "title": "La matrice phytochimique",
+    "card1": {
+      "title": "La complexité des composants",
+      "p1": "Scientifiquement, l'argousier est un phytosystème extrêmement complexe. Jusqu'à 95 flavonoïdes, 17 acides phénoliques, plus de 20 acides organiques, 18 acides aminés et des acides gras complexes ont été identifiés.",
+      "p2": "<strong>Le défi :</strong> la composition chimique varie énormément selon le génotype, le terroir et le procédé d'extraction. AmberNord mise sur des procédés standardisés et doux pour préserver ce spectre de manière optimale."
+    },
+    "card2": {
+      "title": "Le paradigme de la séparation",
+      "lead": "La séparation anatomique précise des composants est indispensable à la compréhension :",
+      "list": [
+        "<strong>Fraction aqueuse (jus) :</strong> antioxydants hydrosolubles, vitamine C (liée à la matrice), acides organiques.",
+        "<strong>Huile de pulpe :</strong> riche en MUFA (acides gras mono-insaturés) et caroténoïdes.",
+        "<strong>Huile de pépins :</strong> dominée par les PUFA (acides gras essentiels poly-insaturés)."
+      ]
+    }
+  },
+  "lipids": {
+    "title": "Anatomie des lipides & vitamines spécifiques",
+    "cards": [
+      { "title": "Huile de pulpe (Oméga-7)", "desc": "L'une des sources végétales les plus rares d'acide palmitoléique (Oméga-7), constituant une part essentielle des lipides. Un bloc constitutif naturel important pour la peau et les muqueuses.", "imgAlt": "Goutte d'huile d'argousier orange" },
+      { "title": "Huile de pépins (Oméga-3 & 6)", "desc": "L'huile de pépins jaune pâle ne contient pratiquement pas d'Oméga-7. Elle apporte plutôt l'acide linoléique (Oméga-6) et l'acide alpha-linolénique (Oméga-3) dans un rapport physiologiquement idéal.", "imgAlt": "Pépins d'argousier et poudre rustique" },
+      { "title": "Vitamines & nutriments", "desc": "Outre la teneur exceptionnellement élevée en vitamine C, le jus d'argousier est connu pour son spectre complexe de vitamines B et de composés végétaux secondaires qui agissent en synergie.", "imgAlt": "Laboratoire scientifique avec liquide ambré" }
+    ]
+  },
+  "science": {
+    "title": "Connaissances scientifiques sur l'argousier",
+    "cards": [
+      { "title": "Métabolisme & vitalité", "desc": "L'argousier fournit des nutriments essentiels et des antioxydants. Des études suggèrent que les stérols végétaux et les acides gras qu'il contient soutiennent de manière optimale une nutrition fonctionnelle et peuvent contribuer au bien-être général." },
+      { "title": "Peau & dermatologie", "desc": "L'Oméga-7 est un bloc constitutif physiologique important de la barrière cutanée humaine. Les extraits d'argousier sont intensivement étudiés pour leurs propriétés de soutien à la régénération cutanée naturelle." },
+      { "title": "Muqueuses", "desc": "La matrice lipidique spécifique de l'huile de pulpe est connue pour soutenir, sur le plan nutritionnel, l'équilibre hydrique naturel des muqueuses (yeux, bouche ou zones intimes)." }
+    ]
+  },
+  "innovations": {
+    "title": "Applications modernes & innovations du marché",
+    "cards": [
+      { "title": "Haute cuisine & mixologie", "desc": "Dans la haute gastronomie, l'argousier s'impose rapidement comme le « citron du Nord ». Son profil acide complexe et multidimensionnel remplace de plus en plus les importations exotiques comme le yuzu ou le fruit de la passion et confère aux cocktails premium sans alcool la structure et l'astringence nécessaires." },
+      { "title": "Nutricosmétique & clean beauty", "desc": "L'acide palmitoléique (Oméga-7) contenu dans l'huile d'argousier présente une similitude structurelle unique avec les lipides propres au stratum cornéen. Cela permet une pénétration extrêmement rapide pour renforcer la barrière cutanée et réduire la perte d'eau trans-épidermique." },
+      { "title": "Food-tech & upcycling", "desc": "La microencapsulation à l'alginate de sodium permet aujourd'hui de protéger les caroténoïdes thermosensibles pour l'industrie de la boulangerie. De plus, l'autorisation EU Novel Food pour les feuilles d'argousier (2020) a ouvert de toutes nouvelles voies pour les thés premium riches en l'antioxydant cellulaire PC-8." }
+    ]
+  },
+  "sourcing": {
+    "title": "Sourcing AmberNord : terroir & partenariat",
+    "lead": "La qualité exceptionnelle des produits AmberNord repose sur une sélection rigoureuse. En tant que représentants dans la région DACH, nous avons délibérément choisi un partenaire de production exclusif aux latitudes nordiques.",
+    "list": [
+      "<strong>Mono-variété premium :</strong> nous misons sur la transformation d'une variété génétiquement sélectionnée à teneur maximisée en nutriments et lipides.",
+      "<strong>Terroir nordique :</strong> le microclimat spécifique de notre plantation partenaire (climat froid, longues heures d'ensoleillement estival) génère le stress nécessaire à la synthèse de composés végétaux complexes.",
+      "<strong>Intégrité biologique :</strong> renoncement sans compromis aux engrais synthétiques ; la nature est respectée et protégée."
+    ],
+    "imgAlt": "Plantation d'argousier à l'heure dorée"
+  },
+  "harvest": {
+    "title": "Artisanat vs. industrie",
+    "subtitle": "La récolte aux 100 mains",
+    "lead": "La récolte de l'argousier est très complexe car les baies éclatent immédiatement sous pression mécanique et s'oxydent extrêmement vite (fenêtre de 24–48 h).",
+    "list": [
+      "Les grandes installations industrielles utilisent souvent des méthodes destructrices qui privent l'arbuste de réserves de glucides.",
+      "Notre partenaire de production mise exclusivement sur la cueillette manuelle délicate en août.",
+      "Un cueilleur expérimenté ne récolte manuellement qu'environ 7 kg de baies par heure.",
+      "Cette méthode douce protège l'architecture de la plante et garantit la plus haute qualité des lipides natifs."
+    ],
+    "imgAlt": "Cueillette manuelle minutieuse de baies d'argousier"
+  },
+  "zerowaste": {
+    "title": "Transformation & matrice zéro déchet",
+    "items": [
+      { "title": "L'élixir (jus direct non filtré)", "desc": "Pour obtenir 1 litre de l'élixir 100 % pur, 1,3 à 1,6 kg de baies cueillies à la main sont nécessaires. Une pasteurisation douce assure la conservation et protège les précieuses vitamines." },
+      { "title": "Extraction mécanique d'huile", "desc": "L'industrie extrait souvent par voie chimique. Ici, la pression mécanique à froid garantit la conservation des acides gras thermosensibles. L'intensité en ressources est immense : jusqu'à 200 kg de baies fraîches pour 1 litre d'huile pure." },
+      { "title": "Résidu de pressage (le marc)", "desc": "Pépins et peaux sont séchés thermiquement avec douceur après désuilage. Une hydrolyse enzymatique ciblée optimise le profil de fibres, créant un « ingrédient upcyclé » hautement fonctionnel pour l'industrie alimentaire." },
+      { "title": "Valorisation intégrale", "desc": "Les rameaux et l'écorce sont également valorisés sans reste. Les analyses récentes confirment dans l'écorce une teneur en phytosérotonine qui dépasse plusieurs fois celle des bananes – un potentiel énorme pour des extraits naturels « mood-support »." }
+    ]
+  },
+  "conclusion": {
+    "tag": "Résumé scientifique",
+    "heading": "De la plante pionnière à la<br><span class=\"dossier-gold-italic\">nutrition fonctionnelle</span>",
+    "p1": "Les données confirment l'argousier comme l'un des systèmes végétaux les plus phytochimiquement complexes au monde. Le bénéfice nutritionnel réside sans aucun doute dans le profil exceptionnel de vitamines et de lipides rares.",
+    "p2": "AmberNord et ses partenaires transposent ce potentiel sans compromis qualitatif en un rituel quotidien de haute qualité pour un meilleur bien-être.",
+    "logoAlt": "Logo AmberNord"
+  }
+}

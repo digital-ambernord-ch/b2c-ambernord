@@ -1,0 +1,51 @@
+{
+  "meta": {
+    "title": "Histoire | AmberNord",
+    "description": "Du faux coup de fouet à la véritable clarté. Découvrez le fondateur Eriks Matisons et la vision derrière l'essence d'argousier sans compromis d'AmberNord.",
+    "canonical": "https://ambernord.ch/fr/story/",
+    "robots": "index, follow",
+    "og": {
+      "title": "Histoire | AmberNord",
+      "description": "Du faux coup de fouet à la véritable clarté. Découvrez le fondateur Eriks Matisons et la vision derrière l'essence d'argousier sans compromis d'AmberNord.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/v1775992574/ambernord-gruender-aarau-schweiz-elixier-ritual-sanddornsaft.jpg_efkhfl.jpg",
+      "type": "article"
+    },
+    "hreflang": {
+      "de": "https://ambernord.ch/story/",
+      "en": "https://ambernord.ch/en/story/",
+      "fr": "https://ambernord.ch/fr/story/",
+      "it": "https://ambernord.ch/it/story/",
+      "x-default": "https://ambernord.ch/story/"
+    }
+  },
+  "header": {
+    "eyebrow": "L'histoire d'AmberNord",
+    "h1": "Du faux coup de fouet<br><span>à la véritable clarté.</span>"
+  },
+  "story": {
+    "h3": "Le compromis quotidien",
+    "p1": "Mon quotidien dans la logistique est rythmé par la vitesse, la responsabilité et une pression constante. Les décisions doivent se prendre en quelques secondes, les pauses sont rares. J'essayais de vivre en pleine conscience – mais dans les moments de stress, je revenais sans cesse aux boissons énergisantes artificielles et aux sodas sans sucre. Sur le moment, ça aidait, mais la mauvaise conscience restait. Je savais ce que ces substances synthétiques faisaient à mon corps.",
+    "p2": "Un jour, j'en ai eu assez. Je voulais une énergie véritable. Lorsque je suis tombé sur l'essence hautement concentrée d'argousier biologique nordique, je m'attendais à « un jus sain de plus ». Mais l'effet a été radicalement différent : pas de rush, pas de tremblements – mais une fraîcheur profonde et naturelle qui clarifiait immédiatement l'esprit.",
+    "quoteHeading": "Mon protocole quotidien",
+    "quoteText": "« Ma journée commence différemment aujourd'hui : une part d'essence mélangée à de l'eau tiède – souvent même un peu plus intense que 1:10. Le goût est inimitablement âpre, rafraîchissant, acidulé et incroyablement délicieux. On sent immédiatement la digestion s'éveiller et le corps monter en puissance. À midi suit le second verre, glacé cette fois. Il délivre exactement le coup de fouet sans compromis que je cherchais autrefois dans les boissons artificielles. Il rafraîchit instantanément et maintient la concentration aiguisée. AmberNord est exactement ce que j'ai toujours cherché : une qualité pure, non altérée. »",
+    "quoteAuthor": "Eriks Matisons",
+    "quoteRole": "Fondateur d'AmberNord",
+    "imgAlt": "Eriks Matisons – Fondateur d'AmberNord"
+  },
+  "timeline": {
+    "heading": "L'anatomie de la <span>perfection</span>",
+    "desc": "Une synergie entre légendes historiques, force naturelle exclusive et précision suisse.",
+    "item1": {
+      "title": "La « Bentley dorée » de la nature",
+      "text": "« Amber » évoque l'éclat du Nord. Pour notre essence, nous utilisons exclusivement notre <strong>« Sélection Zelt »</strong>. Cette variété rare et noble se distingue par une teneur naturelle en huile exceptionnellement élevée que vous ne trouverez pas dans les produits standards. Cette force sauvage et sans compromis, nous l'amenons directement dans votre quotidien."
+    },
+    "item2": {
+      "title": "La pharmacie ultime de longévité",
+      "text": "Saviez-vous que notre baie nordique contient 18 des 22 acides aminés connus ? Avec plus de <strong>190 composés biologiquement actifs</strong>, 9 fois plus de vitamine C que les agrumes et les quatre acides gras Oméga dans une seule plante, AmberNord est une centrale cellulaire sans pareille. Le différenciateur absolu reste cependant l'<strong>acide gras Oméga-7 extrêmement rare</strong>, qui atteint dans notre huile de pulpe une concentration record allant jusqu'à 42 % – la pierre angulaire d'une régénération profonde et d'une protection contre le « syndrome de l'œil sec » lors d'un travail intensif sur écran."
+    },
+    "item3": {
+      "title": "Précision suisse & le prochain niveau",
+      "text": "100 % bio, pressé à froid et issu d'une production durable zéro déchet. Depuis notre base en Argovie, nous garantissons une fiabilité sans compromis. Mais notre vision va plus loin : derrière des portes closes, nous développons actuellement un projet strictement confidentiel – une <strong class=\"gold\">essence de base révolutionnaire, 100 % naturelle</strong>. Nous ne pouvons pas encore en dire beaucoup, mais dès que cette amélioration superfood viendra compléter notre gamme, en synergie avec l'élixir, elle activera encore plus drastiquement les substances bioactives et les portera à un tout nouveau niveau de biodisponibilité."
+    }
+  }
+}

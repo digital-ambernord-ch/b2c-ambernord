@@ -1,0 +1,51 @@
+{
+  "meta": {
+    "title": "Storia | AmberNord",
+    "description": "Dalla falsa scossa alla vera chiarezza. Scoprite il fondatore Eriks Matisons e la visione dietro l'essenza di olivello spinoso senza compromessi di AmberNord.",
+    "canonical": "https://ambernord.ch/it/story/",
+    "robots": "index, follow",
+    "og": {
+      "title": "Storia | AmberNord",
+      "description": "Dalla falsa scossa alla vera chiarezza. Scoprite il fondatore Eriks Matisons e la visione dietro l'essenza di olivello spinoso senza compromessi di AmberNord.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/v1775992574/ambernord-gruender-aarau-schweiz-elixier-ritual-sanddornsaft.jpg_efkhfl.jpg",
+      "type": "article"
+    },
+    "hreflang": {
+      "de": "https://ambernord.ch/story/",
+      "en": "https://ambernord.ch/en/story/",
+      "fr": "https://ambernord.ch/fr/story/",
+      "it": "https://ambernord.ch/it/story/",
+      "x-default": "https://ambernord.ch/story/"
+    }
+  },
+  "header": {
+    "eyebrow": "La storia di AmberNord",
+    "h1": "Dalla falsa scossa<br><span>alla vera chiarezza.</span>"
+  },
+  "story": {
+    "h3": "Il compromesso quotidiano",
+    "p1": "La mia quotidianità nella logistica è scandita da ritmo, responsabilità e pressione costante. Le decisioni devono essere prese in pochi secondi, le pause sono rare. Cercavo di vivere con consapevolezza – ma nei momenti di stress ricorrevo sempre a energy drink artificiali e bibite senza zucchero. Sul momento aiutavano, ma la cattiva coscienza rimaneva. Sapevo cosa quelle sostanze sintetiche stavano facendo al mio corpo.",
+    "p2": "A un certo punto ne ho avuto abbastanza. Volevo energia vera. Quando ho scoperto l'essenza altamente concentrata di olivello spinoso biologico nordico, mi aspettavo «solo un altro succo salutare». Ma l'effetto è stato radicalmente diverso: nessuna scossa, nessun tremolio – piuttosto una freschezza profonda e naturale che ha schiarito subito la mente.",
+    "quoteHeading": "Il mio protocollo quotidiano",
+    "quoteText": "«Oggi la mia giornata inizia diversamente: una parte di essenza mescolata con acqua calda – spesso anche un po' più intensa di 1:10. Il sapore è inconfondibilmente amaro, rinfrescantemente aspro e incredibilmente delizioso. Si sente subito la digestione risvegliarsi e il corpo accendersi. A mezzogiorno arriva il secondo bicchiere, questa volta ghiacciato. Offre esattamente quella scossa senza compromessi che un tempo cercavo nelle bevande artificiali. Rinfresca all'istante e mantiene la concentrazione lucida. AmberNord è esattamente ciò che ho sempre cercato: qualità pura, non alterata.»",
+    "quoteAuthor": "Eriks Matisons",
+    "quoteRole": "Fondatore di AmberNord",
+    "imgAlt": "Eriks Matisons – Fondatore di AmberNord"
+  },
+  "timeline": {
+    "heading": "L'anatomia della <span>perfezione</span>",
+    "desc": "Una sinergia tra leggende storiche, forza naturale esclusiva e precisione svizzera.",
+    "item1": {
+      "title": "La «Bentley dorata» della natura",
+      "text": "«Amber» è il bagliore del Nord. Per la nostra essenza utilizziamo esclusivamente la nostra <strong>«Selezione Zelt»</strong>. Questa specifica varietà nobile si distingue per un contenuto naturale di olio eccezionalmente elevato, che non troverete nei prodotti standard. Questa forza selvatica e senza compromessi la portiamo direttamente nella vostra quotidianità."
+    },
+    "item2": {
+      "title": "L'apoteca definitiva della longevità",
+      "text": "Sapevate che la nostra bacca nordica contiene 18 dei 22 amminoacidi conosciuti? Con oltre <strong>190 composti biologicamente attivi</strong>, 9 volte più vitamina C degli agrumi e tutti e quattro gli acidi grassi Omega in una sola pianta, AmberNord è una centrale cellulare senza pari. Il vero elemento distintivo è però l'<strong>estremamente raro acido grasso Omega-7</strong>, che nel nostro olio di polpa raggiunge una concentrazione record fino al 42 % – il blocco fondamentale per una rigenerazione profonda e la protezione dalla «sindrome dell'occhio secco» durante un intenso lavoro al monitor."
+    },
+    "item3": {
+      "title": "Precisione svizzera & il prossimo livello",
+      "text": "100 % bio, spremuto a freddo e proveniente da una produzione completamente sostenibile a rifiuti zero. Dalla nostra base in Argovia garantiamo un'affidabilità senza compromessi. Ma la nostra visione va oltre: dietro porte chiuse stiamo attualmente sviluppando un progetto strettamente riservato – un'<strong class=\"gold\">essenza di base rivoluzionaria, 100 % naturale</strong>. Non possiamo ancora rivelare molto, ma non appena questo upgrade superfood completerà il nostro portafoglio, in sinergia con l'elisir attiverà ulteriormente in modo drastico le sostanze bioattive portandole a un livello completamente nuovo di biodisponibilità."
+    }
+  }
+}

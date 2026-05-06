@@ -1,0 +1,70 @@
+{
+  "meta": {
+    "title": "The Starter (1× 250 ml) | AmberNord Sanddorn Elixier",
+    "description": "The Starter: Ihr Einstieg in die Welt von AmberNord. Zellschutz und Vitalität durch 190+ Bioaktivstoffe. Kaltgepresst. Bio-zertifiziert.",
+    "canonical": "https://ambernord.ch/shop/starter/",
+    "robots": "index, follow",
+    "og": {
+      "title": "The Starter (1× 250 ml) | AmberNord",
+      "description": "The Starter: Ihr Einstieg. Zellschutz und Vitalität durch 190+ Bioaktivstoffe.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/v1774798945/ambernord-bio-sanddornsaft-zelt-edition-250ml-schweiz.webp_f3eaz0.png",
+      "type": "product"
+    },
+    "hreflang": {
+      "de": "https://ambernord.ch/shop/starter/",
+      "en": "https://ambernord.ch/en/shop/starter/",
+      "fr": "https://ambernord.ch/fr/shop/starter/",
+      "it": "https://ambernord.ch/it/shop/starter/",
+      "x-default": "https://ambernord.ch/shop/starter/"
+    }
+  },
+  "badge": {
+    "voucher": "INKL. 10 CHF VOUCHER",
+    "promo": "AKTION BIS 01.05."
+  },
+  "gallery": {
+    "mainAlt": "The Starter — 1× 250 ml Sanddorn Elixier",
+    "thumb1Alt": "Produktansicht",
+    "thumb2Alt": "Flaschen-Detail",
+    "thumb3Alt": "Nährwerte",
+    "thumb4Alt": "Biohacking Elixier"
+  },
+  "info": {
+    "title": "The Starter",
+    "volume": "(1× 250 ml)",
+    "price": "24.90 CHF",
+    "subtitleH3": "Der erste Schritt:",
+    "subtitleSpan": "Zelluläre Klarheit erleben.",
+    "lead": "Möchten Sie die Kraft des nordischen Goldes erst einmal testen? «The Starter» ist Ihr Einstieg in die Welt von AmberNord. Jede Flasche wird aus handverlesenen Beeren unserer exklusiven <span class=\"p-gold\">Zelt-Selektion</span> gewonnen und schützt Ihren Körper mit der 9-fachen Vitamin-C-Dosis einer Zitrone vor oxidativem Stress.",
+    "ctaPrimary": "1× Elixier bestellen",
+    "advantageHeading": "Ihr exklusiver Vorteil",
+    "advantageBody": "Zu dieser ersten Bestellung erhalten Sie einen <strong>10 CHF Gutschein</strong> für Ihren nächsten Kauf (Aktion bis 01.05.). Wir sind uns sicher: Sobald Sie den ersten natürlichen Fokus-Schub ohne Herzflattern erleben, wird das Ritual zu einem festen Bestandteil Ihres Alltags.",
+    "scienceHeading": "Die Wissenschaft dahinter",
+    "scienceItem1": "<strong>Zellulärer Schutz:</strong> Ein extrem hoher natürlicher Vitamin-C-Gehalt neutralisiert oxidativen Stress.",
+    "scienceItem2": "<strong>Omega-7:</strong> Diese seltene, wertvolle Fettsäure harmonisiert das Mikromilieu und pflegt die Schleimhäute.",
+    "scienceItem3": "Ergibt bis zu <span class=\"p-gold\">3 Liter</span> vitalisierendes Premium-Getränk.",
+    "scienceItem4": "<strong>Absolute Reinheit:</strong> Ohne Zuckerzusatz, ohne künstliche Aromen. <span class=\"p-gold\">100 % Natur.</span>",
+    "shippingLabel": "Versand & Logistik",
+    "shippingText": "Zuverlässiger Premium-Versand innerhalb der Schweiz (exkl. Versandkosten). Direktversand aus unserem Logistikzentrum in Aarau."
+  },
+  "related": {
+    "heading": "Ergänzen Sie Ihr Ritual",
+    "habit": {
+      "badge": "MEISTGEKAUFT",
+      "title": "The Habit",
+      "subtitle": "(3× 250 ml)",
+      "price": "69.00 CHF",
+      "extra": "Das 30-Tage-Ritual",
+      "daily": "Nur 2.30 CHF / Tag",
+      "shipping": "Gratis Versand | Spar-Abo verfügbar"
+    },
+    "protocol": {
+      "title": "The Protocol",
+      "subtitle": "(6× 250 ml)",
+      "price": "129.00 CHF",
+      "extra": "Für Familie & Fokus",
+      "daily": "Nur 2.15 CHF / Tag",
+      "shipping": "Gratis Versand | Spar-Abo verfügbar"
+    }
+  }
+}

@@ -5,7 +5,13 @@
    Shared across The Starter, The Habit, The Protocol
    ========================================================================= */
 
-window.initProduct = function () {
+window.initProduct = async function () {
+
+  const container = document.querySelector('.product-page-container');
+  const productKey = container ? container.getAttribute('data-product') : null;
+  if (productKey && typeof window.loadI18n === 'function') {
+    try { await window.loadI18n(window.getLang(), productKey); } catch {}
+  }
 
   /* =========================================================================
      GALLERY — thumbnail click + mobile swipe

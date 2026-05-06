@@ -4,7 +4,11 @@
    GSAP hero · Floating cards · Scroll reveals · Exclusive bg · Lightbox · Accordion
    ========================================================================= */
 
-window.initLanding = function () {
+window.initLanding = async function () {
+
+  if (typeof window.loadI18n === 'function') {
+    try { await window.loadI18n(window.getLang(), 'home'); } catch {}
+  }
 
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
     console.warn('[Landing] GSAP not available yet — retrying...');

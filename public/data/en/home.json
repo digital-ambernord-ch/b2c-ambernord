@@ -1,0 +1,159 @@
+{
+  "meta": {
+    "title": "AmberNord | Sea Buckthorn Biohacking & Longevity Switzerland",
+    "description": "Discover the power of sea buckthorn. AmberNord offers natural biohacking and longevity essences from Switzerland for your daily ritual.",
+    "canonical": "https://ambernord.ch/en/",
+    "robots": "index, follow",
+    "og": {
+      "title": "AmberNord | Sea Buckthorn Biohacking & Longevity Switzerland",
+      "description": "Discover the power of sea buckthorn. AmberNord offers natural biohacking and longevity essences from Switzerland for your daily ritual.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/v1774787737/AmberNord_Sanddorn_Biohacking_Longevity_Schweiz_Natur_Ritual_Essenz_jwznsd.webp",
+      "type": "website"
+    },
+    "hreflang": {
+      "de": "https://ambernord.ch/",
+      "en": "https://ambernord.ch/en/",
+      "fr": "https://ambernord.ch/fr/",
+      "it": "https://ambernord.ch/it/",
+      "x-default": "https://ambernord.ch/"
+    }
+  },
+  "floatingBtn": "Which ritual is right for you?",
+  "stickyVoucher": "CODE: START10",
+  "stickyBtn": "To the Ritual",
+  "floatCards": {
+    "vitamins": {
+      "eyebrow": "Vitamins",
+      "text": "A rare plant-based source of B12 and exceptionally high natural Vitamin C content."
+    },
+    "balance": {
+      "eyebrow": "Cellular Balance",
+      "text": "One of the rarest plant-based sources of palmitoleic acid – essential for skin & mucous membranes."
+    },
+    "immunity": {
+      "eyebrow": "Immune Resilience",
+      "text": "Bioactive compounds and an exceptionally high natural Vitamin C content in every drop."
+    },
+    "craft": {
+      "eyebrow": "Craft",
+      "text": "Gentle hand-picking and zero-waste cold-pressing for absolute purity."
+    }
+  },
+  "hero": {
+    "taglineHandpick": "100% HAND-PICKED",
+    "taglineColdPress": "COLD-PRESSED",
+    "taglineBio": "ORGANIC CERTIFIED",
+    "bioLogoAlt": "EU Organic certified",
+    "h1Line1": "The body does not respond to promises.",
+    "h1Line2": "It responds to what it can truly absorb.",
+    "productAlt": "AmberNord Premium Edition bottle",
+    "benefit1": "✓ Tangible energy from 190+ bioactive compounds",
+    "benefit2": "✓ Omega-7 for skin, gut & protective barriers",
+    "benefit3": "✓ Natural B12 – bioavailable, not synthetic",
+    "nativeOils": "Including native oils from<br>fruit pulp &amp; seed",
+    "cta": "Start Your Ritual"
+  },
+  "trust": {
+    "lab": { "title": "Lab Tested", "subtitle": "Highest purity standards" },
+    "premium": { "title": "100% Premium Quality", "subtitle": "Pure & bioactive" },
+    "shipping": { "title": "Shipped in 24h", "subtitle": "Free from 'The Habit'" }
+  },
+  "shop": {
+    "title": "Choose Your Protocol",
+    "starter": {
+      "badge": "INCL. 10 CHF VOUCHER",
+      "badgeCode": "CODE: START10",
+      "dailyPrice": "Only 2.49 CHF / day",
+      "extra": "Ideal to try",
+      "benefit1": "Tangible vitality & immune support",
+      "benefit2": "100% pure, vegan cellular nutrition",
+      "benefit3": "Delivers the rare Omega-7",
+      "units": "(1× 250 ml)",
+      "price": "24.90 CHF",
+      "priceLabel": "one-time",
+      "shipping": "incl. shipping",
+      "btn": "Start Now"
+    },
+    "habit": {
+      "badge": "BEST SELLER",
+      "dailyPrice": "Only 2.30 CHF / day",
+      "extra": "The 30-day ritual",
+      "benefit1": "Complete 30-day cellular reset",
+      "benefit2": "Regeneration of skin & mucous membranes",
+      "benefit3": "Sustainable focus & natural energy",
+      "units": "(3× 250 ml)",
+      "price": "69.00 CHF",
+      "priceLabel": "one-time",
+      "shipping": "incl. free shipping",
+      "btn": "Start 30 Days"
+    },
+    "protocol": {
+      "dailyPrice": "Only 2.15 CHF / day",
+      "extra": "For family & long-term focus",
+      "benefit1": "Continuous cellular supply",
+      "benefit2": "Optimal for families & biohackers",
+      "benefit3": "Best price per daily dose",
+      "units": "(6× 250 ml)",
+      "price": "129.00 CHF",
+      "priceLabel": "one-time",
+      "shipping": "incl. free shipping",
+      "btn": "Start My Ritual"
+    },
+    "paymentLabel": "Secure payment methods",
+    "protocolInfo": {
+      "title": "The Daily Ritual",
+      "text": "<strong>Usage instructions:</strong> The 1:10 protocol means you mix 1 part AmberNord essence with 10 parts water (still or sparkling). Best enjoyed in the morning on an empty stomach to ensure optimal cellular absorption. Always shake well before use."
+    }
+  },
+  "manifest": {
+    "eyebrow": "Our Manifesto",
+    "h2Line1": "The end of",
+    "h2Line2": "artificial energy.",
+    "lead": "We live in an era of synthetic shortcuts. Conventional energy drinks and artificial stimulants lend the body energy that it must later repay with interest.",
+    "expand": "Read the full manifesto",
+    "hidden": "They produce a brief rush that dehydrates your cells and clouds your focus in the long term. AmberNord is the answer to the demand for genuine, cellular performance. It is not a short-term kick, but a <strong class=\"ambernord-fw-500\">biological upgrade</strong>. We extract the purest essence of the nordic wilderness to bring you a tool for sustainable biohacking and deep regeneration directly to Switzerland."
+  },
+  "ritualBlock": {
+    "eyebrow": "The Ritual",
+    "h2Line1": "One part gold.",
+    "h2Line2": "Ten parts life.",
+    "lead": "Most nutritional supplements are synthetically isolated, and conventional health drinks are full of hidden sugar. AmberNord takes a completely different path.",
+    "expand": "Discover the application",
+    "hidden": "We offer you an uncompromisingly pure, highly concentrated raw essence – designed for perfect cellular alchemy with water. The 1:10 protocol (1 part essence, 10 parts water) is your daily catalyst. In this symbiosis, the rare Omega fatty acids, amino acids and natural Vitamin C are absorbed by the body to the maximum. The result: deep hydration, measurably sharper focus and robust cellular protection."
+  },
+  "sourcing": {
+    "eyebrow": "Exclusive Sourcing",
+    "h2Line1": "The source of the elixir.",
+    "h2Line2": "Our plantation.",
+    "text": "We leave nothing to chance. Our raw materials do not come from the anonymous global market, but from a single organic plantation personally selected by us. After a careful selection, we chose precisely this rare variety – grown in a microclimate whose purity and mineral richness give the juice its unmistakable character. Here, berries are produced with a nutrient density that sets new standards.",
+    "imgAlt": "Exclusive organic plantation"
+  },
+  "craft": {
+    "eyebrow": "Craft & Purity",
+    "h2Line1": "No compromises.",
+    "h2Line2": "Only the essence.",
+    "text": "From the moment of gentle hand-picking to cold-pressing at the source, only a moment passes. No industrial harvesting machines touch our fruit – so the delicate skin of the berries remains intact. We embrace whole-berry use: the entire berry – from the nutrient-rich skin to the valuable seed – is fully utilized. In this way, we preserve the precious Omega-7 oil and over 190 bioactive compounds in their purest form.",
+    "videoLabel": "Play video: AmberNord craftsmanship",
+    "videoAlt": "Video: Gentle harvest and cold-pressing"
+  },
+  "gallery": {
+    "caption1": "1. Exclusive organic plantation",
+    "caption2": "2. Careful hand-picking",
+    "caption3": "3. The fresh harvest",
+    "caption4": "4. Gentle processing",
+    "caption5": "5. Pure plant power",
+    "alt1": "Exclusive organic plantation",
+    "alt2": "Careful hand-picking",
+    "alt3": "The fresh harvest",
+    "alt4": "Gentle processing",
+    "alt5": "Pure plant power"
+  },
+  "masterBox": {
+    "eyebrow": "Clinics & Corporate",
+    "h2Line1": "The Master Box –",
+    "h2Line2": "For uncompromising focus.",
+    "p1": "Integrate the AmberNord protocol into your practice or company. Our exclusive 20-bottle edition offers tailored partnerships for longevity centres, biohacking facilities and visionary corporate teams investing in true cognitive performance.",
+    "p2": "Uncompromisingly authentic nutrient profile and organic-certified purity, unique on the European market.",
+    "btn": "Discover the Master Box"
+  }
+}

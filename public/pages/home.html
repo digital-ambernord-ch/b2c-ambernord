@@ -1,35 +1,29 @@
-<a href="#ritual-products" class="floating-info-btn" data-link aria-label="Welches Ritual passt zu Ihnen?">
+<a href="#ritual-products" class="floating-info-btn" data-link data-i18n-attr="aria-label:floatingBtn" aria-label="Welches Ritual passt zu Ihnen?">
   i
-  <span class="floating-info-tooltip" aria-hidden="true">Welches Ritual passt zu Ihnen?</span>
+  <span class="floating-info-tooltip" aria-hidden="true" data-i18n="floatingBtn">Welches Ritual passt zu Ihnen?</span>
 </a>
 
-<!-- Landing-page-specific sticky nav (appears after hero scrolls past) -->
 <div class="landing-sticky-nav" id="landingStickyNav" aria-hidden="true">
-  <div class="landing-sticky-voucher">CODE: START10</div>
+  <div class="landing-sticky-voucher" data-i18n="stickyVoucher">CODE: START10</div>
   <div class="landing-sticky-nav-right">
-    <button class="landing-sticky-nav-btn" id="landingStickyNavBtn" aria-label="Zum Shop scrollen">
-      Zum Ritual
+    <button class="landing-sticky-nav-btn" id="landingStickyNavBtn" data-i18n-attr="aria-label:stickyBtn" aria-label="Zum Shop scrollen">
+      <span data-i18n="stickyBtn">Zum Ritual</span>
     </button>
   </div>
 </div>
 
-<!-- =========================================================================
-     GSAP HERO SECTION
-     ========================================================================= -->
-
 <section class="scroll-track" id="scrollTrack">
   <div class="sticky-viewport">
 
-    <!-- Floating image cards (desktop only, hidden mobile via CSS) -->
     <div class="animation-workspace" aria-hidden="true">
 
       <div class="float-card float-img img-1"
            style="background-image: url('https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_400/v1773686998/reinste-essenz-der-natur_rz2l8i.jpg');">
         <div class="float-card-overlay"></div>
         <div class="float-card-content">
-          <span class="card-eyebrow">Vitamine</span>
+          <span class="card-eyebrow" data-i18n="floatCards.vitamins.eyebrow">Vitamine</span>
           <div class="card-value">B12 + C</div>
-          <p class="card-text">Seltene pflanzliche B12-Quelle und hoher natürlicher Vitamin-C-Gehalt.</p>
+          <p class="card-text" data-i18n="floatCards.vitamins.text">Seltene pflanzliche B12-Quelle und hoher natürlicher Vitamin-C-Gehalt.</p>
         </div>
       </div>
 
@@ -42,9 +36,9 @@
            style="background-image: url('https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_400/v1773686914/gold-der-ostsee-kueste_dwnagq.jpg');">
         <div class="float-card-overlay"></div>
         <div class="float-card-content">
-          <span class="card-eyebrow">Zelluläre Balance</span>
+          <span class="card-eyebrow" data-i18n="floatCards.balance.eyebrow">Zelluläre Balance</span>
           <div class="card-value">Omega-7 <span style="font-size:16px;font-weight:600;color:#EDA323;white-space:nowrap;margin-left:6px;">32 – 42 %</span></div>
-          <p class="card-text">Eine der seltensten pflanzlichen Quellen für Palmitoleinsäure – essenziell für Haut & Schleimhäute.</p>
+          <p class="card-text" data-i18n="floatCards.balance.text">Eine der seltensten pflanzlichen Quellen für Palmitoleinsäure – essenziell für Haut & Schleimhäute.</p>
         </div>
       </div>
 
@@ -52,9 +46,9 @@
            style="background-image: url('https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_400/v1773686963/handverlesene-genuesslichkeiten_y9rzmm.jpg');">
         <div class="float-card-overlay"></div>
         <div class="float-card-content">
-          <span class="card-eyebrow">Immun-Resilienz</span>
+          <span class="card-eyebrow" data-i18n="floatCards.immunity.eyebrow">Immun-Resilienz</span>
           <div class="card-value">190+</div>
-          <p class="card-text">Bioaktive Wirkstoffe und ein extrem hoher natürlicher Vitamin-C-Gehalt in jedem Tropfen.</p>
+          <p class="card-text" data-i18n="floatCards.immunity.text">Bioaktive Wirkstoffe und ein extrem hoher natürlicher Vitamin-C-Gehalt in jedem Tropfen.</p>
         </div>
       </div>
 
@@ -67,18 +61,16 @@
            style="background-image: url('https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_400/v1773686862/sonnengekuesster-sanddorn_jxkico.jpg');">
         <div class="float-card-overlay"></div>
         <div class="float-card-content">
-          <span class="card-eyebrow">Handwerk</span>
+          <span class="card-eyebrow" data-i18n="floatCards.craft.eyebrow">Handwerk</span>
           <div class="card-value">100%</div>
-          <p class="card-text">Behutsame Handlese und Zero-Waste Kaltpressung für absolute Reinheit.</p>
+          <p class="card-text" data-i18n="floatCards.craft.text">Behutsame Handlese und Zero-Waste Kaltpressung für absolute Reinheit.</p>
         </div>
       </div>
 
     </div>
 
-    <!-- Hero card (scales down on scroll) -->
     <div class="scalable-hero" id="mainHero">
 
-      <!-- Fallback image (shows instantly while video loads) -->
       <img
         src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco/v1774812498/ambernord-zelt-taegliches-ritual-sanddorn-konzentrat-morgenroutine.webp_tnwv2r.jpg"
         class="hero-bg-video"
@@ -87,41 +79,41 @@
         aria-hidden="true"
         fetchpriority="high">
 
-      <!-- Background video -->
       <video autoplay loop muted playsinline class="hero-bg-video" style="z-index:1;" aria-hidden="true">
         <source src="https://res.cloudinary.com/dt6ksxuqf/video/upload/v1776461572/premium-sanddorn-ambernord-qualit%C3%A4t-elixier-ritual.mp4_k8jpkj.mp4" type="video/mp4">
       </video>
 
       <div class="ambernord-hero-shade" id="ambernordHeroShade" aria-hidden="true"></div>
 
-      <!-- Hero text content -->
       <div class="hero-content" id="heroText">
         <div id="ambernord-hero-content">
 
           <div class="top-tagline-container">
             <span class="tagline-part-1">
-              100% HANDLESE | KALTGEPRESST |
+              <span data-i18n="hero.taglineHandpick">100% HANDLESE</span> | <span data-i18n="hero.taglineColdPress">KALTGEPRESST</span> |
               <span class="bio-wrapper">
                 <img
                   class="eu-bio-logo"
                   src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_100/v1775347505/eu-organic-bio-logo.svg_ollbss.png"
+                  data-i18n-attr="alt:hero.bioLogoAlt"
                   alt="EU Organic zertifiziert"
                   width="48"
                   height="48"
                   loading="eager">
-                BIO-ZERTIFIZIERT
+                <span data-i18n="hero.taglineBio">BIO-ZERTIFIZIERT</span>
               </span>
             </span>
           </div>
 
           <h1>
-            Der Körper reagiert nicht auf Versprechen.<br>
-            <span>Sondern auf das, was er wirklich aufnehmen kann.</span>
+            <span data-i18n="hero.h1Line1">Der Körper reagiert nicht auf Versprechen.</span><br>
+            <span data-i18n="hero.h1Line2">Sondern auf das, was er wirklich aufnehmen kann.</span>
           </h1>
 
           <div class="hero-features-box">
             <img
               src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,h_300/v1775476093/ambernord-bio-sanddornsaft-zelt-edition-250ml-schweiz.webp_kl6nqj.png"
+              data-i18n-attr="alt:hero.productAlt"
               alt="AmberNord Premium-Edition Flasche"
               width="100"
               height="200"
@@ -129,16 +121,16 @@
               loading="eager">
 
             <div class="hero-benefits-list" aria-label="Hauptvorteile">
-              <span>&#10003; Spürbare Energie durch 190+ Bioaktivstoffe</span>
-              <span>&#10003; Omega-7 für Haut, Darm &amp; Schutzbarrieren</span>
-              <span>&#10003; Natürliches B12 – bioverfügbar, nicht synthetisch</span>
-              <div class="native-oils-text">
+              <span data-i18n="hero.benefit1">✓ Spürbare Energie durch 190+ Bioaktivstoffe</span>
+              <span data-i18n="hero.benefit2">✓ Omega-7 für Haut, Darm & Schutzbarrieren</span>
+              <span data-i18n="hero.benefit3">✓ Natürliches B12 – bioverfügbar, nicht synthetisch</span>
+              <div class="native-oils-text" data-i18n-html="hero.nativeOils">
                 Inklusive nativer Öle aus<br>Fruchtfleisch &amp; Kern
               </div>
             </div>
           </div>
 
-          <a href="#conversion-boosters" class="ambernord-btn-clean" data-link>JETZT RITUAL STARTEN</a>
+          <a href="#conversion-boosters" class="ambernord-btn-clean" data-link data-i18n="hero.cta">JETZT RITUAL STARTEN</a>
 
         </div>
       </div>
@@ -147,55 +139,46 @@
   </div>
 </section>
 
-<!-- =========================================================================
-     TRUST RIBBON
-     ========================================================================= -->
-
 <div class="conversion-booster-wrapper" id="conversion-boosters">
   <div class="trust-ribbon" role="list" aria-label="Vertrauensmerkmale">
     <div class="trust-item" role="listitem">
       <span class="trust-icon" aria-hidden="true">🔬</span>
       <div>
-        <span class="trust-text">Laborgeprüft</span>
-        <span class="trust-subtext">Höchste Reinheitsstandards</span>
+        <span class="trust-text" data-i18n="trust.lab.title">Laborgeprüft</span>
+        <span class="trust-subtext" data-i18n="trust.lab.subtitle">Höchste Reinheitsstandards</span>
       </div>
     </div>
     <div class="trust-item" role="listitem">
       <span class="trust-icon" aria-hidden="true">🛡️</span>
       <div>
-        <span class="trust-text">100% Premium Qualität</span>
-        <span class="trust-subtext">Rein &amp; bioaktiv</span>
+        <span class="trust-text" data-i18n="trust.premium.title">100% Premium Qualität</span>
+        <span class="trust-subtext" data-i18n="trust.premium.subtitle">Rein &amp; bioaktiv</span>
       </div>
     </div>
     <div class="trust-item" role="listitem">
       <span class="trust-icon" aria-hidden="true">📦</span>
       <div>
-        <span class="trust-text">Versand in 24h</span>
-        <span class="trust-subtext">Kostenlos ab 'The Habit'</span>
+        <span class="trust-text" data-i18n="trust.shipping.title">Versand in 24h</span>
+        <span class="trust-subtext" data-i18n="trust.shipping.subtitle">Kostenlos ab 'The Habit'</span>
       </div>
     </div>
   </div>
 </div>
 
-<!-- =========================================================================
-     SHOP — PRODUCT CARDS
-     ========================================================================= -->
-
 <div id="shop" class="ambernord-section-wrapper">
   <div class="ambernord-section-inner" id="ritual-products">
 
-    <h2 class="ambernord-content-title" style="text-align:center; margin-bottom:60px;">Wählen Sie Ihr Protokoll</h2>
+    <h2 class="ambernord-content-title" style="text-align:center; margin-bottom:60px;" data-i18n="shop.title">Wählen Sie Ihr Protokoll</h2>
 
-    <!-- 1. The Starter -->
     <a href="/shop/starter/" class="premium-product-card" data-link>
-      <div class="product-badge badge-voucher">INKL. 10 CHF VOUCHER<br><span>CODE: START10</span></div>
+      <div class="product-badge badge-voucher"><span data-i18n="shop.starter.badge">INKL. 10 CHF VOUCHER</span><br><span data-i18n="shop.starter.badgeCode">CODE: START10</span></div>
       <div class="product-info-left">
-        <div class="daily-price">Nur 2.49 CHF / Tag</div>
-        <div class="p-extra-info">Ideal zum Probieren</div>
+        <div class="daily-price" data-i18n="shop.starter.dailyPrice">Nur 2.49 CHF / Tag</div>
+        <div class="p-extra-info" data-i18n="shop.starter.extra">Ideal zum Probieren</div>
         <ul class="benefit-list">
-          <li>Spürbare Vitalität &amp; Immunschutz</li>
-          <li>100% reine, vegane Zell-Nahrung</li>
-          <li>Liefert das seltene Omega-7</li>
+          <li data-i18n="shop.starter.benefit1">Spürbare Vitalität &amp; Immunschutz</li>
+          <li data-i18n="shop.starter.benefit2">100% reine, vegane Zell-Nahrung</li>
+          <li data-i18n="shop.starter.benefit3">Liefert das seltene Omega-7</li>
         </ul>
       </div>
       <div class="product-card-right">
@@ -204,25 +187,24 @@
           alt="The Starter" loading="lazy" class="card-img">
         <div class="card-details">
           <div class="card-title">The Starter</div>
-          <div class="card-units">(1x 250ml)</div>
-          <div class="card-price">24.90 CHF <span class="einmalig">einmalig</span></div>
-          <div class="card-shipping-note">inkl. Versand</div>
-          <span class="ambernord-card-btn">JETZT STARTEN</span>
+          <div class="card-units" data-i18n="shop.starter.units">(1× 250 ml)</div>
+          <div class="card-price"><span data-i18n="shop.starter.price">24.90 CHF</span> <span class="einmalig" data-i18n="shop.starter.priceLabel">einmalig</span></div>
+          <div class="card-shipping-note" data-i18n="shop.starter.shipping">inkl. Versand</div>
+          <span class="ambernord-card-btn" data-i18n="shop.starter.btn">Jetzt starten</span>
         </div>
         <div class="card-arrow" aria-hidden="true">&#10132;</div>
       </div>
     </a>
 
-    <!-- 2. The Habit -->
     <a href="/shop/habit/" class="premium-product-card highlight-habit" data-link>
-      <div class="product-badge badge-bestseller">MEISTGEKAUFT</div>
+      <div class="product-badge badge-bestseller" data-i18n="shop.habit.badge">MEISTGEKAUFT</div>
       <div class="product-info-left">
-        <div class="daily-price">Nur 2.30 CHF / Tag</div>
-        <div class="p-extra-info">Das 30-Tage-Ritual</div>
+        <div class="daily-price" data-i18n="shop.habit.dailyPrice">Nur 2.30 CHF / Tag</div>
+        <div class="p-extra-info" data-i18n="shop.habit.extra">Das 30-Tage-Ritual</div>
         <ul class="benefit-list">
-          <li>Komplettes 30-Tage-Zell-Reset</li>
-          <li>Regeneration von Haut &amp; Schleimhäuten</li>
-          <li>Nachhaltiger Fokus &amp; natürliche Energie</li>
+          <li data-i18n="shop.habit.benefit1">Komplettes 30-Tage-Zell-Reset</li>
+          <li data-i18n="shop.habit.benefit2">Regeneration von Haut &amp; Schleimhäuten</li>
+          <li data-i18n="shop.habit.benefit3">Nachhaltiger Fokus &amp; natürliche Energie</li>
         </ul>
       </div>
       <div class="product-card-right">
@@ -231,24 +213,23 @@
           alt="The Habit" loading="lazy" class="card-img">
         <div class="card-details">
           <div class="card-title">The Habit</div>
-          <div class="card-units">(3x 250ml)</div>
-          <div class="card-price">69.00 CHF <span class="einmalig">einmalig</span></div>
-          <div class="card-shipping-note">inkl. kostenlosem Versand</div>
-          <span class="ambernord-card-btn">30 TAGE STARTEN</span>
+          <div class="card-units" data-i18n="shop.habit.units">(3× 250 ml)</div>
+          <div class="card-price"><span data-i18n="shop.habit.price">69.00 CHF</span> <span class="einmalig" data-i18n="shop.habit.priceLabel">einmalig</span></div>
+          <div class="card-shipping-note" data-i18n="shop.habit.shipping">inkl. kostenlosem Versand</div>
+          <span class="ambernord-card-btn" data-i18n="shop.habit.btn">30 Tage starten</span>
         </div>
         <div class="card-arrow" aria-hidden="true">&#10132;</div>
       </div>
     </a>
 
-    <!-- 3. The Protocol -->
     <a href="/shop/protocol/" class="premium-product-card" data-link>
       <div class="product-info-left">
-        <div class="daily-price">Nur 2.15 CHF / Tag</div>
-        <div class="p-extra-info">Für Familie &amp; langfristigen Fokus</div>
+        <div class="daily-price" data-i18n="shop.protocol.dailyPrice">Nur 2.15 CHF / Tag</div>
+        <div class="p-extra-info" data-i18n="shop.protocol.extra">Für Familie &amp; langfristigen Fokus</div>
         <ul class="benefit-list">
-          <li>Dauerhafte zelluläre Versorgung</li>
-          <li>Optimal für Familien &amp; Biohacker</li>
-          <li>Bester Preis pro Tagesration</li>
+          <li data-i18n="shop.protocol.benefit1">Dauerhafte zelluläre Versorgung</li>
+          <li data-i18n="shop.protocol.benefit2">Optimal für Familien &amp; Biohacker</li>
+          <li data-i18n="shop.protocol.benefit3">Bester Preis pro Tagesration</li>
         </ul>
       </div>
       <div class="product-card-right">
@@ -257,18 +238,17 @@
           alt="The Protocol" loading="lazy" class="card-img">
         <div class="card-details">
           <div class="card-title">The Protocol</div>
-          <div class="card-units">(6x 250ml)</div>
-          <div class="card-price">129.00 CHF <span class="einmalig">einmalig</span></div>
-          <div class="card-shipping-note">inkl. kostenlosem Versand</div>
-          <span class="ambernord-card-btn">MEIN RITUAL STARTEN</span>
+          <div class="card-units" data-i18n="shop.protocol.units">(6× 250 ml)</div>
+          <div class="card-price"><span data-i18n="shop.protocol.price">129.00 CHF</span> <span class="einmalig" data-i18n="shop.protocol.priceLabel">einmalig</span></div>
+          <div class="card-shipping-note" data-i18n="shop.protocol.shipping">inkl. kostenlosem Versand</div>
+          <span class="ambernord-card-btn" data-i18n="shop.protocol.btn">Mein Ritual starten</span>
         </div>
         <div class="card-arrow" aria-hidden="true">&#10132;</div>
       </div>
     </a>
 
-    <!-- Payment trust row -->
     <div style="margin-top:40px; border-top:1px solid rgba(255,255,255,0.08); padding-top:40px;">
-      <div class="trust-payment-row" aria-label="Sichere Zahlungsmethoden">
+      <div class="trust-payment-row" data-i18n-attr="aria-label:shop.paymentLabel" aria-label="Sichere Zahlungsmethoden">
         <img src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,h_80/v1776024863/twint-zahlung-schweiz_mglhm9.png" alt="TWINT" loading="lazy">
         <img src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,h_80/v1776024864/google-pay-zahlungsart_rc4ltk.png" alt="Google Pay" loading="lazy">
         <img src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,h_80/v1776024864/apple-pay-zahlungsart_gmqfgs.png" alt="Apple Pay" loading="lazy">
@@ -278,8 +258,8 @@
       </div>
 
       <div class="protocol-info-block">
-        <div class="protocol-info-title">Das tägliche Ritual</div>
-        <div class="protocol-info-text">
+        <div class="protocol-info-title" data-i18n="shop.protocolInfo.title">Das tägliche Ritual</div>
+        <div class="protocol-info-text" data-i18n-html="shop.protocolInfo.text">
           <strong>Anwendungshinweis:</strong> Das 1:10 Protokoll bedeutet, dass Sie 1 Teil AmberNord Essenz mit 10 Teilen Wasser (still oder prickelnd) mischen. Am besten morgens auf nüchternen Magen geniessen, um die optimale zelluläre Absorption zu gewährleisten. Vor Gebrauch stets gut schütteln.
         </div>
       </div>
@@ -288,59 +268,53 @@
   </div>
 </div>
 
-<!-- =========================================================================
-     EDITORIAL BENTO GRID
-     ========================================================================= -->
-
 <div class="dynamic-editorial-wrapper" id="dynamicEditorialBg">
   <div class="editorial-bento-grid">
 
-    <!-- Bento Box 1: Das Manifest -->
     <div class="nature-hero-wrapper">
       <div class="nature-hero-block">
         <div class="nature-hero-bg" style="background-image:url('https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_1920/v1774812486/ambernord-natuerliche-energie-zelt-vs-energy-drinks-sanddorn-wald.webp_o0hswh.jpg');" aria-hidden="true"></div>
         <div class="nature-hero-overlay" aria-hidden="true"></div>
         <div class="nature-hero-content">
-          <span class="ambernord-content-subtitle">Unser Manifest</span>
-          <h2 class="ambernord-content-title">Das Ende der<br><span class="ambernord-text-gold">künstlichen Energie.</span></h2>
-          <p class="ambernord-content-text no-margin">
+          <span class="ambernord-content-subtitle" data-i18n="manifest.eyebrow">Unser Manifest</span>
+          <h2 class="ambernord-content-title"><span data-i18n="manifest.h2Line1">Das Ende der</span><br><span class="ambernord-text-gold" data-i18n="manifest.h2Line2">künstlichen Energie.</span></h2>
+          <p class="ambernord-content-text no-margin" data-i18n="manifest.lead">
             Wir leben in einer Ära der synthetischen Abkürzungen. Herkömmliche Energy-Drinks und künstliche Stimulanzien leihen dem Körper Energie, die er später mit Zinsen zurückzahlen muss.
           </p>
-          <div class="card-expand-trigger" onclick="toggleEditorialCard(this)" role="button" aria-expanded="false" tabindex="0">
-            <span>Das ganze Manifest lesen</span>
+          <button type="button" class="card-expand-trigger" onclick="toggleEditorialCard(this)" aria-expanded="false">
+            <span data-i18n="manifest.expand">Das ganze Manifest lesen</span>
             <svg class="card-expand-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
-          </div>
+          </button>
           <div class="card-hidden-content">
-            <p class="ambernord-content-text no-margin">
-              Sie erzeugen einen kurzen Rausch, der Ihre Zellen dehydriert und Ihren Fokus langfristig trübt. AmberNord ist die Antwort auf die Forderung nach echter, zellulärer Performance. Es ist kein kurzfristiger Kick, sondern ein <strong class="ambernord-fw-500">biologisches Upgrade</strong>. Wir extrahieren die reinste Essenz der nordischen Wildnis, um Ihnen ein Werkzeug für nachhaltiges Biohacking und tiefgreifende Regeneration direkt in die Schweiz zu bringen.
+            <p class="ambernord-content-text no-margin" data-i18n-html="manifest.hidden">
+              Sie erzeugen einen kurzen Rausch, der Ihre Zellen dehydriert und Ihren Fokus langfristig trübt.
             </p>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Bento Box 2: Das Ritual -->
     <div class="nature-hero-wrapper">
       <div class="nature-hero-block">
         <div class="nature-hero-bg" style="background-image:url('https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_1920/v1774812498/ambernord-zelt-taegliches-ritual-sanddorn-konzentrat-morgenroutine.webp_tnwv2r.jpg');" aria-hidden="true"></div>
         <div class="nature-hero-overlay" aria-hidden="true"></div>
         <div class="nature-hero-content">
-          <span class="ambernord-content-subtitle">Das Ritual</span>
-          <h2 class="ambernord-content-title">Ein Teil Gold.<br><span class="ambernord-text-gold">Zehn Teile Leben.</span></h2>
-          <p class="ambernord-content-text no-margin">
+          <span class="ambernord-content-subtitle" data-i18n="ritualBlock.eyebrow">Das Ritual</span>
+          <h2 class="ambernord-content-title"><span data-i18n="ritualBlock.h2Line1">Ein Teil Gold.</span><br><span class="ambernord-text-gold" data-i18n="ritualBlock.h2Line2">Zehn Teile Leben.</span></h2>
+          <p class="ambernord-content-text no-margin" data-i18n="ritualBlock.lead">
             Die meisten Nahrungsergänzungen sind synthetisch isoliert, und herkömmliche Gesundheitsgetränke sind voller verstecktem Zucker. AmberNord geht einen völlig anderen Weg.
           </p>
-          <div class="card-expand-trigger" onclick="toggleEditorialCard(this)" role="button" aria-expanded="false" tabindex="0">
-            <span>Die Anwendung entdecken</span>
+          <button type="button" class="card-expand-trigger" onclick="toggleEditorialCard(this)" aria-expanded="false">
+            <span data-i18n="ritualBlock.expand">Die Anwendung entdecken</span>
             <svg class="card-expand-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
-          </div>
+          </button>
           <div class="card-hidden-content">
-            <p class="ambernord-content-text no-margin">
-              Wir bieten Ihnen eine kompromisslos reine, hochkonzentrierte Rohessenz – entworfen für die perfekte zelluläre Alchemie mit Wasser. Das 1:10 Protokoll (1 Teil Essenz, 10 Teile Wasser) ist Ihr täglicher Katalysator. In dieser Symbiose werden die seltenen Omega-Fettsäuren, Aminosäuren und das natürliche Vitamin C vom Körper maximal absorbiert. Das Ergebnis: Tiefe Hydratation, ein messbar schärferer Fokus und robuster Zellschutz.
+            <p class="ambernord-content-text no-margin" data-i18n="ritualBlock.hidden">
+              Wir bieten Ihnen eine kompromisslos reine, hochkonzentrierte Rohessenz.
             </p>
           </div>
         </div>
@@ -349,7 +323,6 @@
 
   </div>
 
-  <!-- Exclusive section with scroll-triggered background -->
   <div class="exclusive-section-wrapper" id="exclusiveSection">
     <div class="exclusive-bg" id="exclusiveBg" aria-hidden="true">
       <img src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:best,w_2560/v1773686862/sonnengekuesster-sanddorn_jxkico.jpg" alt="" loading="lazy">
@@ -357,66 +330,62 @@
     </div>
 
     <div class="exclusive-content">
-      <!-- Magic Garden: Sourcing + Handwerk + Gallery + YouTube -->
       <div class="magic-garden-core">
 
-        <!-- Sourcing split row -->
         <div class="wide-split-row">
           <div class="wide-split-img">
-            <img src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_1000/v1773687030/unser-nordischer-wildwuchs_dzg5cd.jpg" alt="Exklusive Bio-Plantage" loading="lazy">
+            <img src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_1000/v1773687030/unser-nordischer-wildwuchs_dzg5cd.jpg" data-i18n-attr="alt:sourcing.imgAlt" alt="Exklusive Bio-Plantage" loading="lazy">
           </div>
           <div class="wide-split-text gsap-reveal">
-            <span class="ambernord-content-subtitle">Exklusives Sourcing</span>
-            <h2 class="ambernord-content-title">Die Quelle des Elixiers.<br><span class="ambernord-text-gold">Unsere Plantage.</span></h2>
-            <p class="ambernord-content-text">
-              Wir überlassen nichts dem Zufall. Unsere Rohstoffe stammen nicht vom anonymen Weltmarkt, sondern aus einer einzigen, von uns persönlich ausgewählten Bio-Plantage. Nach einer sorgfältigen Selektion entschieden wir uns für genau diese seltene Sorte – gewachsen in einem Mikroklima, dessen Reinheit und Mineralität dem Saft seinen unverwechselbaren Charakter verleihen. Hier entstehen Beeren mit einer Nährstoffdichte, die neue Massstäbe setzt.
+            <span class="ambernord-content-subtitle" data-i18n="sourcing.eyebrow">Exklusives Sourcing</span>
+            <h2 class="ambernord-content-title"><span data-i18n="sourcing.h2Line1">Die Quelle des Elixiers.</span><br><span class="ambernord-text-gold" data-i18n="sourcing.h2Line2">Unsere Plantage.</span></h2>
+            <p class="ambernord-content-text" data-i18n="sourcing.text">
+              Wir überlassen nichts dem Zufall.
             </p>
           </div>
         </div>
 
-        <!-- Handwerk split row (with YouTube) -->
         <div class="wide-split-row reverse">
           <div class="wide-split-img yt-video-wrapper">
-            <div class="yt-facade" id="ytFacade" role="button" tabindex="0" aria-label="Video abspielen: AmberNord Handwerk">
-              <img src="https://img.youtube.com/vi/j8lfT9kNGK0/maxresdefault.jpg" alt="Video: Schonende Ernte und Kaltpressung" class="yt-thumbnail" loading="lazy">
-              <div class="yt-play-btn" aria-hidden="true">
+            <button type="button" class="yt-facade" id="ytFacade" data-i18n-attr="aria-label:craft.videoLabel" aria-label="Video abspielen: AmberNord Handwerk">
+              <img src="https://img.youtube.com/vi/j8lfT9kNGK0/maxresdefault.jpg" data-i18n-attr="alt:craft.videoAlt" alt="Video: Schonende Ernte und Kaltpressung" class="yt-thumbnail" loading="lazy">
+              <span class="yt-play-btn" aria-hidden="true">
                 <svg viewBox="0 0 68 48">
                   <path d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#f00"></path>
                   <path d="M 45,24 27,14 27,34" fill="#fff"></path>
                 </svg>
-              </div>
-            </div>
+              </span>
+            </button>
           </div>
           <div class="wide-split-text gsap-reveal">
-            <span class="ambernord-content-subtitle">Handwerk &amp; Reinheit</span>
-            <h2 class="ambernord-content-title">Keine Kompromisse.<br><span class="ambernord-text-gold">Nur die Essenz.</span></h2>
-            <p class="ambernord-content-text">
-              Vom Moment der behutsamen Handlese bis zur Kaltpressung an der Quelle vergeht nur ein Augenblick. Keine industriellen Erntemaschinen berühren unsere Früchte – so bleibt die empfindliche Haut der Beeren unversehrt. Dabei setzen wir auf ganzheitliche Verwertung: Die gesamte Beere – von der nährstoffreichen Schale bis zum wertvollen Kern – wird vollständig genutzt. Auf diese Weise bewahren wir das kostbare Omega-7-Öl und über 190 bioaktive Wirkstoffe in ihrer reinsten Form.
+            <span class="ambernord-content-subtitle" data-i18n="craft.eyebrow">Handwerk &amp; Reinheit</span>
+            <h2 class="ambernord-content-title"><span data-i18n="craft.h2Line1">Keine Kompromisse.</span><br><span class="ambernord-text-gold" data-i18n="craft.h2Line2">Nur die Essenz.</span></h2>
+            <p class="ambernord-content-text" data-i18n="craft.text">
+              Vom Moment der behutsamen Handlese bis zur Kaltpressung an der Quelle vergeht nur ein Augenblick.
             </p>
           </div>
         </div>
 
-        <!-- Mini gallery -->
         <div class="sourcing-mini-gallery" id="editorialCarousel">
           <div class="mini-gallery-item">
-            <img src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_800/v1773686998/reinste-essenz-der-natur_rz2l8i.jpg" alt="Exklusive Bio-Plantage" loading="lazy" decoding="async">
-            <div class="mini-gallery-caption">1. Exklusive Bio-Plantage</div>
+            <img src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_800/v1773686998/reinste-essenz-der-natur_rz2l8i.jpg" data-i18n-attr="alt:gallery.alt1" alt="Exklusive Bio-Plantage" loading="lazy" decoding="async">
+            <div class="mini-gallery-caption" data-i18n="gallery.caption1">1. Exklusive Bio-Plantage</div>
           </div>
           <div class="mini-gallery-item">
-            <img src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_800/v1773687332/kraft-der-wilden-beeren_teowyo.webp" alt="Sorgfältige Handlese" loading="lazy" decoding="async">
-            <div class="mini-gallery-caption">2. Sorgfältige Handlese</div>
+            <img src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_800/v1773687332/kraft-der-wilden-beeren_teowyo.webp" data-i18n-attr="alt:gallery.alt2" alt="Sorgfältige Handlese" loading="lazy" decoding="async">
+            <div class="mini-gallery-caption" data-i18n="gallery.caption2">2. Sorgfältige Handlese</div>
           </div>
           <div class="mini-gallery-item">
-            <img src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_800/v1773686914/gold-der-ostsee-kueste_dwnagq.jpg" alt="Die Frische Ernte" loading="lazy" decoding="async">
-            <div class="mini-gallery-caption">3. Die Frische Ernte</div>
+            <img src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_800/v1773686914/gold-der-ostsee-kueste_dwnagq.jpg" data-i18n-attr="alt:gallery.alt3" alt="Die Frische Ernte" loading="lazy" decoding="async">
+            <div class="mini-gallery-caption" data-i18n="gallery.caption3">3. Die Frische Ernte</div>
           </div>
           <div class="mini-gallery-item">
-            <img src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_800/v1773686963/handverlesene-genuesslichkeiten_y9rzmm.jpg" alt="Schonende Verarbeitung" loading="lazy" decoding="async">
-            <div class="mini-gallery-caption">4. Schonende Verarbeitung</div>
+            <img src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_800/v1773686963/handverlesene-genuesslichkeiten_y9rzmm.jpg" data-i18n-attr="alt:gallery.alt4" alt="Schonende Verarbeitung" loading="lazy" decoding="async">
+            <div class="mini-gallery-caption" data-i18n="gallery.caption4">4. Schonende Verarbeitung</div>
           </div>
           <div class="mini-gallery-item">
-            <img src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_800/v1773687279/biologisches-oekosystem-im-norden_prm6n2.jpg" alt="Pure Pflanzenkraft" loading="lazy" decoding="async">
-            <div class="mini-gallery-caption">5. Pure Pflanzenkraft</div>
+            <img src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_800/v1773687279/biologisches-oekosystem-im-norden_prm6n2.jpg" data-i18n-attr="alt:gallery.alt5" alt="Pure Pflanzenkraft" loading="lazy" decoding="async">
+            <div class="mini-gallery-caption" data-i18n="gallery.caption5">5. Pure Pflanzenkraft</div>
           </div>
         </div>
 
@@ -424,23 +393,22 @@
     </div>
   </div>
 
-  <!-- MasterBox CTA block -->
   <div style="width:100%; padding:40px var(--container-pad) 80px;">
     <div style="max-width:1400px; margin:0 auto; position:relative; z-index:10;">
       <div class="nature-hero-block" style="min-height:550px;">
         <div class="nature-hero-bg" style="background-image:url('https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco/v1774812492/ambernord-zelt-master-box-sanddornsaft-konzentrat-langlebigkeit.webp_jkxycm.jpg'); background-position:center;" aria-hidden="true"></div>
         <div class="nature-hero-overlay" aria-hidden="true"></div>
         <div class="nature-hero-content">
-          <span class="ambernord-content-subtitle">Kliniken &amp; Corporate</span>
-          <h2 class="ambernord-content-title" style="margin-bottom:25px;">The Master Box &ndash;<br><span class="ambernord-text-gold">Für kompromisslosen Fokus.</span></h2>
-          <p class="ambernord-content-text">
-            Integrieren Sie das AmberNord-Protokoll in Ihre Praxis oder Ihr Unternehmen. Unsere exklusive 20-Flaschen-Edition bietet massgeschneiderte Partnerschaften für Longevity-Zentren, Biohacking-Einrichtungen und visionäre Corporate-Teams, die in echte kognitive Performance investieren.
+          <span class="ambernord-content-subtitle" data-i18n="masterBox.eyebrow">Kliniken &amp; Corporate</span>
+          <h2 class="ambernord-content-title" style="margin-bottom:25px;"><span data-i18n="masterBox.h2Line1">The Master Box –</span><br><span class="ambernord-text-gold" data-i18n="masterBox.h2Line2">Für kompromisslosen Fokus.</span></h2>
+          <p class="ambernord-content-text" data-i18n="masterBox.p1">
+            Integrieren Sie das AmberNord-Protokoll in Ihre Praxis oder Ihr Unternehmen.
           </p>
-          <p class="ambernord-content-text" style="margin-bottom:35px;">
-            Kompromisslos unverfälschtes Nährstoffprofil und bio-zertifizierte Reinheit, die auf dem europäischen Markt einzigartig sind.
+          <p class="ambernord-content-text" style="margin-bottom:35px;" data-i18n="masterBox.p2">
+            Kompromisslos unverfälschtes Nährstoffprofil und bio-zertifizierte Reinheit.
           </p>
-          <a href="/shop/master-box/" class="show-more-btn" data-link>
-            THE MASTER BOX ENTDECKEN
+          <a href="/shop/master-box/" class="show-more-btn" data-link data-i18n="masterBox.btn">
+            The Master Box entdecken
           </a>
         </div>
       </div>

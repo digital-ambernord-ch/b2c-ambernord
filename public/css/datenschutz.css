@@ -16,7 +16,7 @@
 }
 
 .datenschutz-page-container {
-  padding: calc(var(--nav-height) + 60px) 0 120px;
+  padding: 0 0 120px;
   position: relative;
   z-index: 10;
   animation: datenschutzReveal 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;

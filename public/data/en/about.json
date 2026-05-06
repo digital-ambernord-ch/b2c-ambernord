@@ -1,0 +1,51 @@
+{
+  "meta": {
+    "title": "Story | AmberNord",
+    "description": "From the false kick to real clarity. Learn about founder Eriks Matisons and the vision behind AmberNord's uncompromising sea buckthorn essence.",
+    "canonical": "https://ambernord.ch/en/story/",
+    "robots": "index, follow",
+    "og": {
+      "title": "Story | AmberNord",
+      "description": "From the false kick to real clarity. Learn about founder Eriks Matisons and the vision behind AmberNord's uncompromising sea buckthorn essence.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/v1775992574/ambernord-gruender-aarau-schweiz-elixier-ritual-sanddornsaft.jpg_efkhfl.jpg",
+      "type": "article"
+    },
+    "hreflang": {
+      "de": "https://ambernord.ch/story/",
+      "en": "https://ambernord.ch/en/story/",
+      "fr": "https://ambernord.ch/fr/story/",
+      "it": "https://ambernord.ch/it/story/",
+      "x-default": "https://ambernord.ch/story/"
+    }
+  },
+  "header": {
+    "eyebrow": "The Story of AmberNord",
+    "h1": "From the false kick<br><span>to real clarity.</span>"
+  },
+  "story": {
+    "h3": "The daily compromise",
+    "p1": "My daily life in logistics is shaped by pace, responsibility and constant pressure. Decisions must be made in seconds; breaks barely exist. I tried to live mindfully – yet in moments of stress I kept reaching for artificial energy drinks and sugar-free sodas. It helped in the moment, but the bad conscience remained. I knew what these synthetic substances were doing to my body.",
+    "p2": "At some point, I had had enough. I wanted real energy. When I came across the highly concentrated essence of nordic organic sea buckthorn, I expected just «another healthy juice». But the effect was radically different: no rush, no jitters – instead a deep, natural freshness that immediately cleared the mind.",
+    "quoteHeading": "My daily protocol",
+    "quoteText": "«My day begins differently today: one part essence mixed with warm water – often a little stronger than 1:10. The taste is unmistakably bitter, refreshingly tart and incredibly delicious. You feel digestion awaken and the body powering up. At noon, the second glass follows, this time ice-cold. It delivers exactly the uncompromising kick I used to look for in artificial drinks. It cools, refreshes instantly and keeps focus sharp. AmberNord is exactly what I have always sought: pure, unadulterated quality.»",
+    "quoteAuthor": "Eriks Matisons",
+    "quoteRole": "Founder AmberNord",
+    "imgAlt": "Eriks Matisons – Founder of AmberNord"
+  },
+  "timeline": {
+    "heading": "The Anatomy of <span>Perfection</span>",
+    "desc": "A synergy of historic legends, exclusive natural power and Swiss precision.",
+    "item1": {
+      "title": "Nature's «Golden Bentley»",
+      "text": "«Amber» stands for the glow of the North. For our essence we use exclusively our <strong>«Zelt Selection»</strong>. This specific noble variety is distinguished by an exceptionally high natural oil content that you will not find in standard products. This wild, uncompromisingly pure power is what we bring directly into your daily life."
+    },
+    "item2": {
+      "title": "The ultimate longevity apothecary",
+      "text": "Did you know our nordic berry contains 18 of 22 known amino acids? With over <strong>190 biologically active compounds</strong>, 9 times more Vitamin C than citrus fruit and all four Omega fatty acids in a single plant, AmberNord is an unparalleled cellular powerhouse. The absolute differentiator, however, is the <strong>extremely rare Omega-7 fatty acid</strong>, which reaches a record concentration of up to 42% in our fruit-pulp oil – the ultimate building block for deep regeneration and protection against \"dry eye syndrome\" during intense screen work."
+    },
+    "item3": {
+      "title": "Swiss precision & the next level",
+      "text": "100% organic, cold-pressed and from a fully sustainable zero-waste production. From our base in Aargau we guarantee uncompromising reliability. But our vision goes further: behind closed doors we are currently developing a strictly confidential project – a <strong class=\"gold\">groundbreaking, 100% natural base essence</strong>. We cannot reveal much yet, but as soon as this superfood upgrade complements our portfolio, in synergy with the elixir it will activate the bioactive substances even more dramatically and raise them to a completely new level of bioavailability."
+    }
+  }
+}

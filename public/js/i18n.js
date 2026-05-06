@@ -83,9 +83,50 @@ function setHreflang(lang, href) {
   document.head.appendChild(el);
 }
 
+/* Apply common (nav + footer + shared CTA) translations once on initial load.
+   Page-specific loadI18n calls inside route inits then translate the #app
+   content fragment. Both run against the same DOM, so they don't conflict. */
+window.loadCommonI18n = async function () {
+  const lang = window.getLang();
+  let data;
+  try {
+    const res = await fetch(`/data/${lang}/common.json`);
+    if (!res.ok) throw new Error();
+    data = await res.json();
+  } catch {
+    try { data = await (await fetch(`/data/de/common.json`)).json(); } catch { return; }
+  }
+
+  document.documentElement.setAttribute('lang', lang);
+
+  const apply = (selector, setter) => {
+    document.querySelectorAll(selector).forEach((el) => {
+      const key = el.getAttribute(selector === '[data-i18n]' ? 'data-i18n'
+                : selector === '[data-i18n-html]' ? 'data-i18n-html'
+                : 'data-i18n-attr');
+      setter(el, key);
+    });
+  };
+
+  document.querySelectorAll('[data-i18n]').forEach((el) => {
+    const v = getPath(data, el.getAttribute('data-i18n'));
+    if (v !== undefined) el.textContent = v;
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach((el) => {
+    const v = getPath(data, el.getAttribute('data-i18n-html'));
+    if (v !== undefined) el.innerHTML = v;
+  });
+  document.querySelectorAll('[data-i18n-attr]').forEach((el) => {
+    const [attr, path] = el.getAttribute('data-i18n-attr').split(':');
+    const v = getPath(data, path);
+    if (v !== undefined) el.setAttribute(attr, v);
+  });
+};
+
 if (typeof document !== 'undefined') {
   document.addEventListener('DOMContentLoaded', () => {
     const lang = window.getLang();
     if (lang) document.documentElement.setAttribute('lang', lang);
+    if (typeof window.loadCommonI18n === 'function') window.loadCommonI18n();
   });
 }

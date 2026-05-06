@@ -1,0 +1,76 @@
+{
+  "meta": {
+    "title": "FAQ | AmberNord",
+    "description": "Questions fréquentes sur l'élixir d'argousier AmberNord : utilisation, ingrédients, tolérance et origine.",
+    "canonical": "https://ambernord.ch/fr/hilfe/faq/",
+    "robots": "index, follow",
+    "og": {
+      "title": "FAQ | AmberNord",
+      "description": "Questions fréquentes sur l'élixir d'argousier AmberNord : utilisation, ingrédients, tolérance et origine.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/v1774787737/AmberNord_Sanddorn_Biohacking_Longevity_Schweiz_Natur_Ritual_Essenz_jwznsd.webp",
+      "type": "website"
+    },
+    "hreflang": {
+      "de": "https://ambernord.ch/hilfe/faq/",
+      "en": "https://ambernord.ch/en/hilfe/faq/",
+      "fr": "https://ambernord.ch/fr/hilfe/faq/",
+      "it": "https://ambernord.ch/it/hilfe/faq/",
+      "x-default": "https://ambernord.ch/hilfe/faq/"
+    }
+  },
+  "header": {
+    "eyebrow": "Savoir & Transparence",
+    "h1": "Questions fréquentes<br><span>sur le rituel.</span>"
+  },
+  "categories": [
+    {
+      "title": "1. Utilisation & rituel quotidien",
+      "items": [
+        { "q": "Quel est le meilleur moment pour boire AmberNord ?", "a": "Nous recommandons de commencer le matin avec un verre d'eau à température ambiante ou légèrement fraîche – doux et équilibré. À midi, une seconde dose convient parfaitement – avec de l'eau plate ou pétillante, servie agréablement fraîche, pour un moment de plaisir rafraîchissant et comme alternative aux boissons malsaines. Grâce à la petite bouteille AmberNord, élégante et pratique, vous pouvez l'emporter partout et mélanger l'essence dans un verre d'eau, votre smoothie sportif ou un jus frais. Après ouverture, conservez au frais." },
+        { "q": "Dois-je boire l'élixir à jeun ?", "a": "Pour une absorption la plus rapide possible des nutriments, la consommation à jeun (environ 15 à 30 minutes avant le petit-déjeuner) est idéale. En cas d'estomac sensible, nous recommandons cependant de le prendre avec ou après un repas léger, car les acides de fruits naturels sont très puissants." },
+        { "q": "Puis-je boire AmberNord pur ?", "a": "Nous ne le recommandons pas. Notre élixir est une essence brute hautement concentrée au goût extrêmement intense, acidulé et amer. Le principe 1:10 (avec de l'eau plate ou pétillante) garantit la meilleure expérience gustative et la tolérance optimale pour l'estomac." },
+        { "q": "Pourquoi l'argousier est-il aussi apprécié dans la haute gastronomie ?", "a": "Dans la gastronomie haut de gamme, l'argousier est souvent appelé le « citron du Nord ». Son acidité complexe et multidimensionnelle ainsi que sa texture visqueuse sont délibérément utilisées pour donner du « mordant » aux cocktails modernes sans alcool ou pour créer dans les plats gastronomiques un profil équilibré qui tranche élégamment avec la lourdeur des matières grasses." }
+      ]
+    },
+    {
+      "title": "2. Santé & ingrédients",
+      "items": [
+        { "q": "Quelles substances bioactives contient exactement l'essence ?", "a": "L'argousier est une merveille phytochimique complexe. Notre essence non filtrée délivre le spectre complet des acides gras Oméga essentiels (3, 6, 7 et 9) à partir d'une seule source végétale. S'y ajoutent plus de 180 composés bioactifs, 17 vitamines (dont A, C et E) ainsi que 14 minéraux à la plus haute biodisponibilité." },
+        { "q": "Pourquoi l'interaction entre la pulpe et le pépin est-elle si importante ?", "a": "L'argousier est un phytosystème extrêmement complexe. L'huile de pulpe est l'une des sources végétales les plus rares d'acide palmitoléique (Oméga-7), essentiel pour la peau et les muqueuses. L'huile de pépins, en revanche, fournit Oméga-3 et Oméga-6 dans un rapport physiologiquement idéal. Comme nous traitons toute la baie, ces précieux acides gras sont entièrement préservés dans l'essence." },
+        { "q": "Pourquoi une couche orange se dépose-t-elle en haut de la bouteille ?", "a": "C'est un signe absolu de qualité ! L'argousier est l'une des rares baies à contenir des huiles végétales précieuses directement dans la pulpe. Comme notre essence est 100 % naturellement pure et que nous renonçons aux émulsifiants artificiels ou à la centrifugation industrielle, l'huile se dépose naturellement. Veuillez bien agiter la bouteille avant chaque utilisation." },
+        { "q": "Combien de vitamine C contient une portion ?", "a": "Une petite portion (environ 20 à 30 ml) de l'essence brute couvre déjà l'apport quotidien total d'un adulte. La teneur naturelle en vitamine C de l'argousier dépasse de plusieurs fois celle des citrons. Grâce à notre pasteurisation extrêmement précise et douce, ces vitamines thermosensibles sont préservées de manière optimale, contrairement aux produits de masse industriellement surchauffés." },
+        { "q": "L'argousier convient-il aussi pour les soins de la peau de l'intérieur ?", "a": "Absolument. La précieuse huile de pulpe est particulièrement riche en acide palmitoléique (Oméga-7) – avec une part naturelle pouvant atteindre 32 à 42 %. Ce rare acide gras est également présent dans la matrice cutanée humaine et joue un rôle important dans la régénération de la peau et des muqueuses. Le rituel quotidien agit ainsi comme un soin ciblé de l'intérieur." },
+        { "q": "L'élixir d'argousier contient-il de la vitamine B12 ?", "a": "Oui. Grâce à une symbiose racinaire naturelle de la plante, de la vitamine B12 active (cyanocobalamine) se forme dans les baies d'argousier. Le jus d'argousier non filtré et naturellement pur, comme notre élixir, est donc une source rare, purement végétalienne, de véritable B12." },
+        { "q": "Le jus d'argousier aide-t-il en cas de troubles gastro-intestinaux ?", "a": "Les acides gras Oméga-7 uniques de l'argousier sont connus pour entretenir les muqueuses de tout le corps – y compris le tractus digestif. Beaucoup de nos clients rapportent une sensation d'estomac apaisée et équilibrée après une consommation régulière." }
+      ]
+    },
+    {
+      "title": "3. Tolérance & groupes spécifiques",
+      "items": [
+        { "q": "AmberNord convient-il aux enfants ?", "a": "Oui, absolument. AmberNord est 100 % naturel et couvre les besoins quotidiens en vitamine C d'un enfant de manière purement biologique, sans sucre ajouté." },
+        { "q": "Puis-je boire AmberNord pendant la grossesse et l'allaitement ?", "a": "Oui. Justement pendant la grossesse et l'allaitement, les besoins en vitamines naturelles et en acides gras Oméga sont augmentés. AmberNord est une excellente source purement naturelle. En cas d'incertitude particulière, nous recommandons toutefois toujours de consulter un médecin." },
+        { "q": "Y a-t-il des interactions avec des médicaments ?", "a": "Les personnes prenant des anticoagulants doivent consulter leur médecin en raison de la teneur naturelle en vitamine K de l'argousier." },
+        { "q": "La consommation excessive peut-elle entraîner des effets secondaires ?", "a": "Comme il s'agit d'un produit naturel hautement actif riche en acides de fruits, une consommation extrêmement excessive peut provoquer de légères brûlures d'estomac. Tenez-vous-en au rituel 1:10 recommandé et il est parfaitement bien toléré." }
+      ]
+    },
+    {
+      "title": "4. Origine, qualité & transformation",
+      "items": [
+        { "q": "AmberNord est-il certifié bio et contrôlé selon les normes suisses ?", "a": "Oui. AmberNord est un importateur bio officiellement accrédité en Suisse et est régulièrement audité par l'organisme de certification indépendant ProCert. Nous travaillons systématiquement selon les directives suisses les plus strictes en matière de qualité et de bio, afin de garantir une pureté, une transparence et une sécurité absolues pour notre élixir." },
+        { "q": "Qu'est-ce qui distingue l'élixir AmberNord des jus d'argousier conventionnels ?", "a": "Notre élixir est une essence brute 100 % pure et non diluée. Pour chaque bouteille, les baies les plus pures, cueillies à la main, sont transformées. De plus, nous cultivons exclusivement une mono-variété premium spécifique, sélectionnée botaniquement pour une teneur maximale en huile et une densité nutritive maximale, et renonçons totalement aux variétés industrielles produites en masse pour le rendement." },
+        { "q": "Pourquoi AmberNord est-il si précieux et comment l'argousier est-il récolté ?", "a": "La récolte d'argousier nordique est très complexe car les baies éclatent immédiatement sous pression mécanique et s'oxydent rapidement. Les grandes installations industrielles utilisent souvent des procédés destructifs « cut-and-freeze » qui privent l'arbuste de réserves de glucides. Notre partenaire de production mise au contraire exclusivement sur la cueillette manuelle délicate par plus de 100 saisonniers. Cette méthode douce protège l'anatomie de la plante et garantit la plus haute qualité des lipides natifs." },
+        { "q": "Comment l'élixir est-il transformé et les vitamines sont-elles préservées ?", "a": "Pour obtenir l'élixir 100 % pur, les baies cueillies à la main sont pressées à froid avec douceur. Ensuite, une pasteurisation très douce est effectuée. Elle élimine les germes et garantit la conservation, mais empêche la dégradation thermique des composants sensibles. Les précieux acides gras Oméga et la teneur élevée en vitamine C restent ainsi intacts." },
+        { "q": "Que signifie exactement votre approche zéro déchet ?", "a": "Nous garantissons un processus de production entièrement sans résidus. Après le pressage à froid, peaux et pépins sont délicatement broyés en poudre riche en fibres. Les feuilles, qui contiennent l'antioxydant unique plastochromanol-8 (PC-8), trouvent également une utilisation dans des thés fonctionnels. Nous utilisons 100 % de la biomasse récoltée et évitons tout gaspillage." },
+        { "q": "Utilisez-vous aussi l'écorce de l'argousier ?", "a": "Oui, dans le cadre de notre philosophie holistique. Des analyses scientifiques actuelles confirment que l'écorce de nos branches d'argousier contient des quantités notables de sérotonine végétale (phytosérotonine) – jusqu'à 1000 fois plus que les bananes. Ces précieuses substances végétales sont intégrées dans des remèdes spéciaux et des formulations fonctionnelles." },
+        { "q": "Pourquoi utilisez-vous des bouteilles en verre plutôt qu'en plastique ?", "a": "Le verre est absolument neutre en goût et ne libère aucune particule de microplastique dans l'élixir. Notre verre spécial protège également de manière optimale les composants bioactifs et garantit la plus haute pureté clinique de l'essence brute." },
+        { "q": "Quand recevrai-je mon élixir ?", "a": "Nous expédions directement depuis notre centre logistique d'Aarau. En règle générale, votre colis arrive dans un délai de 1 à 3 jours ouvrables." },
+        { "q": "Comment dois-je conserver les bouteilles ?", "a": "Non ouvertes, conservez-les au frais et à l'abri de la lumière. Après ouverture, conservez au réfrigérateur et consommez dans les 10 jours pour préserver toute la puissance des acides gras Oméga." }
+      ]
+    }
+  ],
+  "footer": {
+    "leadHtml": "Vous n'avez pas trouvé votre question ?<br>Nous sommes là pour vous. Écrivez-nous via le",
+    "linkLabel": "formulaire de contact",
+    "cta": "Retour à la boutique"
+  }
+}

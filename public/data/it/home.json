@@ -1,0 +1,159 @@
+{
+  "meta": {
+    "title": "AmberNord | Olivello Spinoso Biohacking & Longevità Svizzera",
+    "description": "Scoprite la potenza dell'olivello spinoso. AmberNord offre essenze naturali di biohacking e longevità dalla Svizzera per il vostro rituale quotidiano.",
+    "canonical": "https://ambernord.ch/it/",
+    "robots": "index, follow",
+    "og": {
+      "title": "AmberNord | Olivello Spinoso Biohacking & Longevità Svizzera",
+      "description": "Scoprite la potenza dell'olivello spinoso. AmberNord offre essenze naturali di biohacking e longevità dalla Svizzera per il vostro rituale quotidiano.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/v1774787737/AmberNord_Sanddorn_Biohacking_Longevity_Schweiz_Natur_Ritual_Essenz_jwznsd.webp",
+      "type": "website"
+    },
+    "hreflang": {
+      "de": "https://ambernord.ch/",
+      "en": "https://ambernord.ch/en/",
+      "fr": "https://ambernord.ch/fr/",
+      "it": "https://ambernord.ch/it/",
+      "x-default": "https://ambernord.ch/"
+    }
+  },
+  "floatingBtn": "Quale rituale fa per te?",
+  "stickyVoucher": "CODICE: START10",
+  "stickyBtn": "Al Rituale",
+  "floatCards": {
+    "vitamins": {
+      "eyebrow": "Vitamine",
+      "text": "Rara fonte vegetale di B12 e contenuto naturale eccezionale di vitamina C."
+    },
+    "balance": {
+      "eyebrow": "Equilibrio Cellulare",
+      "text": "Una delle fonti vegetali più rare di acido palmitoleico – essenziale per pelle & mucose."
+    },
+    "immunity": {
+      "eyebrow": "Resilienza Immunitaria",
+      "text": "Composti bioattivi e contenuto naturale eccezionalmente alto di vitamina C in ogni goccia."
+    },
+    "craft": {
+      "eyebrow": "Artigianato",
+      "text": "Raccolta manuale delicata e spremitura a freddo a rifiuti zero per una purezza assoluta."
+    }
+  },
+  "hero": {
+    "taglineHandpick": "100% RACCOLTO A MANO",
+    "taglineColdPress": "SPREMUTO A FREDDO",
+    "taglineBio": "CERTIFICATO BIO",
+    "bioLogoAlt": "Certificato EU Organic",
+    "h1Line1": "Il corpo non risponde alle promesse.",
+    "h1Line2": "Ma a ciò che riesce davvero ad assorbire.",
+    "productAlt": "Bottiglia AmberNord Edizione Premium",
+    "benefit1": "✓ Energia tangibile da oltre 190 composti bioattivi",
+    "benefit2": "✓ Omega-7 per pelle, intestino & barriere protettive",
+    "benefit3": "✓ B12 naturale – biodisponibile, non sintetica",
+    "nativeOils": "Inclusi gli oli nativi<br>della polpa &amp; del seme",
+    "cta": "Inizia il rituale"
+  },
+  "trust": {
+    "lab": { "title": "Testato in laboratorio", "subtitle": "Massimi standard di purezza" },
+    "premium": { "title": "100% Qualità Premium", "subtitle": "Puro & bioattivo" },
+    "shipping": { "title": "Spedizione in 24h", "subtitle": "Gratuita da 'The Habit'" }
+  },
+  "shop": {
+    "title": "Scegli il Tuo Protocollo",
+    "starter": {
+      "badge": "BUONO DA 10 CHF INCLUSO",
+      "badgeCode": "CODICE: START10",
+      "dailyPrice": "Solo 2,49 CHF / giorno",
+      "extra": "Ideale da provare",
+      "benefit1": "Vitalità tangibile & sostegno immunitario",
+      "benefit2": "Nutrizione cellulare 100% pura e vegana",
+      "benefit3": "Apporta il raro Omega-7",
+      "units": "(1× 250 ml)",
+      "price": "24,90 CHF",
+      "priceLabel": "una tantum",
+      "shipping": "spedizione inclusa",
+      "btn": "Inizia ora"
+    },
+    "habit": {
+      "badge": "PIÙ VENDUTO",
+      "dailyPrice": "Solo 2,30 CHF / giorno",
+      "extra": "Il rituale di 30 giorni",
+      "benefit1": "Reset cellulare completo di 30 giorni",
+      "benefit2": "Rigenerazione di pelle & mucose",
+      "benefit3": "Concentrazione duratura & energia naturale",
+      "units": "(3× 250 ml)",
+      "price": "69,00 CHF",
+      "priceLabel": "una tantum",
+      "shipping": "spedizione gratuita inclusa",
+      "btn": "Inizia 30 giorni"
+    },
+    "protocol": {
+      "dailyPrice": "Solo 2,15 CHF / giorno",
+      "extra": "Per la famiglia & la concentrazione a lungo termine",
+      "benefit1": "Apporto cellulare continuo",
+      "benefit2": "Ottimale per famiglie & biohacker",
+      "benefit3": "Miglior prezzo per dose giornaliera",
+      "units": "(6× 250 ml)",
+      "price": "129,00 CHF",
+      "priceLabel": "una tantum",
+      "shipping": "spedizione gratuita inclusa",
+      "btn": "Inizia il mio rituale"
+    },
+    "paymentLabel": "Metodi di pagamento sicuri",
+    "protocolInfo": {
+      "title": "Il Rituale Quotidiano",
+      "text": "<strong>Modalità d'uso:</strong> Il protocollo 1:10 significa miscelare 1 parte di essenza AmberNord con 10 parti di acqua (naturale o frizzante). Da gustare preferibilmente al mattino a stomaco vuoto per garantire un assorbimento cellulare ottimale. Agitare sempre bene prima dell'uso."
+    }
+  },
+  "manifest": {
+    "eyebrow": "Il Nostro Manifesto",
+    "h2Line1": "La fine dell'",
+    "h2Line2": "energia artificiale.",
+    "lead": "Viviamo in un'era di scorciatoie sintetiche. Le bevande energetiche convenzionali e gli stimolanti artificiali prestano al corpo un'energia che dovrà restituire con gli interessi.",
+    "expand": "Leggi il manifesto completo",
+    "hidden": "Producono una breve euforia che disidrata le cellule e offusca a lungo termine la concentrazione. AmberNord è la risposta alla richiesta di una vera performance cellulare. Non è una spinta a breve termine, ma un <strong class=\"ambernord-fw-500\">upgrade biologico</strong>. Estraiamo l'essenza più pura della natura nordica per portarvi uno strumento di biohacking sostenibile e di rigenerazione profonda direttamente in Svizzera."
+  },
+  "ritualBlock": {
+    "eyebrow": "Il Rituale",
+    "h2Line1": "Una parte d'oro.",
+    "h2Line2": "Dieci parti di vita.",
+    "lead": "La maggior parte degli integratori sono isolati sinteticamente e le bevande salutari convenzionali sono piene di zuccheri nascosti. AmberNord percorre una strada completamente diversa.",
+    "expand": "Scopri l'applicazione",
+    "hidden": "Vi offriamo un'essenza grezza purissima e altamente concentrata – progettata per la perfetta alchimia cellulare con l'acqua. Il protocollo 1:10 (1 parte di essenza, 10 parti di acqua) è il vostro catalizzatore quotidiano. In questa simbiosi, i rari acidi grassi Omega, gli amminoacidi e la vitamina C naturale vengono assorbiti al massimo dal corpo. Il risultato: idratazione profonda, concentrazione misurabilmente più acuta e una robusta protezione cellulare."
+  },
+  "sourcing": {
+    "eyebrow": "Sourcing Esclusivo",
+    "h2Line1": "La fonte dell'elisir.",
+    "h2Line2": "La nostra piantagione.",
+    "text": "Non lasciamo nulla al caso. Le nostre materie prime non provengono dal mercato globale anonimo, ma da un'unica piantagione biologica selezionata personalmente da noi. Dopo un'attenta selezione, abbiamo scelto proprio questa rara varietà – coltivata in un microclima la cui purezza e ricchezza minerale conferiscono al succo il suo carattere inconfondibile. Qui nascono bacche con una densità nutrizionale che stabilisce nuovi standard.",
+    "imgAlt": "Piantagione biologica esclusiva"
+  },
+  "craft": {
+    "eyebrow": "Artigianato & Purezza",
+    "h2Line1": "Nessun compromesso.",
+    "h2Line2": "Solo l'essenza.",
+    "text": "Dal momento della delicata raccolta a mano fino alla spremitura a freddo alla fonte trascorre solo un istante. Nessuna macchina di raccolta industriale tocca i nostri frutti – così la pelle delicata delle bacche resta integra. Puntiamo su una valorizzazione integrale: l'intera bacca – dalla buccia ricca di nutrienti al prezioso seme – viene utilizzata completamente. In questo modo preserviamo il prezioso olio Omega-7 e oltre 190 composti bioattivi nella loro forma più pura.",
+    "videoLabel": "Riproduci video: artigianato AmberNord",
+    "videoAlt": "Video: raccolta delicata e spremitura a freddo"
+  },
+  "gallery": {
+    "caption1": "1. Piantagione biologica esclusiva",
+    "caption2": "2. Raccolta manuale accurata",
+    "caption3": "3. Il raccolto fresco",
+    "caption4": "4. Lavorazione delicata",
+    "caption5": "5. Pura forza vegetale",
+    "alt1": "Piantagione biologica esclusiva",
+    "alt2": "Raccolta manuale accurata",
+    "alt3": "Il raccolto fresco",
+    "alt4": "Lavorazione delicata",
+    "alt5": "Pura forza vegetale"
+  },
+  "masterBox": {
+    "eyebrow": "Cliniche & Aziende",
+    "h2Line1": "The Master Box –",
+    "h2Line2": "Per una concentrazione senza compromessi.",
+    "p1": "Integrate il protocollo AmberNord nel vostro studio o nella vostra azienda. La nostra esclusiva edizione da 20 bottiglie offre partenariati su misura per centri di longevità, strutture di biohacking e team aziendali visionari che investono nella vera performance cognitiva.",
+    "p2": "Profilo nutrizionale intransigente e purezza certificata bio, unici sul mercato europeo.",
+    "btn": "Scopri The Master Box"
+  }
+}

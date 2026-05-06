@@ -1,0 +1,89 @@
+{
+  "meta": {
+    "title": "Ritual | AmberNord",
+    "description": "The science behind the AmberNord Ritual: 9 areas of effect, daily protocol and recipe ideas with sea buckthorn elixir.",
+    "canonical": "https://ambernord.ch/en/ritual/",
+    "robots": "index, follow",
+    "og": {
+      "title": "Ritual | AmberNord",
+      "description": "The science behind the AmberNord Ritual: 9 areas of effect, daily protocol and recipe ideas.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/v1774787737/AmberNord_Sanddorn_Biohacking_Longevity_Schweiz_Natur_Ritual_Essenz_jwznsd.webp",
+      "type": "website"
+    },
+    "hreflang": {
+      "de": "https://ambernord.ch/ritual/",
+      "en": "https://ambernord.ch/en/ritual/",
+      "fr": "https://ambernord.ch/fr/ritual/",
+      "it": "https://ambernord.ch/it/ritual/",
+      "x-default": "https://ambernord.ch/ritual/"
+    }
+  },
+  "header": {
+    "eyebrow": "Application & Effect",
+    "h1": "The science <span>behind the ritual.</span>"
+  },
+  "benefits": {
+    "srHeading": "The 9 areas of effect",
+    "items": [
+      { "title": "Cellular Energy & Vitality", "desc": "Natural vitamins and minerals reduce fatigue and deliver a long-lasting energy boost. Perfect for sustained daily performance." },
+      { "title": "Cellular Skin Revival", "desc": "Rich in vitamins A and E plus the rare Omega-7 fatty acid. This synergy stimulates collagen synthesis and gives the skin a deep, natural glow." },
+      { "title": "Cognitive Clarity & Focus", "desc": "B vitamins and tryptophan (the precursor to serotonin) demonstrably help reduce stress, lift mood and sharpen mental acuity." },
+      { "title": "Absolute Immune Resilience", "desc": "With an extremely high, bioavailable Vitamin C concentration, the elixir strengthens the immune system and tangibly lowers the risk of infection." },
+      { "title": "Microbiome Balance", "desc": "Bioactive plant compounds and fibres specifically promote a healthy gut flora, optimise digestion and help protect the gastric mucosa." },
+      { "title": "Active Cellular Protection", "desc": "Highly concentrated antioxidants combat free radicals at the cellular level, dampen chronic inflammation and accelerate physical recovery." },
+      { "title": "Deep Detox & Liver Function", "desc": "Supports the body's natural detoxification processes, actively promotes liver cell regeneration and protects against oxidative environmental influences." },
+      { "title": "Cardiovascular Longevity", "desc": "Flavonoids and high-dose Omega fatty acids help optimise the cholesterol profile and sustainably improve the elasticity of blood vessels." },
+      { "title": "The Digital Shield", "desc": "Highly concentrated Vitamin A and carotenoids act as a natural cellular filter against blue light and reduce the risk of digital eye strain." }
+    ]
+  },
+  "stats": {
+    "label": "Product statistics",
+    "items": [
+      { "highlight": "190+", "detail": "Bioactive<br>compounds" },
+      { "highlight": "18",   "detail": "Essential<br>amino acids" },
+      { "highlight": "4",    "detail": "Omega fatty acids<br>(3, 6, 7 & 9)" },
+      { "highlight": "9×",   "detail": "More Vitamin C<br>than citrus" }
+    ]
+  },
+  "video": {
+    "eyebrow": "Visual experience",
+    "heading": "The elixir in <span>motion.</span>",
+    "alt": "Video placeholder: AmberNord elixir presentation",
+    "placeholder": "Video placeholder"
+  },
+  "protocol": {
+    "heading": "The daily <span>protocol.</span>",
+    "items": [
+      { "step": "Step 01", "title": "The golden morning rule", "desc": "Because of the substantial dose of natural Vitamin C and the strongly vitalising effect, we recommend integrating the ritual in the first half of the day. Avoid consumption shortly before bedtime." },
+      { "step": "Step 02", "title": "The perfect alchemy", "desc": "AmberNord is not an ordinary drink, but a highly concentrated raw essence. For maximum hydration, mix <strong class=\"ritual-protocol__highlight\">1 part of the essence with 10 parts of water</strong> (still or sparkling)." },
+      { "step": "Step 03", "title": "The 10-day rule", "desc": "Because we use no artificial preservatives whatsoever, store the bottle in the refrigerator after opening and enjoy the elixir <strong class=\"ritual-protocol__highlight\">within 10 days</strong>." }
+    ]
+  },
+  "recipes": {
+    "eyebrow": "Inspiration & everyday",
+    "heading": "Recipes & <span>variations.</span>",
+    "tabs": {
+      "kalt": "Cold & Refreshing",
+      "warm": "Warm & Holistic",
+      "kulinarik": "Cuisine & Desserts",
+      "label": "Recipe categories"
+    },
+    "kalt": [
+      { "tag": "Mixology", "title": "Nordic Spritz (No-ABV)", "desc": "The avant-garde alternative to Aperol. Combine the complex acidity and texture of AmberNord essence with bitter tonic water on ice, garnished with fresh rosemary. A highly complex, alcohol-free profile for sophisticated evenings." },
+      { "tag": "Exotic & Creamy", "title": "Amber Coconut Sour", "desc": "A silky experience: blend creamy coconut milk, a touch of mango sweetness and the lively acidity of sea buckthorn essence over ice. A drink that perfectly balances tropical softness with nordic bite in every sip." },
+      { "tag": "Everyday", "title": "Sparkling Afternoon", "desc": "1 part AmberNord with ice-cold sparkling mineral water and a sprig of fresh mint. Perfect as a quick refreshment and a healthy, sugar-free alternative to conventional afternoon drinks." },
+      { "tag": "Health", "title": "Vitality Smoothie", "desc": "For the perfect start to your training: blend fresh carrot juice, a piece of ginger, half a banana for texture, and 20 ml AmberNord essence. An antioxidant shield in liquid form." }
+    ],
+    "warm": [
+      { "tag": "Ayurveda & balance", "title": "Amber Golden Milk", "desc": "A warming cup of plant milk, a teaspoon of turmeric, a hint of black pepper and 10 ml AmberNord essence. The perfect synergy of phyto-nutrients to calm the nervous system in the evening and reduce inflammation overnight." },
+      { "tag": "Wellbeing", "title": "The Amber Buzz", "desc": "Play with warmth and acidity: a shot of AmberNord essence topped with hot (not boiling) water, a touch of manuka honey and a pinch of cinnamon. A soothing, warming ritual for cool autumn and winter days." },
+      { "tag": "Immune system", "title": "High-End Ginger Shot", "desc": "A highly concentrated combination of pure AmberNord essence paired with freshly pressed ginger and turmeric juice plus a pinch of black pepper. An intense, sharp shot for maximum immune defence." },
+      { "tag": "Ritual", "title": "Alpine Detox Tea", "desc": "A ritual of slowing down: add a few drops of pure sea buckthorn pulp oil or essence to warm water with fresh herbs to actively support metabolism and protect cellular lipids." }
+    ],
+    "kulinarik": [
+      { "tag": "Haute cuisine", "title": "Sea Buckthorn Posset", "desc": "Proof that simplicity impresses most. A reinterpreted British dessert: full cream, sugar and pure AmberNord essence. The acidity of sea buckthorn naturally sets the cream into a silky cream." },
+      { "tag": "Everyday cooking", "title": "Golden Vinaigrette", "desc": "Transform any salad: use AmberNord instead of vinegar or lemon. Mix high-quality olive oil, sea buckthorn essence, a teaspoon of Dijon mustard, salt, pepper and a drop of agave syrup for a spectacularly luminous dressing." }
+    ],
+    "cta": "Secure the elixir"
+  }
+}

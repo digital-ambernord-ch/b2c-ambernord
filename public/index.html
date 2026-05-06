@@ -75,16 +75,16 @@
     </a>
 
     <nav class="nav-links" aria-label="Hauptnavigation">
-      <a href="/story/" data-link>Story</a>
-      <a href="/wissenschaft/" data-link>Wissenschaft</a>
-      <a href="/ritual/" data-link>Ritual</a>
+      <a href="/story/" data-link data-i18n="nav.story">Story</a>
+      <a href="/wissenschaft/" data-link data-i18n="nav.science">Wissenschaft</a>
+      <a href="/ritual/" data-link data-i18n="nav.ritual">Ritual</a>
 
       <div class="ambernord-dropdown">
         <button class="ambernord-dropbtn" type="button" aria-haspopup="true" aria-expanded="false" id="dropbtnShop">
-          Shop <span aria-hidden="true" class="dropbtn-caret">&#9660;</span>
+          <span data-i18n="nav.shop">Shop</span> <span aria-hidden="true" class="dropbtn-caret">&#9660;</span>
         </button>
         <div class="ambernord-dropdown-content" role="menu" aria-labelledby="dropbtnShop">
-          <a href="/shop/" data-link role="menuitem">Übersicht</a>
+          <a href="/shop/" data-link role="menuitem" data-i18n="nav.shopOverview">Übersicht</a>
           <a href="/shop/starter/" data-link role="menuitem">The Starter</a>
           <a href="/shop/habit/" data-link role="menuitem">The Habit</a>
           <a href="/shop/protocol/" data-link role="menuitem">The Protocol</a>
@@ -94,17 +94,17 @@
 
       <div class="ambernord-dropdown">
         <button class="ambernord-dropbtn" type="button" aria-haspopup="true" aria-expanded="false" id="dropbtnHilfe">
-          Hilfe <span aria-hidden="true" class="dropbtn-caret">&#9660;</span>
+          <span data-i18n="nav.help">Hilfe</span> <span aria-hidden="true" class="dropbtn-caret">&#9660;</span>
         </button>
         <div class="ambernord-dropdown-content" role="menu" aria-labelledby="dropbtnHilfe">
-          <a href="/hilfe/faq/" data-link role="menuitem">FAQ</a>
-          <a href="/hilfe/kontakt/" data-link role="menuitem">Kontakt</a>
-          <a href="/hilfe/bestellstatus/" data-link role="menuitem">Bestellstatus</a>
-          <a href="/hilfe/rueckgabe/" data-link role="menuitem">Rückgabe</a>
+          <a href="/hilfe/faq/" data-link role="menuitem" data-i18n="nav.faq">FAQ</a>
+          <a href="/hilfe/kontakt/" data-link role="menuitem" data-i18n="nav.contact">Kontakt</a>
+          <a href="/hilfe/bestellstatus/" data-link role="menuitem" data-i18n="nav.orderStatus">Bestellstatus</a>
+          <a href="/hilfe/rueckgabe/" data-link role="menuitem" data-i18n="nav.returns">Rückgabe</a>
         </div>
       </div>
 
-      <a href="/shop/" class="nav-btn" data-link>Jetzt bestellen</a>
+      <a href="/shop/" class="nav-btn" data-link data-i18n="nav.cta">Jetzt bestellen</a>
     </nav>
 
     <button class="hamburger" id="hamburgerBtn" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobileMenu">
@@ -120,7 +120,7 @@
       <button type="button" data-lang="it" aria-label="Italiano">IT</button>
     </div>
 
-    <a href="/b2b/" class="nav-b2b-link" data-link aria-label="B2B Bereich">B2B&nbsp;&rarr;</a>
+    <a href="/b2b/" class="nav-b2b-link" data-link data-i18n-attr="aria-label:nav.b2bAriaLabel" aria-label="B2B Bereich">B2B&nbsp;&rarr;</a>
 
   </div>
 </header>
@@ -135,26 +135,26 @@
     <button class="close-menu" id="closeMenuBtn" type="button" aria-label="Menü schließen">&times;</button>
   </div>
   <div class="mobile-menu-links">
-    <a href="/story/" class="mobile-link" data-link>Story</a>
-    <a href="/wissenschaft/" class="mobile-link" data-link>Wissenschaft</a>
-    <a href="/ritual/" class="mobile-link" data-link>Ritual</a>
+    <a href="/story/" class="mobile-link" data-link data-i18n="nav.story">Story</a>
+    <a href="/wissenschaft/" class="mobile-link" data-link data-i18n="nav.science">Wissenschaft</a>
+    <a href="/ritual/" class="mobile-link" data-link data-i18n="nav.ritual">Ritual</a>
 
-    <span class="mobile-link mobile-link--label" aria-hidden="true">Shop</span>
-    <a href="/shop/" class="mobile-sublink" data-link>– Übersicht</a>
+    <span class="mobile-link mobile-link--label" aria-hidden="true" data-i18n="nav.shop">Shop</span>
+    <a href="/shop/" class="mobile-sublink" data-link>– <span data-i18n="nav.shopOverview">Übersicht</span></a>
     <a href="/shop/starter/" class="mobile-sublink" data-link>– The Starter</a>
     <a href="/shop/habit/" class="mobile-sublink" data-link>– The Habit</a>
     <a href="/shop/protocol/" class="mobile-sublink" data-link>– The Protocol</a>
     <a href="/shop/master-box/" class="mobile-sublink mobile-sublink--last" data-link>– The Master Box</a>
 
-    <span class="mobile-link mobile-link--label" aria-hidden="true">Hilfe</span>
-    <a href="/hilfe/faq/" class="mobile-sublink" data-link>– FAQ</a>
-    <a href="/hilfe/kontakt/" class="mobile-sublink" data-link>– Kontakt</a>
-    <a href="/hilfe/bestellstatus/" class="mobile-sublink" data-link>– Bestellstatus</a>
-    <a href="/hilfe/rueckgabe/" class="mobile-sublink mobile-sublink--last" data-link>– Rückgabe</a>
+    <span class="mobile-link mobile-link--label" aria-hidden="true" data-i18n="nav.help">Hilfe</span>
+    <a href="/hilfe/faq/" class="mobile-sublink" data-link>– <span data-i18n="nav.faq">FAQ</span></a>
+    <a href="/hilfe/kontakt/" class="mobile-sublink" data-link>– <span data-i18n="nav.contact">Kontakt</span></a>
+    <a href="/hilfe/bestellstatus/" class="mobile-sublink" data-link>– <span data-i18n="nav.orderStatus">Bestellstatus</span></a>
+    <a href="/hilfe/rueckgabe/" class="mobile-sublink mobile-sublink--last" data-link>– <span data-i18n="nav.returns">Rückgabe</span></a>
 
     <a href="/b2b/" class="mobile-link" data-link>B2B</a>
 
-    <a href="/shop/" class="mobile-btn" data-link>Jetzt bestellen</a>
+    <a href="/shop/" class="mobile-btn" data-link data-i18n="nav.cta">Jetzt bestellen</a>
   </div>
 </div>
 
@@ -177,21 +177,21 @@
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
     </a>
   </div>
-  <p class="ambernord-footer-copyright">&copy; 2025 AmberNord GmbH &mdash; Alle Rechte vorbehalten</p>
+  <p class="ambernord-footer-copyright" data-i18n="footer.copyright">&copy;2026 AmberNord. Alle Rechte vorbehalten.</p>
   <nav class="ambernord-footer-links" aria-label="Rechtliches">
-    <a href="/datenschutz/" data-link>Datenschutz</a>
+    <a href="/datenschutz/" data-link data-i18n="footer.privacy">Datenschutz</a>
     <span class="ambernord-footer-separator" aria-hidden="true">|</span>
-    <a href="/hilfe/rueckgabe/" data-link>Rückgabe</a>
+    <a href="/hilfe/rueckgabe/" data-link data-i18n="nav.returns">Rückgabe</a>
     <span class="ambernord-footer-separator" aria-hidden="true">|</span>
-    <a href="/hilfe/kontakt/" data-link>Kontakt</a>
+    <a href="/hilfe/kontakt/" data-link data-i18n="nav.contact">Kontakt</a>
     <span class="ambernord-footer-separator" aria-hidden="true">|</span>
     <a href="/b2b/" data-link>B2B</a>
   </nav>
 </footer>
 
 <div class="ambernord-fab-container">
-  <a href="/hilfe/bestellstatus/" class="ambernord-fab" data-link aria-label="Bestellstatus prüfen">
-    <span class="fab-tooltip" aria-hidden="true">Bestellstatus</span>
+  <a href="/hilfe/bestellstatus/" class="ambernord-fab" data-link data-i18n-attr="aria-label:nav.orderStatus" aria-label="Bestellstatus prüfen">
+    <span class="fab-tooltip" aria-hidden="true" data-i18n="nav.orderStatus">Bestellstatus</span>
     <svg viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true">
       <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
     </svg>
@@ -200,7 +200,7 @@
 
 <div class="ambernord-mobile-sticky" id="mobileStickyGlobal">
   <button id="mobileStickyBtn" type="button">
-    <span class="cta-main-text">Jetzt starten</span>
+    <span class="cta-main-text" data-i18n="cta.startNow">Jetzt starten</span>
     <span class="cta-sub-text" id="mobileStickySubText"></span>
   </button>
 </div>

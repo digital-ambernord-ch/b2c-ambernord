@@ -3,13 +3,11 @@
    Called by router.js after /pages/about.html is injected into #app.
    ========================================================================== */
 
-window.initAbout = function () {
+window.initAbout = async function () {
 
-    /* -----------------------------------------------------------------------
-       SCROLL REVEAL
-       Adds .about-reveal class to timeline items and quote box, then uses
-       IntersectionObserver to toggle .is-visible as they enter the viewport.
-    ----------------------------------------------------------------------- */
+    if (typeof window.loadI18n === 'function') {
+      try { await window.loadI18n(window.getLang(), 'about'); } catch {}
+    }
 
     const revealTargets = [
         ...document.querySelectorAll('.timeline-item'),

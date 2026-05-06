@@ -110,12 +110,15 @@ a:focus:not(:focus-visible) {
   outline-offset: 2px;
 }
 
-/* Subpage header — shared across all subpages for consistent eyebrow + h1. */
+/* Subpage header — shared across all subpages for consistent eyebrow + h1.
+   padding-top reserves the same space below the fixed nav for every page,
+   regardless of whether the page-specific wrapper adds padding of its own.
+   Wrappers that previously added top padding override this back to 0 below. */
 .subpage-header {
   text-align: center;
   max-width: 700px;
   margin: 0 auto 80px;
-  padding: 0 var(--container-pad);
+  padding: calc(var(--nav-height) + 60px) var(--container-pad) 0;
 }
 
 .subpage-subtitle {
@@ -485,13 +488,14 @@ h1 span, h2 span {
 .ambernord-dropdown-content {
   display: block;
   position: absolute;
-  top: calc(100% + 4px);
+  top: 100%;
   left: -20px;
   min-width: 240px;
   background-color: var(--color-surface);
   border: 1px solid #222;
-  border-radius: 8px;
+  border-radius: 0 0 8px 8px;
   padding: 10px 0;
+  margin-top: 0;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   z-index: var(--z-overlay);
   opacity: 0;
@@ -500,10 +504,27 @@ h1 span, h2 span {
   transition: opacity var(--t-fast) ease, transform var(--t-fast) ease;
 }
 
-.ambernord-dropdown:hover .ambernord-dropdown-content {
+.ambernord-dropdown:hover .ambernord-dropdown-content,
+.ambernord-dropdown:focus-within .ambernord-dropdown-content {
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
+}
+
+/* Invisible hover bridge — extends dropdown's hoverable area into the
+   space directly below the topbar, so slow cursor moves don't break hover. */
+.ambernord-dropdown::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 12px;
+  pointer-events: none;
+}
+
+.ambernord-dropdown:hover::after {
+  pointer-events: auto;
 }
 
 .ambernord-dropdown-content a {

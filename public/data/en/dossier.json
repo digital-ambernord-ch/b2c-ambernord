@@ -1,0 +1,116 @@
+{
+  "meta": {
+    "title": "Science | AmberNord",
+    "description": "Pharmacology, phytochemistry and functional nutrition: the scientific dossier on AmberNord's methodology around Hippophae rhamnoides.",
+    "canonical": "https://ambernord.ch/en/wissenschaft/",
+    "robots": "index, follow",
+    "og": {
+      "title": "Science | AmberNord",
+      "description": "Pharmacology, phytochemistry and functional nutrition: the scientific dossier on Hippophae rhamnoides.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_2560,c_limit/v1773096179/Smiltserksku_sula_gemini_2_iecozy.png",
+      "type": "article"
+    },
+    "hreflang": {
+      "de": "https://ambernord.ch/wissenschaft/",
+      "en": "https://ambernord.ch/en/wissenschaft/",
+      "fr": "https://ambernord.ch/fr/wissenschaft/",
+      "it": "https://ambernord.ch/it/wissenschaft/",
+      "x-default": "https://ambernord.ch/wissenschaft/"
+    }
+  },
+  "header": {
+    "eyebrow": "Science & Philosophy",
+    "h1": "The Sea Buckthorn Dossier<br><span>of the AmberNord methodology.</span>",
+    "lead": "Pharmacology, phytochemistry and functional nutrition<br>(Hippophae rhamnoides)"
+  },
+  "history": {
+    "title": "Evolution & Historic Use",
+    "lead": "Sea buckthorn looks back as an evolutionary pioneer plant (originating in the Himalayas) on extreme tolerance (-40 °C to +40 °C) and millennia of ethnobotanical use.",
+    "list": [
+      "<strong>Ancient Indian Ayurveda (5000 BC):</strong> Documented use to enhance vitality.",
+      "<strong>Tibetan Medicine (8th century):</strong> Systematic recording in the \"RGyud Bzi\" pharmacopoeia.",
+      "<strong>Antiquity:</strong> The botanical name <em>Hippophae</em> derives from \"shining horse\" (ancient feed for a glossy coat).",
+      "<strong>Modern era:</strong> Integration into historical nutrition programmes as a natural Vitamin source under extreme conditions."
+    ],
+    "imgAlt": "Historical botanical illustration of sea buckthorn"
+  },
+  "phyto": {
+    "title": "The Phytochemical Matrix",
+    "card1": {
+      "title": "The complexity of the constituents",
+      "p1": "Scientifically, sea buckthorn is an extremely complex phyto-system. Up to 95 flavonoids, 17 phenolic acids, more than 20 organic acids, 18 amino acids and complex fatty acids have been identified.",
+      "p2": "<strong>The challenge:</strong> the chemical composition fluctuates extremely depending on genotype, terroir and extraction method. AmberNord relies on standardised, gentle processes to optimally preserve this spectrum."
+    },
+    "card2": {
+      "title": "The separation paradigm",
+      "lead": "The precise anatomical separation of components is essential for understanding:",
+      "list": [
+        "<strong>Aqueous fraction (juice):</strong> water-soluble antioxidants, Vitamin C (matrix-bound), organic acids.",
+        "<strong>Pulp oil:</strong> rich in MUFAs (monounsaturated fatty acids) and carotenoids.",
+        "<strong>Seed oil:</strong> dominated by PUFAs (polyunsaturated essential fatty acids)."
+      ]
+    }
+  },
+  "lipids": {
+    "title": "Anatomy of Lipids & Specific Vitamins",
+    "cards": [
+      { "title": "Pulp oil (Omega-7)", "desc": "One of the rarest plant-based sources of palmitoleic acid (Omega-7), which makes up a substantial part of the lipids. An important natural building block for skin and mucous membranes.", "imgAlt": "Drop of orange sea buckthorn oil" },
+      { "title": "Seed oil (Omega-3 & 6)", "desc": "The pale yellow seed oil contains practically no Omega-7. Instead, it provides linoleic acid (Omega-6) and alpha-linolenic acid (Omega-3) in a physiologically ideal ratio.", "imgAlt": "Sea buckthorn seeds and rustic powder" },
+      { "title": "Vitamins & nutrients", "desc": "In addition to the exceptionally high Vitamin C content, sea buckthorn juice is known for its complex spectrum of B vitamins and secondary plant compounds that act synergistically.", "imgAlt": "Scientific lab setting with amber liquid" }
+    ]
+  },
+  "science": {
+    "title": "Scientific Insights into Sea Buckthorn",
+    "cards": [
+      { "title": "Metabolism & vitality", "desc": "Sea buckthorn delivers essential nutrients and antioxidants. Studies suggest that the plant sterols and fatty acids it contains optimally support functional nutrition and may contribute to general well-being." },
+      { "title": "Skin & dermatology", "desc": "Omega-7 is an important physiological building block of the human skin barrier. Sea buckthorn extracts are intensively researched for their supportive properties in natural skin regeneration." },
+      { "title": "Mucous membranes", "desc": "The specific lipid matrix from the pulp oil is known to support the natural moisture balance of mucous membranes (such as eyes, mouth or intimate areas) at a nutritional level." }
+    ]
+  },
+  "innovations": {
+    "title": "Modern Applications & Market Innovations",
+    "cards": [
+      { "title": "Haute cuisine & mixology", "desc": "In top gastronomy, sea buckthorn is rapidly establishing itself as the \"lemon of the North\". The complex, multi-dimensional acid profile increasingly replaces exotic imports such as yuzu or passion fruit and gives non-alcoholic premium cocktails the necessary structure and astringency." },
+      { "title": "Nutricosmetics & clean beauty", "desc": "The palmitoleic acid (Omega-7) in sea buckthorn oil shows a unique structural similarity to the skin's own lipids of the stratum corneum. This enables extremely fast penetration to strengthen the skin barrier and reduce trans-epidermal water loss." },
+      { "title": "Food-tech & upcycling", "desc": "Microencapsulation with sodium alginate today enables the protection of temperature-sensitive carotenoids for the baking industry. In addition, the EU Novel Food approval for sea buckthorn leaves (2020) opened completely new pathways for premium teas rich in the cell-protective antioxidant PC-8." }
+    ]
+  },
+  "sourcing": {
+    "title": "AmberNord Sourcing: Terroir & Partnership",
+    "lead": "The exceptional quality of AmberNord products is based on a strict selection. As a representative in the DACH region, we have specifically chosen an exclusive production partner at northern latitudes.",
+    "list": [
+      "<strong>Premium mono variety:</strong> we focus on processing a genetically selected variety with maximised nutrient and lipid content.",
+      "<strong>Nordic terroir:</strong> the specific microclimate of our partner plantation (cold climate, long summer sunshine) generates the very stress essential for the synthesis of complex plant compounds.",
+      "<strong>Organic integrity:</strong> uncompromising avoidance of synthetic fertilisers; nature is respected and protected."
+    ],
+    "imgAlt": "Sea buckthorn plantation rows at golden hour"
+  },
+  "harvest": {
+    "title": "Craft vs. Industry",
+    "subtitle": "The 100-hands harvest",
+    "lead": "Harvesting sea buckthorn is highly complex because the berries burst immediately under mechanical pressure and oxidise extremely quickly (24–48 h window).",
+    "list": [
+      "Large industrial facilities often use destructive methods that strip the bush of carbohydrate reserves.",
+      "Our production partner relies exclusively on gentle hand-picking in August.",
+      "An experienced picker harvests only about 7 kg of berries per hour by hand.",
+      "This gentle method protects the plant's architecture and secures the highest quality of native lipids."
+    ],
+    "imgAlt": "Careful hand-picking of sea buckthorn berries"
+  },
+  "zerowaste": {
+    "title": "Processing & the Zero-Waste Matrix",
+    "items": [
+      { "title": "The Elixir (unfiltered direct juice)", "desc": "To obtain 1 litre of the 100% pure elixir, 1.3–1.6 kg of hand-picked berries are required. A gentle pasteurisation ensures shelf life and protects the precious vitamins." },
+      { "title": "Mechanical oil extraction", "desc": "Industry often extracts chemically. Here, cold mechanical pressing guarantees the preservation of heat-sensitive fatty acids. The resource intensity is immense: up to 200 kg of fresh berries for 1 litre of pure oil." },
+      { "title": "Press residue (the pomace)", "desc": "Seeds and skins are gently dried thermally after de-oiling. Through targeted enzymatic hydrolysis, the fibre profile is optimised, creating a highly functional 'upcycled ingredient' for industrial food production." },
+      { "title": "Holistic utilisation", "desc": "Trimmings and bark are also fully used. Latest analyses confirm a phytoserotonin content in the bark that exceeds that of bananas by many times – a massive potential for natural \"mood support\" extracts." }
+    ]
+  },
+  "conclusion": {
+    "tag": "Scientific summary",
+    "heading": "From pioneer plant to<br><span class=\"dossier-gold-italic\">functional nutrition</span>",
+    "p1": "The data confirms sea buckthorn as one of the phytochemically most complex crop systems in the world. The nutritional benefit lies undoubtedly in the exceptional profile of vitamins and rare lipids.",
+    "p2": "AmberNord and its partners transfer this potential without qualitative compromises into a high-quality, daily ritual for greater well-being.",
+    "logoAlt": "AmberNord logo"
+  }
+}

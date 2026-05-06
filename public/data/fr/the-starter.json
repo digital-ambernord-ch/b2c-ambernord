@@ -1,0 +1,70 @@
+{
+  "meta": {
+    "title": "The Starter (1× 250 ml) | AmberNord Élixir d'Argousier",
+    "description": "The Starter : votre porte d'entrée dans l'univers AmberNord. Protection cellulaire et vitalité grâce à 190+ composés bioactifs. Pressé à froid. Certifié bio.",
+    "canonical": "https://ambernord.ch/fr/shop/starter/",
+    "robots": "index, follow",
+    "og": {
+      "title": "The Starter (1× 250 ml) | AmberNord",
+      "description": "The Starter : votre entrée. Protection cellulaire et vitalité grâce à 190+ composés bioactifs.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/v1774798945/ambernord-bio-sanddornsaft-zelt-edition-250ml-schweiz.webp_f3eaz0.png",
+      "type": "product"
+    },
+    "hreflang": {
+      "de": "https://ambernord.ch/shop/starter/",
+      "en": "https://ambernord.ch/en/shop/starter/",
+      "fr": "https://ambernord.ch/fr/shop/starter/",
+      "it": "https://ambernord.ch/it/shop/starter/",
+      "x-default": "https://ambernord.ch/shop/starter/"
+    }
+  },
+  "badge": {
+    "voucher": "BON DE 10 CHF INCLUS",
+    "promo": "PROMO JUSQU'AU 01.05."
+  },
+  "gallery": {
+    "mainAlt": "The Starter — 1× 250 ml élixir d'argousier",
+    "thumb1Alt": "Vue du produit",
+    "thumb2Alt": "Détail de la bouteille",
+    "thumb3Alt": "Valeurs nutritionnelles",
+    "thumb4Alt": "Élixir biohacking"
+  },
+  "info": {
+    "title": "The Starter",
+    "volume": "(1× 250 ml)",
+    "price": "24,90 CHF",
+    "subtitleH3": "Le premier pas :",
+    "subtitleSpan": "Vivre la clarté cellulaire.",
+    "lead": "Vous souhaitez d'abord tester la puissance de l'or nordique ? « The Starter » est votre porte d'entrée dans l'univers AmberNord. Chaque bouteille est obtenue à partir de baies cueillies à la main de notre exclusive <span class=\"p-gold\">Sélection Zelt</span> et protège votre corps du stress oxydatif avec 9× la vitamine C d'un citron.",
+    "ctaPrimary": "Commander 1× élixir",
+    "advantageHeading": "Votre avantage exclusif",
+    "advantageBody": "Avec cette première commande, vous recevez un <strong>bon de 10 CHF</strong> pour votre prochain achat (promo jusqu'au 01.05.). Nous en sommes certains : dès que vous ressentirez le premier coup de fouet naturel sans palpitations, le rituel deviendra une partie intégrante de votre quotidien.",
+    "scienceHeading": "La science derrière",
+    "scienceItem1": "<strong>Protection cellulaire :</strong> une teneur naturelle extrêmement élevée en vitamine C neutralise le stress oxydatif.",
+    "scienceItem2": "<strong>Oméga-7 :</strong> ce rare et précieux acide gras harmonise le micro-environnement et nourrit les muqueuses.",
+    "scienceItem3": "Donne jusqu'à <span class=\"p-gold\">3 litres</span> de boisson premium revitalisante.",
+    "scienceItem4": "<strong>Pureté absolue :</strong> sans sucre ajouté, sans arômes artificiels. <span class=\"p-gold\">100 % nature.</span>",
+    "shippingLabel": "Expédition & Logistique",
+    "shippingText": "Expédition premium fiable en Suisse (frais d'expédition non inclus). Expédition directe depuis notre centre logistique d'Aarau."
+  },
+  "related": {
+    "heading": "Complétez votre rituel",
+    "habit": {
+      "badge": "MEILLEURE VENTE",
+      "title": "The Habit",
+      "subtitle": "(3× 250 ml)",
+      "price": "69,00 CHF",
+      "extra": "Le rituel de 30 jours",
+      "daily": "Seulement 2,30 CHF / jour",
+      "shipping": "Livraison gratuite | Abonnement disponible"
+    },
+    "protocol": {
+      "title": "The Protocol",
+      "subtitle": "(6× 250 ml)",
+      "price": "129,00 CHF",
+      "extra": "Pour la famille & la concentration",
+      "daily": "Seulement 2,15 CHF / jour",
+      "shipping": "Livraison gratuite | Abonnement disponible"
+    }
+  }
+}

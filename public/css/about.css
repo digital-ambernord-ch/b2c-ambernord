@@ -20,7 +20,7 @@
 
 .about-page-container {
     width: 100%;
-    padding: calc(var(--nav-height) + 60px) 0 120px;
+    padding: 0 0 120px;
     animation: aboutReveal 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
     position: relative;
     z-index: 10;
@@ -291,10 +291,6 @@
 }
 
 @media (max-width: 768px) {
-    .about-page-container {
-        padding-top: calc(var(--nav-height) + 40px);
-    }
-
     .about-img-col {
         height: 320px;
     }

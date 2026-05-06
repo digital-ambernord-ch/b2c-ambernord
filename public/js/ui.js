@@ -41,6 +41,7 @@
   function setupDropdowns() {
     document.querySelectorAll('.ambernord-dropdown').forEach(function (dropdown) {
       const dropbtn = dropdown.querySelector('.ambernord-dropbtn');
+      const content = dropdown.querySelector('.ambernord-dropdown-content');
       if (!dropbtn) return;
 
       dropbtn.addEventListener('click', function (e) {
@@ -50,7 +51,26 @@
       });
 
       dropbtn.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') dropbtn.setAttribute('aria-expanded', 'false');
+        if (e.key === 'Escape') {
+          dropbtn.setAttribute('aria-expanded', 'false');
+          dropbtn.blur();
+        }
+      });
+
+      /* Close immediately on any menu-item click, both for hover-only and
+         keyboard/click-opened states. blur() drops :focus-within so CSS hides. */
+      if (content) {
+        content.addEventListener('click', function () {
+          dropbtn.setAttribute('aria-expanded', 'false');
+          if (document.activeElement instanceof HTMLElement) {
+            document.activeElement.blur();
+          }
+        });
+      }
+
+      /* Cursor leaving dropdown collapses aria-expanded so a re-open is fresh. */
+      dropdown.addEventListener('mouseleave', function () {
+        dropbtn.setAttribute('aria-expanded', 'false');
       });
     });
 

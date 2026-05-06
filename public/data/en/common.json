@@ -1,0 +1,25 @@
+{
+  "nav": {
+    "story": "Story",
+    "science": "Science",
+    "ritual": "Ritual",
+    "shop": "Shop",
+    "shopOverview": "Overview",
+    "help": "Help",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "orderStatus": "Order Status",
+    "returns": "Returns",
+    "cta": "Order Now",
+    "b2bAriaLabel": "B2B Area"
+  },
+  "footer": {
+    "copyright": "©2026 AmberNord. All rights reserved.",
+    "privacy": "Privacy"
+  },
+  "cta": {
+    "startNow": "Start Now",
+    "buyNow": "Order Now",
+    "discover": "Discover"
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "meta": {
+    "title": "Scienza | AmberNord",
+    "description": "Farmacologia, fitochimica e nutrizione funzionale: il dossier scientifico sulla metodologia AmberNord intorno a Hippophae rhamnoides.",
+    "canonical": "https://ambernord.ch/it/wissenschaft/",
+    "robots": "index, follow",
+    "og": {
+      "title": "Scienza | AmberNord",
+      "description": "Farmacologia, fitochimica e nutrizione funzionale: il dossier scientifico su Hippophae rhamnoides.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_2560,c_limit/v1773096179/Smiltserksku_sula_gemini_2_iecozy.png",
+      "type": "article"
+    },
+    "hreflang": {
+      "de": "https://ambernord.ch/wissenschaft/",
+      "en": "https://ambernord.ch/en/wissenschaft/",
+      "fr": "https://ambernord.ch/fr/wissenschaft/",
+      "it": "https://ambernord.ch/it/wissenschaft/",
+      "x-default": "https://ambernord.ch/wissenschaft/"
+    }
+  },
+  "header": {
+    "eyebrow": "Scienza & Filosofia",
+    "h1": "Il dossier dell'olivello spinoso<br><span>della metodologia AmberNord.</span>",
+    "lead": "Farmacologia, fitochimica e nutrizione funzionale<br>(Hippophae rhamnoides)"
+  },
+  "history": {
+    "title": "Evoluzione & Uso storico",
+    "lead": "L'olivello spinoso, pianta pioniera evolutiva (origine Himalaya), vanta una tolleranza estrema (-40 °C a +40 °C) e un uso etnobotanico millenario.",
+    "list": [
+      "<strong>Antico Ayurveda indiano (5000 a.C.):</strong> uso documentato per aumentare la vitalità.",
+      "<strong>Medicina tibetana (VIII sec.):</strong> registrazione sistematica nella farmacopea «RGyud Bzi».",
+      "<strong>Antichità:</strong> il nome botanico <em>Hippophae</em> deriva da «cavallo lucente» (foraggio antico per un manto brillante).",
+      "<strong>Età moderna:</strong> integrazione in programmi nutrizionali storici come fonte naturale di vitamine in condizioni estreme."
+    ],
+    "imgAlt": "Illustrazione botanica storica dell'olivello spinoso"
+  },
+  "phyto": {
+    "title": "La matrice fitochimica",
+    "card1": {
+      "title": "La complessità dei componenti",
+      "p1": "Scientificamente, l'olivello spinoso è un fitosistema estremamente complesso. Sono stati identificati fino a 95 flavonoidi, 17 acidi fenolici, oltre 20 acidi organici, 18 amminoacidi e acidi grassi complessi.",
+      "p2": "<strong>La sfida:</strong> la composizione chimica varia enormemente a seconda del genotipo, del terroir e del metodo di estrazione. AmberNord punta su procedimenti standardizzati e delicati per preservare in modo ottimale questo spettro."
+    },
+    "card2": {
+      "title": "Il paradigma della separazione",
+      "lead": "La precisa separazione anatomica dei componenti è essenziale per la comprensione:",
+      "list": [
+        "<strong>Frazione acquosa (succo):</strong> antiossidanti idrosolubili, vitamina C (legata alla matrice), acidi organici.",
+        "<strong>Olio di polpa:</strong> ricco di MUFA (acidi grassi monoinsaturi) e carotenoidi.",
+        "<strong>Olio dei semi:</strong> dominato da PUFA (acidi grassi essenziali polinsaturi)."
+      ]
+    }
+  },
+  "lipids": {
+    "title": "Anatomia dei lipidi & vitamine specifiche",
+    "cards": [
+      { "title": "Olio di polpa (Omega-7)", "desc": "Una delle fonti vegetali più rare di acido palmitoleico (Omega-7), che costituisce una parte essenziale dei lipidi. Un importante mattone naturale per pelle e mucose.", "imgAlt": "Goccia di olio di olivello spinoso arancione" },
+      { "title": "Olio dei semi (Omega-3 & 6)", "desc": "L'olio dei semi giallo pallido non contiene praticamente Omega-7. Fornisce invece acido linoleico (Omega-6) e acido alfa-linolenico (Omega-3) in un rapporto fisiologicamente ideale.", "imgAlt": "Semi di olivello spinoso e polvere rustica" },
+      { "title": "Vitamine & nutrienti", "desc": "Oltre al contenuto eccezionalmente alto di vitamina C, il succo di olivello spinoso è noto per il suo complesso spettro di vitamine del gruppo B e composti vegetali secondari che agiscono in sinergia.", "imgAlt": "Laboratorio scientifico con liquido ambrato" }
+    ]
+  },
+  "science": {
+    "title": "Conoscenze scientifiche sull'olivello spinoso",
+    "cards": [
+      { "title": "Metabolismo & vitalità", "desc": "L'olivello spinoso fornisce nutrienti essenziali e antiossidanti. Studi indicano che gli steroli vegetali e gli acidi grassi contenuti sostengono in modo ottimale una nutrizione funzionale e possono contribuire al benessere generale." },
+      { "title": "Pelle & dermatologia", "desc": "L'Omega-7 è un importante mattone fisiologico della barriera cutanea umana. Gli estratti di olivello spinoso sono studiati intensamente per le loro proprietà di sostegno alla rigenerazione cutanea naturale." },
+      { "title": "Mucose", "desc": "La specifica matrice lipidica dell'olio di polpa è nota per sostenere, a livello nutrizionale, l'equilibrio idrico naturale delle mucose (occhi, bocca o aree intime)." }
+    ]
+  },
+  "innovations": {
+    "title": "Applicazioni moderne & innovazioni di mercato",
+    "cards": [
+      { "title": "Haute cuisine & mixology", "desc": "Nell'alta gastronomia, l'olivello spinoso si afferma rapidamente come «limone del Nord». Il profilo acido complesso e multidimensionale sostituisce sempre più le importazioni esotiche come yuzu o frutto della passione e conferisce ai cocktail premium analcolici la struttura e l'astringenza necessarie." },
+      { "title": "Nutricosmetica & clean beauty", "desc": "L'acido palmitoleico (Omega-7) contenuto nell'olio di olivello spinoso presenta una somiglianza strutturale unica con i lipidi propri della pelle dello strato corneo. Ciò consente una penetrazione estremamente rapida per rafforzare la barriera cutanea e ridurre la perdita transepidermica di acqua." },
+      { "title": "Food-tech & upcycling", "desc": "La microincapsulazione con alginato di sodio consente oggi di proteggere i carotenoidi termosensibili per l'industria della panificazione. Inoltre, l'autorizzazione EU Novel Food per le foglie di olivello spinoso (2020) ha aperto strade completamente nuove per tè premium ricchi dell'antiossidante cellulare PC-8." }
+    ]
+  },
+  "sourcing": {
+    "title": "Sourcing AmberNord: terroir & partnership",
+    "lead": "La qualità eccezionale dei prodotti AmberNord si basa su una rigorosa selezione. In quanto rappresentanti nell'area DACH, abbiamo scelto deliberatamente un partner di produzione esclusivo alle latitudini nordiche.",
+    "list": [
+      "<strong>Mono-varietà premium:</strong> ci basiamo sulla lavorazione di una varietà geneticamente selezionata con contenuto massimo di nutrienti e lipidi.",
+      "<strong>Terroir nordico:</strong> il microclima specifico della nostra piantagione partner (clima freddo, lunga durata del soleggiamento estivo) genera lo stress essenziale per la sintesi di composti vegetali complessi.",
+      "<strong>Integrità biologica:</strong> rinuncia senza compromessi a fertilizzanti sintetici; la natura viene rispettata e protetta."
+    ],
+    "imgAlt": "Piantagione di olivello spinoso nell'ora dorata"
+  },
+  "harvest": {
+    "title": "Artigianato vs. industria",
+    "subtitle": "La raccolta a 100 mani",
+    "lead": "La raccolta dell'olivello spinoso è altamente complessa, poiché le bacche scoppiano immediatamente sotto pressione meccanica e si ossidano molto rapidamente (finestra di 24–48 h).",
+    "list": [
+      "I grandi impianti industriali usano spesso metodi distruttivi che privano l'arbusto delle riserve di carboidrati.",
+      "Il nostro partner di produzione punta esclusivamente sulla raccolta manuale delicata in agosto.",
+      "Un raccoglitore esperto raccoglie manualmente solo circa 7 kg di bacche all'ora.",
+      "Questo metodo delicato protegge l'architettura della pianta e garantisce la massima qualità dei lipidi nativi."
+    ],
+    "imgAlt": "Raccolta manuale accurata delle bacche di olivello spinoso"
+  },
+  "zerowaste": {
+    "title": "Lavorazione & matrice zero rifiuti",
+    "items": [
+      { "title": "L'elisir (succo diretto non filtrato)", "desc": "Per ottenere 1 litro dell'elisir 100% puro servono 1,3–1,6 kg di bacche raccolte a mano. Una pastorizzazione delicata garantisce la conservazione e protegge le preziose vitamine." },
+      { "title": "Estrazione meccanica dell'olio", "desc": "L'industria estrae spesso per via chimica. Qui la spremitura meccanica a freddo garantisce la conservazione degli acidi grassi termosensibili. L'intensità delle risorse è immensa: fino a 200 kg di bacche fresche per 1 litro di olio puro." },
+      { "title": "Residuo di spremitura (la sansa)", "desc": "Semi e bucce vengono asciugati termicamente in modo delicato dopo la disoleatura. Mediante un'idrolisi enzimatica mirata si ottimizza il profilo delle fibre, creando un «ingrediente upcycled» altamente funzionale per la produzione alimentare industriale." },
+      { "title": "Valorizzazione integrale", "desc": "Anche rametti e corteccia vengono valorizzati senza scarti. Le analisi più recenti confermano nella corteccia un contenuto di fitoserotonina che supera molte volte quello delle banane – un enorme potenziale per estratti naturali di «mood support»." }
+    ]
+  },
+  "conclusion": {
+    "tag": "Sintesi scientifica",
+    "heading": "Dalla pianta pioniera alla<br><span class=\"dossier-gold-italic\">nutrizione funzionale</span>",
+    "p1": "I dati confermano l'olivello spinoso come uno dei sistemi vegetali fitochimicamente più complessi al mondo. Il beneficio nutrizionale risiede senza dubbio nello straordinario profilo di vitamine e lipidi rari.",
+    "p2": "AmberNord e i suoi partner trasferiscono questo potenziale, senza compromessi qualitativi, in un rituale quotidiano di alta qualità per un maggiore benessere.",
+    "logoAlt": "Logo AmberNord"
+  }
+}

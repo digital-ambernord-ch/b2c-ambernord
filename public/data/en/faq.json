@@ -1,0 +1,76 @@
+{
+  "meta": {
+    "title": "FAQ | AmberNord",
+    "description": "Frequently asked questions about the AmberNord sea buckthorn elixir: usage, ingredients, tolerability and origin.",
+    "canonical": "https://ambernord.ch/en/hilfe/faq/",
+    "robots": "index, follow",
+    "og": {
+      "title": "FAQ | AmberNord",
+      "description": "Frequently asked questions about the AmberNord sea buckthorn elixir: usage, ingredients, tolerability and origin.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/v1774787737/AmberNord_Sanddorn_Biohacking_Longevity_Schweiz_Natur_Ritual_Essenz_jwznsd.webp",
+      "type": "website"
+    },
+    "hreflang": {
+      "de": "https://ambernord.ch/hilfe/faq/",
+      "en": "https://ambernord.ch/en/hilfe/faq/",
+      "fr": "https://ambernord.ch/fr/hilfe/faq/",
+      "it": "https://ambernord.ch/it/hilfe/faq/",
+      "x-default": "https://ambernord.ch/hilfe/faq/"
+    }
+  },
+  "header": {
+    "eyebrow": "Knowledge & Transparency",
+    "h1": "Frequently asked questions<br><span>about the ritual.</span>"
+  },
+  "categories": [
+    {
+      "title": "1. Usage & Daily Ritual",
+      "items": [
+        { "q": "When is the best time to drink AmberNord?", "a": "We recommend starting in the morning with a glass of water at room temperature or slightly chilled – gentle and balanced. A second dose works perfectly at midday – with still or sparkling water, served pleasantly cool, for a refreshing moment of enjoyment and as an alternative to unhealthy drinks. Thanks to the small, handy and elegant AmberNord bottle, you can take it everywhere and easily mix the essence into a glass of water, your sports smoothie or a fresh juice. After opening, store cool." },
+        { "q": "Should I drink the elixir on an empty stomach?", "a": "For the fastest absorption of nutrients, consumption on an empty stomach (about 15–30 minutes before breakfast) is ideal. With a sensitive stomach, however, we recommend taking it with or after a light meal, since the natural fruit acids are very potent." },
+        { "q": "Can I drink AmberNord undiluted?", "a": "We do not recommend it. Our elixir is a highly concentrated raw essence with an extremely intense, sour-bitter taste. The 1:10 principle (with still or sparkling water) guarantees the best taste experience and the optimal tolerance for the stomach." },
+        { "q": "Why is sea buckthorn appreciated in haute cuisine as well?", "a": "In high-end gastronomy, sea buckthorn is often called the \"lemon of the North\". Its complex, multi-dimensional acidity and viscous texture are deliberately used to give modern alcohol-free cocktails (No-ABV) a flavour \"bite\", or to create a balanced profile in gourmet dishes that elegantly cuts through the heaviness of fats." }
+      ]
+    },
+    {
+      "title": "2. Health & Ingredients",
+      "items": [
+        { "q": "What bioactive substances are exactly in the essence?", "a": "Sea buckthorn is a complex phytochemical wonder. Our unfiltered essence delivers the complete spectrum of essential Omega fatty acids (3, 6, 7 and 9) from a single plant source. In addition, there are over 180 bioactive compounds, 17 vitamins (including A, C and E) and 14 minerals in highest bioavailability." },
+        { "q": "Why is the interplay of pulp and seed so important?", "a": "Sea buckthorn is an extremely complex phyto-system. Pulp oil is one of the rarest plant sources of palmitoleic acid (Omega-7), essential for skin and mucous membranes. Seed oil, on the other hand, provides Omega-3 and Omega-6 in a physiologically ideal ratio. Because we process the entire berry, these valuable fatty acids are fully retained in the essence." },
+        { "q": "Why does an orange layer settle at the top of the bottle?", "a": "That is an absolute mark of quality! Sea buckthorn is one of the few berries that contains valuable plant oils directly in the pulp. Because our essence is 100% naturally pure and we forgo artificial emulsifiers or industrial centrifugation, the oil settles naturally. Please shake the bottle well before each use." },
+        { "q": "How much Vitamin C does one serving contain?", "a": "Even a small serving (about 20–30 ml) of the raw essence covers an adult's entire daily requirement. The natural Vitamin C content of sea buckthorn exceeds that of lemons many times over. Thanks to our extremely precise, gentle pasteurisation, these heat-sensitive vitamins are preserved optimally – unlike industrially overheated mass-market products." },
+        { "q": "Is sea buckthorn also suitable for skin care from within?", "a": "Absolutely. The valuable pulp oil is particularly rich in palmitoleic acid (Omega-7) – with a natural share of up to 32–42 %. This rare fatty acid also occurs in the human skin matrix and plays an important role in the regeneration of skin and mucous membranes. The daily ritual thus acts like targeted care from within." },
+        { "q": "Does the sea buckthorn elixir contain Vitamin B12?", "a": "Yes. Through a natural root symbiosis of the plant, active Vitamin B12 (cyanocobalamin) is formed in the sea buckthorn berries. Unfiltered, naturally pure sea buckthorn juice such as our elixir is therefore a rare, purely vegan source of true B12." },
+        { "q": "Does sea buckthorn juice help with gastrointestinal issues?", "a": "The unique Omega-7 fatty acids in sea buckthorn are known to nourish the mucous membranes throughout the body – including the digestive tract. Many of our customers report a calmed, balanced stomach feeling after regular consumption." }
+      ]
+    },
+    {
+      "title": "3. Tolerability & Specific Groups",
+      "items": [
+        { "q": "Is AmberNord suitable for children?", "a": "Yes, absolutely. AmberNord is 100% natural and covers a child's daily Vitamin C requirement in a purely organic way without added sugar." },
+        { "q": "May I drink AmberNord during pregnancy and breastfeeding?", "a": "Yes. Especially during pregnancy and breastfeeding, the demand for natural vitamins and Omega fatty acids is increased. AmberNord is an excellent, purely natural source. In case of specific concerns, however, we always recommend consulting a doctor." },
+        { "q": "Are there interactions with medications?", "a": "Persons taking blood-thinning medications (anticoagulants) should consult their doctor due to the natural Vitamin K content of sea buckthorn." },
+        { "q": "Can side effects occur with excessive consumption?", "a": "Because this is a highly potent natural product with plenty of fruit acid, extremely excessive consumption can cause mild heartburn. Stick to the recommended 1:10 ritual and it is very well tolerated." }
+      ]
+    },
+    {
+      "title": "4. Origin, Quality & Processing",
+      "items": [
+        { "q": "Is AmberNord organic-certified and tested to Swiss standards?", "a": "Yes. AmberNord is an officially accredited organic importer in Switzerland and is audited regularly by the independent certification body ProCert. We work consistently to the strictest Swiss quality and organic guidelines to guarantee absolute purity, transparency and safety for our elixir." },
+        { "q": "What sets the AmberNord elixir apart from conventional sea buckthorn juices?", "a": "Our elixir is a 100% pure, undiluted raw essence. For every bottle, the purest hand-picked berries are processed. We also cultivate exclusively a specific premium mono variety, botanically selected for maximum oil content and nutrient density, and completely avoid mass-produced, yield-maximised industrial varieties." },
+        { "q": "Why is AmberNord so valuable and how is the sea buckthorn harvested?", "a": "Harvesting nordic sea buckthorn is highly complex because the berries burst immediately under mechanical pressure and oxidise quickly. Large industrial facilities often use destructive \"cut-and-freeze\" methods that strip the bush of carbohydrate reserves. Our production partner, on the other hand, relies exclusively on gentle hand-picking by over 100 seasonal workers. This gentle method protects the plant's anatomy and secures the highest quality of native lipids." },
+        { "q": "How is the elixir processed and do the vitamins remain intact?", "a": "To obtain the 100% pure elixir, hand-picked berries are gently cold-pressed. A very gentle pasteurisation then follows. This eliminates germs and ensures shelf life, but prevents thermal degradation of sensitive ingredients. The valuable Omega fatty acids and the high Vitamin C content thus remain intact." },
+        { "q": "What does your zero-waste approach mean exactly?", "a": "We guarantee a fully residue-free production process. After cold-pressing, skins and seeds are gently milled into fibre-rich powder. The leaves, which contain the unique antioxidant plastochromanol-8 (PC-8), also find use in functional teas. We use 100% of the harvested biomass and avoid any waste." },
+        { "q": "Do you also use the bark of the sea buckthorn?", "a": "Yes, as part of our holistic philosophy. Current scientific analyses confirm that the bark of our sea buckthorn branches contains considerable amounts of plant serotonin (phyto-serotonin) – up to 1000 times more than bananas. These valuable plant compounds flow into special remedies and functional formulations." },
+        { "q": "Why do you use glass bottles instead of plastic?", "a": "Glass is absolutely taste-neutral and does not release microplastic particles into the elixir. Our special glass also optimally protects the bioactive ingredients and guarantees the highest clinical purity of the raw essence." },
+        { "q": "When will I receive my elixir?", "a": "We ship directly from our logistics centre in Aarau. As a rule, your parcel arrives within 1–3 working days." },
+        { "q": "How do I store the bottles?", "a": "Store unopened in a cool, dark place. After opening, please keep refrigerated and enjoy within 10 days to preserve the full power of the Omega fatty acids." }
+      ]
+    }
+  ],
+  "footer": {
+    "leadHtml": "Did you not find your question?<br>We are here for you. Send us a message via the",
+    "linkLabel": "contact form",
+    "cta": "Back to the shop"
+  }
+}

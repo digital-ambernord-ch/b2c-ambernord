@@ -1,0 +1,70 @@
+{
+  "meta": {
+    "title": "The Protocol (6× 250 ml) | AmberNord Sea Buckthorn Elixir",
+    "description": "The Protocol: continuous cellular supply for family and high performers. Best price per daily dose.",
+    "canonical": "https://ambernord.ch/en/shop/protocol/",
+    "robots": "index, follow",
+    "og": {
+      "title": "The Protocol (6× 250 ml) | AmberNord",
+      "description": "Continuous cellular supply for family and high performers.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/v1774798936/ambernord-sanddorn-elixier-6er-vorratspack-premium-qualit%C3%A4t.webp_v9c6bd.png",
+      "type": "product"
+    },
+    "hreflang": {
+      "de": "https://ambernord.ch/shop/protocol/",
+      "en": "https://ambernord.ch/en/shop/protocol/",
+      "fr": "https://ambernord.ch/fr/shop/protocol/",
+      "it": "https://ambernord.ch/it/shop/protocol/",
+      "x-default": "https://ambernord.ch/shop/protocol/"
+    }
+  },
+  "gallery": {
+    "mainAlt": "The Protocol — 6× 250 ml sea buckthorn elixir"
+  },
+  "info": {
+    "title": "The Protocol",
+    "volume": "(6× 250 ml)",
+    "price": "129.00 CHF",
+    "subtitleH3": "The ultimate protocol:",
+    "subtitleSpan": "For high performers and families.",
+    "lead": "Designed for those who make no compromises. «The Protocol» ensures that your daily protective ritual never pauses. For just <strong>2.15 CHF a day</strong>, this is the most efficient way to supply your body with over 190 bioactive compounds and all four Omega fatty acids.",
+    "ctaPrimary": "Order 6× elixir",
+    "advantageHeading": "Uncompromising vitality",
+    "advantageBody": "Whether for the home-office team, the whole family or as a long-term cure for maximum cellular regeneration – <span class=\"p-gold\">this package offers the outstanding AmberNord value.</span> Protect your eyes from blue light and strengthen your immune resilience at the highest natural level.",
+    "scienceHeading": "What the package includes",
+    "scienceItem1": "<strong>6× 250 ml</strong> of purest, cold-pressed organic essence (Zelt Selection).",
+    "scienceItem2": "The absolute <strong>most efficient investment</strong> in your cellular health.",
+    "scienceItem3": "Yields up to <span class=\"p-gold\">18 litres</span> of vitalising premium drink.",
+    "scienceItem4": "<strong>Free premium shipping</strong> directly from our logistics centre in Aarau.",
+    "abo": {
+      "label": "Save with subscription — cancel anytime",
+      "top": "Save with subscription (−9%)",
+      "price": "119.00 CHF",
+      "subtext": "per month",
+      "guarantee": "✓ Cancel anytime"
+    },
+    "shippingLabel": "Shipping & Logistics",
+    "shippingText": "Free premium shipping within Switzerland. Direct shipping from our logistics centre in Aarau."
+  },
+  "related": {
+    "heading": "Complete your ritual",
+    "starter": {
+      "badge": "INCL. 10 CHF VOUCHER",
+      "title": "The Starter",
+      "subtitle": "(1× 250 ml)",
+      "price": "24.90 CHF",
+      "extra": "To get acquainted",
+      "daily": "Only 2.49 CHF / day",
+      "shipping": "Incl. 10 CHF voucher"
+    },
+    "habit": {
+      "badge": "BEST SELLER",
+      "title": "The Habit",
+      "subtitle": "(3× 250 ml)",
+      "price": "69.00 CHF",
+      "extra": "The 30-day ritual",
+      "daily": "Only 2.30 CHF / day",
+      "shipping": "Free shipping | Subscription available"
+    }
+  }
+}
