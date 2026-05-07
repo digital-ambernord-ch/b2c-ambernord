@@ -19,8 +19,8 @@
     }
   },
   "floatingBtn": "Quel rituel vous convient ?",
-  "stickyTagline": "Argousier bio · Manufacture suisse",
-  "stickyBtn": "Découvrir l'offre",
+  "stickyVoucher": "CODE : START10",
+  "stickyBtn": "Vers le Rituel",
   "floatCards": {
     "vitamins": {
       "eyebrow": "Vitamines",

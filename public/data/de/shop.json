@@ -39,7 +39,11 @@
         "width": 400,
         "height": 400
       },
-      "badge": null,
+      "badge": {
+        "type": "voucher",
+        "line1": "inkl. 10 chf voucher",
+        "line2": "aktion bis 01.05."
+      },
       "title": "The Starter",
       "quantity": "1x 250ml",
       "price": "24.90 CHF",
@@ -51,7 +55,7 @@
           "Spürbare Klarheit ab dem 1. Schluck.",
           "Eine der seltenen Quellen aller 4 Omega-Fettsäuren.",
           "10 Tage reine, zelluläre Energie.",
-          "<strong>Direktversand aus Aarau.</strong>"
+          "<strong>Inkl. 10 CHF Geschenk-Gutschein.</strong>"
         ]
       },
       "buttons": {

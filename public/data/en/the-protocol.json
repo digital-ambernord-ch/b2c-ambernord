@@ -24,11 +24,7 @@
   "info": {
     "title": "The Protocol",
     "volume": "(6× 250 ml)",
-    "price": {
-      "daily": "2.15 CHF / day",
-      "full": "129.00 CHF one-time",
-      "perBottle": "21.50 CHF / bottle"
-    },
+    "price": "129.00 CHF",
     "subtitleH3": "The ultimate protocol:",
     "subtitleSpan": "For high performers and families.",
     "lead": "Designed for those who make no compromises. «The Protocol» ensures that your daily protective ritual never pauses. For just <strong>2.15 CHF a day</strong>, this is the most efficient way to supply your body with over 190 bioactive compounds and all four Omega fatty acids.",
@@ -43,8 +39,8 @@
     "abo": {
       "label": "Save with subscription — cancel anytime",
       "top": "Save with subscription (−9%)",
-      "daily": "1.99 CHF / day",
-      "subtext": "119.00 CHF per month",
+      "price": "119.00 CHF",
+      "subtext": "per month",
       "guarantee": "✓ Cancel anytime"
     },
     "shippingLabel": "Shipping & Logistics",

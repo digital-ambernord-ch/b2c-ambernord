@@ -19,8 +19,8 @@
     }
   },
   "floatingBtn": "Welches Ritual passt zu Ihnen?",
-  "stickyTagline": "Bio-Sanddorn-Essenz · Schweizer Manufaktur",
-  "stickyBtn": "Aktion entdecken",
+  "stickyVoucher": "CODE: START10",
+  "stickyBtn": "Zum Ritual",
   "floatCards": {
     "vitamins": {
       "eyebrow": "Vitamine",

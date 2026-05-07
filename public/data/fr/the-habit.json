@@ -27,11 +27,7 @@
   "info": {
     "title": "The Habit",
     "volume": "(3× 250 ml)",
-    "price": {
-      "daily": "2,30 CHF / jour",
-      "full": "69,00 CHF achat unique",
-      "perBottle": "23,00 CHF / bouteille"
-    },
+    "price": "69,00 CHF",
     "subtitleH3": "Le rituel de 30 jours :",
     "subtitleSpan": "L'énergie véritable au lieu des coups de fouet artificiels.",
     "lead": "Les boissons énergisantes conventionnelles vous coûtent en moyenne 3 francs par canette – et ne vous rapportent que fatigue et déshydratation. Avec « The Habit », vous investissez dans une toute autre catégorie. Pour seulement <strong>2,30 CHF par jour</strong>, vous apportez à votre corps une essence hautement concentrée qui n'a besoin d'aucune caféine synthétique.",
@@ -46,8 +42,8 @@
     "abo": {
       "label": "Économisez avec l'abonnement — résiliable à tout moment",
       "top": "Économisez avec l'abonnement (−7,7 %)",
-      "daily": "2,10 CHF / jour",
-      "subtext": "63,00 CHF par mois",
+      "price": "63,00 CHF",
+      "subtext": "par mois",
       "guarantee": "✓ Résiliable à tout moment"
     },
     "shippingLabel": "Expédition & Logistique",

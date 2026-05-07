@@ -19,8 +19,8 @@
     }
   },
   "floatingBtn": "Which ritual is right for you?",
-  "stickyTagline": "Organic Sea-Buckthorn · Swiss Manufactory",
-  "stickyBtn": "Discover the offer",
+  "stickyVoucher": "CODE: START10",
+  "stickyBtn": "To the Ritual",
   "floatCards": {
     "vitamins": {
       "eyebrow": "Vitamins",

@@ -32,10 +32,7 @@
   "info": {
     "title": "The Starter",
     "volume": "(1× 250 ml)",
-    "price": {
-      "daily": "2,49 CHF / giorno",
-      "full": "24,90 CHF una tantum"
-    },
+    "price": "24,90 CHF",
     "subtitleH3": "Il primo passo:",
     "subtitleSpan": "Vivi la chiarezza cellulare.",
     "lead": "Volete prima provare la forza dell'oro nordico? «The Starter» è il vostro ingresso nel mondo AmberNord. Ogni bottiglia è ottenuta da bacche raccolte a mano della nostra esclusiva <span class=\"p-gold\">Selezione Zelt</span> e protegge il vostro corpo dallo stress ossidativo con 9× la vitamina C di un limone.",

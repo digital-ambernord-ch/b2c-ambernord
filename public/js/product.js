@@ -28,41 +28,21 @@ window.initProduct = async function () {
   let touchStartX  = 0;
   let touchEndX    = 0;
 
-  /* Ensure smooth opacity + transform on image transitions. */
-  mainImage.style.transition = 'opacity 0.32s var(--ease-smooth, ease-out), transform 0.32s var(--ease-smooth, ease-out)';
-  mainImage.style.willChange = 'opacity, transform';
-
-  function updateMainImage(index, slideFrom) {
+  function updateMainImage(index) {
     if (index < 0) index = thumbnails.length - 1;
     if (index >= thumbnails.length) index = 0;
 
     currentIndex = index;
 
     const thumb = thumbnails[currentIndex];
-    const direction = slideFrom === 'right' ? 24 : slideFrom === 'left' ? -24 : 0;
 
-    mainImage.style.opacity   = '0';
-    mainImage.style.transform = `translateX(${direction}px)`;
+    mainImage.style.opacity = '0';
 
-    /* Swap src after a single frame so the fade-out is visible. */
-    requestAnimationFrame(function () {
+    setTimeout(function () {
       if (thumb.dataset.mainSrc)    mainImage.src    = thumb.dataset.mainSrc;
       if (thumb.dataset.mainSrcset) mainImage.srcset = thumb.dataset.mainSrcset;
-
-      const fadeIn = function () {
-        mainImage.style.transform = `translateX(${-direction * 0.5}px)`;
-        requestAnimationFrame(function () {
-          mainImage.style.opacity   = '1';
-          mainImage.style.transform = 'translateX(0)';
-        });
-      };
-
-      if (mainImage.complete && mainImage.naturalWidth > 0) {
-        fadeIn();
-      } else {
-        mainImage.addEventListener('load', fadeIn, { once: true });
-      }
-    });
+      mainImage.style.opacity = '1';
+    }, 150);
 
     thumbnails.forEach(function (t) {
       t.classList.remove('active-thumb');
@@ -83,63 +63,22 @@ window.initProduct = async function () {
 
   thumbnails.forEach(function (thumb, index) {
     thumb.addEventListener('click', function () {
-      const dir = index > currentIndex ? 'right' : index < currentIndex ? 'left' : null;
-      updateMainImage(index, dir);
+      updateMainImage(index);
     });
   });
 
-  /* =========================================================================
-     SWIPE — finger follows image during touchmove for premium fluidity, then
-     snaps to next/prev or springs back on release.
-     ========================================================================= */
   if (swipeContainer) {
-    let isDragging = false;
-    let touchStartY = 0;
-    const SWIPE_THRESHOLD = 60;        /* px to commit to next image */
-    const RESISTANCE = 0.45;           /* dampen translation for premium feel */
-
     swipeContainer.addEventListener('touchstart', function (e) {
       touchStartX = e.changedTouches[0].screenX;
-      touchStartY = e.changedTouches[0].screenY;
-      isDragging  = true;
-      mainImage.style.transition = 'none';
-      mainImage.style.willChange = 'transform';
-    }, { passive: true });
-
-    swipeContainer.addEventListener('touchmove', function (e) {
-      if (!isDragging) return;
-      const dx = e.changedTouches[0].screenX - touchStartX;
-      const dy = e.changedTouches[0].screenY - touchStartY;
-      /* If user is scrolling vertically, abort horizontal drag. */
-      if (Math.abs(dy) > Math.abs(dx) * 1.4) {
-        isDragging = false;
-        mainImage.style.transition = '';
-        mainImage.style.transform  = 'translateX(0)';
-        return;
-      }
-      mainImage.style.transform = 'translateX(' + (dx * RESISTANCE) + 'px)';
     }, { passive: true });
 
     swipeContainer.addEventListener('touchend', function (e) {
-      if (!isDragging) return;
-      isDragging = false;
-      touchEndX  = e.changedTouches[0].screenX;
+      touchEndX = e.changedTouches[0].screenX;
       const delta = touchEndX - touchStartX;
 
-      mainImage.style.transition = 'opacity 0.32s var(--ease-smooth, ease-out), transform 0.32s var(--ease-smooth, ease-out)';
-
-      if (Math.abs(delta) > SWIPE_THRESHOLD) {
-        updateMainImage(currentIndex + (delta < 0 ? 1 : -1), delta < 0 ? 'right' : 'left');
-      } else {
-        /* Spring back to centre. */
-        mainImage.style.transform = 'translateX(0)';
+      if (Math.abs(delta) > 50) {
+        updateMainImage(currentIndex + (delta < 0 ? 1 : -1));
       }
-    }, { passive: true });
-
-    swipeContainer.addEventListener('touchcancel', function () {
-      isDragging = false;
-      mainImage.style.transition = 'transform 0.32s var(--ease-smooth, ease-out)';
-      mainImage.style.transform  = 'translateX(0)';
     }, { passive: true });
   }
 

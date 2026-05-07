@@ -104,8 +104,13 @@ window.initLanding = async function () {
     observer.observe(scrollTrack);
   }
 
-  /* Sticky nav button is now a router link (<a data-link href="/2-fuer-1/">),
-     so the router handles navigation; no JS click handler needed here. */
+  const stickyNavBtn = document.getElementById('landingStickyNavBtn');
+  if (stickyNavBtn) {
+    stickyNavBtn.addEventListener('click', function () {
+      const shopSection = document.getElementById('shop');
+      if (shopSection) shopSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
 
   /* =========================================================================
      EXCLUSIVE SECTION BACKGROUND FADE

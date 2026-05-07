@@ -24,11 +24,7 @@
   "info": {
     "title": "The Protocol",
     "volume": "(6× 250 ml)",
-    "price": {
-      "daily": "2,15 CHF / giorno",
-      "full": "129,00 CHF una tantum",
-      "perBottle": "21,50 CHF / bottiglia"
-    },
+    "price": "129,00 CHF",
     "subtitleH3": "Il protocollo definitivo:",
     "subtitleSpan": "Per top performer e famiglie.",
     "lead": "Progettato per chi non scende a compromessi. «The Protocol» garantisce che il vostro rituale di protezione quotidiana non si interrompa mai. Con soli <strong>2,15 CHF al giorno</strong>, è il modo più efficiente per fornire al vostro corpo oltre 190 composti bioattivi e tutti e quattro gli acidi grassi Omega.",
@@ -43,8 +39,8 @@
     "abo": {
       "label": "Risparmia con l'abbonamento — disdicibile in qualsiasi momento",
       "top": "Risparmia con l'abbonamento (−9 %)",
-      "daily": "1,99 CHF / giorno",
-      "subtext": "119,00 CHF al mese",
+      "price": "119,00 CHF",
+      "subtext": "al mese",
       "guarantee": "✓ Disdicibile in qualsiasi momento"
     },
     "shippingLabel": "Spedizione & Logistica",

@@ -27,11 +27,7 @@
   "info": {
     "title": "The Habit",
     "volume": "(3× 250 ml)",
-    "price": {
-      "daily": "2.30 CHF / Tag",
-      "full": "69.00 CHF einmalig",
-      "perBottle": "23.00 CHF / Flasche"
-    },
+    "price": "69.00 CHF",
     "subtitleH3": "Das 30-Tage-Ritual:",
     "subtitleSpan": "Wahre Energie statt künstlicher Kicks.",
     "lead": "Herkömmliche Energy-Drinks kosten Sie im Schnitt 3 Franken pro Dose – und zahlen Ihnen nur Müdigkeit und Dehydration zurück. Mit «The Habit» investieren Sie in eine völlig andere Liga. Für nur <strong>2.30 CHF pro Tag</strong> führen Sie Ihrem Körper eine hochkonzentrierte Essenz zu, die kein synthetisches Koffein benötigt.",
@@ -46,8 +42,8 @@
     "abo": {
       "label": "Mit Abo sparen — jederzeit kündbar",
       "top": "Mit Abo sparen (−7.7 %)",
-      "daily": "2.10 CHF / Tag",
-      "subtext": "63.00 CHF pro Monat",
+      "price": "63.00 CHF",
+      "subtext": "pro Monat",
       "guarantee": "✓ Jederzeit kündbar"
     },
     "shippingLabel": "Versand & Logistik",
