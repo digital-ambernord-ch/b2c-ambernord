@@ -461,10 +461,10 @@
 .trust-ribbon {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   flex-wrap: wrap;
-  gap: 50px;
-  padding: 30px 0;
+  gap: 0;
+  padding: 28px 0;
   border-top: 1px solid var(--color-border-subtle);
   border-bottom: 1px solid var(--color-border-subtle);
   margin-bottom: 50px;
@@ -472,36 +472,41 @@
 
 .trust-item {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 12px;
-  opacity: 0.8;
-  transition: opacity var(--t-fast) ease;
+  gap: 6px;
+  padding: 0 40px;
+  text-align: center;
+  position: relative;
+  flex: 0 1 auto;
 }
 
-.trust-item:hover { opacity: 1; }
-
-.trust-icon {
-  color: var(--color-gold);
-  font-size: 20px;
+.trust-item + .trust-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 28px;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--color-gold-dimmer), transparent);
 }
 
 .trust-text {
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
-  color: var(--color-text);
-  letter-spacing: 2px;
+  color: var(--color-gold);
+  letter-spacing: 2.5px;
   text-transform: uppercase;
-  display: block;
 }
 
 .trust-subtext {
-  display: block;
-  font-size: 10px;
+  font-size: 11px;
   color: var(--color-text-dim);
   font-weight: 400;
-  margin-top: 3px;
   font-family: var(--font-sans);
+  letter-spacing: 0.3px;
 }
 
 /* =========================================================================
@@ -1345,148 +1350,119 @@
 }
 
 /* =========================================================================
-   LANDING REVIEWS SECTION (#reviews) — between trust ribbon and shop cards
+   LANDING AKTION CTA (#aktion-cta) — Markteinführungs-Edition promo block
+   between trust ribbon and shop cards. Single big CTA → /2-fuer-1/.
    ========================================================================= */
 
-.landing-reviews {
+.landing-aktion-cta {
   position: relative;
   z-index: var(--z-above);
   background-color: var(--color-bg);
   padding: var(--space-xl) var(--container-pad);
 }
 
-.landing-reviews-inner {
-  max-width: var(--container-max);
+.landing-aktion-cta-inner {
+  max-width: 720px;
   margin: 0 auto;
-}
-
-.landing-reviews-header {
   text-align: center;
-  margin-bottom: var(--space-lg);
+  padding: var(--space-xl) var(--space-lg);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(237, 163, 35, 0.08), transparent 60%),
+    var(--color-surface);
+  border: 1px solid var(--color-border-gold);
+  border-radius: 12px;
 }
 
-.landing-reviews-eyebrow {
+.landing-aktion-cta-eyebrow {
   display: inline-block;
   font-family: var(--font-sans);
-  font-size: 12px;
-  font-weight: 600;
+  font-size: 11px;
+  font-weight: 700;
   letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--color-gold);
-  margin-bottom: var(--space-xs);
+  margin-bottom: var(--space-sm);
 }
 
-.landing-reviews-title {
+.landing-aktion-cta-title {
   font-family: var(--font-serif);
-  font-size: clamp(28px, 4vw, 42px);
+  font-size: clamp(32px, 4.5vw, 48px);
   font-weight: 500;
   color: var(--color-text);
-  margin: 0 0 var(--space-xs);
-  line-height: 1.2;
+  margin: 0 0 var(--space-sm);
+  line-height: 1.1;
+  letter-spacing: -0.5px;
 }
 
-.landing-reviews-sub {
-  font-family: var(--font-sans);
-  font-size: 15px;
-  color: var(--color-text-muted);
-  max-width: 640px;
-  margin: 0 auto;
-  line-height: 1.6;
-}
-
-.landing-reviews-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-md);
-  margin-bottom: var(--space-lg);
-}
-
-.landing-review-card {
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border-gold);
-  border-radius: 8px;
-  padding: var(--space-md);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
-  transition: transform var(--t-fast) ease, border-color var(--t-fast) ease;
-}
-
-.landing-review-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--color-gold);
-}
-
-.landing-review-stars {
+.landing-aktion-cta-title span {
   color: var(--color-gold);
-  font-size: 16px;
-  letter-spacing: 2px;
-  line-height: 1;
+  font-style: italic;
 }
 
-.landing-review-text {
+.landing-aktion-cta-sub {
   font-family: var(--font-serif);
   font-style: italic;
   font-size: 17px;
-  line-height: 1.55;
-  color: var(--color-text);
-  margin: 0;
-  flex: 1;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  max-width: 560px;
+  margin: 0 auto var(--space-md);
 }
 
-.landing-review-meta {
-  display: flex;
+.landing-aktion-cta-btn {
+  display: inline-flex;
   flex-direction: column;
-  gap: 2px;
-  padding-top: var(--space-xs);
-  border-top: 1px solid var(--color-border-subtle);
-}
-
-.landing-review-author {
-  font-family: var(--font-sans);
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--color-text);
-  letter-spacing: 0.5px;
-}
-
-.landing-review-context {
-  font-family: var(--font-sans);
-  font-size: 11px;
-  color: var(--color-text-dim);
-  letter-spacing: 0.5px;
-}
-
-.landing-reviews-cta {
-  text-align: center;
-}
-
-.landing-reviews-link {
-  display: inline-block;
-  font-family: var(--font-sans);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--color-gold);
-  text-decoration: none;
-  padding: 10px 20px;
-  border: 1px solid var(--color-border-gold);
-  border-radius: 4px;
-  transition: background-color var(--t-fast) ease, color var(--t-fast) ease;
-}
-
-.landing-reviews-link:hover,
-.landing-reviews-link:focus-visible {
+  align-items: center;
+  gap: 4px;
+  padding: 18px 48px;
   background-color: var(--color-gold);
+  color: var(--color-bg);
+  text-decoration: none;
+  border-radius: 50px;
+  box-shadow: 0 6px 24px rgba(237, 163, 35, 0.35);
+  transition: background-color var(--t-fast) ease, transform var(--t-fast) ease, box-shadow var(--t-fast) ease;
+  margin-bottom: var(--space-sm);
+}
+
+.landing-aktion-cta-btn:hover,
+.landing-aktion-cta-btn:focus-visible {
+  background-color: var(--color-gold-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 32px rgba(237, 163, 35, 0.5);
   color: var(--color-bg);
 }
 
-@media (max-width: 991px) {
-  .landing-reviews-grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-sm);
+.landing-aktion-cta-btn-label {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+}
+
+.landing-aktion-cta-btn-price {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  opacity: 0.85;
+}
+
+.landing-aktion-cta-fine {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--color-text-dim);
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .landing-aktion-cta { padding: var(--space-lg) var(--container-pad); }
+  .landing-aktion-cta-inner {
+    padding: var(--space-lg) var(--space-md);
   }
-  .landing-reviews { padding: var(--space-lg) var(--container-pad); }
-  .landing-review-text { font-size: 16px; }
+  .landing-aktion-cta-btn { padding: 16px 36px; width: 100%; max-width: 320px; }
+  .trust-item {
+    padding: 0 22px;
+  }
 }

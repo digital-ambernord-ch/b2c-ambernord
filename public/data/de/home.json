@@ -51,23 +51,20 @@
     "benefit3": "✓ Natürliches B12 – bioverfügbar, nicht synthetisch",
     "nativeOils": "Inklusive nativer Öle aus<br>Fruchtfleisch &amp; Kern",
     "cta": "Jetzt Ritual starten",
-    "reviewsLink": "Was Kunden sagen →"
+    "aktionLink": "Markteinführungs-Aktion entdecken →"
   },
   "trust": {
     "lab": { "title": "Laborgeprüft", "subtitle": "Höchste Reinheitsstandards" },
-    "premium": { "title": "100% Premium Qualität", "subtitle": "Rein & bioaktiv" },
-    "shipping": { "title": "Versand in 24h", "subtitle": "Kostenlos ab 'The Habit'" }
+    "premium": { "title": "Bio-zertifiziert", "subtitle": "Schweizer Manufaktur" },
+    "shipping": { "title": "Versand in 24h", "subtitle": "Direkt aus Aarau" }
   },
-  "reviews": {
-    "eyebrow": "Echte Stimmen",
-    "title": "Was unsere Kunden berichten",
-    "sub": "Ungefilterte Erfahrungen aus der Schweiz — nach mindestens 14 Tagen täglicher Anwendung.",
-    "items": [
-      { "text": "Nach zwei Wochen spürte ich tatsächlich einen Unterschied bei Energie und Hautbild. Kein süsslicher Saft, sondern ein ehrliches Konzentrat.", "author": "Platzhalter Name", "context": "Aarau · Verifizierte Bestellung" },
-      { "text": "Ich vertrage viele Präparate nicht. AmberNord ist rein, klar deklariert und im Alltag schnell zur Gewohnheit geworden.", "author": "Platzhalter Name", "context": "Zürich · Verifizierte Bestellung" },
-      { "text": "Premium-Verarbeitung, eindeutiger Geschmack, kein Marketing-Geschwätz. Das Ritual am Morgen hat mein Familienbild verändert.", "author": "Platzhalter Name", "context": "Bern · Verifizierte Bestellung" }
-    ],
-    "allLink": "Alle Bewertungen ansehen →"
+  "aktionCta": {
+    "eyebrow": "Markteinführungs-Edition",
+    "title": "Werde eine der<br><span>250 Stimmen.</span>",
+    "sub": "2 × The Starter zum Preis von einer Flasche. Im Gegenzug bitten wir nach 14 Tagen um deine ehrliche Bewertung.",
+    "ctaLabel": "Aktion entdecken",
+    "ctaPrice": "24.90 CHF · 2 × 250 ml",
+    "fine": "Limitiert auf 250 Plätze · Bewertung freiwillig"
   },
   "shop": {
     "title": "Wählen Sie Ihr Protokoll",

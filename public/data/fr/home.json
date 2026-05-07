@@ -51,23 +51,20 @@
     "benefit3": "✓ B12 naturelle – biodisponible, non synthétique",
     "nativeOils": "Y compris les huiles natives<br>de la pulpe &amp; du noyau",
     "cta": "Commencer le rituel",
-    "reviewsLink": "Ce que disent les clients →"
+    "aktionLink": "Découvrir l'Édition de lancement →"
   },
   "trust": {
     "lab": { "title": "Testé en laboratoire", "subtitle": "Plus hauts standards de pureté" },
-    "premium": { "title": "100% Qualité Premium", "subtitle": "Pur & bioactif" },
-    "shipping": { "title": "Expédition en 24h", "subtitle": "Gratuite dès « The Habit »" }
+    "premium": { "title": "Certifié bio", "subtitle": "Manufacture suisse" },
+    "shipping": { "title": "Expédition en 24h", "subtitle": "Direct depuis Aarau" }
   },
-  "reviews": {
-    "eyebrow": "Voix authentiques",
-    "title": "Ce que rapportent nos clients",
-    "sub": "Expériences non filtrées de Suisse — après au moins 14 jours d'utilisation quotidienne.",
-    "items": [
-      { "text": "Après deux semaines, j'ai vraiment ressenti une différence sur l'énergie et la peau. Pas un jus sucré, mais un concentré honnête.", "author": "Nom placeholder", "context": "Aarau · Achat vérifié" },
-      { "text": "Je ne tolère pas beaucoup de compléments. AmberNord est pur, clairement déclaré et est rapidement devenu une habitude.", "author": "Nom placeholder", "context": "Zürich · Achat vérifié" },
-      { "text": "Traitement premium, goût distinct, zéro discours marketing. Le rituel du matin a changé la façon dont ma famille commence la journée.", "author": "Nom placeholder", "context": "Bern · Achat vérifié" }
-    ],
-    "allLink": "Voir tous les avis →"
+  "aktionCta": {
+    "eyebrow": "Édition de lancement",
+    "title": "Deviens l'une des<br><span>250 voix.</span>",
+    "sub": "2 × The Starter pour le prix d'une bouteille. En contrepartie, nous demandons un avis honnête après 14 jours.",
+    "ctaLabel": "Découvrir l'offre",
+    "ctaPrice": "24.90 CHF · 2 × 250 ml",
+    "fine": "Limité à 250 places · Avis facultatif"
   },
   "shop": {
     "title": "Choisissez Votre Protocole",

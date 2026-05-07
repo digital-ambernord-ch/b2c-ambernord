@@ -1,29 +1,29 @@
 /* ==========================================================================
-   AKTION 2-FÜR-1 — Markteinführungs-Edition sales page + thank-you.
-   Scope: .aktion-page-container and .aktion-danke-page-container.
+   AKTION 2-FÜR-1 — Markteinführungs-Edition sales page (compact + premium)
+   + thank-you page. Scope: .aktion-page-container + .aktion-danke-page-container.
    ========================================================================== */
 
 .aktion-page-container,
 .aktion-danke-page-container {
   position: relative;
   z-index: var(--z-above);
-  padding: 0 0 120px;
+  padding: var(--space-md) 0 var(--space-xl);
 }
 
 @keyframes aktionReveal {
-  from { opacity: 0; transform: translateY(24px); }
+  from { opacity: 0; transform: translateY(16px); }
   to   { opacity: 1; transform: none; }
 }
 
 .aktion-page-container,
 .aktion-danke-page-container {
-  animation: aktionReveal 1.1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  animation: aktionReveal 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 
 .page-reveal {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .page-reveal.is-visible {
@@ -43,7 +43,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   SHARED — eyebrow + section title + CTA button
+   SHARED — eyebrow + CTA
    -------------------------------------------------------------------------- */
 
 .aktion-eyebrow {
@@ -51,47 +51,34 @@
   font-family: var(--font-sans);
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 3px;
+  letter-spacing: 3.5px;
   text-transform: uppercase;
   color: var(--color-gold);
-  margin-bottom: var(--space-xs);
-}
-
-.aktion-eyebrow--center {
-  display: block;
-  text-align: center;
-}
-
-.aktion-section-title {
-  font-family: var(--font-serif);
-  font-size: clamp(28px, 4vw, 42px);
-  font-weight: 500;
-  color: var(--color-text);
-  text-align: center;
-  margin: 0 0 var(--space-md);
-  line-height: 1.2;
+  margin-bottom: 4px;
 }
 
 .aktion-cta-primary {
   display: inline-flex;
   flex-direction: column;
   align-items: center;
+  align-self: flex-start;
   gap: 4px;
-  padding: 18px 40px;
+  padding: 18px 44px;
   background-color: var(--color-gold);
   color: var(--color-bg);
   text-decoration: none;
   border-radius: 50px;
-  box-shadow: 0 4px 18px rgba(237, 163, 35, 0.32);
+  box-shadow: 0 8px 28px rgba(237, 163, 35, 0.35);
   transition: background-color var(--t-fast) ease, transform var(--t-fast) ease, box-shadow var(--t-fast) ease;
   font-family: var(--font-sans);
+  margin: 4px 0;
 }
 
 .aktion-cta-primary:hover,
 .aktion-cta-primary:focus-visible {
   background-color: var(--color-gold-hover);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(237, 163, 35, 0.45);
+  box-shadow: 0 12px 36px rgba(237, 163, 35, 0.5);
   color: var(--color-bg);
 }
 
@@ -110,49 +97,55 @@
 }
 
 /* --------------------------------------------------------------------------
-   HERO — image + headline + CTA, two-column on desktop
+   HERO — compact, premium, fits viewport. Floating bottle (no bg) with
+   drop-shadow on left, content + CTA on right. Mobile: stacked.
    -------------------------------------------------------------------------- */
 
 .aktion-hero {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: var(--space-md) var(--container-pad);
+}
+
+.aktion-hero-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-lg);
+  grid-template-columns: 5fr 6fr;
+  gap: var(--space-xl);
   align-items: center;
-  max-width: var(--container-max);
-  margin: 0 auto var(--space-xl);
-  padding: var(--space-lg) var(--container-pad) 0;
+  min-height: calc(100vh - 200px);
 }
 
 .aktion-hero-image {
-  position: relative;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid var(--color-border-gold);
-  aspect-ratio: 1 / 1;
-  background-color: var(--color-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .aktion-hero-image img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+  max-width: 480px;
+  height: auto;
+  max-height: 70vh;
+  object-fit: contain;
+  filter:
+    drop-shadow(0 30px 50px rgba(0, 0, 0, 0.6))
+    drop-shadow(0 8px 16px rgba(237, 163, 35, 0.12));
 }
 
 .aktion-hero-content {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: var(--space-sm);
+  gap: 14px;
 }
 
 .aktion-hero-title {
   font-family: var(--font-serif);
-  font-size: clamp(32px, 5vw, 56px);
+  font-size: clamp(34px, 5vw, 56px);
   font-weight: 500;
   color: var(--color-text);
-  line-height: 1.1;
+  line-height: 1.05;
   margin: 0;
+  letter-spacing: -0.5px;
 }
 
 .aktion-hero-title span {
@@ -161,319 +154,136 @@
 }
 
 .aktion-hero-sub {
-  font-family: var(--font-sans);
-  font-size: 17px;
-  line-height: 1.65;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 18px;
+  line-height: 1.55;
   color: var(--color-text-muted);
-  margin: 0 0 var(--space-xs);
-  max-width: 540px;
+  margin: 0 0 4px;
+  max-width: 520px;
+}
+
+.aktion-deal-quick {
+  list-style: none;
+  margin: 8px 0 8px;
+  padding: 18px 0;
+  border-top: 1px solid var(--color-border-subtle);
+  border-bottom: 1px solid var(--color-border-subtle);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 24px;
+}
+
+.aktion-deal-quick li {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--color-text);
+  position: relative;
+  padding-left: 18px;
+  line-height: 1.4;
+  letter-spacing: 0.3px;
+}
+
+.aktion-deal-quick li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-gold);
+}
+
+.aktion-deal-price {
+  font-weight: 700;
+  color: var(--color-gold);
+  margin-right: 6px;
+}
+
+.aktion-deal-strike {
+  color: var(--color-text-dim);
+  text-decoration: line-through;
+  font-size: 12px;
 }
 
 .aktion-hero-fine {
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 11px;
   color: var(--color-text-dim);
-  margin: 0;
   letter-spacing: 0.5px;
-}
-
-/* --------------------------------------------------------------------------
-   WHY — long-form prose, the heart of the page
-   -------------------------------------------------------------------------- */
-
-.aktion-why {
-  background-color: var(--color-surface);
-  padding: var(--space-xl) var(--container-pad);
-  margin: 0 0 var(--space-xl);
-}
-
-.aktion-why-inner {
-  max-width: 760px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.aktion-why-prose {
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-  margin-top: var(--space-md);
-}
-
-.aktion-why-prose p {
-  font-family: var(--font-serif);
-  font-size: 18px;
-  line-height: 1.75;
-  color: var(--color-text);
   margin: 0;
-}
-
-.aktion-why-prose p:first-child {
-  font-style: italic;
-  font-size: 20px;
-  color: var(--color-text);
-  border-left: 2px solid var(--color-gold);
-  padding-left: var(--space-sm);
-}
-
-/* --------------------------------------------------------------------------
-   DEAL — what's in the package
-   -------------------------------------------------------------------------- */
-
-.aktion-deal {
-  max-width: 760px;
-  margin: 0 auto var(--space-xl);
-  padding: 0 var(--container-pad);
-}
-
-.aktion-deal-inner {
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border-gold);
-  border-radius: 8px;
-  padding: var(--space-lg);
-}
-
-.aktion-deal-list {
-  list-style: none;
-  margin: 0 0 var(--space-md);
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-.aktion-deal-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--space-md);
-  padding: var(--space-sm) 0;
-  border-bottom: 1px solid var(--color-border-subtle);
-}
-
-.aktion-deal-list li:last-child {
-  border-bottom: none;
-}
-
-.aktion-deal-key {
-  flex-shrink: 0;
-  width: 110px;
-  font-family: var(--font-sans);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: var(--color-text-dim);
-  padding-top: 2px;
-}
-
-.aktion-deal-val {
-  flex: 1;
-  font-family: var(--font-sans);
-  font-size: 15px;
-  color: var(--color-text);
   line-height: 1.5;
 }
 
-.aktion-deal-price {
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--color-gold);
-  margin-right: 8px;
-}
-
-.aktion-deal-strike {
-  font-size: 13px;
-  color: var(--color-text-dim);
-  text-decoration: line-through;
-}
-
-.aktion-deal-link {
-  font-family: var(--font-sans);
-  font-size: 14px;
-  color: var(--color-text-muted);
-  margin: 0;
-  text-align: center;
-}
-
-.aktion-deal-link a {
-  color: var(--color-gold);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-.aktion-deal-link a:hover {
-  color: var(--color-gold-hover);
-}
-
 /* --------------------------------------------------------------------------
-   STEPS — 3-step explainer
+   MINI FAQ — 3 collapsed accordions below the fold (small, optional read)
    -------------------------------------------------------------------------- */
 
-.aktion-steps {
-  max-width: var(--container-max);
-  margin: 0 auto var(--space-xl);
+.aktion-mini-faq {
+  max-width: 1100px;
+  margin: var(--space-lg) auto 0;
   padding: 0 var(--container-pad);
 }
 
-.aktion-steps-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.aktion-steps-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.aktion-mini-faq-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-md);
-}
-
-.aktion-steps-list li {
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border-gold);
-  border-radius: 8px;
-  padding: var(--space-md);
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.aktion-step-num {
-  width: 40px;
-  height: 40px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--color-border-gold);
-  border-radius: 50%;
-  font-family: var(--font-serif);
-  font-size: 18px;
-  color: var(--color-gold);
-  background-color: var(--color-bg);
-}
-
-.aktion-step-title {
-  font-family: var(--font-sans);
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: var(--color-text);
-  margin: 0;
-}
-
-.aktion-step-text {
-  font-family: var(--font-sans);
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--color-text-muted);
-  margin: 0;
-}
-
-/* --------------------------------------------------------------------------
-   FAQ — native <details> accordion
-   -------------------------------------------------------------------------- */
-
-.aktion-faq {
-  max-width: 760px;
-  margin: 0 auto var(--space-xl);
-  padding: 0 var(--container-pad);
-}
-
-.aktion-faq-inner {
-  display: flex;
-  flex-direction: column;
   gap: var(--space-sm);
 }
 
-.aktion-faq-item {
+.aktion-mini-faq-item {
   background-color: var(--color-surface);
-  border: 1px solid var(--color-border-gold);
+  border: 1px solid var(--color-border-subtle);
   border-radius: 6px;
   padding: 0;
-  transition: background-color var(--t-fast) ease;
+  transition: border-color var(--t-fast) ease;
 }
 
-.aktion-faq-item summary {
+.aktion-mini-faq-item:hover {
+  border-color: var(--color-border-gold);
+}
+
+.aktion-mini-faq-item summary {
   list-style: none;
   cursor: pointer;
-  padding: 16px 20px;
+  padding: 14px 18px;
   font-family: var(--font-sans);
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 600;
   color: var(--color-text);
   position: relative;
-  padding-right: 50px;
+  padding-right: 38px;
+  letter-spacing: 0.3px;
 }
 
-.aktion-faq-item summary::-webkit-details-marker {
+.aktion-mini-faq-item summary::-webkit-details-marker {
   display: none;
 }
 
-.aktion-faq-item summary::after {
+.aktion-mini-faq-item summary::after {
   content: "+";
   position: absolute;
-  right: 20px;
+  right: 16px;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 22px;
+  font-size: 18px;
   color: var(--color-gold);
   transition: transform var(--t-fast) ease;
+  font-weight: 300;
 }
 
-.aktion-faq-item[open] summary::after {
+.aktion-mini-faq-item[open] summary::after {
   content: "−";
 }
 
-.aktion-faq-item p {
+.aktion-mini-faq-item p {
   margin: 0;
-  padding: 0 20px 20px;
+  padding: 0 18px 16px;
   font-family: var(--font-sans);
-  font-size: 14px;
-  line-height: 1.65;
+  font-size: 13px;
+  line-height: 1.6;
   color: var(--color-text-muted);
-}
-
-/* --------------------------------------------------------------------------
-   FINAL CTA
-   -------------------------------------------------------------------------- */
-
-.aktion-final {
-  max-width: 760px;
-  margin: 0 auto;
-  padding: var(--space-xl) var(--container-pad) 0;
-  text-align: center;
-}
-
-.aktion-final-title {
-  font-family: var(--font-serif);
-  font-size: clamp(28px, 4vw, 40px);
-  font-weight: 500;
-  color: var(--color-text);
-  margin: 0 0 var(--space-xs);
-  line-height: 1.2;
-}
-
-.aktion-final-sub {
-  font-family: var(--font-sans);
-  font-size: 16px;
-  line-height: 1.65;
-  color: var(--color-text-muted);
-  max-width: 560px;
-  margin: 0 auto var(--space-md);
-}
-
-.aktion-cta-primary--final {
-  margin-bottom: var(--space-sm);
-}
-
-.aktion-final-trust {
-  font-family: var(--font-sans);
-  font-size: 12px;
-  color: var(--color-text-dim);
-  letter-spacing: 0.5px;
-  margin: 0;
 }
 
 /* --------------------------------------------------------------------------
@@ -637,35 +447,41 @@
 
 @media (max-width: 991px) {
   .aktion-hero {
+    padding-top: 0;
+  }
+  .aktion-hero-grid {
     grid-template-columns: 1fr;
     gap: var(--space-md);
-    padding-top: var(--space-md);
+    min-height: 0;
+    text-align: center;
   }
   .aktion-hero-image {
-    aspect-ratio: 4 / 3;
+    order: -1;
+  }
+  .aktion-hero-image img {
+    max-width: 280px;
+    max-height: 40vh;
   }
   .aktion-hero-content {
-    text-align: center;
     align-items: center;
   }
   .aktion-hero-sub {
     text-align: center;
   }
-  .aktion-why {
-    padding: var(--space-lg) var(--container-pad);
+  .aktion-cta-primary {
+    align-self: center;
+    width: 100%;
+    max-width: 360px;
   }
-  .aktion-why-prose p,
-  .aktion-why-prose p:first-child {
-    font-size: 16px;
-  }
-  .aktion-steps-list {
+  .aktion-deal-quick {
     grid-template-columns: 1fr;
+    gap: 8px;
+    text-align: left;
+    max-width: 360px;
+    margin-left: auto;
+    margin-right: auto;
   }
-  .aktion-deal-list li {
-    flex-direction: column;
-    gap: 4px;
-  }
-  .aktion-deal-key {
-    width: auto;
+  .aktion-mini-faq-grid {
+    grid-template-columns: 1fr;
   }
 }
