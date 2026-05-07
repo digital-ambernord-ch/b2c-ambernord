@@ -1,0 +1,63 @@
+{
+  "meta": {
+    "title": "Rückgabe- & Erstattungsrichtlinie | AmberNord",
+    "description": "Unsere transparente Rückgabe- und Erstattungsrichtlinie für AmberNord Bio-Sanddornsaft – Qualität, Hygiene und Ihr Vertrauen stehen für uns an erster Stelle.",
+    "canonical": "https://ambernord.ch/hilfe/rueckgabe/",
+    "slug": "/rueckgabe/",
+    "robots": "index, follow",
+    "og": {
+      "title": "Rückgabe- & Erstattungsrichtlinie | AmberNord",
+      "description": "Unsere transparente Rückgabe- und Erstattungsrichtlinie für AmberNord Bio-Sanddornsaft.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/ambernord-og-default",
+      "type": "website"
+    },
+    "hreflang": {
+      "de": "https://ambernord.ch/hilfe/rueckgabe/",
+      "en": "https://ambernord.ch/en/hilfe/rueckgabe/",
+      "fr": "https://ambernord.ch/fr/hilfe/rueckgabe/",
+      "it": "https://ambernord.ch/it/hilfe/rueckgabe/",
+      "x-default": "https://ambernord.ch/hilfe/rueckgabe/"
+    }
+  },
+  "header": {
+    "eyebrow": "AmberNord Legal",
+    "h1": "Rückgabe- und <span>Erstattungsrichtlinie</span>"
+  },
+  "sections": [
+    {
+      "id": "grundsatz",
+      "heading": "1. Grundsatz: Kein Rückgaberecht für Lebensmittel",
+      "paragraphs": [
+        "Da wir im Bereich der hochwertigen Bio-Lebensmittel (wie z. B. Bio-Sanddornsaft) tätig sind, sind Qualität, Hygiene und Lebensmittelsicherheit unser oberstes Gebot. Aus Gründen des Gesundheitsschutzes und der Hygiene ist ein generelles Rückgabe- oder Umtauschrecht für unsere Produkte ausgeschlossen. Zudem weisen wir darauf hin, dass gemäss Schweizer Recht im Online-Handel kein gesetzliches Widerrufsrecht besteht."
+      ]
+    },
+    {
+      "id": "maengel",
+      "heading": "2. Mängel und Transportschäden",
+      "paragraphs": [
+        "Ihre Zufriedenheit ist uns selbstverständlich sehr wichtig. Sollte ein Produkt beschädigt bei Ihnen eintreffen (z. B. Glasbruch durch den Transport) oder ein Qualitätsmangel vorliegen, kontaktieren Sie uns bitte umgehend, spätestens jedoch innerhalb von 3 Tagen nach Erhalt der Ware.",
+        "Bitte senden Sie uns in diesem Fall eine E-Mail mit einer kurzen Beschreibung des Problems sowie entsprechenden Fotos an: <a href=\"mailto:info@ambernord.ch\">info@ambernord.ch</a>",
+        "Wir werden Ihr Anliegen schnellstmöglich prüfen. Liegt ein berechtigter Mangel vor, bieten wir Ihnen nach unserer Wahl eine kostenlose Ersatzlieferung oder eine Rückerstattung des Kaufpreises an."
+      ]
+    },
+    {
+      "id": "ruecksendungen",
+      "heading": "3. Rücksendungen (nur nach vorheriger Absprache)",
+      "paragraphs": [
+        "Bitte senden Sie keine Produkte unaufgefordert an uns zurück. Eine physische Rücksendung wird nur in seltenen Ausnahmefällen und nach vorheriger schriftlicher Bestätigung durch uns verlangt.",
+        "Falls eine Rücksendung von uns ausdrücklich genehmigt wurde, senden Sie die Ware bitte an unsere Geschäftsadresse:",
+        "<strong>Matisons Selection (AmberNord)</strong><br>Alte Gasse 8<br>5034 Suhr, Schweiz"
+      ]
+    },
+    {
+      "id": "erstattungen",
+      "heading": "4. Rückerstattungen",
+      "paragraphs": [
+        "Wurde eine Rückerstattung von uns genehmigt, wird der entsprechende Betrag innerhalb von 14 Tagen auf das von Ihnen beim Kauf verwendete Zahlungsmittel zurückerstattet."
+      ]
+    }
+  ],
+  "footer": {
+    "lastUpdated": "Letzte Aktualisierung: Februar 2026"
+  }
+}

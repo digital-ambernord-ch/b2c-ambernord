@@ -1318,3 +1318,175 @@
     padding-bottom: 40px;
   }
 }
+
+/* =========================================================================
+   HERO SECONDARY LINK (under primary CTA → #reviews)
+   ========================================================================= */
+
+.hero-secondary-link {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 6px 4px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-text-muted);
+  border-bottom: 1px solid transparent;
+  transition: color var(--t-fast) ease, border-color var(--t-fast) ease;
+}
+
+.hero-secondary-link:hover,
+.hero-secondary-link:focus-visible {
+  color: var(--color-gold);
+  border-bottom-color: var(--color-gold-dim);
+}
+
+/* =========================================================================
+   LANDING REVIEWS SECTION (#reviews) — between trust ribbon and shop cards
+   ========================================================================= */
+
+.landing-reviews {
+  position: relative;
+  z-index: var(--z-above);
+  background-color: var(--color-bg);
+  padding: var(--space-xl) var(--container-pad);
+}
+
+.landing-reviews-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+.landing-reviews-header {
+  text-align: center;
+  margin-bottom: var(--space-lg);
+}
+
+.landing-reviews-eyebrow {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: var(--space-xs);
+}
+
+.landing-reviews-title {
+  font-family: var(--font-serif);
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 500;
+  color: var(--color-text);
+  margin: 0 0 var(--space-xs);
+  line-height: 1.2;
+}
+
+.landing-reviews-sub {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: var(--color-text-muted);
+  max-width: 640px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.landing-reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.landing-review-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-gold);
+  border-radius: 8px;
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  transition: transform var(--t-fast) ease, border-color var(--t-fast) ease;
+}
+
+.landing-review-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-gold);
+}
+
+.landing-review-stars {
+  color: var(--color-gold);
+  font-size: 16px;
+  letter-spacing: 2px;
+  line-height: 1;
+}
+
+.landing-review-text {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--color-text);
+  margin: 0;
+  flex: 1;
+}
+
+.landing-review-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: var(--space-xs);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.landing-review-author {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text);
+  letter-spacing: 0.5px;
+}
+
+.landing-review-context {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  color: var(--color-text-dim);
+  letter-spacing: 0.5px;
+}
+
+.landing-reviews-cta {
+  text-align: center;
+}
+
+.landing-reviews-link {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  text-decoration: none;
+  padding: 10px 20px;
+  border: 1px solid var(--color-border-gold);
+  border-radius: 4px;
+  transition: background-color var(--t-fast) ease, color var(--t-fast) ease;
+}
+
+.landing-reviews-link:hover,
+.landing-reviews-link:focus-visible {
+  background-color: var(--color-gold);
+  color: var(--color-bg);
+}
+
+@media (max-width: 991px) {
+  .landing-reviews-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+  }
+  .landing-reviews { padding: var(--space-lg) var(--container-pad); }
+  .landing-review-text { font-size: 16px; }
+}

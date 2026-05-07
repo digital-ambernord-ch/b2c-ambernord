@@ -1,155 +1,141 @@
-# CLAUDE.md
+## Project
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+AmberNord B2C — static dependency-free SPA for a Swiss biohacking brand selling cold-pressed sea-buckthorn (Sanddorn) elixirs. Deployed on **Cloudflare Pages** from `public/`. **No build step, no package.json, no tests, no linter.** Edit, save, refresh.
 
-## Project Overview
+`functions/` (`_middleware.js`, `api/checkout.js`, `api/contact.js`, `api/health.js`) and `wrangler.toml` are empty placeholders — not wired to anything.
 
-AmberNord B2C site — a static, dependency-free SPA for a Swiss biohacking/longevity brand selling cold-pressed sea-buckthorn (Sanddorn) elixirs. Deployed on **Cloudflare Pages** with `public/` as the build output directory and `functions/` reserved for Pages Functions (currently empty stubs at `functions/_middleware.js`, `functions/api/checkout.js`, `functions/api/contact.js`, `functions/api/health.js` — `wrangler.toml` and `.env` are also empty placeholders).
+## Local dev
 
-There is **no build step, no package.json, no test framework, no linter**. Files are served as-is. Edit, save, refresh.
-
-## Local Development
-
-Serve the `public/` directory with any static server, then visit `http://localhost:<port>/`. The SPA needs a fallback to `index.html` for unknown paths (handled in production by [public/_redirects](public/_redirects)). Examples:
-
-```powershell
-npx serve public -s          # -s = SPA mode, fallback to index.html
-# or
-python -m http.server 8000 --directory public   # no SPA fallback, deep links 404
-```
-
-For Cloudflare Pages parity (Functions + redirects), use Wrangler:
-
-```powershell
-npx wrangler pages dev public
-```
-
-Deploy: push to the configured Cloudflare Pages branch — Cloudflare builds from `public/`.
+- `npx serve public -s` (SPA mode, fallback to index.html)
+- `npx wrangler pages dev public` (Cloudflare parity)
+- Deploy: push to configured Pages branch.
 
 ## Architecture
 
-### Single-page app, no framework
+### Single-page shell
+[public/index.html](public/index.html) is the **only** HTML the browser loads. Persistent shell: header nav, mobile overlay menu, `<main id="app">` outlet, footer, FAB, mobile sticky CTA, lightbox, cookie banner/modal. **All** page CSS and JS load up-front.
 
-[public/index.html](public/index.html) is the **only** HTML document the browser ever loads. It contains the persistent shell — `<header>` nav, mobile overlay menu, `<main id="app">` outlet, footer, FAB, mobile sticky CTA, lightbox — and link/script tags for **every** page's CSS and JS. Page-specific HTML fragments live in [public/pages/](public/pages/) and are injected into `#app` by the router.
-
-Because every CSS file and every JS file is loaded up-front on first page load, **CSS rules must be namespaced per page** (e.g. `.contact-card`, `.shop-card__badge`) to avoid collisions, and each page script must export exactly one global `window.init<PageName>` function rather than running on `DOMContentLoaded`.
+Consequences:
+- **CSS must be hand-namespaced per page** (e.g. `.contact-card`, `.shop-card__badge`) — no scoping mechanism.
+- Each page script exports exactly one `window.init<PageName>` function (do not run on `DOMContentLoaded`).
 
 ### Router — [public/js/router.js](public/js/router.js)
+Hand-rolled History-API router. Three top-level objects:
 
-Hand-rolled History-API router. The `ROUTES` object at the top maps a URL path to:
+- `REDIRECTS` — old paths → new paths (preserves SEO/inbound links). E.g. `/ueber-uns/` → `/story/`, `/dossier/` → `/wissenschaft/`, `/the-starter/` → `/shop/starter/`, `/kontakt/` → `/hilfe/kontakt/`, `/elixier/` → `/shop/`, `/ritual-wirkung/` → `/ritual/`.
+- `ROUTES` — canonical path → `{ page, title, description, canonical, type, sticky, schema }`.
+- `INITS` — `route.type` → `window.init<Name>` lookup table (replaced the old if/else chain — single source of truth).
 
-- `page` — fragment URL under `/pages/`
-- `title`, `description`, `canonical` — written into `<head>` via `updateMeta()`
-- `type` — string key used to dispatch the matching `window.init<Type>()` (see the long `if/else if` chain in `navigate()`)
-- `sticky` — `{ cta, sub, href }` if a mobile sticky CTA should appear (product pages only)
-- `schema` — optional JSON-LD object injected as `<script id="page-schema">`
+`navigate(path, pushState)` flow: resolve → `updateMeta()` → toggle `#ambernord-subpage-hero-bg` → `killGSAP()` (kills all `ScrollTrigger` instances) → fetch fragment (cached in `pageCache`) → inject into `#app` → fade in → `attachLinkListeners()` (idempotent via `dataset.routerBound`) → `updateMobileSticky()` → dispatch via `INITS[route.type]`.
 
-Navigation flow inside `navigate(path, pushState)`:
+Unknown paths fall back to `ROUTES['/']` (landing). Treat unmapped footer/nav links as known gaps, not bugs.
 
-1. Resolve route (with trailing-slash tolerance, fallback to `/`).
-2. `updateMeta()` — title / description / canonical / JSON-LD.
-3. Toggle the fixed background hero `#ambernord-subpage-hero-bg` (visible on subpages, hidden on landing/product/thank-you).
-4. `killGSAP()` — `ScrollTrigger.getAll().forEach(t => t.kill())` to prevent leaks across navigations.
-5. Fetch fragment (cached in-memory in `pageCache`), inject into `#app`, fade in.
-6. `attachLinkListeners()` — binds new `[data-link]` elements (idempotent via `dataset.routerBound`).
-7. `updateMobileSticky(route)` — wires the bottom CTA to the route's Stripe URL on product pages.
-8. Dispatch `window.init<Type>()` for the page's JS.
+**Adding a new page** requires four coordinated edits — miss one and the page silently 404s to landing:
+1. Fragment in [public/pages/](public/pages/).
+2. Entry in `ROUTES` ([public/js/router.js](public/js/router.js)).
+3. Entry in `INITS` mapping the new `type` to its `window.init...`.
+4. `<link>` to CSS and `<script>` to JS in [public/index.html](public/index.html). Load order matters: GSAP CDN, then `i18n.js`, `cookie-consent.js`, `ui.js`, `router.js`, then page scripts.
 
-**Adding a new page** requires four coordinated edits:
+### Page scripts — [public/js/](public/js/)
+One file per page (`landing.js`, `about.js`, `dossier.js`, `ritual.js`, `b2b.js`, `shop.js`, `the-master-box.js`, `contact.js`, `bestellstatus.js`, `thankyou.js`, `datenschutz.js`, `returns.js`, `faq.js`).
 
-1. Add the HTML fragment in [public/pages/](public/pages/).
-2. Add a route entry in `ROUTES` in [public/js/router.js](public/js/router.js).
-3. Add an `else if` branch in `navigate()` that calls the new `window.init...()`.
-4. Add `<link>` to the CSS and `<script>` to the JS in [public/index.html](public/index.html) (load order matters: `ui.js` and `router.js` first, then page scripts, then `i18n.js` is referenced via `window.loadI18n`).
+Convention inside each `init`: load i18n → bind listeners → set up `IntersectionObserver` for `.page-reveal` / `.is-visible` scroll reveal → page-specific work.
 
-### Page scripts pattern — [public/js/](public/js/)
+`product.js` is **shared** by `/shop/starter/`, `/shop/habit/`, `/shop/protocol/` (all dispatch `initProduct` via `type: 'product'`).
 
-Each page has a single global init function attached to `window` (e.g. `window.initContact`, `window.initShop`, `window.initLanding`). Convention inside each init:
-
-1. `const lang = window.getLang(); const data = await window.loadI18n(lang, '<page>');` — populates `data-i18n*` attributes from `/data/<lang>/<page>.json`.
-2. Bind page-local listeners (forms, gallery, accordions).
-3. Set up `IntersectionObserver` for scroll-reveal — typical pattern: add `.page-reveal` class with staggered `transitionDelay`, then toggle `.is-visible` on intersect, then `unobserve`.
-4. Page-specific feature work (Stripe URL, Web3Forms submit, GSAP timelines on landing).
-
-`product.js` is **shared** across `/the-starter/`, `/the-habit/`, `/the-protocol/` — those three fragments share the same gallery markup; the router dispatches `initProduct` for any route with `type: 'product'`.
-
-`landing.js` is the heaviest — it uses GSAP + ScrollTrigger for the hero scale-down, floating cards, exclusive-section background fade, scroll reveals, YouTube facade, and lightbox. It guards on `prefers-reduced-motion` and uses `gsap.matchMedia()` for `(min-width: 992px)` vs `(max-width: 991px)` variants. GSAP is loaded from cdnjs in [public/index.html](public/index.html) before page scripts.
+`landing.js` is heaviest — GSAP + ScrollTrigger for hero scale, floating cards, exclusive-section background fade, scroll reveals, YouTube facade, lightbox. Guards on `prefers-reduced-motion`, uses `gsap.matchMedia()` for `(min-width: 992px)` vs `(max-width: 991px)`.
 
 ### UI engine — [public/js/ui.js](public/js/ui.js)
+Loaded once. Owns mobile menu (exposes `window.closeMobileMenu`), desktop dropdown ARIA, language switch.
 
-Loaded once on initial page load. Owns:
+**Note:** Analytics (GA4 `G-VRDSSTW4HR`, TikTok Pixel `D75TCVJC77UD6SV8PER0`) are now **gated by cookie consent**, not deferred-on-interaction. See cookie module below.
 
-- Mobile menu open/close (hamburger ↔ X), exposes `window.closeMobileMenu` so the router can close it on navigation.
-- Desktop dropdown ARIA toggling.
-- **Deferred analytics** — GA4 (`G-VRDSSTW4HR`) and TikTok Pixel (`D75TCVJC77UD6SV8PER0`) only load after first user interaction (`scroll | mousemove | touchstart | click`) or 5s timeout, so they never block first paint.
+### Cookie consent — [public/js/cookie-consent.js](public/js/cookie-consent.js) + [public/css/cookie-consent.css](public/css/cookie-consent.css)
+First-party `cookie_consent` cookie (categories: `necessary`, `analytics`, `marketing`). Activates `<script type="text/plain" data-cookie-category="…">` placeholders only after grant. Public API on `window.cookieConsent`. Withdrawal sweeps documented vendor cookies in `VENDOR_COOKIES`. Bump `CONSENT_VERSION` whenever disclosure changes.
+
+**See [COOKIE-CONSENT.md](COOKIE-CONSENT.md) for full operator guide** (adding vendors, CSP, testing checklist). Read this before adding any third-party tag.
 
 ### i18n — [public/js/i18n.js](public/js/i18n.js)
+`window.loadI18n(lang, page)` fetches `/data/<lang>/<page>.json`, falls back to `de` on miss. Walks DOM and writes:
+- `[data-i18n="key.path"]` → `textContent`
+- `[data-i18n-html="…"]` → `innerHTML` (for content with inline tags)
+- `[data-i18n-attr="attr:key.path"]` → `setAttribute`
+- Optional `meta` block overwrites title/description/robots/OG/hreflang.
 
-`window.loadI18n(lang, page)` fetches `/data/<lang>/<page>.json`, falls back to `de` on miss. Walks the DOM and writes:
+Language: `localStorage.lang` (default `de`). `window.setLang(lang)` reloads the page.
 
-- `[data-i18n="path.to.key"]` → `textContent`
-- `[data-i18n-html="path.to.key"]` → `innerHTML` (used for keys containing `<br>`, `<span>`, etc.)
-- `[data-i18n-attr="attr:path.to.key"]` → `el.setAttribute(attr, value)` (e.g. `href:card.email.href`)
-- If JSON has a `meta` block, it overwrites `<title>`, description, robots, OG tags, and `<link rel="alternate" hreflang>`.
+Translations in [public/data/](public/data/): `DE/`, `en/`, `fr/`, `it/` (17 page JSONs each + `common.json`).
 
-Language is held in `localStorage.lang` (default `de`). `window.setLang(lang)` reloads the page after switching.
-
-Translations live in [public/data/](public/data/) split by locale: `de`, `en`, `fr`, `it`. Note the home/about/faq/dossier/ritual pages currently have **no JSON files** — their copy is hardcoded German in the HTML fragments. Only pages that call `loadI18n` (b2b, shop, contact, bestellstatus, thankyou, datenschutz, returns, the-master-box) are translated. The IT folder has a typo — `elisier.json` instead of `elixier.json`; the EN/FR have `elixier.json`. The DE folder is missing both `elixier.json` and `landing.json`.
+**Locale gotchas — verify before relying on i18n:**
+- DE folder is **uppercase** (`/data/DE/`) but default `lang = 'de'` (lowercase) — works on Windows/macOS (case-insensitive FS) but **breaks on case-sensitive hosts** including some Cloudflare edge behavior. Either rename folder to `de/` or switch default to `'DE'`.
+- `it/elisier.json` is a typo — should be `elixier.json` (en/fr have the correct name). Currently no page calls `loadI18n('it', 'elixier')` so it's latent.
+- Stray `data/b2b.json` and `data/ritual.json` exist at the data root, outside any locale folder — likely orphans; not loaded by anything.
 
 ### Forms (no backend yet)
+- **Contact** posts to **Web3Forms** (`api.web3forms.com/submit`). Access key injected at runtime by `contact.js` via hidden inputs (not in static HTML).
+- **Bestellstatus** is purely client-side fallback panel.
+- **Stripe**: direct **Payment Links** (`buy.stripe.com/...`) stored in `route.sticky.href` and product fragments. No server checkout.
 
-- **Contact form** posts to **Web3Forms** (`https://api.web3forms.com/submit`). The access key is injected at runtime by [public/js/contact.js](public/js/contact.js) via hidden inputs prepended to the form (so it doesn't sit as a static attribute in the HTML fragment).
-- **Bestellstatus** form is purely client-side — it just reveals a fallback message panel.
-- The Cloudflare Functions stubs (`functions/api/checkout.js`, `contact.js`, `health.js`) are empty — they are **not** wired to anything currently.
-- Stripe checkout uses **direct Stripe Payment Links** stored in `route.sticky.href` and inside product HTML fragments (`https://buy.stripe.com/...`). There is no server-side checkout flow.
-
-### Design tokens — [public/css/main.css](public/css/main.css)
-
-All design tokens are CSS custom properties on `:root`:
-
-- **Colors:** `--color-bg #0a0a0a`, `--color-surface #111`, `--color-gold #EDA323` (brand accent), `--color-gold-hover`, `--color-text #fff`, `--color-text-muted`, `--color-text-dim`. Golds with alpha exist as `--color-gold-dim`, `--color-gold-dimmer`, `--color-border-gold`.
-- **Fonts:** `--font-serif: 'Playfair Display'` (h1–h6, italic spans for emphasis), `--font-sans: 'Montserrat'` (body, buttons, nav).
-- **Spacing scale:** `--space-xs/sm/md/lg/xl/2xl` = 8/16/24/40/80/120 px.
+### Design tokens — [public/css/main.css](public/css/main.css) `:root`
+- **Colors:** `--color-bg #0a0a0a`, `--color-surface #111`, `--color-gold #EDA323`, `--color-gold-hover`, `--color-text #fff`, `--color-text-muted`, `--color-text-dim`, `--color-gold-dim`, `--color-gold-dimmer`, `--color-border-gold`.
+- **Fonts:** `--font-serif: 'Playfair Display'` (headings, italic emphasis), `--font-sans: 'Montserrat'` (body, UI).
+- **Spacing:** `--space-xs/sm/md/lg/xl/2xl` = 8/16/24/40/80/120 px.
 - **Layout:** `--container-max 1400px`, `--container-pad 20px`, `--nav-height 80px`.
 - **Z-layers (use these, don't hardcode):** `--z-base 1`, `--z-above 10`, `--z-sticky 100`, `--z-nav 1000`, `--z-overlay 2000`, `--z-fab 3000`, `--z-modal 9000`.
 - **Easings:** `--ease-smooth`, `--ease-out`. **Durations:** `--t-fast 0.2s`, `--t-base 0.4s`, `--t-slow 0.6s`.
 
-`html` and `body` use `overflow-x: clip` (not `hidden`) — this is intentional, because `hidden` creates a new scroll container that breaks `position: sticky`. Don't change this.
+`html` and `body` use `overflow-x: clip` (NOT `hidden`) — intentional. `hidden` creates a scroll container that breaks `position: sticky`. **Do not change.**
 
-Global components: `.ambernord-btn` (outlined gold), `.ambernord-btn-solid` (filled gold CTA), `.ambernord-topbar`, `.ambernord-dropdown`, `.ambernord-footer`, `.ambernord-fab`, `.ambernord-mobile-sticky`, `.lightbox-overlay`. The site uses a fixed full-width subpage background hero (`#ambernord-subpage-hero-bg`) toggled by the router.
+Global components: `.ambernord-btn` (outlined gold), `.ambernord-btn-solid` (filled CTA), `.ambernord-topbar`, `.ambernord-dropdown`, `.ambernord-footer`, `.ambernord-fab`, `.ambernord-mobile-sticky`, `.lightbox-overlay`, fixed `#ambernord-subpage-hero-bg` (router toggles visibility).
 
-`@media (prefers-reduced-motion: reduce)` neutralizes animations globally; landing.js also early-returns from GSAP setup when reduced motion is set.
+`@media (prefers-reduced-motion: reduce)` neutralizes animations globally; `landing.js` early-returns from GSAP setup.
 
-Mobile breakpoint is `991px` — desktop nav hides, hamburger appears, mobile sticky CTA enables.
+Mobile breakpoint: `991px`.
 
-## Routes
+## Routes (current canonical paths)
 
 | Path | Type | Notes |
 |---|---|---|
-| `/` | `landing` | Heavy GSAP timeline; no i18n |
-| `/ueber-uns/` | `about` | German only |
-| `/ritual-wirkung/` | (alias to ritual?) | Linked in nav but not in `ROUTES` — falls through to `/` |
-| `/the-starter/` `/the-habit/` `/the-protocol/` | `product` | Share `initProduct`; each has its own Stripe Payment Link |
-| `/elixier/` | (linked in nav, not in `ROUTES`) | Falls through |
-| `/dossier/` `/ritual/` `/faq/` | `dossier` / `ritual` / `faq` | German only |
-| `/b2b/` `/shop/` `/the-master-box/` | `b2b` / `shop` / `the-master-box` | i18n via JSON |
-| `/kontakt/` | `contact` | Web3Forms submit; supports `?inquiry=b2b` autofill |
-| `/bestellstatus/` | `bestellstatus` | Client-only fallback panel |
-| `/danke/` | `thankyou` | Stripe redirect target |
-| `/datenschutz/` `/rueckgabe/` | `datenschutz` / `returns` | i18n via JSON |
-| `/impressum/` `/agb/` `/widerruf/` | (linked in footer, not in `ROUTES`) | Fall through |
+| `/` | `landing` | Heavy GSAP timeline; no i18n call |
+| `/story/` | `about` | Old `/ueber-uns/` redirects here |
+| `/wissenschaft/` | `dossier` | Old `/dossier/` redirects here |
+| `/ritual/` | `ritual` | Old `/ritual-wirkung/` redirects here |
+| `/shop/` | `shop` | Old `/elixier/` redirects here |
+| `/shop/starter/` `/shop/habit/` `/shop/protocol/` | `product` | Share `initProduct`; each has Stripe Payment Link in `route.sticky.href` and JSON-LD `Product` schema |
+| `/shop/master-box/` | `the-master-box` | Old `/the-master-box/` redirects here |
+| `/hilfe/faq/` | `faq` | Old `/faq/` redirects |
+| `/hilfe/kontakt/` | `contact` | Web3Forms; `?inquiry=b2b` autofill |
+| `/hilfe/bestellstatus/` | `bestellstatus` | Client-only |
+| `/hilfe/rueckgabe/` | `returns` | |
+| `/datenschutz/` | `datenschutz` | |
+| `/b2b/` | `b2b` | |
+| `/danke/` | `thankyou` | Stripe success redirect |
 
-When the user clicks a footer/nav link to a route not in `ROUTES`, `navigate()` falls back to `ROUTES['/']` (the landing page) — that may or may not be intended; treat it as a known gap rather than a bug to silently fix.
+Footer-linked but unmapped (fall through to `/`): `/impressum/`, `/agb/`, `/widerruf/`.
 
 ## Security headers — [public/_headers](public/_headers)
 
-CSP allows scripts from `cdnjs.cloudflare.com` (GSAP) and `js.stripe.com`; styles from `fonts.googleapis.com`; images from `res.cloudinary.com` (all product/lifestyle imagery is on Cloudinary `dt6ksxuqf`); connect to `api.stripe.com` and `api.web3forms.com`. `frame-ancestors 'none'`. **Update CSP if you add new third-party origins** — the `unsafe-inline` for scripts is currently required because page scripts inject inline JSON-LD.
+CSP allows: `cdnjs.cloudflare.com` (GSAP), `js.stripe.com`, GA, TikTok in `script-src`; `fonts.googleapis.com` styles; `res.cloudinary.com` (account `dt6ksxuqf` — all imagery), GA, TikTok in `img-src`; `api.stripe.com`, `api.web3forms.com`, GA, TikTok in `connect-src`; `youtube-nocookie.com` + `youtube.com` in `frame-src`. `frame-ancestors 'none'`. `'unsafe-inline'` in script-src is required because router injects inline JSON-LD.
 
-## Conventions worth following
+**Update CSP first** when adding any new third-party origin.
 
-- **Don't introduce a build step or framework** unless explicitly asked — the no-tooling architecture is the chosen design.
-- **New pages need all four touchpoints** updated (fragment, route, dispatch branch, index.html link/script tags) or the page will silently 404 to the landing fallback.
-- **CSS scoping is by hand** — prefix every selector with the page name. There is no CSS Modules, no Tailwind, no scoping mechanism.
-- **GSAP cleanup is mandatory** — any new ScrollTrigger you create must be killed by `killGSAP()` in `router.js` (it already kills all triggers; just don't store references that survive navigation).
-- **Use the design tokens**, not hardcoded hex/px values, when adding styles.
-- The HTML/CSS is **mostly written in German**; comments in JS are mixed German/English. Keep that consistent within a file.
+`/pages/*` and `/data/*` cached 5 min; `/*.css` and `/*.js` cached 1 day.
+
+## Conventions
+
+- **No build step / no framework** — chosen architecture; do not introduce.
+- **All four touchpoints when adding a page** (fragment + ROUTES + INITS + index.html link/script).
+- **Hand-namespace every CSS selector** by page name.
+- **Kill GSAP on navigation** — `killGSAP()` already kills all ScrollTriggers; just don't store references that survive nav.
+- **Use design tokens**, never hardcoded hex/px.
+- HTML/CSS/copy is mostly **German**; JS comments mixed German/English — match the file.
+- **Do not commit secrets** (Web3Forms key is currently injected at runtime, not stored).
+- **Do not add anything under cookie "necessary"** without checking EDPB guidance.
+
+## Status / known gaps
+
+- `D CLAUDE.md` in git status — old CLAUDE.md was deleted; `CLAUDE_OLD.md` retained as reference (now superseded by this file).
+- Untracked `public/data/DE/*.json` — recently added, not yet committed. Verify lowercase-`de` issue (above) before shipping.
+- Cloudflare Functions stubs are empty.
+- README.md is a one-line stub.
+- Recent commit focus (per `git log`): cookie consent, bestellstatus typography fixes, landing flicker fix, language/gap polish.

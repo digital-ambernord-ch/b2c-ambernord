@@ -1,0 +1,38 @@
+{
+  "meta": {
+    "title": "Bestellung bestätigt | AmberNord",
+    "description": "Deine Bestellung bei AmberNord ist eingegangen. Wir bereiten dein persönliches Bernstein-Elixier mit grösster Sorgfalt vor.",
+    "canonical": "https://ambernord.ch/danke/",
+    "slug": "/danke/",
+    "robots": "noindex, nofollow",
+    "og": {
+      "title": "Bestellung bestätigt | AmberNord",
+      "description": "Das flüssige Gold des Nordens ist auf dem Weg zu dir.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/ambernord-og",
+      "type": "website"
+    },
+    "hreflang": {
+      "de": "https://ambernord.ch/danke/",
+      "en": "https://ambernord.ch/en/danke/",
+      "fr": "https://ambernord.ch/fr/danke/",
+      "it": "https://ambernord.ch/it/danke/",
+      "x-default": "https://ambernord.ch/danke/"
+    }
+  },
+  "header": {
+    "eyebrow": "Bestellung bestätigt",
+    "h1": "Die Natur übernimmt.<br><span>Dein Ritual beginnt.</span>"
+  },
+  "confirmation": {
+    "heading": "Bestellbestätigung"
+  },
+  "body": {
+    "primary": "Du hast dich für das flüssige Gold des Nordens entschieden. Wir bereiten dein persönliches Elixier nun mit grösster Sorgfalt vor – mit der Präzision und Reinheit, die du erwartest.",
+    "secondary": "Sobald dein Paket auf dem Weg ist, melden wir uns bei dir. Geniesse die Vorfreude auf zelluläre Erneuerung."
+  },
+  "tagline": "Merci vilmal für dis Vertraue.",
+  "cta": {
+    "label": "Zurück zum Shop",
+    "href": "https://ambernord-ritual-v2.dashnexpages.net/startseite/?go=ritual-products"
+  }
+}

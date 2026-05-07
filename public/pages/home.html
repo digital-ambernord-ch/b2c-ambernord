@@ -79,9 +79,8 @@
         aria-hidden="true"
         fetchpriority="high">
 
-      <video autoplay loop muted playsinline class="hero-bg-video" style="z-index:1;" aria-hidden="true">
-        <source src="https://res.cloudinary.com/dt6ksxuqf/video/upload/v1776461572/premium-sanddorn-ambernord-qualit%C3%A4t-elixier-ritual.mp4_k8jpkj.mp4" type="video/mp4">
-      </video>
+      <video id="heroVideo" loop muted playsinline preload="none" class="hero-bg-video" style="z-index:1;" aria-hidden="true"
+             data-video-id="v1776461572/premium-sanddorn-ambernord-qualit%C3%A4t-elixier-ritual.mp4_k8jpkj.mp4"></video>
 
       <div class="ambernord-hero-shade" id="ambernordHeroShade" aria-hidden="true"></div>
 
@@ -132,6 +131,8 @@
 
           <a href="#conversion-boosters" class="ambernord-btn-clean" data-link data-i18n="hero.cta">JETZT RITUAL STARTEN</a>
 
+          <a href="#reviews" class="hero-secondary-link" data-link data-i18n="hero.reviewsLink">Was Kunden sagen &rarr;</a>
+
         </div>
       </div>
 
@@ -164,6 +165,53 @@
     </div>
   </div>
 </div>
+
+<section class="landing-reviews" id="reviews" aria-labelledby="reviews-title">
+  <div class="landing-reviews-inner">
+
+    <div class="landing-reviews-header">
+      <span class="landing-reviews-eyebrow" data-i18n="reviews.eyebrow">Echte Stimmen</span>
+      <h2 id="reviews-title" class="landing-reviews-title" data-i18n="reviews.title">Was unsere Kunden berichten</h2>
+      <p class="landing-reviews-sub" data-i18n="reviews.sub">Ungefilterte Erfahrungen aus der Schweiz &mdash; nach mindestens 14 Tagen t&auml;glicher Anwendung.</p>
+    </div>
+
+    <div class="landing-reviews-grid" role="list">
+
+      <article class="landing-review-card" role="listitem">
+        <div class="landing-review-stars" aria-label="5 von 5 Sternen">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="landing-review-text" data-i18n="reviews.items.0.text">&bdquo;Nach zwei Wochen sp&uuml;rte ich tats&auml;chlich einen Unterschied bei Energie und Hautbild. Kein s&uuml;sslicher Saft, sondern ein ehrliches Konzentrat.&ldquo;</p>
+        <footer class="landing-review-meta">
+          <span class="landing-review-author" data-i18n="reviews.items.0.author">Platzhalter Name</span>
+          <span class="landing-review-context" data-i18n="reviews.items.0.context">Aarau &middot; Verifizierte Bestellung</span>
+        </footer>
+      </article>
+
+      <article class="landing-review-card" role="listitem">
+        <div class="landing-review-stars" aria-label="5 von 5 Sternen">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="landing-review-text" data-i18n="reviews.items.1.text">&bdquo;Ich vertrage viele Pr&auml;parate nicht. AmberNord ist rein, klar deklariert und im Alltag schnell zur Gewohnheit geworden.&ldquo;</p>
+        <footer class="landing-review-meta">
+          <span class="landing-review-author" data-i18n="reviews.items.1.author">Platzhalter Name</span>
+          <span class="landing-review-context" data-i18n="reviews.items.1.context">Z&uuml;rich &middot; Verifizierte Bestellung</span>
+        </footer>
+      </article>
+
+      <article class="landing-review-card" role="listitem">
+        <div class="landing-review-stars" aria-label="5 von 5 Sternen">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="landing-review-text" data-i18n="reviews.items.2.text">&bdquo;Premium-Verarbeitung, eindeutiger Geschmack, kein Marketing-Geschw&auml;tz. Das Ritual am Morgen hat mein Familienbild ver&auml;ndert.&ldquo;</p>
+        <footer class="landing-review-meta">
+          <span class="landing-review-author" data-i18n="reviews.items.2.author">Platzhalter Name</span>
+          <span class="landing-review-context" data-i18n="reviews.items.2.context">Bern &middot; Verifizierte Bestellung</span>
+        </footer>
+      </article>
+
+    </div>
+
+    <div class="landing-reviews-cta">
+      <a href="/bewertungen/" class="landing-reviews-link" data-link data-i18n="reviews.allLink">Alle Bewertungen ansehen &rarr;</a>
+    </div>
+
+  </div>
+</section>
 
 <div id="shop" class="ambernord-section-wrapper">
   <div class="ambernord-section-inner" id="ritual-products">
