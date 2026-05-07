@@ -1,0 +1,50 @@
+{
+  "meta": {
+    "title": "Kundenbewertungen | AmberNord",
+    "description": "Echte Stimmen aus der Schweiz: ungefilterte Erfahrungen mit dem AmberNord Sanddorn-Elixier nach 14 Tagen täglicher Anwendung.",
+    "canonical": "https://ambernord.ch/bewertungen/",
+    "robots": "index, follow",
+    "og": {
+      "title": "Kundenbewertungen | AmberNord",
+      "description": "Echte Stimmen aus der Schweiz: ungefilterte Erfahrungen mit dem AmberNord Sanddorn-Elixier.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/v1774787737/AmberNord_Sanddorn_Biohacking_Longevity_Schweiz_Natur_Ritual_Essenz_jwznsd.webp",
+      "type": "website"
+    }
+  },
+  "header": {
+    "eyebrow": "Echte Stimmen",
+    "h1": "Kundenbewertungen"
+  },
+  "intro": {
+    "heading": "Kundenbewertungen",
+    "p1": "Ungefilterte Erfahrungen aus der Schweiz — nach mindestens 14 Tagen täglicher Anwendung. Jede Bewertung wird von uns auf Bestellnummer geprüft, bevor sie veröffentlicht wird."
+  },
+  "aggregate": {
+    "countTemplate": "{n} Bewertungen"
+  },
+  "list": {
+    "heading": "Alle Bewertungen",
+    "empty": "Noch keine Bewertungen veröffentlicht. Sei der Erste — teile deine Erfahrung unten.",
+    "verified": "Verifizierte Bestellung"
+  },
+  "form": {
+    "heading": "Bewertung abgeben",
+    "intro": "Deine Bewertung erscheint nach Prüfung der Bestellnummer. Wir veröffentlichen nur Vorname und Stadt — deine E-Mail bleibt vertraulich.",
+    "stars": "Bewertung",
+    "name": "Vorname (oder Initialen)",
+    "city": "Stadt",
+    "email": "E-Mail (vertraulich, nur für Verifizierung)",
+    "order": "Bestellnummer (aus Stripe-Bestätigungsmail)",
+    "text": "Deine Erfahrung",
+    "textHint": "Beschreibe in deinen eigenen Worten, was sich nach 14 Tagen verändert hat — Energie, Haut, Schlaf, Verdauung —, wie das Elixier schmeckt und was dich überrascht hat.",
+    "textPlaceholder": "Beispiel: Ich nehme AmberNord seit 3 Wochen morgens vor dem Frühstück. Anfangs ungewohnt im Geschmack, doch nach 10 Tagen merkte ich mehr Energie am Vormittag und ruhigere Verdauung. Was mich überzeugt: ehrlich deklariert, keine Zusätze.",
+    "consent": "Ich erlaube AmberNord, meinen Vornamen, meine Stadt und meinen Bewertungstext auf der Website zu veröffentlichen. Meine E-Mail bleibt vertraulich.",
+    "submit": {
+      "label": "Bewertung absenden",
+      "sending": "Wird gesendet…"
+    },
+    "success": "Vielen Dank! Deine Bewertung wurde eingereicht. Nach Prüfung der Bestellnummer erscheint sie hier — meist innerhalb von 48 Stunden.",
+    "error": "Fehler beim Senden. Bitte erneut versuchen.",
+    "hiddenSubject": "Neue Bewertung von AmberNord.ch"
+  }
+}

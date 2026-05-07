@@ -50,12 +50,24 @@
     "benefit2": "✓ Omega-7 für Haut, Darm & Schutzbarrieren",
     "benefit3": "✓ Natürliches B12 – bioverfügbar, nicht synthetisch",
     "nativeOils": "Inklusive nativer Öle aus<br>Fruchtfleisch &amp; Kern",
-    "cta": "Jetzt Ritual starten"
+    "cta": "Jetzt Ritual starten",
+    "reviewsLink": "Was Kunden sagen →"
   },
   "trust": {
     "lab": { "title": "Laborgeprüft", "subtitle": "Höchste Reinheitsstandards" },
     "premium": { "title": "100% Premium Qualität", "subtitle": "Rein & bioaktiv" },
     "shipping": { "title": "Versand in 24h", "subtitle": "Kostenlos ab 'The Habit'" }
+  },
+  "reviews": {
+    "eyebrow": "Echte Stimmen",
+    "title": "Was unsere Kunden berichten",
+    "sub": "Ungefilterte Erfahrungen aus der Schweiz — nach mindestens 14 Tagen täglicher Anwendung.",
+    "items": [
+      { "text": "Nach zwei Wochen spürte ich tatsächlich einen Unterschied bei Energie und Hautbild. Kein süsslicher Saft, sondern ein ehrliches Konzentrat.", "author": "Platzhalter Name", "context": "Aarau · Verifizierte Bestellung" },
+      { "text": "Ich vertrage viele Präparate nicht. AmberNord ist rein, klar deklariert und im Alltag schnell zur Gewohnheit geworden.", "author": "Platzhalter Name", "context": "Zürich · Verifizierte Bestellung" },
+      { "text": "Premium-Verarbeitung, eindeutiger Geschmack, kein Marketing-Geschwätz. Das Ritual am Morgen hat mein Familienbild verändert.", "author": "Platzhalter Name", "context": "Bern · Verifizierte Bestellung" }
+    ],
+    "allLink": "Alle Bewertungen ansehen →"
   },
   "shop": {
     "title": "Wählen Sie Ihr Protokoll",

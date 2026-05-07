@@ -83,7 +83,10 @@
 
           <div class="bewertungen-field">
             <label for="bw-text" class="bewertungen-label" data-i18n="form.text">Deine Erfahrung</label>
-            <textarea id="bw-text" name="review_text" rows="5" required minlength="40" maxlength="600" placeholder="Was hat sich nach 14 Tagen ver&auml;ndert? Geschmack, Wirkung, Alltag &mdash; ehrlich."></textarea>
+            <p class="bewertungen-field-hint" data-i18n="form.textHint">Beschreibe in deinen eigenen Worten, was sich nach 14 Tagen ver&auml;ndert hat &mdash; Energie, Haut, Schlaf, Verdauung &mdash;, wie das Elixier schmeckt und was dich &uuml;berrascht hat.</p>
+            <textarea id="bw-text" name="review_text" rows="6" required minlength="40" maxlength="600"
+                      data-i18n-attr="placeholder:form.textPlaceholder"
+                      placeholder="Beispiel: Ich nehme AmberNord seit 3 Wochen morgens vor dem Fr&uuml;hst&uuml;ck. Anfangs ungewohnt im Geschmack, doch nach 10 Tagen merkte ich mehr Energie am Vormittag und ruhigere Verdauung. Was mich &uuml;berzeugt: ehrlich deklariert, keine Zus&auml;tze."></textarea>
             <span class="bewertungen-counter"><span id="bw-text-count">0</span> / 600</span>
           </div>
 

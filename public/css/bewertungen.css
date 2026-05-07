@@ -250,6 +250,14 @@
   color: var(--color-text-muted);
 }
 
+.bewertungen-field-hint {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--color-text-dim);
+  margin: 0 0 4px;
+}
+
 .bewertungen-form input[type="text"],
 .bewertungen-form input[type="email"],
 .bewertungen-form textarea {

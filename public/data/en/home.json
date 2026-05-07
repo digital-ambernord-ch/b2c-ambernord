@@ -50,12 +50,24 @@
     "benefit2": "✓ Omega-7 for skin, gut & protective barriers",
     "benefit3": "✓ Natural B12 – bioavailable, not synthetic",
     "nativeOils": "Including native oils from<br>fruit pulp &amp; seed",
-    "cta": "Start Your Ritual"
+    "cta": "Start Your Ritual",
+    "reviewsLink": "What customers say →"
   },
   "trust": {
     "lab": { "title": "Lab Tested", "subtitle": "Highest purity standards" },
     "premium": { "title": "100% Premium Quality", "subtitle": "Pure & bioactive" },
     "shipping": { "title": "Shipped in 24h", "subtitle": "Free from 'The Habit'" }
+  },
+  "reviews": {
+    "eyebrow": "Real Voices",
+    "title": "What our customers report",
+    "sub": "Unfiltered experiences from Switzerland — after at least 14 days of daily use.",
+    "items": [
+      { "text": "After two weeks I really noticed a difference in energy and skin. Not a sweet juice, but an honest concentrate.", "author": "Placeholder Name", "context": "Aarau · Verified purchase" },
+      { "text": "I don't tolerate many supplements. AmberNord is pure, clearly declared, and quickly became a daily habit.", "author": "Placeholder Name", "context": "Zürich · Verified purchase" },
+      { "text": "Premium processing, distinct taste, zero marketing fluff. The morning ritual has shifted how my family starts the day.", "author": "Placeholder Name", "context": "Bern · Verified purchase" }
+    ],
+    "allLink": "See all reviews →"
   },
   "shop": {
     "title": "Choose Your Protocol",

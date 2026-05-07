@@ -1,0 +1,50 @@
+{
+  "meta": {
+    "title": "Recensioni clienti | AmberNord",
+    "description": "Voci autentiche dalla Svizzera: esperienze non filtrate con l'elisir di olivello spinoso AmberNord dopo 14 giorni di utilizzo quotidiano.",
+    "canonical": "https://ambernord.ch/bewertungen/",
+    "robots": "index, follow",
+    "og": {
+      "title": "Recensioni clienti | AmberNord",
+      "description": "Voci autentiche dalla Svizzera: esperienze non filtrate con l'elisir di olivello spinoso AmberNord.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/v1774787737/AmberNord_Sanddorn_Biohacking_Longevity_Schweiz_Natur_Ritual_Essenz_jwznsd.webp",
+      "type": "website"
+    }
+  },
+  "header": {
+    "eyebrow": "Voci autentiche",
+    "h1": "Recensioni clienti"
+  },
+  "intro": {
+    "heading": "Recensioni clienti",
+    "p1": "Esperienze non filtrate dalla Svizzera — dopo almeno 14 giorni di utilizzo quotidiano. Ogni recensione viene verificata tramite numero d'ordine prima della pubblicazione."
+  },
+  "aggregate": {
+    "countTemplate": "{n} recensioni"
+  },
+  "list": {
+    "heading": "Tutte le recensioni",
+    "empty": "Ancora nessuna recensione pubblicata. Sii il primo — condividi la tua esperienza qui sotto.",
+    "verified": "Acquisto verificato"
+  },
+  "form": {
+    "heading": "Lascia una recensione",
+    "intro": "La tua recensione apparirà dopo la verifica del numero d'ordine. Pubblichiamo solo nome e città — la tua e-mail rimane riservata.",
+    "stars": "Valutazione",
+    "name": "Nome (o iniziali)",
+    "city": "Città",
+    "email": "E-mail (riservata, solo per la verifica)",
+    "order": "Numero d'ordine (dall'e-mail di conferma Stripe)",
+    "text": "La tua esperienza",
+    "textHint": "Descrivi con parole tue cosa è cambiato dopo 14 giorni — energia, pelle, sonno, digestione —, come ti sembra il sapore e cosa ti ha sorpreso.",
+    "textPlaceholder": "Esempio: Prendo AmberNord da 3 settimane ogni mattina prima di colazione. All'inizio il sapore era inusuale, ma dopo 10 giorni ho notato più energia al mattino e una digestione più tranquilla. Quello che mi convince: dichiarazione onesta, nessun additivo.",
+    "consent": "Autorizzo AmberNord a pubblicare il mio nome, la mia città e il testo della recensione sul sito web. La mia e-mail rimane riservata.",
+    "submit": {
+      "label": "Invia recensione",
+      "sending": "Invio in corso…"
+    },
+    "success": "Grazie! La tua recensione è stata inviata. Dopo la verifica del numero d'ordine, apparirà qui — di solito entro 48 ore.",
+    "error": "Invio non riuscito. Riprova.",
+    "hiddenSubject": "Nuova recensione da AmberNord.ch"
+  }
+}

@@ -50,12 +50,24 @@
     "benefit2": "✓ Oméga-7 pour la peau, l'intestin & les barrières protectrices",
     "benefit3": "✓ B12 naturelle – biodisponible, non synthétique",
     "nativeOils": "Y compris les huiles natives<br>de la pulpe &amp; du noyau",
-    "cta": "Commencer le rituel"
+    "cta": "Commencer le rituel",
+    "reviewsLink": "Ce que disent les clients →"
   },
   "trust": {
     "lab": { "title": "Testé en laboratoire", "subtitle": "Plus hauts standards de pureté" },
     "premium": { "title": "100% Qualité Premium", "subtitle": "Pur & bioactif" },
     "shipping": { "title": "Expédition en 24h", "subtitle": "Gratuite dès « The Habit »" }
+  },
+  "reviews": {
+    "eyebrow": "Voix authentiques",
+    "title": "Ce que rapportent nos clients",
+    "sub": "Expériences non filtrées de Suisse — après au moins 14 jours d'utilisation quotidienne.",
+    "items": [
+      { "text": "Après deux semaines, j'ai vraiment ressenti une différence sur l'énergie et la peau. Pas un jus sucré, mais un concentré honnête.", "author": "Nom placeholder", "context": "Aarau · Achat vérifié" },
+      { "text": "Je ne tolère pas beaucoup de compléments. AmberNord est pur, clairement déclaré et est rapidement devenu une habitude.", "author": "Nom placeholder", "context": "Zürich · Achat vérifié" },
+      { "text": "Traitement premium, goût distinct, zéro discours marketing. Le rituel du matin a changé la façon dont ma famille commence la journée.", "author": "Nom placeholder", "context": "Bern · Achat vérifié" }
+    ],
+    "allLink": "Voir tous les avis →"
   },
   "shop": {
     "title": "Choisissez Votre Protocole",
