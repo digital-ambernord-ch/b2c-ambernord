@@ -73,6 +73,11 @@ html.aktion-active .ambernord-subpage-hero {
   font-weight: 500;
 }
 
+.aktion-bar-body-short {
+  display: none;
+  font-weight: 500;
+}
+
 .aktion-bar-cta {
   font-weight: 700;
   text-transform: uppercase;
@@ -109,14 +114,22 @@ html.aktion-active .ambernord-subpage-hero {
 @media (max-width: 768px) {
   html.aktion-active .aktion-bar {
     font-size: 11px;
-    letter-spacing: 1px;
+    letter-spacing: 0.8px;
+    padding: 0 40px 0 12px;
   }
   .aktion-bar-eyebrow,
   .aktion-bar-divider:first-of-type {
     display: none;
   }
+  .aktion-bar-body {
+    display: none;
+  }
+  .aktion-bar-body-short {
+    display: inline;
+  }
   .aktion-bar-link {
-    gap: 8px;
+    gap: 6px;
+    max-width: 100%;
   }
 }
 
