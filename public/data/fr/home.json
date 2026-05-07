@@ -69,41 +69,44 @@
   "shop": {
     "title": "Choisissez Votre Protocole",
     "starter": {
-      "badge": "BON DE 10 CHF INCLUS",
-      "badgeCode": "CODE : START10",
-      "dailyPrice": "Seulement 2,49 CHF / jour",
+      "price": {
+        "daily": "2,49 CHF / jour",
+        "full": "24,90 CHF achat unique"
+      },
       "extra": "Idéal pour essayer",
       "benefit1": "Vitalité tangible & soutien immunitaire",
       "benefit2": "Nutrition cellulaire 100% pure et végane",
       "benefit3": "Apporte le rare Oméga-7",
-      "units": "(1× 250 ml)",
-      "price": "24,90 CHF",
-      "priceLabel": "achat unique",
+      "units": "1× 250 ml",
       "shipping": "livraison incluse",
       "btn": "Commencer"
     },
     "habit": {
       "badge": "MEILLEURE VENTE",
-      "dailyPrice": "Seulement 2,30 CHF / jour",
+      "price": {
+        "daily": "2,30 CHF / jour",
+        "full": "69,00 CHF achat unique",
+        "perBottle": "23,00 CHF / bouteille"
+      },
       "extra": "Le rituel de 30 jours",
       "benefit1": "Reset cellulaire complet de 30 jours",
       "benefit2": "Régénération de la peau & des muqueuses",
       "benefit3": "Concentration durable & énergie naturelle",
-      "units": "(3× 250 ml)",
-      "price": "69,00 CHF",
-      "priceLabel": "achat unique",
+      "units": "3× 250 ml",
       "shipping": "livraison gratuite incluse",
       "btn": "Commencer 30 jours"
     },
     "protocol": {
-      "dailyPrice": "Seulement 2,15 CHF / jour",
+      "price": {
+        "daily": "2,15 CHF / jour",
+        "full": "129,00 CHF achat unique",
+        "perBottle": "21,50 CHF / bouteille"
+      },
       "extra": "Pour la famille & la concentration à long terme",
       "benefit1": "Apport cellulaire continu",
       "benefit2": "Optimal pour les familles & biohackers",
       "benefit3": "Meilleur prix par dose journalière",
-      "units": "(6× 250 ml)",
-      "price": "129,00 CHF",
-      "priceLabel": "achat unique",
+      "units": "6× 250 ml",
       "shipping": "livraison gratuite incluse",
       "btn": "Commencer mon rituel"
     },

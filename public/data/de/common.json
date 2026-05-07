@@ -11,13 +11,15 @@
     "contact": "Kontakt",
     "orderStatus": "Bestellstatus",
     "reviews": "Bewertungen",
-    "returns": "Rückgabe",
+    "returns": "Rückgaberecht",
     "cta": "Jetzt bestellen",
     "b2bAriaLabel": "B2B Bereich"
   },
   "footer": {
     "copyright": "©2026 AmberNord. Alle Rechte vorbehalten.",
-    "privacy": "Datenschutz"
+    "privacy": "Datenschutz",
+    "terms": "AGB",
+    "refunds": "Rückgaberecht"
   },
   "aktion": {
     "eyebrow": "Markteinführungs-Edition",

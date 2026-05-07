@@ -69,41 +69,44 @@
   "shop": {
     "title": "Scegli il Tuo Protocollo",
     "starter": {
-      "badge": "BUONO DA 10 CHF INCLUSO",
-      "badgeCode": "CODICE: START10",
-      "dailyPrice": "Solo 2,49 CHF / giorno",
+      "price": {
+        "daily": "2,49 CHF / giorno",
+        "full": "24,90 CHF una tantum"
+      },
       "extra": "Ideale da provare",
       "benefit1": "Vitalità tangibile & sostegno immunitario",
       "benefit2": "Nutrizione cellulare 100% pura e vegana",
       "benefit3": "Apporta il raro Omega-7",
-      "units": "(1× 250 ml)",
-      "price": "24,90 CHF",
-      "priceLabel": "una tantum",
+      "units": "1× 250 ml",
       "shipping": "spedizione inclusa",
       "btn": "Inizia ora"
     },
     "habit": {
       "badge": "PIÙ VENDUTO",
-      "dailyPrice": "Solo 2,30 CHF / giorno",
+      "price": {
+        "daily": "2,30 CHF / giorno",
+        "full": "69,00 CHF una tantum",
+        "perBottle": "23,00 CHF / bottiglia"
+      },
       "extra": "Il rituale di 30 giorni",
       "benefit1": "Reset cellulare completo di 30 giorni",
       "benefit2": "Rigenerazione di pelle & mucose",
       "benefit3": "Concentrazione duratura & energia naturale",
-      "units": "(3× 250 ml)",
-      "price": "69,00 CHF",
-      "priceLabel": "una tantum",
+      "units": "3× 250 ml",
       "shipping": "spedizione gratuita inclusa",
       "btn": "Inizia 30 giorni"
     },
     "protocol": {
-      "dailyPrice": "Solo 2,15 CHF / giorno",
+      "price": {
+        "daily": "2,15 CHF / giorno",
+        "full": "129,00 CHF una tantum",
+        "perBottle": "21,50 CHF / bottiglia"
+      },
       "extra": "Per la famiglia & la concentrazione a lungo termine",
       "benefit1": "Apporto cellulare continuo",
       "benefit2": "Ottimale per famiglie & biohacker",
       "benefit3": "Miglior prezzo per dose giornaliera",
-      "units": "(6× 250 ml)",
-      "price": "129,00 CHF",
-      "priceLabel": "una tantum",
+      "units": "6× 250 ml",
       "shipping": "spedizione gratuita inclusa",
       "btn": "Inizia il mio rituale"
     },

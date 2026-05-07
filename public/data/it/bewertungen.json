@@ -13,7 +13,7 @@
   },
   "header": {
     "eyebrow": "Voci autentiche",
-    "h1": "Recensioni clienti"
+    "h1": "Recensioni<br><span>clienti.</span>"
   },
   "intro": {
     "heading": "Recensioni clienti",
@@ -37,7 +37,7 @@
     "order": "Numero d'ordine (dall'e-mail di conferma Stripe)",
     "text": "La tua esperienza",
     "textHint": "Descrivi con parole tue cosa è cambiato dopo 14 giorni — energia, pelle, sonno, digestione —, come ti sembra il sapore e cosa ti ha sorpreso.",
-    "textPlaceholder": "Esempio: Prendo AmberNord da 3 settimane ogni mattina prima di colazione. All'inizio il sapore era inusuale, ma dopo 10 giorni ho notato più energia al mattino e una digestione più tranquilla. Quello che mi convince: dichiarazione onesta, nessun additivo.",
+    "textPlaceholder": "Esempio: Più energia al mattino, digestione più tranquila — e un concentrato puro, chiaramente dichiarato.",
     "consent": "Autorizzo AmberNord a pubblicare il mio nome, la mia città e il testo della recensione sul sito web. La mia e-mail rimane riservata.",
     "submit": {
       "label": "Invia recensione",

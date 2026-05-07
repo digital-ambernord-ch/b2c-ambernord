@@ -71,15 +71,17 @@
     <div class="scalable-hero" id="mainHero">
 
       <img
-        src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco/v1774812498/ambernord-zelt-taegliches-ritual-sanddorn-konzentrat-morgenroutine.webp_tnwv2r.jpg"
+        src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:good,w_1600/v1774812498/ambernord-zelt-taegliches-ritual-sanddorn-konzentrat-morgenroutine.webp_tnwv2r.jpg"
+        srcset="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_640/v1774812498/ambernord-zelt-taegliches-ritual-sanddorn-konzentrat-morgenroutine.webp_tnwv2r.jpg 640w,
+                https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_1024/v1774812498/ambernord-zelt-taegliches-ritual-sanddorn-konzentrat-morgenroutine.webp_tnwv2r.jpg 1024w,
+                https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:good,w_1600/v1774812498/ambernord-zelt-taegliches-ritual-sanddorn-konzentrat-morgenroutine.webp_tnwv2r.jpg 1600w,
+                https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:good,w_1920/v1774812498/ambernord-zelt-taegliches-ritual-sanddorn-konzentrat-morgenroutine.webp_tnwv2r.jpg 1920w"
+        sizes="100vw"
         class="hero-bg-video"
-        style="z-index:0;"
         alt=""
         aria-hidden="true"
-        fetchpriority="high">
-
-      <video id="heroVideo" loop muted playsinline preload="none" class="hero-bg-video" style="z-index:1;" aria-hidden="true"
-             data-video-id="v1776461572/premium-sanddorn-ambernord-qualit%C3%A4t-elixier-ritual.mp4_k8jpkj.mp4"></video>
+        fetchpriority="high"
+        decoding="async">
 
       <div class="ambernord-hero-shade" id="ambernordHeroShade" aria-hidden="true"></div>
 
@@ -176,7 +178,12 @@
 
     <a href="/shop/starter/" class="premium-product-card" data-link>
       <div class="product-info-left">
-        <div class="daily-price" data-i18n="shop.starter.dailyPrice">Nur 2.49 CHF / Tag</div>
+        <div class="card-price-block">
+          <div class="card-price-daily" data-i18n="shop.starter.price.daily">2.49 CHF / Tag</div>
+          <div class="card-price-full-line">
+            <span data-i18n="shop.starter.price.full">24.90 CHF einmalig</span>
+          </div>
+        </div>
         <div class="p-extra-info" data-i18n="shop.starter.extra">Ideal zum Probieren</div>
         <ul class="benefit-list">
           <li data-i18n="shop.starter.benefit1">Spürbare Vitalität &amp; Immunschutz</li>
@@ -190,8 +197,7 @@
           alt="The Starter" loading="lazy" class="card-img">
         <div class="card-details">
           <div class="card-title">The Starter</div>
-          <div class="card-units" data-i18n="shop.starter.units">(1× 250 ml)</div>
-          <div class="card-price"><span data-i18n="shop.starter.price">24.90 CHF</span> <span class="einmalig" data-i18n="shop.starter.priceLabel">einmalig</span></div>
+          <div class="card-units" data-i18n="shop.starter.units">1× 250 ml</div>
           <div class="card-shipping-note" data-i18n="shop.starter.shipping">inkl. Versand</div>
           <span class="ambernord-card-btn" data-i18n="shop.starter.btn">Jetzt starten</span>
         </div>
@@ -202,7 +208,14 @@
     <a href="/shop/habit/" class="premium-product-card highlight-habit" data-link>
       <div class="product-badge badge-bestseller" data-i18n="shop.habit.badge">MEISTGEKAUFT</div>
       <div class="product-info-left">
-        <div class="daily-price" data-i18n="shop.habit.dailyPrice">Nur 2.30 CHF / Tag</div>
+        <div class="card-price-block">
+          <div class="card-price-daily" data-i18n="shop.habit.price.daily">2.30 CHF / Tag</div>
+          <div class="card-price-full-line">
+            <span data-i18n="shop.habit.price.full">69.00 CHF einmalig</span>
+            <span class="card-price-divider" aria-hidden="true">·</span>
+            <span data-i18n="shop.habit.price.perBottle">23.00 CHF / Flasche</span>
+          </div>
+        </div>
         <div class="p-extra-info" data-i18n="shop.habit.extra">Das 30-Tage-Ritual</div>
         <ul class="benefit-list">
           <li data-i18n="shop.habit.benefit1">Komplettes 30-Tage-Zell-Reset</li>
@@ -216,8 +229,7 @@
           alt="The Habit" loading="lazy" class="card-img">
         <div class="card-details">
           <div class="card-title">The Habit</div>
-          <div class="card-units" data-i18n="shop.habit.units">(3× 250 ml)</div>
-          <div class="card-price"><span data-i18n="shop.habit.price">69.00 CHF</span> <span class="einmalig" data-i18n="shop.habit.priceLabel">einmalig</span></div>
+          <div class="card-units" data-i18n="shop.habit.units">3× 250 ml</div>
           <div class="card-shipping-note" data-i18n="shop.habit.shipping">inkl. kostenlosem Versand</div>
           <span class="ambernord-card-btn" data-i18n="shop.habit.btn">30 Tage starten</span>
         </div>
@@ -227,7 +239,14 @@
 
     <a href="/shop/protocol/" class="premium-product-card" data-link>
       <div class="product-info-left">
-        <div class="daily-price" data-i18n="shop.protocol.dailyPrice">Nur 2.15 CHF / Tag</div>
+        <div class="card-price-block">
+          <div class="card-price-daily" data-i18n="shop.protocol.price.daily">2.15 CHF / Tag</div>
+          <div class="card-price-full-line">
+            <span data-i18n="shop.protocol.price.full">129.00 CHF einmalig</span>
+            <span class="card-price-divider" aria-hidden="true">·</span>
+            <span data-i18n="shop.protocol.price.perBottle">21.50 CHF / Flasche</span>
+          </div>
+        </div>
         <div class="p-extra-info" data-i18n="shop.protocol.extra">Für Familie &amp; langfristigen Fokus</div>
         <ul class="benefit-list">
           <li data-i18n="shop.protocol.benefit1">Dauerhafte zelluläre Versorgung</li>
@@ -241,8 +260,7 @@
           alt="The Protocol" loading="lazy" class="card-img">
         <div class="card-details">
           <div class="card-title">The Protocol</div>
-          <div class="card-units" data-i18n="shop.protocol.units">(6× 250 ml)</div>
-          <div class="card-price"><span data-i18n="shop.protocol.price">129.00 CHF</span> <span class="einmalig" data-i18n="shop.protocol.priceLabel">einmalig</span></div>
+          <div class="card-units" data-i18n="shop.protocol.units">6× 250 ml</div>
           <div class="card-shipping-note" data-i18n="shop.protocol.shipping">inkl. kostenlosem Versand</div>
           <span class="ambernord-card-btn" data-i18n="shop.protocol.btn">Mein Ritual starten</span>
         </div>

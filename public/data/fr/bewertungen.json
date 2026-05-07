@@ -13,7 +13,7 @@
   },
   "header": {
     "eyebrow": "Voix authentiques",
-    "h1": "Avis clients"
+    "h1": "Avis<br><span>clients.</span>"
   },
   "intro": {
     "heading": "Avis clients",
@@ -37,7 +37,7 @@
     "order": "Numéro de commande (e-mail de confirmation Stripe)",
     "text": "Ton expérience",
     "textHint": "Décris dans tes propres mots ce qui a changé après 14 jours — énergie, peau, sommeil, digestion —, comment l'élixir te plaît au goût et ce qui t'a surpris.",
-    "textPlaceholder": "Exemple : Je prends AmberNord depuis 3 semaines chaque matin avant le petit-déjeuner. Le goût m'a d'abord surpris, mais après 10 jours j'ai remarqué plus d'énergie le matin et une digestion plus calme. Ce qui me convainc : déclaration honnête, aucun additif.",
+    "textPlaceholder": "Exemple : Plus d'énergie le matin, digestion plus calme — et un concentré pur, clairement déclaré.",
     "consent": "J'autorise AmberNord à publier mon prénom, ma ville et mon texte d'avis sur le site web. Mon e-mail reste confidentiel.",
     "submit": {
       "label": "Envoyer l'avis",

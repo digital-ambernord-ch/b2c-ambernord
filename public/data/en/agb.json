@@ -1,0 +1,96 @@
+{
+  "meta": {
+    "title": "Terms & Conditions | AmberNord",
+    "description": "AmberNord Terms & Conditions — scope, contract, prices, delivery, warranty, jurisdiction.",
+    "canonical": "https://ambernord.ch/agb/",
+    "robots": "index, follow",
+    "og": {
+      "title": "Terms & Conditions | AmberNord",
+      "description": "AmberNord Terms & Conditions.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/ambernord-og-default",
+      "type": "website"
+    }
+  },
+  "header": {
+    "eyebrow": "AmberNord Legal",
+    "h1": "Terms & <span>Conditions</span>"
+  },
+  "sections": [
+    {
+      "id": "scope",
+      "heading": "1. Scope",
+      "paragraphs": [
+        "These terms apply to all orders and contracts concluded through the online shop www.ambernord.ch. The contracting party is:",
+        "<strong>Matisons Selection (AmberNord)</strong><br>Eriks Matisons<br>Alte Gasse 8<br>5034 Suhr, Switzerland<br>UID: CHE-226.837.934<br>Email: <a href=\"mailto:info@ambernord.ch\">info@ambernord.ch</a>",
+        "Customer terms deviating from these conditions are not recognised unless we have expressly agreed to them in writing.",
+        "<em>The German version of these terms is legally binding.</em>"
+      ]
+    },
+    {
+      "id": "contract",
+      "heading": "2. Offer and Conclusion of Contract",
+      "paragraphs": [
+        "Product displays in the online shop do not constitute a binding offer but an invitation to order. By clicking the order button you submit a binding purchase offer.",
+        "The contract is concluded once we accept your order via an order confirmation email or ship the goods to you."
+      ]
+    },
+    {
+      "id": "prices",
+      "heading": "3. Prices and Payment",
+      "paragraphs": [
+        "All prices are in Swiss francs (CHF). We reserve the right to adjust prices for premium food products; the price valid at the time of order applies.",
+        "Payment is made via the methods offered at checkout. The purchase price is due immediately upon contract conclusion."
+      ]
+    },
+    {
+      "id": "delivery",
+      "heading": "4. Delivery and Transfer of Risk",
+      "paragraphs": [
+        "Delivery is made exclusively to Switzerland and Liechtenstein.",
+        "Use and risk pass to the buyer as soon as the shipment is handed over by us to the carrier. We accept no liability for delays or damages caused by the carrier."
+      ]
+    },
+    {
+      "id": "warranty",
+      "heading": "5. Inspection, Warranty and Returns",
+      "paragraphs": [
+        "Customers must inspect the delivered goods immediately for correctness and integrity.",
+        "Defects or transport damage must be reported to us by email with photo evidence within 3 days of receipt of the goods.",
+        "Returns or exchanges of food products are excluded for hygiene reasons. There is no statutory right of withdrawal."
+      ]
+    },
+    {
+      "id": "liability",
+      "heading": "6. Limitation of Liability",
+      "paragraphs": [
+        "We are liable exclusively for direct damages caused by intentional or grossly negligent conduct.",
+        "Any liability for slight negligence, indirect damages, consequential damages or lost profits is — to the extent permitted by law — fully excluded."
+      ]
+    },
+    {
+      "id": "privacy",
+      "heading": "7. Data Protection",
+      "paragraphs": [
+        "The handling of personal data is governed by our separate <a href=\"/datenschutz/\" data-link>Privacy Policy</a>, which is an integral part of these terms."
+      ]
+    },
+    {
+      "id": "law",
+      "heading": "8. Applicable Law and Jurisdiction",
+      "paragraphs": [
+        "Swiss law applies exclusively, excluding the United Nations Convention on Contracts for the International Sale of Goods (CISG).",
+        "The exclusive place of jurisdiction for all disputes arising from or in connection with these terms is the registered office of our company in 5034 Suhr, Switzerland."
+      ]
+    },
+    {
+      "id": "final",
+      "heading": "9. Final Provisions",
+      "paragraphs": [
+        "Should individual provisions of these terms be invalid, the validity of the remaining provisions shall remain unaffected. An invalid provision shall be replaced by a regulation that comes closest to its original meaning."
+      ]
+    }
+  ],
+  "footer": {
+    "lastUpdated": "Last updated: February 2026"
+  }
+}

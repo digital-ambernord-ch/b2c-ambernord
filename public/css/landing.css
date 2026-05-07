@@ -546,7 +546,7 @@
 
 .ambernord-content-subtitle {
   display: inline-block;
-  color: #d8d8d8;
+  color: var(--color-gold);
   font-family: var(--font-sans);
   font-size: 11px;
   font-weight: 700;
@@ -593,12 +593,47 @@
 }
 
 .premium-product-card.highlight-habit {
-  background: linear-gradient(145deg, #121212 0%, #16130c 100%);
-  border-color: rgba(237, 163, 35, 0.35);
+  background:
+    radial-gradient(ellipse at 75% 0%, rgba(237, 163, 35, 0.18), transparent 55%),
+    radial-gradient(ellipse at 0% 100%, rgba(237, 163, 35, 0.10), transparent 50%),
+    linear-gradient(145deg, #161412 0%, #1a1610 100%);
+  border-color: var(--color-gold-dim);
+  box-shadow:
+    0 0 0 1px rgba(237, 163, 35, 0.15),
+    0 12px 40px rgba(237, 163, 35, 0.12),
+    inset 0 1px 0 rgba(237, 163, 35, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.premium-product-card.highlight-habit::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 60%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(237, 163, 35, 0.16) 0%, transparent 60%);
+  pointer-events: none;
+  filter: blur(40px);
+  z-index: 0;
+}
+
+.premium-product-card.highlight-habit > * {
+  position: relative;
+  z-index: 1;
 }
 
 .premium-product-card.highlight-habit:hover {
   border-color: var(--color-gold);
+  box-shadow:
+    0 0 0 1px var(--color-gold-dim),
+    0 18px 56px rgba(237, 163, 35, 0.22),
+    inset 0 1px 0 rgba(237, 163, 35, 0.12);
+}
+
+.premium-product-card.highlight-habit .card-price-daily {
+  text-shadow: 0 0 30px rgba(237, 163, 35, 0.3);
 }
 
 .product-info-left {
@@ -609,19 +644,47 @@
   justify-content: center;
 }
 
-.daily-price {
-  color: var(--color-text);
+.card-price-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 10px;
+}
+
+.card-price-daily {
+  color: var(--color-gold);
   font-family: var(--font-serif);
-  font-size: 28px;
-  margin-bottom: 5px;
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.5px;
+}
+
+.card-price-full-line {
+  color: var(--color-text-dim);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: baseline;
+}
+
+.card-price-divider {
+  color: var(--color-gold);
+  opacity: 0.6;
 }
 
 .p-extra-info {
-  color: var(--color-gold);
+  color: var(--color-text-muted);
   font-family: var(--font-sans);
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
   margin-bottom: 5px;
+  letter-spacing: 0.3px;
+  font-style: italic;
 }
 
 .benefit-list {
@@ -683,10 +746,8 @@
 }
 
 .card-title    { color: var(--color-text);     font-family: var(--font-serif); font-size: 24px; margin: 0 0 4px 0; }
-.card-units    { color: #888;                  font-family: var(--font-sans);  font-size: 13px; margin-bottom: 10px; }
-.card-price    { color: #999;                  font-family: var(--font-sans);  font-size: 13px; font-weight: 400; margin-bottom: 0; }
-.card-price .einmalig { font-size: 11px; font-weight: 300; opacity: 0.8; }
-.card-shipping-note { color: #777; font-family: var(--font-sans); font-size: 9px; margin: 2px 0 12px 0; }
+.card-units    { color: var(--color-text-muted); font-family: var(--font-sans); font-size: 12px; margin-bottom: 12px; letter-spacing: 0.3px; }
+.card-shipping-note { color: var(--color-text-dim); font-family: var(--font-sans); font-size: 10px; margin: 2px 0 12px 0; letter-spacing: 0.3px; }
 
 .card-arrow {
   color: var(--color-gold);

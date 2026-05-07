@@ -10,36 +10,6 @@ window.initLanding = async function () {
     try { await window.loadI18n(window.getLang(), 'home'); } catch {}
   }
 
-  /* Hero video — responsive Cloudinary delivery, gated by reduced-motion + saveData. */
-  (function setupHeroVideo() {
-    const video = document.getElementById('heroVideo');
-    if (!video || video.querySelector('source')) return;
-
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const conn = navigator.connection || navigator.webkitConnection;
-    const saveData = !!(conn && (conn.saveData || /^([23]g|slow-2g)$/.test(conn.effectiveType || '')));
-    if (prefersReducedMotion || saveData) return;
-
-    const id = video.dataset.videoId;
-    if (!id) return;
-
-    /* No f_auto for video — Cloudinary may serve webm which mismatches <source type="video/mp4">.
-       Stick to mp4 and only vary width + quality. */
-    const w = window.innerWidth;
-    let transform;
-    if      (w <= 640)  transform = 'w_640,q_auto:eco';
-    else if (w <= 1024) transform = 'w_1024,q_auto:eco';
-    else                transform = 'w_1600,q_auto:good';
-
-    const source = document.createElement('source');
-    source.type = 'video/mp4';
-    source.src  = `https://res.cloudinary.com/dt6ksxuqf/video/upload/${transform}/${id}`;
-    video.appendChild(source);
-    video.load();
-    const playPromise = video.play();
-    if (playPromise && typeof playPromise.catch === 'function') playPromise.catch(() => {});
-  })();
-
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
     console.warn('[Landing] GSAP not available yet — retrying...');
     setTimeout(window.initLanding, 100);

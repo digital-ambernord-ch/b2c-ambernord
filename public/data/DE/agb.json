@@ -1,0 +1,95 @@
+{
+  "meta": {
+    "title": "Allgemeine Geschäftsbedingungen | AmberNord",
+    "description": "AGB der AmberNord Sanddorn-Essenzen — Geltungsbereich, Vertragsschluss, Preise, Lieferung, Gewährleistung und Gerichtsstand.",
+    "canonical": "https://ambernord.ch/agb/",
+    "robots": "index, follow",
+    "og": {
+      "title": "Allgemeine Geschäftsbedingungen | AmberNord",
+      "description": "AGB der AmberNord Sanddorn-Essenzen.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/ambernord-og-default",
+      "type": "website"
+    }
+  },
+  "header": {
+    "eyebrow": "AmberNord Legal",
+    "h1": "Allgemeine <span>Geschäftsbedingungen</span>"
+  },
+  "sections": [
+    {
+      "id": "geltungsbereich",
+      "heading": "1. Geltungsbereich",
+      "paragraphs": [
+        "Diese Allgemeinen Geschäftsbedingungen gelten für alle Bestellungen und Verträge, die über den Online-Shop www.ambernord.ch geschlossen werden. Vertragspartner ist:",
+        "<strong>Matisons Selection (AmberNord)</strong><br>Eriks Matisons<br>Alte Gasse 8<br>5034 Suhr, Schweiz<br>UID: CHE-226.837.934<br>E-Mail: <a href=\"mailto:info@ambernord.ch\">info@ambernord.ch</a>",
+        "Abweichende Bedingungen der Kundschaft werden nicht anerkannt, es sei denn, wir haben diesen ausdrücklich schriftlich zugestimmt."
+      ]
+    },
+    {
+      "id": "vertragsschluss",
+      "heading": "2. Angebot und Vertragsschluss",
+      "paragraphs": [
+        "Die Darstellung der Produkte im Online-Shop stellt kein bindendes Angebot dar, sondern eine Aufforderung zur Bestellung. Mit dem Anklicken des Bestell-Buttons geben Sie ein verbindliches Kaufangebot ab.",
+        "Der Vertrag kommt zustande, sobald wir Ihre Bestellung durch eine Auftragsbestätigung per E-Mail annehmen oder die Ware an Sie versenden."
+      ]
+    },
+    {
+      "id": "preise",
+      "heading": "3. Preise und Zahlungsbedingungen",
+      "paragraphs": [
+        "Alle Preise verstehen sich in Schweizer Franken (CHF). Wir behalten uns Preisanpassungen für Premium-Lebensmittel vor; massgeblich ist der zum Bestellzeitpunkt gültige Preis.",
+        "Die Bezahlung erfolgt über die im Checkout angebotenen Zahlungsmethoden. Der Kaufpreis ist bei Vertragsabschluss sofort fällig."
+      ]
+    },
+    {
+      "id": "lieferung",
+      "heading": "4. Lieferbedingungen und Gefahrübergang",
+      "paragraphs": [
+        "Die Lieferung erfolgt ausschliesslich in die Schweiz und nach Liechtenstein.",
+        "Nutzen und Gefahr gehen auf den Käufer über, sobald die Sendung von uns an das Transportunternehmen übergeben wurde. Für Verzögerungen oder Schäden, die durch das Transportunternehmen verursacht werden, übernehmen wir keine Haftung."
+      ]
+    },
+    {
+      "id": "gewaehrleistung",
+      "heading": "5. Prüfpflicht, Gewährleistung und Rückgaberecht",
+      "paragraphs": [
+        "Die Kundschaft ist verpflichtet, die gelieferte Ware unverzüglich auf Richtigkeit und Unversehrtheit zu prüfen.",
+        "Mängel oder Transportschäden müssen uns zwingend innerhalb von 3 Tagen nach Erhalt der Ware per E-Mail inkl. Fotobeweis gemeldet werden.",
+        "Aus Hygienegründen sind Rückgaben oder Umtausch von Lebensmittelprodukten ausgeschlossen. Es besteht kein gesetzliches Widerrufsrecht."
+      ]
+    },
+    {
+      "id": "haftung",
+      "heading": "6. Haftungsausschluss",
+      "paragraphs": [
+        "Wir haften ausschliesslich für direkte Schäden, die auf vorsätzliches oder grobfahrlässiges Verhalten zurückzuführen sind.",
+        "Jede Haftung für leichte Fahrlässigkeit, indirekte Schäden, Folgeschäden oder entgangenen Gewinn ist – soweit gesetzlich zulässig – vollumfänglich ausgeschlossen."
+      ]
+    },
+    {
+      "id": "datenschutz",
+      "heading": "7. Datenschutz",
+      "paragraphs": [
+        "Der Umgang mit Personendaten ist in unserer separaten <a href=\"/datenschutz/\" data-link>Datenschutzerklärung</a> geregelt, die integraler Bestandteil dieser AGB ist."
+      ]
+    },
+    {
+      "id": "recht",
+      "heading": "8. Anwendbares Recht und Gerichtsstand",
+      "paragraphs": [
+        "Es gilt ausschliesslich Schweizer Recht unter Ausschluss des Übereinkommens der Vereinten Nationen über Verträge über den internationalen Warenkauf (CISG).",
+        "Ausschliesslicher Gerichtsstand für alle Streitigkeiten aus oder im Zusammenhang mit diesen AGB ist der Sitz unseres Unternehmens in 5034 Suhr, Schweiz."
+      ]
+    },
+    {
+      "id": "schluss",
+      "heading": "9. Schlussbestimmungen",
+      "paragraphs": [
+        "Sollten einzelne Bestimmungen dieser AGB unwirksam sein, bleibt die Wirksamkeit der übrigen Bestimmungen unberührt. An die Stelle der unwirksamen Bestimmung tritt eine Regelung, die dem ursprünglichen Sinn am nächsten kommt."
+      ]
+    }
+  ],
+  "footer": {
+    "lastUpdated": "Stand: Februar 2026"
+  }
+}

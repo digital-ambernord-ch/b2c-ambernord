@@ -13,7 +13,7 @@
   },
   "header": {
     "eyebrow": "Real Voices",
-    "h1": "Customer Reviews"
+    "h1": "Customer<br><span>Reviews.</span>"
   },
   "intro": {
     "heading": "Customer Reviews",
@@ -37,7 +37,7 @@
     "order": "Order number (from your Stripe confirmation email)",
     "text": "Your experience",
     "textHint": "Describe in your own words what changed after 14 days — energy, skin, sleep, digestion —, how the elixir tastes, and what surprised you.",
-    "textPlaceholder": "Example: I've been taking AmberNord for 3 weeks every morning before breakfast. The taste was unfamiliar at first, but after 10 days I noticed more energy in the morning and calmer digestion. What convinces me: honestly declared, no additives.",
+    "textPlaceholder": "Example: More energy in the morning, calmer digestion — and a clearly declared, pure concentrate.",
     "consent": "I allow AmberNord to publish my first name, city and review text on the website. My email stays private.",
     "submit": {
       "label": "Submit review",

@@ -13,7 +13,7 @@
   },
   "header": {
     "eyebrow": "Echte Stimmen",
-    "h1": "Kundenbewertungen"
+    "h1": "Kunden<br><span>bewertungen.</span>"
   },
   "intro": {
     "heading": "Kundenbewertungen",
@@ -37,7 +37,7 @@
     "order": "Bestellnummer (aus Stripe-Bestätigungsmail)",
     "text": "Deine Erfahrung",
     "textHint": "Beschreibe in deinen eigenen Worten, was sich nach 14 Tagen verändert hat — Energie, Haut, Schlaf, Verdauung —, wie das Elixier schmeckt und was dich überrascht hat.",
-    "textPlaceholder": "Beispiel: Ich nehme AmberNord seit 3 Wochen morgens vor dem Frühstück. Anfangs ungewohnt im Geschmack, doch nach 10 Tagen merkte ich mehr Energie am Vormittag und ruhigere Verdauung. Was mich überzeugt: ehrlich deklariert, keine Zusätze.",
+    "textPlaceholder": "Beispiel: Mehr Energie am Vormittag, ruhigere Verdauung — und ein klar deklariertes, reines Konzentrat.",
     "consent": "Ich erlaube AmberNord, meinen Vornamen, meine Stadt und meinen Bewertungstext auf der Website zu veröffentlichen. Meine E-Mail bleibt vertraulich.",
     "submit": {
       "label": "Bewertung absenden",

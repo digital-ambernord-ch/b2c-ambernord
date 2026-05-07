@@ -1,0 +1,96 @@
+{
+  "meta": {
+    "title": "Termini e Condizioni | AmberNord",
+    "description": "Termini e Condizioni AmberNord — ambito, contratto, prezzi, consegna, garanzia, foro competente.",
+    "canonical": "https://ambernord.ch/agb/",
+    "robots": "index, follow",
+    "og": {
+      "title": "Termini e Condizioni | AmberNord",
+      "description": "Termini e Condizioni AmberNord.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/ambernord-og-default",
+      "type": "website"
+    }
+  },
+  "header": {
+    "eyebrow": "AmberNord Legal",
+    "h1": "Termini e <span>Condizioni</span>"
+  },
+  "sections": [
+    {
+      "id": "ambito",
+      "heading": "1. Ambito di applicazione",
+      "paragraphs": [
+        "Le presenti condizioni generali si applicano a tutti gli ordini e contratti stipulati tramite il negozio online www.ambernord.ch. Il partner contrattuale è:",
+        "<strong>Matisons Selection (AmberNord)</strong><br>Eriks Matisons<br>Alte Gasse 8<br>5034 Suhr, Svizzera<br>UID: CHE-226.837.934<br>E-mail: <a href=\"mailto:info@ambernord.ch\">info@ambernord.ch</a>",
+        "Le condizioni divergenti del cliente non sono riconosciute, salvo il nostro espresso consenso scritto.",
+        "<em>La versione tedesca di queste condizioni è giuridicamente vincolante.</em>"
+      ]
+    },
+    {
+      "id": "contratto",
+      "heading": "2. Offerta e conclusione del contratto",
+      "paragraphs": [
+        "La presentazione dei prodotti nel negozio online non costituisce un'offerta vincolante, ma un invito all'acquisto. Cliccando sul pulsante di ordine, si presenta un'offerta di acquisto vincolante.",
+        "Il contratto si conclude non appena accettiamo il vostro ordine tramite e-mail di conferma o spediamo la merce."
+      ]
+    },
+    {
+      "id": "prezzi",
+      "heading": "3. Prezzi e condizioni di pagamento",
+      "paragraphs": [
+        "Tutti i prezzi sono in franchi svizzeri (CHF). Ci riserviamo il diritto di adeguare i prezzi per i prodotti alimentari premium; vale il prezzo in vigore al momento dell'ordine.",
+        "Il pagamento avviene tramite i metodi offerti al checkout. Il prezzo d'acquisto è dovuto immediatamente alla conclusione del contratto."
+      ]
+    },
+    {
+      "id": "consegna",
+      "heading": "4. Consegna e trasferimento del rischio",
+      "paragraphs": [
+        "La consegna avviene esclusivamente in Svizzera e nel Liechtenstein.",
+        "Beneficio e rischio passano all'acquirente non appena la spedizione viene consegnata da noi al vettore. Non assumiamo alcuna responsabilità per ritardi o danni causati dal vettore."
+      ]
+    },
+    {
+      "id": "garanzia",
+      "heading": "5. Obbligo di verifica, garanzia e diritto di reso",
+      "paragraphs": [
+        "Il cliente è tenuto a verificare immediatamente la merce consegnata per correttezza e integrità.",
+        "Difetti o danni da trasporto devono essere segnalati obbligatoriamente entro 3 giorni dalla ricezione della merce, via e-mail con prova fotografica.",
+        "Per motivi igienici, i resi o cambi di prodotti alimentari sono esclusi. Non esiste alcun diritto legale di recesso."
+      ]
+    },
+    {
+      "id": "responsabilita",
+      "heading": "6. Esclusione di responsabilità",
+      "paragraphs": [
+        "Siamo responsabili esclusivamente per danni diretti derivanti da comportamento doloso o gravemente negligente.",
+        "Qualsiasi responsabilità per lieve negligenza, danni indiretti, danni consequenziali o mancato profitto è — nei limiti consentiti dalla legge — completamente esclusa."
+      ]
+    },
+    {
+      "id": "privacy",
+      "heading": "7. Protezione dei dati",
+      "paragraphs": [
+        "La gestione dei dati personali è disciplinata dalla nostra separata <a href=\"/datenschutz/\" data-link>Informativa sulla privacy</a>, parte integrante delle presenti condizioni."
+      ]
+    },
+    {
+      "id": "diritto",
+      "heading": "8. Diritto applicabile e foro competente",
+      "paragraphs": [
+        "Si applica esclusivamente il diritto svizzero, con esclusione della Convenzione delle Nazioni Unite sui contratti di compravendita internazionale di merci (CISG).",
+        "Il foro competente esclusivo per tutte le controversie derivanti dalle presenti condizioni è la sede della nostra azienda a 5034 Suhr, Svizzera."
+      ]
+    },
+    {
+      "id": "finali",
+      "heading": "9. Disposizioni finali",
+      "paragraphs": [
+        "Qualora singole disposizioni delle presenti condizioni risultino invalide, la validità delle restanti disposizioni rimane impregiudicata. Una disposizione invalida sarà sostituita da una regola che si avvicini il più possibile al senso originale."
+      ]
+    }
+  ],
+  "footer": {
+    "lastUpdated": "Ultimo aggiornamento: febbraio 2026"
+  }
+}

@@ -219,6 +219,16 @@
       schema:      null
     },
 
+    '/agb/': {
+      page:        '/pages/agb.html',
+      title:       'Allgemeine Geschäftsbedingungen | AmberNord',
+      description: 'AGB der AmberNord Sanddorn-Essenzen — Geltungsbereich, Vertragsschluss, Lieferung, Gewährleistung, Gerichtsstand.',
+      canonical:   'https://ambernord.ch/agb/',
+      type:        'agb',
+      sticky:      null,
+      schema:      null
+    },
+
     '/b2b/': {
       page:        '/pages/b2b.html',
       title:       'B2B Klinische Rohstoffe | AmberNord',
@@ -288,7 +298,8 @@
     returns:          'initReturns',
     bewertungen:      'initBewertungen',
     aktion2fuer1:     'initAktion2Fuer1',
-    aktion2fuer1Danke:'initAktion2Fuer1Danke'
+    aktion2fuer1Danke:'initAktion2Fuer1Danke',
+    agb:              'initAgb'
   };
 
   const pageCache = {};

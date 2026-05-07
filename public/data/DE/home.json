@@ -69,41 +69,44 @@
   "shop": {
     "title": "Wählen Sie Ihr Protokoll",
     "starter": {
-      "badge": "INKL. 10 CHF VOUCHER",
-      "badgeCode": "CODE: START10",
-      "dailyPrice": "Nur 2.49 CHF / Tag",
+      "price": {
+        "daily": "2.49 CHF / Tag",
+        "full": "24.90 CHF einmalig"
+      },
       "extra": "Ideal zum Probieren",
       "benefit1": "Spürbare Vitalität & Immunschutz",
       "benefit2": "100% reine, vegane Zell-Nahrung",
       "benefit3": "Liefert das seltene Omega-7",
-      "units": "(1× 250 ml)",
-      "price": "24.90 CHF",
-      "priceLabel": "einmalig",
+      "units": "1× 250 ml",
       "shipping": "inkl. Versand",
       "btn": "Jetzt starten"
     },
     "habit": {
       "badge": "MEISTGEKAUFT",
-      "dailyPrice": "Nur 2.30 CHF / Tag",
+      "price": {
+        "daily": "2.30 CHF / Tag",
+        "full": "69.00 CHF einmalig",
+        "perBottle": "23.00 CHF / Flasche"
+      },
       "extra": "Das 30-Tage-Ritual",
       "benefit1": "Komplettes 30-Tage-Zell-Reset",
       "benefit2": "Regeneration von Haut & Schleimhäuten",
       "benefit3": "Nachhaltiger Fokus & natürliche Energie",
-      "units": "(3× 250 ml)",
-      "price": "69.00 CHF",
-      "priceLabel": "einmalig",
+      "units": "3× 250 ml",
       "shipping": "inkl. kostenlosem Versand",
       "btn": "30 Tage starten"
     },
     "protocol": {
-      "dailyPrice": "Nur 2.15 CHF / Tag",
+      "price": {
+        "daily": "2.15 CHF / Tag",
+        "full": "129.00 CHF einmalig",
+        "perBottle": "21.50 CHF / Flasche"
+      },
       "extra": "Für Familie & langfristigen Fokus",
       "benefit1": "Dauerhafte zelluläre Versorgung",
       "benefit2": "Optimal für Familien & Biohacker",
       "benefit3": "Bester Preis pro Tagesration",
-      "units": "(6× 250 ml)",
-      "price": "129.00 CHF",
-      "priceLabel": "einmalig",
+      "units": "6× 250 ml",
       "shipping": "inkl. kostenlosem Versand",
       "btn": "Mein Ritual starten"
     },
