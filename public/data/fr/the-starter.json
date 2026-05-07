@@ -47,14 +47,6 @@
     "shippingLabel": "Expédition & Logistique",
     "shippingText": "Expédition premium fiable en Suisse (frais d'expédition non inclus). Expédition directe depuis notre centre logistique d'Aarau."
   },
-  "aktion": {
-    "eyebrow": "Promotion de lancement",
-    "title": "2 × The Starter pour le prix d'un",
-    "condition1": "Tu reçois 2 bouteilles au lieu d'une.",
-    "condition2": "Jour 14 : nous t'envoyons un e-mail pour te demander un avis honnête.",
-    "condition3": "Limité à 250 places. L'avis est facultatif.",
-    "fine": "En savoir plus sur le <a href=\"/bewertungen/\" data-link>processus d'avis</a>."
-  },
   "related": {
     "heading": "Complétez votre rituel",
     "habit": {

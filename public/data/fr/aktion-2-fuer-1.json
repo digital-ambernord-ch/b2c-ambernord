@@ -1,0 +1,93 @@
+{
+  "meta": {
+    "title": "Édition de lancement · 2 pour 1 | AmberNord",
+    "description": "Édition de lancement : 2 × The Starter pour le prix d'un. Limité à 250 places en Suisse. En contrepartie, nous demandons un avis honnête après 14 jours.",
+    "canonical": "https://ambernord.ch/2-fuer-1/",
+    "robots": "index, follow",
+    "og": {
+      "title": "Édition de lancement · 2 pour 1 | AmberNord",
+      "description": "2 × The Starter pour le prix d'un. Limité à 250 places. En contrepartie : ta voix honnête.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/v1778164908/Markteinf%C3%BChrungs-Aktion_2_The_Starter_zum_Preis_von_1_Im_Gegenzug_bitten_wir_nach_14_Tagen_um_eine_ehrliche_Bewertung_pbompq.jpg",
+      "type": "website"
+    }
+  },
+  "hero": {
+    "eyebrow": "Édition de lancement",
+    "h1": "Deux bouteilles.<br><span>Un prix. Une demande honnête.</span>",
+    "sub": "Tu reçois 2 × The Starter pour le prix d'une bouteille. En contrepartie, nous te demandons un avis honnête après 14 jours. Limité à 250 places en Suisse.",
+    "imageAlt": "Promotion de lancement : 2 × The Starter pour le prix d'un",
+    "ctaLabel": "Réserver l'offre",
+    "ctaPrice": "24.90 CHF · 2 × 250 ml",
+    "fine": "Frais d'expédition en sus · Paiement sécurisé via Stripe · TWINT, cartes, PayPal"
+  },
+  "why": {
+    "eyebrow": "Notre promesse",
+    "title": "Pourquoi la deuxième bouteille est-elle gratuite ?",
+    "p1": "AmberNord est une jeune manufacture suisse. Nous avons délibérément choisi de ne pas faire de campagnes publicitaires classiques. Au lieu de verser des sommes à six chiffres à des plateformes qui ne nous connaissent pas, nous investissons en toi — la personne qui vit réellement notre élixir.",
+    "p2": "Le concentré d'argousier est polarisant. Ce n'est pas un jus sucré, mais un produit dense et honnête composé de plus de 190 substances bioactives. Le goûter une seule fois ne dit rien. Ce n'est qu'après 14 jours d'utilisation quotidienne qu'on peut juger honnêtement s'il s'intègre à son rituel — et si les fines variations d'énergie, de peau et de digestion deviennent perceptibles.",
+    "p3": "Une bouteille suffit pour environ 25 jours. La deuxième bouteille n'est pas une remise mais notre contribution à l'équité : nous voulons que tu testes le produit dans des conditions de vie réelles, pas sous la pression d'une seule application.",
+    "p4": "Nous cherchons 250 voix honnêtes — pas 250 ventes rapides. Ton avis façonne la perception d'AmberNord en Suisse. Si tu ne rédiges pas d'avis, tu gardes les deux bouteilles. Nous croyons aux relations volontaires, pas aux contreparties forcées."
+  },
+  "deal": {
+    "title": "Ce qu'il y a dans le colis",
+    "bottlesKey": "Contenu",
+    "bottlesVal": "2 × The Starter (250 ml)",
+    "priceKey": "Prix",
+    "priceVal": "24.90 CHF",
+    "priceStrike": "au lieu de 49.80 CHF",
+    "shippingKey": "Expédition",
+    "shippingVal": "Expédition premium depuis Aarau · sous 24 h",
+    "reminderKey": "Jour 14",
+    "reminderVal": "Court e-mail de rappel avec lien vers le formulaire d'avis",
+    "detailsLink": "Plus de détails sur le produit sur la page <a href=\"/shop/starter/\" data-link>The Starter</a>."
+  },
+  "steps": {
+    "title": "Comment ça fonctionne",
+    "step1": {
+      "title": "Réserver l'offre",
+      "text": "Commande via Stripe. Expédition sous 24 heures depuis notre centre logistique d'Aarau."
+    },
+    "step2": {
+      "title": "14 jours d'utilisation quotidienne",
+      "text": "Une cuillère à soupe le matin à jeun. La deuxième bouteille couvre toute ta phase d'observation."
+    },
+    "step3": {
+      "title": "Avis honnête",
+      "text": "Jour 14 : court e-mail de rappel. Tu décris avec tes propres mots ce qui a changé. Environ trois minutes d'effort."
+    }
+  },
+  "faq": {
+    "title": "Questions fréquentes",
+    "q1": {
+      "q": "Pourquoi offrez-vous le produit ? N'est-ce pas suspect ?",
+      "a": "Nous sommes une petite manufacture suisse sans budget publicitaire. Un avis honnête de ta part vaut plus pour nous qu'une publicité payée. Au lieu de donner l'argent aux plateformes publicitaires, nous t'envoyons une deuxième bouteille."
+    },
+    "q2": {
+      "q": "Et si je ne souhaite pas rédiger d'avis ?",
+      "a": "Tu gardes les deux bouteilles — pas de remboursement, pas d'exigence. La demande d'avis est facultative. Nous voulons des mots honnêtes, pas forcés."
+    },
+    "q3": {
+      "q": "Et si le produit ne me convient pas ?",
+      "a": "Dis-le honnêtement. Nous publions aussi les avis critiques tant qu'ils sont respectueux. Les expériences négatives sont précieuses — elles nous aident à nous améliorer et à donner aux futurs clients des attentes réalistes."
+    },
+    "q4": {
+      "q": "Comment mon avis sera-t-il utilisé ?",
+      "a": "Nous publions le prénom, la ville et le texte d'avis sur la page des avis. Ton adresse e-mail reste confidentielle et sert uniquement à vérifier ta commande."
+    },
+    "q5": {
+      "q": "Jusqu'à quand l'offre est-elle valable ?",
+      "a": "Jusqu'à ce que les 250 places soient prises. Ensuite, tu peux commander The Starter au prix régulier ou choisir un plus grand pack (The Habit, The Protocol)."
+    },
+    "q6": {
+      "q": "Puis-je profiter de l'offre plusieurs fois ?",
+      "a": "Une fois par personne et adresse. Nous voulons entendre 250 voix différentes, pas une seule voix 250 fois."
+    }
+  },
+  "final": {
+    "title": "Deviens l'une des 250 voix.",
+    "sub": "Les premiers clients façonnent la perception d'AmberNord en Suisse. Tu n'es pas seulement acheteur — tu es co-créateur.",
+    "ctaLabel": "Réserver l'offre de lancement",
+    "ctaPrice": "24.90 CHF · 2 × 250 ml · frais d'expédition en sus",
+    "trust": "Manufacture suisse · Certifié bio · Paiement sécurisé · Limité à 250 places"
+  }
+}

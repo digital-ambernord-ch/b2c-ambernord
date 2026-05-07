@@ -47,14 +47,6 @@
     "shippingLabel": "Versand & Logistik",
     "shippingText": "Zuverlässiger Premium-Versand innerhalb der Schweiz (exkl. Versandkosten). Direktversand aus unserem Logistikzentrum in Aarau."
   },
-  "aktion": {
-    "eyebrow": "Markteinführungs-Aktion",
-    "title": "2 × The Starter zum Preis von 1",
-    "condition1": "Du erhältst 2 Flaschen geliefert (statt 1).",
-    "condition2": "Tag 14: Wir senden dir eine E-Mail mit der Bitte um eine ehrliche Bewertung.",
-    "condition3": "Limitiert auf 250 Plätze. Die Bewertung ist freiwillig.",
-    "fine": "Mehr zum <a href=\"/bewertungen/\" data-link>Bewertungsprozess</a>."
-  },
   "related": {
     "heading": "Ergänzen Sie Ihr Ritual",
     "habit": {

@@ -1,0 +1,46 @@
+{
+  "meta": {
+    "title": "Offre confirmée | AmberNord",
+    "description": "Tu fais partie de l'Édition de lancement. Ta commande a été reçue.",
+    "canonical": "https://ambernord.ch/2-fuer-1/danke/",
+    "robots": "noindex, nofollow",
+    "og": {
+      "title": "Offre confirmée | AmberNord",
+      "description": "Tu fais partie de l'Édition de lancement.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/v1778164908/Markteinf%C3%BChrungs-Aktion_2_The_Starter_zum_Preis_von_1_Im_Gegenzug_bitten_wir_nach_14_Tagen_um_eine_ehrliche_Bewertung_pbompq.jpg",
+      "type": "website"
+    }
+  },
+  "header": {
+    "eyebrow": "Édition de lancement",
+    "h1": "Tu en fais partie.<br><span>L'une des 250 voix.</span>"
+  },
+  "confirm": {
+    "heading": "Commande confirmée",
+    "lead": "Ta commande Édition de lancement a été reçue. Les deux bouteilles seront expédiées aujourd'hui ou demain au plus tard depuis notre centre logistique d'Aarau."
+  },
+  "next": {
+    "title": "Ce qui se passe ensuite",
+    "step1": {
+      "title": "Expédition & confirmation",
+      "text": "Tu recevras une confirmation d'expédition par e-mail avec un lien de suivi dès que le colis sera en route."
+    },
+    "step2": {
+      "title": "14 jours d'utilisation quotidienne",
+      "text": "Une cuillère à soupe le matin à jeun — pur ou en proportion 1:10 avec de l'eau. La deuxième bouteille couvre toute ta phase d'observation."
+    },
+    "step3": {
+      "title": "Jour 14 — rappel par e-mail",
+      "text": "Nous t'envoyons un court e-mail avec le lien direct vers le formulaire d'avis. Le lien contient déjà ton numéro de commande — tu n'as rien à saisir manuellement."
+    },
+    "step4": {
+      "title": "Ton avis",
+      "text": "Environ trois minutes d'effort. Tu décris avec tes propres mots ce qui a changé — énergie, peau, sommeil, digestion. La participation reste facultative."
+    }
+  },
+  "actions": {
+    "reviewsCta": "Vers les avis →",
+    "homeCta": "Retour à l'accueil"
+  },
+  "thanks": "Grand merci — tu fais partie de quelque chose de vrai."
+}

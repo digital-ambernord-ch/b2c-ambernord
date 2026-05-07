@@ -1,0 +1,671 @@
+/* ==========================================================================
+   AKTION 2-FÜR-1 — Markteinführungs-Edition sales page + thank-you.
+   Scope: .aktion-page-container and .aktion-danke-page-container.
+   ========================================================================== */
+
+.aktion-page-container,
+.aktion-danke-page-container {
+  position: relative;
+  z-index: var(--z-above);
+  padding: 0 0 120px;
+}
+
+@keyframes aktionReveal {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.aktion-page-container,
+.aktion-danke-page-container {
+  animation: aktionReveal 1.1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+.page-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.page-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-reveal,
+  .aktion-page-container,
+  .aktion-danke-page-container {
+    animation: none;
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   SHARED — eyebrow + section title + CTA button
+   -------------------------------------------------------------------------- */
+
+.aktion-eyebrow {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: var(--space-xs);
+}
+
+.aktion-eyebrow--center {
+  display: block;
+  text-align: center;
+}
+
+.aktion-section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 500;
+  color: var(--color-text);
+  text-align: center;
+  margin: 0 0 var(--space-md);
+  line-height: 1.2;
+}
+
+.aktion-cta-primary {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 18px 40px;
+  background-color: var(--color-gold);
+  color: var(--color-bg);
+  text-decoration: none;
+  border-radius: 50px;
+  box-shadow: 0 4px 18px rgba(237, 163, 35, 0.32);
+  transition: background-color var(--t-fast) ease, transform var(--t-fast) ease, box-shadow var(--t-fast) ease;
+  font-family: var(--font-sans);
+}
+
+.aktion-cta-primary:hover,
+.aktion-cta-primary:focus-visible {
+  background-color: var(--color-gold-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(237, 163, 35, 0.45);
+  color: var(--color-bg);
+}
+
+.aktion-cta-label {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+}
+
+.aktion-cta-price {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  opacity: 0.85;
+}
+
+/* --------------------------------------------------------------------------
+   HERO — image + headline + CTA, two-column on desktop
+   -------------------------------------------------------------------------- */
+
+.aktion-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  align-items: center;
+  max-width: var(--container-max);
+  margin: 0 auto var(--space-xl);
+  padding: var(--space-lg) var(--container-pad) 0;
+}
+
+.aktion-hero-image {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--color-border-gold);
+  aspect-ratio: 1 / 1;
+  background-color: var(--color-surface);
+}
+
+.aktion-hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.aktion-hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-sm);
+}
+
+.aktion-hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 500;
+  color: var(--color-text);
+  line-height: 1.1;
+  margin: 0;
+}
+
+.aktion-hero-title span {
+  color: var(--color-gold);
+  font-style: italic;
+}
+
+.aktion-hero-sub {
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--color-text-muted);
+  margin: 0 0 var(--space-xs);
+  max-width: 540px;
+}
+
+.aktion-hero-fine {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: var(--color-text-dim);
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+/* --------------------------------------------------------------------------
+   WHY — long-form prose, the heart of the page
+   -------------------------------------------------------------------------- */
+
+.aktion-why {
+  background-color: var(--color-surface);
+  padding: var(--space-xl) var(--container-pad);
+  margin: 0 0 var(--space-xl);
+}
+
+.aktion-why-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.aktion-why-prose {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+
+.aktion-why-prose p {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  line-height: 1.75;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.aktion-why-prose p:first-child {
+  font-style: italic;
+  font-size: 20px;
+  color: var(--color-text);
+  border-left: 2px solid var(--color-gold);
+  padding-left: var(--space-sm);
+}
+
+/* --------------------------------------------------------------------------
+   DEAL — what's in the package
+   -------------------------------------------------------------------------- */
+
+.aktion-deal {
+  max-width: 760px;
+  margin: 0 auto var(--space-xl);
+  padding: 0 var(--container-pad);
+}
+
+.aktion-deal-inner {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-gold);
+  border-radius: 8px;
+  padding: var(--space-lg);
+}
+
+.aktion-deal-list {
+  list-style: none;
+  margin: 0 0 var(--space-md);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.aktion-deal-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.aktion-deal-list li:last-child {
+  border-bottom: none;
+}
+
+.aktion-deal-key {
+  flex-shrink: 0;
+  width: 110px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-text-dim);
+  padding-top: 2px;
+}
+
+.aktion-deal-val {
+  flex: 1;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+.aktion-deal-price {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-gold);
+  margin-right: 8px;
+}
+
+.aktion-deal-strike {
+  font-size: 13px;
+  color: var(--color-text-dim);
+  text-decoration: line-through;
+}
+
+.aktion-deal-link {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--color-text-muted);
+  margin: 0;
+  text-align: center;
+}
+
+.aktion-deal-link a {
+  color: var(--color-gold);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.aktion-deal-link a:hover {
+  color: var(--color-gold-hover);
+}
+
+/* --------------------------------------------------------------------------
+   STEPS — 3-step explainer
+   -------------------------------------------------------------------------- */
+
+.aktion-steps {
+  max-width: var(--container-max);
+  margin: 0 auto var(--space-xl);
+  padding: 0 var(--container-pad);
+}
+
+.aktion-steps-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.aktion-steps-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.aktion-steps-list li {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-gold);
+  border-radius: 8px;
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.aktion-step-num {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-border-gold);
+  border-radius: 50%;
+  font-family: var(--font-serif);
+  font-size: 18px;
+  color: var(--color-gold);
+  background-color: var(--color-bg);
+}
+
+.aktion-step-title {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.aktion-step-text {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   FAQ — native <details> accordion
+   -------------------------------------------------------------------------- */
+
+.aktion-faq {
+  max-width: 760px;
+  margin: 0 auto var(--space-xl);
+  padding: 0 var(--container-pad);
+}
+
+.aktion-faq-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.aktion-faq-item {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-gold);
+  border-radius: 6px;
+  padding: 0;
+  transition: background-color var(--t-fast) ease;
+}
+
+.aktion-faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 16px 20px;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text);
+  position: relative;
+  padding-right: 50px;
+}
+
+.aktion-faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.aktion-faq-item summary::after {
+  content: "+";
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 22px;
+  color: var(--color-gold);
+  transition: transform var(--t-fast) ease;
+}
+
+.aktion-faq-item[open] summary::after {
+  content: "−";
+}
+
+.aktion-faq-item p {
+  margin: 0;
+  padding: 0 20px 20px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--color-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   FINAL CTA
+   -------------------------------------------------------------------------- */
+
+.aktion-final {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: var(--space-xl) var(--container-pad) 0;
+  text-align: center;
+}
+
+.aktion-final-title {
+  font-family: var(--font-serif);
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 500;
+  color: var(--color-text);
+  margin: 0 0 var(--space-xs);
+  line-height: 1.2;
+}
+
+.aktion-final-sub {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--color-text-muted);
+  max-width: 560px;
+  margin: 0 auto var(--space-md);
+}
+
+.aktion-cta-primary--final {
+  margin-bottom: var(--space-sm);
+}
+
+.aktion-final-trust {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: var(--color-text-dim);
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   THANK-YOU PAGE
+   -------------------------------------------------------------------------- */
+
+.aktion-danke-confirm {
+  max-width: 720px;
+  margin: 0 auto var(--space-lg);
+  padding: 0 var(--container-pad);
+  text-align: center;
+}
+
+.aktion-danke-icon {
+  display: inline-block;
+  color: var(--color-gold);
+  margin-bottom: var(--space-sm);
+}
+
+.aktion-danke-lead {
+  font-family: var(--font-serif);
+  font-size: clamp(18px, 2.4vw, 22px);
+  line-height: 1.6;
+  color: var(--color-text);
+  margin: 0;
+  font-style: italic;
+}
+
+.aktion-danke-section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 500;
+  color: var(--color-text);
+  text-align: center;
+  margin: 0 0 var(--space-md);
+  line-height: 1.2;
+}
+
+.aktion-danke-next {
+  max-width: 720px;
+  margin: 0 auto var(--space-lg);
+  padding: var(--space-lg) var(--container-pad);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-gold);
+  border-radius: 8px;
+}
+
+.aktion-danke-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.aktion-danke-steps > li {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.aktion-danke-step-num {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-border-gold);
+  border-radius: 50%;
+  font-family: var(--font-serif);
+  font-size: 16px;
+  color: var(--color-gold);
+  background-color: var(--color-bg);
+}
+
+.aktion-danke-step-title {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-text);
+  margin: 4px 0 6px;
+}
+
+.aktion-danke-step-text {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.aktion-danke-actions {
+  max-width: 720px;
+  margin: 0 auto var(--space-lg);
+  padding: 0 var(--container-pad);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.aktion-danke-cta-primary {
+  display: inline-block;
+  padding: 14px 32px;
+  background-color: var(--color-gold);
+  color: var(--color-bg);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: background-color var(--t-fast) ease, transform var(--t-fast) ease;
+}
+
+.aktion-danke-cta-primary:hover,
+.aktion-danke-cta-primary:focus-visible {
+  background-color: var(--color-gold-hover);
+  transform: translateY(-2px);
+  color: var(--color-bg);
+}
+
+.aktion-danke-cta-secondary {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  padding: 8px 16px;
+  border-bottom: 1px solid transparent;
+  transition: color var(--t-fast) ease, border-color var(--t-fast) ease;
+}
+
+.aktion-danke-cta-secondary:hover,
+.aktion-danke-cta-secondary:focus-visible {
+  color: var(--color-gold);
+  border-bottom-color: var(--color-gold-dim);
+}
+
+.aktion-danke-thanks {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 var(--container-pad);
+  text-align: center;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--color-text-dim);
+}
+
+/* --------------------------------------------------------------------------
+   MOBILE
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 991px) {
+  .aktion-hero {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+    padding-top: var(--space-md);
+  }
+  .aktion-hero-image {
+    aspect-ratio: 4 / 3;
+  }
+  .aktion-hero-content {
+    text-align: center;
+    align-items: center;
+  }
+  .aktion-hero-sub {
+    text-align: center;
+  }
+  .aktion-why {
+    padding: var(--space-lg) var(--container-pad);
+  }
+  .aktion-why-prose p,
+  .aktion-why-prose p:first-child {
+    font-size: 16px;
+  }
+  .aktion-steps-list {
+    grid-template-columns: 1fr;
+  }
+  .aktion-deal-list li {
+    flex-direction: column;
+    gap: 4px;
+  }
+  .aktion-deal-key {
+    width: auto;
+  }
+}

@@ -15,7 +15,10 @@
     '/faq/':             '/hilfe/faq/',
     '/kontakt/':         '/hilfe/kontakt/',
     '/bestellstatus/':   '/hilfe/bestellstatus/',
-    '/rueckgabe/':       '/hilfe/rueckgabe/'
+    '/rueckgabe/':       '/hilfe/rueckgabe/',
+    '/2+1/':             '/2-fuer-1/',
+    '/2plus1/':          '/2-fuer-1/',
+    '/markteinfuehrung/':'/2-fuer-1/'
   };
 
   const ROUTES = {
@@ -244,6 +247,26 @@
       type:        'bewertungen',
       sticky:      null,
       schema:      null
+    },
+
+    '/2-fuer-1/': {
+      page:        '/pages/aktion-2-fuer-1.html',
+      title:       'Markteinführungs-Edition · 2 für 1 | AmberNord',
+      description: 'Markteinführungs-Edition: 2 × The Starter zum Preis von 1. Limitiert auf 250 Plätze in der Schweiz. Im Gegenzug bitten wir nach 14 Tagen um eine ehrliche Bewertung.',
+      canonical:   'https://ambernord.ch/2-fuer-1/',
+      type:        'aktion2fuer1',
+      sticky:      null,
+      schema:      null
+    },
+
+    '/2-fuer-1/danke/': {
+      page:        '/pages/aktion-2-fuer-1-danke.html',
+      title:       'Aktion gesichert | AmberNord',
+      description: 'Du bist Teil der Markteinführungs-Edition. Deine Bestellung ist eingegangen.',
+      canonical:   'https://ambernord.ch/2-fuer-1/danke/',
+      type:        'aktion2fuer1Danke',
+      sticky:      null,
+      schema:      null
     }
   };
 
@@ -263,7 +286,9 @@
     thankyou:         'initThankyou',
     datenschutz:      'initDatenschutz',
     returns:          'initReturns',
-    bewertungen:      'initBewertungen'
+    bewertungen:      'initBewertungen',
+    aktion2fuer1:     'initAktion2Fuer1',
+    aktion2fuer1Danke:'initAktion2Fuer1Danke'
   };
 
   const pageCache = {};

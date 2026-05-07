@@ -47,14 +47,6 @@
     "shippingLabel": "Shipping & Logistics",
     "shippingText": "Reliable premium shipping within Switzerland (excl. shipping costs). Direct shipping from our logistics centre in Aarau."
   },
-  "aktion": {
-    "eyebrow": "Launch Promotion",
-    "title": "2 × The Starter for the price of 1",
-    "condition1": "You receive 2 bottles instead of 1.",
-    "condition2": "Day 14: We send you an email asking for an honest review.",
-    "condition3": "Limited to 250 spots. Reviews are voluntary.",
-    "fine": "Read more about the <a href=\"/bewertungen/\" data-link>review process</a>."
-  },
   "related": {
     "heading": "Complete your ritual",
     "habit": {

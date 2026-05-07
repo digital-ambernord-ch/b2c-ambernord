@@ -1,0 +1,46 @@
+{
+  "meta": {
+    "title": "Aktion gesichert | AmberNord",
+    "description": "Du bist Teil der Markteinführungs-Edition. Deine Bestellung ist eingegangen.",
+    "canonical": "https://ambernord.ch/2-fuer-1/danke/",
+    "robots": "noindex, nofollow",
+    "og": {
+      "title": "Aktion gesichert | AmberNord",
+      "description": "Du bist Teil der Markteinführungs-Edition.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/v1778164908/Markteinf%C3%BChrungs-Aktion_2_The_Starter_zum_Preis_von_1_Im_Gegenzug_bitten_wir_nach_14_Tagen_um_eine_ehrliche_Bewertung_pbompq.jpg",
+      "type": "website"
+    }
+  },
+  "header": {
+    "eyebrow": "Markteinführungs-Edition",
+    "h1": "Du bist dabei.<br><span>Eine der 250 Stimmen.</span>"
+  },
+  "confirm": {
+    "heading": "Bestellung bestätigt",
+    "lead": "Deine Markteinführungs-Bestellung ist eingegangen. Beide Flaschen werden noch heute oder spätestens morgen aus unserem Logistikzentrum in Aarau verschickt."
+  },
+  "next": {
+    "title": "Was als Nächstes passiert",
+    "step1": {
+      "title": "Versand & Bestätigung",
+      "text": "Du erhältst eine Versandbestätigung per E-Mail mit Tracking-Link, sobald das Paket auf dem Weg ist."
+    },
+    "step2": {
+      "title": "14 Tage täglich anwenden",
+      "text": "Ein Esslöffel morgens auf nüchternen Magen — pur oder im 1:10 Verhältnis mit Wasser. Die zweite Flasche reicht für deine vollständige Beobachtungsphase."
+    },
+    "step3": {
+      "title": "Tag 14 — Erinnerung per E-Mail",
+      "text": "Wir senden dir eine kurze E-Mail mit dem direkten Link zum Bewertungsformular. Der Link enthält bereits deine Bestellnummer — du musst nichts manuell eingeben."
+    },
+    "step4": {
+      "title": "Deine Bewertung",
+      "text": "Etwa drei Minuten Aufwand. Du beschreibst in eigenen Worten, was sich verändert hat — Energie, Haut, Schlaf, Verdauung. Die Teilnahme bleibt freiwillig."
+    }
+  },
+  "actions": {
+    "reviewsCta": "Zum Bewertungsbereich →",
+    "homeCta": "Zurück zur Startseite"
+  },
+  "thanks": "Merci vilmal — du bist Teil von etwas Echtem."
+}

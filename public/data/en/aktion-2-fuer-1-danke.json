@@ -1,0 +1,46 @@
+{
+  "meta": {
+    "title": "Offer Secured | AmberNord",
+    "description": "You are part of the Launch Edition. Your order has been received.",
+    "canonical": "https://ambernord.ch/2-fuer-1/danke/",
+    "robots": "noindex, nofollow",
+    "og": {
+      "title": "Offer Secured | AmberNord",
+      "description": "You are part of the Launch Edition.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/v1778164908/Markteinf%C3%BChrungs-Aktion_2_The_Starter_zum_Preis_von_1_Im_Gegenzug_bitten_wir_nach_14_Tagen_um_eine_ehrliche_Bewertung_pbompq.jpg",
+      "type": "website"
+    }
+  },
+  "header": {
+    "eyebrow": "Launch Edition",
+    "h1": "You're in.<br><span>One of the 250 voices.</span>"
+  },
+  "confirm": {
+    "heading": "Order confirmed",
+    "lead": "Your Launch Edition order has been received. Both bottles will ship today or tomorrow at the latest from our logistics centre in Aarau."
+  },
+  "next": {
+    "title": "What happens next",
+    "step1": {
+      "title": "Shipping & confirmation",
+      "text": "You will receive a shipping confirmation by email with a tracking link as soon as the package is on its way."
+    },
+    "step2": {
+      "title": "14 days of daily use",
+      "text": "One tablespoon in the morning on an empty stomach — neat or 1:10 with water. The second bottle covers your full observation phase."
+    },
+    "step3": {
+      "title": "Day 14 — email reminder",
+      "text": "We send you a short email with the direct link to the review form. The link already contains your order number — you don't need to enter anything manually."
+    },
+    "step4": {
+      "title": "Your review",
+      "text": "Roughly three minutes of effort. You describe in your own words what changed — energy, skin, sleep, digestion. Participation remains voluntary."
+    }
+  },
+  "actions": {
+    "reviewsCta": "Go to reviews →",
+    "homeCta": "Back to home"
+  },
+  "thanks": "Thank you so much — you are part of something real."
+}

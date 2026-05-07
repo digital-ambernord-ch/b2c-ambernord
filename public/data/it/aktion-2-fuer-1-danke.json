@@ -1,0 +1,46 @@
+{
+  "meta": {
+    "title": "Offerta confermata | AmberNord",
+    "description": "Fai parte dell'Edizione di lancio. Il tuo ordine è stato ricevuto.",
+    "canonical": "https://ambernord.ch/2-fuer-1/danke/",
+    "robots": "noindex, nofollow",
+    "og": {
+      "title": "Offerta confermata | AmberNord",
+      "description": "Fai parte dell'Edizione di lancio.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/v1778164908/Markteinf%C3%BChrungs-Aktion_2_The_Starter_zum_Preis_von_1_Im_Gegenzug_bitten_wir_nach_14_Tagen_um_eine_ehrliche_Bewertung_pbompq.jpg",
+      "type": "website"
+    }
+  },
+  "header": {
+    "eyebrow": "Edizione di lancio",
+    "h1": "Ci sei.<br><span>Una delle 250 voci.</span>"
+  },
+  "confirm": {
+    "heading": "Ordine confermato",
+    "lead": "Il tuo ordine Edizione di lancio è stato ricevuto. Entrambe le bottiglie verranno spedite oggi o al più tardi domani dal nostro centro logistico di Aarau."
+  },
+  "next": {
+    "title": "Cosa succede dopo",
+    "step1": {
+      "title": "Spedizione & conferma",
+      "text": "Riceverai una conferma di spedizione via e-mail con link di tracciamento non appena il pacco sarà in viaggio."
+    },
+    "step2": {
+      "title": "14 giorni di utilizzo quotidiano",
+      "text": "Un cucchiaio al mattino a digiuno — puro o in proporzione 1:10 con acqua. La seconda bottiglia copre tutta la tua fase di osservazione."
+    },
+    "step3": {
+      "title": "Giorno 14 — promemoria via e-mail",
+      "text": "Ti inviamo una breve e-mail con il link diretto al modulo di recensione. Il link contiene già il tuo numero d'ordine — non devi inserire nulla manualmente."
+    },
+    "step4": {
+      "title": "La tua recensione",
+      "text": "Circa tre minuti di sforzo. Descrivi con parole tue cosa è cambiato — energia, pelle, sonno, digestione. La partecipazione resta facoltativa."
+    }
+  },
+  "actions": {
+    "reviewsCta": "Vai alle recensioni →",
+    "homeCta": "Torna alla home"
+  },
+  "thanks": "Grazie di cuore — fai parte di qualcosa di reale."
+}

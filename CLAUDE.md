@@ -112,8 +112,10 @@ Mobile breakpoint: `991px`.
 | `/hilfe/rueckgabe/` | `returns` | |
 | `/datenschutz/` | `datenschutz` | |
 | `/b2b/` | `b2b` | |
-| `/danke/` | `thankyou` | Stripe success redirect |
+| `/danke/` | `thankyou` | Stripe success redirect (regular orders) |
 | `/bewertungen/` | `bewertungen` | Customer reviews list + submission form (Web3Forms). Renders from `public/data/reviews.json` (manually curated) |
+| `/2-fuer-1/` | `aktion2fuer1` | Markteinführungs-Edition sales page (2 × The Starter for the price of 1). Stripe link `bJe8wRdqbgFjb8R5vhbQY08`. REDIRECTS: `/2+1/`, `/2plus1/`, `/markteinfuehrung/` → `/2-fuer-1/` |
+| `/2-fuer-1/danke/` | `aktion2fuer1Danke` | Stripe success_url for the 2-für-1 promo only — **must be set in Stripe Payment Link dashboard** as the after-payment redirect URL |
 
 Footer-linked but unmapped (fall through to `/`): `/impressum/`, `/agb/`, `/widerruf/`.
 

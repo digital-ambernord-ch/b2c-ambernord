@@ -1,0 +1,93 @@
+{
+  "meta": {
+    "title": "Edizione di lancio · 2 per 1 | AmberNord",
+    "description": "Edizione di lancio: 2 × The Starter al prezzo di 1. Limitato a 250 posti in Svizzera. In cambio chiediamo una recensione onesta dopo 14 giorni.",
+    "canonical": "https://ambernord.ch/2-fuer-1/",
+    "robots": "index, follow",
+    "og": {
+      "title": "Edizione di lancio · 2 per 1 | AmberNord",
+      "description": "2 × The Starter al prezzo di 1. Limitato a 250 posti. In cambio: la tua voce onesta.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/v1778164908/Markteinf%C3%BChrungs-Aktion_2_The_Starter_zum_Preis_von_1_Im_Gegenzug_bitten_wir_nach_14_Tagen_um_eine_ehrliche_Bewertung_pbompq.jpg",
+      "type": "website"
+    }
+  },
+  "hero": {
+    "eyebrow": "Edizione di lancio",
+    "h1": "Due bottiglie.<br><span>Un prezzo. Una richiesta onesta.</span>",
+    "sub": "Ricevi 2 × The Starter al prezzo di una bottiglia. In cambio ti chiediamo una recensione onesta dopo 14 giorni. Limitato a 250 posti in Svizzera.",
+    "imageAlt": "Promozione di lancio: 2 × The Starter al prezzo di 1",
+    "ctaLabel": "Prenota l'offerta",
+    "ctaPrice": "24.90 CHF · 2 × 250 ml",
+    "fine": "Spese di spedizione escluse · Pagamento sicuro con Stripe · TWINT, carte, PayPal"
+  },
+  "why": {
+    "eyebrow": "La nostra promessa",
+    "title": "Perché la seconda bottiglia è gratuita?",
+    "p1": "AmberNord è una giovane manifattura svizzera. Abbiamo deciso consapevolmente di rinunciare alle classiche campagne pubblicitarie. Invece di versare somme a sei cifre a piattaforme che non ci conoscono, investiamo in te — la persona che vive davvero il nostro elisir.",
+    "p2": "Il concentrato di olivello spinoso è polarizzante. Non è un succo dolce, ma un prodotto denso e onesto fatto di oltre 190 sostanze bioattive. Assaggiarlo una sola volta non dice nulla. Solo dopo 14 giorni di utilizzo quotidiano si può giudicare onestamente se si adatta al proprio rituale — e se le sottili variazioni di energia, pelle e digestione diventano percepibili.",
+    "p3": "Una bottiglia dura circa 25 giorni. La seconda bottiglia non è uno sconto, ma il nostro contributo all'equità: vogliamo che tu testi il prodotto in condizioni di vita reali, non sotto la pressione di una sola applicazione.",
+    "p4": "Cerchiamo 250 voci oneste — non 250 vendite veloci. La tua recensione plasma come AmberNord viene percepita in Svizzera. Se non scrivi una recensione, mantieni comunque entrambe le bottiglie. Crediamo nelle relazioni volontarie, non nelle controprestazioni forzate."
+  },
+  "deal": {
+    "title": "Cosa c'è nel pacco",
+    "bottlesKey": "Contenuto",
+    "bottlesVal": "2 × The Starter (250 ml)",
+    "priceKey": "Prezzo",
+    "priceVal": "24.90 CHF",
+    "priceStrike": "invece di 49.80 CHF",
+    "shippingKey": "Spedizione",
+    "shippingVal": "Spedizione premium da Aarau · entro 24 h",
+    "reminderKey": "Giorno 14",
+    "reminderVal": "Breve e-mail di promemoria con link al modulo di recensione",
+    "detailsLink": "Maggiori dettagli sul prodotto sulla pagina <a href=\"/shop/starter/\" data-link>The Starter</a>."
+  },
+  "steps": {
+    "title": "Come funziona",
+    "step1": {
+      "title": "Prenota l'offerta",
+      "text": "Ordine tramite Stripe. Spedizione entro 24 ore dal nostro centro logistico di Aarau."
+    },
+    "step2": {
+      "title": "14 giorni di utilizzo quotidiano",
+      "text": "Un cucchiaio al mattino a digiuno. La seconda bottiglia copre tutta la tua fase di osservazione."
+    },
+    "step3": {
+      "title": "Recensione onesta",
+      "text": "Giorno 14: breve e-mail di promemoria. Descrivi con parole tue cosa è cambiato. Circa tre minuti di sforzo."
+    }
+  },
+  "faq": {
+    "title": "Domande frequenti",
+    "q1": {
+      "q": "Perché regalate il prodotto? Non è sospetto?",
+      "a": "Siamo una piccola manifattura svizzera senza budget pubblicitario. Una recensione onesta da te vale più per noi di qualsiasi annuncio a pagamento. Invece di dare i soldi alle piattaforme pubblicitarie, ti inviamo una seconda bottiglia."
+    },
+    "q2": {
+      "q": "E se non volessi scrivere una recensione?",
+      "a": "Mantieni entrambe le bottiglie — niente rimborsi, nessuna richiesta. La richiesta di recensione è facoltativa. Vogliamo parole oneste, non forzate."
+    },
+    "q3": {
+      "q": "E se il prodotto non fa per me?",
+      "a": "Scrivilo onestamente. Pubblichiamo anche recensioni critiche purché siano rispettose. Le esperienze negative sono preziose per noi — ci aiutano a migliorare e a dare ai futuri clienti aspettative realistiche."
+    },
+    "q4": {
+      "q": "Come verrà utilizzata la mia recensione?",
+      "a": "Pubblichiamo nome, città e testo della recensione sulla pagina delle recensioni. Il tuo indirizzo e-mail rimane riservato e viene usato esclusivamente per verificare il tuo ordine."
+    },
+    "q5": {
+      "q": "Fino a quando dura l'offerta?",
+      "a": "Finché i 250 posti non saranno assegnati. Dopodiché potrai ordinare The Starter al prezzo regolare o scegliere pacchetti più grandi (The Habit, The Protocol)."
+    },
+    "q6": {
+      "q": "Posso usare l'offerta più volte?",
+      "a": "Una volta per persona e indirizzo. Vogliamo ascoltare 250 voci diverse, non una voce 250 volte."
+    }
+  },
+  "final": {
+    "title": "Diventa una delle 250 voci.",
+    "sub": "I primi clienti plasmano come AmberNord viene percepita in Svizzera. Non sei solo un acquirente — sei co-creatore.",
+    "ctaLabel": "Prenota l'offerta di lancio",
+    "ctaPrice": "24.90 CHF · 2 × 250 ml · spese di spedizione escluse",
+    "trust": "Manifattura svizzera · Certificato bio · Pagamento sicuro · Limitato a 250 posti"
+  }
+}

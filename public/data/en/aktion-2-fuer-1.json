@@ -1,0 +1,93 @@
+{
+  "meta": {
+    "title": "Launch Edition · 2 for 1 | AmberNord",
+    "description": "Launch Edition: 2 × The Starter for the price of 1. Limited to 250 spots in Switzerland. In exchange, we ask for an honest review after 14 days.",
+    "canonical": "https://ambernord.ch/2-fuer-1/",
+    "robots": "index, follow",
+    "og": {
+      "title": "Launch Edition · 2 for 1 | AmberNord",
+      "description": "2 × The Starter for the price of 1. Limited to 250 spots. In exchange: your honest voice.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/v1778164908/Markteinf%C3%BChrungs-Aktion_2_The_Starter_zum_Preis_von_1_Im_Gegenzug_bitten_wir_nach_14_Tagen_um_eine_ehrliche_Bewertung_pbompq.jpg",
+      "type": "website"
+    }
+  },
+  "hero": {
+    "eyebrow": "Launch Edition",
+    "h1": "Two bottles.<br><span>One price. One honest request.</span>",
+    "sub": "You receive 2 × The Starter for the price of one bottle. In exchange, we ask for your honest review after 14 days. Limited to 250 spots in Switzerland.",
+    "imageAlt": "Launch promotion: 2 × The Starter for the price of 1",
+    "ctaLabel": "Claim the offer",
+    "ctaPrice": "24.90 CHF · 2 × 250 ml",
+    "fine": "Plus shipping · Secure payment via Stripe · TWINT, cards, PayPal"
+  },
+  "why": {
+    "eyebrow": "Our promise",
+    "title": "Why is the second bottle free?",
+    "p1": "AmberNord is a young Swiss manufactory. We have deliberately decided against classic ad campaigns. Instead of paying six-figure sums to platforms that do not know us, we invest in you — the person who actually experiences our elixir.",
+    "p2": "Sea-buckthorn concentrate is polarising. It is not a sweet juice but a dense, honest product made from 190+ bioactive compounds. Tasting it once tells you nothing. Only after 14 days of daily use can you honestly judge whether it fits into your ritual — and whether the subtle changes in energy, skin and digestion become tangible.",
+    "p3": "One bottle lasts about 25 days. The second bottle is not a discount but our contribution to fairness: we want you to test the product under real everyday conditions, not under the pressure of a single use.",
+    "p4": "We are looking for 250 honest voices — not 250 quick sales. Your review shapes how AmberNord is perceived in Switzerland. If you choose not to write a review, you keep both bottles regardless. We believe in voluntary relationships, not forced returns of favour."
+  },
+  "deal": {
+    "title": "What's in the package",
+    "bottlesKey": "Contents",
+    "bottlesVal": "2 × The Starter (250 ml)",
+    "priceKey": "Price",
+    "priceVal": "24.90 CHF",
+    "priceStrike": "instead of 49.80 CHF",
+    "shippingKey": "Shipping",
+    "shippingVal": "Premium shipping from Aarau · within 24 h",
+    "reminderKey": "Day 14",
+    "reminderVal": "Short email reminder with link to the review form",
+    "detailsLink": "Find more product details on the <a href=\"/shop/starter/\" data-link>The Starter</a> page."
+  },
+  "steps": {
+    "title": "How it works",
+    "step1": {
+      "title": "Claim the offer",
+      "text": "Order via Stripe. Shipping within 24 hours from our logistics centre in Aarau."
+    },
+    "step2": {
+      "title": "14 days of daily use",
+      "text": "One tablespoon in the morning on an empty stomach. The second bottle covers your full observation phase."
+    },
+    "step3": {
+      "title": "Honest review",
+      "text": "Day 14: short email reminder. You describe in your own words what changed. Roughly three minutes of effort."
+    }
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "q1": {
+      "q": "Why are you giving away product? Isn't that suspicious?",
+      "a": "We are a small Swiss manufactory without an advertising budget. An honest review from you is worth more to us than any paid ad. Instead of giving the money to ad platforms, we send you a second bottle."
+    },
+    "q2": {
+      "q": "What if I don't want to write a review?",
+      "a": "You keep both bottles — no refund, no demand. The request for a review is voluntary. We want honest words, not forced ones."
+    },
+    "q3": {
+      "q": "What if the product isn't for me?",
+      "a": "Write it honestly. We also publish critical reviews as long as they are respectful. Negative experiences are valuable to us — they help us improve and give future customers realistic expectations."
+    },
+    "q4": {
+      "q": "How will my review be used?",
+      "a": "We publish first name, city and review text on the reviews page. Your email address remains confidential and is used solely to verify your order."
+    },
+    "q5": {
+      "q": "Until when does the offer run?",
+      "a": "Until the 250 spots are taken. After that you can order The Starter at the regular price or choose larger packages (The Habit, The Protocol)."
+    },
+    "q6": {
+      "q": "Can I use the offer multiple times?",
+      "a": "Once per person and address. We want to hear 250 different voices, not one voice 250 times."
+    }
+  },
+  "final": {
+    "title": "Become one of the 250 voices.",
+    "sub": "Early customers shape how AmberNord is perceived in Switzerland. You are not just a buyer — you are a co-creator.",
+    "ctaLabel": "Claim the launch offer",
+    "ctaPrice": "24.90 CHF · 2 × 250 ml · plus shipping",
+    "trust": "Swiss manufactory · Organic certified · Secure payment · Limited to 250 spots"
+  }
+}

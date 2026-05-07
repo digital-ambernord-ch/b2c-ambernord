@@ -1,0 +1,93 @@
+{
+  "meta": {
+    "title": "Markteinführungs-Edition · 2 für 1 | AmberNord",
+    "description": "Markteinführungs-Edition: 2 × The Starter zum Preis von 1. Limitiert auf 250 Plätze in der Schweiz. Im Gegenzug bitten wir nach 14 Tagen um eine ehrliche Bewertung.",
+    "canonical": "https://ambernord.ch/2-fuer-1/",
+    "robots": "index, follow",
+    "og": {
+      "title": "Markteinführungs-Edition · 2 für 1 | AmberNord",
+      "description": "2 × The Starter zum Preis von 1. Limitiert auf 250 Plätze. Im Gegenzug: deine ehrliche Stimme.",
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/v1778164908/Markteinf%C3%BChrungs-Aktion_2_The_Starter_zum_Preis_von_1_Im_Gegenzug_bitten_wir_nach_14_Tagen_um_eine_ehrliche_Bewertung_pbompq.jpg",
+      "type": "website"
+    }
+  },
+  "hero": {
+    "eyebrow": "Markteinführungs-Edition",
+    "h1": "Zwei Flaschen.<br><span>Ein Preis. Eine ehrliche Bitte.</span>",
+    "sub": "Du erhältst 2 × The Starter zum Preis von einer Flasche. Im Gegenzug bitten wir nach 14 Tagen um deine ehrliche Bewertung. Limitiert auf 250 Plätze in der Schweiz.",
+    "imageAlt": "Markteinführungs-Aktion: 2 × The Starter zum Preis von 1",
+    "ctaLabel": "Aktion sichern",
+    "ctaPrice": "24.90 CHF · 2 × 250 ml",
+    "fine": "zzgl. Versand · Sicher zahlen mit Stripe · TWINT, Karten, PayPal"
+  },
+  "why": {
+    "eyebrow": "Unser Versprechen",
+    "title": "Warum die zweite Flasche kostenlos?",
+    "p1": "AmberNord ist eine junge Schweizer Manufaktur. Wir haben uns bewusst gegen klassische Werbekampagnen entschieden. Statt sechsstellige Beträge an Plattformen zu zahlen, die uns nicht kennen, investieren wir in dich — den Menschen, der unser Elixier wirklich erlebt.",
+    "p2": "Sanddorn-Konzentrat ist polarisierend. Es ist kein süsslicher Saft, sondern ein dichtes, ehrliches Produkt aus 190+ bioaktiven Stoffen. Wer es ein einziges Mal probiert, weiss noch nichts. Erst nach 14 Tagen täglicher Anwendung kann man ehrlich beurteilen, ob es zum eigenen Ritual passt — und ob die feinen Veränderungen in Energie, Haut und Verdauung spürbar werden.",
+    "p3": "Eine Flasche reicht für rund 25 Tage. Die zweite Flasche ist kein Rabatt, sondern unser Beitrag zur Fairness: Wir möchten, dass du das Produkt unter realen Alltagsbedingungen testest, nicht unter Druck einer einzigen Anwendung.",
+    "p4": "Wir suchen 250 ehrliche Stimmen — keine 250 schnellen Verkäufe. Deine Bewertung formt, wie AmberNord in der Schweiz wahrgenommen wird. Schreibst du keine Bewertung, behältst du beide Flaschen trotzdem. Wir glauben an freiwillige Beziehungen, nicht an erzwungene Gegenleistungen."
+  },
+  "deal": {
+    "title": "Was im Paket ist",
+    "bottlesKey": "Inhalt",
+    "bottlesVal": "2 × The Starter (250 ml)",
+    "priceKey": "Preis",
+    "priceVal": "24.90 CHF",
+    "priceStrike": "statt 49.80 CHF",
+    "shippingKey": "Versand",
+    "shippingVal": "Premium-Versand aus Aarau · innerhalb 24 h",
+    "reminderKey": "Tag 14",
+    "reminderVal": "Kurze E-Mail-Erinnerung mit Link zum Bewertungsformular",
+    "detailsLink": "Mehr Details zum Produkt findest du auf der <a href=\"/shop/starter/\" data-link>The Starter</a>-Seite."
+  },
+  "steps": {
+    "title": "So funktioniert es",
+    "step1": {
+      "title": "Aktion sichern",
+      "text": "Bestellung über Stripe. Versand innerhalb von 24 Stunden aus unserem Logistikzentrum in Aarau."
+    },
+    "step2": {
+      "title": "14 Tage täglich",
+      "text": "Ein Esslöffel morgens auf nüchternen Magen. Die zweite Flasche reicht für deine vollständige Beobachtungsphase."
+    },
+    "step3": {
+      "title": "Ehrlich bewerten",
+      "text": "Tag 14: kurze E-Mail-Erinnerung. Du beschreibst in eigenen Worten, was sich verändert hat. Etwa drei Minuten Aufwand."
+    }
+  },
+  "faq": {
+    "title": "Häufige Fragen",
+    "q1": {
+      "q": "Warum verschenkt ihr Produkt? Ist das nicht verdächtig?",
+      "a": "Wir sind eine kleine Schweizer Manufaktur ohne Werbebudget. Eine ehrliche Bewertung von dir ist für uns wertvoller als jede bezahlte Anzeige. Statt das Geld an Werbeplattformen zu geben, schicken wir dir eine zweite Flasche."
+    },
+    "q2": {
+      "q": "Was, wenn ich keine Bewertung schreiben möchte?",
+      "a": "Du behältst beide Flaschen — kein Refund, keine Forderung. Die Bitte um Bewertung ist freiwillig. Wir möchten keine erzwungenen Worte, sondern echte."
+    },
+    "q3": {
+      "q": "Was, wenn das Produkt nicht zu mir passt?",
+      "a": "Schreib es ehrlich. Auch kritische Bewertungen veröffentlichen wir, sofern sie respektvoll sind. Negative Erfahrungen sind für uns wertvoll — sie helfen uns, das Produkt zu verbessern und zukünftigen Kunden eine realistische Erwartung zu geben."
+    },
+    "q4": {
+      "q": "Wie wird meine Bewertung verwendet?",
+      "a": "Wir veröffentlichen Vorname, Stadt und Bewertungstext auf der Bewertungsseite. Deine E-Mail-Adresse bleibt vertraulich und wird ausschliesslich zur Verifizierung deiner Bestellung verwendet."
+    },
+    "q5": {
+      "q": "Bis wann läuft die Aktion?",
+      "a": "Bis die 250 Plätze vergeben sind. Danach kannst du The Starter zum regulären Preis bestellen oder grössere Pakete (The Habit, The Protocol) wählen."
+    },
+    "q6": {
+      "q": "Kann ich die Aktion mehrfach nutzen?",
+      "a": "Pro Person und Adresse einmal. Wir möchten 250 unterschiedliche Stimmen hören, nicht eine Stimme 250-mal."
+    }
+  },
+  "final": {
+    "title": "Werde eine der 250 Stimmen.",
+    "sub": "Erstkunden gestalten, wie AmberNord in der Schweiz wahrgenommen wird. Du bist nicht nur Käufer — du bist Mitgestalter.",
+    "ctaLabel": "Markteinführungs-Aktion sichern",
+    "ctaPrice": "24.90 CHF · 2 × 250 ml · zzgl. Versand",
+    "trust": "Schweizer Manufaktur · Bio-zertifiziert · Sicher zahlen · Limitiert auf 250 Plätze"
+  }
+}
