@@ -234,6 +234,16 @@
       type:        'thankyou',
       sticky:      null,
       schema:      null
+    },
+
+    '/bewertungen/': {
+      page:        '/pages/bewertungen.html',
+      title:       'Kundenbewertungen | AmberNord',
+      description: 'Echte Stimmen aus der Schweiz: ungefilterte Erfahrungen mit dem AmberNord Sanddorn-Elixier nach 14 Tagen täglicher Anwendung.',
+      canonical:   'https://ambernord.ch/bewertungen/',
+      type:        'bewertungen',
+      sticky:      null,
+      schema:      null
     }
   };
 
@@ -252,7 +262,8 @@
     bestellstatus:    'initBestellstatus',
     thankyou:         'initThankyou',
     datenschutz:      'initDatenschutz',
-    returns:          'initReturns'
+    returns:          'initReturns',
+    bewertungen:      'initBewertungen'
   };
 
   const pageCache = {};

@@ -1,0 +1,108 @@
+<a href="#bewertungen-main" class="skip-link">Skip to content</a>
+
+<div class="bewertungen-page-container">
+
+  <div class="subpage-header">
+    <span class="subpage-subtitle" data-i18n="header.eyebrow">Echte Stimmen</span>
+    <h1 data-i18n="header.h1">Kundenbewertungen</h1>
+  </div>
+
+  <section id="bewertungen-main">
+
+    <section class="bewertungen-intro" aria-labelledby="bewertungen-intro-heading">
+      <h2 id="bewertungen-intro-heading" class="sr-only" data-i18n="intro.heading">Kundenbewertungen</h2>
+      <div class="bewertungen-intro__inner">
+        <p class="bewertungen-body" data-i18n="intro.p1">Ungefilterte Erfahrungen aus der Schweiz &mdash; nach mindestens 14 Tagen t&auml;glicher Anwendung. Jede Bewertung wird von uns auf Bestellnummer gepr&uuml;ft, bevor sie ver&ouml;ffentlicht wird.</p>
+      </div>
+    </section>
+
+    <section class="bewertungen-aggregate-section" aria-labelledby="bewertungen-aggregate-heading" hidden id="bewertungen-aggregate">
+      <h2 id="bewertungen-aggregate-heading" class="sr-only">Bewertungs&uuml;bersicht</h2>
+      <div class="bewertungen-aggregate">
+        <div class="bewertungen-aggregate-stars" id="bewertungen-aggregate-stars" aria-hidden="true"></div>
+        <div class="bewertungen-aggregate-meta">
+          <span class="bewertungen-aggregate-avg" id="bewertungen-aggregate-avg">&mdash;</span>
+          <span class="bewertungen-aggregate-divider" aria-hidden="true">&middot;</span>
+          <span class="bewertungen-aggregate-count" id="bewertungen-aggregate-count">0 Bewertungen</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="bewertungen-list-section" aria-labelledby="bewertungen-list-heading">
+      <h2 id="bewertungen-list-heading" class="bewertungen-section-title" data-i18n="list.heading">Alle Bewertungen</h2>
+
+      <div class="bewertungen-list" id="bewertungen-list" role="list">
+        <div class="bewertungen-empty" id="bewertungen-empty">
+          <p data-i18n="list.empty">Noch keine Bewertungen ver&ouml;ffentlicht. Sei der Erste &mdash; teile deine Erfahrung unten.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="bewertungen-form-section" aria-labelledby="bewertungen-form-heading" id="bewertung-abgeben">
+      <div class="bewertungen-form-card">
+        <h2 id="bewertungen-form-heading" class="bewertungen-section-title" data-i18n="form.heading">Bewertung abgeben</h2>
+        <p class="bewertungen-form-intro" data-i18n="form.intro">Deine Bewertung erscheint nach Pr&uuml;fung der Bestellnummer. Wir ver&ouml;ffentlichen nur Vorname und Stadt &mdash; deine E-Mail bleibt vertraulich.</p>
+
+        <form id="bewertung-form" class="bewertungen-form" novalidate>
+
+          <fieldset class="bewertungen-stars-fieldset">
+            <legend class="bewertungen-label" data-i18n="form.stars">Bewertung</legend>
+            <div class="bewertungen-stars-input" role="radiogroup" aria-label="Sternebewertung 1 bis 5">
+              <input type="radio" name="stars" id="star5" value="5" required>
+              <label for="star5" aria-label="5 Sterne">&#9733;</label>
+              <input type="radio" name="stars" id="star4" value="4">
+              <label for="star4" aria-label="4 Sterne">&#9733;</label>
+              <input type="radio" name="stars" id="star3" value="3">
+              <label for="star3" aria-label="3 Sterne">&#9733;</label>
+              <input type="radio" name="stars" id="star2" value="2">
+              <label for="star2" aria-label="2 Sterne">&#9733;</label>
+              <input type="radio" name="stars" id="star1" value="1">
+              <label for="star1" aria-label="1 Stern">&#9733;</label>
+            </div>
+          </fieldset>
+
+          <div class="bewertungen-field">
+            <label for="bw-name" class="bewertungen-label" data-i18n="form.name">Vorname (oder Initialen)</label>
+            <input type="text" id="bw-name" name="name" required maxlength="40" autocomplete="given-name">
+          </div>
+
+          <div class="bewertungen-field">
+            <label for="bw-city" class="bewertungen-label" data-i18n="form.city">Stadt</label>
+            <input type="text" id="bw-city" name="city" required maxlength="40" autocomplete="address-level2">
+          </div>
+
+          <div class="bewertungen-field">
+            <label for="bw-email" class="bewertungen-label" data-i18n="form.email">E-Mail (vertraulich, nur f&uuml;r Verifizierung)</label>
+            <input type="email" id="bw-email" name="email" required maxlength="120" autocomplete="email">
+          </div>
+
+          <div class="bewertungen-field">
+            <label for="bw-order" class="bewertungen-label" data-i18n="form.order">Bestellnummer (aus Stripe-Best&auml;tigungsmail)</label>
+            <input type="text" id="bw-order" name="order_id" required maxlength="60" placeholder="z.B. pi_3OK...">
+          </div>
+
+          <div class="bewertungen-field">
+            <label for="bw-text" class="bewertungen-label" data-i18n="form.text">Deine Erfahrung</label>
+            <textarea id="bw-text" name="review_text" rows="5" required minlength="40" maxlength="600" placeholder="Was hat sich nach 14 Tagen ver&auml;ndert? Geschmack, Wirkung, Alltag &mdash; ehrlich."></textarea>
+            <span class="bewertungen-counter"><span id="bw-text-count">0</span> / 600</span>
+          </div>
+
+          <div class="bewertungen-field bewertungen-field-checkbox">
+            <input type="checkbox" id="bw-consent" name="consent" required>
+            <label for="bw-consent" data-i18n-html="form.consent">Ich erlaube AmberNord, meinen Vornamen, meine Stadt und meinen Bewertungstext auf der Website zu ver&ouml;ffentlichen. Meine E-Mail bleibt vertraulich.</label>
+          </div>
+
+          <button type="submit" id="bw-submit" class="bewertungen-submit">
+            <span id="bw-submit-text" data-i18n="form.submit.label">Bewertung absenden</span>
+          </button>
+
+          <div class="bewertungen-success" id="bw-success" hidden>
+            <p data-i18n="form.success">Vielen Dank! Deine Bewertung wurde eingereicht. Nach Pr&uuml;fung der Bestellnummer erscheint sie hier &mdash; meist innerhalb von 48 Stunden.</p>
+          </div>
+
+        </form>
+      </div>
+    </section>
+
+  </section>
+</div>

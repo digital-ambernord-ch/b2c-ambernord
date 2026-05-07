@@ -110,6 +110,7 @@ Mobile breakpoint: `991px`.
 | `/datenschutz/` | `datenschutz` | |
 | `/b2b/` | `b2b` | |
 | `/danke/` | `thankyou` | Stripe success redirect |
+| `/bewertungen/` | `bewertungen` | Customer reviews list + submission form (Web3Forms). Renders from `public/data/reviews.json` (manually curated) |
 
 Footer-linked but unmapped (fall through to `/`): `/impressum/`, `/agb/`, `/widerruf/`.
 
