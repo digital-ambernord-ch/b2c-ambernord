@@ -55,6 +55,9 @@ First-party `cookie_consent` cookie (categories: `necessary`, `analytics`, `mark
 
 **See [COOKIE-CONSENT.md](COOKIE-CONSENT.md) for full operator guide** (adding vendors, CSP, testing checklist). Read this before adding any third-party tag.
 
+### Aktion bar — [public/js/aktion-bar.js](public/js/aktion-bar.js) + [public/css/aktion-bar.css](public/css/aktion-bar.css)
+Top announcement bar above the nav, copy in `common.json` `aktion.*`. The `html.aktion-active` class is set **synchronously** by an inline script in [public/index.html](public/index.html) `<head>` (avoids layout shift). When active, body gets `padding-top: 36px`, topbar drops to `top: 36px`, subpage hero drops to `top: 118px` — these overrides live in `aktion-bar.css`. Dismiss writes `localStorage.amber_aktion_dismissed_<version>` (one year). **Bump `AKTION_VERSION` in both [aktion-bar.js](public/js/aktion-bar.js) AND the inline script in [index.html](public/index.html)** when the message changes — this re-shows the bar to all visitors.
+
 ### i18n — [public/js/i18n.js](public/js/i18n.js)
 `window.loadI18n(lang, page)` fetches `/data/<lang>/<page>.json`, falls back to `de` on miss. Walks DOM and writes:
 - `[data-i18n="key.path"]` → `textContent`

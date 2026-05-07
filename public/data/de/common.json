@@ -19,6 +19,12 @@
     "copyright": "©2026 AmberNord. Alle Rechte vorbehalten.",
     "privacy": "Datenschutz"
   },
+  "aktion": {
+    "eyebrow": "Markteinführungs-Edition",
+    "body": "2 × The Starter zum Preis von 1 · Limitiert auf 250 Plätze",
+    "cta": "Jetzt sichern →",
+    "dismiss": "Aktion schließen"
+  },
   "cta": {
     "startNow": "Jetzt starten",
     "buyNow": "Jetzt bestellen",

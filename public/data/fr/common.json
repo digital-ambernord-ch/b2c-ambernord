@@ -19,6 +19,12 @@
     "copyright": "©2026 AmberNord. Tous droits réservés.",
     "privacy": "Confidentialité"
   },
+  "aktion": {
+    "eyebrow": "Édition de lancement",
+    "body": "2 × The Starter pour le prix d'un · Limité à 250 places",
+    "cta": "Réserver →",
+    "dismiss": "Fermer la promo"
+  },
   "cta": {
     "startNow": "Commencer",
     "buyNow": "Commander",

@@ -46,11 +46,38 @@
   <link rel="stylesheet" href="/css/datenschutz.css">
   <link rel="stylesheet" href="/css/returns.css">
   <link rel="stylesheet" href="/css/bewertungen.css">
+  <link rel="stylesheet" href="/css/aktion-bar.css">
   <link rel="stylesheet" href="/css/cookie-consent.css">
+
+  <script>
+    /* Aktion bar — set class synchronously to avoid layout shift.
+       Bump version key here AND in /js/aktion-bar.js when message changes. */
+    (function () {
+      try {
+        if (localStorage.getItem('amber_aktion_dismissed_v1') !== '1') {
+          document.documentElement.classList.add('aktion-active');
+        }
+      } catch (_) {
+        document.documentElement.classList.add('aktion-active');
+      }
+    })();
+  </script>
 </head>
 <body>
 
 <a href="#app" class="skip-link">Skip to content</a>
+
+<div class="aktion-bar" id="aktionBar" role="region" aria-label="Aktion">
+  <a class="aktion-bar-link" href="/shop/starter/" data-link>
+    <span class="aktion-bar-eyebrow" data-i18n="aktion.eyebrow">Markteinführungs-Edition</span>
+    <span class="aktion-bar-divider" aria-hidden="true">·</span>
+    <span class="aktion-bar-body" data-i18n="aktion.body">2 × The Starter zum Preis von 1 · Limitiert auf 250 Plätze</span>
+    <span class="aktion-bar-divider" aria-hidden="true">·</span>
+    <span class="aktion-bar-cta" data-i18n="aktion.cta">Jetzt sichern →</span>
+  </a>
+  <button type="button" class="aktion-bar-close" id="aktionBarClose"
+          data-i18n-attr="aria-label:aktion.dismiss" aria-label="Aktion schließen">×</button>
+</div>
 
 <div id="ambernord-subpage-hero-bg" class="ambernord-subpage-hero" aria-hidden="true">
   <img src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto/v1774787737/AmberNord_Sanddorn_Biohacking_Longevity_Schweiz_Natur_Ritual_Essenz_jwznsd.webp" alt="" loading="lazy" decoding="async">
@@ -330,6 +357,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
 <script src="/js/i18n.js" defer></script>
 <script src="/js/cookie-consent.js" defer></script>
+<script src="/js/aktion-bar.js" defer></script>
 <script src="/js/ui.js" defer></script>
 <script src="/js/router.js" defer></script>
 <script src="/js/landing.js" defer></script>
