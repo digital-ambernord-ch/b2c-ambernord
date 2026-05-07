@@ -34,5 +34,21 @@
   "cta": {
     "label": "Torna al negozio",
     "href": "https://ambernord-ritual-v2.dashnexpages.net/startseite/?go=ritual-products"
+  },
+  "nextSteps": {
+    "heading": "Cosa succede dopo",
+    "step1": {
+      "title": "Spedizione",
+      "text": "Imballiamo con cura il tuo ordine nel nostro centro logistico di Aarau e lo spediamo solitamente entro 24 ore."
+    },
+    "step2": {
+      "title": "Giorno 14 — Promemoria via e-mail",
+      "text": "Dopo 14 giorni di utilizzo quotidiano ricevi una breve e-mail che ti chiede una recensione onesta. La partecipazione è facoltativa."
+    },
+    "step3": {
+      "title": "Condividi la tua esperienza",
+      "text": "Descrivi con parole tue cosa è cambiato — energia, pelle, sonno, digestione. Dopo la verifica del tuo numero d'ordine, la recensione apparirà sul sito."
+    },
+    "cta": "Lascia una recensione più tardi →"
   }
 }

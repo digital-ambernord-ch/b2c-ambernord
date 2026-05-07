@@ -34,5 +34,21 @@
   "cta": {
     "label": "Zurück zum Shop",
     "href": "https://ambernord-ritual-v2.dashnexpages.net/startseite/?go=ritual-products"
+  },
+  "nextSteps": {
+    "heading": "Was als Nächstes passiert",
+    "step1": {
+      "title": "Versand",
+      "text": "Wir verpacken deine Bestellung sorgfältig in unserem Logistikzentrum in Aarau und versenden sie meist innerhalb von 24 Stunden."
+    },
+    "step2": {
+      "title": "Tag 14 — Erinnerung per E-Mail",
+      "text": "Nach 14 Tagen täglicher Anwendung erhältst du eine kurze E-Mail mit der Bitte um eine ehrliche Bewertung. Die Teilnahme ist freiwillig."
+    },
+    "step3": {
+      "title": "Deine Erfahrung teilen",
+      "text": "Du beschreibst in eigenen Worten, was sich verändert hat — Energie, Haut, Schlaf, Verdauung. Nach Prüfung deiner Bestellnummer erscheint die Bewertung auf der Website."
+    },
+    "cta": "Bewertung später abgeben →"
   }
 }

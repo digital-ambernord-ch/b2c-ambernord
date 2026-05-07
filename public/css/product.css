@@ -206,6 +206,85 @@
   border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
+/* =========================================================================
+   MARKTEINFÜHRUNGS-AKTION panel (above the .order-btn-stripe CTA).
+   Scoped to product page; mirrors design tokens.
+   ========================================================================= */
+.aktion-product-panel {
+  margin: 0 0 8px;
+  padding: 20px 22px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-gold);
+  border-left: 3px solid var(--color-gold);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.aktion-product-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.aktion-product-title {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--color-text);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.aktion-product-conditions {
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.aktion-product-conditions li {
+  position: relative;
+  padding-left: 22px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+.aktion-product-conditions li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--color-gold);
+  font-weight: 700;
+}
+
+.aktion-product-fine {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: var(--color-text-dim);
+  margin: 6px 0 0;
+  line-height: 1.5;
+}
+
+.aktion-product-fine a {
+  color: var(--color-gold);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.aktion-product-fine a:hover {
+  color: var(--color-gold-hover);
+}
+
 /* Primary order button */
 .order-btn-stripe {
   display: block;

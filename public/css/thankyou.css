@@ -202,3 +202,109 @@
     margin-bottom: 60px;
   }
 }
+
+/* =========================================================================
+   POST-PURCHASE NEXT-STEPS PANEL — Bewertungs-Hinweis nach Bestellung.
+   ========================================================================= */
+
+.thankyou-next-steps {
+  max-width: 720px;
+  margin: 60px auto 0;
+  padding: 32px var(--container-pad);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-gold);
+  border-radius: 8px;
+}
+
+.thankyou-next-steps-title {
+  font-family: var(--font-serif);
+  font-size: clamp(22px, 3vw, 28px);
+  font-weight: 500;
+  color: var(--color-text);
+  text-align: center;
+  margin: 0 0 24px;
+  line-height: 1.2;
+}
+
+.thankyou-next-steps-list {
+  list-style: none;
+  margin: 0 0 24px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.thankyou-next-steps-list > li {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.thankyou-step-num {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-border-gold);
+  border-radius: 50%;
+  font-family: var(--font-serif);
+  font-size: 16px;
+  color: var(--color-gold);
+  background-color: var(--color-bg);
+}
+
+.thankyou-step-title {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-text);
+  margin: 4px 0 6px;
+}
+
+.thankyou-step-text {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.thankyou-next-cta {
+  display: block;
+  text-align: center;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  text-decoration: none;
+  padding: 12px 20px;
+  border: 1px solid var(--color-border-gold);
+  border-radius: 4px;
+  transition: background-color var(--t-fast) ease, color var(--t-fast) ease;
+}
+
+.thankyou-next-cta:hover,
+.thankyou-next-cta:focus-visible {
+  background-color: var(--color-gold);
+  color: var(--color-bg);
+}
+
+@media (max-width: 768px) {
+  .thankyou-next-steps {
+    padding: 24px 16px;
+    margin-top: 40px;
+  }
+  .thankyou-step-title {
+    font-size: 13px;
+  }
+  .thankyou-step-text {
+    font-size: 13px;
+  }
+}
