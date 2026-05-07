@@ -27,16 +27,16 @@ html.aktion-active .aktion-bar {
   color: var(--color-text);
 }
 
+html.aktion-active {
+  --aktion-height: 36px;
+}
+
 html.aktion-active body {
   padding-top: 36px;
 }
 
 html.aktion-active .ambernord-topbar {
   top: 36px;
-}
-
-html.aktion-active .ambernord-subpage-hero {
-  top: 118px;
 }
 
 .aktion-bar-link {

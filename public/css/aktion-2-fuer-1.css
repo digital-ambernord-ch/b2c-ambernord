@@ -230,6 +230,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-sm);
+  align-items: start;
 }
 
 .aktion-mini-faq-item {

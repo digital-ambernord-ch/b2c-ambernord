@@ -23,11 +23,13 @@ window.initLanding = async function () {
     const id = video.dataset.videoId;
     if (!id) return;
 
+    /* No f_auto for video — Cloudinary may serve webm which mismatches <source type="video/mp4">.
+       Stick to mp4 and only vary width + quality. */
     const w = window.innerWidth;
     let transform;
-    if      (w <= 640)  transform = 'w_640,q_auto:eco,f_auto';
-    else if (w <= 1024) transform = 'w_1024,q_auto:eco,f_auto';
-    else                transform = 'w_1600,q_auto:good,f_auto';
+    if      (w <= 640)  transform = 'w_640,q_auto:eco';
+    else if (w <= 1024) transform = 'w_1024,q_auto:eco';
+    else                transform = 'w_1600,q_auto:good';
 
     const source = document.createElement('source');
     source.type = 'video/mp4';

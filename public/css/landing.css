@@ -86,8 +86,9 @@
 
 .sticky-viewport {
   position: sticky;
-  top: var(--nav-height);
-  height: calc(100vh - var(--nav-height));
+  /* +12px gap so the rounded corners of .scalable-hero stay visible below topbar (and aktion bar). */
+  top: calc(var(--nav-height) + var(--aktion-height) + 12px);
+  height: calc(100vh - var(--nav-height) - var(--aktion-height) - 12px);
   width: 100vw;
   display: flex;
   align-items: center;

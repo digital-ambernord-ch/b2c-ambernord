@@ -40,6 +40,7 @@
   --container-max: 1400px;
   --container-pad: 20px;
   --nav-height:    80px;
+  --aktion-height: 0px;  /* overridden by html.aktion-active in aktion-bar.css */
 
   /* --- Z-index layers (no more z-index chaos) --- */
   --z-base:    1;
@@ -355,7 +356,8 @@ h1 span, h2 span {
 
 .ambernord-subpage-hero {
   position: fixed;
-  top: 82px;
+  /* nav (80) + aktion bar (0 or 36) + 8px gap so rounded corners stay visible. */
+  top: calc(var(--nav-height) + var(--aktion-height) + 8px);
   left: 6px;
   right: 6px;
   height: 65vh;
