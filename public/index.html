@@ -62,6 +62,18 @@
         document.documentElement.classList.add('aktion-active');
       }
     })();
+
+    /* Landing-only — pre-hide the topbar EU bio badge on path "/" before first
+       paint, so the badge does NOT flash on initial load. The router and
+       landing.js then take over: each navigation removes this class, and only
+       initLanding re-adds it. Subpages never carry it, so the badge stays
+       visible there as before. */
+    (function () {
+      var p = window.location.pathname;
+      if (p === '/' || p === '/index.html') {
+        document.documentElement.classList.add('landing-hero-active');
+      }
+    })();
   </script>
 </head>
 <body>

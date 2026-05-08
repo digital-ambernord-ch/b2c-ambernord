@@ -36,19 +36,35 @@ window.initLanding = async function () {
 
   document.documentElement.classList.add('landing-hero-active');
 
-  ScrollTrigger.create({
-    trigger: '.scroll-track',
-    start:   'top top-=80',
-    onEnter:     function () { document.documentElement.classList.remove('landing-hero-active'); },
-    onLeaveBack: function () { document.documentElement.classList.add('landing-hero-active'); }
+  /* Threshold differs per breakpoint:
+     - Desktop has a much taller .scroll-track and the hero text only fades
+       around ~15-18% of its scrub timeline. We trigger when the trigger top
+       has scrolled 18% of its own height past the viewport top — i.e. when the
+       hero EU leaf is almost gone.
+     - Mobile collapses faster (scroll-track 120vh, text fades around ~44%)
+       and a simple ~80px works well in practice — left as-is. */
+  function showBadge() { document.documentElement.classList.remove('landing-hero-active'); }
+  function hideBadge() { document.documentElement.classList.add('landing-hero-active'); }
+
+  mm.add('(min-width: 992px)', function () {
+    ScrollTrigger.create({
+      trigger: '.scroll-track',
+      start:   'top+=18% top',
+      onEnter:     showBadge,
+      onLeaveBack: hideBadge
+    });
+    if (window.scrollY > window.innerHeight * 0.18) showBadge();
   });
 
-  /* Sync initial state — covers hard reloads where the page restores a non-zero
-     scroll position (ScrollTrigger callbacks only fire on transitions, not on
-     creation, so we check once explicitly). */
-  if (window.scrollY > 80) {
-    document.documentElement.classList.remove('landing-hero-active');
-  }
+  mm.add('(max-width: 991px)', function () {
+    ScrollTrigger.create({
+      trigger: '.scroll-track',
+      start:   'top top-=80',
+      onEnter:     showBadge,
+      onLeaveBack: hideBadge
+    });
+    if (window.scrollY > 80) showBadge();
+  });
 
   /* =========================================================================
      HERO SCROLL ANIMATION
