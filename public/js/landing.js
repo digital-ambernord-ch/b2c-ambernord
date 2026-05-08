@@ -25,6 +25,32 @@ window.initLanding = async function () {
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* =========================================================================
+     TOPBAR BIO BADGE — landing-only swap
+     While the hero EU bio leaf is on screen we hide the small badge that
+     normally sits on the logo, so only ONE bio mark is visible. Once the user
+     scrolls past the hero (and the hero leaf has faded), we remove the class
+     and the topbar badge "lands" with a bouncy pop-in (CSS transition).
+     The router clears `landing-hero-active` on every navigation, so on every
+     other page the badge is always present.
+     ========================================================================= */
+
+  document.documentElement.classList.add('landing-hero-active');
+
+  ScrollTrigger.create({
+    trigger: '.scroll-track',
+    start:   'top top-=80',
+    onEnter:     function () { document.documentElement.classList.remove('landing-hero-active'); },
+    onLeaveBack: function () { document.documentElement.classList.add('landing-hero-active'); }
+  });
+
+  /* Sync initial state — covers hard reloads where the page restores a non-zero
+     scroll position (ScrollTrigger callbacks only fire on transitions, not on
+     creation, so we check once explicitly). */
+  if (window.scrollY > 80) {
+    document.documentElement.classList.remove('landing-hero-active');
+  }
+
+  /* =========================================================================
      HERO SCROLL ANIMATION
      Desktop: hero card scales down while floating image cards appear,
      then everything exits upward.

@@ -486,6 +486,31 @@ h1 span, h2 span {
   display: block;
   pointer-events: none;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.45));
+  opacity: 1;
+  transform: none;
+  transform-origin: 70% 30%;
+  transition: opacity 0.45s var(--ease-smooth),
+              transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1),
+              filter 0.45s var(--ease-smooth);
+}
+
+/* Landing-only — while the hero EU bio leaf is in view, the topbar badge is
+   hidden so only ONE bio mark is on screen. When the user scrolls past the
+   hero, .landing-hero-active is removed and the badge pops in with a small
+   bounce, as if it had landed on the logo. */
+html.landing-hero-active .ambernord-logo-eubio {
+  opacity: 0;
+  transform: scale(0.35) translate(-6px, -8px) rotate(-22deg);
+  filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambernord-logo-eubio {
+    transition: opacity 0.2s linear;
+  }
+  html.landing-hero-active .ambernord-logo-eubio {
+    transform: none;
+  }
 }
 
 @media (max-width: 600px) {
