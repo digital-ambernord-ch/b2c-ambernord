@@ -36,25 +36,23 @@ window.initLanding = async function () {
 
   document.documentElement.classList.add('landing-hero-active');
 
-  /* Mobile: 80px works perfectly — hero collapses fast on a short scroll-track.
-     Desktop: scroll-track is much taller and the hero text only fades around
-     ~17% of its scrub timeline, so a fixed pixel threshold fires far too early.
-     We use a viewport-relative offset (~70vh) so the badge appears only once
-     the hero leaf is almost gone. */
-  const isDesktop  = window.matchMedia('(min-width: 992px)').matches;
-  const startValue = isDesktop ? 'top top-=70%' : 'top top-=80';
+  /* Mobile: 80px works perfectly — kept as-is. Desktop fires a little later so
+     the hero EU leaf has had time to fade. Pixel values only — % in the second
+     token of a ScrollTrigger start string is ambiguous and can throw, which
+     would abort the rest of initLanding and break the hero animation. */
+  const isDesktop      = window.matchMedia('(min-width: 992px)').matches;
+  const badgeThreshold = isDesktop ? 220 : 80;
 
   ScrollTrigger.create({
     trigger: '.scroll-track',
-    start:   startValue,
+    start:   'top top-=' + badgeThreshold,
     onEnter:     function () { document.documentElement.classList.remove('landing-hero-active'); },
     onLeaveBack: function () { document.documentElement.classList.add('landing-hero-active'); }
   });
 
   /* Hard reload at non-zero scroll: ScrollTrigger callbacks only fire on
      transitions, so sync the initial state once. */
-  const initialThreshold = isDesktop ? window.innerHeight * 0.7 : 80;
-  if (window.scrollY > initialThreshold) {
+  if (window.scrollY > badgeThreshold) {
     document.documentElement.classList.remove('landing-hero-active');
   }
 
