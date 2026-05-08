@@ -125,7 +125,10 @@ a:focus:not(:focus-visible) {
   text-align: center;
   max-width: 700px;
   margin: 0 auto 80px;
-  padding: calc(var(--nav-height) + 60px) var(--container-pad) 0;
+  /* Top padding clears the fixed topbar AND the aktion bar (when active) so
+     the hero / h1 sits at the same visual gap regardless of aktion state. */
+  padding: calc(var(--nav-height) + var(--aktion-height) + 60px) var(--container-pad) 0;
+  transition: padding-top 0.28s var(--ease-smooth);
 }
 
 .subpage-subtitle {
@@ -160,9 +163,10 @@ a:focus:not(:focus-visible) {
 .subpage-container {
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: calc(var(--nav-height) + 60px) var(--container-pad) 80px;
+  padding: calc(var(--nav-height) + var(--aktion-height) + 60px) var(--container-pad) 80px;
   position: relative;
   z-index: var(--z-base);
+  transition: padding-top 0.28s var(--ease-smooth);
 }
 
 @media (max-width: 991px) {
@@ -171,7 +175,7 @@ a:focus:not(:focus-visible) {
   }
 
   .subpage-container {
-    padding: calc(var(--nav-height) + 40px) var(--container-pad) 60px;
+    padding: calc(var(--nav-height) + var(--aktion-height) + 40px) var(--container-pad) 60px;
   }
 }
 
@@ -419,18 +423,19 @@ h1 span, h2 span {
   overflow: visible;
 }
 
-/* Tighter spacing on small viewports so the CTA, hamburger and lang dropdown
-   never push past the right edge or each other. */
+/* On small viewports the lang switcher collapses to a single toggle, so we
+   can afford generous spacing between the CTA, hamburger and lang dropdown
+   without the row overflowing horizontally. */
 @media (max-width: 991px) {
   .ambernord-topbar-container {
-    gap: 12px;
+    gap: 20px;
     padding: 0 16px;
   }
 }
 
 @media (max-width: 480px) {
   .ambernord-topbar-container {
-    gap: 8px;
+    gap: 14px;
     padding: 0 12px;
   }
 }

@@ -10,10 +10,11 @@
    ROOT — page container, vertical rhythm aligned to global nav height.
    -------------------------------------------------------------------------- */
 .master-box-page-container {
-  padding: calc(var(--nav-height) + 60px) 0 120px;
+  padding: calc(var(--nav-height) + var(--aktion-height) + 60px) 0 120px;
   position: relative;
   z-index: 10;
   animation: theMasterBoxReveal 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  transition: padding-top 0.28s var(--ease-smooth);
 }
 
 /* --------------------------------------------------------------------------
@@ -408,7 +409,7 @@
    -------------------------------------------------------------------------- */
 @media (max-width: 991px) {
   .master-box-page-container {
-    padding-top: calc(var(--nav-height) + 30px);
+    padding-top: calc(var(--nav-height) + var(--aktion-height) + 30px);
     padding-bottom: 80px;
   }
 

@@ -35,26 +35,22 @@ html.aktion-active {
   --aktion-height: 36px;
 }
 
-/* The aktion bar sits at top:0; the topbar slots in below it. Body absorbs
-   the 36px offset so subpage containers don't have to repeat
-   var(--aktion-height) in every padding-top calculation, and the landing
-   scroll-track / sticky-viewport math (which already references
-   var(--aktion-height) directly) lines up correctly at scroll=0. */
-html.aktion-active body {
-  padding-top: 36px;
-}
-
+/* The aktion bar is a true overlay: the topbar slides 36px down to make room
+   for it, and EVERY page container's padding-top references var(--aktion-height)
+   directly so the bar's appearance never affects any other element via
+   document-level mechanics. Body padding is intentionally NOT used — past
+   versions of this file added padding-top:36 to body, which silently shifted
+   footers, hero offsets and SPA-injected content in ways that were impossible
+   to reason about. Now the contract is explicit and local: any container that
+   wants to clear the fixed header writes
+   `calc(var(--nav-height) + var(--aktion-height) + …)` and is fully
+   self-contained. */
 html.aktion-active .ambernord-topbar {
   top: 36px;
 }
 
-/* Smooth slide instead of an abrupt 36px jump when the user dismisses the
-   bar, so the rest of the page doesn't snap up. Initial page render is
-   instant because the class is set synchronously in <head> before paint. */
-body {
-  transition: padding-top 0.28s var(--ease-smooth);
-}
-
+/* Smooth slide on dismiss for the topbar; container paddings transition via
+   their own rules so the visual catch-up is coherent. */
 .ambernord-topbar {
   transition: top 0.28s var(--ease-smooth);
 }

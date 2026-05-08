@@ -11,9 +11,10 @@
    -------------------------------------------------------------------------- */
 
 .shop-page-container {
-  padding: calc(var(--nav-height) + 60px) 0 120px;
+  padding: calc(var(--nav-height) + var(--aktion-height) + 60px) 0 120px;
   position: relative;
   z-index: 10;
+  transition: padding-top 0.28s var(--ease-smooth);
 }
 
 /* --------------------------------------------------------------------------

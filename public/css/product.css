@@ -13,10 +13,13 @@
   display: flex;
   flex-wrap: wrap;
   max-width: 1200px;
-  margin: 120px auto 60px auto;
+  /* margin-top must clear topbar AND aktion bar (when active) since body
+     itself no longer carries any aktion-related padding-top. */
+  margin: calc(120px + var(--aktion-height)) auto 60px auto;
   padding: 0 var(--container-pad);
   gap: 60px;
   animation: smoothReveal 1s ease forwards;
+  transition: margin-top 0.28s var(--ease-smooth);
 }
 
 /* Helpers used by the i18n-driven product layout (replaces inline styles). */

@@ -82,9 +82,10 @@
 /* B2B-specific subpage header override: left-aligned flex layout with side image. */
 .b2b-page-header {
   text-align: left;
-  padding: calc(var(--nav-height) + 60px) var(--container-pad) 60px;
+  padding: calc(var(--nav-height) + var(--aktion-height) + 60px) var(--container-pad) 60px;
   max-width: 1400px;
   margin: 0 auto;
+  transition: padding-top 0.28s var(--ease-smooth);
 }
 
 .b2b-header__flex {
@@ -715,7 +716,7 @@
 
 @media (max-width: 768px) {
   .b2b-page-header {
-    padding-top: calc(var(--nav-height) + 40px);
+    padding-top: calc(var(--nav-height) + var(--aktion-height) + 40px);
     padding-bottom: 40px;
   }
 

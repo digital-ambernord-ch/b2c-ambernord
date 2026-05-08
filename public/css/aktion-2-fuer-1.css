@@ -7,11 +7,11 @@
 .aktion-danke-page-container {
   position: relative;
   z-index: var(--z-above);
-  /* Top padding clears the fixed topbar (var(--nav-height)) and leaves a gap
-     wider than the .ambernord-subpage-hero border-radius (20px) so its rounded
-     top corners stay visible. Body absorbs the aktion-bar offset via its own
-     padding-top, so we don't repeat var(--aktion-height) here. */
-  padding: calc(var(--nav-height) + 32px) 0 var(--space-xl);
+  /* Top padding clears the fixed topbar AND the aktion bar (when active),
+     leaving a gap wider than .ambernord-subpage-hero border-radius (20px) so
+     its rounded top corners stay visible. */
+  padding: calc(var(--nav-height) + var(--aktion-height) + 32px) 0 var(--space-xl);
+  transition: padding-top 0.28s var(--ease-smooth);
 }
 
 @keyframes aktionReveal {
