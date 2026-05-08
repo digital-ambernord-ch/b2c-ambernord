@@ -61,19 +61,12 @@
 }
 
 /* --------------------------------------------------------------------------
-   SECTION ITEMS — each numbered legal section rendered by JS, with bottom
-   margin to separate sections visually and a gold left accent border.
+   SECTION ITEMS — each numbered legal section rendered by JS. Plain
+   vertical-rhythm spacing to match the AGB / returns layout.
    -------------------------------------------------------------------------- */
 
 .datenschutz-section-item {
   margin-bottom: 56px;
-  padding-left: 20px;
-  border-left: 3px solid rgba(237, 163, 35, 0.25);
-  transition: border-color var(--t-fast);
-}
-
-.datenschutz-section-item:hover {
-  border-left-color: var(--color-gold);
 }
 
 /* --------------------------------------------------------------------------
@@ -228,7 +221,6 @@
 
 @media (max-width: 991px) {
   .datenschutz-section-item {
-    padding-left: 16px;
     margin-bottom: 44px;
   }
 }
@@ -247,9 +239,7 @@
   }
 
   .datenschutz-section-item {
-    padding-left: 14px;
     margin-bottom: 36px;
-    border-left-width: 2px;
   }
 
   .datenschutz-address {

@@ -834,11 +834,14 @@ h1 span, h2 span {
 
 .ambernord-footer {
   background-color: var(--color-bg);
-  padding: 50px var(--container-pad) 30px var(--container-pad);
-  padding-bottom: 80px;
+  padding: 64px var(--container-pad) 48px;
   text-align: center;
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
 }
 
 #app {
@@ -849,7 +852,6 @@ h1 span, h2 span {
   display: flex;
   justify-content: center;
   gap: 16px;
-  margin-bottom: 30px;
 }
 
 .ambernord-footer-social a {
@@ -879,18 +881,11 @@ h1 span, h2 span {
   fill: var(--color-gold);
 }
 
-.ambernord-footer-copyright {
-  color: var(--color-text-dim);
-  font-family: var(--font-sans);
-  font-size: 12px;
-  margin-bottom: 15px;
-}
-
 .ambernord-footer-links {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 8px 16px;
+  gap: 10px 18px;
   font-family: var(--font-sans);
   font-size: 12px;
 }
@@ -908,6 +903,105 @@ h1 span, h2 span {
 .ambernord-footer-separator {
   color: #333;
   user-select: none;
+}
+
+/* Bottom band: brand credit + copyright, separated from the rest by a thin
+   rule so the legal copy doesn't sit visually crammed against the nav. */
+.ambernord-footer-bottom {
+  width: 100%;
+  max-width: 960px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding-top: 32px;
+  border-top: 1px solid var(--color-border);
+}
+
+.ambernord-footer-brand {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+  font-family: var(--font-sans);
+}
+
+.ambernord-footer-business {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  text-decoration: none;
+  transition: opacity var(--t-fast) ease;
+}
+
+.ambernord-footer-business:hover {
+  opacity: 0.85;
+}
+
+.ambernord-footer-business__prefix {
+  color: var(--color-text);
+}
+
+.ambernord-footer-business__suffix {
+  color: var(--color-gold);
+}
+
+.ambernord-footer-brand-divider {
+  width: 1px;
+  height: 28px;
+  background: var(--color-border);
+}
+
+.ambernord-footer-service-by {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  line-height: 1.3;
+}
+
+.ambernord-footer-service-by__label {
+  color: var(--color-text-dim);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+}
+
+.ambernord-footer-service-by__name {
+  color: var(--color-text-muted);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.ambernord-footer-copyright {
+  color: var(--color-text-dim);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .ambernord-footer {
+    gap: 28px;
+    padding: 48px var(--container-pad) 40px;
+  }
+
+  .ambernord-footer-brand {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .ambernord-footer-brand-divider {
+    width: 36px;
+    height: 1px;
+  }
+
+  .ambernord-footer-service-by {
+    align-items: center;
+    text-align: center;
+  }
 }
 
 /* =========================================================================
