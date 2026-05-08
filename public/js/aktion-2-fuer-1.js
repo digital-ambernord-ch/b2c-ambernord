@@ -8,6 +8,12 @@ window.initAktion2Fuer1 = async function () {
   const lang = window.getLang();
   try { await window.loadI18n(lang, 'aktion-2-fuer-1'); } catch {}
 
+  /* FAQ q4 answer is rendered via data-i18n-html and contains a <a data-link>
+     to the contact form. Re-bind router handlers so the SPA intercepts it. */
+  if (typeof window.attachLinkListeners === 'function') {
+    window.attachLinkListeners();
+  }
+
   const targets = [
     ...document.querySelectorAll('.aktion-hero, .aktion-why, .aktion-deal, .aktion-steps, .aktion-faq, .aktion-final')
   ].filter(Boolean);

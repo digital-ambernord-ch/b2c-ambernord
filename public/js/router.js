@@ -28,7 +28,6 @@
       description: 'Entdecken Sie die Kraft von Sanddorn. AmberNord bietet natürliche Biohacking- und Longevity-Essenzen aus der Schweiz für Ihr tägliches Ritual.',
       canonical:   'https://ambernord.ch/',
       type:        'landing',
-      sticky:      null,
       schema:      null
     },
 
@@ -38,7 +37,6 @@
       description: 'Vom falschen Kick zur echten Klarheit. Erfahren Sie mehr über Gründer Eriks Matisons und die Vision hinter der kompromisslosen AmberNord Sanddorn-Essenz.',
       canonical:   'https://ambernord.ch/story/',
       type:        'about',
-      sticky:      null,
       schema:      null
     },
 
@@ -48,7 +46,6 @@
       description: 'Pharmakologie, Phytochemie und funktionelle Ernährung: das wissenschaftliche Dossier zur AmberNord Methodik rund um Hippophae rhamnoides.',
       canonical:   'https://ambernord.ch/wissenschaft/',
       type:        'dossier',
-      sticky:      null,
       schema:      null
     },
 
@@ -58,7 +55,6 @@
       description: 'Die Wissenschaft hinter dem AmberNord Ritual: 9 Wirkungsbereiche, tägliches Anwendungsprotokoll und Rezeptideen mit Sanddorn-Elixier.',
       canonical:   'https://ambernord.ch/ritual/',
       type:        'ritual',
-      sticky:      null,
       schema:      null
     },
 
@@ -68,7 +64,6 @@
       description: 'Sanddorn-Essenzen wählen – The Starter, The Habit, The Protocol und The Master Box.',
       canonical:   'https://ambernord.ch/shop/',
       type:        'shop',
-      sticky:      null,
       schema:      null
     },
 
@@ -78,11 +73,6 @@
       description: 'The Starter: Ihr Einstieg in die Welt von AmberNord. Zellschutz und Vitalität durch 190+ Bioaktivstoffe. Kaltgepresst. Bio-zertifiziert.',
       canonical:   'https://ambernord.ch/shop/starter/',
       type:        'product',
-      sticky: {
-        cta:  'Jetzt starten',
-        sub:  '— 2.49 CHF / Tag',
-        href: 'https://buy.stripe.com/6oU8wR3PBagV3GpaPBbQY00'
-      },
       schema: {
         "@context": "https://schema.org/",
         "@type": "Product",
@@ -109,11 +99,6 @@
       description: 'The Habit: Das 30-Tage-Ritual für nachhaltigen Fokus, Energie und Zellregeneration. Bio-zertifiziert, Omega-7, 190+ Bioaktivstoffe.',
       canonical:   'https://ambernord.ch/shop/habit/',
       type:        'product',
-      sticky: {
-        cta:  'Jetzt starten',
-        sub:  '— 2.30 CHF / Tag',
-        href: 'https://buy.stripe.com/cNi3cx3PB2Ot6SB4rdbQY01'
-      },
       schema: {
         "@context": "https://schema.org/",
         "@type": "Product",
@@ -137,11 +122,6 @@
       description: 'The Protocol: Dauerhafte zelluläre Versorgung für Familie und Höchstleister. Bester Preis pro Tagesration.',
       canonical:   'https://ambernord.ch/shop/protocol/',
       type:        'product',
-      sticky: {
-        cta:  'Jetzt starten',
-        sub:  '— 2.15 CHF / Tag',
-        href: 'https://buy.stripe.com/3cI6oJbi3gFjb8R8HtbQY02'
-      },
       schema: {
         "@context": "https://schema.org/",
         "@type": "Product",
@@ -165,7 +145,6 @@
       description: 'Die exklusive Original-Edition: 20 × 250 ml kaltgepresster Bio-Sanddornsaft. Über 25 % Ersparnis, kostenloser Premium-Versand aus Aarau.',
       canonical:   'https://ambernord.ch/shop/master-box/',
       type:        'the-master-box',
-      sticky:      null,
       schema:      null
     },
 
@@ -175,7 +154,6 @@
       description: 'Häufige Fragen zum AmberNord Sanddorn-Elixier: Anwendung, Inhaltsstoffe, Verträglichkeit und Herkunft.',
       canonical:   'https://ambernord.ch/hilfe/faq/',
       type:        'faq',
-      sticky:      null,
       schema:      null
     },
 
@@ -185,7 +163,6 @@
       description: 'Kontaktieren Sie AmberNord – Fragen zu unserem Bio-Sanddornsaft, Bestellungen oder B2B-Partnerschaften.',
       canonical:   'https://ambernord.ch/hilfe/kontakt/',
       type:        'contact',
-      sticky:      null,
       schema:      null
     },
 
@@ -195,7 +172,6 @@
       description: 'Geben Sie Ihre Bestellnummer ein, um den Status Ihrer Lieferung zu prüfen.',
       canonical:   'https://ambernord.ch/hilfe/bestellstatus/',
       type:        'bestellstatus',
-      sticky:      null,
       schema:      null
     },
 
@@ -205,7 +181,6 @@
       description: 'Rückgabe- und Erstattungsrichtlinie für AmberNord Bio-Sanddornsaft.',
       canonical:   'https://ambernord.ch/hilfe/rueckgabe/',
       type:        'returns',
-      sticky:      null,
       schema:      null
     },
 
@@ -215,7 +190,6 @@
       description: 'Datenschutz gemäss revDSG.',
       canonical:   'https://ambernord.ch/datenschutz/',
       type:        'datenschutz',
-      sticky:      null,
       schema:      null
     },
 
@@ -225,7 +199,6 @@
       description: 'AGB der AmberNord Sanddorn-Essenzen — Geltungsbereich, Vertragsschluss, Lieferung, Gewährleistung, Gerichtsstand.',
       canonical:   'https://ambernord.ch/agb/',
       type:        'agb',
-      sticky:      null,
       schema:      null
     },
 
@@ -235,7 +208,6 @@
       description: 'Zertifizierte Sanddorn-Rohstoffe in Bulk-Mengen. ISO 22000, EU-Bio.',
       canonical:   'https://ambernord.ch/b2b/',
       type:        'b2b',
-      sticky:      null,
       schema:      null
     },
 
@@ -245,7 +217,6 @@
       description: 'Deine Bestellung ist eingegangen. AmberNord bereitet dein Elixier vor.',
       canonical:   'https://ambernord.ch/danke/',
       type:        'thankyou',
-      sticky:      null,
       schema:      null
     },
 
@@ -255,7 +226,6 @@
       description: 'Echte Stimmen aus der Schweiz: ungefilterte Erfahrungen mit dem AmberNord Sanddorn-Elixier nach 14 Tagen täglicher Anwendung.',
       canonical:   'https://ambernord.ch/bewertungen/',
       type:        'bewertungen',
-      sticky:      null,
       schema:      null
     },
 
@@ -265,7 +235,6 @@
       description: 'Markteinführungs-Edition: 2 × The Starter zum Preis von 1. Limitiert auf 250 Plätze in der Schweiz. Im Gegenzug bitten wir nach 14 Tagen um eine ehrliche Bewertung.',
       canonical:   'https://ambernord.ch/2-fuer-1/',
       type:        'aktion2fuer1',
-      sticky:      null,
       schema:      null
     },
 
@@ -275,7 +244,6 @@
       description: 'Du bist Teil der Markteinführungs-Edition. Deine Bestellung ist eingegangen.',
       canonical:   'https://ambernord.ch/2-fuer-1/danke/',
       type:        'aktion2fuer1Danke',
-      sticky:      null,
       schema:      null
     }
   };
@@ -342,39 +310,6 @@
       schemaEl.id          = 'page-schema';
       schemaEl.textContent = JSON.stringify(route.schema);
       document.head.appendChild(schemaEl);
-    }
-  }
-
-  function updateMobileSticky(route) {
-    const sticky  = document.getElementById('mobileStickyGlobal');
-    const btn     = document.getElementById('mobileStickyBtn');
-    const subText = document.getElementById('mobileStickySubText');
-
-    if (!sticky || !btn) return;
-
-    if (route.sticky) {
-      subText.textContent = route.sticky.sub;
-
-      btn.replaceWith(btn.cloneNode(true));
-      document.getElementById('mobileStickyBtn').addEventListener('click', function () {
-        window.location.href = route.sticky.href;
-      });
-
-      const orderBtn = document.querySelector('.order-btn-stripe');
-      if (orderBtn && 'IntersectionObserver' in window) {
-        new IntersectionObserver(function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) sticky.classList.remove('is-visible');
-          });
-        }, { threshold: 0.1 }).observe(orderBtn);
-      }
-
-      window.addEventListener('scroll', function () {
-        if (window.scrollY > 300) sticky.classList.add('is-visible');
-      }, { passive: true });
-
-    } else {
-      sticky.classList.remove('is-visible');
     }
   }
 
@@ -451,7 +386,6 @@
       }
 
       attachLinkListeners();
-      updateMobileSticky(route);
 
       /* Await the page's init function — most do `await loadI18n(...)` and then
          apply scroll-reveal classes (opacity:0). If we faded in #app before init

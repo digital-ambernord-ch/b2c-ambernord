@@ -583,6 +583,28 @@ h1 span, h2 span {
   transform: translateY(-2px);
 }
 
+/* Global CTA — sits outside .nav-links so it's visible at all viewport sizes,
+   not just desktop. Tightens on small screens to keep the topbar uncluttered. */
+.nav-btn--global {
+  margin-left: auto;
+}
+
+@media (max-width: 991px) {
+  .nav-btn--global {
+    padding: 9px 16px;
+    font-size: 10.5px;
+    letter-spacing: 1px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-btn--global {
+    padding: 8px 12px;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+  }
+}
+
 .dropbtn-caret {
   font-size: 9px;
   margin-left: 2px;
@@ -598,34 +620,6 @@ h1 span, h2 span {
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
-}
-
-.nav-b2b-link {
-  font-family: var(--font-sans);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: var(--color-text-dim);
-  text-decoration: none;
-  margin-left: 14px;
-  padding: 6px 10px;
-  border: 1px solid var(--color-border);
-  border-radius: 4px;
-  white-space: nowrap;
-  transition: color var(--t-fast) ease, border-color var(--t-fast) ease;
-}
-
-.nav-b2b-link:hover,
-.nav-b2b-link:focus-visible {
-  color: var(--color-gold);
-  border-color: var(--color-border-gold);
-}
-
-@media (max-width: 991px) {
-  .nav-b2b-link {
-    display: none;
-  }
 }
 
 .nav-lang {
@@ -1092,57 +1086,7 @@ h1 span, h2 span {
 }
 
 /* =========================================================================
-   10. MOBILE STICKY CTA (product pages only)
-   ========================================================================= */
-
-.ambernord-mobile-sticky {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: var(--color-gold);
-  z-index: var(--z-nav);
-  transform: translateY(100%);
-  transition: transform var(--t-base) var(--ease-smooth);
-  box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.5);
-  border-radius: 18px;
-  display: none;
-}
-
-.ambernord-mobile-sticky.is-visible {
-  transform: translateY(0);
-}
-
-.ambernord-mobile-sticky button {
-  width: 100%;
-  border: none;
-  background: transparent;
-  padding: 18px 20px;
-  color: var(--color-bg);
-  font-family: var(--font-sans);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  cursor: pointer;
-  outline: none;
-}
-
-.ambernord-mobile-sticky .cta-main-text {
-  font-weight: 700;
-  font-size: 15px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.ambernord-mobile-sticky .cta-sub-text {
-  font-weight: 600;
-  font-size: 13px;
-  opacity: 0.85;
-}
-
-/* =========================================================================
-   11. LIGHTBOX
+   10. LIGHTBOX
    ========================================================================= */
 
 .lightbox-overlay {
@@ -1218,16 +1162,6 @@ h1 span, h2 span {
   }
 
   .fab-tooltip {
-    display: none;
-  }
-
-  .ambernord-mobile-sticky {
-    display: block;
-  }
-}
-
-@media (min-width: 992px) {
-  .ambernord-mobile-sticky {
     display: none;
   }
 }

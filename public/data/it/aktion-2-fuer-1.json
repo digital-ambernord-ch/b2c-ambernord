@@ -40,6 +40,10 @@
     "q3": {
       "q": "Devo scrivere una recensione?",
       "a": "No, facoltativa. Mantieni entrambe le bottiglie, che tu scriva o meno una recensione."
+    },
+    "q4": {
+      "q": "Posso ordinare più offerte per nucleo familiare?",
+      "a": "È consentita una sola offerta per nucleo familiare, per garantire la diversità tra i primi 250 posti. Per famiglie numerose, scrivici brevemente tramite il <a href=\"/hilfe/kontakt/\" data-link>modulo di contatto</a> — faremo un'eccezione e spediremo fino a 2× allo stesso indirizzo."
     }
   }
 }

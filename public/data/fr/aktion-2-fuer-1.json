@@ -40,6 +40,10 @@
     "q3": {
       "q": "Dois-je écrire un avis ?",
       "a": "Non, facultatif. Tu gardes les deux bouteilles que tu écrives un avis ou non."
+    },
+    "q4": {
+      "q": "Puis-je commander plusieurs offres par foyer ?",
+      "a": "Une seule offre par foyer est autorisée afin de garantir la diversité parmi les 250 premières places. Pour une famille nombreuse, écris-nous brièvement via le <a href=\"/hilfe/kontakt/\" data-link>formulaire de contact</a> — nous ferons une exception et livrerons jusqu'à 2× à la même adresse."
     }
   }
 }

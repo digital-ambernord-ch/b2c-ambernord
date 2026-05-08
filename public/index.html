@@ -116,10 +116,10 @@
           <span data-i18n="nav.shop">Shop</span> <span aria-hidden="true" class="dropbtn-caret">&#9660;</span>
         </button>
         <div class="ambernord-dropdown-content" role="menu" aria-labelledby="dropbtnShop">
-          <a href="/shop/" data-link role="menuitem" data-i18n="nav.shopOverview">Übersicht</a>
           <a href="/shop/starter/" data-link role="menuitem">The Starter</a>
           <a href="/shop/habit/" data-link role="menuitem">The Habit</a>
           <a href="/shop/protocol/" data-link role="menuitem">The Protocol</a>
+          <a href="/shop/" data-link role="menuitem" data-i18n="nav.shopOverview">Übersicht</a>
         </div>
       </div>
 
@@ -132,12 +132,11 @@
           <a href="/hilfe/kontakt/" data-link role="menuitem" data-i18n="nav.contact">Kontakt</a>
           <a href="/hilfe/bestellstatus/" data-link role="menuitem" data-i18n="nav.orderStatus">Bestellstatus</a>
           <a href="/bewertungen/" data-link role="menuitem" data-i18n="nav.reviews">Bewertungen</a>
-          <a href="/hilfe/rueckgabe/" data-link role="menuitem" data-i18n="nav.returns">Rückgabe</a>
         </div>
       </div>
-
-      <a href="/shop/" class="nav-btn" data-link data-i18n="nav.cta">Jetzt bestellen</a>
     </nav>
+
+    <a href="/shop/" class="nav-btn nav-btn--global" data-link data-i18n="nav.cta">Jetzt bestellen</a>
 
     <button class="hamburger" id="hamburgerBtn" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobileMenu">
       <span></span>
@@ -151,8 +150,6 @@
       <button type="button" data-lang="fr" aria-label="Français">FR</button>
       <button type="button" data-lang="it" aria-label="Italiano">IT</button>
     </div>
-
-    <a href="/b2b/" class="nav-b2b-link" data-link data-i18n-attr="aria-label:nav.b2bAriaLabel" aria-label="B2B Bereich">B2B&nbsp;&rarr;</a>
 
   </div>
 </header>
@@ -173,19 +170,16 @@
     <a href="/ritual/" class="mobile-link" data-link data-i18n="nav.ritual">Ritual</a>
 
     <span class="mobile-link mobile-link--label" aria-hidden="true" data-i18n="nav.shop">Shop</span>
-    <a href="/shop/" class="mobile-sublink" data-link>– <span data-i18n="nav.shopOverview">Übersicht</span></a>
     <a href="/shop/starter/" class="mobile-sublink" data-link>– The Starter</a>
     <a href="/shop/habit/" class="mobile-sublink" data-link>– The Habit</a>
-    <a href="/shop/protocol/" class="mobile-sublink mobile-sublink--last" data-link>– The Protocol</a>
+    <a href="/shop/protocol/" class="mobile-sublink" data-link>– The Protocol</a>
+    <a href="/shop/" class="mobile-sublink mobile-sublink--last" data-link>– <span data-i18n="nav.shopOverview">Übersicht</span></a>
 
     <span class="mobile-link mobile-link--label" aria-hidden="true" data-i18n="nav.help">Hilfe</span>
     <a href="/hilfe/faq/" class="mobile-sublink" data-link>– <span data-i18n="nav.faq">FAQ</span></a>
     <a href="/hilfe/kontakt/" class="mobile-sublink" data-link>– <span data-i18n="nav.contact">Kontakt</span></a>
     <a href="/hilfe/bestellstatus/" class="mobile-sublink" data-link>– <span data-i18n="nav.orderStatus">Bestellstatus</span></a>
-    <a href="/bewertungen/" class="mobile-sublink" data-link>– <span data-i18n="nav.reviews">Bewertungen</span></a>
-    <a href="/hilfe/rueckgabe/" class="mobile-sublink mobile-sublink--last" data-link>– <span data-i18n="nav.returns">Rückgabe</span></a>
-
-    <a href="/b2b/" class="mobile-link" data-link>B2B</a>
+    <a href="/bewertungen/" class="mobile-sublink mobile-sublink--last" data-link>– <span data-i18n="nav.reviews">Bewertungen</span></a>
 
     <a href="/shop/" class="mobile-btn" data-link data-i18n="nav.cta">Jetzt bestellen</a>
   </div>
@@ -252,13 +246,6 @@
       <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
     </svg>
   </a>
-</div>
-
-<div class="ambernord-mobile-sticky" id="mobileStickyGlobal">
-  <button id="mobileStickyBtn" type="button">
-    <span class="cta-main-text" data-i18n="cta.startNow">Jetzt starten</span>
-    <span class="cta-sub-text" id="mobileStickySubText"></span>
-  </button>
 </div>
 
 <div id="gallery-lightbox" class="lightbox-overlay" role="dialog" aria-modal="true" aria-label="Bild vergrössert">

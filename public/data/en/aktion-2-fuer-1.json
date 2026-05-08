@@ -40,6 +40,10 @@
     "q3": {
       "q": "Do I have to write a review?",
       "a": "No, voluntary. You keep both bottles regardless of whether you write a review."
+    },
+    "q4": {
+      "q": "Can I order more than one deal per household?",
+      "a": "Only one deal per household is allowed so we can ensure diversity among the first 250 spots. For larger families, drop us a note via the <a href=\"/hilfe/kontakt/\" data-link>contact form</a> — we'll make an exception and ship up to 2× to the same address."
     }
   }
 }

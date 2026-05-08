@@ -40,6 +40,10 @@
     "q3": {
       "q": "Muss ich eine Bewertung schreiben?",
       "a": "Nein, freiwillig. Du behältst beide Flaschen unabhängig von der Bewertung."
+    },
+    "q4": {
+      "q": "Kann ich mehrere Aktionen pro Haushalt bestellen?",
+      "a": "Pro Haushalt ist nur eine Aktion möglich, damit wir Vielfalt unter den ersten 250 Plätzen sicherstellen. Bei einer grösseren Familie melde dich kurz über das <a href=\"/hilfe/kontakt/\" data-link>Kontaktformular</a> — wir machen eine Ausnahme und liefern bis zu 2× an dieselbe Adresse."
     }
   }
 }
