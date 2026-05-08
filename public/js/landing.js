@@ -36,35 +36,27 @@ window.initLanding = async function () {
 
   document.documentElement.classList.add('landing-hero-active');
 
-  /* Threshold differs per breakpoint:
-     - Desktop has a much taller .scroll-track and the hero text only fades
-       around ~15-18% of its scrub timeline. We trigger when the trigger top
-       has scrolled 18% of its own height past the viewport top — i.e. when the
-       hero EU leaf is almost gone.
-     - Mobile collapses faster (scroll-track 120vh, text fades around ~44%)
-       and a simple ~80px works well in practice — left as-is. */
-  function showBadge() { document.documentElement.classList.remove('landing-hero-active'); }
-  function hideBadge() { document.documentElement.classList.add('landing-hero-active'); }
+  /* Mobile: 80px works perfectly — hero collapses fast on a short scroll-track.
+     Desktop: scroll-track is much taller and the hero text only fades around
+     ~17% of its scrub timeline, so a fixed pixel threshold fires far too early.
+     We use a viewport-relative offset (~70vh) so the badge appears only once
+     the hero leaf is almost gone. */
+  const isDesktop  = window.matchMedia('(min-width: 992px)').matches;
+  const startValue = isDesktop ? 'top top-=70%' : 'top top-=80';
 
-  mm.add('(min-width: 992px)', function () {
-    ScrollTrigger.create({
-      trigger: '.scroll-track',
-      start:   'top+=18% top',
-      onEnter:     showBadge,
-      onLeaveBack: hideBadge
-    });
-    if (window.scrollY > window.innerHeight * 0.18) showBadge();
+  ScrollTrigger.create({
+    trigger: '.scroll-track',
+    start:   startValue,
+    onEnter:     function () { document.documentElement.classList.remove('landing-hero-active'); },
+    onLeaveBack: function () { document.documentElement.classList.add('landing-hero-active'); }
   });
 
-  mm.add('(max-width: 991px)', function () {
-    ScrollTrigger.create({
-      trigger: '.scroll-track',
-      start:   'top top-=80',
-      onEnter:     showBadge,
-      onLeaveBack: hideBadge
-    });
-    if (window.scrollY > 80) showBadge();
-  });
+  /* Hard reload at non-zero scroll: ScrollTrigger callbacks only fire on
+     transitions, so sync the initial state once. */
+  const initialThreshold = isDesktop ? window.innerHeight * 0.7 : 80;
+  if (window.scrollY > initialThreshold) {
+    document.documentElement.classList.remove('landing-hero-active');
+  }
 
   /* =========================================================================
      HERO SCROLL ANIMATION
