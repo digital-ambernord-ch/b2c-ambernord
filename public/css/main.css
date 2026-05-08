@@ -410,20 +410,23 @@ h1 span, h2 span {
 
 .ambernord-topbar-container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   height: 100%;
   max-width: var(--container-max);
   margin: 0 auto;
   padding: 0 4vw;
+  gap: 22px;
   overflow: visible;
 }
 
-/* Logo */
+/* Logo — pushes itself to the far left and shoves all other topbar children
+   (nav-links, CTA, hamburger, lang switcher) into a right-side cluster, so
+   the logo gets visual breathing space and the navigation isn't glued to it. */
 .ambernord-logo-link {
   display: flex;
   align-items: center;
   height: 100%;
+  margin-right: auto;
   text-decoration: none;
   transition: opacity var(--t-base) ease;
 }
@@ -585,10 +588,6 @@ h1 span, h2 span {
 
 /* Global CTA — sits outside .nav-links so it's visible at all viewport sizes,
    not just desktop. Tightens on small screens to keep the topbar uncluttered. */
-.nav-btn--global {
-  margin-left: auto;
-}
-
 @media (max-width: 991px) {
   .nav-btn--global {
     padding: 9px 16px;
@@ -626,7 +625,6 @@ h1 span, h2 span {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  margin-left: 14px;
 }
 
 .nav-lang button {
@@ -650,12 +648,6 @@ h1 span, h2 span {
 .nav-lang button[aria-current="true"] {
   color: var(--color-gold);
   font-weight: 700;
-}
-
-@media (max-width: 991px) {
-  .nav-lang {
-    margin-left: auto;
-  }
 }
 
 /* Hamburger button (mobile only) */
