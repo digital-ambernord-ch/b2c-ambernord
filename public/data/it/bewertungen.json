@@ -27,6 +27,9 @@
     "empty": "Ancora nessuna recensione pubblicata. Sii il primo — condividi la tua esperienza qui sotto.",
     "verified": "Acquisto verificato"
   },
+  "roles": {
+    "founder": "Fondatore"
+  },
   "form": {
     "heading": "Lascia una recensione",
     "intro": "La tua recensione apparirà dopo la verifica del numero d'ordine. Pubblichiamo solo nome e città — la tua e-mail rimane riservata.",

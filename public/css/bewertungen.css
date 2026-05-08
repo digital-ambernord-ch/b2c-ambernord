@@ -176,6 +176,28 @@
   margin: 0;
 }
 
+/* Multi-paragraph reviews — gentle rhythm so a long founder story reads as
+   real prose, not one wall of italic text. */
+.bewertungen-card-text + .bewertungen-card-text {
+  margin-top: var(--space-sm);
+}
+
+/* Inline role badge after the author name (e.g. "Erik · Gründer"). */
+.bewertungen-card-role {
+  color: var(--color-gold);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-size: 11px;
+}
+
+/* Featured card — one tasteful gold edge marks an "official" voice (founder,
+   editorial pick) without screaming. Customer reviews stay neutral. */
+.bewertungen-card--featured {
+  border-left: 2px solid var(--color-gold);
+  padding-left: var(--space-md);
+}
+
 .bewertungen-card-meta {
   display: flex;
   flex-direction: column;

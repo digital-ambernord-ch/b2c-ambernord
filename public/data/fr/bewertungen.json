@@ -27,6 +27,9 @@
     "empty": "Aucun avis publié pour l'instant. Sois le premier — partage ton expérience ci-dessous.",
     "verified": "Achat vérifié"
   },
+  "roles": {
+    "founder": "Fondateur"
+  },
   "form": {
     "heading": "Donner un avis",
     "intro": "Ton avis apparaîtra après vérification du numéro de commande. Nous publions uniquement ton prénom et ta ville — ton e-mail reste confidentiel.",

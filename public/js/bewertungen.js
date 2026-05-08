@@ -39,6 +39,32 @@ window.initBewertungen = async function () {
     return d.toLocaleDateString(lang === 'de' ? 'de-CH' : lang, { year: 'numeric', month: 'long' });
   }
 
+  /* Pick the right text variant. Customer submissions arrive as a plain string;
+     curated reviews (e.g. the founder note) ship as a {de,en,fr,it} object so
+     they can be translated. Falls back through the requested lang → de → en. */
+  function pickText(raw) {
+    if (typeof raw === 'string') return raw;
+    if (raw && typeof raw === 'object') return raw[lang] || raw.de || raw.en || '';
+    return '';
+  }
+
+  /* Multi-paragraph rendering — split on blank lines so a long founder story
+     reads as paragraphs instead of one wall of italic text. The opening and
+     closing typographic quotes wrap the FIRST/LAST paragraph only. */
+  function renderText(raw) {
+    const text     = pickText(raw);
+    const escaped  = escapeHtml(text);
+    const parts    = escaped.split(/\n\s*\n/);
+    if (parts.length <= 1) {
+      return `<p class="bewertungen-card-text">&bdquo;${escaped}&ldquo;</p>`;
+    }
+    return parts.map((p, i) => {
+      const open  = i === 0 ? '&bdquo;' : '';
+      const close = i === parts.length - 1 ? '&ldquo;' : '';
+      return `<p class="bewertungen-card-text">${open}${p}${close}</p>`;
+    }).join('');
+  }
+
   try {
     const res = await fetch('/data/reviews.json', { cache: 'no-cache' });
     if (!res.ok) throw new Error();
@@ -49,20 +75,24 @@ window.initBewertungen = async function () {
       if (emptyEl) emptyEl.remove();
 
       const verifiedLabel = (i18n.list && i18n.list.verified) || 'Verifizierte Bestellung';
+      const roles         = (i18n.roles) || {};
 
-      const html = reviews.map((r) => `
-        <article class="bewertungen-card" role="listitem">
+      const html = reviews.map((r) => {
+        const roleLabel = r.roleKey && roles[r.roleKey];
+        return `
+        <article class="bewertungen-card${roleLabel ? ' bewertungen-card--featured' : ''}" role="listitem">
           <div class="bewertungen-card-stars" aria-label="${escapeHtml(r.stars)} von 5 Sternen">${renderStars(r.stars)}</div>
-          <p class="bewertungen-card-text">&bdquo;${escapeHtml(r.text)}&ldquo;</p>
+          ${renderText(r.text)}
           <footer class="bewertungen-card-meta">
-            <span class="bewertungen-card-author">${escapeHtml(r.author)}</span>
+            <span class="bewertungen-card-author">${escapeHtml(r.author)}${roleLabel ? ` <span class="bewertungen-card-role">· ${escapeHtml(roleLabel)}</span>` : ''}</span>
             <span class="bewertungen-card-context">
               ${escapeHtml(r.city || '')}${r.city && r.date ? ' &middot; ' : ''}${escapeHtml(formatDate(r.date))}
               ${r.verified ? ` &middot; <span class="bewertungen-verified">${escapeHtml(verifiedLabel)}</span>` : ''}
             </span>
           </footer>
         </article>
-      `).join('');
+        `;
+      }).join('');
 
       listEl.insertAdjacentHTML('beforeend', html);
 

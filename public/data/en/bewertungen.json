@@ -27,6 +27,9 @@
     "empty": "No reviews published yet. Be the first — share your experience below.",
     "verified": "Verified purchase"
   },
+  "roles": {
+    "founder": "Founder"
+  },
   "form": {
     "heading": "Submit a Review",
     "intro": "Your review will appear after we verify the order number. We only publish your first name and city — your email stays private.",

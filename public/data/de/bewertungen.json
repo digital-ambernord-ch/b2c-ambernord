@@ -27,6 +27,9 @@
     "empty": "Noch keine Bewertungen veröffentlicht. Sei der Erste — teile deine Erfahrung unten.",
     "verified": "Verifizierte Bestellung"
   },
+  "roles": {
+    "founder": "Gründer"
+  },
   "form": {
     "heading": "Bewertung abgeben",
     "intro": "Deine Bewertung erscheint nach Prüfung der Bestellnummer. Wir veröffentlichen nur Vorname und Stadt — deine E-Mail bleibt vertraulich.",
