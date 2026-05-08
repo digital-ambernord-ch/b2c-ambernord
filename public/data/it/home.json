@@ -21,6 +21,10 @@
   "floatingBtn": "Quale rituale fa per te?",
   "stickyVoucher": "CODICE: START10",
   "stickyBtn": "Al Rituale",
+  "bewertungChip": {
+    "label": "Recensioni",
+    "ariaLabel": "Vedi le recensioni clienti"
+  },
   "floatCards": {
     "vitamins": {
       "eyebrow": "Vitamine",

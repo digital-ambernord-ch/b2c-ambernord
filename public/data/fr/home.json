@@ -21,6 +21,10 @@
   "floatingBtn": "Quel rituel vous convient ?",
   "stickyVoucher": "CODE : START10",
   "stickyBtn": "Vers le Rituel",
+  "bewertungChip": {
+    "label": "Avis",
+    "ariaLabel": "Voir les avis clients"
+  },
   "floatCards": {
     "vitamins": {
       "eyebrow": "Vitamines",

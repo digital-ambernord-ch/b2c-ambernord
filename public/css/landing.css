@@ -391,6 +391,93 @@
   line-height: 1.5;
 }
 
+/* --------------------------------------------------------------------------
+   FLOATING BEWERTUNG CHIP — bottom-left ambient social-proof badge.
+   Hidden until the user has scrolled past the hero (toggled by the same
+   IntersectionObserver that controls .landing-sticky-nav), then slides in
+   from the left edge. Click → /bewertungen/ via router (smooth scroll).
+   -------------------------------------------------------------------------- */
+.landing-bewertung-chip {
+  position: fixed;
+  left: 24px;
+  bottom: 24px;
+  z-index: var(--z-sticky);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  background: rgba(15, 15, 15, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(237, 163, 35, 0.35);
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  text-decoration: none;
+  white-space: nowrap;
+  /* Off-screen at rest; .is-visible slides it in. translateX uses
+     `calc(-100% - 24px)` so it accounts for its own width plus the left gap,
+     fully tucking it out of the viewport on first paint. */
+  transform: translateX(calc(-100% - 24px));
+  transition: transform 0.55s var(--ease-smooth),
+              background var(--t-fast) ease,
+              border-color var(--t-fast) ease,
+              box-shadow var(--t-fast) ease;
+  will-change: transform;
+}
+
+.landing-bewertung-chip.is-visible {
+  transform: translateX(0);
+}
+
+.landing-bewertung-chip:hover {
+  background: rgba(20, 20, 20, 0.95);
+  border-color: var(--color-gold);
+  box-shadow: 0 8px 24px rgba(237, 163, 35, 0.18);
+}
+
+.landing-bewertung-chip__stars {
+  color: var(--color-gold);
+  letter-spacing: 1.5px;
+  font-size: 13px;
+  line-height: 1;
+}
+
+.landing-bewertung-chip__text {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+  font-size: 11px;
+}
+
+.landing-bewertung-chip__arrow {
+  color: var(--color-gold);
+  font-size: 14px;
+  line-height: 1;
+  transition: transform var(--t-fast) ease;
+}
+
+.landing-bewertung-chip:hover .landing-bewertung-chip__arrow {
+  transform: translateX(4px);
+}
+
+@media (max-width: 600px) {
+  .landing-bewertung-chip {
+    left: 12px;
+    bottom: 12px;
+    padding: 8px 12px;
+    gap: 7px;
+  }
+  .landing-bewertung-chip__stars { font-size: 12px; letter-spacing: 1.2px; }
+  .landing-bewertung-chip__text  { font-size: 10px; letter-spacing: 1px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-bewertung-chip {
+    transition: opacity 0.2s linear, background var(--t-fast) ease;
+  }
+}
+
 /* Floating info button */
 .floating-info-btn {
   position: fixed;

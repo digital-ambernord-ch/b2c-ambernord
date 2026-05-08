@@ -21,6 +21,10 @@
   "floatingBtn": "Which ritual is right for you?",
   "stickyVoucher": "CODE: START10",
   "stickyBtn": "To the Ritual",
+  "bewertungChip": {
+    "label": "Reviews",
+    "ariaLabel": "Read customer reviews"
+  },
   "floatCards": {
     "vitamins": {
       "eyebrow": "Vitamins",

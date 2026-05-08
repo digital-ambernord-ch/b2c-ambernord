@@ -143,17 +143,19 @@ window.initLanding = async function () {
      Appears after the hero section has scrolled past the viewport.
      ========================================================================= */
 
-  const landingStickyNav = document.getElementById('landingStickyNav');
-  const scrollTrack      = document.getElementById('scrollTrack');
+  const landingStickyNav     = document.getElementById('landingStickyNav');
+  const landingBewertungChip = document.getElementById('landingBewertungChip');
+  const scrollTrack          = document.getElementById('scrollTrack');
 
-  if (landingStickyNav && scrollTrack) {
+  /* Sticky nav (top) and the bewertung chip (bottom-left) share the same
+     trigger — both appear once the hero has scrolled out of view. One observer
+     toggles both so we don't waste an extra IntersectionObserver. */
+  if (scrollTrack && (landingStickyNav || landingBewertungChip)) {
     const observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
-        if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
-          landingStickyNav.classList.add('is-visible');
-        } else {
-          landingStickyNav.classList.remove('is-visible');
-        }
+        const visible = !entry.isIntersecting && entry.boundingClientRect.top < 0;
+        if (landingStickyNav)     landingStickyNav.classList.toggle('is-visible', visible);
+        if (landingBewertungChip) landingBewertungChip.classList.toggle('is-visible', visible);
       });
     }, { threshold: 0 });
     observer.observe(scrollTrack);
