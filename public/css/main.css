@@ -428,14 +428,14 @@ h1 span, h2 span {
    without the row overflowing horizontally. */
 @media (max-width: 991px) {
   .ambernord-topbar-container {
-    gap: 20px;
+    gap: 28px;
     padding: 0 16px;
   }
 }
 
 @media (max-width: 480px) {
   .ambernord-topbar-container {
-    gap: 14px;
+    gap: 20px;
     padding: 0 12px;
   }
 }
@@ -494,11 +494,11 @@ h1 span, h2 span {
               filter 0.45s var(--ease-smooth);
 }
 
-/* Landing-only — while the hero EU bio leaf is in view, the topbar badge is
-   hidden so only ONE bio mark is on screen. When the user scrolls past the
-   hero, .landing-hero-active is removed and the badge pops in with a small
-   bounce, as if it had landed on the logo. */
-html.landing-hero-active .ambernord-logo-eubio {
+/* Landing-only — while the hero EU bio leaf is in view, the TOPBAR badge is
+   hidden so only ONE bio mark is on screen. The selector is scoped to
+   .ambernord-topbar so the same badge inside the mobile menu overlay (which
+   shares .ambernord-logo-link) is unaffected and stays visible always. */
+html.landing-hero-active .ambernord-topbar .ambernord-logo-eubio {
   opacity: 0;
   transform: scale(0.35) translate(-6px, -8px) rotate(-22deg);
   filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
@@ -508,7 +508,7 @@ html.landing-hero-active .ambernord-logo-eubio {
   .ambernord-logo-eubio {
     transition: opacity 0.2s linear;
   }
-  html.landing-hero-active .ambernord-logo-eubio {
+  html.landing-hero-active .ambernord-topbar .ambernord-logo-eubio {
     transform: none;
   }
 }
