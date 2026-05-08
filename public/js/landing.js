@@ -65,6 +65,21 @@ window.initLanding = async function () {
 
   const mm = gsap.matchMedia();
 
+  /* Vertical-center offset for the shrunk hero. .sticky-viewport keeps
+     align-items: flex-start (so the full-size hero matches the 8px gap that
+     subpages use under the topbar), but the SHRUNK rectangle should sit in
+     the middle of the pinned area with equal space top & bottom. We compute
+     the y translation from the live --nav-height / --aktion-height tokens so
+     it stays correct whether the aktion bar is visible or dismissed. */
+  function computeHeroCenterY(heroVh) {
+    const rootStyle = getComputedStyle(document.documentElement);
+    const navH    = parseFloat(rootStyle.getPropertyValue('--nav-height'))    || 80;
+    const aktionH = parseFloat(rootStyle.getPropertyValue('--aktion-height')) || 0;
+    const stickyH = window.innerHeight - navH - aktionH - 8;
+    const heroH   = window.innerHeight * (heroVh / 100);
+    return Math.max(0, (stickyH - heroH) / 2);
+  }
+
   mm.add('(min-width: 992px)', function () {
     if (reducedMotion) return;
 
@@ -73,12 +88,15 @@ window.initLanding = async function () {
         trigger: '.scroll-track',
         start:   'top top',
         end:     'bottom bottom',
-        scrub:   1.5
+        scrub:   1.5,
+        invalidateOnRefresh: true
       }
     });
 
-    /* Phase 1: Hero shrinks to center — y:0 explicitly keeps it pinned in place */
-    tl.to('.scalable-hero',     { width: '380px', height: '55vh', borderRadius: '28px', y: 0, duration: 3, ease: 'power2.inOut' }, 0)
+    /* Phase 1: Hero shrinks AND drops to vertical centre of the pinned area. */
+    tl.to('.scalable-hero',     { width: '380px', height: '55vh', borderRadius: '28px',
+                                  y: function () { return computeHeroCenterY(55); },
+                                  duration: 3, ease: 'power2.inOut' }, 0)
       .to('#heroText',          { opacity: 0, duration: 1, ease: 'power1.in' }, 0.3)
       .to('#ambernordHeroShade',{ opacity: 0, duration: 1, ease: 'none' }, 0.8)
 
@@ -89,8 +107,9 @@ window.initLanding = async function () {
     /* Phase 3: Cards exit upward fast */
       .to('.float-img',         { y: '-100vh', duration: 2.5, ease: 'power2.in' }, 5.2)
 
-    /* Phase 4: Hero starts rising when bottom cards reach its lower edge — cards still visible */
-      .to('.scalable-hero',     { y: '-20vh', duration: 2.5, ease: 'power2.in' }, 5.0);
+    /* Phase 4: Hero rises another 20vh from its centred resting point */
+      .to('.scalable-hero',     { y: function () { return computeHeroCenterY(55) - window.innerHeight * 0.2; },
+                                  duration: 2.5, ease: 'power2.in' }, 5.0);
   });
 
   mm.add('(max-width: 991px)', function () {
@@ -104,15 +123,19 @@ window.initLanding = async function () {
         trigger: '.scroll-track',
         start:   'top top',
         end:     'bottom bottom',
-        scrub:   1
+        scrub:   1,
+        invalidateOnRefresh: true
       }
     });
 
     tlMobile
-      .to('.scalable-hero',     { width: '85vw', height: '50vh', borderRadius: '20px', duration: 3 }, 0)
+      .to('.scalable-hero',     { width: '85vw', height: '50vh', borderRadius: '20px',
+                                  y: function () { return computeHeroCenterY(50); },
+                                  duration: 3 }, 0)
       .to('#heroText',          { opacity: 0, duration: 1 }, 1)
       .to('#ambernordHeroShade',{ opacity: 0, duration: 1.5 }, 1.5)
-      .to('.scalable-hero',     { y: '-10vh', duration: 1.5, ease: 'power1.in' }, 3);
+      .to('.scalable-hero',     { y: function () { return computeHeroCenterY(50) - window.innerHeight * 0.1; },
+                                  duration: 1.5, ease: 'power1.in' }, 3);
   });
 
   /* =========================================================================
