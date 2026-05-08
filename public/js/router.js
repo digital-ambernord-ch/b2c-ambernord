@@ -319,6 +319,59 @@
     }
   }
 
+  /* Custom smooth scroll — the browser's native `behavior: 'smooth'` runs at a
+     fixed ~600ms regardless of distance, which feels rushed on long anchor
+     scrolls (e.g. hero CTA → product grid). This rAF loop runs ~1000ms with
+     ease-in-out cubic for a calmer, more premium feel. Cancels itself the
+     moment the user touches the wheel/touch/scroll keys so it never fights
+     manual scrolling, and falls back to an instant jump under
+     prefers-reduced-motion. Cost: a single rAF chain for ~1s, then nothing.  */
+  function smoothScrollTo(targetY, opts) {
+    opts = opts || {};
+    const duration = opts.duration || 1000;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      window.scrollTo(0, targetY);
+      return;
+    }
+
+    const startY    = window.scrollY;
+    const distance  = targetY - startY;
+    if (Math.abs(distance) < 2) return;
+
+    const startTime = performance.now();
+    let cancelled   = false;
+
+    function onUserScroll()    { cancelled = true; }
+    function onUserKey(e) {
+      const keys = ['ArrowDown','ArrowUp','PageDown','PageUp','Home','End',' '];
+      if (keys.indexOf(e.key) !== -1) cancelled = true;
+    }
+
+    window.addEventListener('wheel',      onUserScroll, { passive: true });
+    window.addEventListener('touchstart', onUserScroll, { passive: true });
+    window.addEventListener('keydown',    onUserKey);
+
+    function cleanup() {
+      window.removeEventListener('wheel',      onUserScroll);
+      window.removeEventListener('touchstart', onUserScroll);
+      window.removeEventListener('keydown',    onUserKey);
+    }
+
+    function step(now) {
+      if (cancelled) { cleanup(); return; }
+      const elapsed = now - startTime;
+      const t       = Math.min(elapsed / duration, 1);
+      const eased   = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      window.scrollTo(0, startY + distance * eased);
+      if (t < 1) requestAnimationFrame(step);
+      else      cleanup();
+    }
+    requestAnimationFrame(step);
+  }
+
+  window.smoothScrollTo = smoothScrollTo;
+
   async function navigate(path, pushState) {
     const cleanPath = normalisePath(path);
     const hash      = path.includes('#') ? path.split('#')[1] : null;
@@ -383,7 +436,7 @@
           const target     = document.getElementById(hash);
           const navHeight  = document.getElementById('siteNav')?.offsetHeight || 80;
           const extraOffset = hash === 'shop' ? 160 : 0;
-          if (target) window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - navHeight - extraOffset, behavior: 'smooth' });
+          if (target) smoothScrollTo(target.getBoundingClientRect().top + window.scrollY - navHeight - extraOffset);
         }, 100);
       } else {
         window.scrollTo({ top: 0, behavior: 'instant' });
@@ -443,7 +496,7 @@
           const target     = document.getElementById(hashPart);
           const navHeight  = document.getElementById('siteNav')?.offsetHeight || 80;
           const extraOffset = hashPart === 'shop' ? 160 : 0;
-          if (target) window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - navHeight - extraOffset, behavior: 'smooth' });
+          if (target) smoothScrollTo(target.getBoundingClientRect().top + window.scrollY - navHeight - extraOffset);
           if (typeof window.closeMobileMenu === 'function') window.closeMobileMenu();
           return;
         }

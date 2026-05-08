@@ -163,7 +163,14 @@ window.initLanding = async function () {
   if (stickyNavBtn) {
     stickyNavBtn.addEventListener('click', function () {
       const shopSection = document.getElementById('shop');
-      if (shopSection) shopSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (!shopSection) return;
+      const navHeight = document.getElementById('siteNav')?.offsetHeight || 80;
+      const targetY   = shopSection.getBoundingClientRect().top + window.scrollY - navHeight - 160;
+      if (typeof window.smoothScrollTo === 'function') {
+        window.smoothScrollTo(targetY);
+      } else {
+        shopSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     });
   }
 
