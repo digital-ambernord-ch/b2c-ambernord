@@ -827,7 +827,10 @@ h1 span, h2 span {
 
 @media (max-width: 991px) {
   .ambernord-subpage-hero {
-    top: 82px;
+    /* Inherit the desktop top calc — calc(var(--nav-height) + var(--aktion-height) + 8px) —
+       so the aktion bar offset propagates on mobile too. The previous hardcoded
+       `top: 82px` ignored --aktion-height and caused the hero gradient to slip
+       under the topbar whenever the aktion bar was active. */
     left: 4px;
     right: 4px;
     border-radius: 16px;
