@@ -93,7 +93,7 @@
       "benefit2": "Régénération de la peau & des muqueuses",
       "benefit3": "Concentration durable & énergie naturelle",
       "units": "3× 250 ml",
-      "shipping": "livraison gratuite incluse",
+      "shipping": "<span class=\"card-shipping-note__free\">livraison gratuite</span> incluse",
       "btn": "Commencer 30 jours"
     },
     "protocol": {
@@ -107,7 +107,7 @@
       "benefit2": "Optimal pour les familles & biohackers",
       "benefit3": "Meilleur prix par dose journalière",
       "units": "6× 250 ml",
-      "shipping": "livraison gratuite incluse",
+      "shipping": "<span class=\"card-shipping-note__free\">livraison gratuite</span> incluse",
       "btn": "Commencer mon rituel"
     },
     "paymentLabel": "Méthodes de paiement sécurisées",

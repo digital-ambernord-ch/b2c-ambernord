@@ -93,7 +93,7 @@
       "benefit2": "Regeneration of skin & mucous membranes",
       "benefit3": "Sustainable focus & natural energy",
       "units": "3× 250 ml",
-      "shipping": "incl. free shipping",
+      "shipping": "incl. <span class=\"card-shipping-note__free\">free shipping</span>",
       "btn": "Start 30 Days"
     },
     "protocol": {
@@ -107,7 +107,7 @@
       "benefit2": "Optimal for families & biohackers",
       "benefit3": "Best price per daily dose",
       "units": "6× 250 ml",
-      "shipping": "incl. free shipping",
+      "shipping": "incl. <span class=\"card-shipping-note__free\">free shipping</span>",
       "btn": "Start My Ritual"
     },
     "paymentLabel": "Secure payment methods",

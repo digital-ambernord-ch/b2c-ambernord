@@ -93,7 +93,7 @@
       "benefit2": "Regeneration von Haut & Schleimhäuten",
       "benefit3": "Nachhaltiger Fokus & natürliche Energie",
       "units": "3× 250 ml",
-      "shipping": "inkl. kostenlosem Versand",
+      "shipping": "inkl. <span class=\"card-shipping-note__free\">kostenlosem Versand</span>",
       "btn": "30 Tage starten"
     },
     "protocol": {
@@ -107,7 +107,7 @@
       "benefit2": "Optimal für Familien & Biohacker",
       "benefit3": "Bester Preis pro Tagesration",
       "units": "6× 250 ml",
-      "shipping": "inkl. kostenlosem Versand",
+      "shipping": "inkl. <span class=\"card-shipping-note__free\">kostenlosem Versand</span>",
       "btn": "Mein Ritual starten"
     },
     "paymentLabel": "Sichere Zahlungsmethoden",

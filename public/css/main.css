@@ -423,8 +423,9 @@ h1 span, h2 span {
    (nav-links, CTA, hamburger, lang switcher) into a right-side cluster, so
    the logo gets visual breathing space and the navigation isn't glued to it. */
 .ambernord-logo-link {
+  position: relative;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   height: 100%;
   margin-right: auto;
   text-decoration: none;
@@ -432,13 +433,36 @@ h1 span, h2 span {
 }
 
 .ambernord-logo-link:hover {
-  opacity: 0.7;
+  opacity: 0.85;
 }
 
-.ambernord-logo-link img {
-  height: 65px;
+/* Brand mark — fills full topbar height edge-to-edge, no padding. */
+.ambernord-logo-img {
+  height: 100%;
   width: auto;
   display: block;
+}
+
+/* EU bio badge — overlays the top-right corner of the logo, sitting partly
+   on the brand mark and partly on the black topbar. Decorative only, so
+   pointer-events disabled so clicks still hit the home link beneath. */
+.ambernord-logo-eubio {
+  position: absolute;
+  top: 4px;
+  right: -22px;
+  width: 36px;
+  height: auto;
+  display: block;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.45));
+}
+
+@media (max-width: 600px) {
+  .ambernord-logo-eubio {
+    width: 28px;
+    right: -16px;
+    top: 6px;
+  }
 }
 
 /* Desktop nav links container */

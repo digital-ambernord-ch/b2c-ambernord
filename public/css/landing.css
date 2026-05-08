@@ -747,7 +747,8 @@
 
 .card-title    { color: var(--color-text);     font-family: var(--font-serif); font-size: 24px; margin: 0 0 4px 0; }
 .card-units    { color: var(--color-text-muted); font-family: var(--font-sans); font-size: 12px; margin-bottom: 12px; letter-spacing: 0.3px; }
-.card-shipping-note { color: var(--color-gold); font-family: var(--font-sans); font-size: 10px; font-weight: 600; margin: 2px 0 12px 0; letter-spacing: 0.4px; }
+.card-shipping-note { color: var(--color-text-dim); font-family: var(--font-sans); font-size: 10px; margin: 2px 0 12px 0; letter-spacing: 0.3px; }
+.card-shipping-note__free { color: var(--color-gold); font-weight: 600; letter-spacing: 0.4px; }
 
 .card-arrow {
   color: var(--color-gold);
