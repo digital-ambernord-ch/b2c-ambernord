@@ -144,10 +144,16 @@
     </button>
 
     <div class="nav-lang" role="group" aria-label="Sprache">
-      <button type="button" data-lang="de" aria-label="Deutsch">DE</button>
-      <button type="button" data-lang="en" aria-label="English">EN</button>
-      <button type="button" data-lang="fr" aria-label="Français">FR</button>
-      <button type="button" data-lang="it" aria-label="Italiano">IT</button>
+      <button type="button" class="nav-lang-toggle" id="navLangToggle" aria-haspopup="true" aria-expanded="false" aria-label="Sprache wählen">
+        <span class="nav-lang-current">DE</span>
+        <span class="nav-lang-caret" aria-hidden="true">&#9662;</span>
+      </button>
+      <div class="nav-lang-menu">
+        <button type="button" data-lang="de" aria-label="Deutsch">DE</button>
+        <button type="button" data-lang="en" aria-label="English">EN</button>
+        <button type="button" data-lang="fr" aria-label="Français">FR</button>
+        <button type="button" data-lang="it" aria-label="Italiano">IT</button>
+      </div>
     </div>
 
   </div>

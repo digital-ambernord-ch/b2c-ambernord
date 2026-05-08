@@ -419,6 +419,22 @@ h1 span, h2 span {
   overflow: visible;
 }
 
+/* Tighter spacing on small viewports so the CTA, hamburger and lang dropdown
+   never push past the right edge or each other. */
+@media (max-width: 991px) {
+  .ambernord-topbar-container {
+    gap: 12px;
+    padding: 0 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ambernord-topbar-container {
+    gap: 8px;
+    padding: 0 12px;
+  }
+}
+
 /* Logo — pushes itself to the far left and shoves all other topbar children
    (nav-links, CTA, hamburger, lang switcher) into a right-side cluster, so
    the logo gets visual breathing space and the navigation isn't glued to it. */
@@ -656,9 +672,97 @@ h1 span, h2 span {
 }
 
 .nav-lang {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 6px;
+}
+
+/* Toggle is the desktop-hidden, mobile-visible single-button trigger that
+   opens a dropdown of all four language options. On desktop the four buttons
+   inside .nav-lang-menu sit inline like before; on mobile the menu collapses
+   into a popover anchored to the toggle. */
+.nav-lang-toggle {
+  display: none;
+  align-items: center;
+  gap: 4px;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 6px 10px;
+  color: var(--color-text-dim);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color var(--t-fast) ease, border-color var(--t-fast) ease;
+}
+
+.nav-lang-toggle:hover,
+.nav-lang-toggle:focus-visible,
+.nav-lang-toggle[aria-expanded="true"] {
+  color: var(--color-gold);
+  border-color: var(--color-border-gold);
+}
+
+.nav-lang-caret {
+  font-size: 9px;
+  transition: transform var(--t-fast) ease;
+}
+
+.nav-lang-toggle[aria-expanded="true"] .nav-lang-caret {
+  transform: rotate(180deg);
+}
+
+.nav-lang-menu {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+@media (max-width: 991px) {
+  .nav-lang-toggle {
+    display: inline-flex;
+  }
+
+  .nav-lang-menu {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    min-width: 96px;
+    padding: 6px;
+    background-color: var(--color-surface);
+    border: 1px solid #222;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    z-index: var(--z-overlay);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-6px);
+    transition: opacity var(--t-fast) ease, transform var(--t-fast) ease;
+  }
+
+  .nav-lang-toggle[aria-expanded="true"] + .nav-lang-menu {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .nav-lang-menu button {
+    text-align: left;
+    padding: 10px 14px;
+    border-radius: 4px;
+  }
+
+  .nav-lang-menu button:hover,
+  .nav-lang-menu button:focus-visible {
+    background-color: rgba(237, 163, 35, 0.08);
+  }
 }
 
 .nav-lang button {

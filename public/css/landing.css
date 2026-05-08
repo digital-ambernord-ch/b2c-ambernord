@@ -86,12 +86,17 @@
 
 .sticky-viewport {
   position: sticky;
-  /* +12px gap so the rounded corners of .scalable-hero stay visible below topbar (and aktion bar). */
-  top: calc(var(--nav-height) + var(--aktion-height) + 12px);
-  height: calc(100vh - var(--nav-height) - var(--aktion-height) - 12px);
+  /* +8px gap matches the subpage hero (.ambernord-subpage-hero) so the landing
+     hero pinches the topbar at exactly the same distance as every other page. */
+  top: calc(var(--nav-height) + var(--aktion-height) + 8px);
+  height: calc(100vh - var(--nav-height) - var(--aktion-height) - 8px);
   width: 100vw;
   display: flex;
-  align-items: center;
+  /* Anchor the hero at the TOP of the pinned area instead of vertically
+     centred — centring previously inflated the visual gap to ~22-26px while
+     subpages sit at 8px. The GSAP shrink animation explicitly keys y:0 so it
+     still reads cleanly with the new anchor. */
+  align-items: flex-start;
   justify-content: center;
   overflow: hidden;   /* clip hero & card exit cleanly within the pinned area */
   z-index: 20;        /* stay above the rising product section during animation */
@@ -108,7 +113,10 @@
 .scalable-hero {
   position: relative;
   width: calc(100vw - 40px);
-  height: calc(100vh - 120px);
+  /* Keep hero shorter than .sticky-viewport (top: nav+aktion+8) so the hero
+     never overflows when aktion bar is active on mobile; otherwise the bottom
+     of the hero gets clipped by sticky-viewport's overflow:hidden. */
+  height: calc(100vh - var(--nav-height) - var(--aktion-height) - 40px);
   border-radius: 24px;
   display: flex;
   align-items: center;

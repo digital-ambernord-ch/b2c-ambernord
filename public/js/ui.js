@@ -89,6 +89,7 @@
       btn.addEventListener('click', function () {
         const lang = btn.getAttribute('data-lang');
         if (lang && typeof window.setLang === 'function') {
+          /* setLang() reloads the page, which auto-closes the dropdown. */
           window.setLang(lang);
         }
       });
@@ -97,6 +98,36 @@
     const current = (typeof window.getLang === 'function') ? window.getLang() : 'de';
     const activeBtn = document.querySelector('[data-lang="' + current + '"]');
     if (activeBtn) activeBtn.setAttribute('aria-current', 'true');
+
+    /* Mobile language dropdown: a single toggle button (visible only at
+       <=991px via CSS) opens / closes the four-language menu. The currently
+       selected language is reflected in the toggle's label so users see at a
+       glance which locale is active. Outside-click and Escape both close it. */
+    const toggle = document.getElementById('navLangToggle');
+    if (!toggle) return;
+
+    const currentLabel = toggle.querySelector('.nav-lang-current');
+    if (currentLabel) currentLabel.textContent = current.toUpperCase();
+
+    toggle.addEventListener('click', function (e) {
+      e.stopPropagation();
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+    });
+
+    toggle.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.blur();
+      }
+    });
+
+    document.addEventListener('click', function (e) {
+      const langWrap = toggle.closest('.nav-lang');
+      if (langWrap && !langWrap.contains(e.target)) {
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
   }
 
   /* GA4 + TikTok Pixel are no longer auto-loaded here. They are gated by the
