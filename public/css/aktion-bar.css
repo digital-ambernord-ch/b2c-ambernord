@@ -25,18 +25,38 @@ html.aktion-active .aktion-bar {
   font-size: 12px;
   letter-spacing: 1.2px;
   color: var(--color-text);
+  /* Hard-clip to keep the bar exactly 36px on any viewport — even if a
+     translation runs long, content collapses inside instead of pushing
+     the bar's height (and the topbar's `top: 36`) out of sync. */
+  overflow: hidden;
 }
 
 html.aktion-active {
   --aktion-height: 36px;
 }
 
+/* The aktion bar sits at top:0; the topbar slots in below it. Body absorbs
+   the 36px offset so subpage containers don't have to repeat
+   var(--aktion-height) in every padding-top calculation, and the landing
+   scroll-track / sticky-viewport math (which already references
+   var(--aktion-height) directly) lines up correctly at scroll=0. */
 html.aktion-active body {
   padding-top: 36px;
 }
 
 html.aktion-active .ambernord-topbar {
   top: 36px;
+}
+
+/* Smooth slide instead of an abrupt 36px jump when the user dismisses the
+   bar, so the rest of the page doesn't snap up. Initial page render is
+   instant because the class is set synchronously in <head> before paint. */
+body {
+  transition: padding-top 0.28s var(--ease-smooth);
+}
+
+.ambernord-topbar {
+  transition: top 0.28s var(--ease-smooth);
 }
 
 .aktion-bar-link {
