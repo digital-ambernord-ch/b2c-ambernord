@@ -61,14 +61,6 @@
     "premium": { "title": "Organic Certified", "subtitle": "Swiss manufactory" },
     "shipping": { "title": "Shipped in 24h", "subtitle": "Direct from Aarau" }
   },
-  "aktionCta": {
-    "eyebrow": "Launch Edition",
-    "title": "Become one of the<br><span>250 voices.</span>",
-    "sub": "2 × The Starter for the price of one bottle. In exchange, we ask for your honest review after 14 days.",
-    "ctaLabel": "Discover the offer",
-    "ctaPrice": "24.90 CHF · 2 × 250 ml",
-    "fine": "Limited to 250 spots · Reviews voluntary"
-  },
   "shop": {
     "title": "Choose Your Protocol",
     "starter": {

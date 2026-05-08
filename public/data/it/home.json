@@ -61,14 +61,6 @@
     "premium": { "title": "Certificato bio", "subtitle": "Manifattura svizzera" },
     "shipping": { "title": "Spedizione in 24h", "subtitle": "Direttamente da Aarau" }
   },
-  "aktionCta": {
-    "eyebrow": "Edizione di lancio",
-    "title": "Diventa una delle<br><span>250 voci.</span>",
-    "sub": "2 × The Starter al prezzo di una bottiglia. In cambio chiediamo una recensione onesta dopo 14 giorni.",
-    "ctaLabel": "Scopri l'offerta",
-    "ctaPrice": "24.90 CHF · 2 × 250 ml",
-    "fine": "Limitato a 250 posti · Recensione facoltativa"
-  },
   "shop": {
     "title": "Scegli il Tuo Protocollo",
     "starter": {

@@ -61,14 +61,6 @@
     "premium": { "title": "Bio-zertifiziert", "subtitle": "Schweizer Manufaktur" },
     "shipping": { "title": "Versand in 24h", "subtitle": "Direkt aus Aarau" }
   },
-  "aktionCta": {
-    "eyebrow": "Markteinführungs-Edition",
-    "title": "Werde eine der<br><span>250 Stimmen.</span>",
-    "sub": "2 × The Starter zum Preis von einer Flasche. Im Gegenzug bitten wir nach 14 Tagen um deine ehrliche Bewertung.",
-    "ctaLabel": "Aktion entdecken",
-    "ctaPrice": "24.90 CHF · 2 × 250 ml",
-    "fine": "Limitiert auf 250 Plätze · Bewertung freiwillig"
-  },
   "shop": {
     "title": "Wählen Sie Ihr Protokoll",
     "starter": {
