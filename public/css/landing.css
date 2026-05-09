@@ -613,20 +613,29 @@
 }
 
 /* --------------------------------------------------------------------------
-   SHOP REVIEWS PIN — small floating "sticker" anchored to the top-right of
-   the protocol section. Pure overlay (position: absolute) so the heading,
-   cards and surrounding margins are untouched. Rotated a few degrees so it
-   reads as a stamp/badge rather than a UI button. Animated gold stars stay
-   consistent with the trust-ribbon star treatment further up the page.
+   SHOP REVIEWS PIN — small floating "sticker" anchored next to the centered
+   "Wählen Sie Ihr Protokoll" heading. The h2 is wrapped in .shop-heading-wrap
+   so the heading itself can become inline-block (shrunk to its text width)
+   and serve as the positioning context for the absolutely placed pin.
+   The wrapper inherits the heading's original 60px bottom margin so vertical
+   rhythm to the first product card is unchanged.
    -------------------------------------------------------------------------- */
-#ritual-products {
+.shop-heading-wrap {
   position: relative;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.shop-heading-wrap .ambernord-content-title {
+  display: inline-block;
+  position: relative;
+  margin: 0;
 }
 
 .shop-reviews-pin {
   position: absolute;
-  top: -18px;
-  right: 0;
+  top: 62%;
+  left: calc(100% + 14px);
   z-index: 5;
   display: inline-flex;
   flex-direction: column;
@@ -641,7 +650,7 @@
   text-decoration: none;
   color: inherit;
   transform: rotate(-5deg);
-  transform-origin: center;
+  transform-origin: left center;
   box-shadow:
     0 8px 24px rgba(0, 0, 0, 0.5),
     0 0 18px rgba(237, 163, 35, 0.18),
@@ -688,15 +697,23 @@
   white-space: nowrap;
 }
 
-/* Mobile: anchor the pin against the top-right of the section but pull it
-   in tighter so it never reaches off the viewport on narrow phones. The
-   header padding above the pin already provides enough buffer that the
-   slightly tilted badge doesn't crash into the topbar. */
+/* Mobile: anchor the pin centered just below the heading text rather than
+   to its right — there's not enough horizontal room next to a centered
+   heading on a phone, and the pin would either crash into the screen edge
+   or overflow. Sits inside the existing 60px gap above the first card so
+   no spacing changes propagate to layout. */
 @media (max-width: 768px) {
   .shop-reviews-pin {
-    top: -10px;
-    right: 4px;
+    top: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%) rotate(-3deg);
+    transform-origin: center;
     padding: 7px 12px 6px;
+  }
+
+  .shop-reviews-pin:hover,
+  .shop-reviews-pin:focus-visible {
+    transform: translateX(-50%) rotate(-3deg) translateY(-2px) scale(1.04);
   }
 
   .shop-reviews-pin__stars {
