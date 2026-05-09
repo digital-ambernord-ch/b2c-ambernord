@@ -1,13 +1,13 @@
 {
   "aggregate": {
-    "average": 4.5,
+    "average": 5,
     "count": 2
   },
   "reviews": [
     {
-      "stars": 4,
+      "stars": 5,
       "author": "B.",
-      "city": "",
+      "city": "Aarau",
       "date": "2026-05-09",
       "verified": true,
       "text": {
