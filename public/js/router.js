@@ -372,21 +372,48 @@
 
   window.smoothScrollTo = smoothScrollTo;
 
-  /* Mobile overlay menu uses [aria-current="page"] to paint the active entry
-     in gold. We compare the canonical path of the current route against each
-     mobile link's href, normalising trailing slashes so "/story" matches
-     "/story/". Sublinks under a section heading also light up if matched. */
+  /* Both the desktop topbar and the mobile overlay menu use
+     [aria-current="page"] to paint the active entry in gold. For the topbar
+     dropdowns (Shop, Hilfe), we propagate the current state up to the
+     parent button so the section heading itself glows when the user is on
+     any sublink — the dropdown stays closed but signals "you are here". */
   function markActiveNavLink(currentPath) {
     const norm = function (p) {
       return (p || '').replace(/^https?:\/\/[^/]+/, '').replace(/\/$/, '') || '/';
     };
     const target = norm(currentPath || window.location.pathname);
-    document.querySelectorAll('.mobile-link, .mobile-sublink').forEach(function (link) {
+
+    /* 1) Plain link entries (top-level desktop nav + mobile overlay items). */
+    document.querySelectorAll('.nav-links > a, .mobile-link, .mobile-sublink').forEach(function (link) {
       if (norm(link.getAttribute('href')) === target) {
         link.setAttribute('aria-current', 'page');
       } else {
         link.removeAttribute('aria-current');
       }
+    });
+
+    /* 2) Desktop dropdown buttons — set aria-current when ANY sublink inside
+          the dropdown's content matches the current path. Scoped per dropdown. */
+    document.querySelectorAll('.ambernord-dropdown').forEach(function (dropdown) {
+      const btn   = dropdown.querySelector('.ambernord-dropbtn');
+      const links = dropdown.querySelectorAll('.ambernord-dropdown-content a[href]');
+      let match = false;
+      links.forEach(function (a) {
+        if (norm(a.getAttribute('href')) === target) match = true;
+      });
+      if (btn) {
+        if (match) btn.setAttribute('aria-current', 'page');
+        else        btn.removeAttribute('aria-current');
+      }
+      /* Also light up the matching sublink itself so users who do open the
+         dropdown see the precise sub-page they are on. */
+      links.forEach(function (a) {
+        if (norm(a.getAttribute('href')) === target) {
+          a.setAttribute('aria-current', 'page');
+        } else {
+          a.removeAttribute('aria-current');
+        }
+      });
     });
   }
 

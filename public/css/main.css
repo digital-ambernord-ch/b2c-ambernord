@@ -562,7 +562,8 @@ html.landing-hero-active .ambernord-topbar .ambernord-logo-eubio {
   white-space: nowrap;
 }
 
-.nav-links > a:hover {
+.nav-links > a:hover,
+.nav-links > a[aria-current="page"] {
   color: var(--color-gold);
 }
 
@@ -596,7 +597,8 @@ html.landing-hero-active .ambernord-topbar .ambernord-logo-eubio {
 }
 
 .ambernord-dropdown:hover .ambernord-dropbtn,
-.ambernord-dropbtn[aria-expanded="true"] {
+.ambernord-dropbtn[aria-expanded="true"],
+.ambernord-dropbtn[aria-current="page"] {
   color: var(--color-gold);
 }
 
@@ -658,7 +660,8 @@ html.landing-hero-active .ambernord-topbar .ambernord-logo-eubio {
   border-bottom: none;
 }
 
-.ambernord-dropdown-content a:hover {
+.ambernord-dropdown-content a:hover,
+.ambernord-dropdown-content a[aria-current="page"] {
   background-color: #1a1a1a;
   color: var(--color-gold);
 }

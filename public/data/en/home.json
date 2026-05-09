@@ -63,7 +63,8 @@
   "trust": {
     "lab": { "title": "Lab Tested", "subtitle": "Highest purity standards" },
     "premium": { "title": "Organic Certified", "subtitle": "Swiss manufactory" },
-    "shipping": { "title": "Shipped in 24h", "subtitle": "Direct from Aarau" }
+    "shipping": { "title": "Shipped in 24h", "subtitle": "Direct from Aarau" },
+    "reviews": { "title": "Read Reviews", "subtitle": "Real voices from Switzerland" }
   },
   "shop": {
     "title": "Choose Your Protocol",

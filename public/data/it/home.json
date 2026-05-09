@@ -63,7 +63,8 @@
   "trust": {
     "lab": { "title": "Testato in laboratorio", "subtitle": "Massimi standard di purezza" },
     "premium": { "title": "Certificato bio", "subtitle": "Manifattura svizzera" },
-    "shipping": { "title": "Spedizione in 24h", "subtitle": "Direttamente da Aarau" }
+    "shipping": { "title": "Spedizione in 24h", "subtitle": "Direttamente da Aarau" },
+    "reviews": { "title": "Leggi recensioni", "subtitle": "Voci reali dalla Svizzera" }
   },
   "shop": {
     "title": "Scegli il Tuo Protocollo",

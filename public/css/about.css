@@ -128,11 +128,21 @@
     margin-bottom: 0;
 }
 
-.about-quote-box .quote-author span {
+/* Author name keeps the gold serif treatment of the parent .quote-author so
+   the byline reads as a clear signature. The role span below is intentionally
+   muted (caps, smaller, letter-spaced) so the eye lands on the name first. */
+.about-quote-box .quote-author__name {
+    font-family: var(--font-serif);
+    font-style: normal;
+    color: var(--color-gold);
+    font-size: 19px;
+}
+
+.about-quote-box .quote-author__role {
     font-family: var(--font-sans);
     font-style: normal;
     font-size: 11px;
-    color: #888;
+    color: #b3b3b3;
     letter-spacing: 2px;
     margin-left: 10px;
     text-transform: uppercase;
@@ -144,8 +154,11 @@
    Lives between the founder story and the timeline; intentionally restrained
    so it doesn't read as a marketing CTA, just as a quiet brand fact.
    -------------------------------------------------------------------------- */
-.about-b2b-note {
-    max-width: 900px;
+/* Higher specificity so the auto margins win against
+   `.about-page-container p { margin: 0 0 20px }`. Without this, the b2b note
+   collapsed to a flush-left block on wide viewports. */
+.about-page-container .about-b2b-note {
+    max-width: 720px;
     margin: var(--space-md) auto var(--space-lg);
     padding: 0 var(--container-pad);
     text-align: center;

@@ -229,13 +229,16 @@
 }
 
 .contact-form__input::placeholder {
-  color: #555;
+  color: #999;
   font-weight: 300;
 }
 
 .contact-form__textarea {
   resize: vertical;
-  min-height: 200px;
+  /* +25% so the auto-prefilled Master Box inquiry message fits without being
+     cut off on first paint — saves the user from scrolling inside the field
+     just to read what's been entered for them. */
+  min-height: 250px;
 }
 
 /* --------------------------------------------------------------------------

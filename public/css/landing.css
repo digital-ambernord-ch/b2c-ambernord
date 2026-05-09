@@ -530,6 +530,64 @@
   letter-spacing: 0.3px;
 }
 
+/* --------------------------------------------------------------------------
+   REVIEWS BADGE — 4th trust item, links to /bewertungen/. Five gold stars
+   continuously twinkle in a staggered loop so the eye is drawn here without
+   being aggressive. The link resets default anchor styling so it looks
+   identical to the surrounding info items, plus a tiny lift on hover.
+   -------------------------------------------------------------------------- */
+.trust-item--reviews {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: transform var(--t-fast) ease;
+}
+
+.trust-item--reviews:hover {
+  transform: translateY(-2px);
+}
+
+.trust-stars {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 4px;
+  font-size: 14px;
+  line-height: 1;
+  color: var(--color-gold);
+}
+
+.trust-star {
+  display: inline-block;
+  text-shadow: 0 0 4px rgba(237, 163, 35, 0);
+  animation: trustStarShimmer 3.6s ease-in-out infinite;
+  transition: text-shadow var(--t-fast) ease, transform var(--t-fast) ease;
+}
+
+.trust-star:nth-child(1) { animation-delay: 0s;    }
+.trust-star:nth-child(2) { animation-delay: 0.18s; }
+.trust-star:nth-child(3) { animation-delay: 0.36s; }
+.trust-star:nth-child(4) { animation-delay: 0.54s; }
+.trust-star:nth-child(5) { animation-delay: 0.72s; }
+
+@keyframes trustStarShimmer {
+  0%, 70%, 100% {
+    text-shadow: 0 0 4px rgba(237, 163, 35, 0);
+    transform: scale(1);
+  }
+  35% {
+    text-shadow: 0 0 10px rgba(237, 163, 35, 0.7);
+    transform: scale(1.18);
+  }
+}
+
+.trust-item--reviews:hover .trust-star {
+  text-shadow: 0 0 8px rgba(237, 163, 35, 0.85);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trust-star { animation: none; }
+}
+
 /* =========================================================================
    SHOP SECTION (Product cards on landing page)
    ========================================================================= */
@@ -1508,6 +1566,19 @@
   color: var(--color-bg);
   transform: translateY(-2px);
   box-shadow: 0 10px 32px rgba(237, 163, 35, 0.4);
+}
+
+/* Mobile lands directly on The Habit (the bestseller) so the recommended
+   choice is centred without scrolling. Desktop has more vertical room and
+   benefits from showing the full bento grid (#shop) so all three editions
+   are comparable side-by-side. Each variant is hidden at the wrong viewport
+   so only the right link is interactive. */
+@media (min-width: 992px) {
+  .landing-closing-cta__btn--mobile { display: none; }
+}
+
+@media (max-width: 991px) {
+  .landing-closing-cta__btn--desktop { display: none; }
 }
 
 @media (max-width: 768px) {
