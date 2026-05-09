@@ -356,6 +356,62 @@
 
 /* --------------------------------------------------------------------------
 
+   SECTION FIGURE (BANNER IMAGE)
+
+   Wide editorial banner used in card-grid / list sections that don't have an
+   inline image of their own (Phyto, Science, Innovations, Zero-waste). Sits
+   between the section title and the cards/list — gives every section a
+   visual anchor without duplicating the side-by-side layout used in
+   History/Sourcing.
+
+   Aspect ratio is 21:9 on mobile (banner-y, not dominating) and 21:8 on
+   desktop with a max-height clamp so it doesn't take over wide screens.
+
+   -------------------------------------------------------------------------- */
+
+.dossier-section-figure {
+    margin: 0 0 clamp(36px, 5vw, 56px);
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.02);
+    aspect-ratio: 21 / 9;
+    position: relative;
+    max-height: 460px;
+}
+
+.dossier-section-figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.94) contrast(1.04);
+    transition: filter var(--t-slow), transform var(--t-slow);
+}
+
+.dossier-section-figure:hover img {
+    filter: brightness(1) contrast(1.08);
+    transform: scale(1.02);
+}
+
+@media (max-width: 768px) {
+    .dossier-section-figure {
+        aspect-ratio: 16 / 10;
+        border-radius: 14px;
+    }
+}
+
+/* Universal "click to zoom" affordance for any image we want enlargeable.
+   The handler in dossier.js attaches to anything with this class and opens
+   the existing #gallery-lightbox in a high-res variant. */
+.dossier-zoom,
+.dossier-zoom img {
+    cursor: zoom-in;
+}
+
+
+/* --------------------------------------------------------------------------
+
    BULLET LIST
 
    Gold-dot custom bullet list used across content sections.

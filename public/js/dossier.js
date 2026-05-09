@@ -28,23 +28,37 @@ window.initDossier = async function () {
     function renderLipidsGrid(cards) {
         const grid = document.getElementById('dossier-lipids-grid');
         if (!grid || !Array.isArray(cards)) return;
-        // Cloudinary brand library — Unsplash hotlinks were blocked by our CSP
-        // (img-src only allows res.cloudinary.com), so the cards rendered as
-        // alt-text. These three brand assets fit the lipids/vitamins cards.
-        const imgs = [
-            'https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_800/v1773686862/sonnengekuesster-sanddorn_jxkico.jpg',
-            'https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_800/v1773686914/gold-der-ostsee-kueste_dwnagq.jpg',
-            'https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_800/v1773686998/reinste-essenz-der-natur_rz2l8i.jpg'
+        // Section-specific brand assets, rendered with srcset so small
+        // screens download a smaller variant (w_500) instead of the desktop
+        // w_900. {SRC} is replaced with the appropriate width below.
+        const buildSrcset = (publicPath) => {
+            const base = `https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco`;
+            return {
+                src: `${base},w_900/${publicPath}`,
+                srcset: `${base},w_500/${publicPath} 500w, ${base},w_900/${publicPath} 900w, ${base},w_1200/${publicPath} 1200w`,
+                hires: `${base.replace('q_auto:eco', 'q_auto:good')},w_1600/${publicPath}`
+            };
+        };
+        const cardImgs = [
+            buildSrcset('v1778360707/sanddorn-fruchtfleischoel-omega-7-palmitoleinsaeure-haut_enntbk.jpg'),
+            buildSrcset('v1778360707/sanddorn-kernoel-omega-3-omega-6-verhaeltnis_zws1vp.jpg'),
+            buildSrcset('v1778360708/sanddornsaft-vitamine-naehrstoffe-vitamin-c-b-komplex_a6tsgo.jpg')
         ];
-        grid.innerHTML = cards.map((c, i) => `
+        grid.innerHTML = cards.map((c, i) => {
+            const img = cardImgs[i] || { src: '', srcset: '' };
+            return `
             <div class="dossier-card dossier-card--media dossier-reveal">
-                <div class="dossier-card__image-wrap">
-                    <img src="${imgs[i] || ''}" alt="${escapeAttr(c.imgAlt)}" loading="lazy">
+                <div class="dossier-card__image-wrap dossier-zoom">
+                    <img src="${img.src}"
+                         srcset="${img.srcset}"
+                         sizes="(max-width: 767px) 100vw, (max-width: 991px) 50vw, 33vw"
+                         alt="${escapeAttr(c.imgAlt)}"
+                         loading="lazy">
                 </div>
                 <h3>${escapeHtml(c.title)}</h3>
                 <p>${escapeHtml(c.desc)}</p>
-            </div>
-        `).join('');
+            </div>`;
+        }).join('');
     }
 
     function renderScienceGrid(cards) {
@@ -106,6 +120,51 @@ window.initDossier = async function () {
 
     function escapeAttr(s) {
         return escapeHtml(s);
+    }
+
+    /* ------------------------------------------------------------------------
+       LIGHTBOX ZOOM — any image inside a .dossier-zoom container opens in the
+       shared #gallery-lightbox in a high-resolution variant. We swap any
+       w_NNN parameter in the Cloudinary URL with w_1600 and bump quality to
+       q_auto:good for the zoomed view, leaving the page-rendered srcset
+       (eco/600–1400) untouched so initial bandwidth stays small.
+       ------------------------------------------------------------------------ */
+    const lightbox      = document.getElementById('gallery-lightbox');
+    const lightboxClose = document.getElementById('lightbox-close');
+    const zoomImgs      = document.querySelectorAll('.dossier-zoom img');
+
+    if (lightbox && zoomImgs.length) {
+        zoomImgs.forEach((img) => {
+            img.addEventListener('click', () => {
+                const src = img.currentSrc || img.src;
+                const hires = src
+                    .replace(/w_\d+/, 'w_1600')
+                    .replace(/q_auto:eco/, 'q_auto:good');
+
+                let lightboxImg = document.getElementById('lightbox-img');
+                if (!lightboxImg) {
+                    lightboxImg = document.createElement('img');
+                    lightboxImg.id = 'lightbox-img';
+                    lightboxImg.className = 'lightbox-image';
+                    lightbox.appendChild(lightboxImg);
+                }
+                lightboxImg.src = hires;
+                lightboxImg.alt = img.alt || '';
+                lightbox.classList.add('is-active');
+            });
+        });
+
+        function closeLightbox() {
+            lightbox.classList.remove('is-active');
+            const img = document.getElementById('lightbox-img');
+            if (img) setTimeout(() => { img.src = ''; }, 300);
+        }
+
+        if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('is-active')) closeLightbox();
+        });
     }
 
     /* Scroll-reveal observer (re-binds after dynamic content is in the DOM). */
