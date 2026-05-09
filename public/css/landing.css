@@ -631,6 +631,23 @@
   margin: 0;
 }
 
+/* Defeat the global "h2 span { display: block; color: gold; font-style: italic }"
+   rule (meant for subpage-hero "<h1>Title<br><span>accent</span></h1>" pattern).
+   Here the span only exists as an i18n hook around the heading text, and the
+   pin children are spans too — keep both inheriting the heading's white color
+   and upright posture. */
+.shop-heading-text {
+  display: inline;
+  color: inherit;
+  font-style: inherit;
+}
+
+.shop-reviews-pin__stars,
+.shop-reviews-pin__star,
+.shop-reviews-pin__label {
+  font-style: normal;
+}
+
 .shop-reviews-pin {
   position: absolute;
   top: calc(100% - 10px);
