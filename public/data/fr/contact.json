@@ -72,5 +72,8 @@
   },
   "b2b": {
     "message": "Bonjour,\n\nJe suis intéressé(e) par les conditions B2B des produits AmberNord. Merci de m'envoyer des informations sur les points suivants :\n\n• The Master Box (édition 20 bouteilles pour cliniques & cabinets)\n• Essences brutes & quantités industrielles de matières premières bio (édition ZELT)\n• Solutions corporate sur mesure\n\nCordialement,\n\n"
+  },
+  "masterbox": {
+    "message": "Bonjour,\n\nJe suis intéressé(e) par The Master Box (édition 20 bouteilles) pour mon cabinet / mon organisation. Merci de m'envoyer les conditions, les délais de livraison et des recommandations personnalisées.\n\nQuelques mots sur moi / notre cas d'usage :\n\n\nCordialement,\n\n"
   }
 }

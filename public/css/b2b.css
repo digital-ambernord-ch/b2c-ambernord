@@ -17,6 +17,25 @@
 }
 
 /* --------------------------------------------------------------------------
+   MASTER BOX — full-width feature block sitting just before the products
+   list. Reuses .nature-hero-block styles already loaded globally from
+   landing.css (overlayed text on a hero image with gold accents) so the
+   visual treatment matches the original landing position 1:1.
+   -------------------------------------------------------------------------- */
+.b2b-masterbox-wrapper {
+  width: 100%;
+  padding: 40px var(--container-pad) 80px;
+  position: relative;
+  z-index: 10;
+}
+
+.b2b-masterbox-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* --------------------------------------------------------------------------
    ENTRANCE — full-page reveal on route load.
    -------------------------------------------------------------------------- */
 

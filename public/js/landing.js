@@ -226,18 +226,6 @@ window.initLanding = async function () {
   }
 
   /* =========================================================================
-     ACCORDION — editorial bento cards
-     ========================================================================= */
-
-  window.toggleEditorialCard = function (triggerEl) {
-    const isActive  = triggerEl.classList.contains('is-active');
-    const content   = triggerEl.nextElementSibling;
-
-    triggerEl.classList.toggle('is-active', !isActive);
-    content.classList.toggle('is-open', !isActive);
-  };
-
-  /* =========================================================================
      YOUTUBE FACADE — lazy-load iframe on thumbnail click
      ========================================================================= */
 

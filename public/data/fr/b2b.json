@@ -24,6 +24,13 @@
     "h1": "Matières Premières Cliniques & <span>Fournisseur B2B</span>",
     "lead": "Accès direct à nos essences brutes exclusives pour l'industrie alimentaire, les marques cosmétiques, les centres de longévité et les entreprises visionnaires."
   },
+  "masterBox": {
+    "eyebrow": "Cliniques & Entreprises",
+    "h2": "The Master Box –<br><span class=\"ambernord-text-gold\">Pour une concentration sans compromis.</span>",
+    "p1": "Intégrez le protocole AmberNord dans votre cabinet ou votre entreprise. Notre édition exclusive de 20 bouteilles propose des partenariats sur mesure pour les centres de longévité, les installations de biohacking et les équipes corporate visionnaires qui investissent dans la véritable performance cognitive.",
+    "p2": "Profil nutritif intransigeant et pureté certifiée bio, uniques sur le marché européen.",
+    "btn": "Demander The Master Box"
+  },
   "trust": {
     "heading": "Certifications & Standards Qualité",
     "logo": { "alt": "Bio UE – label certifié pour l'agriculture biologique" },

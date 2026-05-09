@@ -72,5 +72,8 @@
   },
   "b2b": {
     "message": "Dear AmberNord team,\n\nI am interested in the B2B terms for AmberNord products. Please send me further information on the following areas:\n\n• The Master Box (20-bottle edition for clinics & practices)\n• Raw essences & industrial organic raw material quantities (ZELT Edition)\n• Individual corporate solutions\n\nKind regards,\n\n"
+  },
+  "masterbox": {
+    "message": "Dear AmberNord team,\n\nI am interested in The Master Box (20-bottle edition) for my practice / my organisation. Please send me terms, lead times and personalised recommendations.\n\nA few words about me / our use case:\n\n\nKind regards,\n\n"
   }
 }

@@ -70,14 +70,18 @@ window.initContact = async function () {
   }
 
   /* --------------------------------------------------------------------------
-     B2B AUTOFILL — pre-fills the textarea when ?inquiry=b2b is in the URL.
+     INQUIRY AUTOFILL — pre-fills the textarea when ?inquiry=<key> is in the
+     URL. Currently used for two flows: ?inquiry=b2b (general B2B) and
+     ?inquiry=masterbox (focused 20-bottle Master Box request from /b2b/).
      -------------------------------------------------------------------------- */
 
-  const params = new URLSearchParams(window.location.search);
-  if (params.get('inquiry') === 'b2b') {
+  const params  = new URLSearchParams(window.location.search);
+  const inquiry = params.get('inquiry');
+  const prefill = inquiry && data[inquiry] && data[inquiry].message;
+  if (prefill) {
     const textarea = document.getElementById('contact-message');
-    if (textarea && data.b2b?.message) {
-      textarea.value = data.b2b.message;
+    if (textarea) {
+      textarea.value = prefill;
       setTimeout(() => {
         const formSection = document.querySelector('.contact-form-section');
         if (formSection) formSection.scrollIntoView({ behavior: 'smooth', block: 'center' });

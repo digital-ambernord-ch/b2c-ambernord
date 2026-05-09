@@ -69,9 +69,9 @@
         "full": "24.90 CHF one-time"
       },
       "extra": "Ideal to try",
-      "benefit1": "Tangible vitality & immune support",
-      "benefit2": "100% pure, vegan cellular nutrition",
-      "benefit3": "Delivers the rare Omega-7",
+      "benefit1": "First encounter with the ritual",
+      "benefit2": "Noticeable effect from day 7",
+      "benefit3": "Low-risk entry",
       "units": "1× 250 ml",
       "shipping": "incl. shipping",
       "btn": "Start Now"
@@ -84,9 +84,9 @@
         "perBottle": "23.00 CHF / bottle"
       },
       "extra": "The 30-day ritual",
-      "benefit1": "Complete 30-day cellular reset",
-      "benefit2": "Regeneration of skin & mucous membranes",
-      "benefit3": "Sustainable focus & natural energy",
+      "benefit1": "30 days of daily ritual",
+      "benefit2": "Noticeable effect from day 7",
+      "benefit3": "Full cellular regeneration",
       "units": "3× 250 ml",
       "shipping": "incl. <span class=\"card-shipping-note__free\">free shipping</span>",
       "btn": "Start 30 Days"
@@ -98,8 +98,8 @@
         "perBottle": "21.50 CHF / bottle"
       },
       "extra": "For family & long-term focus",
-      "benefit1": "Continuous cellular supply",
-      "benefit2": "Optimal for families & biohackers",
+      "benefit1": "60 days of continuous supply",
+      "benefit2": "Shared for couple or family",
       "benefit3": "Best price per daily dose",
       "units": "6× 250 ml",
       "shipping": "incl. <span class=\"card-shipping-note__free\">free shipping</span>",
@@ -115,15 +115,15 @@
     "eyebrow": "Our Manifesto",
     "h2": "The end of<br><span class=\"ambernord-text-gold\">artificial energy.</span>",
     "lead": "We live in an era of synthetic shortcuts. Conventional energy drinks and artificial stimulants lend the body energy that it must later repay with interest.",
-    "expand": "Read the full manifesto",
-    "hidden": "They produce a brief rush that dehydrates your cells and clouds your focus in the long term. AmberNord is the answer to the demand for genuine, cellular performance. It is not a short-term kick, but a <strong class=\"ambernord-fw-500\">biological upgrade</strong>. We extract the purest essence of the nordic wilderness to bring you a tool for sustainable biohacking and deep regeneration directly to Switzerland."
+    "pullquote": "“Real energy knows no debts.”",
+    "body": "They produce a brief rush that dehydrates your cells and clouds your focus in the long term. AmberNord is the answer to the demand for genuine, cellular performance. It is not a short-term kick, but a <strong class=\"ambernord-fw-500\">biological upgrade</strong>. We extract the purest essence of the nordic wilderness to bring you a tool for sustainable biohacking and deep regeneration directly to Switzerland."
   },
   "ritualBlock": {
     "eyebrow": "The Ritual",
     "h2": "One part gold.<br><span class=\"ambernord-text-gold\">Ten parts life.</span>",
     "lead": "Most nutritional supplements are synthetically isolated, and conventional health drinks are full of hidden sugar. AmberNord takes a completely different path.",
-    "expand": "Discover the application",
-    "hidden": "We offer you an uncompromisingly pure, highly concentrated raw essence – designed for perfect cellular alchemy with water. The 1:10 protocol (1 part essence, 10 parts water) is your daily catalyst. In this symbiosis, the rare Omega fatty acids, amino acids and natural Vitamin C are absorbed by the body to the maximum. The result: deep hydration, measurably sharper focus and robust cellular protection."
+    "pullquote": "“The essence, not the imitation.”",
+    "body": "We offer you an uncompromisingly pure, highly concentrated raw essence – designed for perfect cellular alchemy with water. The 1:10 protocol (1 part essence, 10 parts water) is your daily catalyst. In this symbiosis, the rare Omega fatty acids, amino acids and natural Vitamin C are absorbed by the body to the maximum. The result: deep hydration, measurably sharper focus and robust cellular protection."
   },
   "sourcing": {
     "eyebrow": "Exclusive Sourcing",
@@ -149,12 +149,5 @@
     "alt3": "The fresh harvest",
     "alt4": "Gentle processing",
     "alt5": "Pure plant power"
-  },
-  "masterBox": {
-    "eyebrow": "Clinics & Corporate",
-    "h2": "The Master Box –<br><span class=\"ambernord-text-gold\">For uncompromising focus.</span>",
-    "p1": "Integrate the AmberNord protocol into your practice or company. Our exclusive 20-bottle edition offers tailored partnerships for longevity centres, biohacking facilities and visionary corporate teams investing in true cognitive performance.",
-    "p2": "Uncompromisingly authentic nutrient profile and organic-certified purity, unique on the European market.",
-    "btn": "Discover the Master Box"
   }
 }

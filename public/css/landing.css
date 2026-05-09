@@ -737,12 +737,12 @@
 }
 
 .benefit-list li::before {
-  content: '✓';
+  content: '—';
   color: var(--color-gold);
   position: absolute;
   left: 0;
   top: 0;
-  font-weight: bold;
+  font-weight: 400;
 }
 
 .product-card-right {
@@ -990,65 +990,55 @@
   max-width: 700px;
 }
 
-.nature-hero-content .card-hidden-content {
-  max-width: 700px;
+/* --------------------------------------------------------------------------
+   EDITORIAL BENTO PROSE — Manifest + Ritual cards open by default with a
+   magazine-style layout: lead with drop-cap → pull-quote → body. No accordion.
+   -------------------------------------------------------------------------- */
+
+.editorial-lead {
+  margin-top: var(--space-sm);
+}
+
+.editorial-lead::first-letter {
+  font-family: var(--font-serif);
+  font-size: 3.4em;
+  font-weight: 500;
+  line-height: 0.9;
+  float: left;
+  color: var(--color-gold);
+  margin: 6px 12px 0 0;
+  padding: 0;
+}
+
+.editorial-pullquote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(22px, 2.6vw, 30px);
+  line-height: 1.35;
+  color: var(--color-gold);
   text-align: center;
+  max-width: 640px;
+  margin: var(--space-md) auto;
+  padding: var(--space-sm) var(--space-md);
+  border-top: 1px solid rgba(237, 163, 35, 0.25);
+  border-bottom: 1px solid rgba(237, 163, 35, 0.25);
+  letter-spacing: 0.2px;
 }
 
-/* Accordion trigger */
-.card-expand-trigger {
-  display: inline-flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 24px;
-  margin-top: 30px;
-  background: rgba(237, 163, 35, 0.05);
-  border: 1px solid var(--color-gold);
-  border-radius: 6px;
-  cursor: pointer;
-  color: var(--color-gold);
-  transition: all var(--t-fast) ease;
-  user-select: none;
-  -webkit-tap-highlight-color: transparent;
-  gap: 15px;
-  width: max-content;
+.nature-hero-content .editorial-lead,
+.nature-hero-content .editorial-pullquote {
+  max-width: 760px;
 }
 
-.card-expand-trigger:hover,
-.card-expand-trigger.is-active {
-  background: rgba(237, 163, 35, 0.15);
-  box-shadow: 0 4px 15px rgba(237, 163, 35, 0.2);
-}
-
-.card-expand-trigger span {
-  font-family: var(--font-sans);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--color-gold);
-}
-
-.card-expand-icon {
-  transition: transform var(--t-base) ease;
-  stroke: var(--color-gold);
-}
-
-.card-expand-trigger.is-active .card-expand-icon {
-  transform: rotate(180deg);
-}
-
-.card-hidden-content {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: max-height 0.6s ease, opacity var(--t-base) ease, margin-top var(--t-base) ease;
-}
-
-.card-hidden-content.is-open {
-  max-height: 800px;
-  opacity: 1;
-  margin-top: 20px;
+@media (max-width: 768px) {
+  .editorial-lead::first-letter {
+    font-size: 3em;
+    margin: 4px 8px 0 0;
+  }
+  .editorial-pullquote {
+    font-size: 18px;
+    padding: var(--space-xs) var(--space-sm);
+  }
 }
 
 /* =========================================================================

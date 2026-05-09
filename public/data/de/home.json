@@ -69,9 +69,9 @@
         "full": "24.90 CHF einmalig"
       },
       "extra": "Ideal zum Probieren",
-      "benefit1": "Spürbare Vitalität & Immunschutz",
-      "benefit2": "100% reine, vegane Zell-Nahrung",
-      "benefit3": "Liefert das seltene Omega-7",
+      "benefit1": "Erste Begegnung mit dem Ritual",
+      "benefit2": "Spürbare Wirkung ab Tag 7",
+      "benefit3": "Risikoarmer Einstieg",
       "units": "1× 250 ml",
       "shipping": "inkl. Versand",
       "btn": "Jetzt starten"
@@ -84,9 +84,9 @@
         "perBottle": "23.00 CHF / Flasche"
       },
       "extra": "Das 30-Tage-Ritual",
-      "benefit1": "Komplettes 30-Tage-Zell-Reset",
-      "benefit2": "Regeneration von Haut & Schleimhäuten",
-      "benefit3": "Nachhaltiger Fokus & natürliche Energie",
+      "benefit1": "30 Tage tägliches Ritual",
+      "benefit2": "Spürbare Wirkung ab Tag 7",
+      "benefit3": "Volle Zellregeneration",
       "units": "3× 250 ml",
       "shipping": "inkl. <span class=\"card-shipping-note__free\">kostenlosem Versand</span>",
       "btn": "30 Tage starten"
@@ -98,8 +98,8 @@
         "perBottle": "21.50 CHF / Flasche"
       },
       "extra": "Für Familie & langfristigen Fokus",
-      "benefit1": "Dauerhafte zelluläre Versorgung",
-      "benefit2": "Optimal für Familien & Biohacker",
+      "benefit1": "60 Tage durchgehende Versorgung",
+      "benefit2": "Geteilt für Paar oder Familie",
       "benefit3": "Bester Preis pro Tagesration",
       "units": "6× 250 ml",
       "shipping": "inkl. <span class=\"card-shipping-note__free\">kostenlosem Versand</span>",
@@ -115,15 +115,15 @@
     "eyebrow": "Unser Manifest",
     "h2": "Das Ende der<br><span class=\"ambernord-text-gold\">künstlichen Energie.</span>",
     "lead": "Wir leben in einer Ära der synthetischen Abkürzungen. Herkömmliche Energy-Drinks und künstliche Stimulanzien leihen dem Körper Energie, die er später mit Zinsen zurückzahlen muss.",
-    "expand": "Das ganze Manifest lesen",
-    "hidden": "Sie erzeugen einen kurzen Rausch, der Ihre Zellen dehydriert und Ihren Fokus langfristig trübt. AmberNord ist die Antwort auf die Forderung nach echter, zellulärer Performance. Es ist kein kurzfristiger Kick, sondern ein <strong class=\"ambernord-fw-500\">biologisches Upgrade</strong>. Wir extrahieren die reinste Essenz der nordischen Wildnis, um Ihnen ein Werkzeug für nachhaltiges Biohacking und tiefgreifende Regeneration direkt in die Schweiz zu bringen."
+    "pullquote": "«Echte Energie kennt keine Schulden.»",
+    "body": "Sie erzeugen einen kurzen Rausch, der Ihre Zellen dehydriert und Ihren Fokus langfristig trübt. AmberNord ist die Antwort auf die Forderung nach echter, zellulärer Performance. Es ist kein kurzfristiger Kick, sondern ein <strong class=\"ambernord-fw-500\">biologisches Upgrade</strong>. Wir extrahieren die reinste Essenz der nordischen Wildnis, um Ihnen ein Werkzeug für nachhaltiges Biohacking und tiefgreifende Regeneration direkt in die Schweiz zu bringen."
   },
   "ritualBlock": {
     "eyebrow": "Das Ritual",
     "h2": "Ein Teil Gold.<br><span class=\"ambernord-text-gold\">Zehn Teile Leben.</span>",
     "lead": "Die meisten Nahrungsergänzungen sind synthetisch isoliert, und herkömmliche Gesundheitsgetränke sind voller verstecktem Zucker. AmberNord geht einen völlig anderen Weg.",
-    "expand": "Die Anwendung entdecken",
-    "hidden": "Wir bieten Ihnen eine kompromisslos reine, hochkonzentrierte Rohessenz – entworfen für die perfekte zelluläre Alchemie mit Wasser. Das 1:10 Protokoll (1 Teil Essenz, 10 Teile Wasser) ist Ihr täglicher Katalysator. In dieser Symbiose werden die seltenen Omega-Fettsäuren, Aminosäuren und das natürliche Vitamin C vom Körper maximal absorbiert. Das Ergebnis: Tiefe Hydratation, ein messbar schärferer Fokus und robuster Zellschutz."
+    "pullquote": "«Die Essenz, nicht das Imitat.»",
+    "body": "Wir bieten Ihnen eine kompromisslos reine, hochkonzentrierte Rohessenz – entworfen für die perfekte zelluläre Alchemie mit Wasser. Das 1:10 Protokoll (1 Teil Essenz, 10 Teile Wasser) ist Ihr täglicher Katalysator. In dieser Symbiose werden die seltenen Omega-Fettsäuren, Aminosäuren und das natürliche Vitamin C vom Körper maximal absorbiert. Das Ergebnis: Tiefe Hydratation, ein messbar schärferer Fokus und robuster Zellschutz."
   },
   "sourcing": {
     "eyebrow": "Exklusives Sourcing",
@@ -149,12 +149,5 @@
     "alt3": "Die Frische Ernte",
     "alt4": "Schonende Verarbeitung",
     "alt5": "Pure Pflanzenkraft"
-  },
-  "masterBox": {
-    "eyebrow": "Kliniken & Corporate",
-    "h2": "The Master Box –<br><span class=\"ambernord-text-gold\">Für kompromisslosen Fokus.</span>",
-    "p1": "Integrieren Sie das AmberNord-Protokoll in Ihre Praxis oder Ihr Unternehmen. Unsere exklusive 20-Flaschen-Edition bietet massgeschneiderte Partnerschaften für Longevity-Zentren, Biohacking-Einrichtungen und visionäre Corporate-Teams, die in echte kognitive Performance investieren.",
-    "p2": "Kompromisslos unverfälschtes Nährstoffprofil und bio-zertifizierte Reinheit, die auf dem europäischen Markt einzigartig sind.",
-    "btn": "The Master Box entdecken"
   }
 }

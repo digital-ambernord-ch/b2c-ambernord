@@ -9,6 +9,13 @@ window.initAbout = async function () {
       try { await window.loadI18n(window.getLang(), 'about'); } catch {}
     }
 
+    /* Re-bind data-link clicks after i18n injects HTML (e.g. the B2B note's
+       inline <a href="/b2b/" data-link>) — without this, the link would do a
+       full page reload instead of a SPA route. */
+    if (typeof window.attachLinkListeners === 'function') {
+      window.attachLinkListeners();
+    }
+
     const revealTargets = [
         ...document.querySelectorAll('.timeline-item'),
         document.querySelector('.about-quote-box'),

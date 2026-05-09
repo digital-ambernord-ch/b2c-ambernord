@@ -140,6 +140,36 @@
 
 
 /* --------------------------------------------------------------------------
+   B2B NOTE — single editorial line that points clinics/hotels at /b2b/.
+   Lives between the founder story and the timeline; intentionally restrained
+   so it doesn't read as a marketing CTA, just as a quiet brand fact.
+   -------------------------------------------------------------------------- */
+.about-b2b-note {
+    max-width: 900px;
+    margin: var(--space-md) auto var(--space-lg);
+    padding: 0 var(--container-pad);
+    text-align: center;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 15px;
+    color: var(--color-text-muted);
+    letter-spacing: 0.2px;
+    line-height: 1.6;
+}
+
+.about-b2b-note a {
+    color: var(--color-gold);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(237, 163, 35, 0.4);
+    transition: border-color var(--t-fast) ease, color var(--t-fast) ease;
+}
+
+.about-b2b-note a:hover {
+    color: var(--color-text);
+    border-bottom-color: var(--color-gold);
+}
+
+/* --------------------------------------------------------------------------
    TIMELINE SECTION
    -------------------------------------------------------------------------- */
 

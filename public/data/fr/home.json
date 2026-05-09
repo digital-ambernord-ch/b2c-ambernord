@@ -69,9 +69,9 @@
         "full": "24,90 CHF achat unique"
       },
       "extra": "Idéal pour essayer",
-      "benefit1": "Vitalité tangible & soutien immunitaire",
-      "benefit2": "Nutrition cellulaire 100% pure et végane",
-      "benefit3": "Apporte le rare Oméga-7",
+      "benefit1": "Première rencontre avec le rituel",
+      "benefit2": "Effet perceptible dès le 7e jour",
+      "benefit3": "Entrée sans risque",
       "units": "1× 250 ml",
       "shipping": "livraison incluse",
       "btn": "Commencer"
@@ -84,9 +84,9 @@
         "perBottle": "23,00 CHF / bouteille"
       },
       "extra": "Le rituel de 30 jours",
-      "benefit1": "Reset cellulaire complet de 30 jours",
-      "benefit2": "Régénération de la peau & des muqueuses",
-      "benefit3": "Concentration durable & énergie naturelle",
+      "benefit1": "30 jours de rituel quotidien",
+      "benefit2": "Effet perceptible dès le 7e jour",
+      "benefit3": "Régénération cellulaire complète",
       "units": "3× 250 ml",
       "shipping": "<span class=\"card-shipping-note__free\">livraison gratuite</span> incluse",
       "btn": "Commencer 30 jours"
@@ -98,8 +98,8 @@
         "perBottle": "21,50 CHF / bouteille"
       },
       "extra": "Pour la famille & la concentration à long terme",
-      "benefit1": "Apport cellulaire continu",
-      "benefit2": "Optimal pour les familles & biohackers",
+      "benefit1": "60 jours d'approvisionnement continu",
+      "benefit2": "À partager en couple ou en famille",
       "benefit3": "Meilleur prix par dose journalière",
       "units": "6× 250 ml",
       "shipping": "<span class=\"card-shipping-note__free\">livraison gratuite</span> incluse",
@@ -115,15 +115,15 @@
     "eyebrow": "Notre Manifeste",
     "h2": "La fin de<br><span class=\"ambernord-text-gold\">l'énergie artificielle.</span>",
     "lead": "Nous vivons dans une ère de raccourcis synthétiques. Les boissons énergisantes conventionnelles et les stimulants artificiels prêtent au corps une énergie qu'il devra rembourser avec intérêts.",
-    "expand": "Lire le manifeste complet",
-    "hidden": "Ils produisent une brève excitation qui déshydrate vos cellules et brouille votre concentration à long terme. AmberNord est la réponse à l'exigence d'une véritable performance cellulaire. Ce n'est pas un coup de fouet à court terme, mais un <strong class=\"ambernord-fw-500\">upgrade biologique</strong>. Nous extrayons l'essence la plus pure de la nature nordique pour vous offrir un outil de biohacking durable et de régénération profonde, directement en Suisse."
+    "pullquote": "« La vraie énergie ne connaît pas de dettes. »",
+    "body": "Ils produisent une brève excitation qui déshydrate vos cellules et brouille votre concentration à long terme. AmberNord est la réponse à l'exigence d'une véritable performance cellulaire. Ce n'est pas un coup de fouet à court terme, mais un <strong class=\"ambernord-fw-500\">upgrade biologique</strong>. Nous extrayons l'essence la plus pure de la nature nordique pour vous offrir un outil de biohacking durable et de régénération profonde, directement en Suisse."
   },
   "ritualBlock": {
     "eyebrow": "Le Rituel",
     "h2": "Une part d'or.<br><span class=\"ambernord-text-gold\">Dix parts de vie.</span>",
     "lead": "La plupart des compléments alimentaires sont isolés synthétiquement et les boissons santé conventionnelles sont remplies de sucre caché. AmberNord emprunte une voie totalement différente.",
-    "expand": "Découvrir l'application",
-    "hidden": "Nous vous proposons une essence brute, pure et hautement concentrée – conçue pour une alchimie cellulaire parfaite avec l'eau. Le protocole 1:10 (1 part d'essence, 10 parts d'eau) est votre catalyseur quotidien. Dans cette symbiose, les rares acides gras Oméga, les acides aminés et la vitamine C naturelle sont absorbés au maximum par le corps. Le résultat : hydratation profonde, concentration mesurablement plus aiguë et protection cellulaire robuste."
+    "pullquote": "« L'essence, pas l'imitation. »",
+    "body": "Nous vous proposons une essence brute, pure et hautement concentrée – conçue pour une alchimie cellulaire parfaite avec l'eau. Le protocole 1:10 (1 part d'essence, 10 parts d'eau) est votre catalyseur quotidien. Dans cette symbiose, les rares acides gras Oméga, les acides aminés et la vitamine C naturelle sont absorbés au maximum par le corps. Le résultat : hydratation profonde, concentration mesurablement plus aiguë et protection cellulaire robuste."
   },
   "sourcing": {
     "eyebrow": "Sourcing Exclusif",
@@ -149,12 +149,5 @@
     "alt3": "La récolte fraîche",
     "alt4": "Transformation délicate",
     "alt5": "Force végétale pure"
-  },
-  "masterBox": {
-    "eyebrow": "Cliniques & Entreprises",
-    "h2": "The Master Box –<br><span class=\"ambernord-text-gold\">Pour une concentration sans compromis.</span>",
-    "p1": "Intégrez le protocole AmberNord dans votre cabinet ou votre entreprise. Notre édition exclusive de 20 bouteilles propose des partenariats sur mesure pour les centres de longévité, les installations de biohacking et les équipes corporate visionnaires qui investissent dans la véritable performance cognitive.",
-    "p2": "Profil nutritif intransigeant et pureté certifiée bio, uniques sur le marché européen.",
-    "btn": "Découvrir The Master Box"
   }
 }
