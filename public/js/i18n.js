@@ -54,8 +54,50 @@ window.loadI18n = async function (lang, page) {
   return data;
 };
 
-window.getLang = () => localStorage.getItem('lang') || 'de';
-window.setLang = (lang) => { localStorage.setItem('lang', lang); location.reload(); };
+window.getLang = () => {
+  try {
+    const stored = localStorage.getItem('lang');
+    if (stored) return stored;
+  } catch (_) { /* localStorage may throw in Safari Private mode */ }
+
+  /* Fallback path used when localStorage is unavailable: a Lax session cookie
+     written by setLang(). Without this, locked-down Safari modes silently drop
+     the language selection on reload. */
+  const m = document.cookie.match(/(?:^|; )lang=([^;]+)/);
+  if (m) {
+    try { return decodeURIComponent(m[1]); } catch (_) { return m[1]; }
+  }
+
+  return 'de';
+};
+
+/* setLang persists the choice and forces a full reload so meta + JSON-LD +
+   gated cookie content are re-rendered against the new locale.
+
+   Mobile hardening: localStorage.setItem can throw in Safari Private mode and
+   under iOS storage-quota pressure. If we don't catch that throw, the function
+   aborts before location.reload(), leaving the user on the old locale with no
+   visible feedback — that was the IT→DE / "stays in German" bug. We catch the
+   write error, fall back to a session cookie that getLang() also reads, and
+   then always force the reload so the new locale takes effect. */
+window.setLang = (lang) => {
+  let persisted = false;
+  try {
+    localStorage.setItem('lang', lang);
+    persisted = true;
+  } catch (_) { /* iOS private mode / quota — fall back below */ }
+
+  if (!persisted) {
+    try {
+      const oneYear = 60 * 60 * 24 * 365;
+      const secure  = (location.protocol === 'https:') ? '; Secure' : '';
+      document.cookie = 'lang=' + encodeURIComponent(lang) +
+        '; Max-Age=' + oneYear + '; Path=/; SameSite=Lax' + secure;
+    } catch (_) {}
+  }
+
+  location.reload();
+};
 
 function getPath(obj, path) {
   return path.split('.').reduce((a, k) => a?.[k], obj);

@@ -87,24 +87,36 @@
   function setupLangButtons() {
     const current = (typeof window.getLang === 'function') ? window.getLang() : 'de';
     const toggle = document.getElementById('navLangToggle');
+    const currentLabel = toggle ? toggle.querySelector('.nav-lang-current') : null;
+    let switching = false;
 
     document.querySelectorAll('[data-lang]').forEach(function (btn) {
       btn.addEventListener('click', function () {
         const lang = btn.getAttribute('data-lang');
-        if (!lang) return;
+        if (!lang || switching) return;
 
-        /* Close the mobile dropdown synchronously so the menu doesn't linger
-           in an open state during the page reload — that visual flicker is
-           what made the menu look "broken" when re-tapping the active lang. */
-        if (toggle) toggle.setAttribute('aria-expanded', 'false');
-
-        /* Re-clicking the active language is a no-op. Skipping the reload
-           avoids an unnecessary round-trip and prevents the cookie banner /
-           common-i18n re-paint that the user perceived as an error. */
+        /* Re-clicking the active language is a no-op — skip the reload. */
         const stored = (typeof window.getLang === 'function') ? window.getLang() : null;
-        if (stored === lang) return;
+        if (stored === lang) {
+          if (toggle) toggle.setAttribute('aria-expanded', 'false');
+          return;
+        }
 
-        if (typeof window.setLang === 'function') window.setLang(lang);
+        switching = true;
+
+        /* Instant visual feedback: close the dropdown and update the toggle
+           label so the user sees the new locale immediately, even if the
+           reload that follows is delayed by network or storage pressure.
+           Without this, mobile users perceived the click as ignored. */
+        if (toggle) toggle.setAttribute('aria-expanded', 'false');
+        if (currentLabel) currentLabel.textContent = lang.toUpperCase();
+
+        /* Defer the reload by one frame so the closed-menu state actually
+           paints before the page is replaced — prevents the half-open
+           dropdown "ghost" that flashed on iOS Safari. */
+        requestAnimationFrame(function () {
+          if (typeof window.setLang === 'function') window.setLang(lang);
+        });
       });
     });
 
@@ -117,7 +129,6 @@
        glance which locale is active. Outside-click and Escape both close it. */
     if (!toggle) return;
 
-    const currentLabel = toggle.querySelector('.nav-lang-current');
     if (currentLabel) currentLabel.textContent = current.toUpperCase();
 
     toggle.addEventListener('click', function (e) {

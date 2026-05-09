@@ -119,7 +119,7 @@ window.initShop = async function () {
 
             </a>
 
-            <a class="shop-card__btn-primary shop-card__btn-primary--top" href="${p.buttons.primary.href}" target="_blank" rel="noopener noreferrer">${p.buttons.primary.label}</a>
+            <a class="shop-card__btn-primary shop-card__btn-primary--mobile" href="${p.buttons.primary.href}" target="_blank" rel="noopener noreferrer">${p.buttons.primary.label}</a>
 
             <a class="shop-card__content-link shop-card__bottom-link" href="${p.slug}" data-link>
 
@@ -135,6 +135,7 @@ window.initShop = async function () {
             </a>
 
             <div class="shop-card__action">
+              <a class="shop-card__btn-primary shop-card__btn-primary--desktop" href="${p.buttons.primary.href}" target="_blank" rel="noopener noreferrer">${p.buttons.primary.label}</a>
               ${renderAboBtn(p.buttons.subscription)}
               <p class="shop-card__shipping">
                 <span class="shop-card__shipping-highlight">${p.shipping.highlight}</span>${p.shipping.text}

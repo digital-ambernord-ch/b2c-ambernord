@@ -428,11 +428,21 @@
   box-shadow: 0 8px 20px rgba(237, 163, 35, 0.3);
 }
 
-/* Primary CTA placed directly under the price hero so the buy action is visible
-   without scrolling on mobile. Description + science box continue below. */
-.shop-card__btn-primary--top {
+/* Mobile: primary CTA sits directly under the price hero so the buy action is
+   visible without scrolling. Desktop: primary CTA stays in the bottom action
+   block alongside abo + shipping (original layout). Each viewport hides the
+   variant it doesn't use. */
+.shop-card__btn-primary--mobile {
   margin-top: 4px;
   margin-bottom: 24px;
+}
+
+@media (min-width: 992px) {
+  .shop-card__btn-primary--mobile { display: none; }
+}
+
+@media (max-width: 991px) {
+  .shop-card__btn-primary--desktop { display: none; }
 }
 
 /* --------------------------------------------------------------------------
