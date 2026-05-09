@@ -383,11 +383,27 @@ h1 span, h2 span {
   visibility: visible;
 }
 
+.ambernord-subpage-hero picture,
 .ambernord-subpage-hero img {
   width: 100%;
   height: 100%;
+  display: block;
+}
+
+.ambernord-subpage-hero img {
   object-fit: cover;
+  /* Mobile default: focus near the upper portion of the original image (where
+     the berries cluster on the narrow crop). Desktop sources are already
+     subject-cropped via Cloudinary g_auto, so we recentre vertically below. */
   object-position: center 20%;
+}
+
+@media (min-width: 992px) {
+  .ambernord-subpage-hero img {
+    /* Desktop receives the 6:1 g_auto-cropped source; centring it (no 20%
+       offset) keeps the auto-detected subject — the berries — in frame. */
+    object-position: center center;
+  }
 }
 
 .ambernord-subpage-hero-gradient {
@@ -950,7 +966,8 @@ html.landing-hero-active .ambernord-topbar .ambernord-logo-eubio {
   display: block;
 }
 
-.mobile-link:hover {
+.mobile-link:hover,
+.mobile-link[aria-current="page"] {
   color: var(--color-gold);
 }
 
@@ -975,7 +992,8 @@ html.landing-hero-active .ambernord-topbar .ambernord-logo-eubio {
   display: block;
 }
 
-.mobile-sublink:hover {
+.mobile-sublink:hover,
+.mobile-sublink[aria-current="page"] {
   color: var(--color-gold);
 }
 

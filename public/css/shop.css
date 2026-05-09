@@ -113,20 +113,59 @@
    -------------------------------------------------------------------------- */
 
 .shop-card {
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.03), rgba(0, 0, 0, 0.8));
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  padding: 25px 20px;
+  /* Warm dark gradient with a hint of amber so the cards read as a separate
+     premium "object" against the now-black /shop/ canvas (the atmospheric
+     stripe was removed for the shop overview). */
+  background: linear-gradient(155deg,
+    rgba(40, 32, 22, 0.55) 0%,
+    rgba(20, 16, 12, 0.92) 60%,
+    rgba(8, 7, 6, 0.98) 100%);
+  border: 1px solid rgba(237, 163, 35, 0.18);
+  border-radius: 14px;
+  padding: 26px 22px;
   display: flex;
   flex-direction: column;
   position: relative;
-  transition: transform var(--t-slow), border-color var(--t-slow), box-shadow var(--t-slow);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.04) inset,
+    0 18px 32px rgba(0, 0, 0, 0.45);
+  transition:
+    transform var(--t-slow),
+    border-color var(--t-slow),
+    box-shadow var(--t-slow);
 }
 
 .shop-card:hover {
   transform: translateY(-8px);
-  border-color: rgba(237, 163, 35, 0.6);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(237, 163, 35, 0.15);
+  border-color: rgba(237, 163, 35, 0.55);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.05) inset,
+    0 26px 50px rgba(0, 0, 0, 0.65),
+    0 0 30px rgba(237, 163, 35, 0.18);
+}
+
+/* Featured card — the bestseller (currently The Habit). Gets a stronger gold
+   ring, a brighter background tint, and a subtle ambient glow so the user's
+   eye lands on it first when scanning the bento grid. The non-featured cards
+   stay restrained, which lets this one read as the recommended choice. */
+.shop-card--featured {
+  background: linear-gradient(155deg,
+    rgba(60, 46, 28, 0.65) 0%,
+    rgba(28, 22, 14, 0.95) 60%,
+    rgba(8, 7, 6, 1.00) 100%);
+  border-color: rgba(237, 163, 35, 0.45);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.06) inset,
+    0 22px 40px rgba(0, 0, 0, 0.55),
+    0 0 32px rgba(237, 163, 35, 0.12);
+}
+
+.shop-card--featured:hover {
+  border-color: rgba(237, 163, 35, 0.75);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.08) inset,
+    0 28px 55px rgba(0, 0, 0, 0.7),
+    0 0 45px rgba(237, 163, 35, 0.28);
 }
 
 /* --------------------------------------------------------------------------

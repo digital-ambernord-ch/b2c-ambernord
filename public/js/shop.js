@@ -79,9 +79,12 @@ window.initShop = async function () {
     grid.innerHTML = products
       .map((p) => {
         const id = p.image.cloudinaryId;
+        const featured = (p.badge && p.badge.type === 'bestseller')
+          ? ' shop-card--featured'
+          : '';
 
         return `
-          <article class="shop-card page-reveal" role="listitem">
+          <article class="shop-card${featured} page-reveal" role="listitem">
 
             <a class="shop-card__content-link shop-card__top-link" href="${p.slug}" data-link>
 

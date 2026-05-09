@@ -24,6 +24,60 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
+
+  <!--
+    First-paint pre-warm. Kicks off the fetches the SPA router will make
+    seconds later (the page fragment + page JSON + common JSON), in parallel
+    with CSS/JS loading. The browser HTTP cache satisfies router.js's later
+    fetch() calls instantly, so users see real content as soon as the JS
+    bundle is parsed instead of waiting for two more sequential round-trips
+    after DOMContentLoaded. ~1KB inline, fail-silently, deferred ones-shot.
+  -->
+  <script>
+    (function () {
+      try {
+        var ROUTE_MAP = {
+          '/': 'home',
+          '/story/': 'about',
+          '/wissenschaft/': 'dossier',
+          '/ritual/': 'ritual',
+          '/shop/': 'shop',
+          '/shop/starter/': 'the-starter',
+          '/shop/habit/': 'the-habit',
+          '/shop/protocol/': 'the-protocol',
+          '/shop/master-box/': 'the-master-box',
+          '/hilfe/faq/': 'faq',
+          '/hilfe/kontakt/': 'contact',
+          '/hilfe/bestellstatus/': 'bestellstatus',
+          '/hilfe/rueckgabe/': 'returns',
+          '/datenschutz/': 'datenschutz',
+          '/agb/': 'agb',
+          '/b2b/': 'b2b',
+          '/danke/': 'thankyou',
+          '/bewertungen/': 'bewertungen',
+          '/2-fuer-1/': 'aktion-2-fuer-1',
+          '/2-fuer-1/danke/': 'aktion-2-fuer-1-danke'
+        };
+        var path = location.pathname;
+        if (path && path.charAt(path.length - 1) !== '/' && path.indexOf('.') === -1) {
+          path += '/';
+        }
+        var slug = ROUTE_MAP[path] || 'home';
+        var lang = 'de';
+        try { lang = localStorage.getItem('lang') || 'de'; } catch (_) {}
+        var prewarm = [
+          '/pages/' + slug + '.html',
+          '/data/' + lang + '/' + slug + '.json',
+          '/data/' + lang + '/common.json'
+        ];
+        prewarm.forEach(function (url) {
+          /* fetch() with no options uses default cache mode → primes the
+             same HTTP cache entry that router.js will hit later. */
+          fetch(url).catch(function () {});
+        });
+      } catch (_) { /* silent — never block render */ }
+    })();
+  </script>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"></noscript>
@@ -106,7 +160,20 @@
 </div>
 
 <div id="ambernord-subpage-hero-bg" class="ambernord-subpage-hero" aria-hidden="true">
-  <img src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto/v1774787737/AmberNord_Sanddorn_Biohacking_Longevity_Schweiz_Natur_Ritual_Essenz_jwznsd.webp" alt="" loading="lazy" decoding="async">
+  <picture>
+    <!-- Desktop / tablet: deliver an explicitly wide 6:1 crop with Cloudinary's
+         content-aware gravity (g_auto) so the visible region centres on the
+         berries instead of just the upper leaves that show with object-fit
+         cover on a wide stripe. ar_6:1 matches the visual proportions of the
+         22vh hero on landscape viewports. -->
+    <source media="(min-width: 992px)"
+            srcset="https://res.cloudinary.com/dt6ksxuqf/image/upload/c_fill,g_auto,ar_6:1,f_auto,q_auto,w_1600/v1774787737/AmberNord_Sanddorn_Biohacking_Longevity_Schweiz_Natur_Ritual_Essenz_jwznsd.webp 1600w,
+                    https://res.cloudinary.com/dt6ksxuqf/image/upload/c_fill,g_auto,ar_6:1,f_auto,q_auto,w_2400/v1774787737/AmberNord_Sanddorn_Biohacking_Longevity_Schweiz_Natur_Ritual_Essenz_jwznsd.webp 2400w"
+            sizes="100vw">
+    <!-- Mobile / fallback: original framing already shows the berries because
+         object-fit:cover crops horizontally on narrow viewports. -->
+    <img src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto/v1774787737/AmberNord_Sanddorn_Biohacking_Longevity_Schweiz_Natur_Ritual_Essenz_jwznsd.webp" alt="" loading="lazy" decoding="async">
+  </picture>
   <div class="ambernord-subpage-hero-gradient"></div>
 </div>
 

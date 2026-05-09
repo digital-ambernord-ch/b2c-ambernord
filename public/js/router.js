@@ -372,6 +372,24 @@
 
   window.smoothScrollTo = smoothScrollTo;
 
+  /* Mobile overlay menu uses [aria-current="page"] to paint the active entry
+     in gold. We compare the canonical path of the current route against each
+     mobile link's href, normalising trailing slashes so "/story" matches
+     "/story/". Sublinks under a section heading also light up if matched. */
+  function markActiveNavLink(currentPath) {
+    const norm = function (p) {
+      return (p || '').replace(/^https?:\/\/[^/]+/, '').replace(/\/$/, '') || '/';
+    };
+    const target = norm(currentPath || window.location.pathname);
+    document.querySelectorAll('.mobile-link, .mobile-sublink').forEach(function (link) {
+      if (norm(link.getAttribute('href')) === target) {
+        link.setAttribute('aria-current', 'page');
+      } else {
+        link.removeAttribute('aria-current');
+      }
+    });
+  }
+
   async function navigate(path, pushState) {
     const cleanPath = normalisePath(path);
     const hash      = path.includes('#') ? path.split('#')[1] : null;
@@ -385,6 +403,11 @@
     } else if (canonicalPath !== cleanPath) {
       history.replaceState({ path: canonicalPath }, route.title, canonicalPath + (hash ? '#' + hash : ''));
     }
+
+    /* Reflect the new path on every nav link in the mobile overlay so the
+       entry the user just landed on stands out in gold (CSS reads
+       aria-current="page"). Includes both top-level and nested sublinks. */
+    markActiveNavLink(canonicalPath);
 
     const app = document.getElementById('app');
     if (!app) return;
