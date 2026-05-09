@@ -465,6 +465,14 @@
     overflow: hidden;
 }
 
+/* The inner used to be `position: relative; z-index: 2`. That made it the
+   containing block for the absolute image-wrap on desktop, so `right: 0`
+   resolved to the inner's max-1200px right edge (~viewport_right - 360 on a
+   1920 screen). Combined with `width: 50vw` (~960 on 1920), the image
+   stretched LEFT past the column boundary and covered the text.
+   Removing position:relative/z-index here lets the image-wrap escape up to
+   `.dossier-bleed` (the section, full width), so `right: 0` = viewport right
+   edge — the bleed lands on the right half only, never overlapping text. */
 .dossier-bleed__inner {
     max-width: 1200px;
     margin: 0 auto;
@@ -472,8 +480,6 @@
     display: flex;
     flex-direction: column;
     gap: 40px;
-    position: relative;
-    z-index: 2;
 }
 
 .dossier-bleed__content {
