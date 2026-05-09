@@ -40,7 +40,7 @@
     "order": "Order number (from your Stripe confirmation email)",
     "text": "Your experience",
     "textHint": "Describe in your own words what changed after 14 days — energy, skin, sleep, digestion —, how the elixir tastes, and what surprised you.",
-    "textPlaceholder": "Example: More energy in the morning, calmer digestion — and a clearly declared, pure concentrate.",
+    "textPlaceholder": "",
     "consent": "I allow AmberNord to publish my first name, city and review text on the website. My email stays private.",
     "submit": {
       "label": "Submit review",

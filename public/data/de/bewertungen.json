@@ -40,7 +40,7 @@
     "order": "Bestellnummer (aus Stripe-Bestätigungsmail)",
     "text": "Deine Erfahrung",
     "textHint": "Beschreibe in deinen eigenen Worten, was sich nach 14 Tagen verändert hat — Energie, Haut, Schlaf, Verdauung —, wie das Elixier schmeckt und was dich überrascht hat.",
-    "textPlaceholder": "Beispiel: Mehr Energie am Vormittag, ruhigere Verdauung — und ein klar deklariertes, reines Konzentrat.",
+    "textPlaceholder": "",
     "consent": "Ich erlaube AmberNord, meinen Vornamen, meine Stadt und meinen Bewertungstext auf der Website zu veröffentlichen. Meine E-Mail bleibt vertraulich.",
     "submit": {
       "label": "Bewertung absenden",

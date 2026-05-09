@@ -363,7 +363,12 @@ h1 span, h2 span {
   top: calc(var(--nav-height) + var(--aktion-height) + 8px);
   left: 6px;
   right: 6px;
-  height: 65vh;
+  /* Atmospheric stripe — small enough that the hero acts as mood/texture
+     behind the eyebrow + h1 instead of competing with body content. The
+     near-opaque gradient below lets the image read as ambient grain
+     rather than a foreground subject. */
+  height: 22vh;
+  min-height: 160px;
   z-index: 0;
   border-radius: 20px;
   overflow: hidden;
@@ -388,12 +393,13 @@ h1 span, h2 span {
 .ambernord-subpage-hero-gradient {
   position: absolute;
   inset: 0;
+  /* Very dark across the whole stripe so the photo reads as faint texture,
+     not subject. Slight gradient toward fully opaque at the bottom keeps the
+     transition into page content seamless. */
   background: linear-gradient(
     to bottom,
-    rgba(10, 10, 10, 0.40) 0%,
-    rgba(10, 10, 10, 0.55) 40%,
-    rgba(10, 10, 10, 0.85) 55%,
-    rgba(10, 10, 10, 1.00) 65%,
+    rgba(10, 10, 10, 0.72) 0%,
+    rgba(10, 10, 10, 0.82) 50%,
     rgba(10, 10, 10, 1.00) 100%
   );
 }

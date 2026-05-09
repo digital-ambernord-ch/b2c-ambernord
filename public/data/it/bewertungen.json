@@ -40,7 +40,7 @@
     "order": "Numero d'ordine (dall'e-mail di conferma Stripe)",
     "text": "La tua esperienza",
     "textHint": "Descrivi con parole tue cosa è cambiato dopo 14 giorni — energia, pelle, sonno, digestione —, come ti sembra il sapore e cosa ti ha sorpreso.",
-    "textPlaceholder": "Esempio: Più energia al mattino, digestione più tranquila — e un concentrato puro, chiaramente dichiarato.",
+    "textPlaceholder": "",
     "consent": "Autorizzo AmberNord a pubblicare il mio nome, la mia città e il testo della recensione sul sito web. La mia e-mail rimane riservata.",
     "submit": {
       "label": "Invia recensione",
