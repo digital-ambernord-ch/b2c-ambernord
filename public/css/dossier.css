@@ -54,10 +54,10 @@
     animation: dossierReveal 0.6s ease both;
     position: relative;
     z-index: 10;
-    padding: 0 0 120px;
+    padding: 0 0 clamp(80px, 10vw, 120px);
     display: flex;
     flex-direction: column;
-    gap: clamp(60px, 8vw, 100px);
+    gap: clamp(72px, 9vw, 110px);
     color: var(--color-text);
 }
 
@@ -115,21 +115,43 @@
     position: relative;
 }
 
+/* Stronger title hierarchy:
+   - Replaced the faint full-width 1px underline (which read as "lines stuck
+     in the middle") with a short, prominent 56px gold accent rule below the
+     title. The title now feels separated from body copy without a thin grey
+     line bisecting the page.
+   - Slight letter tightening for a more editorial feel. */
 .dossier-section-title {
     font-family: var(--font-serif);
-    font-size: clamp(28px, 4vw, 42px);
-    margin-bottom: clamp(32px, 5vw, 48px);
+    font-size: clamp(30px, 4.2vw, 44px);
+    margin: 0 0 clamp(36px, 5vw, 56px);
+    padding-bottom: 18px;
     text-align: left;
-    border-bottom: 1px solid var(--d-accent-faint);
-    padding-bottom: 16px;
     font-weight: 400;
     color: var(--color-text);
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    position: relative;
+}
+
+.dossier-section-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 56px;
+    height: 2px;
+    background: var(--d-accent);
+    border-radius: 1px;
 }
 
 .dossier-section-title--flush {
-    border-bottom: none;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     padding-bottom: 0;
+}
+
+.dossier-section-title--flush::after {
+    display: none;
 }
 
 .dossier-body-text {
@@ -154,7 +176,7 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: clamp(32px, 5vw, 60px);
-    align-items: start;
+    align-items: stretch;
 }
 
 .dossier-grid-3 {
@@ -178,24 +200,27 @@
 
    -------------------------------------------------------------------------- */
 
+/* Removed the heavy 3px gold left-border — with 8+ cards on the page it read
+   as random gold bars rather than structure. A subtle uniform border + the
+   gold-coloured h3 inside is enough emphasis. */
 .dossier-card {
-    background: rgba(255, 255, 255, 0.04);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-radius: 16px;
-    border: 1px solid var(--d-accent-border);
-    border-left: 3px solid var(--d-accent);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.06);
-    padding: clamp(32px, 4vw, 40px);
+    background: rgba(255, 255, 255, 0.035);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    padding: clamp(28px, 3.5vw, 38px);
     display: flex;
     flex-direction: column;
     height: 100%;
-    transition: transform var(--t-slow), box-shadow var(--t-slow);
+    transition: transform var(--t-slow), box-shadow var(--t-slow), border-color var(--t-slow);
 }
 
 .dossier-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    transform: translateY(-4px);
+    border-color: var(--d-accent-border);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.36), inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .dossier-card h3 {
@@ -292,13 +317,13 @@
    -------------------------------------------------------------------------- */
 
 .dossier-image-wrapper {
-    border-radius: 20px;
+    border-radius: 18px;
     overflow: hidden;
-    border: 1px solid var(--d-card-border);
+    border: 1px solid rgba(255, 255, 255, 0.06);
     position: relative;
     width: 100%;
     height: 100%;
-    min-height: 300px;
+    min-height: 320px;
 }
 
 .dossier-image-wrapper img {
@@ -389,20 +414,25 @@
 
 .dossier-bleed__subtitle {
     font-family: var(--font-serif);
-    font-size: 24px;
+    font-size: 22px;
     color: var(--d-accent);
-    margin-bottom: 20px;
+    margin-bottom: 24px;
     font-weight: 400;
+    font-style: italic;
 }
 
 .dossier-bleed__content .dossier-body-text {
     margin-bottom: 24px;
 }
 
+/* Mobile/tablet image was 300–500px tall — felt like an oversized banner
+   plonked at the bottom of the column. Pulled it down to 220–360px so the
+   text + image read as one balanced unit. Desktop is unaffected because
+   the @992px+ rule below switches to position: absolute / height: 100%. */
 .dossier-bleed__image-wrap {
     width: 100%;
-    height: clamp(300px, 50vw, 500px);
-    border-radius: 12px;
+    height: clamp(220px, 32vw, 360px);
+    border-radius: 16px;
     overflow: hidden;
     position: relative;
 }
@@ -506,9 +536,7 @@
     color: var(--d-accent);
     margin-bottom: 24px;
     font-weight: 500;
-    border-bottom: 1px solid var(--d-accent);
     display: inline-block;
-    padding-bottom: 6px;
 }
 
 .dossier-conclusion-heading {
@@ -530,19 +558,36 @@
 }
 
 .dossier-conclusion-text--last {
-    margin-bottom: 48px;
+    margin-bottom: clamp(36px, 5vw, 48px);
 }
 
+/* Logo was 120px tall on a hard 1px border-top — the combination read as
+   "huge image plonked under a divider". Replaced the divider with a subtle
+   centred 56px gold accent line that mirrors the section-title rule, and
+   shrunk the logo to 72px so it lands as a quiet sign-off, not a banner. */
 .dossier-logo-wrapper {
-    border-top: 1px solid var(--d-card-border);
-    padding-top: clamp(40px, 8vw, 60px);
+    padding-top: clamp(28px, 5vw, 44px);
+    position: relative;
+}
+
+.dossier-logo-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 56px;
+    height: 1px;
+    background: var(--d-accent);
+    opacity: 0.7;
 }
 
 .dossier-logo-img {
-    height: 120px;
+    height: 72px;
     width: auto;
     object-fit: contain;
     display: inline-block;
+    opacity: 0.92;
 }
 
 
