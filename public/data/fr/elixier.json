@@ -42,6 +42,7 @@
       "title": "The Starter",
       "quantity": "1x 250ml",
       "price": "CHF 24.90",
+      "daily": "≈ CHF 2,49 / jour",
       "subtitle": "L'éveil cellulaire.",
       "body": "Ressentez la différence. Dissipez le brouillard mental et inondez votre corps d'une vitalité nordique pure. Le premier pas sans compromis vers une concentration accrue.",
       "scienceBox": {
@@ -80,8 +81,10 @@
       "title": "The Habit",
       "quantity": "3x 250ml",
       "price": "CHF 69.00",
+      "savings": "−8 % vs. Starter",
+      "daily": "≈ CHF 2,30 / jour",
       "subtitle": "La fin de l'énergie artificielle.",
-      "body": "Dites adieu aux chutes d'énergie toxiques des boissons énergisantes artificielles et de la taurine synthétique. Pour seulement <strong>CHF 2.30 par jour</strong>, ancrez une concentration durable dans votre routine.",
+      "body": "Dites adieu aux chutes d'énergie toxiques des boissons énergisantes artificielles et de la taurine synthétique. Ancrez une concentration durable dans votre routine.",
       "scienceBox": {
         "heading": "La Transformation",
         "items": [
@@ -122,8 +125,10 @@
       "title": "The Protocol",
       "quantity": "6x 250ml",
       "price": "CHF 129.00",
+      "savings": "−14 % vs. Starter",
+      "daily": "≈ CHF 2,15 / jour",
       "subtitle": "L'outil de biohacking ultime.",
-      "body": "Conçu pour les hautes performances. Maximisez votre longévité et construisez un bouclier immunologique indestructible — pour seulement <strong>CHF 2.15 par jour</strong>.",
+      "body": "Conçu pour les hautes performances. Maximisez votre longévité et construisez un bouclier immunologique indestructible.",
       "scienceBox": {
         "heading": "Le Niveau Maître",
         "items": [

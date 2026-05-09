@@ -754,20 +754,28 @@ html.landing-hero-active .ambernord-topbar .ambernord-logo-eubio {
 @media (max-width: 991px) {
   .nav-lang-toggle {
     display: inline-flex;
+    padding: 10px 14px;
+    font-size: 13px;
+    min-height: 44px;
+    border-radius: 6px;
+  }
+
+  .nav-lang-caret {
+    font-size: 11px;
   }
 
   .nav-lang-menu {
     position: absolute;
-    top: calc(100% + 6px);
+    top: calc(100% + 8px);
     right: 0;
     flex-direction: column;
     align-items: stretch;
-    gap: 0;
-    min-width: 96px;
-    padding: 6px;
+    gap: 4px;
+    min-width: 140px;
+    padding: 8px;
     background-color: var(--color-surface);
     border: 1px solid #222;
-    border-radius: 8px;
+    border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     z-index: var(--z-overlay);
     opacity: 0;
@@ -784,8 +792,10 @@ html.landing-hero-active .ambernord-topbar .ambernord-logo-eubio {
 
   .nav-lang-menu button {
     text-align: left;
-    padding: 10px 14px;
-    border-radius: 4px;
+    padding: 14px 18px;
+    font-size: 14px;
+    min-height: 44px;
+    border-radius: 6px;
   }
 
   .nav-lang-menu button:hover,

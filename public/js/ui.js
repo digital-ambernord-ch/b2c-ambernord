@@ -85,17 +85,29 @@
   }
 
   function setupLangButtons() {
+    const current = (typeof window.getLang === 'function') ? window.getLang() : 'de';
+    const toggle = document.getElementById('navLangToggle');
+
     document.querySelectorAll('[data-lang]').forEach(function (btn) {
       btn.addEventListener('click', function () {
         const lang = btn.getAttribute('data-lang');
-        if (lang && typeof window.setLang === 'function') {
-          /* setLang() reloads the page, which auto-closes the dropdown. */
-          window.setLang(lang);
-        }
+        if (!lang) return;
+
+        /* Close the mobile dropdown synchronously so the menu doesn't linger
+           in an open state during the page reload — that visual flicker is
+           what made the menu look "broken" when re-tapping the active lang. */
+        if (toggle) toggle.setAttribute('aria-expanded', 'false');
+
+        /* Re-clicking the active language is a no-op. Skipping the reload
+           avoids an unnecessary round-trip and prevents the cookie banner /
+           common-i18n re-paint that the user perceived as an error. */
+        const stored = (typeof window.getLang === 'function') ? window.getLang() : null;
+        if (stored === lang) return;
+
+        if (typeof window.setLang === 'function') window.setLang(lang);
       });
     });
 
-    const current = (typeof window.getLang === 'function') ? window.getLang() : 'de';
     const activeBtn = document.querySelector('[data-lang="' + current + '"]');
     if (activeBtn) activeBtn.setAttribute('aria-current', 'true');
 
@@ -103,7 +115,6 @@
        <=991px via CSS) opens / closes the four-language menu. The currently
        selected language is reflected in the toggle's label so users see at a
        glance which locale is active. Outside-click and Escape both close it. */
-    const toggle = document.getElementById('navLangToggle');
     if (!toggle) return;
 
     const currentLabel = toggle.querySelector('.nav-lang-current');

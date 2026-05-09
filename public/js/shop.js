@@ -83,7 +83,7 @@ window.initShop = async function () {
         return `
           <article class="shop-card page-reveal" role="listitem">
 
-            <a class="shop-card__content-link" href="${p.slug}" data-link>
+            <a class="shop-card__content-link shop-card__top-link" href="${p.slug}" data-link>
 
               <div class="shop-card__gallery">
                 ${renderBadge(p.badge)}
@@ -104,26 +104,37 @@ window.initShop = async function () {
                 </div>
               </div>
 
-              <div class="shop-card__body">
+              <div class="shop-card__hero">
                 <h3 class="shop-card__title">${p.title}</h3>
                 <p class="shop-card__quantity">${p.quantity}</p>
-                <p class="shop-card__price">${p.price}</p>
-                <p class="shop-card__subtitle">${p.subtitle}</p>
-                <p class="shop-card__desc">${p.body}</p>
 
-                <div class="shop-card__science">
-                  <span class="shop-card__science-heading">${p.scienceBox.heading}</span>
-                  <ul class="shop-card__science-list">
-                    ${renderScienceItems(p.scienceBox.items)}
-                  </ul>
+                <div class="shop-card__price-row">
+                  <span class="shop-card__price">${p.price}</span>
+                  ${p.savings ? `<span class="shop-card__savings">${p.savings}</span>` : ''}
                 </div>
+                ${p.daily ? `<p class="shop-card__daily">${p.daily}</p>` : ''}
+
+                <p class="shop-card__subtitle">${p.subtitle}</p>
+              </div>
+
+            </a>
+
+            <a class="shop-card__btn-primary shop-card__btn-primary--top" href="${p.buttons.primary.href}" target="_blank" rel="noopener noreferrer">${p.buttons.primary.label}</a>
+
+            <a class="shop-card__content-link shop-card__bottom-link" href="${p.slug}" data-link>
+
+              <p class="shop-card__desc">${p.body}</p>
+
+              <div class="shop-card__science">
+                <span class="shop-card__science-heading">${p.scienceBox.heading}</span>
+                <ul class="shop-card__science-list">
+                  ${renderScienceItems(p.scienceBox.items)}
+                </ul>
               </div>
 
             </a>
 
             <div class="shop-card__action">
-              
-      <a class="shop-card__btn-primary" href="${p.buttons.primary.href}" target="_blank" rel="noopener noreferrer">${p.buttons.primary.label}</a>
               ${renderAboBtn(p.buttons.subscription)}
               <p class="shop-card__shipping">
                 <span class="shop-card__shipping-highlight">${p.shipping.highlight}</span>${p.shipping.text}

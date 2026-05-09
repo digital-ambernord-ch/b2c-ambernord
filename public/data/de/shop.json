@@ -42,6 +42,7 @@
       "title": "The Starter",
       "quantity": "1x 250ml",
       "price": "24.90 CHF",
+      "daily": "≈ 2.49 CHF / Tag",
       "subtitle": "Das zelluläre Erwachen.",
       "body": "Spüren Sie den Unterschied. Lösen Sie den mentalen Nebel auf und fluten Sie Ihren Körper mit reiner, nordischer Lebenskraft. Der kompromisslose erste Schritt zu mehr Fokus.",
       "scienceBox": {
@@ -80,8 +81,10 @@
       "title": "The Habit",
       "quantity": "3x 250ml",
       "price": "69.00 CHF",
+      "savings": "−8 % vs. Starter",
+      "daily": "≈ 2.30 CHF / Tag",
       "subtitle": "Das Ende künstlicher Energie.",
-      "body": "Verabschieden Sie sich von toxischen Energie-Löchern durch künstliche Energy-Drinks und synthetisches Taurin. Für nur <strong>2.30 CHF pro Tag</strong> verankern Sie anhaltenden Fokus in Ihrer Routine.",
+      "body": "Verabschieden Sie sich von toxischen Energie-Löchern durch künstliche Energy-Drinks und synthetisches Taurin. Verankern Sie anhaltenden Fokus in Ihrer Routine.",
       "scienceBox": {
         "heading": "Die Transformation",
         "items": [
@@ -122,8 +125,10 @@
       "title": "The Protocol",
       "quantity": "6x 250ml",
       "price": "129.00 CHF",
+      "savings": "−14 % vs. Starter",
+      "daily": "≈ 2.15 CHF / Tag",
       "subtitle": "Das ultimative Biohacking-Tool.",
-      "body": "Entworfen für High-Performer. Maximieren Sie Ihre Longevity und bauen Sie einen unzerstörbaren immunologischen Schild auf – für smarte <strong>2.15 CHF pro Tag</strong>.",
+      "body": "Entworfen für High-Performer. Maximieren Sie Ihre Longevity und bauen Sie einen unzerstörbaren immunologischen Schild auf.",
       "scienceBox": {
         "heading": "Das Meister-Level",
         "items": [

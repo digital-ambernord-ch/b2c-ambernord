@@ -136,9 +136,19 @@
 .shop-card__content-link {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
   text-decoration: none;
   color: inherit;
+}
+
+/* Top link wraps gallery + hero info; sized by content. Bottom link wraps the
+   description + science box and grows to push the action footer to the bottom
+   so all cards align consistently. */
+.shop-card__top-link {
+  flex-grow: 0;
+}
+
+.shop-card__bottom-link {
+  flex-grow: 1;
 }
 
 /* --------------------------------------------------------------------------
@@ -214,6 +224,11 @@
   flex-direction: column;
 }
 
+.shop-card__hero {
+  display: flex;
+  flex-direction: column;
+}
+
 .shop-card__title {
   font-family: var(--font-serif);
   font-size: 26px;
@@ -237,11 +252,35 @@
   margin: 0 0 12px;
 }
 
+.shop-card__price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 0 0 4px;
+}
+
 .shop-card__price {
   font-family: var(--font-sans);
   font-size: 19px;
   color: var(--color-text);
   font-weight: 800;
+}
+
+.shop-card__savings {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  color: var(--color-gold);
+}
+
+.shop-card__daily {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-gold);
   margin: 0 0 12px;
 }
 
@@ -387,6 +426,13 @@
   background: var(--color-gold);
   color: #000;
   box-shadow: 0 8px 20px rgba(237, 163, 35, 0.3);
+}
+
+/* Primary CTA placed directly under the price hero so the buy action is visible
+   without scrolling on mobile. Description + science box continue below. */
+.shop-card__btn-primary--top {
+  margin-top: 4px;
+  margin-bottom: 24px;
 }
 
 /* --------------------------------------------------------------------------

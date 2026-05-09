@@ -42,6 +42,7 @@
       "title": "The Starter",
       "quantity": "1x 250ml",
       "price": "CHF 24.90",
+      "daily": "≈ CHF 2.49 / day",
       "subtitle": "The cellular awakening.",
       "body": "Feel the difference. Clear the mental fog and flood your body with pure Nordic vitality. The uncompromising first step toward sharper focus.",
       "scienceBox": {
@@ -80,8 +81,10 @@
       "title": "The Habit",
       "quantity": "3x 250ml",
       "price": "CHF 69.00",
+      "savings": "−8 % vs. Starter",
+      "daily": "≈ CHF 2.30 / day",
       "subtitle": "The end of artificial energy.",
-      "body": "Say goodbye to toxic energy crashes from artificial energy drinks and synthetic taurine. For just <strong>CHF 2.30 per day</strong> you anchor sustained focus into your routine.",
+      "body": "Say goodbye to toxic energy crashes from artificial energy drinks and synthetic taurine. Anchor sustained focus into your routine.",
       "scienceBox": {
         "heading": "The Transformation",
         "items": [
@@ -122,8 +125,10 @@
       "title": "The Protocol",
       "quantity": "6x 250ml",
       "price": "CHF 129.00",
+      "savings": "−14 % vs. Starter",
+      "daily": "≈ CHF 2.15 / day",
       "subtitle": "The ultimate biohacking tool.",
-      "body": "Designed for high performers. Maximise your longevity and build an indestructible immunological shield — for a smart <strong>CHF 2.15 per day</strong>.",
+      "body": "Designed for high performers. Maximise your longevity and build an indestructible immunological shield.",
       "scienceBox": {
         "heading": "The Master Level",
         "items": [

@@ -42,6 +42,7 @@
       "title": "The Starter",
       "quantity": "1x 250ml",
       "price": "CHF 24.90",
+      "daily": "≈ CHF 2,49 / giorno",
       "subtitle": "Il risveglio cellulare.",
       "body": "Senti la differenza. Dissolvi la nebbia mentale e inondi il tuo corpo di pura vitalità nordica. Il primo passo senza compromessi verso una maggiore concentrazione.",
       "scienceBox": {
@@ -80,8 +81,10 @@
       "title": "The Habit",
       "quantity": "3x 250ml",
       "price": "CHF 69.00",
+      "savings": "−8 % vs. Starter",
+      "daily": "≈ CHF 2,30 / giorno",
       "subtitle": "La fine dell'energia artificiale.",
-      "body": "Di' addio ai cali di energia tossici delle bevande energetiche artificiali e della taurina sintetica. Per soli <strong>CHF 2.30 al giorno</strong> radica una concentrazione duratura nella tua routine.",
+      "body": "Di' addio ai cali di energia tossici delle bevande energetiche artificiali e della taurina sintetica. Radica una concentrazione duratura nella tua routine.",
       "scienceBox": {
         "heading": "La Trasformazione",
         "items": [
@@ -122,8 +125,10 @@
       "title": "The Protocol",
       "quantity": "6x 250ml",
       "price": "CHF 129.00",
+      "savings": "−14 % vs. Starter",
+      "daily": "≈ CHF 2,15 / giorno",
       "subtitle": "Lo strumento di biohacking definitivo.",
-      "body": "Progettato per i top performer. Massimizza la tua longevità e costruisci uno scudo immunologico indistruttibile — per soli <strong>CHF 2.15 al giorno</strong>.",
+      "body": "Progettato per i top performer. Massimizza la tua longevità e costruisci uno scudo immunologico indistruttibile.",
       "scienceBox": {
         "heading": "Il Livello Master",
         "items": [
