@@ -10,6 +10,13 @@ window.initBewertungen = async function () {
   let i18n = {};
   try { i18n = await window.loadI18n(lang, 'bewertungen'); } catch {}
 
+  /* loadI18n injects HTML via data-i18n-html, which can introduce new
+     <a data-link> elements (e.g. the secretNote at the page bottom). Re-bind
+     the SPA router so those links don't fall through to a hard reload. */
+  if (typeof window.attachLinkListeners === 'function') {
+    window.attachLinkListeners();
+  }
+
   /* ------------------------------------------------------------------------
      RENDER REVIEWS LIST + AGGREGATE from /data/reviews.json
      ------------------------------------------------------------------------ */

@@ -495,6 +495,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* Vertically centre each item within the row's stretched height so the
+     reviews badge (stars + label) lines up with the title+subtitle of the
+     other three items even when their content heights differ slightly. */
+  justify-content: center;
   gap: 6px;
   padding: 0 40px;
   text-align: center;
@@ -550,8 +554,10 @@
 .trust-stars {
   display: flex;
   gap: 3px;
-  margin-bottom: 4px;
-  font-size: 14px;
+  /* Match the line height of the trust-text on the other three badges so
+     the row of 4 reads as a single horizontal rhythm — no slipped baseline.
+     Stars at 12px keep the gold visual punch without dwarfing the labels. */
+  font-size: 12px;
   line-height: 1;
   color: var(--color-gold);
 }

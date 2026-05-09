@@ -444,3 +444,44 @@
     gap: 6px;
   }
 }
+
+/* --------------------------------------------------------------------------
+   "DISCOVERABLE" PROMO LINE — sits below the form as a single italic line
+   with a thin gold accent rule above. Designed to feel like an editorial
+   footnote rather than a CTA: visitors discover the launch edition here
+   instead of being chased by a sticky bar. Restrained on purpose so it
+   never competes with the actual review form.
+   -------------------------------------------------------------------------- */
+.bewertungen-secret-note {
+  max-width: 640px;
+  margin: 64px auto 0;
+  padding: 0 var(--container-pad);
+  text-align: center;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 14px;
+  color: #b3b3b3;
+  line-height: 1.7;
+}
+
+.bewertungen-secret-note::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: rgba(237, 163, 35, 0.4);
+  margin: 0 auto 22px;
+}
+
+.bewertungen-secret-note a {
+  color: var(--color-gold);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(237, 163, 35, 0.35);
+  transition: border-bottom-color var(--t-fast) ease, color var(--t-fast) ease;
+}
+
+.bewertungen-secret-note a:hover,
+.bewertungen-secret-note a:focus-visible {
+  border-bottom-color: var(--color-gold);
+  color: var(--color-gold-hover, var(--color-gold));
+}

@@ -49,5 +49,6 @@
     "success": "Thank you! Your review has been submitted. After we verify the order number, it will appear here — usually within 48 hours.",
     "error": "Submission failed. Please try again.",
     "hiddenSubject": "New review from AmberNord.ch"
-  }
+  },
+  "secretNote": "No order yet? <a href=\"/2-fuer-1/\" data-link>Get 2 × The Starter for the price of 1 — limited to 250 spots.</a>"
 }

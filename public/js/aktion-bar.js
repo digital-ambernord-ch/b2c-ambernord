@@ -9,13 +9,13 @@
   const AKTION_VERSION  = 'v1';
   const STORAGE_KEY     = 'amber_aktion_dismissed_' + AKTION_VERSION;
 
-  /* Auto-dismiss tuning. We trigger on whichever happens first:
-       SCROLL_TRIGGER_PX — user has scrolled deeply enough to signal real
-                           engagement with the page (≈ past the hero).
-       AUTO_TIMEOUT_MS  — fallback for visitors who don't scroll (e.g. they
-                           pause on the hero, then click a nav link). */
-  const SCROLL_TRIGGER_PX = 600;
-  const AUTO_TIMEOUT_MS   = 25000;
+  /* Auto-dismiss timing — time-only, no scroll-trigger.
+     Scroll-based dismiss surprised users mid-read (people scroll while still
+     reading the marquee), so the bar would vanish before its message
+     registered. A pure 90 second timer guarantees the user has time to
+     finish reading whether they sit on the hero or scroll through quickly,
+     and only then does the bar fade out. */
+  const AUTO_TIMEOUT_MS = 90000;
 
   let autoArmed = false;
 
@@ -40,22 +40,7 @@
   function armAutoDismiss() {
     if (autoArmed) return;
     autoArmed = true;
-
-    let triggered = false;
-    function trigger() {
-      if (triggered) return;
-      triggered = true;
-      window.removeEventListener('scroll', onScroll);
-      clearTimeout(timer);
-      dismiss(true);
-    }
-
-    function onScroll() {
-      if ((window.scrollY || window.pageYOffset || 0) >= SCROLL_TRIGGER_PX) trigger();
-    }
-
-    const timer = setTimeout(trigger, AUTO_TIMEOUT_MS);
-    window.addEventListener('scroll', onScroll, { passive: true });
+    setTimeout(function () { dismiss(true); }, AUTO_TIMEOUT_MS);
   }
 
   function init() {

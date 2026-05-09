@@ -49,5 +49,6 @@
     "success": "Grazie! La tua recensione è stata inviata. Dopo la verifica del numero d'ordine, apparirà qui — di solito entro 48 ore.",
     "error": "Invio non riuscito. Riprova.",
     "hiddenSubject": "Nuova recensione da AmberNord.ch"
-  }
+  },
+  "secretNote": "Nessun ordine ancora? <a href=\"/2-fuer-1/\" data-link>Approfittane: 2 × The Starter al prezzo di 1 — limitato a 250 posti.</a>"
 }
