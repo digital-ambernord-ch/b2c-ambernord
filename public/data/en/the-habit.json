@@ -19,7 +19,7 @@
     }
   },
   "badge": {
-    "bestseller": "BEST SELLER"
+    "bestseller": "MOST POPULAR"
   },
   "gallery": {
     "mainAlt": "The Habit — 3× 250 ml sea buckthorn elixir"
@@ -50,15 +50,14 @@
     "shippingText": "Free premium shipping within Switzerland. Direct shipping from our logistics centre in Aarau."
   },
   "related": {
-    "heading": "Complete your ritual",
+    "heading": "Other Editions",
     "starter": {
-      "badge": "INCL. 10 CHF VOUCHER",
       "title": "The Starter",
       "subtitle": "(1× 250 ml)",
       "price": "24.90 CHF",
       "extra": "To get acquainted",
       "daily": "Only 2.49 CHF / day",
-      "shipping": "Incl. 10 CHF voucher"
+      "shipping": "+ shipping"
     },
     "protocol": {
       "title": "The Protocol",
@@ -66,6 +65,7 @@
       "price": "129.00 CHF",
       "extra": "For family & focus",
       "daily": "Only 2.15 CHF / day",
+      "savings": "−14 % vs. Starter",
       "shipping": "Free shipping | Subscription available"
     }
   }

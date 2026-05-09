@@ -19,7 +19,7 @@
     }
   },
   "badge": {
-    "bestseller": "MEISTGEKAUFT"
+    "bestseller": "AM BELIEBTESTEN"
   },
   "gallery": {
     "mainAlt": "The Habit — 3× 250 ml Sanddorn Elixier"
@@ -50,15 +50,14 @@
     "shippingText": "Kostenloser Premium-Versand innerhalb der Schweiz. Direktversand aus unserem Logistikzentrum in Aarau."
   },
   "related": {
-    "heading": "Ergänzen Sie Ihr Ritual",
+    "heading": "Andere Editionen",
     "starter": {
-      "badge": "INKL. 10 CHF VOUCHER",
       "title": "The Starter",
       "subtitle": "(1× 250 ml)",
       "price": "24.90 CHF",
       "extra": "Zum Kennenlernen",
       "daily": "Nur 2.49 CHF / Tag",
-      "shipping": "Inkl. 10 CHF Voucher"
+      "shipping": "zzgl. Versand"
     },
     "protocol": {
       "title": "The Protocol",
@@ -66,6 +65,7 @@
       "price": "129.00 CHF",
       "extra": "Für Familie & Fokus",
       "daily": "Nur 2.15 CHF / Tag",
+      "savings": "−14 % vs. Starter",
       "shipping": "Gratis Versand | Spar-Abo verfügbar"
     }
   }

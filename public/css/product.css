@@ -474,6 +474,16 @@
   color: var(--color-gold);
 }
 
+.ambernord-product-info .p-savings {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  color: var(--color-gold);
+  margin: 0 0 8px 0;
+}
+
 .ambernord-product-info .p-shipping {
   font-family: var(--font-sans);
   font-size: 10px;

@@ -19,7 +19,7 @@
     }
   },
   "badge": {
-    "bestseller": "MEILLEURE VENTE"
+    "bestseller": "PLUS POPULAIRE"
   },
   "gallery": {
     "mainAlt": "The Habit — 3× 250 ml élixir d'argousier"
@@ -50,15 +50,14 @@
     "shippingText": "Livraison premium gratuite en Suisse. Expédition directe depuis notre centre logistique d'Aarau."
   },
   "related": {
-    "heading": "Complétez votre rituel",
+    "heading": "Autres Éditions",
     "starter": {
-      "badge": "BON DE 10 CHF INCLUS",
       "title": "The Starter",
       "subtitle": "(1× 250 ml)",
       "price": "24,90 CHF",
       "extra": "Pour faire connaissance",
       "daily": "Seulement 2,49 CHF / jour",
-      "shipping": "Bon de 10 CHF inclus"
+      "shipping": "+ frais de port"
     },
     "protocol": {
       "title": "The Protocol",
@@ -66,6 +65,7 @@
       "price": "129,00 CHF",
       "extra": "Pour la famille & la concentration",
       "daily": "Seulement 2,15 CHF / jour",
+      "savings": "−14 % vs. Starter",
       "shipping": "Livraison gratuite | Abonnement disponible"
     }
   }

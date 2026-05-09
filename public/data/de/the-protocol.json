@@ -47,23 +47,23 @@
     "shippingText": "Kostenloser Premium-Versand innerhalb der Schweiz. Direktversand aus unserem Logistikzentrum in Aarau."
   },
   "related": {
-    "heading": "Ergänzen Sie Ihr Ritual",
+    "heading": "Andere Editionen",
     "starter": {
-      "badge": "INKL. 10 CHF VOUCHER",
       "title": "The Starter",
       "subtitle": "(1× 250 ml)",
       "price": "24.90 CHF",
       "extra": "Zum Kennenlernen",
       "daily": "Nur 2.49 CHF / Tag",
-      "shipping": "Inkl. 10 CHF Voucher"
+      "shipping": "zzgl. Versand"
     },
     "habit": {
-      "badge": "MEISTGEKAUFT",
+      "badge": "AM BELIEBTESTEN",
       "title": "The Habit",
       "subtitle": "(3× 250 ml)",
       "price": "69.00 CHF",
       "extra": "Das 30-Tage-Ritual",
       "daily": "Nur 2.30 CHF / Tag",
+      "savings": "−8 % vs. Starter",
       "shipping": "Gratis Versand | Spar-Abo verfügbar"
     }
   }

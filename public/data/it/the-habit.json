@@ -19,7 +19,7 @@
     }
   },
   "badge": {
-    "bestseller": "PIÙ VENDUTO"
+    "bestseller": "PIÙ POPOLARE"
   },
   "gallery": {
     "mainAlt": "The Habit — 3× 250 ml elisir di olivello spinoso"
@@ -50,15 +50,14 @@
     "shippingText": "Spedizione premium gratuita all'interno della Svizzera. Spedizione diretta dal nostro centro logistico di Aarau."
   },
   "related": {
-    "heading": "Completa il tuo rituale",
+    "heading": "Altre Edizioni",
     "starter": {
-      "badge": "BUONO DA 10 CHF INCLUSO",
       "title": "The Starter",
       "subtitle": "(1× 250 ml)",
       "price": "24,90 CHF",
       "extra": "Per conoscerci",
       "daily": "Solo 2,49 CHF / giorno",
-      "shipping": "Buono da 10 CHF incluso"
+      "shipping": "+ spedizione"
     },
     "protocol": {
       "title": "The Protocol",
@@ -66,6 +65,7 @@
       "price": "129,00 CHF",
       "extra": "Per famiglia & concentrazione",
       "daily": "Solo 2,15 CHF / giorno",
+      "savings": "−14 % vs. Starter",
       "shipping": "Spedizione gratuita | Abbonamento disponibile"
     }
   }

@@ -48,14 +48,15 @@
     "shippingText": "Reliable premium shipping within Switzerland (excl. shipping costs). Direct shipping from our logistics centre in Aarau."
   },
   "related": {
-    "heading": "Complete your ritual",
+    "heading": "Other Editions",
     "habit": {
-      "badge": "BEST SELLER",
+      "badge": "MOST POPULAR",
       "title": "The Habit",
       "subtitle": "(3× 250 ml)",
       "price": "69.00 CHF",
       "extra": "The 30-day ritual",
       "daily": "Only 2.30 CHF / day",
+      "savings": "−8 % vs. Starter",
       "shipping": "Free shipping | Subscription available"
     },
     "protocol": {
@@ -64,6 +65,7 @@
       "price": "129.00 CHF",
       "extra": "For family & focus",
       "daily": "Only 2.15 CHF / day",
+      "savings": "−14 % vs. Starter",
       "shipping": "Free shipping | Subscription available"
     }
   }
