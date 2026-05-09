@@ -53,8 +53,13 @@
     "benefit2": "✓ Oméga-7 pour la peau, l'intestin & les barrières protectrices",
     "benefit3": "✓ B12 naturelle – biodisponible, non synthétique",
     "nativeOils": "Y compris les huiles natives<br>de la pulpe &amp; du noyau",
-    "cta": "Commencer le rituel",
-    "aktionLink": "Édition de lancement →"
+    "cta": "Commencer le rituel"
+  },
+  "closingCta": {
+    "eyebrow": "Prêt ?",
+    "title": "Choisis <span>ton rituel.</span>",
+    "sub": "Trois éditions — une pour chaque rythme.",
+    "btn": "Choisir mon rituel"
   },
   "trust": {
     "lab": { "title": "Testé en laboratoire", "subtitle": "Plus hauts standards de pureté" },

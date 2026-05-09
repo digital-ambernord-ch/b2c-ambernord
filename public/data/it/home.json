@@ -53,8 +53,13 @@
     "benefit2": "✓ Omega-7 per pelle, intestino & barriere protettive",
     "benefit3": "✓ B12 naturale – biodisponibile, non sintetica",
     "nativeOils": "Inclusi gli oli nativi<br>della polpa &amp; del seme",
-    "cta": "Inizia il rituale",
-    "aktionLink": "Edizione di lancio →"
+    "cta": "Inizia il rituale"
+  },
+  "closingCta": {
+    "eyebrow": "Pronto?",
+    "title": "Scegli <span>il tuo rituale.</span>",
+    "sub": "Tre edizioni — una per ogni ritmo.",
+    "btn": "Scegli il mio rituale"
   },
   "trust": {
     "lab": { "title": "Testato in laboratorio", "subtitle": "Massimi standard di purezza" },

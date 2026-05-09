@@ -53,8 +53,13 @@
     "benefit2": "✓ Omega-7 for skin, gut & protective barriers",
     "benefit3": "✓ Natural B12 – bioavailable, not synthetic",
     "nativeOils": "Including native oils from<br>fruit pulp &amp; seed",
-    "cta": "Start Your Ritual",
-    "aktionLink": "Launch Edition →"
+    "cta": "Start Your Ritual"
+  },
+  "closingCta": {
+    "eyebrow": "Ready?",
+    "title": "Choose <span>your ritual.</span>",
+    "sub": "Three editions — one for every rhythm.",
+    "btn": "Choose my ritual"
   },
   "trust": {
     "lab": { "title": "Lab Tested", "subtitle": "Highest purity standards" },

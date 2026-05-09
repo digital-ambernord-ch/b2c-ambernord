@@ -1441,7 +1441,98 @@
   border-bottom-color: var(--color-gold-dim);
 }
 
+/* =========================================================================
+   LANDING CLOSING CTA — final centred call-to-action after the gallery, just
+   before the footer. Editorial-style: eyebrow / serif title with gold italic
+   accent / italic sub / single primary pill button. The button anchors back
+   to #shop via the router's smooth-scroll path, closing the loop between
+   editorial storytelling and the product cards higher up the page.
+   ========================================================================= */
+
+.landing-closing-cta {
+  position: relative;
+  z-index: 10;
+  background-color: var(--color-bg);
+  padding: 120px var(--container-pad) 140px;
+  text-align: center;
+}
+
+.landing-closing-cta__inner {
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+.landing-closing-cta__eyebrow {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: var(--space-md);
+}
+
+.landing-closing-cta__title {
+  font-family: var(--font-serif);
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--color-text);
+  margin: 0 0 var(--space-sm);
+  letter-spacing: -0.5px;
+}
+
+.landing-closing-cta__title span {
+  color: var(--color-gold);
+  font-style: italic;
+}
+
+.landing-closing-cta__sub {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  margin: 0 0 var(--space-lg);
+}
+
+.landing-closing-cta__btn {
+  display: inline-block;
+  padding: 18px 44px;
+  background-color: var(--color-gold);
+  color: var(--color-bg);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 50px;
+  box-shadow: 0 6px 24px rgba(237, 163, 35, 0.28);
+  transition: background-color var(--t-fast) ease,
+              transform var(--t-fast) ease,
+              box-shadow var(--t-fast) ease;
+}
+
+.landing-closing-cta__btn:hover,
+.landing-closing-cta__btn:focus-visible {
+  background-color: var(--color-gold-hover);
+  color: var(--color-bg);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 32px rgba(237, 163, 35, 0.4);
+}
+
 @media (max-width: 768px) {
+  .landing-closing-cta {
+    padding: 80px var(--container-pad) 100px;
+  }
+  .landing-closing-cta__btn {
+    padding: 16px 36px;
+    width: 100%;
+    max-width: 320px;
+  }
+
   .trust-item {
     padding: 0 22px;
   }
