@@ -118,26 +118,23 @@ window.initDossier = async function () {
     const parallaxBg      = parallaxSection && parallaxSection.querySelector('.dossier-atmospheric__bg');
 
     if (parallaxSection && parallaxBg) {
-        let ticking = false;
-
+        // Synchronous scroll-driven transform — NO requestAnimationFrame here.
+        // rAF queued the update for the NEXT frame, so the bg lagged the scroll
+        // by ~16ms (and worse on 120Hz displays), causing the visible "wavering".
+        // Running synchronously inside the scroll handler lets the browser
+        // composite scroll + transform together in the same frame so the image
+        // appears truly anchored to the viewport.
         function updateParallax() {
-            ticking = false;
             if (!parallaxSection.isConnected) return;
             const rect = parallaxSection.getBoundingClientRect();
-            // Skip work when the section is well off-screen.
-            if (rect.bottom < -200 || rect.top > window.innerHeight + 200) return;
-            parallaxBg.style.transform = `translate3d(0, ${-rect.top}px, 0)`;
+            if (rect.bottom < -400 || rect.top > window.innerHeight + 400) return;
+            // Round to whole pixels to remove sub-pixel jitter on some GPUs.
+            const y = Math.round(-rect.top);
+            parallaxBg.style.transform = `translate3d(0, ${y}px, 0)`;
         }
 
-        function onScrollOrResize() {
-            if (!ticking) {
-                requestAnimationFrame(updateParallax);
-                ticking = true;
-            }
-        }
-
-        window.addEventListener('scroll', onScrollOrResize, { passive: true });
-        window.addEventListener('resize', onScrollOrResize);
+        window.addEventListener('scroll', updateParallax, { passive: true });
+        window.addEventListener('resize', updateParallax);
         updateParallax();
     }
 

@@ -375,7 +375,10 @@
 .dossier-atmospheric {
     position: relative;
     overflow: hidden;
-    padding: clamp(80px, 10vw, 120px) 0;
+    /* Extra-tall vertical padding gives the parallax image room to breathe at
+       the top and bottom of the scroll — the cards now feel suspended over
+       the photo instead of hugging its edges. */
+    padding: clamp(140px, 16vw, 220px) 0;
     border-top: 1px solid var(--d-card-border);
     border-bottom: 1px solid var(--d-card-border);
     background-color: rgba(20, 20, 20, 0.95);
