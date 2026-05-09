@@ -118,24 +118,32 @@ window.initDossier = async function () {
     const parallaxBg      = parallaxSection && parallaxSection.querySelector('.dossier-atmospheric__bg');
 
     if (parallaxSection && parallaxBg) {
-        // Synchronous scroll-driven transform — NO requestAnimationFrame here.
-        // rAF queued the update for the NEXT frame, so the bg lagged the scroll
-        // by ~16ms (and worse on 120Hz displays), causing the visible "wavering".
-        // Running synchronously inside the scroll handler lets the browser
-        // composite scroll + transform together in the same frame so the image
-        // appears truly anchored to the viewport.
-        function updateParallax() {
+        // The bg layer is position:fixed at inset:0 (covers the viewport, never
+        // moves). We only update its clip-path so it's visible only inside the
+        // section's bounds. Because the bg image itself is browser-native fixed,
+        // there is zero per-frame JS work positioning it — the image pixels
+        // stay rock-still on screen. Even if the clip-path lags by one frame,
+        // the visual artefact is invisible at the edges of the section, and
+        // the image content never wavers.
+        const vh = () => window.innerHeight || document.documentElement.clientHeight;
+
+        function updateClip() {
             if (!parallaxSection.isConnected) return;
             const rect = parallaxSection.getBoundingClientRect();
-            if (rect.bottom < -400 || rect.top > window.innerHeight + 400) return;
-            // Round to whole pixels to remove sub-pixel jitter on some GPUs.
-            const y = Math.round(-rect.top);
-            parallaxBg.style.transform = `translate3d(0, ${y}px, 0)`;
+            const viewportH = vh();
+            // Fully clipped if the section is off-screen.
+            if (rect.bottom <= 0 || rect.top >= viewportH) {
+                parallaxBg.style.clipPath = 'inset(100% 0 100% 0)';
+                return;
+            }
+            const top    = Math.max(0, Math.round(rect.top));
+            const bottom = Math.max(0, Math.round(viewportH - rect.bottom));
+            parallaxBg.style.clipPath = `inset(${top}px 0 ${bottom}px 0)`;
         }
 
-        window.addEventListener('scroll', updateParallax, { passive: true });
-        window.addEventListener('resize', updateParallax);
-        updateParallax();
+        window.addEventListener('scroll', updateClip, { passive: true });
+        window.addEventListener('resize', updateClip);
+        updateClip();
     }
 
     /* Scroll-reveal observer (re-binds after dynamic content is in the DOM). */
