@@ -1,9 +1,22 @@
 {
   "aggregate": {
-    "average": 5,
-    "count": 1
+    "average": 4.5,
+    "count": 2
   },
   "reviews": [
+    {
+      "stars": 4,
+      "author": "B.",
+      "city": "",
+      "date": "2026-05-09",
+      "verified": true,
+      "text": {
+        "de": "Schwer zu sagen — ich trinke bisher erst die erste Flasche. Angenehm säuerlicher Geschmack, sehr erfrischend. Aus einer Flasche kommt sehr viel Getränk heraus. Eine grosse Wirkung habe ich bisher noch nicht bemerkt, aber nach einem Glas am Morgen kommt die Energie. Ich werde später nochmals berichten.",
+        "en": "Hard to say — I'm still on my first bottle. Pleasantly tart taste, very refreshing. One bottle yields a lot of drink. I haven't noticed a major effect yet, but after a glass in the morning the energy kicks in. I'll report back later.",
+        "fr": "Difficile à dire — je n'en suis encore qu'à la première bouteille. Goût agréablement acidulé, très rafraîchissant. Une bouteille donne énormément de boisson. Je n'ai pas encore remarqué d'effet marqué, mais après un verre le matin l'énergie arrive. Je donnerai d'autres nouvelles plus tard.",
+        "it": "Difficile dire — sono ancora alla prima bottiglia. Gusto piacevolmente acidulo, molto rinfrescante. Da una bottiglia si ottiene tantissima bevanda. Non ho ancora notato un effetto marcato, ma dopo un bicchiere la mattina arriva l'energia. Aggiornerò più avanti."
+      }
+    },
     {
       "stars": 5,
       "author": "Erik",
