@@ -1313,19 +1313,15 @@
     padding-bottom: 8px;
   }
 
-  /* Mobile: keep the desktop "logo floats above its label" effect, but lift
-     .bio-wrapper onto its own centered line below the prefix tagline. width:
-     max-content shrinks the wrapper to the label's width so the logo's
-     left:0 anchor lines up with the start of the label exactly like on
-     desktop. The 50px top margin reserves space for the absolute-positioned
-     logo so it never overlaps the wrapped line above — works the same in
-     every locale, regardless of how long "BIO-ZERTIFIZIERT" /
-     "CERTIFICATO BIO" / etc. is. */
+  /* Mobile: keep .bio-wrapper as inline-block (inherited from desktop) so
+     the prefix tagline + bio label remain one continuous paragraph. The
+     50px top margin extends the line-box height for the line the wrapper
+     sits on, reserving room above the wrapper for the absolute-positioned
+     floating logo. This way the floating logo never overlaps the wrapped
+     line above — works in every locale (DE/EN/FR/IT) regardless of
+     whether the tagline fits on one line or wraps. */
   .bio-wrapper {
-    display: block;
-    width: max-content;
-    max-width: 100%;
-    margin: 50px auto 0;
+    margin-top: 50px;
   }
 
   .eu-bio-logo    { height: 38px; bottom: calc(100% + 5px); }
