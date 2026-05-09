@@ -61,6 +61,18 @@
     color: var(--color-text);
 }
 
+/* The actual editorial sections (history, phyto, lipids, science…) are
+   wrapped inside <section id="main-content">, NOT direct children of
+   .dossier-page. So the .dossier-page flex gap above doesn't reach them —
+   they were stacking with zero space between, which read as "no spacings".
+   Make main-content its own flex column with a generous gap so every
+   section gets the same breathing room. */
+.dossier-page #main-content {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(100px, 11vw, 140px);
+}
+
 
 /* --------------------------------------------------------------------------
 
