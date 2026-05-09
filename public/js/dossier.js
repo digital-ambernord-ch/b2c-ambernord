@@ -28,10 +28,13 @@ window.initDossier = async function () {
     function renderLipidsGrid(cards) {
         const grid = document.getElementById('dossier-lipids-grid');
         if (!grid || !Array.isArray(cards)) return;
+        // Cloudinary brand library — Unsplash hotlinks were blocked by our CSP
+        // (img-src only allows res.cloudinary.com), so the cards rendered as
+        // alt-text. These three brand assets fit the lipids/vitamins cards.
         const imgs = [
-            'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?q=80&w=800&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?q=80&w=800&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?q=80&w=800&auto=format&fit=crop'
+            'https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_800/v1773686862/sonnengekuesster-sanddorn_jxkico.jpg',
+            'https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_800/v1773686914/gold-der-ostsee-kueste_dwnagq.jpg',
+            'https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_800/v1773686998/reinste-essenz-der-natur_rz2l8i.jpg'
         ];
         grid.innerHTML = cards.map((c, i) => `
             <div class="dossier-card dossier-card--media dossier-reveal">
