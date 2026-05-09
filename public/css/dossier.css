@@ -328,29 +328,29 @@
 
    -------------------------------------------------------------------------- */
 
+/* Natural aspect — no fixed height, no object-fit cover. The image is shown
+   at full bleed width with its native proportions, so the user sees the
+   complete image with no edge cropping. align-self: start prevents the grid
+   from stretching the wrapper to match the (possibly taller) text column. */
 .dossier-image-wrapper {
     border-radius: 18px;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.06);
-    position: relative;
     width: 100%;
-    height: 100%;
-    min-height: 320px;
+    align-self: start;
 }
 
 .dossier-image-wrapper img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: absolute;
-    inset: 0;
-    filter: brightness(0.9) contrast(1.05);
+    height: auto;
+    display: block;
+    filter: brightness(0.94) contrast(1.04);
     transition: filter var(--t-slow), transform var(--t-slow);
 }
 
 .dossier-image-wrapper:hover img {
     filter: brightness(1) contrast(1.1);
-    transform: scale(1.03);
+    transform: scale(1.02);
 }
 
 
@@ -369,21 +369,21 @@
 
    -------------------------------------------------------------------------- */
 
+/* Natural-aspect banner: no aspect-ratio constraint, no max-height. The
+   image fills the figure's width and renders at its true height so nothing
+   is cropped (ALL edges visible). Width matches the section content below
+   (cards/list) because both live inside .dossier-container. */
 .dossier-section-figure {
     margin: 0 0 clamp(36px, 5vw, 56px);
     border-radius: 18px;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.06);
     background: rgba(255, 255, 255, 0.02);
-    aspect-ratio: 21 / 9;
-    position: relative;
-    max-height: 460px;
 }
 
 .dossier-section-figure img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
     display: block;
     filter: brightness(0.94) contrast(1.04);
     transition: filter var(--t-slow), transform var(--t-slow);
@@ -391,12 +391,11 @@
 
 .dossier-section-figure:hover img {
     filter: brightness(1) contrast(1.08);
-    transform: scale(1.02);
+    transform: scale(1.01);
 }
 
 @media (max-width: 768px) {
     .dossier-section-figure {
-        aspect-ratio: 16 / 10;
         border-radius: 14px;
     }
 }
@@ -459,33 +458,9 @@
 
    -------------------------------------------------------------------------- */
 
-.dossier-bleed {
-    background: transparent;
-    position: relative;
-    overflow: hidden;
-}
-
-/* The inner used to be `position: relative; z-index: 2`. That made it the
-   containing block for the absolute image-wrap on desktop, so `right: 0`
-   resolved to the inner's max-1200px right edge (~viewport_right - 360 on a
-   1920 screen). Combined with `width: 50vw` (~960 on 1920), the image
-   stretched LEFT past the column boundary and covered the text.
-   Removing position:relative/z-index here lets the image-wrap escape up to
-   `.dossier-bleed` (the section, full width), so `right: 0` = viewport right
-   edge — the bleed lands on the right half only, never overlapping text. */
-.dossier-bleed__inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: clamp(40px, 8vw, 80px) var(--container-pad);
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-}
-
-.dossier-bleed__content {
-    width: 100%;
-}
-
+/* Italic gold subtitle used inside the Harvest section under the h2.
+   (The old bleed layout used .dossier-bleed__subtitle — keep the class name
+   to avoid touching the locales / data hooks.) */
 .dossier-bleed__subtitle {
     font-family: var(--font-serif);
     font-size: 22px;
@@ -495,49 +470,13 @@
     font-style: italic;
 }
 
-.dossier-bleed__content .dossier-body-text {
-    margin-bottom: 24px;
-}
-
-/* Mobile/tablet image was 300–500px tall — felt like an oversized banner
-   plonked at the bottom of the column. Pulled it down to 220–360px so the
-   text + image read as one balanced unit. Desktop is unaffected because
-   the @992px+ rule below switches to position: absolute / height: 100%. */
-.dossier-bleed__image-wrap {
-    width: 100%;
-    height: clamp(220px, 32vw, 360px);
-    border-radius: 16px;
-    overflow: hidden;
-    position: relative;
-}
-
-.dossier-bleed__image-wrap img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: brightness(0.9);
-    transition: filter var(--t-slow);
-}
-
-@media (min-width: 992px) {
-    .dossier-bleed__inner {
-        flex-direction: row;
-        align-items: center;
-    }
-
-    .dossier-bleed__content {
-        width: 50%;
-        padding-right: 60px;
-    }
-
-    .dossier-bleed__image-wrap {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        width: 50vw;
-        height: 100%;
-        border-radius: 0;
+/* Sourcing: flip the columns on desktop so the image sits on the LEFT and
+   text on the RIGHT — that way Sourcing (left image) and the next section
+   Harvest (right image) alternate sides instead of repeating. On mobile the
+   text comes first naturally (HTML order) so reading flow is preserved. */
+@media (min-width: 768px) {
+    #dossier-sourcing .dossier-image-wrapper {
+        order: -1;
     }
 }
 

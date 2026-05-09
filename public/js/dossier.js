@@ -172,8 +172,6 @@ window.initDossier = async function () {
         ...document.querySelectorAll('.dossier-card'),
         ...document.querySelectorAll('.dossier-image-wrapper'),
         ...document.querySelectorAll('.dossier-section-figure'),
-        ...document.querySelectorAll('.dossier-bleed__content'),
-        ...document.querySelectorAll('.dossier-bleed__image-wrap'),
         ...document.querySelectorAll('.dossier-icon-list li'),
         ...document.querySelectorAll('.dossier-conclusion-text'),
     ].filter(Boolean);
