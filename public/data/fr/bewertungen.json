@@ -37,7 +37,7 @@
     "name": "Prénom (ou initiales)",
     "city": "Ville",
     "email": "E-mail (confidentiel, pour vérification uniquement)",
-    "order": "Numéro de commande (e-mail de confirmation Stripe)",
+    "order": "Numéro de commande (de la confirmation de commande)",
     "text": "Ton expérience",
     "textHint": "Décris dans tes propres mots ce qui a changé après 14 jours — énergie, peau, sommeil, digestion —, comment l'élixir te plaît au goût et ce qui t'a surpris.",
     "textPlaceholder": "",

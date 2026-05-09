@@ -37,7 +37,7 @@
     "name": "First name (or initials)",
     "city": "City",
     "email": "Email (private, for verification only)",
-    "order": "Order number (from your Stripe confirmation email)",
+    "order": "Order number (from your order confirmation)",
     "text": "Your experience",
     "textHint": "Describe in your own words what changed after 14 days — energy, skin, sleep, digestion —, how the elixir tastes, and what surprised you.",
     "textPlaceholder": "",

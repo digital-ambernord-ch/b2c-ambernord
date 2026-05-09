@@ -37,7 +37,7 @@
     "name": "Nome (o iniziali)",
     "city": "Città",
     "email": "E-mail (riservata, solo per la verifica)",
-    "order": "Numero d'ordine (dall'e-mail di conferma Stripe)",
+    "order": "Numero d'ordine (dalla conferma d'ordine)",
     "text": "La tua esperienza",
     "textHint": "Descrivi con parole tue cosa è cambiato dopo 14 giorni — energia, pelle, sonno, digestione —, come ti sembra il sapore e cosa ti ha sorpreso.",
     "textPlaceholder": "",

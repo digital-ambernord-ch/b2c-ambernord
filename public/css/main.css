@@ -363,12 +363,11 @@ h1 span, h2 span {
   top: calc(var(--nav-height) + var(--aktion-height) + 8px);
   left: 6px;
   right: 6px;
-  /* Atmospheric stripe — small enough that the hero acts as mood/texture
-     behind the eyebrow + h1 instead of competing with body content. The
-     near-opaque gradient below lets the image read as ambient grain
-     rather than a foreground subject. */
-  height: 22vh;
-  min-height: 160px;
+  /* Atmospheric stripe — slightly larger than the original 22vh so the photo
+     reads as a proper hero band rather than a thin accent, while the heavy
+     dark gradient below keeps it from competing with body content. */
+  height: 28vh;
+  min-height: 200px;
   z-index: 0;
   border-radius: 20px;
   overflow: hidden;

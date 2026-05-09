@@ -29,7 +29,7 @@
   "form": {
     "sectionHeading": "Cerca il numero d'ordine",
     "label": "Numero d'ordine",
-    "placeholder": "es. AN-10542",
+    "placeholder": "",
     "submit": "Verifica stato",
     "fallback": "Il sistema di tracciamento è in fase di configurazione. Contattaci tramite il <a href=\"/kontakt/\" data-link>modulo di contatto</a>."
   }

@@ -29,7 +29,7 @@
   "form": {
     "sectionHeading": "Bestellnummer nachschlagen",
     "label": "Bestellnummer",
-    "placeholder": "z. B. AN-10542",
+    "placeholder": "",
     "submit": "Status prüfen",
     "fallback": "Das Tracking-System wird aktuell konfiguriert. Bitte kontaktieren Sie uns vorerst über das <a href=\"/kontakt/\" data-link>Kontaktformular</a>."
   }

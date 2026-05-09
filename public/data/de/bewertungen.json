@@ -37,7 +37,7 @@
     "name": "Vorname (oder Initialen)",
     "city": "Stadt",
     "email": "E-Mail (vertraulich, nur für Verifizierung)",
-    "order": "Bestellnummer (aus Stripe-Bestätigungsmail)",
+    "order": "Bestellnummer (aus der Bestellbestätigung)",
     "text": "Deine Erfahrung",
     "textHint": "Beschreibe in deinen eigenen Worten, was sich nach 14 Tagen verändert hat — Energie, Haut, Schlaf, Verdauung —, wie das Elixier schmeckt und was dich überrascht hat.",
     "textPlaceholder": "",

@@ -29,7 +29,7 @@
   "form": {
     "sectionHeading": "Rechercher un numéro de commande",
     "label": "Numéro de commande",
-    "placeholder": "p. ex. AN-10542",
+    "placeholder": "",
     "submit": "Vérifier le statut",
     "fallback": "Notre système de suivi est en cours de configuration. Veuillez nous contacter via le <a href=\"/kontakt/\" data-link>formulaire de contact</a>."
   }

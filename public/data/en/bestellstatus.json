@@ -29,7 +29,7 @@
   "form": {
     "sectionHeading": "Look up order number",
     "label": "Order Number",
-    "placeholder": "e.g. AN-10542",
+    "placeholder": "",
     "submit": "Check Status",
     "fallback": "Our tracking system is currently being configured. In the meantime, please reach us via the <a href=\"/kontakt/\" data-link>contact form</a>."
   }
