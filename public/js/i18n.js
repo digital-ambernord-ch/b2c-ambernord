@@ -96,6 +96,14 @@ window.setLang = (lang) => {
     } catch (_) {}
   }
 
+  /* Stash scroll position so the router can restore it after the new locale's
+     fragment finishes rendering. sessionStorage is cleared by the consumer
+     (router.navigate) on first read, so it never lingers across real
+     navigations or new tabs. Single-use, single-key — negligible overhead. */
+  try {
+    sessionStorage.setItem('langSwitchScroll', String(window.scrollY || 0));
+  } catch (_) {}
+
   location.reload();
 };
 

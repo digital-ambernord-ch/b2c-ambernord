@@ -435,7 +435,7 @@
         setTimeout(function () {
           const target     = document.getElementById(hash);
           const navHeight  = document.getElementById('siteNav')?.offsetHeight || 80;
-          const extraOffset = hash === 'shop' ? 160 : 0;
+          const extraOffset = hash === 'shop' ? 160 : (hash === 'habit-card' ? 50 : 0);
           if (target) smoothScrollTo(target.getBoundingClientRect().top + window.scrollY - navHeight - extraOffset);
         }, 100);
       } else {
@@ -451,6 +451,30 @@
       const initName = INITS[route.type];
       if (initName && typeof window[initName] === 'function') {
         try { await window[initName](); } catch (e) { console.error('[Router] init failed:', e); }
+      }
+
+      /* Language-switch scroll restore. setLang() stashes window.scrollY in
+         sessionStorage right before location.reload(), and we consume it
+         here on the very first navigate() after that reload — so the user
+         lands back at the same scroll position in the new locale instead
+         of being snapped to the top. Skipped when the URL carries a hash
+         (the hash scroll above already placed the user) and one-shot via
+         removeItem so subsequent in-app navigations are never affected. */
+      if (!hash) {
+        try {
+          const saved = sessionStorage.getItem('langSwitchScroll');
+          if (saved !== null) {
+            sessionStorage.removeItem('langSwitchScroll');
+            const y = parseFloat(saved) || 0;
+            requestAnimationFrame(function () {
+              window.scrollTo({ top: y, behavior: 'instant' });
+            });
+          }
+        } catch (_) {}
+      } else {
+        /* Even with a hash, the saved scroll is stale once consumed by hash —
+           clear it so it doesn't leak into a later same-tab navigation. */
+        try { sessionStorage.removeItem('langSwitchScroll'); } catch (_) {}
       }
 
       /* Two rAFs: the first commits all DOM/style changes to the next frame,
@@ -495,7 +519,7 @@
         if (samePage && hashPart) {
           const target     = document.getElementById(hashPart);
           const navHeight  = document.getElementById('siteNav')?.offsetHeight || 80;
-          const extraOffset = hashPart === 'shop' ? 160 : 0;
+          const extraOffset = hashPart === 'shop' ? 160 : (hashPart === 'habit-card' ? 50 : 0);
           if (target) smoothScrollTo(target.getBoundingClientRect().top + window.scrollY - navHeight - extraOffset);
           if (typeof window.closeMobileMenu === 'function') window.closeMobileMenu();
           return;

@@ -1311,6 +1311,8 @@
     letter-spacing: 1.5px;
     border-bottom: 1px solid rgba(237, 163, 35, 0.4);
     padding-bottom: 8px;
+    /* JS in initLanding shrinks font-size until the line fits — never wrap */
+    white-space: nowrap;
   }
 
   /* Mobile: keep .bio-wrapper as inline-block (inherited from desktop) so

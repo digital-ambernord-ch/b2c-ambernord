@@ -10,6 +10,55 @@ window.initLanding = async function () {
     try { await window.loadI18n(window.getLang(), 'home'); } catch {}
   }
 
+  /* =========================================================================
+     TAGLINE AUTO-FIT — never wrap on mobile.
+     "100% RACCOLTO A MANO | SPREMUTO A FREDDO | CERTIFICATO BIO" (IT, longest)
+     overflows the hero column on narrow phones. Rather than letting the line
+     wrap, we shrink the font + letter-spacing until everything fits on a
+     single line. Runs once on init (after i18n applies the localized text)
+     and on viewport resize. Reverts to default sizing on desktop.
+     ========================================================================= */
+
+  function fitTagline() {
+    const tagline = document.querySelector('.tagline-part-1');
+    const heroContent = document.getElementById('ambernord-hero-content');
+    if (!tagline || !heroContent) return;
+
+    /* Desktop: clear inline styles so the stylesheet's 11px / 4px takes over */
+    if (window.innerWidth > 991) {
+      tagline.style.fontSize = '';
+      tagline.style.letterSpacing = '';
+      return;
+    }
+
+    /* Reset to mobile default before measuring; iterate down 0.5px at a time
+       until the inline content (white-space:nowrap) no longer overflows the
+       hero content area. Floor at 6px so it never becomes unreadable. */
+    let fontPx = 10;
+    let lsPx   = 1.5;
+    tagline.style.fontSize      = fontPx + 'px';
+    tagline.style.letterSpacing = lsPx   + 'px';
+
+    const cs = getComputedStyle(heroContent);
+    const padX = (parseFloat(cs.paddingLeft)  || 0)
+               + (parseFloat(cs.paddingRight) || 0);
+    const available = heroContent.clientWidth - padX - 4;
+
+    while (tagline.scrollWidth > available && fontPx > 6) {
+      fontPx -= 0.5;
+      lsPx    = Math.max(0.2, lsPx - 0.15);
+      tagline.style.fontSize      = fontPx + 'px';
+      tagline.style.letterSpacing = lsPx   + 'px';
+    }
+  }
+
+  fitTagline();
+  let _taglineResizeT;
+  window.addEventListener('resize', function () {
+    clearTimeout(_taglineResizeT);
+    _taglineResizeT = setTimeout(fitTagline, 100);
+  });
+
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
     console.warn('[Landing] GSAP not available yet — retrying...');
     setTimeout(window.initLanding, 100);
