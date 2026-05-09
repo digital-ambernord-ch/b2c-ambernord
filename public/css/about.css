@@ -71,54 +71,103 @@
     font-family: var(--font-serif);
     font-size: 24px;
     font-weight: 400;
-    margin: 0 0 25px;
+    margin: 0 0 32px;
 }
 
+/* Editorial vertical rhythm — generous paragraph spacing + relaxed
+   line-height so the founder's story reads like a magazine column rather
+   than a marketing block. */
 .about-page-container p {
     font-family: var(--font-sans);
     color: #d0d0d0;
     font-size: 16px;
     font-weight: 300;
-    line-height: 1.8;
-    margin: 0 0 20px;
+    line-height: 1.85;
+    margin: 0 0 28px;
 }
 
+/* The last body paragraph before the pull-quote. Uses an after-rule to drop
+   a 36px gold accent line, restrained section divider that sits between the
+   personal narrative and the daily-ritual quote without shouting. */
 .about-text-spacer {
-    margin-bottom: 40px;
+    margin-bottom: 0;
+    position: relative;
+}
+
+.about-text-spacer::after {
+    content: '';
+    display: block;
+    width: 36px;
+    height: 1px;
+    background: rgba(237, 163, 35, 0.45);
+    margin: 40px auto 48px;
 }
 
 
 /* --------------------------------------------------------------------------
-   QUOTE BOX — matches float-card aesthetic from landing
+   PULL-QUOTE — editorial magazine treatment for the founder's daily ritual
+   passage. Decorative opening quote mark in serif gold, larger Playfair-italic
+   body, and a thin gold rule before the byline so the eye reads:
+   eyebrow → big serif quote → tiny rule → name → role.
    -------------------------------------------------------------------------- */
 
 .about-quote-box {
+    position: relative;
     background: rgba(255, 255, 255, 0.04);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    padding: 30px;
-    border-radius: 12px;
+    padding: 40px 38px 34px 44px;
+    border-radius: 14px;
     border: 1px solid rgba(237, 163, 35, 0.2);
     border-left: 3px solid var(--color-gold);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255,255,255,0.06);
 }
 
+/* Decorative opening quotation mark — serif gold, sits in the upper-left
+   corner at low opacity so it reads as a typographic ornament, not as
+   shouty text. Matches the gold left rail. */
+.about-quote-box::before {
+    content: '\201C';
+    position: absolute;
+    top: -6px;
+    left: 18px;
+    font-family: var(--font-serif);
+    font-size: 88px;
+    line-height: 1;
+    color: var(--color-gold);
+    opacity: 0.32;
+    pointer-events: none;
+}
+
 .about-quote-box h4 {
-    color: var(--color-text);
+    color: var(--color-gold);
     font-family: var(--font-sans);
     font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 2px;
+    font-weight: 700;
+    letter-spacing: 3px;
     text-transform: uppercase;
-    margin: 0 0 15px;
-    opacity: 0.8;
+    margin: 0 0 22px;
+    opacity: 0.85;
 }
 
 .about-quote-box .quote-text {
-    color: var(--color-text);
+    color: #ededed;
+    font-family: var(--font-serif);
     font-style: italic;
-    margin-bottom: 20px;
-    line-height: 1.7;
+    font-size: 18px;
+    line-height: 1.75;
+    margin: 0 0 28px;
+}
+
+/* Tiny gold horizontal rule that sits between the quote body and the
+   byline. Subtle but unmistakably editorial. */
+.about-quote-box .quote-author::before {
+    content: '';
+    display: block;
+    width: 44px;
+    height: 1px;
+    background: rgba(237, 163, 35, 0.55);
+    margin-bottom: 14px;
 }
 
 .about-quote-box .quote-author {
@@ -330,6 +379,24 @@
 
     .about-text-col {
         max-width: 100%;
+    }
+
+    /* Mobile: tighten the pull-quote padding so it doesn't crowd narrow
+       screens, and shrink the decorative opening quote mark + body size to
+       match. The thin gold byline rule stays the same — it's already small. */
+    .about-quote-box {
+        padding: 32px 24px 28px 28px;
+    }
+
+    .about-quote-box::before {
+        font-size: 64px;
+        top: -2px;
+        left: 14px;
+    }
+
+    .about-quote-box .quote-text {
+        font-size: 16px;
+        line-height: 1.7;
     }
 }
 
