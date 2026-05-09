@@ -476,15 +476,6 @@
         } else {
           subpageHero.classList.remove('is-visible');
         }
-        /* Dossier exception: the page has its own JS-driven parallax bg further
-           down. Letting the fixed hero stripe linger at the top would compete
-           visually with the parallax. Switch it to scrolls-with-page mode so
-           it slides up and out of view, freeing the viewport for the parallax. */
-        if (route.type === 'dossier') {
-          subpageHero.classList.add('scrolls-away');
-        } else {
-          subpageHero.classList.remove('scrolls-away');
-        }
       }
 
       killGSAP();

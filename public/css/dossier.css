@@ -39,11 +39,6 @@
 
    -------------------------------------------------------------------------- */
 
-/* IMPORTANT: the `to` state ends on `transform: none` (not translateY(0)).
-   `translateY(0)` is visually identity but still establishes a containing block
-   for fixed-position descendants — which breaks `background-attachment: fixed`
-   inside .dossier-atmospheric permanently after the animation completes.
-   `transform: none` is the only value that does NOT establish a containing block. */
 @keyframes dossierReveal {
     from {
         opacity: 0;
@@ -51,7 +46,7 @@
     }
     to {
         opacity: 1;
-        transform: none;
+        transform: translateY(0);
     }
 }
 
@@ -360,74 +355,6 @@
 .dossier-list li strong {
     color: var(--color-text);
     font-weight: 500;
-}
-
-
-/* --------------------------------------------------------------------------
-
-   ATMOSPHERIC SECTION
-
-   Full-bleed parallax section with fixed background image and gradient overlay.
-   Contains the Wissenschaftliche Erkenntnisse grid.
-
-   -------------------------------------------------------------------------- */
-
-.dossier-atmospheric {
-    position: relative;
-    overflow: hidden;
-    /* Extra-tall vertical padding gives the parallax image room to breathe at
-       the top and bottom of the scroll — the cards now feel suspended over
-       the photo instead of hugging its edges. */
-    padding: clamp(140px, 16vw, 220px) 0;
-    border-top: 1px solid var(--d-card-border);
-    border-bottom: 1px solid var(--d-card-border);
-    background-color: rgba(20, 20, 20, 0.95);
-}
-
-/* True parallax-fixed effect via position: fixed + clip-path.
-   - background-attachment: fixed is broken by transformed ancestors and
-     ignored on iOS Safari.
-   - A transform-based fake-fixed (translateY = -rect.top) is one frame
-     behind every scroll event on most engines, which reads as a "wave".
-   The current approach: the bg layer is position:fixed and fills the entire
-   viewport — the browser keeps it pinned natively, with zero JS work per
-   frame. JS only updates the clip-path so that only the portion overlapping
-   the section is visible. Even if the clip lags one frame, the IMAGE PIXELS
-   never move on screen — the wavering is gone. The fixed positioning works
-   because the dossierReveal animation ends on `transform: none` (not
-   translateY(0)), so .dossier-page does not establish a containing block
-   for fixed descendants after page-load animation completes. */
-.dossier-atmospheric__bg {
-    position: fixed;
-    inset: 0;
-    background-image: url('https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_2560,c_limit/v1773096179/Smiltserksku_sula_gemini_2_iecozy.png');
-    background-size: cover;
-    background-position: center;
-    will-change: clip-path;
-    pointer-events: none;
-    z-index: 0;
-    /* Default fully-clipped — JS reveals the section-overlapping portion. */
-    clip-path: inset(100% 0 100% 0);
-}
-
-.dossier-atmospheric__bg::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        180deg,
-        rgba(20, 20, 20, 0.85) 0%,
-        rgba(20, 20, 20, 0.4) 50%,
-        rgba(20, 20, 20, 0.85) 100%
-    );
-}
-
-.dossier-atmospheric .dossier-container {
-    z-index: 2;
-}
-
-.dossier-atmospheric .dossier-section-title {
-    color: var(--color-text);
 }
 
 

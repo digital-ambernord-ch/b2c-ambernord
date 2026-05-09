@@ -105,47 +105,6 @@ window.initDossier = async function () {
         return escapeHtml(s);
     }
 
-    /* ------------------------------------------------------------------------
-       PARALLAX-FIXED BACKGROUND for the "Wissenschaftliche Erkenntnisse" section.
-
-       background-attachment: fixed is unreliable (broken by transformed ancestors,
-       ignored on iOS Safari). Instead we keep the image in an absolutely-positioned
-       100vh layer and shift it on scroll with translate3d(-rect.top), so the image
-       visually appears anchored to the viewport while the section scrolls over it.
-       The section's own overflow:hidden clips the layer to the section's bounds.
-       ------------------------------------------------------------------------ */
-    const parallaxSection = document.querySelector('.dossier-atmospheric');
-    const parallaxBg      = parallaxSection && parallaxSection.querySelector('.dossier-atmospheric__bg');
-
-    if (parallaxSection && parallaxBg) {
-        // The bg layer is position:fixed at inset:0 (covers the viewport, never
-        // moves). We only update its clip-path so it's visible only inside the
-        // section's bounds. Because the bg image itself is browser-native fixed,
-        // there is zero per-frame JS work positioning it — the image pixels
-        // stay rock-still on screen. Even if the clip-path lags by one frame,
-        // the visual artefact is invisible at the edges of the section, and
-        // the image content never wavers.
-        const vh = () => window.innerHeight || document.documentElement.clientHeight;
-
-        function updateClip() {
-            if (!parallaxSection.isConnected) return;
-            const rect = parallaxSection.getBoundingClientRect();
-            const viewportH = vh();
-            // Fully clipped if the section is off-screen.
-            if (rect.bottom <= 0 || rect.top >= viewportH) {
-                parallaxBg.style.clipPath = 'inset(100% 0 100% 0)';
-                return;
-            }
-            const top    = Math.max(0, Math.round(rect.top));
-            const bottom = Math.max(0, Math.round(viewportH - rect.bottom));
-            parallaxBg.style.clipPath = `inset(${top}px 0 ${bottom}px 0)`;
-        }
-
-        window.addEventListener('scroll', updateClip, { passive: true });
-        window.addEventListener('resize', updateClip);
-        updateClip();
-    }
-
     /* Scroll-reveal observer (re-binds after dynamic content is in the DOM). */
     const revealTargets = [
         ...document.querySelectorAll('.dossier-card'),

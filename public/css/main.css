@@ -382,16 +382,6 @@ h1 span, h2 span {
   visibility: visible;
 }
 
-/* Wissenschaft (dossier) exception: the stripe scrolls away with the page so
-   the parallax background further down can dominate the viewport unopposed.
-   `position: absolute` keeps the same starting offset (top: nav + aktion + 8)
-   relative to the document instead of the viewport, so the stripe sits in the
-   exact same place at scroll-zero but slides up out of view as the user
-   scrolls down. Toggled by the router when route.type === 'dossier'. */
-.ambernord-subpage-hero.scrolls-away {
-  position: absolute;
-}
-
 .ambernord-subpage-hero picture,
 .ambernord-subpage-hero img {
   width: 100%;
