@@ -374,16 +374,37 @@
 
 .dossier-atmospheric {
     position: relative;
+    overflow: hidden;
     padding: clamp(80px, 10vw, 120px) 0;
+    border-top: 1px solid var(--d-card-border);
+    border-bottom: 1px solid var(--d-card-border);
+    background-color: rgba(20, 20, 20, 0.95);
+}
+
+/* JS-driven parallax-fixed effect.
+   `background-attachment: fixed` is unreliable: it's broken by transform
+   ancestors (which we have via the dossierReveal animation), is ignored on
+   iOS Safari, and is jittery on many Android browsers. Instead, render the
+   image inside an absolutely-positioned 100vh layer and update its
+   transform on scroll (see dossier.js) so the image visually appears glued
+   to the viewport while the section content scrolls over it. The section's
+   `overflow: hidden` clips the layer to the section's bounds, so the image
+   only "appears" while the section is on screen. */
+.dossier-atmospheric__bg {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 100vh;
     background-image: url('https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_2560,c_limit/v1773096179/Smiltserksku_sula_gemini_2_iecozy.png');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
-    border-top: 1px solid var(--d-card-border);
-    border-bottom: 1px solid var(--d-card-border);
+    will-change: transform;
+    pointer-events: none;
+    z-index: 0;
 }
 
-.dossier-atmospheric::before {
+.dossier-atmospheric__bg::after {
     content: '';
     position: absolute;
     inset: 0;
@@ -393,7 +414,6 @@
         rgba(20, 20, 20, 0.4) 50%,
         rgba(20, 20, 20, 0.85) 100%
     );
-    z-index: 1;
 }
 
 .dossier-atmospheric .dossier-container {
@@ -646,9 +666,5 @@
 
     .dossier-icon-list li {
         gap: 14px;
-    }
-
-    .dossier-atmospheric {
-        background-attachment: scroll;
     }
 }

@@ -105,6 +105,42 @@ window.initDossier = async function () {
         return escapeHtml(s);
     }
 
+    /* ------------------------------------------------------------------------
+       PARALLAX-FIXED BACKGROUND for the "Wissenschaftliche Erkenntnisse" section.
+
+       background-attachment: fixed is unreliable (broken by transformed ancestors,
+       ignored on iOS Safari). Instead we keep the image in an absolutely-positioned
+       100vh layer and shift it on scroll with translate3d(-rect.top), so the image
+       visually appears anchored to the viewport while the section scrolls over it.
+       The section's own overflow:hidden clips the layer to the section's bounds.
+       ------------------------------------------------------------------------ */
+    const parallaxSection = document.querySelector('.dossier-atmospheric');
+    const parallaxBg      = parallaxSection && parallaxSection.querySelector('.dossier-atmospheric__bg');
+
+    if (parallaxSection && parallaxBg) {
+        let ticking = false;
+
+        function updateParallax() {
+            ticking = false;
+            if (!parallaxSection.isConnected) return;
+            const rect = parallaxSection.getBoundingClientRect();
+            // Skip work when the section is well off-screen.
+            if (rect.bottom < -200 || rect.top > window.innerHeight + 200) return;
+            parallaxBg.style.transform = `translate3d(0, ${-rect.top}px, 0)`;
+        }
+
+        function onScrollOrResize() {
+            if (!ticking) {
+                requestAnimationFrame(updateParallax);
+                ticking = true;
+            }
+        }
+
+        window.addEventListener('scroll', onScrollOrResize, { passive: true });
+        window.addEventListener('resize', onScrollOrResize);
+        updateParallax();
+    }
+
     /* Scroll-reveal observer (re-binds after dynamic content is in the DOM). */
     const revealTargets = [
         ...document.querySelectorAll('.dossier-card'),
