@@ -621,7 +621,6 @@
    rhythm to the first product card is unchanged.
    -------------------------------------------------------------------------- */
 .shop-heading-wrap {
-  position: relative;
   text-align: center;
   margin-bottom: 60px;
 }
@@ -634,8 +633,8 @@
 
 .shop-reviews-pin {
   position: absolute;
-  top: 62%;
-  left: calc(100% + 14px);
+  top: calc(100% - 10px);
+  left: calc(100% - 80px);
   z-index: 5;
   display: inline-flex;
   flex-direction: column;
