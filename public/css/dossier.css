@@ -329,15 +329,15 @@
    -------------------------------------------------------------------------- */
 
 /* Natural aspect — no fixed height, no object-fit cover. The image is shown
-   at full bleed width with its native proportions, so the user sees the
-   complete image with no edge cropping. align-self: start prevents the grid
-   from stretching the wrapper to match the (possibly taller) text column. */
+   at its native proportions, so the user sees the complete image with no
+   edge cropping. Vertical alignment within the grid row is handled at the
+   grid level (per-section align-items: center below) so image and text
+   end up balanced rather than the image hugging the top. */
 .dossier-image-wrapper {
     border-radius: 18px;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.06);
     width: 100%;
-    align-self: start;
 }
 
 .dossier-image-wrapper img {
@@ -478,6 +478,17 @@
     #dossier-sourcing .dossier-image-wrapper {
         order: -1;
     }
+}
+
+/* In the three side-by-side sections (text + image), vertically centre both
+   columns so the image floats next to the middle of the text instead of
+   anchoring to the top of the row. The text columns in these sections often
+   include a subtitle + body + bullet list — taller than the image — so
+   without centring the image looks orphaned in the upper half. */
+#dossier-history .dossier-grid-2,
+#dossier-sourcing .dossier-grid-2,
+#dossier-harvest .dossier-grid-2 {
+    align-items: center;
 }
 
 
