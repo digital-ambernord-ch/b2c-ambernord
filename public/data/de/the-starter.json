@@ -18,10 +18,6 @@
       "x-default": "https://ambernord.ch/shop/starter/"
     }
   },
-  "badge": {
-    "voucher": "INKL. 10 CHF VOUCHER",
-    "promo": "AKTION BIS 01.05."
-  },
   "gallery": {
     "mainAlt": "The Starter — 1× 250 ml Sanddorn Elixier",
     "thumb1Alt": "Produktansicht",
@@ -38,7 +34,7 @@
     "lead": "Möchten Sie die Kraft des nordischen Goldes erst einmal testen? «The Starter» ist Ihr Einstieg in die Welt von AmberNord. Jede Flasche wird aus handverlesenen Beeren unserer exklusiven <span class=\"p-gold\">Zelt-Selektion</span> gewonnen und schützt Ihren Körper mit der 9-fachen Vitamin-C-Dosis einer Zitrone vor oxidativem Stress.",
     "ctaPrimary": "1× Elixier bestellen",
     "advantageHeading": "Ihr exklusiver Vorteil",
-    "advantageBody": "Zu dieser ersten Bestellung erhalten Sie einen <strong>10 CHF Gutschein</strong> für Ihren nächsten Kauf (Aktion bis 01.05.). Wir sind uns sicher: Sobald Sie den ersten natürlichen Fokus-Schub ohne Herzflattern erleben, wird das Ritual zu einem festen Bestandteil Ihres Alltags.",
+    "advantageBody": "The Starter ist Ihr risikoarmer Einstieg in das Ritual. Sobald Sie den ersten natürlichen Fokus-Schub ohne Herzflattern erleben, wird das Ritual zu einem festen Bestandteil Ihres Alltags.",
     "scienceHeading": "Die Wissenschaft dahinter",
     "scienceItem1": "<strong>Zellulärer Schutz:</strong> Ein extrem hoher natürlicher Vitamin-C-Gehalt neutralisiert oxidativen Stress.",
     "scienceItem2": "<strong>Omega-7:</strong> Diese seltene, wertvolle Fettsäure harmonisiert das Mikromilieu und pflegt die Schleimhäute.",

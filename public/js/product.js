@@ -20,7 +20,6 @@ window.initProduct = async function () {
   const mainImage     = document.getElementById('main-product-image');
   const swipeContainer = document.getElementById('swipe-container');
   const thumbnails    = document.querySelectorAll('.thumb-container img');
-  const voucherBadge  = document.getElementById('voucher-badge');
 
   if (!mainImage || !thumbnails.length) return;
 
@@ -51,10 +50,6 @@ window.initProduct = async function () {
 
     thumb.classList.add('active-thumb');
     thumb.style.borderColor = '#EDA323';
-
-    if (voucherBadge) {
-      voucherBadge.style.display = index === 0 ? 'block' : 'none';
-    }
 
     if (window.innerWidth <= 991) {
       thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });

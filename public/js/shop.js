@@ -17,19 +17,12 @@ window.initShop = async function () {
      -------------------------------------------------------------------------- */
 
   function renderBadge(badge) {
-    /* Builds bestseller ribbon or voucher chip HTML for the gallery overlay. */
+    /* Builds bestseller ribbon HTML for the gallery overlay (only badge type
+       still in use; voucher campaigns have been retired). */
     if (!badge) return '';
 
     if (badge.type === 'bestseller') {
       return `<span class="shop-card__badge shop-card__badge--bestseller">${badge.label}</span>`;
-    }
-
-    if (badge.type === 'voucher') {
-      return `
-        <span class="shop-card__badge shop-card__badge--voucher">
-          <span class="shop-card__badge-line1">${badge.line1}</span>
-          <span class="shop-card__badge-line2">${badge.line2}</span>
-        </span>`;
     }
 
     return '';

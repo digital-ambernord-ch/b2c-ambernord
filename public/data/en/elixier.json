@@ -39,11 +39,6 @@
         "width": 400,
         "height": 400
       },
-      "badge": {
-        "type": "voucher",
-        "line1": "incl. CHF 10 voucher",
-        "line2": "offer until 01.05."
-      },
       "title": "The Starter",
       "quantity": "1x 250ml",
       "price": "CHF 24.90",
@@ -54,8 +49,7 @@
         "items": [
           "Perceptible clarity from the very first sip.",
           "One of the rare sources of all 4 omega fatty acids.",
-          "10 days of pure, cellular energy.",
-          "<strong>Incl. CHF 10 gift voucher.</strong>"
+          "10 days of pure, cellular energy."
         ]
       },
       "buttons": {

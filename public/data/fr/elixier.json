@@ -39,11 +39,6 @@
         "width": 400,
         "height": 400
       },
-      "badge": {
-        "type": "voucher",
-        "line1": "incl. bon de 10 chf",
-        "line2": "offre jusqu'au 01.05."
-      },
       "title": "The Starter",
       "quantity": "1x 250ml",
       "price": "CHF 24.90",
@@ -54,8 +49,7 @@
         "items": [
           "Clarté perceptible dès la 1ère gorgée.",
           "L'une des rares sources des 4 acides gras oméga.",
-          "10 jours d'énergie cellulaire pure.",
-          "<strong>Incl. bon cadeau de CHF 10.</strong>"
+          "10 jours d'énergie cellulaire pure."
         ]
       },
       "buttons": {

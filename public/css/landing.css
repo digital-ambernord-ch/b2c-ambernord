@@ -30,15 +30,6 @@
   top: 0;
 }
 
-.landing-sticky-voucher {
-  display: none;
-  color: var(--color-gold);
-  font-family: var(--font-sans);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 1px;
-}
-
 .landing-sticky-nav-right {
   display: flex;
   align-items: center;
@@ -62,10 +53,6 @@
 
 .landing-sticky-nav-btn:hover {
   background-color: var(--color-gold-hover);
-}
-
-@media (min-width: 768px) {
-  .landing-sticky-voucher { display: block; }
 }
 
 @media (max-width: 768px) {
@@ -832,19 +819,6 @@
   min-height: 28px;
   width: max-content;
   max-width: 90%;
-}
-
-.badge-voucher {
-  background: #121212;
-  border: 1px solid var(--color-gold);
-  color: var(--color-gold);
-}
-
-.badge-voucher span {
-  font-size: 7.5px;
-  font-weight: 600;
-  color: #aaa;
-  margin-top: 2px;
 }
 
 .badge-bestseller {
