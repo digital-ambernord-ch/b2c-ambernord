@@ -150,6 +150,22 @@
         toggle.setAttribute('aria-expanded', 'false');
       }
     });
+
+    /* Bfcache (back-forward cache) restore: iOS Safari aggressively caches
+       pages and does NOT re-run DOMContentLoaded when the user navigates
+       back to a previously-visited page. Without this hook, the toggle
+       label can show the stale lang code from the cached snapshot while
+       localStorage already holds the new value. Re-syncing on pageshow
+       keeps the visible state in line with the stored preference. */
+    window.addEventListener('pageshow', function (e) {
+      if (!e.persisted) return;
+      const fresh = (typeof window.getLang === 'function') ? window.getLang() : 'de';
+      if (currentLabel) currentLabel.textContent = fresh.toUpperCase();
+      toggle.setAttribute('aria-expanded', 'false');
+      document.querySelectorAll('[data-lang]').forEach(function (b) {
+        b.setAttribute('aria-current', b.getAttribute('data-lang') === fresh ? 'true' : 'false');
+      });
+    });
   }
 
   /* GA4 + TikTok Pixel are no longer auto-loaded here. They are gated by the

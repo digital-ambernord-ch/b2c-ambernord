@@ -1313,7 +1313,27 @@
     padding-bottom: 8px;
   }
 
-  .eu-bio-logo    { height: 38px; bottom: calc(100% + 5px); }
+  /* Mobile: lay the bio leaf out as an inline flex column so the logo flows
+     above its label as part of the line box. The desktop trick of absolute-
+     positioning the logo above its anchor breaks once the tagline wraps to
+     two lines (longest in IT — "CERTIFICATO BIO") because the floating logo
+     then overlaps the previous line. Inline-flex keeps the logo+label
+     intrinsically sized regardless of locale. */
+  .bio-wrapper {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    vertical-align: baseline;
+  }
+
+  .eu-bio-logo {
+    position: static;
+    bottom: auto;
+    left: auto;
+    height: 38px;
+    width: auto;
+    margin: 0 auto 2px;
+  }
   .hero-product-img { height: 160px; width: 80px; }
   .hero-benefits-list { font-size: 15px; }
   .native-oils-text   { font-size: 9px; margin-top: 12px; }

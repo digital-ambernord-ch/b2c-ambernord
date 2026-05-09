@@ -727,6 +727,10 @@ html.landing-hero-active .ambernord-topbar .ambernord-logo-eubio {
   text-transform: uppercase;
   cursor: pointer;
   transition: color var(--t-fast) ease, border-color var(--t-fast) ease;
+  /* iOS: opt out of the 300ms tap delay and the blue tap-flash so the
+     dropdown opens crisply on first touch. */
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .nav-lang-toggle:hover,
@@ -815,6 +819,8 @@ html.landing-hero-active .ambernord-topbar .ambernord-logo-eubio {
   cursor: pointer;
   padding: 4px 6px;
   transition: color var(--t-fast) ease;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .nav-lang button:hover,
