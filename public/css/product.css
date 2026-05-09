@@ -192,15 +192,42 @@
   font-family: var(--font-sans);
 }
 
+.p-price-block {
+  margin-bottom: 40px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.p-price-headline {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
 .p-main-price {
   font-family: var(--font-sans);
   font-size: 24px;
   color: var(--color-text);
   font-weight: 700;
-  margin-bottom: 40px;
-  display: inline-block;
-  padding-bottom: 15px;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.p-main-savings {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  color: var(--color-gold);
+  text-transform: none;
+}
+
+.p-main-daily {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-gold);
+  margin-top: 8px;
 }
 
 /* Primary order button */
@@ -503,7 +530,8 @@
 
   .p-top-title { font-size: 26px; text-align: center; }
   .p-title-volume { font-size: 16px; }
-  .p-main-price { text-align: center; display: block; margin-bottom: 30px; }
+  .p-price-block { text-align: center; margin-bottom: 30px; }
+  .p-price-headline { justify-content: center; gap: 10px; }
 
   .thumb-container {
     flex-wrap: nowrap;
