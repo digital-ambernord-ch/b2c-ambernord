@@ -83,8 +83,12 @@
 }
 
 /* ==========================================================================
-   BUTTONS — CNIL-compliant: Accept and Reject share identical styling.
-   "Settings" is intentionally lower-weight (ghost), as legally permitted.
+   BUTTONS
+   Banner order: muted Reject → ghost Settings → primary Accept.
+   Note: this visual hierarchy intentionally subordinates Reject relative
+   to Accept. It conflicts with CNIL / EDPB / Swiss FADP guidance that the
+   two choices be presented with equal visual weight — per-product call
+   accepted by the site owner.
    ========================================================================== */
 
 .cookie-btn {
@@ -96,7 +100,7 @@
   padding: 12px 22px;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color var(--t-fast) ease, color var(--t-fast) ease, border-color var(--t-fast) ease, transform var(--t-fast) ease;
+  transition: background-color var(--t-fast) ease, color var(--t-fast) ease, border-color var(--t-fast) ease, opacity var(--t-fast) ease, transform var(--t-fast) ease;
   white-space: nowrap;
   flex: 0 0 auto;
 }
@@ -124,6 +128,22 @@
 .cookie-btn--ghost:focus-visible {
   border-color: var(--color-gold);
   color: var(--color-gold);
+}
+
+/* Muted variant — same physical dimensions as the other buttons (so the
+   trio aligns evenly) but visually unobtrusive: transparent background,
+   no visible border, low-contrast label. Gains a faint outline on
+   hover/focus so it's still keyboard-discoverable. */
+.cookie-btn--muted {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.32);
+  border: 1px solid transparent;
+}
+
+.cookie-btn--muted:hover,
+.cookie-btn--muted:focus-visible {
+  color: rgba(255, 255, 255, 0.6);
+  border-color: rgba(255, 255, 255, 0.18);
 }
 
 /* ==========================================================================
