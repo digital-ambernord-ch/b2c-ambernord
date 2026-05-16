@@ -1197,6 +1197,15 @@
   letter-spacing: 0.2px;
 }
 
+/* Word-shard wrapper for the Manifest "explosion" scroll effect (landing.js).
+   Inline-block so transform applies per word; whitespace between shards is
+   kept as plain text nodes so line-wrapping behaves like normal prose. */
+.manifest-shard {
+  display: inline-block;
+  vertical-align: baseline;
+  will-change: transform, opacity, filter;
+}
+
 .nature-hero-content .editorial-lead,
 .nature-hero-content .editorial-pullquote {
   max-width: 760px;

@@ -188,7 +188,7 @@ window.initLanding = async function () {
   });
 
   /* =========================================================================
-     PRODUCT CARDS — scrub exit animation (desktop)
+     PRODUCT CARDS — scrub exit animation
      As the user scrolls through #ritual-products, the three cards slide off
      in sequence: Starter → left, Habit → right, Protocol → right. Scrub-linked
      so reverses on scroll-up. The CSS transform-transition on the cards is
@@ -196,7 +196,7 @@ window.initLanding = async function () {
      — tiny visual cost, but the scrub feels clean).
      ========================================================================= */
 
-  mm.add('(min-width: 992px)', function () {
+  function attachProductCardsExit(startStr, endStr) {
     if (reducedMotion) return;
 
     const productCards = document.querySelectorAll('#ritual-products .premium-product-card');
@@ -209,8 +209,8 @@ window.initLanding = async function () {
     gsap.timeline({
       scrollTrigger: {
         trigger: '#ritual-products',
-        start:   'top 15%',
-        end:     'bottom 50%',
+        start:   startStr,
+        end:     endStr,
         scrub:   1.5,
         invalidateOnRefresh: true
       }
@@ -218,7 +218,105 @@ window.initLanding = async function () {
       .to(starter,  { xPercent: -160, opacity: 0, ease: 'power2.in' }, 0)
       .to(habit,    { xPercent:  160, opacity: 0, ease: 'power2.in' }, 0.4)
       .to(protocol, { xPercent:  160, opacity: 0, ease: 'power2.in' }, 0.8);
-  });
+  }
+
+  mm.add('(min-width: 992px)', function () { attachProductCardsExit('top 15%',  'bottom 50%'); });
+  mm.add('(max-width: 991px)', function () { attachProductCardsExit('top 10%',  'bottom 60%'); });
+
+  /* =========================================================================
+     MANIFEST SHATTER — as the user scrolls past "Unser Manifest" toward
+     "Das Ritual", the manifest content explodes into word-shards that fly
+     apart along a golden-angle distribution with rotation, blur and fade.
+     The background image blurs + darkens + slightly zooms for the "shock-
+     wave haze" feel. Scrub-linked, so reverses on scroll-up. The word-split
+     runs once and the resulting spans persist across mm.add callbacks.
+     ========================================================================= */
+
+  function splitIntoWordShards(rootEl) {
+    /* Walk text nodes only — preserves <br> and child tags like
+       <span class="ambernord-text-gold">. Each non-whitespace word is wrapped
+       in an inline-block span tagged .manifest-shard; whitespace stays as
+       plain text nodes so wrapping looks natural. */
+    const walker = document.createTreeWalker(rootEl, NodeFilter.SHOW_TEXT);
+    const nodes  = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+
+    const shards = [];
+    nodes.forEach(function (node) {
+      if (!node.textContent.trim()) return;
+      const parts = node.textContent.split(/(\s+)/);
+      const frag  = document.createDocumentFragment();
+      parts.forEach(function (p) {
+        if (!p) return;
+        if (/^\s+$/.test(p)) {
+          frag.appendChild(document.createTextNode(p));
+        } else {
+          const span = document.createElement('span');
+          span.className   = 'manifest-shard';
+          span.textContent = p;
+          frag.appendChild(span);
+          shards.push(span);
+        }
+      });
+      node.parentNode.replaceChild(frag, node);
+    });
+    return shards;
+  }
+
+  const manifestWrapper = document.querySelector('.editorial-bento-grid > .nature-hero-wrapper:first-child');
+  const manifestContent = manifestWrapper && manifestWrapper.querySelector('.nature-hero-content');
+  const manifestBg      = manifestWrapper && manifestWrapper.querySelector('.nature-hero-bg');
+  const manifestShards  = (!reducedMotion && manifestContent) ? splitIntoWordShards(manifestContent) : [];
+
+  function attachManifestShatter(maxDist, startStr) {
+    if (reducedMotion || !manifestWrapper || !manifestShards.length) return;
+
+    /* Pre-compute exit vectors deterministically — golden-angle gives organic
+       radial coverage; per-shard rotation + distance jitter avoid uniformity. */
+    const vectors = manifestShards.map(function (_, i) {
+      const angle = (i * 137.508) * Math.PI / 180;
+      const dist  = (maxDist * 0.55) + (i * 31) % (maxDist * 0.45);
+      return {
+        x:   Math.cos(angle) * dist,
+        y:   Math.sin(angle) * dist * 0.55,
+        rot: ((i * 23) % 90) - 45
+      };
+    });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: manifestWrapper,
+        start:   startStr,
+        end:     'bottom top',
+        scrub:   1.5,
+        invalidateOnRefresh: true
+      }
+    });
+
+    manifestShards.forEach(function (shard, i) {
+      const v = vectors[i];
+      tl.to(shard, {
+        x: v.x, y: v.y,
+        rotation: v.rot,
+        opacity:  0,
+        filter:  'blur(6px)',
+        ease:    'power2.in',
+        duration: 1
+      }, i * 0.012);
+    });
+
+    if (manifestBg) {
+      tl.to(manifestBg, {
+        filter: 'blur(14px) brightness(0.5) contrast(1.2)',
+        scale:  1.12,
+        ease:  'power1.in',
+        duration: 1
+      }, 0);
+    }
+  }
+
+  mm.add('(min-width: 992px)', function () { attachManifestShatter(550, 'center 35%'); });
+  mm.add('(max-width: 991px)', function () { attachManifestShatter(280, 'center 50%'); });
 
   /* =========================================================================
      LANDING-PAGE STICKY NAV
