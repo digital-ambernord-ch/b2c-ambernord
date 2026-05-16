@@ -1087,9 +1087,11 @@
 }
 
 .editorial-bento-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
+  /* Block layout (not flex) so GSAP ScrollTrigger's pinSpacer can correctly
+     reserve vertical scroll-space for each pinned block. Flex containers
+     wrap each child in a pinSpacer that becomes a flex item, which leads
+     to spacing/overlap regressions during pin. */
+  display: block;
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
@@ -1099,7 +1101,8 @@
   box-sizing: border-box;
 }
 
-.nature-hero-wrapper { flex: 1; min-width: 0; }
+.nature-hero-wrapper { min-width: 0; }
+.nature-hero-wrapper + .nature-hero-wrapper { margin-top: 40px; }
 
 .nature-hero-block {
   position: relative;

@@ -279,13 +279,22 @@ window.initLanding = async function () {
     };
   });
 
-  /* Standard pin config shared by both effects. start uses `top top+=120` to
-     clear the fixed nav (≈80px) plus the aktion-bar (≈40px when active).
+  /* Dynamic pin offset: read the live --nav-height / --aktion-height tokens
+     so the block lands cleanly UNDER the topbar (with a 40px breathing gap),
+     regardless of whether the aktion bar is currently visible. */
+  function pinTopOffset() {
+    const cs      = getComputedStyle(document.documentElement);
+    const navH    = parseFloat(cs.getPropertyValue('--nav-height'))    || 80;
+    const aktionH = parseFloat(cs.getPropertyValue('--aktion-height')) || 0;
+    return navH + aktionH + 40;
+  }
+
+  /* Standard pin config shared by both effects.
      scrub: 0.5 → forward feels smooth, reverse snaps back quickly. */
   function pinScrollTrigger(wrapper, pinDuration) {
     return {
       trigger: wrapper,
-      start:   'top top+=120',
+      start:   function () { return 'top top+=' + pinTopOffset(); },
       end:     '+=' + pinDuration,
       pin:     true,
       pinSpacing: true,
