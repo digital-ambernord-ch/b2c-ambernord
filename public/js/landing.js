@@ -6,6 +6,21 @@
 
 window.initLanding = async function () {
 
+  /* =========================================================================
+     EAGER-PRELOAD EDITORIAL BG IMAGES
+     Manifest + Ritual blocks use CSS background-image, which the browser
+     defers until the element is near the viewport. By then the user is
+     scrolling fast and the bg arrives LATE — the dark surface color shows
+     through as a "gray flash" right before the photo paints. Pre-requesting
+     the images via Image() now (at landing init, before i18n) makes the
+     browser fetch them immediately so the cache is warm by the time the
+     pinned animation engages.
+     ========================================================================= */
+  [
+    'https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_1920/v1774812486/ambernord-natuerliche-energie-zelt-vs-energy-drinks-sanddorn-wald.webp_o0hswh.jpg',
+    'https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_1920/v1774812498/ambernord-zelt-taegliches-ritual-sanddorn-konzentrat-morgenroutine.webp_tnwv2r.jpg'
+  ].forEach(function (url) { const i = new Image(); i.src = url; });
+
   if (typeof window.loadI18n === 'function') {
     try { await window.loadI18n(window.getLang(), 'home'); } catch {}
   }
