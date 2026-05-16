@@ -84,6 +84,12 @@ window.initLanding = async function () {
 
   gsap.registerPlugin(ScrollTrigger);
 
+  /* Force 3D-promoted transforms on every animated element so heavy
+     simultaneous tweens (mobile card lifts + horizontal exits + trailing
+     info translateY) run on the GPU compositor instead of the CPU. Fixes
+     the "raustīšanās" / stutter the user reported on slower phones. */
+  gsap.config({ force3D: true });
+
   /* =========================================================================
      RESPECT REDUCED MOTION — skip all animations if user prefers it
      ========================================================================= */
@@ -228,18 +234,18 @@ window.initLanding = async function () {
     const [starter, habit, protocol] = productCards;
     productCards.forEach(function (c) { c.style.transition = 'border-color var(--t-base) ease'; });
 
+    /* Evaporation targets: the cards-group (heading + 3 cards) AND the
+       payment-group. Trailing info ("Das tägliche Ritual") lives between
+       these two groups inside #ritual-products and is intentionally NOT
+       in the evaporation set — it bridges into the Manifest section. */
+    const evaporatingGroups = section.querySelectorAll('.ritual-cards-group, .ritual-payment-group');
+
     const tl = gsap.timeline({ scrollTrigger: pinScrollTrigger(section, pinDuration) });
 
-    /* Timeline phases (positions in the 0..1 pin range):
-         0.00 → 0.12  settle pause  (block locks, brief beat, no motion)
-         0.12 → 0.78  card exits     (staggered fly-outs)
-         0.78 → 0.95  evaporate      (whole section fades + scales down)
-         0.95 → 1.00  empty hold     (clean handoff to Manifest below)         */
-
-    tl.to(starter,  { xPercent: -160, opacity: 0, ease: 'power2.in', duration: 0.30 }, 0.12)
-      .to(habit,    { xPercent:  160, opacity: 0, ease: 'power2.in', duration: 0.30 }, 0.30)
-      .to(protocol, { xPercent:  160, opacity: 0, ease: 'power2.in', duration: 0.30 }, 0.48)
-      .to(section,  { opacity:  0, scale: 0.95, ease: 'power1.in', duration: 0.17 }, 0.78);
+    tl.to(starter,           { xPercent: -160, opacity: 0, ease: 'power2.in', duration: 0.30 }, 0.12)
+      .to(habit,             { xPercent:  160, opacity: 0, ease: 'power2.in', duration: 0.30 }, 0.30)
+      .to(protocol,          { xPercent:  160, opacity: 0, ease: 'power2.in', duration: 0.30 }, 0.48)
+      .to(evaporatingGroups, { opacity: 0, scale: 0.95, ease: 'power1.in', duration: 0.17 }, 0.78);
   }
 
   function attachProductCardsExitMobile(pinDuration) {
@@ -254,47 +260,47 @@ window.initLanding = async function () {
     const [starter, habit, protocol] = productCards;
     productCards.forEach(function (c) { c.style.transition = 'border-color var(--t-base) ease'; });
 
-    /* Cards rise with `power1.inOut` ease and a LONGER duration than the
-       horizontal exit, so the next card glides smoothly upward DURING the
-       current card's exit — no jump, no settle-and-snap. The natural-margin
-       calculation runs as a function so ScrollTrigger's invalidateOnRefresh
-       can re-measure if heights change (e.g., on resize within mobile). */
+    const trailingInfo = section.querySelector('.shop-trailing-info');
+
+    /* Lift amounts are functions so ScrollTrigger.invalidateOnRefresh
+       re-measures on resize. card<N>Lift returns the NEGATIVE Y offset
+       needed to move a card up to where the N-th preceding card was. */
     const margin = function () {
       return parseFloat(getComputedStyle(starter).marginBottom) || 40;
     };
     const card1Lift = function () { return -(starter.offsetHeight + margin()); };
     const card2Lift = function () { return -(starter.offsetHeight + habit.offsetHeight + 2 * margin()); };
-
-    /* "Das tägliche Ritual" appears AS Protocol begins exiting, not after.
-       It's positioned with margin-top: -700px on mobile (see landing.css)
-       to physically peek into viewport bottom during the last beats of
-       the pin. Starts invisible; opacity fades in linked to Protocol's
-       exit window. */
-    const trailingInfo = document.querySelector('.shop-trailing-info');
-    if (trailingInfo) gsap.set(trailingInfo, { opacity: 0 });
+    const card3Lift = function () {
+      return -(starter.offsetHeight + habit.offsetHeight + protocol.offsetHeight + 3 * margin());
+    };
 
     const tl = gsap.timeline({ scrollTrigger: pinScrollTrigger(section, pinDuration) });
 
-    /* Timeline (positions in 0..1):
-         0.00 → 0.05  settle pause
-         0.05 → 0.23  Starter exits LEFT (horizontal slide, 0.18 dur)
-         0.05 → 0.35  Cards 2-3 GLIDE up (longer 0.30 dur, smoother ease)
-         0.36 → 0.54  Habit exits RIGHT
-         0.36 → 0.66  Protocol glides up
-         0.66 → 0.84  Protocol exits RIGHT
-         0.66 → 0.94  "Das tägliche Ritual" fades in (parallel to Protocol exit)
-         0.94 → 1.00  empty hold (smooth pin handoff)                          */
+    /* Timeline (positions in 0..1) — cards exit LEFT/RIGHT while the
+       trailing info ("Das tägliche Ritual") slides up as the 4th item in
+       the queue. Horizontal exits use 0.30 duration (was 0.18 — too fast,
+       felt jerky); lifts use 0.30 too with `power1.inOut` so the next
+       card glides smoothly up WHILE the current card slides away.
 
-    tl.to(starter,            { xPercent: -160, opacity: 0, ease: 'power2.in',  duration: 0.18 }, 0.05)
-      .to([habit, protocol],  { y: card1Lift,                ease: 'power1.inOut', duration: 0.30 }, 0.05)
+         0.00 → 0.05   settle pause
+         0.05 → 0.35   Starter exits LEFT  +  Habit, Protocol, Trailing lift
+         0.36 → 0.66   Habit  exits RIGHT  +  Protocol, Trailing lift
+         0.66 → 0.96   Protocol exits RIGHT+  Trailing lifts to top of stack
+         0.96 → 1.00   pin handoff                                            */
 
-      .to(habit,              { xPercent:  160, opacity: 0, ease: 'power2.in',  duration: 0.18 }, 0.36)
-      .to(protocol,           { y: card2Lift,                ease: 'power1.inOut', duration: 0.30 }, 0.36)
+    const liftAll1 = trailingInfo ? [habit, protocol, trailingInfo] : [habit, protocol];
+    const liftAll2 = trailingInfo ? [protocol, trailingInfo]        : [protocol];
 
-      .to(protocol,           { xPercent:  160, opacity: 0, ease: 'power2.in',  duration: 0.18 }, 0.66);
+    tl.to(starter,   { xPercent: -160, opacity: 0, ease: 'power2.in',    duration: 0.30 }, 0.05)
+      .to(liftAll1,  { y: card1Lift,                ease: 'power1.inOut', duration: 0.30 }, 0.05)
+
+      .to(habit,     { xPercent:  160, opacity: 0, ease: 'power2.in',    duration: 0.30 }, 0.36)
+      .to(liftAll2,  { y: card2Lift,                ease: 'power1.inOut', duration: 0.30 }, 0.36)
+
+      .to(protocol,  { xPercent:  160, opacity: 0, ease: 'power2.in',    duration: 0.30 }, 0.66);
 
     if (trailingInfo) {
-      tl.to(trailingInfo, { opacity: 1, ease: 'power2.out', duration: 0.28 }, 0.66);
+      tl.to(trailingInfo, { y: card3Lift, ease: 'power1.inOut', duration: 0.30 }, 0.66);
     }
   }
 
@@ -437,9 +443,12 @@ window.initLanding = async function () {
 
     const innerBlock = block.wrapper.querySelector('.nature-hero-block');
     if (innerBlock) {
+      /* Opacity-only evaporation — NO scale tween on .nature-hero-block.
+         Scale on this element is reserved for the mobile fit-to-viewport
+         inline transform; if GSAP animates scale here, it overwrites the
+         fit transform and the block grows back to natural size mid-evap. */
       tl.to(innerBlock, {
         opacity: 0,
-        scale:   0.94,
         ease:   'power1.in',
         duration: 0.17
       }, 0.83);
@@ -513,28 +522,68 @@ window.initLanding = async function () {
       }, 0.40);
     }
 
-    /* Phase 3 (0.83 → 1.00): EVAPORATE the frame entirely */
+    /* Phase 3 (0.83 → 1.00): EVAPORATE the frame entirely.
+       Opacity-only (see note in attachManifestShatter) so the mobile
+       fit-to-viewport inline transform on .nature-hero-block survives. */
     const innerBlock = block.wrapper.querySelector('.nature-hero-block');
     if (innerBlock) {
       tl.to(innerBlock, {
         opacity: 0,
-        scale:   0.94,
         ease:   'power1.in',
         duration: 0.17
       }, 0.83);
     }
   }
 
-  /* Editorial blocks pin VISUALLY CENTERED below the topbar.
-     'center 55%' = block's vertical center at 55% down viewport → balanced
-     padding between topbar and the block (and below the block). */
+  /* Editorial pin position — visually centered in the area BELOW the
+     topbar. Returns a function so ScrollTrigger.invalidateOnRefresh
+     re-measures on resize (block content height varies with localized
+     text and viewport width). Guarantees min 40px gap from topbar so the
+     block never tucks under nav/aktion-bar. */
+  function editorialPinStart(wrapper) {
+    return function () {
+      const cs      = getComputedStyle(document.documentElement);
+      const navH    = parseFloat(cs.getPropertyValue('--nav-height'))    || 80;
+      const aktionH = parseFloat(cs.getPropertyValue('--aktion-height')) || 0;
+      const topBar  = navH + aktionH;
+      const availV  = window.innerHeight - topBar;
+      const blockH  = wrapper.offsetHeight;
+      const buffer  = Math.max(40, Math.round((availV - blockH) / 2));
+      return 'top top+=' + (topBar + buffer);
+    };
+  }
+
+  /* On mobile, if a block is too tall to fit under the topbar with
+     breathing room, scale it down via CSS transform on .nature-hero-block.
+     GSAP animates ONLY the .nature-hero-bg / shards / wrapper opacity, so
+     setting a base scale on the block itself does NOT conflict with the
+     timeline (different targets). */
+  function fitBlockToViewport(block) {
+    const inner = block.wrapper.querySelector('.nature-hero-block');
+    if (!inner) return;
+    inner.style.transform = '';
+    inner.style.transformOrigin = '';
+
+    const cs      = getComputedStyle(document.documentElement);
+    const navH    = parseFloat(cs.getPropertyValue('--nav-height'))    || 80;
+    const aktionH = parseFloat(cs.getPropertyValue('--aktion-height')) || 0;
+    const availV  = window.innerHeight - navH - aktionH - 80; /* 80px total breathing room */
+    const naturalH = inner.offsetHeight;
+    if (naturalH > availV) {
+      const scale = availV / naturalH;
+      inner.style.transformOrigin = 'top center';
+      inner.style.transform = 'scale(' + scale + ')';
+    }
+  }
+
   mm.add('(min-width: 992px)', function () {
-    if (editorialBlocks[0]) attachManifestShatter (editorialBlocks[0], 550, 1000, 'center 55%');
-    if (editorialBlocks[1]) attachRitualEruption  (editorialBlocks[1], 480, 1000, 'center 55%');
+    if (editorialBlocks[0]) attachManifestShatter (editorialBlocks[0], 550, 1000, editorialPinStart(editorialBlocks[0].wrapper));
+    if (editorialBlocks[1]) attachRitualEruption  (editorialBlocks[1], 480, 1000, editorialPinStart(editorialBlocks[1].wrapper));
   });
   mm.add('(max-width: 991px)', function () {
-    if (editorialBlocks[0]) attachManifestShatter (editorialBlocks[0], 280, 800,  'center 55%');
-    if (editorialBlocks[1]) attachRitualEruption  (editorialBlocks[1], 240, 800,  'center 55%');
+    editorialBlocks.forEach(fitBlockToViewport);
+    if (editorialBlocks[0]) attachManifestShatter (editorialBlocks[0], 280, 800, editorialPinStart(editorialBlocks[0].wrapper));
+    if (editorialBlocks[1]) attachRitualEruption  (editorialBlocks[1], 240, 800, editorialPinStart(editorialBlocks[1].wrapper));
   });
 
   /* =========================================================================

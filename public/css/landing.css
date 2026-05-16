@@ -803,6 +803,10 @@
   gap: 30px;
   box-sizing: border-box;
   width: 100%;
+  /* Pre-allocate GPU layer so the heavy transforms during pin (xPercent,
+     y, opacity) don't trigger per-frame rasterisation — fixes the
+     "raustīšanās" / stutter the user reported on slower mobile devices. */
+  will-change: transform, opacity;
 }
 
 .premium-product-card:hover {
@@ -1054,29 +1058,27 @@
   text-align: center;
 }
 
-/* Trailing wrapper that holds .protocol-info-block AFTER the pinned product
-   section — gives a top border + breathing space so the standalone block
-   feels intentional, not orphaned. */
+/* Trailing wrapper now lives INSIDE #ritual-products, between the
+   .ritual-cards-group (heading + 3 cards) and the .ritual-payment-group
+   (payment icons). On mobile this is the 4th item in the lift queue and
+   GSAP translateY-lifts it like a card. On desktop the two groups
+   evaporate at the end of pin and the trailing info bridges into the
+   Manifest. */
 .shop-trailing-info {
-  margin-top: 80px;
-  padding-top: 40px;
-  border-top: 1px solid rgba(255,255,255,0.08);
+  margin-top: 40px;
+  padding: 20px 0;
 }
 
-/* On mobile, pull the trailing info UP so its top peeks into viewport
-   bottom during the LATE phase of #ritual-products pin. Combined with the
-   opacity fade-in in landing.js, "Das tägliche Ritual" appears as Protocol
-   begins its horizontal exit — no long black gap. The opaque background +
-   higher z-index cover the section behind it (which is still pinned and
-   showing the exited cards / heading). */
+/* On mobile, drop the extra margin so trailing info sits EXACTLY one
+   card-margin (40px, inherited from Protocol's margin-bottom which the
+   .ritual-cards-group wrapper retains at its bottom) below Protocol — i.e.
+   the same gap as between any two cards. This makes the translateY-based
+   queue progression visually align perfectly: trailing info ends up where
+   Protocol/Habit/Starter were after each successive lift. */
 @media (max-width: 991px) {
   .shop-trailing-info {
-    margin-top: -700px;
-    position: relative;
-    z-index: 6;
-    background-color: var(--color-bg);
-    padding-top: 60px;
-    padding-bottom: 40px;
+    margin-top: 0;
+    padding-top: 0;
   }
 }
 

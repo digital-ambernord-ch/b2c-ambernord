@@ -162,6 +162,13 @@
 <div id="shop" class="ambernord-section-wrapper">
   <div class="ambernord-section-inner" id="ritual-products">
 
+    <!-- Wrapper for content that EVAPORATES at the end of pin animation
+         (heading + 3 cards). Trailing info ("Das tägliche Ritual") sits
+         OUTSIDE this group inside #ritual-products so it survives the
+         evaporation on desktop AND can act as the 4th item in the mobile
+         lift queue. -->
+    <div class="ritual-cards-group">
+
     <div class="shop-heading-wrap">
       <h2 class="ambernord-content-title">
         <span class="shop-heading-text" data-i18n="shop.title">Wählen Sie Ihr Protokoll</span>
@@ -270,7 +277,22 @@
       </div>
     </a>
 
-    <div style="margin-top:40px; border-top:1px solid rgba(255,255,255,0.08); padding-top:40px;">
+    </div><!-- /.ritual-cards-group -->
+
+    <!-- "Das tägliche Ritual" lives INSIDE #ritual-products, OUTSIDE the
+         cards-group + payment-group wrappers. On mobile it's the 4th card
+         in the lift queue (translates up with each lift). On desktop it
+         survives the wrapper evaporation and bridges into the Manifest. -->
+    <div class="shop-trailing-info">
+      <div class="protocol-info-block">
+        <div class="protocol-info-title" data-i18n="shop.protocolInfo.title">Das tägliche Ritual</div>
+        <div class="protocol-info-text" data-i18n-html="shop.protocolInfo.text">
+          <strong>Anwendungshinweis:</strong> Das 1:10 Protokoll bedeutet, dass Sie 1 Teil AmberNord Essenz mit 10 Teilen Wasser (still oder prickelnd) mischen. Am besten morgens auf nüchternen Magen geniessen, um die optimale zelluläre Absorption zu gewährleisten. Vor Gebrauch stets gut schütteln.
+        </div>
+      </div>
+    </div>
+
+    <div class="ritual-payment-group" style="margin-top:40px; border-top:1px solid rgba(255,255,255,0.08); padding-top:40px;">
       <div class="trust-payment-row" data-i18n-attr="aria-label:shop.paymentLabel" aria-label="Sichere Zahlungsmethoden">
         <img src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,h_80/v1776024863/twint-zahlung-schweiz_mglhm9.png" alt="TWINT" loading="lazy">
         <img src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,h_80/v1776024864/google-pay-zahlungsart_rc4ltk.png" alt="Google Pay" loading="lazy">
@@ -281,20 +303,6 @@
       </div>
     </div>
 
-  </div>
-
-  <!-- "Das tägliche Ritual" — pulled OUT of #ritual-products so it stays
-       hidden during the pinned product-card animation, then scrolls naturally
-       up through the viewport as the user moves from the shop section toward
-       the Manifest block (it's the live gap between the two pins, not part
-       of the evaporating section). -->
-  <div class="ambernord-section-inner shop-trailing-info">
-    <div class="protocol-info-block">
-      <div class="protocol-info-title" data-i18n="shop.protocolInfo.title">Das tägliche Ritual</div>
-      <div class="protocol-info-text" data-i18n-html="shop.protocolInfo.text">
-        <strong>Anwendungshinweis:</strong> Das 1:10 Protokoll bedeutet, dass Sie 1 Teil AmberNord Essenz mit 10 Teilen Wasser (still oder prickelnd) mischen. Am besten morgens auf nüchternen Magen geniessen, um die optimale zelluläre Absorption zu gewährleisten. Vor Gebrauch stets gut schütteln.
-      </div>
-    </div>
   </div>
 </div>
 
