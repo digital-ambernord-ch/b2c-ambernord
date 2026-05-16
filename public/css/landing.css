@@ -1139,15 +1139,24 @@
   width: 100%;
 }
 
-/* Mobile-only: pull the editorial section UP by approximately the natural
-   height of #ritual-products (heading + 3 stacked cards + trailing info +
-   payment icons ≈ 1700px). With pinDuration 1200, pinSpacer reserves
-   H + 1200 ≈ 2900px after pin-start. Margin -1700 places Manifest's top
-   right at pin-end (= pin-start + 1200), so Manifest enters viewport the
-   instant the product pin releases — no dead black gap. Don't go bigger
-   than -H or Manifest starts drawing BEHIND the cards during their pin. */
+/* Mobile-only: pull the editorial section UP so Manifest's top sits RIGHT
+   BELOW the lifted payment icons at the moment the product pin ends —
+   close gap, no visual overlap.
+
+   Calculation:
+     - card2Lift ≈ -680 (lifts trail+payment from natural y≈1020/1220 to
+       screen y 340/540 at pin-end)
+     - Payment bottom at pin-end ≈ screen y 620 (540 + payment height ~80)
+     - For Manifest top to sit at screen y 620 at pin-end:
+         Manifest doc y - (pin-start + 1200) = 620
+         => Manifest doc y = pin-start + 1820
+         => margin = -(H + P - 1820) = -(1420 + 1200 - 1820) ≈ -800
+     - Going more negative (e.g. -1700) puts Manifest top INTO the trail+payment
+       screen area during pin → Manifest's --z-above layer COVERS them.
+       Going less negative (e.g. -700) leaves visible black gap below payment.
+   -800 is the calculated sweet spot: Manifest touches payment bottom, no overlap. */
 @media (max-width: 991px) {
-  .dynamic-editorial-wrapper { margin-top: -1700px; }
+  .dynamic-editorial-wrapper { margin-top: -800px; }
 }
 
 .editorial-bento-grid {
@@ -1343,13 +1352,18 @@
 }
 
 @media (max-width: 991px) {
-  /* Ritual block natural height ≈ 500-600px (fitBlockToViewport scales it
-     to ~availV). With pinDuration 1200, pinSpacer reserves H + 1200 ≈ 1800px.
-     Margin -1000 places Exclusive's top ~200px AFTER Ritual's pin-end — a
-     small breathing gap, never overlapping the pinned Ritual block (earlier
-     -700 with pinDuration 800 had Exclusive doc-pos at pin-start + 600,
-     INSIDE pin range, causing Exclusive to draw under Ritual). */
-  .exclusive-section-wrapper { margin-top: -1000px; }
+  /* Ritual editorial block is pinned VISUALLY CENTERED in the viewport
+     (editorialPinStart → screen y ≈ 120-760 for an 800vh viewport, 700px
+     block + 40px buffer). For Exclusive's top to sit just below the pinned
+     block at pin-end without overlapping it:
+       Exclusive screen y at pin-end = RH + margin + topBar + buffer
+                                     = 700 + margin + 120
+       For screen y ≈ 760 (block bottom): margin ≈ -60
+     Margin -100 leaves a tiny ~40px overlap zone covered by the editorial
+     block's opaque photo bg, so user perceives a tight handoff without
+     Exclusive's bg image peeking out at the block's sides (which was the
+     "lien zem" / "slides under" effect at margin -1000). */
+  .exclusive-section-wrapper { margin-top: -100px; }
 }
 
 .exclusive-bg {
