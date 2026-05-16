@@ -295,11 +295,14 @@ window.initLanding = async function () {
   }
 
   /* Standard pin config shared by both effects.
-     scrub: 0.5 → forward feels smooth, reverse snaps back quickly. */
-  function pinScrollTrigger(wrapper, pinDuration) {
+     scrub: 0.5 → forward feels smooth, reverse snaps back quickly.
+     `startStr` lets a caller override the trigger position (used by editorial
+     blocks which pin VISUALLY CENTERED in the viewport, vs. products which pin
+     just below the topbar). */
+  function pinScrollTrigger(wrapper, pinDuration, startStr) {
     return {
       trigger: wrapper,
-      start:   function () { return 'top top+=' + pinTopOffset(); },
+      start:   startStr || function () { return 'top top+=' + pinTopOffset(); },
       end:     '+=' + pinDuration,
       pin:     true,
       pinSpacing: true,
@@ -316,7 +319,7 @@ window.initLanding = async function () {
      The evaporation animates .nature-hero-block so its border, box-shadow,
      bg image and overlay ALL fade together — no leftover empty rectangle. */
 
-  function attachManifestShatter(block, maxDist, pinDuration) {
+  function attachManifestShatter(block, maxDist, pinDuration, startStr) {
     if (reducedMotion || !block.wrapper || !block.shards.length) return;
 
     const vectors = block.shards.map(function (_, i) {
@@ -329,7 +332,7 @@ window.initLanding = async function () {
       };
     });
 
-    const tl = gsap.timeline({ scrollTrigger: pinScrollTrigger(block.wrapper, pinDuration) });
+    const tl = gsap.timeline({ scrollTrigger: pinScrollTrigger(block.wrapper, pinDuration, startStr) });
 
     block.shards.forEach(function (shard, i) {
       const v = vectors[i];
@@ -363,7 +366,7 @@ window.initLanding = async function () {
     }
   }
 
-  function attachRitualEruption(block, maxDist, pinDuration) {
+  function attachRitualEruption(block, maxDist, pinDuration, startStr) {
     if (reducedMotion || !block.wrapper || !block.shards.length) return;
 
     /* Volcano vectors: angles distributed in the UPPER hemisphere only
@@ -380,7 +383,7 @@ window.initLanding = async function () {
       };
     });
 
-    const tl = gsap.timeline({ scrollTrigger: pinScrollTrigger(block.wrapper, pinDuration) });
+    const tl = gsap.timeline({ scrollTrigger: pinScrollTrigger(block.wrapper, pinDuration, startStr) });
 
     /* Phase 1 (0.12 → 0.40): GLOW + SWELL.
        Words turn bright gold, scale up, and gain a luminous shadow — the
@@ -441,13 +444,16 @@ window.initLanding = async function () {
     }
   }
 
+  /* Editorial blocks pin VISUALLY CENTERED below the topbar.
+     'center 55%' = block's vertical center at 55% down viewport → balanced
+     padding between topbar and the block (and below the block). */
   mm.add('(min-width: 992px)', function () {
-    if (editorialBlocks[0]) attachManifestShatter (editorialBlocks[0], 550, 900);
-    if (editorialBlocks[1]) attachRitualEruption  (editorialBlocks[1], 480, 900);
+    if (editorialBlocks[0]) attachManifestShatter (editorialBlocks[0], 550, 1000, 'center 55%');
+    if (editorialBlocks[1]) attachRitualEruption  (editorialBlocks[1], 480, 1000, 'center 55%');
   });
   mm.add('(max-width: 991px)', function () {
-    if (editorialBlocks[0]) attachManifestShatter (editorialBlocks[0], 280, 700);
-    if (editorialBlocks[1]) attachRitualEruption  (editorialBlocks[1], 240, 700);
+    if (editorialBlocks[0]) attachManifestShatter (editorialBlocks[0], 280, 800,  'center 55%');
+    if (editorialBlocks[1]) attachRitualEruption  (editorialBlocks[1], 240, 800,  'center 55%');
   });
 
   /* =========================================================================

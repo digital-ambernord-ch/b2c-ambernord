@@ -1054,6 +1054,15 @@
   text-align: center;
 }
 
+/* Trailing wrapper that holds .protocol-info-block AFTER the pinned product
+   section — gives a top border + breathing space so the standalone block
+   feels intentional, not orphaned. */
+.shop-trailing-info {
+  margin-top: 80px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
 .protocol-info-title {
   color: var(--color-gold);
   font-family: var(--font-sans);
@@ -1102,7 +1111,11 @@
 }
 
 .nature-hero-wrapper { min-width: 0; }
-.nature-hero-wrapper + .nature-hero-wrapper { margin-top: 40px; }
+
+/* Generous gap between Manifest and Ritual: after Manifest's pin ends and
+   the block has evaporated, the user scrolls through this empty space before
+   Ritual approaches from below — keeps the handoff from feeling cramped. */
+.nature-hero-wrapper + .nature-hero-wrapper { margin-top: 300px; }
 
 .nature-hero-block {
   position: relative;
