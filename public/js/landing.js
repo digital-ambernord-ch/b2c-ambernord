@@ -188,40 +188,45 @@ window.initLanding = async function () {
   });
 
   /* =========================================================================
-     PRODUCT CARDS — scrub exit animation
-     As the user scrolls through #ritual-products, the three cards slide off
-     in sequence: Starter → left, Habit → right, Protocol → right. Scrub-linked
-     so reverses on scroll-up. The CSS transform-transition on the cards is
-     cleared so GSAP isn't smoothed twice (the hover translateY becomes instant
-     — tiny visual cost, but the scrub feels clean).
+     PRODUCT CARDS — pinned exit animation
+     #ritual-products pins, then after a short settle pause the three cards
+     fly off in sequence: Starter → left, Habit → right, Protocol → right.
+     Finally the whole section evaporates (opacity + scale down) before pin
+     releases — so the next section enters cleanly, not behind a leftover
+     frame. CSS transform-transition is cleared on cards so GSAP scrub isn't
+     smoothed twice (hover translateY becomes instant — minor cost).
      ========================================================================= */
 
-  function attachProductCardsExit(startStr, endStr) {
+  function attachProductCardsExit(pinDuration) {
     if (reducedMotion) return;
 
-    const productCards = document.querySelectorAll('#ritual-products .premium-product-card');
+    const section = document.getElementById('ritual-products');
+    if (!section) return;
+
+    const productCards = section.querySelectorAll('.premium-product-card');
     if (productCards.length < 3) return;
 
     const [starter, habit, protocol] = productCards;
-
     productCards.forEach(function (c) { c.style.transition = 'border-color var(--t-base) ease'; });
 
-    gsap.timeline({
-      scrollTrigger: {
-        trigger: '#ritual-products',
-        start:   startStr,
-        end:     endStr,
-        scrub:   1.5,
-        invalidateOnRefresh: true
-      }
-    })
-      .to(starter,  { xPercent: -160, opacity: 0, ease: 'power2.in' }, 0)
-      .to(habit,    { xPercent:  160, opacity: 0, ease: 'power2.in' }, 0.4)
-      .to(protocol, { xPercent:  160, opacity: 0, ease: 'power2.in' }, 0.8);
+    const tl = gsap.timeline({ scrollTrigger: pinScrollTrigger(section, pinDuration) });
+
+    /* Timeline phases (positions in the 0..1 pin range):
+         0.00 → 0.12  settle pause  (block locks, brief beat, no motion)
+         0.12 → 0.78  card exits     (staggered fly-outs)
+         0.78 → 0.95  evaporate      (whole section fades + scales down)
+         0.95 → 1.00  empty hold     (clean handoff to Manifest below)         */
+
+    tl.to(starter,  { xPercent: -160, opacity: 0, ease: 'power2.in', duration: 0.30 }, 0.12)
+      .to(habit,    { xPercent:  160, opacity: 0, ease: 'power2.in', duration: 0.30 }, 0.30)
+      .to(protocol, { xPercent:  160, opacity: 0, ease: 'power2.in', duration: 0.30 }, 0.48)
+      .to(section,  { opacity:  0, scale: 0.95, ease: 'power1.in', duration: 0.17 }, 0.78);
   }
 
-  mm.add('(min-width: 992px)', function () { attachProductCardsExit('top 30%',  'bottom 55%'); });
-  mm.add('(max-width: 991px)', function () { attachProductCardsExit('top 25%',  'bottom 65%'); });
+  /* pinScrollTrigger is defined further down (shared with editorial blocks);
+     we call it via runtime closure, so the order works fine. */
+  mm.add('(min-width: 992px)', function () { attachProductCardsExit(1000); });
+  mm.add('(max-width: 991px)', function () { attachProductCardsExit(800); });
 
   /* =========================================================================
      EDITORIAL BLOCKS — Manifest + Ritual.
@@ -304,6 +309,13 @@ window.initLanding = async function () {
     };
   }
 
+  /* Shared timeline phases for both editorial blocks (positions in 0..1):
+       0.00 → 0.12   settle pause       (block locks in, brief beat)
+       0.12 → 0.83   main animation     (shatter / eruption)
+       0.83 → 1.00   evaporate frame    (block fades + scales down, NOTHING left)
+     The evaporation animates .nature-hero-block so its border, box-shadow,
+     bg image and overlay ALL fade together — no leftover empty rectangle. */
+
   function attachManifestShatter(block, maxDist, pinDuration) {
     if (reducedMotion || !block.wrapper || !block.shards.length) return;
 
@@ -319,8 +331,6 @@ window.initLanding = async function () {
 
     const tl = gsap.timeline({ scrollTrigger: pinScrollTrigger(block.wrapper, pinDuration) });
 
-    /* Shatter occupies 0 → 0.85 of the pin so the last 15% gives the user a
-       beat of "everything is gone" before the pin releases. */
     block.shards.forEach(function (shard, i) {
       const v = vectors[i];
       tl.to(shard, {
@@ -329,8 +339,8 @@ window.initLanding = async function () {
         opacity:  0,
         filter:  'blur(6px)',
         ease:    'power2.in',
-        duration: 0.85
-      }, i * 0.010);
+        duration: 0.45
+      }, 0.12 + i * 0.006);
     });
 
     if (block.bg) {
@@ -338,8 +348,18 @@ window.initLanding = async function () {
         filter: 'blur(14px) brightness(0.5) contrast(1.2)',
         scale:  1.12,
         ease:  'power1.in',
-        duration: 0.9
-      }, 0);
+        duration: 0.65
+      }, 0.12);
+    }
+
+    const innerBlock = block.wrapper.querySelector('.nature-hero-block');
+    if (innerBlock) {
+      tl.to(innerBlock, {
+        opacity: 0,
+        scale:   0.94,
+        ease:   'power1.in',
+        duration: 0.17
+      }, 0.83);
     }
   }
 
@@ -362,7 +382,7 @@ window.initLanding = async function () {
 
     const tl = gsap.timeline({ scrollTrigger: pinScrollTrigger(block.wrapper, pinDuration) });
 
-    /* Phase 1 (0 → 0.32): GLOW + SWELL.
+    /* Phase 1 (0.12 → 0.40): GLOW + SWELL.
        Words turn bright gold, scale up, and gain a luminous shadow — the
        "energy charging" moment before the eruption. */
     tl.to(block.shards, {
@@ -370,9 +390,9 @@ window.initLanding = async function () {
       scale: 1.28,
       textShadow: '0 0 18px rgba(255, 213, 107, 0.85), 0 0 36px rgba(237, 163, 35, 0.55)',
       ease: 'power1.inOut',
-      duration: 0.32,
+      duration: 0.28,
       stagger: { each: 0.004, from: 'random' }
-    }, 0);
+    }, 0.12);
 
     /* Background mirrors the glow — saturation + brightness up, slight zoom */
     if (block.bg) {
@@ -380,11 +400,11 @@ window.initLanding = async function () {
         filter: 'brightness(1.35) saturate(1.7) contrast(1.05)',
         scale:  1.05,
         ease:  'power1.inOut',
-        duration: 0.32
-      }, 0);
+        duration: 0.28
+      }, 0.12);
     }
 
-    /* Phase 2 (0.32 → 1.0): ERUPT.
+    /* Phase 2 (0.40 → 0.83): ERUPT.
        Words shoot upward + outward, pinch to small scale, spin, fade out. */
     block.shards.forEach(function (shard, i) {
       const v = vectors[i];
@@ -395,8 +415,8 @@ window.initLanding = async function () {
         opacity: 0,
         filter: 'blur(5px)',
         ease: 'power2.in',
-        duration: 0.6
-      }, 0.32 + i * 0.006);
+        duration: 0.40
+      }, 0.40 + i * 0.005);
     });
 
     /* Background after the eruption — washes out (overexposed white-gold) */
@@ -405,8 +425,19 @@ window.initLanding = async function () {
         filter: 'blur(10px) brightness(1.6) saturate(2) contrast(0.9)',
         scale:  1.12,
         ease:  'power1.in',
-        duration: 0.6
-      }, 0.32);
+        duration: 0.43
+      }, 0.40);
+    }
+
+    /* Phase 3 (0.83 → 1.00): EVAPORATE the frame entirely */
+    const innerBlock = block.wrapper.querySelector('.nature-hero-block');
+    if (innerBlock) {
+      tl.to(innerBlock, {
+        opacity: 0,
+        scale:   0.94,
+        ease:   'power1.in',
+        duration: 0.17
+      }, 0.83);
     }
   }
 
