@@ -1143,16 +1143,28 @@
   filter: brightness(0.8) contrast(1.05);
 }
 
-/* The bg is now a real <img loading="eager" fetchpriority="high"> instead of
-   a CSS background-image, so the browser fetches it on initial parse with
-   high priority — no deferred load = no "gray block flash" right before the
-   pinned animation engages. */
+/* LQIP pattern: a tiny pre-blurred Cloudinary placeholder (~3KB, loaded
+   synchronously) paints instantly, fills the block, and hides the would-be
+   "gray flash". The full-quality image stacks on top and fades in once
+   loaded — visually seamless because the LQIP is the SAME photo, just
+   small + blurred (matches composition / tones). */
 .nature-hero-bg img {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
+}
+
+.nature-hero-bg__full {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.nature-hero-bg__full.is-loaded {
+  opacity: 1;
 }
 
 .nature-hero-overlay {
@@ -1262,8 +1274,15 @@
      evaporating — visual continuity between sections, no "dead-end" gap.
      The pinned Ritual block (z-index --z-above via .editorial-bento-grid)
      stays on top during the overlap; once Ritual fully evaporates this
-     image is what fills the screen. */
+     image is what fills the screen. Desktop only — on mobile the editorial
+     section is much taller and the negative margin caused the bg image
+     to vanish entirely, so we drop the overlap on small viewports and
+     let the bg appear in normal flow after Ritual unpins. */
   margin-top: -240px;
+}
+
+@media (max-width: 991px) {
+  .exclusive-section-wrapper { margin-top: 0; }
 }
 
 .exclusive-bg {

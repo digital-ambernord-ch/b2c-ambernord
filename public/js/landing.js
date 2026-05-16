@@ -6,24 +6,26 @@
 
 window.initLanding = async function () {
 
-  /* =========================================================================
-     EAGER-PRELOAD EDITORIAL BG IMAGES
-     Manifest + Ritual blocks use CSS background-image, which the browser
-     defers until the element is near the viewport. By then the user is
-     scrolling fast and the bg arrives LATE — the dark surface color shows
-     through as a "gray flash" right before the photo paints. Pre-requesting
-     the images via Image() now (at landing init, before i18n) makes the
-     browser fetch them immediately so the cache is warm by the time the
-     pinned animation engages.
-     ========================================================================= */
-  [
-    'https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_1920/v1774812486/ambernord-natuerliche-energie-zelt-vs-energy-drinks-sanddorn-wald.webp_o0hswh.jpg',
-    'https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_1920/v1774812498/ambernord-zelt-taegliches-ritual-sanddorn-konzentrat-morgenroutine.webp_tnwv2r.jpg'
-  ].forEach(function (url) { const i = new Image(); i.src = url; });
-
   if (typeof window.loadI18n === 'function') {
     try { await window.loadI18n(window.getLang(), 'home'); } catch {}
   }
+
+  /* =========================================================================
+     LQIP IMAGE SWAP — for the Manifest + Ritual bg images.
+     The tiny placeholder paints instantly via the browser's normal img
+     fetch (sync decode + high priority); the full-quality image is also
+     fetched immediately (loading=eager) but takes longer to arrive. When
+     it's ready we flip the `.is-loaded` class and CSS fades it in over
+     the placeholder. If the full image is already in cache (back-nav),
+     img.complete is true and we add the class straight away.
+     ========================================================================= */
+  document.querySelectorAll('.nature-hero-bg__full').forEach(function (img) {
+    if (img.complete && img.naturalWidth > 0) {
+      img.classList.add('is-loaded');
+    } else {
+      img.addEventListener('load', function () { img.classList.add('is-loaded'); }, { once: true });
+    }
+  });
 
   /* =========================================================================
      TAGLINE AUTO-FIT — never wrap on mobile.
@@ -204,15 +206,17 @@ window.initLanding = async function () {
 
   /* =========================================================================
      PRODUCT CARDS — pinned exit animation
-     #ritual-products pins, then after a short settle pause the three cards
-     fly off in sequence: Starter → left, Habit → right, Protocol → right.
-     Finally the whole section evaporates (opacity + scale down) before pin
-     releases — so the next section enters cleanly, not behind a leftover
-     frame. CSS transform-transition is cleared on cards so GSAP scrub isn't
-     smoothed twice (hover translateY becomes instant — minor cost).
+     Desktop: all three cards fit in the viewport, so we pin the WHOLE
+     #ritual-products section and animate them out sequentially, then
+     evaporate the frame.
+     Mobile: cards are tall (vertical stack), so all three never fit at
+     once. We pin EACH CARD individually — it locks at the top, plays its
+     fly-out, releases, and the next card scrolls up into the same spot.
+     CSS transform-transition is cleared so GSAP scrub isn't smoothed twice
+     (hover translateY becomes instant — minor cost).
      ========================================================================= */
 
-  function attachProductCardsExit(pinDuration) {
+  function attachProductCardsExitDesktop(pinDuration) {
     if (reducedMotion) return;
 
     const section = document.getElementById('ritual-products');
@@ -238,10 +242,38 @@ window.initLanding = async function () {
       .to(section,  { opacity:  0, scale: 0.95, ease: 'power1.in', duration: 0.17 }, 0.78);
   }
 
+  function attachProductCardsExitMobile(pinDuration) {
+    if (reducedMotion) return;
+
+    const productCards = document.querySelectorAll('#ritual-products .premium-product-card');
+    if (productCards.length < 3) return;
+
+    productCards.forEach(function (c) { c.style.transition = 'border-color var(--t-base) ease'; });
+
+    /* Each card gets its OWN pin trigger. As the user scrolls, the card
+       reaches the pin start, locks at the top, plays its exit, releases,
+       and the next card scrolls up into the same position. Exit directions:
+       Starter → left, Habit + Protocol → right (matches the desktop story). */
+    const exitDirections = [-160, 160, 160];
+
+    productCards.forEach(function (card, i) {
+      gsap.timeline({ scrollTrigger: pinScrollTrigger(card, pinDuration) })
+        .to(card, {
+          xPercent: exitDirections[i],
+          opacity:  0,
+          ease:    'power2.in',
+          duration: 0.65
+        }, 0.20);
+        /* 0.00 → 0.20  settle pause (card locks in, brief beat)
+           0.20 → 0.85  fly-out
+           0.85 → 1.00  empty hold (so the unpin handoff feels clean) */
+    });
+  }
+
   /* pinScrollTrigger is defined further down (shared with editorial blocks);
      we call it via runtime closure, so the order works fine. */
-  mm.add('(min-width: 992px)', function () { attachProductCardsExit(1000); });
-  mm.add('(max-width: 991px)', function () { attachProductCardsExit(800); });
+  mm.add('(min-width: 992px)', function () { attachProductCardsExitDesktop(1000); });
+  mm.add('(max-width: 991px)', function () { attachProductCardsExitMobile(700); });
 
   /* =========================================================================
      EDITORIAL BLOCKS — Manifest + Ritual.
