@@ -1082,6 +1082,31 @@
   }
 }
 
+/* Payment-group separator — desktop only. On mobile this is part of the
+   same visual unit as the trailing info (both lift together with the
+   cards), so we drop the border + extra spacing to read as one block. */
+.ritual-payment-group {
+  margin-top: 40px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 40px;
+}
+@media (max-width: 991px) {
+  .ritual-payment-group {
+    margin-top: 0;
+    border-top: 0;
+    padding-top: 20px;
+  }
+}
+
+/* Mobile-only: tighten the gap between #shop (where the product pin
+   evaporates) and the editorial section (Manifest). Without this the
+   user scrolls through a big black gap after the payment icons exit
+   the top of the viewport. */
+@media (max-width: 991px) {
+  #shop { padding-bottom: 20px; }
+  .editorial-bento-grid { padding-top: 20px; }
+}
+
 .protocol-info-title {
   color: var(--color-gold);
   font-family: var(--font-sans);
@@ -1307,7 +1332,11 @@
 }
 
 @media (max-width: 991px) {
-  .exclusive-section-wrapper { margin-top: 0; }
+  /* Moderate negative margin (not as extreme as desktop -240) — pulls
+     Exclusive Sourcing close enough that it shows up immediately after
+     Ritual's pin without a long black gap, but not so far that it
+     overlaps Ritual content during the pin. */
+  .exclusive-section-wrapper { margin-top: -120px; }
 }
 
 .exclusive-bg {

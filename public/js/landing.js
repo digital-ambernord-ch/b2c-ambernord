@@ -260,36 +260,32 @@ window.initLanding = async function () {
     const [starter, habit, protocol] = productCards;
     productCards.forEach(function (c) { c.style.transition = 'border-color var(--t-base) ease'; });
 
+    /* Trailing info + payment group act as ONE combined queue element on
+       mobile — they lift together at every phase so the visual unit stays
+       intact. Phase 3 has NO lift for this unit (it stays one slot below
+       Protocol's exit position so the gap is preserved — user explicitly
+       said trailing info must never overlap Protocol). */
     const trailingInfo = section.querySelector('.shop-trailing-info');
+    const paymentGroup = section.querySelector('.ritual-payment-group');
+    const trailUnit    = [trailingInfo, paymentGroup].filter(Boolean);
 
-    /* Lift amounts are functions so ScrollTrigger.invalidateOnRefresh
-       re-measures on resize. card<N>Lift returns the NEGATIVE Y offset
-       needed to move a card up to where the N-th preceding card was. */
     const margin = function () {
       return parseFloat(getComputedStyle(starter).marginBottom) || 40;
     };
     const card1Lift = function () { return -(starter.offsetHeight + margin()); };
     const card2Lift = function () { return -(starter.offsetHeight + habit.offsetHeight + 2 * margin()); };
-    const card3Lift = function () {
-      return -(starter.offsetHeight + habit.offsetHeight + protocol.offsetHeight + 3 * margin());
-    };
 
     const tl = gsap.timeline({ scrollTrigger: pinScrollTrigger(section, pinDuration) });
 
-    /* Timeline (positions in 0..1) — cards exit LEFT/RIGHT while the
-       trailing info ("Das tägliche Ritual") slides up as the 4th item in
-       the queue. Horizontal exits use 0.30 duration (was 0.18 — too fast,
-       felt jerky); lifts use 0.30 too with `power1.inOut` so the next
-       card glides smoothly up WHILE the current card slides away.
-
+    /* Timeline:
          0.00 → 0.05   settle pause
-         0.05 → 0.35   Starter exits LEFT  +  Habit, Protocol, Trailing lift
-         0.36 → 0.66   Habit  exits RIGHT  +  Protocol, Trailing lift
-         0.66 → 0.96   Protocol exits RIGHT+  Trailing lifts to top of stack
-         0.96 → 1.00   pin handoff                                            */
+         0.05 → 0.35   Starter exits + Habit/Protocol/trail-unit lift
+         0.36 → 0.66   Habit   exits + Protocol/trail-unit lift
+         0.66 → 0.96   Protocol exits (trail-unit STAYS — preserves gap)
+         0.96 → 1.00   pin handoff                                       */
 
-    const liftAll1 = trailingInfo ? [habit, protocol, trailingInfo] : [habit, protocol];
-    const liftAll2 = trailingInfo ? [protocol, trailingInfo]        : [protocol];
+    const liftAll1 = [habit, protocol].concat(trailUnit);
+    const liftAll2 = [protocol].concat(trailUnit);
 
     tl.to(starter,   { xPercent: -160, opacity: 0, ease: 'power2.in',    duration: 0.30 }, 0.05)
       .to(liftAll1,  { y: card1Lift,                ease: 'power1.inOut', duration: 0.30 }, 0.05)
@@ -298,10 +294,6 @@ window.initLanding = async function () {
       .to(liftAll2,  { y: card2Lift,                ease: 'power1.inOut', duration: 0.30 }, 0.36)
 
       .to(protocol,  { xPercent:  160, opacity: 0, ease: 'power2.in',    duration: 0.30 }, 0.66);
-
-    if (trailingInfo) {
-      tl.to(trailingInfo, { y: card3Lift, ease: 'power1.inOut', duration: 0.30 }, 0.66);
-    }
   }
 
   /* pinScrollTrigger is defined further down (shared with editorial blocks);
@@ -458,6 +450,13 @@ window.initLanding = async function () {
   function attachRitualEruption(block, maxDist, pinDuration, startStr) {
     if (reducedMotion || !block.wrapper || !block.shards.length) return;
 
+    /* On mobile we MUST skip the expensive per-shard effects (textShadow,
+       filter blur, rotation, scale up + scale down) — running them on 50-80
+       shards simultaneously was overheating the phone. Mobile gets a lean
+       version: color tint for the gold mood + outward/upward translate +
+       opacity fade. Desktop keeps the full eruption choreography. */
+    const isLight = window.matchMedia('(max-width: 991px)').matches;
+
     /* Volcano vectors: angles distributed in the UPPER hemisphere only
        (-150° to -30°, where -90° is straight up), so all shards erupt
        skyward with horizontal spread. */
@@ -467,71 +466,56 @@ window.initLanding = async function () {
       const dist     = (maxDist * 0.5) + (i * 37) % (maxDist * 0.5);
       return {
         x:   Math.cos(rad) * dist,
-        y:   Math.sin(rad) * dist,  /* sin in [-1, -0.5] → always upward */
-        rot: ((i * 29) % 120) - 60
+        y:   Math.sin(rad) * dist,
+        rot: isLight ? 0 : (((i * 29) % 120) - 60)
       };
     });
 
     const tl = gsap.timeline({ scrollTrigger: pinScrollTrigger(block.wrapper, pinDuration, startStr) });
 
-    /* Phase 1 (0.12 → 0.40): GLOW + SWELL.
-       Words turn bright gold, scale up, and gain a luminous shadow — the
-       "energy charging" moment before the eruption. */
-    tl.to(block.shards, {
-      color: '#FFD56B',
-      scale: 1.28,
-      textShadow: '0 0 18px rgba(255, 213, 107, 0.85), 0 0 36px rgba(237, 163, 35, 0.55)',
-      ease: 'power1.inOut',
-      duration: 0.28,
-      stagger: { each: 0.004, from: 'random' }
-    }, 0.12);
+    /* Phase 1 (0.12 → 0.40): GLOW. Words tint gold.
+       Desktop adds scale + textShadow for the "energy charging" feel. */
+    const glowProps = { color: '#FFD56B', ease: 'power1.inOut', duration: 0.28 };
+    if (!isLight) {
+      glowProps.scale = 1.28;
+      glowProps.textShadow = '0 0 18px rgba(255, 213, 107, 0.85), 0 0 36px rgba(237, 163, 35, 0.55)';
+      glowProps.stagger = { each: 0.004, from: 'random' };
+    }
+    tl.to(block.shards, glowProps, 0.12);
 
-    /* NO filter transition — image stays as original photo (100%) per user
-       request. Only scale slightly. The gold-glow story is carried by the
-       SHARDS (which turn bright gold), not by tinting the bg. */
     if (block.bg) {
-      tl.to(block.bg, {
-        scale:  1.03,
-        ease:  'power1.inOut',
-        duration: 0.28
-      }, 0.12);
+      tl.to(block.bg, { scale: 1.03, ease: 'power1.inOut', duration: 0.28 }, 0.12);
     }
 
     /* Phase 2 (0.40 → 0.83): ERUPT.
-       Words shoot upward + outward, pinch to small scale, spin, fade out. */
+       Mobile: just translate + opacity. Desktop also rotates, scales down,
+       and blurs each shard. */
     block.shards.forEach(function (shard, i) {
       const v = vectors[i];
-      tl.to(shard, {
+      const eruptProps = {
         x: v.x, y: v.y,
-        rotation: v.rot,
-        scale: 0.25,
         opacity: 0,
-        filter: 'blur(5px)',
         ease: 'power2.in',
         duration: 0.40
-      }, 0.40 + i * 0.005);
+      };
+      if (!isLight) {
+        eruptProps.rotation = v.rot;
+        eruptProps.scale    = 0.25;
+        eruptProps.filter   = 'blur(5px)';
+      }
+      tl.to(shard, eruptProps, 0.40 + i * 0.005);
     });
 
-    /* NO filter transition — bg image stays as the original photo throughout.
-       Only continue zooming. */
     if (block.bg) {
-      tl.to(block.bg, {
-        scale:  1.06,
-        ease:  'power1.in',
-        duration: 0.43
-      }, 0.40);
+      tl.to(block.bg, { scale: 1.06, ease: 'power1.in', duration: 0.43 }, 0.40);
     }
 
-    /* Phase 3 (0.83 → 1.00): EVAPORATE the frame entirely.
-       Opacity-only (see note in attachManifestShatter) so the mobile
-       fit-to-viewport inline transform on .nature-hero-block survives. */
+    /* Phase 3 (0.83 → 1.00): EVAPORATE the frame entirely. Opacity-only
+       so the mobile fit-to-viewport inline transform on .nature-hero-block
+       survives. */
     const innerBlock = block.wrapper.querySelector('.nature-hero-block');
     if (innerBlock) {
-      tl.to(innerBlock, {
-        opacity: 0,
-        ease:   'power1.in',
-        duration: 0.17
-      }, 0.83);
+      tl.to(innerBlock, { opacity: 0, ease: 'power1.in', duration: 0.17 }, 0.83);
     }
   }
 
