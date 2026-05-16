@@ -299,7 +299,11 @@ window.initLanding = async function () {
   /* pinScrollTrigger is defined further down (shared with editorial blocks);
      we call it via runtime closure, so the order works fine. */
   mm.add('(min-width: 992px)', function () { attachProductCardsExitDesktop(1000); });
-  mm.add('(max-width: 991px)', function () { attachProductCardsExitMobile(700); });
+  /* Mobile pinDuration 1200 = slow, controllable per-finger-inch progression.
+     Coupled with the snap config above, fast swipes brake at boundaries and
+     slow scrolls freeze mid-animation. .dynamic-editorial-wrapper has a
+     matching negative margin so no dead gap forms between cards and Manifest. */
+  mm.add('(max-width: 991px)', function () { attachProductCardsExitMobile(1200); });
 
   /* =========================================================================
      EDITORIAL BLOCKS — Manifest + Ritual.
@@ -368,16 +372,22 @@ window.initLanding = async function () {
   }
 
   /* Standard pin config shared by both effects.
-     scrub: 0.5 → forward feels smooth, reverse snaps back quickly.
+     scrub: 0.3 → tight 1:1 tracking with minimal smoothing. Earlier 0.5 added
+     ~500ms of "catch-up lag" after the finger lifted, which the user perceived
+     as the animation "moving on its own".
      `startStr` lets a caller override the trigger position (used by editorial
      blocks which pin VISUALLY CENTERED in the viewport, vs. products which pin
      just below the topbar).
 
-     SNAP — when a fast finger swipe overshoots a section, GSAP gently brakes
-     the scroll and pulls it back to the pin's end (progress 1). The user
-     then has to start a NEW swipe to advance to the next section. This kills
-     the "everything flies past chaotically" feeling on mobile. Snap engages
-     after the user lifts the finger AND the scroll settles. */
+     SNAP — fights iOS momentum scroll. snapTo is a custom function:
+       - velocity > 1500 px/s  → fast swipe / momentum:  snap to NEAREST of [0,1]
+         so a fast flick locks at the next section boundary instead of flying past
+       - low velocity (deliberate slow scroll) → freeze in place (no snap),
+         so the user's mid-animation pause is respected (no auto-advance, no
+         auto-rewind).
+     Long delay (0.18s) gives the user a brief moment to start another scroll
+     gesture before snap commits — prevents jarring auto-snap during natural
+     micro-pauses. */
   function pinScrollTrigger(wrapper, pinDuration, startStr) {
     return {
       trigger: wrapper,
@@ -386,13 +396,17 @@ window.initLanding = async function () {
       pin:     true,
       pinSpacing: true,
       anticipatePin: 1,
-      scrub:   0.5,
+      scrub:   0.3,
       invalidateOnRefresh: true,
       snap: {
-        snapTo:   1,
-        duration: { min: 0.2, max: 0.5 },
-        delay:    0.08,
-        ease:    'power1.inOut'
+        snapTo: function (progress, self) {
+          const v = self && self.getVelocity ? Math.abs(self.getVelocity()) : 0;
+          if (v > 1500) return progress > 0.5 ? 1 : 0;
+          return progress;
+        },
+        duration: { min: 0.35, max: 0.7 },
+        delay:    0.18,
+        ease:    'power2.out'
       }
     };
   }
@@ -578,8 +592,10 @@ window.initLanding = async function () {
   });
   mm.add('(max-width: 991px)', function () {
     editorialBlocks.forEach(fitBlockToViewport);
-    if (editorialBlocks[0]) attachManifestShatter (editorialBlocks[0], 280, 800, editorialPinStart(editorialBlocks[0].wrapper));
-    if (editorialBlocks[1]) attachRitualEruption  (editorialBlocks[1], 240, 800, editorialPinStart(editorialBlocks[1].wrapper));
+    /* pinDuration 1200 matches the product section so animation speed feels
+       consistent across all three pinned sections (products → Manifest → Ritual). */
+    if (editorialBlocks[0]) attachManifestShatter (editorialBlocks[0], 280, 1200, editorialPinStart(editorialBlocks[0].wrapper));
+    if (editorialBlocks[1]) attachRitualEruption  (editorialBlocks[1], 240, 1200, editorialPinStart(editorialBlocks[1].wrapper));
   });
 
   /* =========================================================================

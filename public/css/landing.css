@@ -1139,13 +1139,15 @@
   width: 100%;
 }
 
-/* Mobile-only: pull the entire editorial section UP so Manifest enters
-   viewport immediately after the payment icons start scrolling off the
-   top of the screen — no big black gap between product pin and Manifest.
-   The negative margin matches the pinSpacer's empty-padding height (the
-   "wasted" scroll area after the pinned product element returns to flow). */
+/* Mobile-only: pull the editorial section UP by approximately the natural
+   height of #ritual-products (heading + 3 stacked cards + trailing info +
+   payment icons ≈ 1700px). With pinDuration 1200, pinSpacer reserves
+   H + 1200 ≈ 2900px after pin-start. Margin -1700 places Manifest's top
+   right at pin-end (= pin-start + 1200), so Manifest enters viewport the
+   instant the product pin releases — no dead black gap. Don't go bigger
+   than -H or Manifest starts drawing BEHIND the cards during their pin. */
 @media (max-width: 991px) {
-  .dynamic-editorial-wrapper { margin-top: -700px; }
+  .dynamic-editorial-wrapper { margin-top: -1700px; }
 }
 
 .editorial-bento-grid {
@@ -1341,12 +1343,13 @@
 }
 
 @media (max-width: 991px) {
-  /* Aggressive negative margin so Exclusive Sourcing's image peeks into
-     viewport bottom WHILE Ritual is still pinned — eliminates the long
-     black gap the user reported between Ritual exit and Exclusive
-     appearing. Same magnitude as the dynamic-editorial-wrapper pull-up
-     (matches Ritual's pinSpacer empty-padding height). */
-  .exclusive-section-wrapper { margin-top: -700px; }
+  /* Ritual block natural height ≈ 500-600px (fitBlockToViewport scales it
+     to ~availV). With pinDuration 1200, pinSpacer reserves H + 1200 ≈ 1800px.
+     Margin -1000 places Exclusive's top ~200px AFTER Ritual's pin-end — a
+     small breathing gap, never overlapping the pinned Ritual block (earlier
+     -700 with pinDuration 800 had Exclusive doc-pos at pin-start + 600,
+     INSIDE pin range, causing Exclusive to draw under Ritual). */
+  .exclusive-section-wrapper { margin-top: -1000px; }
 }
 
 .exclusive-bg {
