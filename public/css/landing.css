@@ -1138,10 +1138,21 @@
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background-size: cover;
-  background-position: center;
   z-index: 0;
+  /* filter cascades to the inner <img> — GSAP animates this same property */
   filter: brightness(0.8) contrast(1.05);
+}
+
+/* The bg is now a real <img loading="eager" fetchpriority="high"> instead of
+   a CSS background-image, so the browser fetches it on initial parse with
+   high priority — no deferred load = no "gray block flash" right before the
+   pinned animation engages. */
+.nature-hero-bg img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .nature-hero-overlay {
