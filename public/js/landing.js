@@ -224,13 +224,16 @@ window.initLanding = async function () {
   mm.add('(max-width: 991px)', function () { attachProductCardsExit('top 25%',  'bottom 65%'); });
 
   /* =========================================================================
-     EDITORIAL SHATTER — as the user scrolls past "Unser Manifest" and
-     "Das Ritual", each block's content explodes into word-shards that fly
-     apart along a golden-angle distribution with rotation, blur and fade.
-     The background image blurs + darkens + slightly zooms for the "shock-
-     wave haze" feel. Scrub-linked, so reverses on scroll-up. The word-split
-     runs once per block and the resulting spans persist across mm.add
-     callbacks (matchMedia revert handles the timeline cleanup).
+     EDITORIAL BLOCKS — Manifest + Ritual.
+     Both blocks pin to the viewport while their content animation plays out,
+     so the user reads the effect in place; the pin only releases once the
+     animation is essentially complete, then scrolling continues to the next
+     block. Scrub 0.5 keeps both forward AND reverse responsive (the latter
+     was the explicit ask — scrolling back snaps cleanly to original state).
+
+     - Manifest:  radial word-shatter (golden-angle vectors) + bg blur/darken
+     - Ritual:    "gold eruption" — words glow + grow, then burst upward
+                  like a volcano, on the "Ein Teil Gold, Zehn Teile Leben" beat
      ========================================================================= */
 
   function splitIntoWordShards(rootEl) {
@@ -276,11 +279,25 @@ window.initLanding = async function () {
     };
   });
 
-  function attachShatter(block, maxDist, startStr) {
+  /* Standard pin config shared by both effects. start uses `top top+=120` to
+     clear the fixed nav (≈80px) plus the aktion-bar (≈40px when active).
+     scrub: 0.5 → forward feels smooth, reverse snaps back quickly. */
+  function pinScrollTrigger(wrapper, pinDuration) {
+    return {
+      trigger: wrapper,
+      start:   'top top+=120',
+      end:     '+=' + pinDuration,
+      pin:     true,
+      pinSpacing: true,
+      anticipatePin: 1,
+      scrub:   0.5,
+      invalidateOnRefresh: true
+    };
+  }
+
+  function attachManifestShatter(block, maxDist, pinDuration) {
     if (reducedMotion || !block.wrapper || !block.shards.length) return;
 
-    /* Pre-compute exit vectors deterministically — golden-angle gives organic
-       radial coverage; per-shard rotation + distance jitter avoid uniformity. */
     const vectors = block.shards.map(function (_, i) {
       const angle = (i * 137.508) * Math.PI / 180;
       const dist  = (maxDist * 0.55) + (i * 31) % (maxDist * 0.45);
@@ -291,16 +308,10 @@ window.initLanding = async function () {
       };
     });
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: block.wrapper,
-        start:   startStr,
-        end:     'bottom top',
-        scrub:   1.5,
-        invalidateOnRefresh: true
-      }
-    });
+    const tl = gsap.timeline({ scrollTrigger: pinScrollTrigger(block.wrapper, pinDuration) });
 
+    /* Shatter occupies 0 → 0.85 of the pin so the last 15% gives the user a
+       beat of "everything is gone" before the pin releases. */
     block.shards.forEach(function (shard, i) {
       const v = vectors[i];
       tl.to(shard, {
@@ -309,8 +320,8 @@ window.initLanding = async function () {
         opacity:  0,
         filter:  'blur(6px)',
         ease:    'power2.in',
-        duration: 1
-      }, i * 0.012);
+        duration: 0.85
+      }, i * 0.010);
     });
 
     if (block.bg) {
@@ -318,16 +329,85 @@ window.initLanding = async function () {
         filter: 'blur(14px) brightness(0.5) contrast(1.2)',
         scale:  1.12,
         ease:  'power1.in',
-        duration: 1
+        duration: 0.9
       }, 0);
     }
   }
 
+  function attachRitualEruption(block, maxDist, pinDuration) {
+    if (reducedMotion || !block.wrapper || !block.shards.length) return;
+
+    /* Volcano vectors: angles distributed in the UPPER hemisphere only
+       (-150° to -30°, where -90° is straight up), so all shards erupt
+       skyward with horizontal spread. */
+    const vectors = block.shards.map(function (_, i) {
+      const angleDeg = -150 + ((i * 47) % 121); /* -150 .. -30 inclusive */
+      const rad      = angleDeg * Math.PI / 180;
+      const dist     = (maxDist * 0.5) + (i * 37) % (maxDist * 0.5);
+      return {
+        x:   Math.cos(rad) * dist,
+        y:   Math.sin(rad) * dist,  /* sin in [-1, -0.5] → always upward */
+        rot: ((i * 29) % 120) - 60
+      };
+    });
+
+    const tl = gsap.timeline({ scrollTrigger: pinScrollTrigger(block.wrapper, pinDuration) });
+
+    /* Phase 1 (0 → 0.32): GLOW + SWELL.
+       Words turn bright gold, scale up, and gain a luminous shadow — the
+       "energy charging" moment before the eruption. */
+    tl.to(block.shards, {
+      color: '#FFD56B',
+      scale: 1.28,
+      textShadow: '0 0 18px rgba(255, 213, 107, 0.85), 0 0 36px rgba(237, 163, 35, 0.55)',
+      ease: 'power1.inOut',
+      duration: 0.32,
+      stagger: { each: 0.004, from: 'random' }
+    }, 0);
+
+    /* Background mirrors the glow — saturation + brightness up, slight zoom */
+    if (block.bg) {
+      tl.to(block.bg, {
+        filter: 'brightness(1.35) saturate(1.7) contrast(1.05)',
+        scale:  1.05,
+        ease:  'power1.inOut',
+        duration: 0.32
+      }, 0);
+    }
+
+    /* Phase 2 (0.32 → 1.0): ERUPT.
+       Words shoot upward + outward, pinch to small scale, spin, fade out. */
+    block.shards.forEach(function (shard, i) {
+      const v = vectors[i];
+      tl.to(shard, {
+        x: v.x, y: v.y,
+        rotation: v.rot,
+        scale: 0.25,
+        opacity: 0,
+        filter: 'blur(5px)',
+        ease: 'power2.in',
+        duration: 0.6
+      }, 0.32 + i * 0.006);
+    });
+
+    /* Background after the eruption — washes out (overexposed white-gold) */
+    if (block.bg) {
+      tl.to(block.bg, {
+        filter: 'blur(10px) brightness(1.6) saturate(2) contrast(0.9)',
+        scale:  1.12,
+        ease:  'power1.in',
+        duration: 0.6
+      }, 0.32);
+    }
+  }
+
   mm.add('(min-width: 992px)', function () {
-    editorialBlocks.forEach(function (b) { attachShatter(b, 550, 'top 25%'); });
+    if (editorialBlocks[0]) attachManifestShatter (editorialBlocks[0], 550, 900);
+    if (editorialBlocks[1]) attachRitualEruption  (editorialBlocks[1], 480, 900);
   });
   mm.add('(max-width: 991px)', function () {
-    editorialBlocks.forEach(function (b) { attachShatter(b, 280, 'top 35%'); });
+    if (editorialBlocks[0]) attachManifestShatter (editorialBlocks[0], 280, 700);
+    if (editorialBlocks[1]) attachRitualEruption  (editorialBlocks[1], 240, 700);
   });
 
   /* =========================================================================
