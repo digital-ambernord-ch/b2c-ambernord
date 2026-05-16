@@ -245,29 +245,45 @@ window.initLanding = async function () {
   function attachProductCardsExitMobile(pinDuration) {
     if (reducedMotion) return;
 
-    const productCards = document.querySelectorAll('#ritual-products .premium-product-card');
+    const section = document.getElementById('ritual-products');
+    if (!section) return;
+
+    const productCards = section.querySelectorAll('.premium-product-card');
     if (productCards.length < 3) return;
 
+    const [starter, habit, protocol] = productCards;
     productCards.forEach(function (c) { c.style.transition = 'border-color var(--t-base) ease'; });
 
-    /* Each card gets its OWN pin trigger. As the user scrolls, the card
-       reaches the pin start, locks at the top, plays its exit, releases,
-       and the next card scrolls up into the same position. Exit directions:
-       Starter → left, Habit + Protocol → right (matches the desktop story). */
-    const exitDirections = [-160, 160, 160];
+    /* Whole #ritual-products section pins (heading "Wählen Sie Ihr Protokoll"
+       stays visible the entire time). Inside, the cards are tall and only
+       one fits at a time — so as each card exits, the cards below it
+       translateY up to fill the freed position INSTANTLY. No black gap
+       between cards. */
+    const margin = function () {
+      return parseFloat(getComputedStyle(starter).marginBottom) || 40;
+    };
+    const card1Lift = function () { return -(starter.offsetHeight + margin()); };
+    const card2Lift = function () { return -(starter.offsetHeight + habit.offsetHeight + 2 * margin()); };
 
-    productCards.forEach(function (card, i) {
-      gsap.timeline({ scrollTrigger: pinScrollTrigger(card, pinDuration) })
-        .to(card, {
-          xPercent: exitDirections[i],
-          opacity:  0,
-          ease:    'power2.in',
-          duration: 0.65
-        }, 0.20);
-        /* 0.00 → 0.20  settle pause (card locks in, brief beat)
-           0.20 → 0.85  fly-out
-           0.85 → 1.00  empty hold (so the unpin handoff feels clean) */
-    });
+    const tl = gsap.timeline({ scrollTrigger: pinScrollTrigger(section, pinDuration) });
+
+    /* Timeline (positions in 0..1):
+         0.00 → 0.06  settle pause
+         0.06 → 0.30  Card 1 (Starter) exits LEFT  + Cards 2-3 translate up
+         0.30 → 0.55  Card 2 (Habit) exits RIGHT   + Card 3 translates up
+         0.55 → 0.80  Card 3 (Protocol) exits RIGHT
+         0.80 → 0.95  whole section evaporates (heading + payment row fade)
+         0.95 → 1.00  empty hold (clean handoff to "Das tägliche Ritual") */
+
+    tl.to(starter,            { xPercent: -160, opacity: 0, ease: 'power2.in', duration: 0.22 }, 0.06)
+      .to([habit, protocol],  { y: card1Lift, ease: 'power2.out', duration: 0.22 }, 0.06)
+
+      .to(habit,              { xPercent:  160, opacity: 0, ease: 'power2.in', duration: 0.22 }, 0.32)
+      .to(protocol,           { y: card2Lift, ease: 'power2.out', duration: 0.22 }, 0.32)
+
+      .to(protocol,           { xPercent:  160, opacity: 0, ease: 'power2.in', duration: 0.22 }, 0.57)
+
+      .to(section,            { opacity: 0, scale: 0.95, ease: 'power1.in', duration: 0.15 }, 0.80);
   }
 
   /* pinScrollTrigger is defined further down (shared with editorial blocks);
@@ -394,14 +410,12 @@ window.initLanding = async function () {
     });
 
     if (block.bg) {
-      /* Blur only — keep CSS-default brightness(0.8) contrast(1.05) so the
-         photo stays a recognisable image instead of fading toward a flat
-         dark-gray rectangle (which read as a "premium-feel-killing" gray
-         background). The shards explosion is the storytelling; the bg is
-         just the haze behind it. */
+      /* Mild blur only — keep image clearly recognisable. Heavy blur on a
+         heavily-blurred LQIP placeholder used to make the bg read as a flat
+         "gray rectangle"; 3px is a soft haze without destroying detail. */
       tl.to(block.bg, {
-        filter: 'blur(10px) brightness(0.8) contrast(1.05)',
-        scale:  1.05,
+        filter: 'blur(3px) brightness(0.8) contrast(1.05)',
+        scale:  1.04,
         ease:  'power1.in',
         duration: 0.65
       }, 0.12);
@@ -450,11 +464,11 @@ window.initLanding = async function () {
     }, 0.12);
 
     /* Background mirrors the glow — saturation + brightness up, slight zoom.
-       Kept moderate so the photo doesn't blow out into a flat gold sheet. */
+       No blur in the glow phase: image stays sharp during the swell-up. */
     if (block.bg) {
       tl.to(block.bg, {
-        filter: 'blur(4px) brightness(1.15) saturate(1.4) contrast(1.05)',
-        scale:  1.04,
+        filter: 'brightness(1.15) saturate(1.4) contrast(1.05)',
+        scale:  1.03,
         ease:  'power1.inOut',
         duration: 0.28
       }, 0.12);
@@ -475,13 +489,13 @@ window.initLanding = async function () {
       }, 0.40 + i * 0.005);
     });
 
-    /* Background after the eruption — adds blur while keeping the warm glow,
-       NOT overexposing. The photo must stay readable as the bridge to the
-       Exclusive Sourcing image that's now peeking up from below. */
+    /* Background after the eruption — mild blur + retained warm glow. Image
+       stays readable as the bridge to the Exclusive Sourcing image peeking
+       up from below. */
     if (block.bg) {
       tl.to(block.bg, {
-        filter: 'blur(10px) brightness(1.2) saturate(1.4) contrast(1.0)',
-        scale:  1.08,
+        filter: 'blur(3px) brightness(1.15) saturate(1.4) contrast(1.0)',
+        scale:  1.06,
         ease:  'power1.in',
         duration: 0.43
       }, 0.40);
@@ -551,31 +565,39 @@ window.initLanding = async function () {
 
   /* =========================================================================
      EXCLUSIVE SECTION BACKGROUND FADE
-     The bg image fades in WHILE the Ritual block is still pinned and
-     evaporating, so the user sees it peeking up from below — visual bridge
-     between sections, no "dead end" feeling. The CSS pulls the section up
-     (margin-top: -240px), and the trigger fires very early ('top 95%') so
-     opacity is already climbing as the section enters viewport bottom.
+     Desktop: bg fades in WHILE the Ritual block is still pinned and
+     evaporating (the section is pulled up via CSS margin-top: -240px so
+     it physically peeks into viewport bottom during Ritual's last beats).
+     Mobile: the editorial blocks are so much taller that the negative
+     margin was either eaten by pin spacers or pushed the bg out of view
+     entirely — so on mobile we drop the scrub and keep the bg simply
+     opacity:1 from the start. It shows up in normal flow after Ritual.
      ========================================================================= */
 
   const exclusiveBg = document.getElementById('exclusiveBg');
 
   if (exclusiveBg && !reducedMotion) {
-    gsap.set(exclusiveBg, { opacity: 0 });
+    mm.add('(min-width: 992px)', function () {
+      gsap.set(exclusiveBg, { opacity: 0 });
 
-    const bgTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: '#exclusiveSection',
-        start:   'top 95%',
-        end:     'bottom 55%',
-        scrub:   1
-      }
+      const bgTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: '#exclusiveSection',
+          start:   'top 95%',
+          end:     'bottom 55%',
+          scrub:   1
+        }
+      });
+
+      bgTl
+        .to(exclusiveBg, { opacity: 1, ease: 'power1.inOut', duration: 2 })
+        .to(exclusiveBg, { opacity: 1, duration: 6 })
+        .to(exclusiveBg, { opacity: 0, ease: 'power1.inOut', duration: 2 });
     });
 
-    bgTl
-      .to(exclusiveBg, { opacity: 1, ease: 'power1.inOut', duration: 2 })
-      .to(exclusiveBg, { opacity: 1, duration: 6 })
-      .to(exclusiveBg, { opacity: 0, ease: 'power1.inOut', duration: 2 });
+    mm.add('(max-width: 991px)', function () {
+      gsap.set(exclusiveBg, { opacity: 1 });
+    });
   }
 
   /* =========================================================================

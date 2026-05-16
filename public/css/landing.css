@@ -1130,7 +1130,13 @@
   background-color: var(--color-surface);
   transition: border-color var(--t-base) ease;
   min-height: 350px;
+  /* Pre-allocate a compositor layer so the moment pin engages + GSAP starts
+     animating transform/filter, the browser doesn't re-rasterise (which used
+     to cause a one-frame "gray flash" between un-pinned and animating). */
+  will-change: transform, opacity;
 }
+
+.nature-hero-bg { will-change: transform, filter; }
 
 .nature-hero-block:hover { border-color: var(--color-gold); }
 
