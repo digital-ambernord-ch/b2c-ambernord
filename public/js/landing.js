@@ -188,6 +188,39 @@ window.initLanding = async function () {
   });
 
   /* =========================================================================
+     PRODUCT CARDS — scrub exit animation (desktop)
+     As the user scrolls through #ritual-products, the three cards slide off
+     in sequence: Starter → left, Habit → right, Protocol → right. Scrub-linked
+     so reverses on scroll-up. The CSS transform-transition on the cards is
+     cleared so GSAP isn't smoothed twice (the hover translateY becomes instant
+     — tiny visual cost, but the scrub feels clean).
+     ========================================================================= */
+
+  mm.add('(min-width: 992px)', function () {
+    if (reducedMotion) return;
+
+    const productCards = document.querySelectorAll('#ritual-products .premium-product-card');
+    if (productCards.length < 3) return;
+
+    const [starter, habit, protocol] = productCards;
+
+    productCards.forEach(function (c) { c.style.transition = 'border-color var(--t-base) ease'; });
+
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: '#ritual-products',
+        start:   'top 15%',
+        end:     'bottom 50%',
+        scrub:   1.5,
+        invalidateOnRefresh: true
+      }
+    })
+      .to(starter,  { xPercent: -160, opacity: 0, ease: 'power2.in' }, 0)
+      .to(habit,    { xPercent:  160, opacity: 0, ease: 'power2.in' }, 0.4)
+      .to(protocol, { xPercent:  160, opacity: 0, ease: 'power2.in' }, 0.8);
+  });
+
+  /* =========================================================================
      LANDING-PAGE STICKY NAV
      Appears after the hero section has scrolled past the viewport.
      ========================================================================= */
