@@ -299,11 +299,10 @@ window.initLanding = async function () {
   /* pinScrollTrigger is defined further down (shared with editorial blocks);
      we call it via runtime closure, so the order works fine. */
   mm.add('(min-width: 992px)', function () { attachProductCardsExitDesktop(1000); });
-  /* Mobile pinDuration 1200 = slow, controllable per-finger-inch progression.
-     Coupled with the snap config above, fast swipes brake at boundaries and
-     slow scrolls freeze mid-animation. .dynamic-editorial-wrapper has a
-     matching negative margin so no dead gap forms between cards and Manifest. */
-  mm.add('(max-width: 991px)', function () { attachProductCardsExitMobile(1200); });
+  /* Mobile pinDuration 1500 = slower per-finger-inch progression so fast
+     flicks don't visually fly past the section. Coupled with the snap config
+     above, momentum scrolls brake at boundaries. */
+  mm.add('(max-width: 991px)', function () { attachProductCardsExitMobile(1500); });
 
   /* =========================================================================
      EDITORIAL BLOCKS — Manifest + Ritual.
@@ -401,11 +400,15 @@ window.initLanding = async function () {
       snap: {
         snapTo: function (progress, self) {
           const v = self && self.getVelocity ? Math.abs(self.getVelocity()) : 0;
-          if (v > 1500) return progress > 0.5 ? 1 : 0;
+          /* Lower threshold (was 1500) so even moderate finger flicks brake to
+             nearest boundary — user reported "ja ieritina ar pirkstu atri,
+             tas noripo loti talu". 400 catches genuine momentum but ignores
+             slow deliberate scrolls (which freeze in place as before). */
+          if (v > 400) return progress > 0.5 ? 1 : 0;
           return progress;
         },
-        duration: { min: 0.35, max: 0.7 },
-        delay:    0.18,
+        duration: { min: 0.45, max: 0.9 },
+        delay:    0.10,
         ease:    'power2.out'
       }
     };
@@ -461,15 +464,16 @@ window.initLanding = async function () {
 
     const innerBlock = block.wrapper.querySelector('.nature-hero-block');
     if (innerBlock) {
-      /* Opacity-only evaporation — NO scale tween on .nature-hero-block.
-         Scale on this element is reserved for the mobile fit-to-viewport
-         inline transform; if GSAP animates scale here, it overwrites the
-         fit transform and the block grows back to natural size mid-evap. */
+      /* Slow evaporation — spans last 30% of pin (was 17%) so the Manifest
+         block stays visible longer while user scrolls past the shatter. The
+         visual overlap with the approaching Ritual block (positioned 100px
+         below in flow on mobile) makes the section handoff feel quicker.
+         Opacity-only — NO scale tween (would clobber mobile fit-to-viewport). */
       tl.to(innerBlock, {
         opacity: 0,
         ease:   'power1.in',
-        duration: 0.17
-      }, 0.83);
+        duration: 0.30
+      }, 0.70);
     }
   }
 
@@ -536,12 +540,14 @@ window.initLanding = async function () {
       tl.to(block.bg, { scale: 1.06, ease: 'power1.in', duration: 0.43 }, 0.40);
     }
 
-    /* Phase 3 (0.83 → 1.00): EVAPORATE the frame entirely. Opacity-only
-       so the mobile fit-to-viewport inline transform on .nature-hero-block
-       survives. */
+    /* Phase 3 (0.70 → 1.00): SLOW EVAPORATE. Extended from 0.17 → 0.30 duration
+       so the Ritual block stays visible while user scrolls toward Exclusive
+       Sourcing — the visual overlap with the approaching next section makes
+       the handoff feel quicker, not draggy. Opacity-only so the mobile
+       fit-to-viewport inline transform on .nature-hero-block survives. */
     const innerBlock = block.wrapper.querySelector('.nature-hero-block');
     if (innerBlock) {
-      tl.to(innerBlock, { opacity: 0, ease: 'power1.in', duration: 0.17 }, 0.83);
+      tl.to(innerBlock, { opacity: 0, ease: 'power1.in', duration: 0.30 }, 0.70);
     }
   }
 
@@ -592,10 +598,9 @@ window.initLanding = async function () {
   });
   mm.add('(max-width: 991px)', function () {
     editorialBlocks.forEach(fitBlockToViewport);
-    /* pinDuration 1200 matches the product section so animation speed feels
-       consistent across all three pinned sections (products → Manifest → Ritual). */
-    if (editorialBlocks[0]) attachManifestShatter (editorialBlocks[0], 280, 1200, editorialPinStart(editorialBlocks[0].wrapper));
-    if (editorialBlocks[1]) attachRitualEruption  (editorialBlocks[1], 240, 1200, editorialPinStart(editorialBlocks[1].wrapper));
+    /* pinDuration 1500 matches the product section. */
+    if (editorialBlocks[0]) attachManifestShatter (editorialBlocks[0], 280, 1500, editorialPinStart(editorialBlocks[0].wrapper));
+    if (editorialBlocks[1]) attachRitualEruption  (editorialBlocks[1], 240, 1500, editorialPinStart(editorialBlocks[1].wrapper));
   });
 
   /* =========================================================================
