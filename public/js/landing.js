@@ -371,7 +371,13 @@ window.initLanding = async function () {
      scrub: 0.5 → forward feels smooth, reverse snaps back quickly.
      `startStr` lets a caller override the trigger position (used by editorial
      blocks which pin VISUALLY CENTERED in the viewport, vs. products which pin
-     just below the topbar). */
+     just below the topbar).
+
+     SNAP — when a fast finger swipe overshoots a section, GSAP gently brakes
+     the scroll and pulls it back to the pin's end (progress 1). The user
+     then has to start a NEW swipe to advance to the next section. This kills
+     the "everything flies past chaotically" feeling on mobile. Snap engages
+     after the user lifts the finger AND the scroll settles. */
   function pinScrollTrigger(wrapper, pinDuration, startStr) {
     return {
       trigger: wrapper,
@@ -381,7 +387,13 @@ window.initLanding = async function () {
       pinSpacing: true,
       anticipatePin: 1,
       scrub:   0.5,
-      invalidateOnRefresh: true
+      invalidateOnRefresh: true,
+      snap: {
+        snapTo:   1,
+        duration: { min: 0.2, max: 0.5 },
+        delay:    0.08,
+        ease:    'power1.inOut'
+      }
     };
   }
 

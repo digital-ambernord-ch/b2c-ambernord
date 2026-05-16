@@ -1139,6 +1139,15 @@
   width: 100%;
 }
 
+/* Mobile-only: pull the entire editorial section UP so Manifest enters
+   viewport immediately after the payment icons start scrolling off the
+   top of the screen — no big black gap between product pin and Manifest.
+   The negative margin matches the pinSpacer's empty-padding height (the
+   "wasted" scroll area after the pinned product element returns to flow). */
+@media (max-width: 991px) {
+  .dynamic-editorial-wrapper { margin-top: -700px; }
+}
+
 .editorial-bento-grid {
   /* Block layout (not flex) so GSAP ScrollTrigger's pinSpacer can correctly
      reserve vertical scroll-space for each pinned block. Flex containers
@@ -1332,11 +1341,12 @@
 }
 
 @media (max-width: 991px) {
-  /* Moderate negative margin (not as extreme as desktop -240) — pulls
-     Exclusive Sourcing close enough that it shows up immediately after
-     Ritual's pin without a long black gap, but not so far that it
-     overlaps Ritual content during the pin. */
-  .exclusive-section-wrapper { margin-top: -120px; }
+  /* Aggressive negative margin so Exclusive Sourcing's image peeks into
+     viewport bottom WHILE Ritual is still pinned — eliminates the long
+     black gap the user reported between Ritual exit and Exclusive
+     appearing. Same magnitude as the dynamic-editorial-wrapper pull-up
+     (matches Ritual's pinSpacer empty-padding height). */
+  .exclusive-section-wrapper { margin-top: -700px; }
 }
 
 .exclusive-bg {
