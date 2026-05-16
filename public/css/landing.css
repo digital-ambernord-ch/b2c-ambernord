@@ -1246,6 +1246,13 @@
   position: relative;
   width: 100%;
   overflow: hidden;
+  /* Pulled UP so the Exclusive Sourcing background image peeks into the
+     bottom of the viewport while the Ritual block is still pinned and
+     evaporating — visual continuity between sections, no "dead-end" gap.
+     The pinned Ritual block (z-index --z-above via .editorial-bento-grid)
+     stays on top during the overlap; once Ritual fully evaporates this
+     image is what fills the screen. */
+  margin-top: -240px;
 }
 
 .exclusive-bg {

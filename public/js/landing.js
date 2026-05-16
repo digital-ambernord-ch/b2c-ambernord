@@ -347,9 +347,14 @@ window.initLanding = async function () {
     });
 
     if (block.bg) {
+      /* Blur only — keep CSS-default brightness(0.8) contrast(1.05) so the
+         photo stays a recognisable image instead of fading toward a flat
+         dark-gray rectangle (which read as a "premium-feel-killing" gray
+         background). The shards explosion is the storytelling; the bg is
+         just the haze behind it. */
       tl.to(block.bg, {
-        filter: 'blur(14px) brightness(0.5) contrast(1.2)',
-        scale:  1.12,
+        filter: 'blur(10px) brightness(0.8) contrast(1.05)',
+        scale:  1.05,
         ease:  'power1.in',
         duration: 0.65
       }, 0.12);
@@ -397,11 +402,12 @@ window.initLanding = async function () {
       stagger: { each: 0.004, from: 'random' }
     }, 0.12);
 
-    /* Background mirrors the glow — saturation + brightness up, slight zoom */
+    /* Background mirrors the glow — saturation + brightness up, slight zoom.
+       Kept moderate so the photo doesn't blow out into a flat gold sheet. */
     if (block.bg) {
       tl.to(block.bg, {
-        filter: 'brightness(1.35) saturate(1.7) contrast(1.05)',
-        scale:  1.05,
+        filter: 'blur(4px) brightness(1.15) saturate(1.4) contrast(1.05)',
+        scale:  1.04,
         ease:  'power1.inOut',
         duration: 0.28
       }, 0.12);
@@ -422,11 +428,13 @@ window.initLanding = async function () {
       }, 0.40 + i * 0.005);
     });
 
-    /* Background after the eruption — washes out (overexposed white-gold) */
+    /* Background after the eruption — adds blur while keeping the warm glow,
+       NOT overexposing. The photo must stay readable as the bridge to the
+       Exclusive Sourcing image that's now peeking up from below. */
     if (block.bg) {
       tl.to(block.bg, {
-        filter: 'blur(10px) brightness(1.6) saturate(2) contrast(0.9)',
-        scale:  1.12,
+        filter: 'blur(10px) brightness(1.2) saturate(1.4) contrast(1.0)',
+        scale:  1.08,
         ease:  'power1.in',
         duration: 0.43
       }, 0.40);
@@ -496,7 +504,11 @@ window.initLanding = async function () {
 
   /* =========================================================================
      EXCLUSIVE SECTION BACKGROUND FADE
-     Background image fades in/out as the section enters and leaves.
+     The bg image fades in WHILE the Ritual block is still pinned and
+     evaporating, so the user sees it peeking up from below — visual bridge
+     between sections, no "dead end" feeling. The CSS pulls the section up
+     (margin-top: -240px), and the trigger fires very early ('top 95%') so
+     opacity is already climbing as the section enters viewport bottom.
      ========================================================================= */
 
   const exclusiveBg = document.getElementById('exclusiveBg');
@@ -507,7 +519,7 @@ window.initLanding = async function () {
     const bgTl = gsap.timeline({
       scrollTrigger: {
         trigger: '#exclusiveSection',
-        start:   'top 75%',
+        start:   'top 95%',
         end:     'bottom 55%',
         scrub:   1
       }
