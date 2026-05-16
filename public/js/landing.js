@@ -254,36 +254,48 @@ window.initLanding = async function () {
     const [starter, habit, protocol] = productCards;
     productCards.forEach(function (c) { c.style.transition = 'border-color var(--t-base) ease'; });
 
-    /* Whole #ritual-products section pins (heading "Wählen Sie Ihr Protokoll"
-       stays visible the entire time). Inside, the cards are tall and only
-       one fits at a time — so as each card exits, the cards below it
-       translateY up to fill the freed position INSTANTLY. No black gap
-       between cards. */
+    /* Cards rise with `power1.inOut` ease and a LONGER duration than the
+       horizontal exit, so the next card glides smoothly upward DURING the
+       current card's exit — no jump, no settle-and-snap. The natural-margin
+       calculation runs as a function so ScrollTrigger's invalidateOnRefresh
+       can re-measure if heights change (e.g., on resize within mobile). */
     const margin = function () {
       return parseFloat(getComputedStyle(starter).marginBottom) || 40;
     };
     const card1Lift = function () { return -(starter.offsetHeight + margin()); };
     const card2Lift = function () { return -(starter.offsetHeight + habit.offsetHeight + 2 * margin()); };
 
+    /* "Das tägliche Ritual" appears AS Protocol begins exiting, not after.
+       It's positioned with margin-top: -700px on mobile (see landing.css)
+       to physically peek into viewport bottom during the last beats of
+       the pin. Starts invisible; opacity fades in linked to Protocol's
+       exit window. */
+    const trailingInfo = document.querySelector('.shop-trailing-info');
+    if (trailingInfo) gsap.set(trailingInfo, { opacity: 0 });
+
     const tl = gsap.timeline({ scrollTrigger: pinScrollTrigger(section, pinDuration) });
 
     /* Timeline (positions in 0..1):
-         0.00 → 0.06  settle pause
-         0.06 → 0.30  Card 1 (Starter) exits LEFT  + Cards 2-3 translate up
-         0.30 → 0.55  Card 2 (Habit) exits RIGHT   + Card 3 translates up
-         0.55 → 0.80  Card 3 (Protocol) exits RIGHT
-         0.80 → 0.95  whole section evaporates (heading + payment row fade)
-         0.95 → 1.00  empty hold (clean handoff to "Das tägliche Ritual") */
+         0.00 → 0.05  settle pause
+         0.05 → 0.23  Starter exits LEFT (horizontal slide, 0.18 dur)
+         0.05 → 0.35  Cards 2-3 GLIDE up (longer 0.30 dur, smoother ease)
+         0.36 → 0.54  Habit exits RIGHT
+         0.36 → 0.66  Protocol glides up
+         0.66 → 0.84  Protocol exits RIGHT
+         0.66 → 0.94  "Das tägliche Ritual" fades in (parallel to Protocol exit)
+         0.94 → 1.00  empty hold (smooth pin handoff)                          */
 
-    tl.to(starter,            { xPercent: -160, opacity: 0, ease: 'power2.in', duration: 0.22 }, 0.06)
-      .to([habit, protocol],  { y: card1Lift, ease: 'power2.out', duration: 0.22 }, 0.06)
+    tl.to(starter,            { xPercent: -160, opacity: 0, ease: 'power2.in',  duration: 0.18 }, 0.05)
+      .to([habit, protocol],  { y: card1Lift,                ease: 'power1.inOut', duration: 0.30 }, 0.05)
 
-      .to(habit,              { xPercent:  160, opacity: 0, ease: 'power2.in', duration: 0.22 }, 0.32)
-      .to(protocol,           { y: card2Lift, ease: 'power2.out', duration: 0.22 }, 0.32)
+      .to(habit,              { xPercent:  160, opacity: 0, ease: 'power2.in',  duration: 0.18 }, 0.36)
+      .to(protocol,           { y: card2Lift,                ease: 'power1.inOut', duration: 0.30 }, 0.36)
 
-      .to(protocol,           { xPercent:  160, opacity: 0, ease: 'power2.in', duration: 0.22 }, 0.57)
+      .to(protocol,           { xPercent:  160, opacity: 0, ease: 'power2.in',  duration: 0.18 }, 0.66);
 
-      .to(section,            { opacity: 0, scale: 0.95, ease: 'power1.in', duration: 0.15 }, 0.80);
+    if (trailingInfo) {
+      tl.to(trailingInfo, { opacity: 1, ease: 'power2.out', duration: 0.28 }, 0.66);
+    }
   }
 
   /* pinScrollTrigger is defined further down (shared with editorial blocks);
@@ -410,11 +422,13 @@ window.initLanding = async function () {
     });
 
     if (block.bg) {
-      /* Mild blur only — keep image clearly recognisable. Heavy blur on a
-         heavily-blurred LQIP placeholder used to make the bg read as a flat
-         "gray rectangle"; 3px is a soft haze without destroying detail. */
+      /* NO filter transition — every transition between filter states caused
+         a brief gray flash (the browser re-rasterises the layer, blending
+         the placeholder + dark overlay through whatever intermediate filter
+         state is mid-interpolation). Only scale the bg; keep it at the CSS
+         default filter the entire animation — user explicitly asked for
+         "100% original image" during the animation. */
       tl.to(block.bg, {
-        filter: 'blur(3px) brightness(0.8) contrast(1.05)',
         scale:  1.04,
         ease:  'power1.in',
         duration: 0.65
@@ -463,11 +477,11 @@ window.initLanding = async function () {
       stagger: { each: 0.004, from: 'random' }
     }, 0.12);
 
-    /* Background mirrors the glow — saturation + brightness up, slight zoom.
-       No blur in the glow phase: image stays sharp during the swell-up. */
+    /* NO filter transition — image stays as original photo (100%) per user
+       request. Only scale slightly. The gold-glow story is carried by the
+       SHARDS (which turn bright gold), not by tinting the bg. */
     if (block.bg) {
       tl.to(block.bg, {
-        filter: 'brightness(1.15) saturate(1.4) contrast(1.05)',
         scale:  1.03,
         ease:  'power1.inOut',
         duration: 0.28
@@ -489,12 +503,10 @@ window.initLanding = async function () {
       }, 0.40 + i * 0.005);
     });
 
-    /* Background after the eruption — mild blur + retained warm glow. Image
-       stays readable as the bridge to the Exclusive Sourcing image peeking
-       up from below. */
+    /* NO filter transition — bg image stays as the original photo throughout.
+       Only continue zooming. */
     if (block.bg) {
       tl.to(block.bg, {
-        filter: 'blur(3px) brightness(1.15) saturate(1.4) contrast(1.0)',
         scale:  1.06,
         ease:  'power1.in',
         duration: 0.43

@@ -1063,6 +1063,23 @@
   border-top: 1px solid rgba(255,255,255,0.08);
 }
 
+/* On mobile, pull the trailing info UP so its top peeks into viewport
+   bottom during the LATE phase of #ritual-products pin. Combined with the
+   opacity fade-in in landing.js, "Das tägliche Ritual" appears as Protocol
+   begins its horizontal exit — no long black gap. The opaque background +
+   higher z-index cover the section behind it (which is still pinned and
+   showing the exited cards / heading). */
+@media (max-width: 991px) {
+  .shop-trailing-info {
+    margin-top: -700px;
+    position: relative;
+    z-index: 6;
+    background-color: var(--color-bg);
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+}
+
 .protocol-info-title {
   color: var(--color-gold);
   font-family: var(--font-sans);
