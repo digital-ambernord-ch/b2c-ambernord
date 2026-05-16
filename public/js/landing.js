@@ -220,16 +220,17 @@ window.initLanding = async function () {
       .to(protocol, { xPercent:  160, opacity: 0, ease: 'power2.in' }, 0.8);
   }
 
-  mm.add('(min-width: 992px)', function () { attachProductCardsExit('top 15%',  'bottom 50%'); });
-  mm.add('(max-width: 991px)', function () { attachProductCardsExit('top 10%',  'bottom 60%'); });
+  mm.add('(min-width: 992px)', function () { attachProductCardsExit('top 30%',  'bottom 55%'); });
+  mm.add('(max-width: 991px)', function () { attachProductCardsExit('top 25%',  'bottom 65%'); });
 
   /* =========================================================================
-     MANIFEST SHATTER — as the user scrolls past "Unser Manifest" toward
-     "Das Ritual", the manifest content explodes into word-shards that fly
+     EDITORIAL SHATTER — as the user scrolls past "Unser Manifest" and
+     "Das Ritual", each block's content explodes into word-shards that fly
      apart along a golden-angle distribution with rotation, blur and fade.
      The background image blurs + darkens + slightly zooms for the "shock-
      wave haze" feel. Scrub-linked, so reverses on scroll-up. The word-split
-     runs once and the resulting spans persist across mm.add callbacks.
+     runs once per block and the resulting spans persist across mm.add
+     callbacks (matchMedia revert handles the timeline cleanup).
      ========================================================================= */
 
   function splitIntoWordShards(rootEl) {
@@ -263,17 +264,24 @@ window.initLanding = async function () {
     return shards;
   }
 
-  const manifestWrapper = document.querySelector('.editorial-bento-grid > .nature-hero-wrapper:first-child');
-  const manifestContent = manifestWrapper && manifestWrapper.querySelector('.nature-hero-content');
-  const manifestBg      = manifestWrapper && manifestWrapper.querySelector('.nature-hero-bg');
-  const manifestShards  = (!reducedMotion && manifestContent) ? splitIntoWordShards(manifestContent) : [];
+  const editorialBlocks = (!reducedMotion
+    ? Array.from(document.querySelectorAll('.editorial-bento-grid > .nature-hero-wrapper'))
+    : []
+  ).map(function (wrapper) {
+    const content = wrapper.querySelector('.nature-hero-content');
+    return {
+      wrapper: wrapper,
+      bg:      wrapper.querySelector('.nature-hero-bg'),
+      shards:  content ? splitIntoWordShards(content) : []
+    };
+  });
 
-  function attachManifestShatter(maxDist, startStr) {
-    if (reducedMotion || !manifestWrapper || !manifestShards.length) return;
+  function attachShatter(block, maxDist, startStr) {
+    if (reducedMotion || !block.wrapper || !block.shards.length) return;
 
     /* Pre-compute exit vectors deterministically — golden-angle gives organic
        radial coverage; per-shard rotation + distance jitter avoid uniformity. */
-    const vectors = manifestShards.map(function (_, i) {
+    const vectors = block.shards.map(function (_, i) {
       const angle = (i * 137.508) * Math.PI / 180;
       const dist  = (maxDist * 0.55) + (i * 31) % (maxDist * 0.45);
       return {
@@ -285,7 +293,7 @@ window.initLanding = async function () {
 
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: manifestWrapper,
+        trigger: block.wrapper,
         start:   startStr,
         end:     'bottom top',
         scrub:   1.5,
@@ -293,7 +301,7 @@ window.initLanding = async function () {
       }
     });
 
-    manifestShards.forEach(function (shard, i) {
+    block.shards.forEach(function (shard, i) {
       const v = vectors[i];
       tl.to(shard, {
         x: v.x, y: v.y,
@@ -305,8 +313,8 @@ window.initLanding = async function () {
       }, i * 0.012);
     });
 
-    if (manifestBg) {
-      tl.to(manifestBg, {
+    if (block.bg) {
+      tl.to(block.bg, {
         filter: 'blur(14px) brightness(0.5) contrast(1.2)',
         scale:  1.12,
         ease:  'power1.in',
@@ -315,8 +323,12 @@ window.initLanding = async function () {
     }
   }
 
-  mm.add('(min-width: 992px)', function () { attachManifestShatter(550, 'center 35%'); });
-  mm.add('(max-width: 991px)', function () { attachManifestShatter(280, 'center 50%'); });
+  mm.add('(min-width: 992px)', function () {
+    editorialBlocks.forEach(function (b) { attachShatter(b, 550, 'top 25%'); });
+  });
+  mm.add('(max-width: 991px)', function () {
+    editorialBlocks.forEach(function (b) { attachShatter(b, 280, 'top 35%'); });
+  });
 
   /* =========================================================================
      LANDING-PAGE STICKY NAV
