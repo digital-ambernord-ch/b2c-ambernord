@@ -413,23 +413,11 @@ window.initLanding = async function () {
       anticipatePin: 1,
       scrub:   0.3,
       invalidateOnRefresh: true,
-      snap: {
-        snapTo: function (progress, self) {
-          const v = self && self.getVelocity ? self.getVelocity() : 0;
-          /* Direction-based snap (replaces absolute velocity threshold):
-             fast swipe in either direction locks to the boundary the user
-             is heading toward (v > 0 = scrolling down → snap to end).
-             Slow deliberate scroll rounds to the nearest boundary instead
-             of freezing mid-section. Works reliably with normalizeScroll
-             because getVelocity() now reflects actual position during the
-             iOS momentum phase rather than batched event values. */
-          if (Math.abs(v) > 300) return v > 0 ? 1 : 0;
-          return Math.round(progress);
-        },
-        duration: { min: 0.45, max: 0.9 },
-        delay:    0.10,
-        ease:    'power2.out'
-      }
+      /* Snap removed: Math.round(progress) snapped to 1 (pin-end) the moment
+         progress crossed 0.5 — mobile product section jumped to its exit
+         instantly, making it feel like there was no pin at all. The snap
+         delay (0.10s) also fought iOS momentum scroll, creating continuous
+         jitter. Scrub: 0.3 provides natural 1:1 tracking without snap. */
     };
   }
 
