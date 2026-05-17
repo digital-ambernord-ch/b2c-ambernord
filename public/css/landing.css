@@ -1158,25 +1158,6 @@
   width: 100%;
 }
 
-/* Mobile-only: pull the editorial section UP so Manifest's top sits RIGHT
-   BELOW the lifted payment icons at the moment the product pin ends —
-   close gap, no visual overlap.
-
-   Calculation:
-     - card2Lift ≈ -680 (lifts trail+payment from natural y≈1020/1220 to
-       screen y 340/540 at pin-end)
-     - Payment bottom at pin-end ≈ screen y 620 (540 + payment height ~80)
-     - For Manifest top to sit at screen y 620 at pin-end:
-         Manifest doc y - (pin-start + 1200) = 620
-         => Manifest doc y = pin-start + 1820
-         => margin = -(H + P - 1820) = -(1420 + 1200 - 1820) ≈ -800
-     - Going more negative (e.g. -1700) puts Manifest top INTO the trail+payment
-       screen area during pin → Manifest's --z-above layer COVERS them.
-       Going less negative (e.g. -700) leaves visible black gap below payment.
-   -800 is the calculated sweet spot: Manifest touches payment bottom, no overlap. */
-@media (max-width: 991px) {
-  .dynamic-editorial-wrapper { margin-top: -800px; }
-}
 
 .editorial-bento-grid {
   /* Block layout (not flex) so GSAP ScrollTrigger's pinSpacer can correctly

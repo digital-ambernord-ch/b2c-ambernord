@@ -290,10 +290,6 @@ window.initLanding = async function () {
     section.style.position = 'sticky';
     section.style.top      = stickyTop + 'px';
     shop.style.minHeight   = (section.offsetHeight + 20 + pinDuration) + 'px';
-    /* Lift #shop above editorial-bento-grid (both z-index:10, editorial is
-       later in DOM and would paint on top without this). 15 is enough to
-       clear z-above=10 while staying below z-sticky=100. */
-    shop.style.zIndex      = '15';
 
     const trailingInfo = section.querySelector('.shop-trailing-info');
     const paymentGroup = section.querySelector('.ritual-payment-group');
@@ -304,15 +300,17 @@ window.initLanding = async function () {
     const card1Lift = function () { return -(starter.offsetHeight + margin()); };
     const card2Lift = function () { return -(starter.offsetHeight + habit.offsetHeight + 2 * margin()); };
 
-    /* No pin:true — GSAP only drives the scrub animation.
-       Trigger fires when section naturally reaches stickyTop (same moment
-       CSS sticky engages), so animation and stick are always in sync. */
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: section,
         start:   'top top+=' + stickyTop,
         end:     '+=' + pinDuration,
         scrub:   0.8,
+        /* Snap to final/initial state immediately when scroll goes beyond the
+           trigger boundaries — prevents partially-visible cards when sticky
+           releases (scrub lag would otherwise leave cards mid-animation). */
+        onLeave:     function () { tl.progress(1, false); },
+        onLeaveBack: function () { tl.progress(0, false); },
       }
     });
 
@@ -338,12 +336,10 @@ window.initLanding = async function () {
       .to(liftAll2,  { y: card2Lift,               ease: 'power1.inOut', duration: 0.30 }, 0.36)
       .to(protocol,  { xPercent:  160, opacity: 0, ease: 'power2.in',    duration: 0.30 }, 0.66);
 
-    /* Revert CSS when matchMedia condition changes (orientation change) */
     return function () {
       section.style.position = '';
       section.style.top      = '';
       shop.style.minHeight   = '';
-      shop.style.zIndex      = '';
     };
   }
 
