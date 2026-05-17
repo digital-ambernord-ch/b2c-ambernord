@@ -1197,14 +1197,24 @@
 
 /* Generous gap between Manifest and Ritual: after Manifest's pin ends and
    the block has evaporated, the user scrolls through this empty space before
-   Ritual approaches from below — keeps the handoff from feeling cramped. */
-.nature-hero-wrapper + .nature-hero-wrapper { margin-top: 300px; }
+   Ritual approaches from below — keeps the handoff from feeling cramped.
+   margin-bottom compensates for the pinSpacer that GSAP removed when the
+   Ritual pin was converted to a scroll-reveal (pinSpacer was ~500px desktop /
+   200px mobile). Net gap to Exclusive Sourcing = margin-bottom − |margin-top
+   of .exclusive-section-wrapper| (240px desktop / 100px mobile). */
+.nature-hero-wrapper + .nature-hero-wrapper {
+  margin-top: 300px;
+  margin-bottom: 500px; /* replaces removed Ritual pinSpacer — desktop */
+}
 
 /* Mobile: tighten the inter-block gap so Ritual approaches Manifest sooner
    in the scroll. Combined with Manifest's slower evaporation (timeline 0.70→1.0),
    user perceives the Manifest→Ritual handoff as quicker. */
 @media (max-width: 991px) {
-  .nature-hero-wrapper + .nature-hero-wrapper { margin-top: 100px; }
+  .nature-hero-wrapper + .nature-hero-wrapper {
+    margin-top: 100px;
+    margin-bottom: 200px; /* replaces removed Ritual pinSpacer — mobile */
+  }
 }
 
 .nature-hero-block {

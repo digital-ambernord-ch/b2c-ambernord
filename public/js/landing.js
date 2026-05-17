@@ -95,14 +95,6 @@ window.initLanding = async function () {
      the "raustīšanās" / stutter the user reported on slower phones. */
   gsap.config({ force3D: true });
 
-  /* On mobile only: route native iOS scroll events through GSAP's normalised
-     handler so getVelocity() matches the actual scroll position during the
-     momentum/inertia phase. Prevents snap logic from fighting iOS scroll
-     inertia after finger lift. Not applied on desktop — native scroll is fine. */
-  if (window.matchMedia('(max-width: 991px)').matches) {
-    ScrollTrigger.normalizeScroll({ preventDefault: true, allowClicks: true });
-  }
-
   /* =========================================================================
      RESPECT REDUCED MOTION — skip all animations if user prefers it
      ========================================================================= */
