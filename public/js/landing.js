@@ -84,11 +84,24 @@ window.initLanding = async function () {
 
   gsap.registerPlugin(ScrollTrigger);
 
+  /* Prevents full ScrollTrigger recalculation every time the iOS address bar
+     hides/shows (height-only resize event). Without this, all pin positions
+     jump mid-scroll in mobile Safari whenever the address bar transitions. */
+  ScrollTrigger.config({ ignoreMobileResize: true });
+
   /* Force 3D-promoted transforms on every animated element so heavy
      simultaneous tweens (mobile card lifts + horizontal exits + trailing
      info translateY) run on the GPU compositor instead of the CPU. Fixes
      the "raustīšanās" / stutter the user reported on slower phones. */
   gsap.config({ force3D: true });
+
+  /* On mobile only: route native iOS scroll events through GSAP's normalised
+     handler so getVelocity() matches the actual scroll position during the
+     momentum/inertia phase. Prevents snap logic from fighting iOS scroll
+     inertia after finger lift. Not applied on desktop — native scroll is fine. */
+  if (window.matchMedia('(max-width: 991px)').matches) {
+    ScrollTrigger.normalizeScroll({ preventDefault: true, allowClicks: true });
+  }
 
   /* =========================================================================
      RESPECT REDUCED MOTION — skip all animations if user prefers it
@@ -188,7 +201,10 @@ window.initLanding = async function () {
     if (reducedMotion) return;
 
     const scrollTrack = document.getElementById('scrollTrack');
-    if (scrollTrack) scrollTrack.style.height = '120vh';
+    /* 120dvh (dynamic viewport height) always matches the visible viewport —
+       unlike 120vh which is fixed and causes a layout gap when the iOS
+       address bar shows/hides. */
+    if (scrollTrack) scrollTrack.style.height = '120dvh';
 
     const tlMobile = gsap.timeline({
       scrollTrigger: {
@@ -208,6 +224,14 @@ window.initLanding = async function () {
       .to('#ambernordHeroShade',{ opacity: 0, duration: 1.5 }, 1.5)
       .to('.scalable-hero',     { y: function () { return computeHeroCenterY(50) - window.innerHeight * 0.1; },
                                   duration: 1.5, ease: 'power1.in' }, 3);
+
+    /* Cleanup: revert inline height when media query no longer matches
+       (e.g. tablet rotates to landscape → desktop layout takes over).
+       Without this, the stale 120dvh would prevent desktop hero from
+       recalculating its natural height. */
+    return function () {
+      if (scrollTrack) scrollTrack.style.height = '';
+    };
   });
 
   /* =========================================================================
@@ -399,13 +423,16 @@ window.initLanding = async function () {
       invalidateOnRefresh: true,
       snap: {
         snapTo: function (progress, self) {
-          const v = self && self.getVelocity ? Math.abs(self.getVelocity()) : 0;
-          /* Lower threshold (was 1500) so even moderate finger flicks brake to
-             nearest boundary — user reported "ja ieritina ar pirkstu atri,
-             tas noripo loti talu". 400 catches genuine momentum but ignores
-             slow deliberate scrolls (which freeze in place as before). */
-          if (v > 400) return progress > 0.5 ? 1 : 0;
-          return progress;
+          const v = self && self.getVelocity ? self.getVelocity() : 0;
+          /* Direction-based snap (replaces absolute velocity threshold):
+             fast swipe in either direction locks to the boundary the user
+             is heading toward (v > 0 = scrolling down → snap to end).
+             Slow deliberate scroll rounds to the nearest boundary instead
+             of freezing mid-section. Works reliably with normalizeScroll
+             because getVelocity() now reflects actual position during the
+             iOS momentum phase rather than batched event values. */
+          if (Math.abs(v) > 300) return v > 0 ? 1 : 0;
+          return Math.round(progress);
         },
         duration: { min: 0.45, max: 0.9 },
         delay:    0.10,
@@ -551,6 +578,48 @@ window.initLanding = async function () {
     }
   }
 
+  /* Ritual block: plain scroll-reveal replacing the pinned eruption.
+     Fades the block up once on viewport entry; background gets a subtle
+     parallax zoom while scrolling past. Word shards from splitIntoWordShards()
+     remain in the DOM but are not animated — they render as normal inline text. */
+  function attachRitualReveal(block) {
+    if (reducedMotion || !block.wrapper) return;
+    const innerBlock = block.wrapper.querySelector('.nature-hero-block');
+    if (!innerBlock) return;
+
+    gsap.set(innerBlock, { opacity: 0, y: 40 });
+
+    gsap.to(innerBlock, {
+      opacity:  1,
+      y:        0,
+      duration: 1.0,
+      ease:     'power2.out',
+      scrollTrigger: {
+        trigger: block.wrapper,
+        start:   'top 80%',
+        toggleActions: 'play none none none',
+        invalidateOnRefresh: true
+      }
+    });
+
+    if (block.bg) {
+      gsap.fromTo(block.bg,
+        { scale: 1.0 },
+        {
+          scale: 1.06,
+          ease:  'none',
+          scrollTrigger: {
+            trigger: block.wrapper,
+            start:   'top bottom',
+            end:     'bottom top',
+            scrub:   1.5,
+            invalidateOnRefresh: true
+          }
+        }
+      );
+    }
+  }
+
   /* Editorial pin position — visually centered in the area BELOW the
      topbar. Returns a function so ScrollTrigger.invalidateOnRefresh
      re-measures on resize (block content height varies with localized
@@ -593,14 +662,18 @@ window.initLanding = async function () {
   }
 
   mm.add('(min-width: 992px)', function () {
-    if (editorialBlocks[0]) attachManifestShatter (editorialBlocks[0], 550, 1000, editorialPinStart(editorialBlocks[0].wrapper));
-    if (editorialBlocks[1]) attachRitualEruption  (editorialBlocks[1], 480, 1000, editorialPinStart(editorialBlocks[1].wrapper));
+    if (editorialBlocks[0]) attachManifestShatter(editorialBlocks[0], 550, 1000, editorialPinStart(editorialBlocks[0].wrapper));
+    /* Ritual converted to plain scroll-reveal — pin and word eruption removed. */
+    if (editorialBlocks[1]) attachRitualReveal(editorialBlocks[1]);
   });
   mm.add('(max-width: 991px)', function () {
-    editorialBlocks.forEach(fitBlockToViewport);
+    /* fitBlockToViewport scales oversized blocks for the pinned viewport —
+       applies to Manifest only; Ritual is unpinned and renders at natural size. */
+    if (editorialBlocks[0]) fitBlockToViewport(editorialBlocks[0]);
     /* pinDuration 1500 matches the product section. */
-    if (editorialBlocks[0]) attachManifestShatter (editorialBlocks[0], 280, 1500, editorialPinStart(editorialBlocks[0].wrapper));
-    if (editorialBlocks[1]) attachRitualEruption  (editorialBlocks[1], 240, 1500, editorialPinStart(editorialBlocks[1].wrapper));
+    if (editorialBlocks[0]) attachManifestShatter(editorialBlocks[0], 280, 1500, editorialPinStart(editorialBlocks[0].wrapper));
+    /* Ritual: plain scroll-reveal on mobile too — no pin needed. */
+    if (editorialBlocks[1]) attachRitualReveal(editorialBlocks[1]);
   });
 
   /* =========================================================================

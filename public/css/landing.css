@@ -66,7 +66,8 @@
 
 .scroll-track {
   position: relative;
-  height: 200vh;
+  height: 200vh;   /* fallback for browsers without dvh support */
+  height: 200dvh;  /* dvh tracks the visible viewport, unaffected by iOS address bar */
   background-color: var(--color-bg);
   width: 100%;
 }
@@ -76,7 +77,8 @@
   /* +8px gap matches the subpage hero (.ambernord-subpage-hero) so the landing
      hero pinches the topbar at exactly the same distance as every other page. */
   top: calc(var(--nav-height) + var(--aktion-height) + 8px);
-  height: calc(100vh - var(--nav-height) - var(--aktion-height) - 8px);
+  height: calc(100vh  - var(--nav-height) - var(--aktion-height) - 8px); /* fallback */
+  height: calc(100dvh - var(--nav-height) - var(--aktion-height) - 8px); /* dvh: correct on iOS */
   width: 100vw;
   display: flex;
   /* Anchor the hero at the TOP of the pinned area instead of vertically
@@ -103,7 +105,8 @@
   /* Keep hero shorter than .sticky-viewport (top: nav+aktion+8) so the hero
      never overflows when aktion bar is active on mobile; otherwise the bottom
      of the hero gets clipped by sticky-viewport's overflow:hidden. */
-  height: calc(100vh - var(--nav-height) - var(--aktion-height) - 40px);
+  height: calc(100vh  - var(--nav-height) - var(--aktion-height) - 40px); /* fallback */
+  height: calc(100dvh - var(--nav-height) - var(--aktion-height) - 40px); /* dvh: correct on iOS */
   border-radius: 24px;
   display: flex;
   align-items: center;
@@ -361,6 +364,22 @@
 
 .hero-benefits-list span {
   margin: 5px 0;
+  padding-left: 1.4em;  /* room for the SVG check icon */
+  position: relative;
+}
+
+/* SVG checkmark via CSS — scales with the clamp() font-size, inherits
+   gold colour without touching the i18n-managed text content. */
+.hero-benefits-list span::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.15em;
+  width: 0.9em;
+  height: 0.9em;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='%23EDA323' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .hero-benefits-list span:first-child { margin-top: 0; }

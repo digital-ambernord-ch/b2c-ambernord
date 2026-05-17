@@ -10,7 +10,10 @@
       "Bash(node -e ' *)",
       "PowerShell($bytes = [System.IO.File]::ReadAllBytes\\(\"public\\\\data\\\\de\\\\contact.json\"\\)[0..15]; $bytes | ForEach-Object { \"{0:X2}\" -f $_ } | Join-String -Separator ' ')",
       "PowerShell($bytes = [System.IO.File]::ReadAllBytes\\(\"public\\\\data\\\\de\\\\contact.json\"\\)[0..15]; \\($bytes | ForEach-Object { \"{0:X2}\" -f $_ }\\) -join ' ')",
-      "PowerShell($content = [System.IO.File]::ReadAllText\\(\"public\\\\data\\\\de\\\\contact.json\"\\); $content.Substring\\(0, 50\\) | Out-String)"
+      "PowerShell($content = [System.IO.File]::ReadAllText\\(\"public\\\\data\\\\de\\\\contact.json\"\\); $content.Substring\\(0, 50\\) | Out-String)",
+      "Skill(ui-ux-pro-max)",
+      "Bash(python3 *)",
+      "PowerShell(py *)"
     ]
   }
 }
