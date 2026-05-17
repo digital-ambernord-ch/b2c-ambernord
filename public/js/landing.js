@@ -290,10 +290,6 @@ window.initLanding = async function () {
     const card1Lift = function () { return -(starter.offsetHeight + margin()); };
     const card2Lift = function () { return -(starter.offsetHeight + habit.offsetHeight + 2 * margin()); };
 
-    /* scrub 1.5: premium deceleration — fast flings ease into each card exit
-       instead of blasting through. Tighter (0.3) would feel choppy on mobile. */
-    /* scrub 0.8: tight enough to track fast flings without leaving cards
-       partially exited at pin release (1.5 had ~1.5s lag at end). */
     const tl = gsap.timeline({ scrollTrigger: pinScrollTrigger(section, pinDuration, null, 0.8) });
 
     /* Timeline:
@@ -305,6 +301,14 @@ window.initLanding = async function () {
 
     const liftAll1 = [habit, protocol].concat(trailUnit);
     const liftAll2 = [protocol].concat(trailUnit);
+    const shopHeading = section.querySelector('.shop-heading-wrap');
+
+    /* Fade heading first so it is invisible before pin releases. Without this,
+       the heading is partially visible at progress ~0.9 when position:fixed
+       transitions back to flow, causing a visible "drop" to document position. */
+    if (shopHeading) {
+      tl.to(shopHeading, { opacity: 0, duration: 0.20, ease: 'power1.in' }, 0.02);
+    }
 
     tl.to(starter,   { xPercent: -160, opacity: 0, ease: 'power2.in',    duration: 0.30 }, 0.05)
       .to(liftAll1,  { y: card1Lift,                ease: 'power1.inOut', duration: 0.30 }, 0.05)
@@ -388,30 +392,14 @@ window.initLanding = async function () {
     return navH + aktionH + 40;
   }
 
-  /* Standard pin config shared by both effects.
-     scrub: 0.3 → tight 1:1 tracking with minimal smoothing. Earlier 0.5 added
-     ~500ms of "catch-up lag" after the finger lifted, which the user perceived
-     as the animation "moving on its own".
-     `startStr` lets a caller override the trigger position (used by editorial
-     blocks which pin VISUALLY CENTERED in the viewport, vs. products which pin
-     just below the topbar).
-
-     SNAP — fights iOS momentum scroll. snapTo is a custom function:
-       - velocity > 1500 px/s  → fast swipe / momentum:  snap to NEAREST of [0,1]
-         so a fast flick locks at the next section boundary instead of flying past
-       - low velocity (deliberate slow scroll) → freeze in place (no snap),
-         so the user's mid-animation pause is respected (no auto-advance, no
-         auto-rewind).
-     Long delay (0.18s) gives the user a brief moment to start another scroll
-     gesture before snap commits — prevents jarring auto-snap during natural
-     micro-pauses. */
-  /* scrubVal: tighter (0.3) for editorial blocks (precise word-shard tracking),
-     looser (0.8) for mobile product exit (smooth deceleration on fast flings
-     without leaving cards partially visible at pin-release the way 1.5 did).
-     anticipatePin: 1 re-added — without it the position: relative→fixed switch
-     fires in a single frame with no preparation, causing the visible jitter
-     right before the pin engages (visible at the trust-badge level on scroll
-     down). Not problematic with scrub since GSAP limits its pre-adjustment. */
+  /* Standard pin config shared by product + desktop Manifest pins.
+     scrub: 0.3 default (tight 1:1), 0.8 for mobile product exit.
+     startStr lets callers override the trigger position. */
+  /* scrubVal: 0.3 default for editorial pins, 0.8 for mobile product exit.
+     No anticipatePin — with scrub the relative→fixed transition is already
+     smoothed; anticipatePin caused a visible "magnetic pull" on mobile where
+     elements started moving toward their pin position ~1s before the trigger,
+     which also created the trust-badge jitter on scroll-down. */
   function pinScrollTrigger(wrapper, pinDuration, startStr, scrubVal) {
     return {
       trigger: wrapper,
@@ -419,14 +407,8 @@ window.initLanding = async function () {
       end:     '+=' + pinDuration,
       pin:     true,
       pinSpacing: true,
-      anticipatePin: 1,
       scrub:   scrubVal !== undefined ? scrubVal : 0.3,
       invalidateOnRefresh: true,
-      /* Snap removed: Math.round(progress) snapped to 1 (pin-end) the moment
-         progress crossed 0.5 — mobile product section jumped to its exit
-         instantly, making it feel like there was no pin at all. The snap
-         delay (0.10s) also fought iOS momentum scroll, creating continuous
-         jitter. Scrub: 0.3 provides natural 1:1 tracking without snap. */
     };
   }
 
@@ -656,12 +638,12 @@ window.initLanding = async function () {
     if (editorialBlocks[1]) attachRitualReveal(editorialBlocks[1]);
   });
   mm.add('(max-width: 991px)', function () {
-    /* fitBlockToViewport scales oversized blocks for the pinned viewport —
-       applies to Manifest only; Ritual is unpinned and renders at natural size. */
-    if (editorialBlocks[0]) fitBlockToViewport(editorialBlocks[0]);
-    /* pinDuration 1500 matches the product section. */
-    if (editorialBlocks[0]) attachManifestShatter(editorialBlocks[0], 280, 1500, editorialPinStart(editorialBlocks[0].wrapper));
-    /* Ritual: plain scroll-reveal on mobile too — no pin needed. */
+    /* Both editorial blocks use plain scroll-reveal on mobile. Pinning Manifest
+       caused magnetic-pull from anticipatePin and conflicted with the -800px
+       CSS overlap on .dynamic-editorial-wrapper. fitBlockToViewport was only
+       needed for the pinned-viewport fit — scroll-reveal blocks render at
+       natural size. */
+    if (editorialBlocks[0]) attachRitualReveal(editorialBlocks[0]);
     if (editorialBlocks[1]) attachRitualReveal(editorialBlocks[1]);
   });
 
