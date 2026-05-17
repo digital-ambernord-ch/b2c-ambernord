@@ -250,11 +250,10 @@ window.initLanding = async function () {
     const [starter, habit, protocol] = productCards;
     productCards.forEach(function (c) { c.style.transition = 'border-color var(--t-base) ease'; });
 
-    /* Evaporation targets: the cards-group (heading + 3 cards) AND the
-       payment-group. Trailing info ("Das tägliche Ritual") lives between
-       these two groups inside #ritual-products and is intentionally NOT
-       in the evaporation set — it bridges into the Manifest section. */
-    const evaporatingGroups = section.querySelectorAll('.ritual-cards-group, .ritual-payment-group');
+    /* Evaporation targets: cards-group only. Payment-group deliberately excluded —
+       it was previously evaporated to opacity:0 and never restored, causing the
+       payment logos to be permanently invisible on desktop after one scroll. */
+    const evaporatingGroups = section.querySelectorAll('.ritual-cards-group');
 
     const tl = gsap.timeline({ scrollTrigger: pinScrollTrigger(section, pinDuration) });
 
@@ -291,7 +290,9 @@ window.initLanding = async function () {
     const card1Lift = function () { return -(starter.offsetHeight + margin()); };
     const card2Lift = function () { return -(starter.offsetHeight + habit.offsetHeight + 2 * margin()); };
 
-    const tl = gsap.timeline({ scrollTrigger: pinScrollTrigger(section, pinDuration) });
+    /* scrub 1.5: premium deceleration — fast flings ease into each card exit
+       instead of blasting through. Tighter (0.3) would feel choppy on mobile. */
+    const tl = gsap.timeline({ scrollTrigger: pinScrollTrigger(section, pinDuration, null, 1.5) });
 
     /* Timeline:
          0.00 → 0.05   settle pause
@@ -315,9 +316,9 @@ window.initLanding = async function () {
   /* pinScrollTrigger is defined further down (shared with editorial blocks);
      we call it via runtime closure, so the order works fine. */
   mm.add('(min-width: 992px)', function () { attachProductCardsExitDesktop(1000); });
-  /* Mobile pinDuration 1500 = slower per-finger-inch progression so fast
-     flicks don't visually fly past the section. Coupled with the snap config
-     above, momentum scrolls brake at boundaries. */
+  /* Mobile scrub 1.5: slower catch-up means fast flings decelerate smoothly
+     instead of snapping through; 1500px pin gives enough scroll distance for
+     all three card exits to be individually readable at normal swipe speeds. */
   mm.add('(max-width: 991px)', function () { attachProductCardsExitMobile(1500); });
 
   /* =========================================================================
@@ -403,15 +404,18 @@ window.initLanding = async function () {
      Long delay (0.18s) gives the user a brief moment to start another scroll
      gesture before snap commits — prevents jarring auto-snap during natural
      micro-pauses. */
-  function pinScrollTrigger(wrapper, pinDuration, startStr) {
+  /* scrubVal: tighter (0.3) for editorial blocks (precise word-shard tracking),
+     looser (1.5) for mobile product exit (premium deceleration on fast flings).
+     anticipatePin removed: it was designed for non-scrubbed pins and caused
+     unexpected layout pre-adjustments when scrolling back through the section. */
+  function pinScrollTrigger(wrapper, pinDuration, startStr, scrubVal) {
     return {
       trigger: wrapper,
       start:   startStr || function () { return 'top top+=' + pinTopOffset(); },
       end:     '+=' + pinDuration,
       pin:     true,
       pinSpacing: true,
-      anticipatePin: 1,
-      scrub:   0.3,
+      scrub:   scrubVal !== undefined ? scrubVal : 0.3,
       invalidateOnRefresh: true,
       /* Snap removed: Math.round(progress) snapped to 1 (pin-end) the moment
          progress crossed 0.5 — mobile product section jumped to its exit
