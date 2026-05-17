@@ -264,67 +264,92 @@ window.initLanding = async function () {
   }
 
   function attachProductCardsExitMobile(pinDuration) {
-    if (reducedMotion) return;
+    if (reducedMotion) return null;
 
     const section = document.getElementById('ritual-products');
-    if (!section) return;
+    const shop    = document.getElementById('shop');
+    if (!section || !shop) return null;
 
     const productCards = section.querySelectorAll('.premium-product-card');
-    if (productCards.length < 3) return;
+    if (productCards.length < 3) return null;
 
     const [starter, habit, protocol] = productCards;
     productCards.forEach(function (c) { c.style.transition = 'border-color var(--t-base) ease'; });
 
-    /* Trailing info + payment group act as ONE combined queue element on
-       mobile — they lift together at every phase so the visual unit stays
-       intact. Phase 3 has NO lift for this unit (it stays one slot below
-       Protocol's exit position so the gap is preserved — user explicitly
-       said trailing info must never overlap Protocol). */
+    /* CSS sticky replaces GSAP pin:true.
+       GSAP pin inserts a DOM spacer at scroll-time → sudden layout reflow
+       → trust-badge jitter. CSS sticky is native, smooth, no DOM mutations
+       during scroll. We pre-size #shop so the sticky persists exactly
+       pinDuration px before the element flows off the bottom of #shop.
+
+       Derivation (box-sizing:border-box on #shop, topPad=20px mobile):
+         sticky_duration = shop.totalHeight - section.offsetHeight - topPad
+         => shop.minHeight = section.offsetHeight + topPad + pinDuration
+                           = section.offsetHeight + 20 + 1500              */
+    const stickyTop = pinTopOffset();
+    section.style.position = 'sticky';
+    section.style.top      = stickyTop + 'px';
+    shop.style.minHeight   = (section.offsetHeight + 20 + pinDuration) + 'px';
+    /* Lift #shop above editorial-bento-grid (both z-index:10, editorial is
+       later in DOM and would paint on top without this). 15 is enough to
+       clear z-above=10 while staying below z-sticky=100. */
+    shop.style.zIndex      = '15';
+
     const trailingInfo = section.querySelector('.shop-trailing-info');
     const paymentGroup = section.querySelector('.ritual-payment-group');
     const trailUnit    = [trailingInfo, paymentGroup].filter(Boolean);
+    const shopHeading  = section.querySelector('.shop-heading-wrap');
 
-    const margin = function () {
-      return parseFloat(getComputedStyle(starter).marginBottom) || 40;
-    };
+    const margin    = function () { return parseFloat(getComputedStyle(starter).marginBottom) || 40; };
     const card1Lift = function () { return -(starter.offsetHeight + margin()); };
     const card2Lift = function () { return -(starter.offsetHeight + habit.offsetHeight + 2 * margin()); };
 
-    const tl = gsap.timeline({ scrollTrigger: pinScrollTrigger(section, pinDuration, null, 0.8) });
+    /* No pin:true — GSAP only drives the scrub animation.
+       Trigger fires when section naturally reaches stickyTop (same moment
+       CSS sticky engages), so animation and stick are always in sync. */
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start:   'top top+=' + stickyTop,
+        end:     '+=' + pinDuration,
+        scrub:   0.8,
+      }
+    });
 
-    /* Timeline:
-         0.00 → 0.05   settle pause
-         0.05 → 0.35   Starter exits + Habit/Protocol/trail-unit lift
-         0.36 → 0.66   Habit   exits + Protocol/trail-unit lift
-         0.66 → 0.96   Protocol exits (trail-unit STAYS — preserves gap)
-         0.96 → 1.00   pin handoff                                       */
-
-    const liftAll1 = [habit, protocol].concat(trailUnit);
-    const liftAll2 = [protocol].concat(trailUnit);
-    const shopHeading = section.querySelector('.shop-heading-wrap');
-
-    /* Fade heading first so it is invisible before pin releases. Without this,
-       the heading is partially visible at progress ~0.9 when position:fixed
-       transitions back to flow, causing a visible "drop" to document position. */
+    /* Heading fades early so it is gone before the section unsticks.
+       Without this it would "drop" visually when sticky ends and the
+       section returns to flow position. */
     if (shopHeading) {
       tl.to(shopHeading, { opacity: 0, duration: 0.20, ease: 'power1.in' }, 0.02);
     }
 
+    /* Timeline:
+         0.00 → 0.22   heading fade
+         0.05 → 0.35   Starter exits + Habit/Protocol/trail-unit lift
+         0.36 → 0.66   Habit   exits + Protocol/trail-unit lift
+         0.66 → 0.96   Protocol exits (trail-unit STAYS)
+         0.96 → 1.00   handoff pause                                      */
+    const liftAll1 = [habit, protocol].concat(trailUnit);
+    const liftAll2 = [protocol].concat(trailUnit);
+
     tl.to(starter,   { xPercent: -160, opacity: 0, ease: 'power2.in',    duration: 0.30 }, 0.05)
-      .to(liftAll1,  { y: card1Lift,                ease: 'power1.inOut', duration: 0.30 }, 0.05)
-
+      .to(liftAll1,  { y: card1Lift,               ease: 'power1.inOut', duration: 0.30 }, 0.05)
       .to(habit,     { xPercent:  160, opacity: 0, ease: 'power2.in',    duration: 0.30 }, 0.36)
-      .to(liftAll2,  { y: card2Lift,                ease: 'power1.inOut', duration: 0.30 }, 0.36)
-
+      .to(liftAll2,  { y: card2Lift,               ease: 'power1.inOut', duration: 0.30 }, 0.36)
       .to(protocol,  { xPercent:  160, opacity: 0, ease: 'power2.in',    duration: 0.30 }, 0.66);
+
+    /* Revert CSS when matchMedia condition changes (orientation change) */
+    return function () {
+      section.style.position = '';
+      section.style.top      = '';
+      shop.style.minHeight   = '';
+      shop.style.zIndex      = '';
+    };
   }
 
-  /* pinScrollTrigger is defined further down (shared with editorial blocks);
-     we call it via runtime closure, so the order works fine. */
+  /* pinScrollTrigger shared with desktop editorial; not used for mobile product. */
   mm.add('(min-width: 992px)', function () { attachProductCardsExitDesktop(1000); });
-  /* Mobile scrub 0.8: fast enough to prevent partial-card visibility at pin
-     release while still giving each card exit a readable deceleration. */
-  mm.add('(max-width: 991px)', function () { attachProductCardsExitMobile(1500); });
+  mm.add('(max-width: 991px)', function () { return attachProductCardsExitMobile(1500); });
 
   /* =========================================================================
      EDITORIAL BLOCKS — Manifest + Ritual.
