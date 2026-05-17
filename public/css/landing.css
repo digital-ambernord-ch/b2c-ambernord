@@ -1158,14 +1158,6 @@
   width: 100%;
 }
 
-/* Desktop: pull editorial UP so Manifest's background begins appearing while
-   the last product card is still exiting. The ~400px overlap means after all
-   cards evaporate the Manifest block is already visible, eliminating the black
-   void between pin-end and the editorial section's first content. */
-@media (min-width: 992px) {
-  .dynamic-editorial-wrapper { margin-top: -400px; }
-}
-
 /* Mobile-only: pull the editorial section UP so Manifest's top sits RIGHT
    BELOW the lifted payment icons at the moment the product pin ends —
    close gap, no visual overlap.
@@ -1195,9 +1187,9 @@
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
-  /* Reduced from 80px: with dynamic-editorial-wrapper pulled up 400px (desktop)
-     / 800px (mobile), less top padding means Manifest content appears sooner
-     after the product pin ends — less black void at the transition. */
+  /* Reduced from 80px: with dynamic-editorial-wrapper pulled up 800px (mobile),
+     less top padding means Manifest content appears sooner after product pin
+     ends — less black void at the transition. */
   padding: 20px var(--container-pad) 20px;
   position: relative;
   z-index: var(--z-above);

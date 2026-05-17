@@ -292,7 +292,9 @@ window.initLanding = async function () {
 
     /* scrub 1.5: premium deceleration — fast flings ease into each card exit
        instead of blasting through. Tighter (0.3) would feel choppy on mobile. */
-    const tl = gsap.timeline({ scrollTrigger: pinScrollTrigger(section, pinDuration, null, 1.5) });
+    /* scrub 0.8: tight enough to track fast flings without leaving cards
+       partially exited at pin release (1.5 had ~1.5s lag at end). */
+    const tl = gsap.timeline({ scrollTrigger: pinScrollTrigger(section, pinDuration, null, 0.8) });
 
     /* Timeline:
          0.00 → 0.05   settle pause
@@ -316,9 +318,8 @@ window.initLanding = async function () {
   /* pinScrollTrigger is defined further down (shared with editorial blocks);
      we call it via runtime closure, so the order works fine. */
   mm.add('(min-width: 992px)', function () { attachProductCardsExitDesktop(1000); });
-  /* Mobile scrub 1.5: slower catch-up means fast flings decelerate smoothly
-     instead of snapping through; 1500px pin gives enough scroll distance for
-     all three card exits to be individually readable at normal swipe speeds. */
+  /* Mobile scrub 0.8: fast enough to prevent partial-card visibility at pin
+     release while still giving each card exit a readable deceleration. */
   mm.add('(max-width: 991px)', function () { attachProductCardsExitMobile(1500); });
 
   /* =========================================================================
@@ -405,9 +406,12 @@ window.initLanding = async function () {
      gesture before snap commits — prevents jarring auto-snap during natural
      micro-pauses. */
   /* scrubVal: tighter (0.3) for editorial blocks (precise word-shard tracking),
-     looser (1.5) for mobile product exit (premium deceleration on fast flings).
-     anticipatePin removed: it was designed for non-scrubbed pins and caused
-     unexpected layout pre-adjustments when scrolling back through the section. */
+     looser (0.8) for mobile product exit (smooth deceleration on fast flings
+     without leaving cards partially visible at pin-release the way 1.5 did).
+     anticipatePin: 1 re-added — without it the position: relative→fixed switch
+     fires in a single frame with no preparation, causing the visible jitter
+     right before the pin engages (visible at the trust-badge level on scroll
+     down). Not problematic with scrub since GSAP limits its pre-adjustment. */
   function pinScrollTrigger(wrapper, pinDuration, startStr, scrubVal) {
     return {
       trigger: wrapper,
@@ -415,6 +419,7 @@ window.initLanding = async function () {
       end:     '+=' + pinDuration,
       pin:     true,
       pinSpacing: true,
+      anticipatePin: 1,
       scrub:   scrubVal !== undefined ? scrubVal : 0.3,
       invalidateOnRefresh: true,
       /* Snap removed: Math.round(progress) snapped to 1 (pin-end) the moment
