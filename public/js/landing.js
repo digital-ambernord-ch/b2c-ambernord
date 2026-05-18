@@ -378,7 +378,7 @@ window.initLanding = async function () {
       .to('#heroText',          { opacity: 0, duration: 1 }, 1)
       .to('#ambernordHeroShade',{ opacity: 0, duration: 1.5 }, 1.5)
       .to('.scalable-hero',     { y: function () { return -window.innerHeight * 0.75; },
-                                  duration: 3.0, ease: 'power2.in' }, 5.0);
+                                  duration: 3.0, ease: 'power1.in' }, 5.0);
 
     const btlCleanup = createFlyingBottle(tlMobile, false, 5.0, 3.5, 0.4);
 
@@ -412,25 +412,42 @@ window.initLanding = async function () {
     const [starter, habit, protocol] = productCards;
     productCards.forEach(function (c) { c.style.transition = 'border-color var(--t-base) ease'; });
 
+    const trailingInfo = section.querySelector('.shop-trailing-info');
+    const paymentGroup = section.querySelector('.ritual-payment-group');
+    const trailUnit    = [trailingInfo, paymentGroup].filter(Boolean);
+
     const stConfig = pinScrollTrigger(section, pinDuration);
     stConfig.onLeave = function () {
       /* Cards are invisible (opacity:0 from exits) but still occupy layout space.
          Hiding them lets shopHeading + bridgeWrap + trailingInfo flow without gap. */
       gsap.set([starter, habit, protocol], { display: 'none' });
     };
+    stConfig.onLeaveBack = function () {
+      gsap.set([starter, habit, protocol], { clearProps: 'display,xPercent,opacity' });
+      gsap.set(trailUnit, { clearProps: 'y' });
+      if (bridgeWrap) gsap.set(bridgeWrap, { opacity: 0 });
+    };
 
     const tl = gsap.timeline({ scrollTrigger: stConfig });
+
+    /* Lift trailing info into the pinned viewport while cards animate out.
+       The section may be taller than the viewport — animate trailUnit upward
+       so it remains visible throughout the pin. */
+    if (trailUnit.length) {
+      var liftY = function () {
+        var excess = section.offsetHeight - (window.innerHeight - pinTopOffset()) + 20;
+        return excess > 0 ? -excess : 0;
+      };
+      tl.to(trailUnit, { y: liftY, ease: 'power1.out', duration: 0.50 }, 0.12);
+    }
 
     tl.to(starter,  { xPercent: -160, opacity: 0, ease: 'power2.in', duration: 0.30 }, 0.12)
       .to(habit,    { xPercent:  160, opacity: 0, ease: 'power2.in', duration: 0.30 }, 0.30)
       .to(protocol, { xPercent:  160, opacity: 0, ease: 'power2.in', duration: 0.30 }, 0.48);
 
     if (bridgeWrap) {
-      gsap.set(bridgeWrap, { opacity: 0, scale: 0.85 });
-      tl.fromTo(bridgeWrap,
-        { scale: 0.85, opacity: 0 },
-        { scale: 1,    opacity: 1, duration: 0.04, ease: 'back.out(2)' },
-        0.96);
+      gsap.set(bridgeWrap, { opacity: 0 });
+      tl.to(bridgeWrap, { opacity: 1, duration: 0.25, ease: 'power1.out' }, 0.78);
     }
   }
 
@@ -487,16 +504,17 @@ window.initLanding = async function () {
           /* Reset trailUnit y so natural scroll takes over without offset. */
           gsap.set(trailUnit, { y: 0 });
         },
-        onLeaveBack: function () { tl.progress(0, false); },
+        onLeaveBack: function () {
+          tl.progress(0, false);
+          gsap.set([starter, habit, protocol], { clearProps: 'display,xPercent,opacity' });
+          gsap.set(trailUnit, { clearProps: 'y' });
+        },
       }
     });
 
     if (bridgeWrap) {
-      gsap.set(bridgeWrap, { opacity: 0, scale: 0.85 });
-      tl.fromTo(bridgeWrap,
-        { scale: 0.85, opacity: 0 },
-        { scale: 1,    opacity: 1, duration: 0.04, ease: 'back.out(2)' },
-        0.96);
+      gsap.set(bridgeWrap, { opacity: 0 });
+      tl.to(bridgeWrap, { opacity: 1, duration: 0.25, ease: 'power1.out' }, 0.78);
     }
 
     /* Timeline:
@@ -572,10 +590,14 @@ window.initLanding = async function () {
     return function () {
       var section = document.getElementById('ritual-products');
       if (section) {
-        var cards = section.querySelectorAll('.premium-product-card');
-        gsap.set(Array.from(cards), { clearProps: 'display' });
+        var cards    = section.querySelectorAll('.premium-product-card');
+        var trailing = section.querySelector('.shop-trailing-info');
+        var payment  = section.querySelector('.ritual-payment-group');
+        gsap.set(Array.from(cards), { clearProps: 'display,xPercent,opacity' });
+        if (trailing) gsap.set(trailing, { clearProps: 'y' });
+        if (payment)  gsap.set(payment,  { clearProps: 'y' });
       }
-      if (bridgeWrap) gsap.set(bridgeWrap, { clearProps: 'opacity,scale' });
+      if (bridgeWrap) gsap.set(bridgeWrap, { clearProps: 'opacity' });
     };
   });
   mm.add('(max-width: 991px)', function () {
