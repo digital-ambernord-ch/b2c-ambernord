@@ -184,6 +184,13 @@ window.initLanding = async function () {
     fly.alt = '';
     fly.setAttribute('aria-hidden', 'true');
     fly.style.cssText = 'position:absolute;top:0;left:0;pointer-events:none;z-index:11;object-fit:contain;will-change:transform,opacity;';
+
+    const glowSize = isDesktop ? 500 : 360;
+    const glow = document.createElement('div');
+    glow.setAttribute('aria-hidden', 'true');
+    glow.style.cssText = 'position:absolute;top:0;left:0;pointer-events:none;z-index:10;border-radius:50%;background:radial-gradient(ellipse at center,rgba(237,163,35,0.55) 0%,rgba(237,163,35,0.22) 42%,rgba(237,163,35,0.05) 65%,transparent 80%);will-change:transform,opacity;';
+
+    stickyVP.appendChild(glow);
     stickyVP.appendChild(fly);
 
     heroBottle.style.opacity = '0';
@@ -221,6 +228,13 @@ window.initLanding = async function () {
     const sp = startProps();
     gsap.set(fly, { x: sp.x, y: sp.y, width: sp.w, height: sp.h });
 
+    function glowXY() {
+      const e = endProps();
+      return { x: e.x + e.w / 2 - glowSize / 2, y: e.y + e.h / 2 - glowSize / 2 };
+    }
+    const gp = glowXY();
+    gsap.set(glow, { x: gp.x, y: gp.y, width: glowSize, height: glowSize, scale: 0, opacity: 0 });
+
     /* Hero photo fades to black */
     tl.to('.hero-bg-video', { opacity: 0, duration: 1.5, ease: 'power1.in' }, 0.6);
 
@@ -242,8 +256,16 @@ window.initLanding = async function () {
       ease:     'power2.in',
     }, riseStart);
 
+    /* Golden glow: appears as bottle nears centre, grows while cards are
+       visible, fades before the hero starts rising. */
+    const glowIn  = riseStart - (isDesktop ? 2.4 : 0.4);
+    const glowOut = riseStart;
+    tl.to(glow, { scale: 1, opacity: 1, duration: isDesktop ? 0.9 : 0.5, ease: 'power2.out' }, glowIn);
+    tl.to(glow, { scale: 0.7, opacity: 0, duration: isDesktop ? 0.7 : 0.4, ease: 'power1.in' }, glowOut);
+
     return function () {
-      if (fly.parentNode) fly.parentNode.removeChild(fly);
+      if (fly.parentNode)  fly.parentNode.removeChild(fly);
+      if (glow.parentNode) glow.parentNode.removeChild(glow);
       heroBottle.style.opacity = '';
       const hero = document.querySelector('.scalable-hero');
       const bgv  = document.querySelector('.hero-bg-video');
