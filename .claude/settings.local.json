@@ -12,7 +12,8 @@
       "PowerShell($bytes = [System.IO.File]::ReadAllBytes\\(\"public\\\\data\\\\de\\\\contact.json\"\\)[0..15]; \\($bytes | ForEach-Object { \"{0:X2}\" -f $_ }\\) -join ' ')",
       "PowerShell($content = [System.IO.File]::ReadAllText\\(\"public\\\\data\\\\de\\\\contact.json\"\\); $content.Substring\\(0, 50\\) | Out-String)",
       "Bash(python3 *)",
-      "PowerShell(py *)"
+      "PowerShell(py *)",
+      "Bash(node *)"
     ]
   }
 }

@@ -157,6 +157,103 @@ window.initLanding = async function () {
     return Math.max(0, (stickyH - heroH) / 2);
   }
 
+  /* =========================================================================
+     FLYING BOTTLE — hero product image animates to centre of the shrunk hero.
+     A high-res clone is appended to .sticky-viewport (position:absolute) so
+     it is NOT clipped by .scalable-hero's overflow:hidden. The original
+     .hero-product-img is hidden; the clone flies from its start position to
+     the hero centre and grows to fill ~80% of the shrunk hero area.
+     Hero background photo fades to opacity:0 leaving the bottle on pure black.
+     The bottle then rises with the hero in the final phase.
+     ========================================================================= */
+
+  function createFlyingBottle(tl, isDesktop, riseStart, riseDur, riseAmt) {
+    if (reducedMotion) return null;
+
+    const heroBottle = document.querySelector('.hero-product-img');
+    const stickyVP   = document.querySelector('.sticky-viewport');
+    if (!heroBottle || !stickyVP) return null;
+
+    const heroVh = isDesktop ? 55 : 50;
+
+    /* High-res PNG — Cloudinary h_1000 parameter gives sharp pixels even at
+       the large fill size. The image has a transparent background so it
+       composites cleanly over the black hero. */
+    const fly = document.createElement('img');
+    fly.src = 'https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:good,h_1000/v1775476093/ambernord-bio-sanddornsaft-zelt-edition-250ml-schweiz.webp_kl6nqj.png';
+    fly.alt = '';
+    fly.setAttribute('aria-hidden', 'true');
+    fly.style.cssText = 'position:absolute;top:0;left:0;pointer-events:none;z-index:11;object-fit:contain;will-change:transform,opacity;';
+    stickyVP.appendChild(fly);
+
+    heroBottle.style.opacity = '0';
+
+    /* Black background: hero-bg-video fades out; the remaining shade gradient
+       and the hero's background-color (#0a0a0a) create solid black. */
+    gsap.set('.scalable-hero', { backgroundColor: '#0a0a0a' });
+
+    /* Measure start position: bottle in viewport coords → convert to
+       sticky-viewport coords (sticky-viewport.top = navH+aktionH+8 at scroll=0) */
+    function startProps() {
+      const sv = stickyVP.getBoundingClientRect();
+      const b  = heroBottle.getBoundingClientRect();
+      return { x: b.left - sv.left, y: b.top - sv.top, w: b.width, h: b.height };
+    }
+
+    /* End position: centre of shrunk hero in sticky-viewport coords.
+       Hero centres horizontally in sticky-viewport (justify-content:center).
+       Vertical centre = computeHeroCenterY offset + half hero height.
+       Bottle fills 82% of hero height (1:2 aspect ratio). */
+    function endProps() {
+      const heroH = window.innerHeight * heroVh / 100;
+      const heroW = isDesktop ? 380 : window.innerWidth * 0.85;
+      let   tH    = heroH * 0.82;
+      let   tW    = tH * 0.50;
+      if (tW > heroW * 0.72) { tW = heroW * 0.72; tH = tW / 0.50; }
+      return {
+        x: window.innerWidth / 2 - tW / 2,
+        y: computeHeroCenterY(heroVh) + heroH / 2 - tH / 2,
+        w: tW,
+        h: tH,
+      };
+    }
+
+    const sp = startProps();
+    gsap.set(fly, { x: sp.x, y: sp.y, width: sp.w, height: sp.h, opacity: 0 });
+
+    /* Hero photo fades to black */
+    tl.to('.hero-bg-video', { opacity: 0, duration: 1.5, ease: 'power1.in' }, 0.6);
+
+    /* Bottle opacity: quick fade-in as heroText fades out */
+    tl.to(fly, { opacity: 1, duration: 0.6, ease: 'power1.in' }, 0.3);
+
+    /* Bottle position + size: travels from hero-bottle start to hero centre */
+    tl.to(fly, {
+      x:      function () { return endProps().x; },
+      y:      function () { return endProps().y; },
+      width:  function () { return endProps().w; },
+      height: function () { return endProps().h; },
+      duration: 2.8,
+      ease: 'power2.inOut',
+    }, 0.3);
+
+    /* Bottle follows hero rise in final phase */
+    tl.to(fly, {
+      y:        function () { return endProps().y - window.innerHeight * riseAmt; },
+      duration: riseDur,
+      ease:     'power2.in',
+    }, riseStart);
+
+    return function () {
+      if (fly.parentNode) fly.parentNode.removeChild(fly);
+      heroBottle.style.opacity = '';
+      const hero = document.querySelector('.scalable-hero');
+      const bgv  = document.querySelector('.hero-bg-video');
+      if (hero) hero.style.backgroundColor = '';
+      if (bgv)  bgv.style.opacity = '';
+    };
+  }
+
   mm.add('(min-width: 992px)', function () {
     if (reducedMotion) return;
 
@@ -187,15 +284,14 @@ window.initLanding = async function () {
     /* Phase 4: Hero rises another 20vh from its centred resting point */
       .to('.scalable-hero',     { y: function () { return computeHeroCenterY(55) - window.innerHeight * 0.2; },
                                   duration: 2.5, ease: 'power2.in' }, 5.0);
+
+    return createFlyingBottle(tl, true, 5.0, 2.5, 0.2);
   });
 
   mm.add('(max-width: 991px)', function () {
     if (reducedMotion) return;
 
     const scrollTrack = document.getElementById('scrollTrack');
-    /* 120dvh (dynamic viewport height) always matches the visible viewport —
-       unlike 120vh which is fixed and causes a layout gap when the iOS
-       address bar shows/hides. */
     if (scrollTrack) scrollTrack.style.height = '120dvh';
 
     const tlMobile = gsap.timeline({
@@ -217,12 +313,11 @@ window.initLanding = async function () {
       .to('.scalable-hero',     { y: function () { return computeHeroCenterY(50) - window.innerHeight * 0.1; },
                                   duration: 1.5, ease: 'power1.in' }, 3);
 
-    /* Cleanup: revert inline height when media query no longer matches
-       (e.g. tablet rotates to landscape → desktop layout takes over).
-       Without this, the stale 120dvh would prevent desktop hero from
-       recalculating its natural height. */
+    const btlCleanup = createFlyingBottle(tlMobile, false, 3.0, 1.5, 0.1);
+
     return function () {
       if (scrollTrack) scrollTrack.style.height = '';
+      if (btlCleanup) btlCleanup();
     };
   });
 
