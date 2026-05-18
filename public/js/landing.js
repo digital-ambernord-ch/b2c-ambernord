@@ -246,7 +246,7 @@ window.initLanding = async function () {
       width:  function () { return endProps().w; },
       height: function () { return endProps().h; },
       duration: 2.8,
-      ease: 'power2.inOut',
+      ease: 'power1.inOut',
     }, 0.3);
 
     /* Bottle follows hero rise in final phase */
@@ -298,10 +298,10 @@ window.initLanding = async function () {
             ease:     'power2.out',
           }, 3.2);
 
-          /* Exit upward together with bottle */
+          /* Exit upward with bottle — no opacity fade, clips naturally through
+             sticky-viewport overflow:hidden when it reaches y < 0. */
           tl.to(trustContainer, {
             y:        function () { return trustContainerY() - window.innerHeight * riseAmt; },
-            opacity:  0,
             duration: riseDur,
             ease:     'power1.in',
           }, riseStart);
@@ -475,6 +475,9 @@ window.initLanding = async function () {
          => shop.minHeight = section.offsetHeight + topPad + pinDuration
                            = section.offsetHeight + 20 + 1500              */
     const stickyTop = pinTopOffset();
+    /* Pull #shop up so its heading sits at navH when hero sticky releases,
+       matching the desktop conversion-booster effect (margin-top: -100vh + navH). */
+    shop.style.marginTop   = '-' + (window.innerHeight - stickyTop) + 'px';
     section.style.position = 'sticky';
     section.style.top      = stickyTop + 'px';
     shop.style.minHeight   = (section.offsetHeight + 20 + pinDuration) + 'px';
@@ -538,6 +541,7 @@ window.initLanding = async function () {
     return function () {
       section.style.position = '';
       section.style.top      = '';
+      shop.style.marginTop   = '';
       shop.style.minHeight   = '';
       gsap.set([starter, habit, protocol], { clearProps: 'display' });
       gsap.set(trailUnit, { clearProps: 'y' });
