@@ -475,9 +475,6 @@ window.initLanding = async function () {
          => shop.minHeight = section.offsetHeight + topPad + pinDuration
                            = section.offsetHeight + 20 + 1500              */
     const stickyTop = pinTopOffset();
-    /* Pull #shop up so its heading sits at navH when hero sticky releases,
-       matching the desktop conversion-booster effect (margin-top: -100vh + navH). */
-    shop.style.marginTop   = '-' + (window.innerHeight - stickyTop) + 'px';
     section.style.position = 'sticky';
     section.style.top      = stickyTop + 'px';
     shop.style.minHeight   = (section.offsetHeight + 20 + pinDuration) + 'px';
@@ -541,7 +538,6 @@ window.initLanding = async function () {
     return function () {
       section.style.position = '';
       section.style.top      = '';
-      shop.style.marginTop   = '';
       shop.style.minHeight   = '';
       gsap.set([starter, habit, protocol], { clearProps: 'display' });
       gsap.set(trailUnit, { clearProps: 'y' });
