@@ -451,7 +451,7 @@ window.initLanding = async function () {
     }
   }
 
-  function attachProductCardsExitMobile(pinDuration, bridgeWrap, editorialWrapper) {
+  function attachProductCardsExitMobile(pinDuration, bridgeWrap) {
     if (reducedMotion) return null;
 
     const section = document.getElementById('ritual-products');
@@ -463,7 +463,6 @@ window.initLanding = async function () {
 
     const [starter, habit, protocol] = productCards;
     productCards.forEach(function (c) { c.style.transition = 'border-color var(--t-base) ease'; });
-    const hOrig = section.offsetHeight;
 
     /* CSS sticky replaces GSAP pin:true.
        GSAP pin inserts a DOM spacer at scroll-time → sudden layout reflow
@@ -504,12 +503,6 @@ window.initLanding = async function () {
           gsap.set([starter, habit, protocol], { display: 'none' });
           /* Reset trailUnit y so natural scroll takes over without offset. */
           gsap.set(trailUnit, { y: 0 });
-          /* Correct editorial margin: void = pinDuration - vh + cards removed from layout. */
-          if (editorialWrapper) {
-            var hSmall = section.offsetHeight;
-            var correctedGap = pinDuration - window.innerHeight + (hOrig - hSmall);
-            editorialWrapper.style.marginTop = correctedGap > 0 ? '-' + Math.round(correctedGap) + 'px' : '';
-          }
         },
         onLeaveBack: function () {
           tl.progress(0, false);
@@ -551,7 +544,6 @@ window.initLanding = async function () {
       shop.style.minHeight   = '';
       gsap.set([starter, habit, protocol], { clearProps: 'display' });
       gsap.set(trailUnit, { clearProps: 'y' });
-      if (editorialWrapper) editorialWrapper.style.marginTop = '';
     };
   }
 
@@ -616,11 +608,23 @@ window.initLanding = async function () {
     };
   });
   mm.add('(max-width: 991px)', function () {
+    var mobileProdCleanup = attachProductCardsExitMobile(1500, bridgeWrap);
     var editorialWrapper = document.querySelector('.dynamic-editorial-wrapper');
-    var mobileProdCleanup = attachProductCardsExitMobile(1500, bridgeWrap, editorialWrapper);
+    var section = document.getElementById('ritual-products');
+    if (editorialWrapper && section) {
+      /* editorial is outside #shop. shop.minHeight = hOrig+20+1500 (JS-set).
+         Without correction, editorial enters viewport at: S_shop + shop.minHeight - vh.
+         We want it at: S_shop + pinTopOffset + 1500 (= onLeave scroll).
+         marginTop = (pinTopOffset + 1500 + vh) - (hOrig + 20 + 1500) - vh
+                   = pinTopOffset - hOrig - 20
+         Negative → pulls editorial up so it appears when bottle/payment first show. */
+      var gap = pinTopOffset() + window.innerHeight - section.offsetHeight - 20;
+      editorialWrapper.style.marginTop = Math.round(gap) + 'px';
+    }
     return function () {
       if (mobileProdCleanup) mobileProdCleanup();
       if (bridgeWrap) gsap.set(bridgeWrap, { clearProps: 'opacity,scale' });
+      if (editorialWrapper) editorialWrapper.style.marginTop = '';
     };
   });
 
