@@ -219,15 +219,13 @@ window.initLanding = async function () {
     }
 
     const sp = startProps();
-    gsap.set(fly, { x: sp.x, y: sp.y, width: sp.w, height: sp.h, opacity: 0 });
+    gsap.set(fly, { x: sp.x, y: sp.y, width: sp.w, height: sp.h });
 
     /* Hero photo fades to black */
     tl.to('.hero-bg-video', { opacity: 0, duration: 1.5, ease: 'power1.in' }, 0.6);
 
-    /* Bottle opacity: quick fade-in as heroText fades out */
-    tl.to(fly, { opacity: 1, duration: 0.6, ease: 'power1.in' }, 0.3);
-
-    /* Bottle position + size: travels from hero-bottle start to hero centre */
+    /* Bottle position + size: travels from hero-bottle start to hero centre.
+       Starts at opacity:1 (visible on page load, replacing the hidden original). */
     tl.to(fly, {
       x:      function () { return endProps().x; },
       y:      function () { return endProps().y; },
