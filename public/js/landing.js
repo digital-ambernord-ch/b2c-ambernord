@@ -183,12 +183,12 @@ window.initLanding = async function () {
     fly.src = 'https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:good,h_1000/v1775476093/ambernord-bio-sanddornsaft-zelt-edition-250ml-schweiz.webp_kl6nqj.png';
     fly.alt = '';
     fly.setAttribute('aria-hidden', 'true');
-    fly.style.cssText = 'position:absolute;top:0;left:0;pointer-events:none;z-index:11;object-fit:contain;will-change:transform,opacity;';
+    fly.style.cssText = 'position:absolute;top:0;left:0;pointer-events:none;z-index:11;object-fit:contain;filter:drop-shadow(0 0 40px rgba(237,163,35,0.25)) drop-shadow(0 0 80px rgba(237,163,35,0.12));will-change:transform,opacity;';
 
-    const glowSize = isDesktop ? 500 : 360;
+    const glowSize = isDesktop ? 600 : 420;
     const glow = document.createElement('div');
     glow.setAttribute('aria-hidden', 'true');
-    glow.style.cssText = 'position:absolute;top:0;left:0;pointer-events:none;z-index:10;border-radius:50%;background:radial-gradient(ellipse at center,rgba(237,163,35,0.40) 0%,rgba(237,163,35,0.16) 42%,rgba(237,163,35,0.04) 65%,transparent 80%);mix-blend-mode:screen;will-change:transform,opacity;';
+    glow.style.cssText = 'position:absolute;top:0;left:0;pointer-events:none;z-index:10;border-radius:50%;background:radial-gradient(ellipse at center,rgba(237,163,35,0.15) 0%,rgba(237,163,35,0.06) 40%,transparent 68%);will-change:transform,opacity;';
 
     stickyVP.appendChild(glow);
     stickyVP.appendChild(fly);
@@ -359,7 +359,7 @@ window.initLanding = async function () {
     if (reducedMotion) return;
 
     const scrollTrack = document.getElementById('scrollTrack');
-    if (scrollTrack) scrollTrack.style.height = '200dvh';
+    if (scrollTrack) scrollTrack.style.height = '160dvh';
 
     const tlMobile = gsap.timeline({
       scrollTrigger: {
@@ -377,10 +377,10 @@ window.initLanding = async function () {
                                   duration: 3 }, 0)
       .to('#heroText',          { opacity: 0, duration: 1 }, 1)
       .to('#ambernordHeroShade',{ opacity: 0, duration: 1.5 }, 1.5)
-      .to('.scalable-hero',     { y: function () { return -window.innerHeight * 1.5; },
-                                  duration: 1.5, ease: 'power2.in' }, 4.5);
+      .to('.scalable-hero',     { y: function () { return -window.innerHeight; },
+                                  duration: 2.0, ease: 'power2.in' }, 5.0);
 
-    const btlCleanup = createFlyingBottle(tlMobile, false, 4.5, 1.5, 1.5);
+    const btlCleanup = createFlyingBottle(tlMobile, false, 5.0, 2.0, 0.9);
 
     return function () {
       if (scrollTrack) scrollTrack.style.height = '';
@@ -504,6 +504,68 @@ window.initLanding = async function () {
       shop.style.minHeight   = '';
     };
   }
+
+  /* =========================================================================
+     BRIDGE BOTTLE — appears inside #ritual-products after Protocol card exits,
+     filling the empty black space left by the exited cards. Sized to match
+     the flying bottle at its centred hero position. Fades in when the
+     Protocol exit is complete, then scrolls up naturally with the editorial.
+     Both desktop and mobile.
+     ========================================================================= */
+
+  function attachBridgeBottle() {
+    if (reducedMotion) return;
+    const section     = document.getElementById('ritual-products');
+    const shop        = document.getElementById('shop');
+    const trailingInfo = section && section.querySelector('.shop-trailing-info');
+    if (!section || !shop || !trailingInfo) return;
+
+    /* Bottle size: same formula as endProps() in createFlyingBottle */
+    var isBrDesktop = window.matchMedia('(min-width: 992px)').matches;
+    var heroVh = isBrDesktop ? 55 : 50;
+    var heroH  = window.innerHeight * heroVh / 100;
+    var heroW  = isBrDesktop ? 380 : window.innerWidth * 0.85;
+    var tH = heroH * 0.82;
+    var tW = tH * 0.50;
+    if (tW > heroW * 0.72) { tW = heroW * 0.72; tH = tW / 0.50; }
+    tH = Math.round(tH);
+    tW = Math.round(tW);
+
+    var wrap = document.createElement('div');
+    wrap.setAttribute('aria-hidden', 'true');
+    wrap.style.cssText = 'display:flex;justify-content:center;align-items:center;width:100%;padding:30px 0;opacity:0;will-change:opacity;';
+
+    var btl = document.createElement('img');
+    btl.src = 'https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:good,h_1000/v1775476093/ambernord-bio-sanddornsaft-zelt-edition-250ml-schweiz.webp_kl6nqj.png';
+    btl.alt = '';
+    btl.setAttribute('aria-hidden', 'true');
+    btl.style.cssText = 'width:' + tW + 'px;height:' + tH + 'px;object-fit:contain;filter:drop-shadow(0 0 40px rgba(237,163,35,0.25)) drop-shadow(0 0 80px rgba(237,163,35,0.12));';
+
+    wrap.appendChild(btl);
+    section.insertBefore(wrap, trailingInfo);
+
+    /* Trigger: desktop — 88% into the 1000px pin (Protocol exits at 96%);
+                mobile  — when trailingInfo enters viewport after section unsticks. */
+    if (isBrDesktop) {
+      ScrollTrigger.create({
+        trigger: shop,
+        start:   'top+=' + Math.round(0.88 * 1000) + ' top',
+        onEnter: function () { gsap.to(wrap, { opacity: 1, duration: 0.6, ease: 'power2.out' }); },
+        once:    true,
+        invalidateOnRefresh: true,
+      });
+    } else {
+      ScrollTrigger.create({
+        trigger: trailingInfo,
+        start:   'top bottom',
+        onEnter: function () { gsap.to(wrap, { opacity: 1, duration: 0.6, ease: 'power2.out' }); },
+        once:    true,
+        invalidateOnRefresh: true,
+      });
+    }
+  }
+
+  attachBridgeBottle();
 
   /* pinScrollTrigger shared with desktop editorial; not used for mobile product. */
   mm.add('(min-width: 992px)', function () { attachProductCardsExitDesktop(1000); });
