@@ -505,8 +505,6 @@
   flex-wrap: wrap;
   gap: 0;
   padding: 28px 0;
-  border-top: 1px solid var(--color-border-subtle);
-  border-bottom: 1px solid var(--color-border-subtle);
   margin-bottom: 50px;
 }
 
@@ -523,17 +521,6 @@
   text-align: center;
   position: relative;
   flex: 0 1 auto;
-}
-
-.trust-item + .trust-item::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  height: 28px;
-  width: 1px;
-  background: linear-gradient(to bottom, transparent, var(--color-gold-dimmer), transparent);
 }
 
 .trust-text {
@@ -1677,6 +1664,7 @@
   .native-oils-text   { font-size: 9px; margin-top: 12px; }
 
   .trust-ribbon { flex-direction: column; gap: 25px; padding: 20px 0; }
+  .conversion-booster-wrapper { display: none; }
 
   .premium-product-card {
     flex-direction: column;

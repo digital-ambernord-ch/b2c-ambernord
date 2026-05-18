@@ -188,7 +188,7 @@ window.initLanding = async function () {
     const glowSize = isDesktop ? 500 : 360;
     const glow = document.createElement('div');
     glow.setAttribute('aria-hidden', 'true');
-    glow.style.cssText = 'position:absolute;top:0;left:0;pointer-events:none;z-index:10;border-radius:50%;background:radial-gradient(ellipse at center,rgba(237,163,35,0.55) 0%,rgba(237,163,35,0.22) 42%,rgba(237,163,35,0.05) 65%,transparent 80%);will-change:transform,opacity;';
+    glow.style.cssText = 'position:absolute;top:0;left:0;pointer-events:none;z-index:10;border-radius:50%;background:radial-gradient(ellipse at center,rgba(237,163,35,0.40) 0%,rgba(237,163,35,0.16) 42%,rgba(237,163,35,0.04) 65%,transparent 80%);mix-blend-mode:screen;will-change:transform,opacity;';
 
     stickyVP.appendChild(glow);
     stickyVP.appendChild(fly);
@@ -258,14 +258,61 @@ window.initLanding = async function () {
 
     /* Golden glow: appears as bottle nears centre, grows while cards are
        visible, fades before the hero starts rising. */
-    const glowIn  = riseStart - (isDesktop ? 2.4 : 0.4);
+    const glowIn  = isDesktop ? riseStart - 2.4 : 2.8;
     const glowOut = riseStart;
     tl.to(glow, { scale: 1, opacity: 1, duration: isDesktop ? 0.9 : 0.5, ease: 'power2.out' }, glowIn);
     tl.to(glow, { scale: 0.7, opacity: 0, duration: isDesktop ? 0.7 : 0.4, ease: 'power1.in' }, glowOut);
 
+    /* Mobile only: reparent real .trust-item elements into sticky-viewport for
+       the scroll animation. They stagger in below the bottle, then exit upward
+       with it. .conversion-booster-wrapper is display:none on mobile via CSS,
+       so these items only live in the animation — they never return. */
+    let trustContainer = null;
+    if (!isDesktop) {
+      const trustRibbonEl = document.querySelector('.trust-ribbon');
+      if (trustRibbonEl) {
+        const trustItemEls = Array.from(trustRibbonEl.querySelectorAll('.trust-item'));
+        if (trustItemEls.length) {
+          trustContainer = document.createElement('div');
+          trustContainer.setAttribute('aria-hidden', 'true');
+          trustContainer.style.cssText = 'position:absolute;top:0;left:0;right:0;pointer-events:none;z-index:12;display:flex;flex-direction:column;align-items:center;gap:18px;padding:0 20px;will-change:transform,opacity;';
+
+          trustItemEls.forEach(function (item) {
+            gsap.set(item, { opacity: 0, y: 15 });
+            trustContainer.appendChild(item);
+          });
+          stickyVP.appendChild(trustContainer);
+
+          function trustContainerY() {
+            var e = endProps();
+            return e.y + e.h + 24;
+          }
+          gsap.set(trustContainer, { y: function () { return trustContainerY(); } });
+
+          /* Staggered entrance after bottle arrives at centre */
+          tl.to(trustItemEls, {
+            opacity:  1,
+            y:        0,
+            duration: 0.6,
+            stagger:  0.15,
+            ease:     'power2.out',
+          }, 3.2);
+
+          /* Exit upward together with bottle */
+          tl.to(trustContainer, {
+            y:        function () { return trustContainerY() - window.innerHeight * riseAmt; },
+            opacity:  0,
+            duration: riseDur,
+            ease:     'power2.in',
+          }, riseStart);
+        }
+      }
+    }
+
     return function () {
       if (fly.parentNode)  fly.parentNode.removeChild(fly);
       if (glow.parentNode) glow.parentNode.removeChild(glow);
+      if (trustContainer && trustContainer.parentNode) trustContainer.parentNode.removeChild(trustContainer);
       heroBottle.style.opacity = '';
       const hero = document.querySelector('.scalable-hero');
       const bgv  = document.querySelector('.hero-bg-video');
@@ -312,7 +359,7 @@ window.initLanding = async function () {
     if (reducedMotion) return;
 
     const scrollTrack = document.getElementById('scrollTrack');
-    if (scrollTrack) scrollTrack.style.height = '120dvh';
+    if (scrollTrack) scrollTrack.style.height = '200dvh';
 
     const tlMobile = gsap.timeline({
       scrollTrigger: {
@@ -330,10 +377,10 @@ window.initLanding = async function () {
                                   duration: 3 }, 0)
       .to('#heroText',          { opacity: 0, duration: 1 }, 1)
       .to('#ambernordHeroShade',{ opacity: 0, duration: 1.5 }, 1.5)
-      .to('.scalable-hero',     { y: function () { return computeHeroCenterY(50) - window.innerHeight * 0.1; },
-                                  duration: 1.5, ease: 'power1.in' }, 3);
+      .to('.scalable-hero',     { y: function () { return -window.innerHeight * 1.5; },
+                                  duration: 1.5, ease: 'power2.in' }, 4.5);
 
-    const btlCleanup = createFlyingBottle(tlMobile, false, 3.0, 1.5, 0.1);
+    const btlCleanup = createFlyingBottle(tlMobile, false, 4.5, 1.5, 1.5);
 
     return function () {
       if (scrollTrack) scrollTrack.style.height = '';
