@@ -1109,7 +1109,7 @@
    user scrolls through a big black gap after the payment icons exit
    the top of the viewport. */
 @media (max-width: 991px) {
-  #shop { padding-bottom: 20px; }
+  #shop { padding-top: 10px; padding-bottom: 20px; }
   .editorial-bento-grid { padding-top: 20px; }
 }
 
