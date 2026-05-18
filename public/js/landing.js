@@ -253,7 +253,7 @@ window.initLanding = async function () {
     tl.to(fly, {
       y:        function () { return endProps().y - window.innerHeight * riseAmt; },
       duration: riseDur,
-      ease:     'power2.in',
+      ease:     'power1.in',
     }, riseStart);
 
     /* Golden glow: appears as bottle nears centre, grows while cards are
@@ -303,7 +303,7 @@ window.initLanding = async function () {
             y:        function () { return trustContainerY() - window.innerHeight * riseAmt; },
             opacity:  0,
             duration: riseDur,
-            ease:     'power2.in',
+            ease:     'power1.in',
           }, riseStart);
         }
       }
