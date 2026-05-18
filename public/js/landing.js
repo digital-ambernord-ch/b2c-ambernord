@@ -380,7 +380,7 @@ window.initLanding = async function () {
       .to('.scalable-hero',     { y: function () { return -window.innerHeight * 0.75; },
                                   duration: 3.0, ease: 'power1.in' }, 5.0);
 
-    const btlCleanup = createFlyingBottle(tlMobile, false, 5.0, 3.5, 0.4);
+    const btlCleanup = createFlyingBottle(tlMobile, false, 5.0, 4.5, 0.3);
 
     return function () {
       if (scrollTrack) scrollTrack.style.height = '';
@@ -514,6 +514,9 @@ window.initLanding = async function () {
 
     if (bridgeWrap) {
       gsap.set(bridgeWrap, { opacity: 0 });
+      /* Hide cards from layout at 0.77 so bridgeWrap appears directly below
+         the heading without invisible card-height gap. */
+      tl.set([starter, habit, protocol], { display: 'none' }, 0.77);
       tl.to(bridgeWrap, { opacity: 1, duration: 0.25, ease: 'power1.out' }, 0.78);
     }
 
@@ -521,6 +524,7 @@ window.initLanding = async function () {
          0.05 → 0.35   Starter exits + Habit/Protocol/trail-unit lift
          0.36 → 0.66   Habit   exits + Protocol/trail-unit lift
          0.66 → 0.96   Protocol exits (trail-unit STAYS)
+         0.77          cards display:none (layout gap closed before bridge bottle)
          0.96 → 1.00   bridgeWrap pop                                     */
     const liftAll1 = [habit, protocol].concat(trailUnit);
     const liftAll2 = [protocol].concat(trailUnit);
