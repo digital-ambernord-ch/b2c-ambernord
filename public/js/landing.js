@@ -514,18 +514,21 @@ window.initLanding = async function () {
 
     if (bridgeWrap) {
       gsap.set(bridgeWrap, { opacity: 0 });
-      /* Hide cards from layout at 0.77 so bridgeWrap appears directly below
-         the heading without invisible card-height gap. */
-      tl.set([starter, habit, protocol], { display: 'none' }, 0.77);
-      tl.to(bridgeWrap, { opacity: 1, duration: 0.25, ease: 'power1.out' }, 0.78);
+      /* At 0.89: hide cards + snap trailUnit to y:0 so Das tägliche Ritual
+         appears simultaneously with the bridge bottle. BridgeWrap fades in
+         immediately after (0.90), and the timeline ends at 1.00 = pin ends
+         with zero dead scroll — section starts scrolling upward instantly. */
+      tl.set([starter, habit, protocol], { display: 'none' }, 0.89);
+      tl.set(trailUnit, { y: 0 }, 0.89);
+      tl.to(bridgeWrap, { opacity: 1, duration: 0.10, ease: 'power1.out' }, 0.90);
     }
 
     /* Timeline:
          0.05 → 0.35   Starter exits + Habit/Protocol/trail-unit lift
          0.36 → 0.66   Habit   exits + Protocol/trail-unit lift
-         0.66 → 0.96   Protocol exits (trail-unit STAYS)
-         0.77          cards display:none (layout gap closed before bridge bottle)
-         0.96 → 1.00   bridgeWrap pop                                     */
+         0.66 → 0.96   Protocol exits
+         0.89          cards display:none + trailUnit y:0 (both appear together)
+         0.90 → 1.00   bridgeWrap fade in → pin ends immediately after          */
     const liftAll1 = [habit, protocol].concat(trailUnit);
     const liftAll2 = [protocol].concat(trailUnit);
 
