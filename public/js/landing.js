@@ -377,10 +377,10 @@ window.initLanding = async function () {
                                   duration: 3 }, 0)
       .to('#heroText',          { opacity: 0, duration: 1 }, 1)
       .to('#ambernordHeroShade',{ opacity: 0, duration: 1.5 }, 1.5)
-      .to('.scalable-hero',     { y: function () { return -window.innerHeight * 0.8; },
-                                  duration: 2.5, ease: 'power2.in' }, 5.0);
+      .to('.scalable-hero',     { y: function () { return -window.innerHeight * 0.75; },
+                                  duration: 3.0, ease: 'power2.in' }, 5.0);
 
-    const btlCleanup = createFlyingBottle(tlMobile, false, 5.0, 2.5, 0.6);
+    const btlCleanup = createFlyingBottle(tlMobile, false, 5.0, 3.5, 0.4);
 
     return function () {
       if (scrollTrack) scrollTrack.style.height = '';
@@ -412,23 +412,26 @@ window.initLanding = async function () {
     const [starter, habit, protocol] = productCards;
     productCards.forEach(function (c) { c.style.transition = 'border-color var(--t-base) ease'; });
 
-    /* Evaporation targets: cards-group only. Payment-group deliberately excluded —
-       it was previously evaporated to opacity:0 and never restored, causing the
-       payment logos to be permanently invisible on desktop after one scroll. */
-    const evaporatingGroups = section.querySelectorAll('.ritual-cards-group');
-
     const stConfig = pinScrollTrigger(section, pinDuration);
-    if (bridgeWrap) {
-      stConfig.onLeave = function () {
-        gsap.fromTo(bridgeWrap, { scale: 0.85, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: 'back.out(2)' });
-      };
-    }
+    stConfig.onLeave = function () {
+      /* Cards are invisible (opacity:0 from exits) but still occupy layout space.
+         Hiding them lets shopHeading + bridgeWrap + trailingInfo flow without gap. */
+      gsap.set([starter, habit, protocol], { display: 'none' });
+    };
+
     const tl = gsap.timeline({ scrollTrigger: stConfig });
 
-    tl.to(starter,           { xPercent: -160, opacity: 0, ease: 'power2.in', duration: 0.30 }, 0.12)
-      .to(habit,             { xPercent:  160, opacity: 0, ease: 'power2.in', duration: 0.30 }, 0.30)
-      .to(protocol,          { xPercent:  160, opacity: 0, ease: 'power2.in', duration: 0.30 }, 0.48)
-      .to(evaporatingGroups, { opacity: 0, scale: 0.95, ease: 'power1.in', duration: 0.17 }, 0.78);
+    tl.to(starter,  { xPercent: -160, opacity: 0, ease: 'power2.in', duration: 0.30 }, 0.12)
+      .to(habit,    { xPercent:  160, opacity: 0, ease: 'power2.in', duration: 0.30 }, 0.30)
+      .to(protocol, { xPercent:  160, opacity: 0, ease: 'power2.in', duration: 0.30 }, 0.48);
+
+    if (bridgeWrap) {
+      gsap.set(bridgeWrap, { opacity: 0, scale: 0.85 });
+      tl.fromTo(bridgeWrap,
+        { scale: 0.85, opacity: 0 },
+        { scale: 1,    opacity: 1, duration: 0.04, ease: 'back.out(2)' },
+        0.96);
+    }
   }
 
   function attachProductCardsExitMobile(pinDuration, bridgeWrap) {
@@ -461,8 +464,7 @@ window.initLanding = async function () {
 
     const trailingInfo = section.querySelector('.shop-trailing-info');
     const paymentGroup = section.querySelector('.ritual-payment-group');
-    const trailUnit    = [bridgeWrap, trailingInfo, paymentGroup].filter(Boolean);
-    const shopHeading  = section.querySelector('.shop-heading-wrap');
+    const trailUnit    = [trailingInfo, paymentGroup].filter(Boolean);
 
     const margin    = function () { return parseFloat(getComputedStyle(starter).marginBottom) || 40; };
     const card1Lift = function () { return -(starter.offsetHeight + margin()); };
@@ -479,25 +481,29 @@ window.initLanding = async function () {
            releases (scrub lag would otherwise leave cards mid-animation). */
         onLeave: function () {
           tl.progress(1, false);
-          if (bridgeWrap) gsap.fromTo(bridgeWrap, { scale: 0.85, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: 'back.out(2)' });
+          /* Cards exit via xPercent (no layout change). Remove from flow so
+             shopHeading + bridgeWrap + trailing content scroll without gap. */
+          gsap.set([starter, habit, protocol], { display: 'none' });
+          /* Reset trailUnit y so natural scroll takes over without offset. */
+          gsap.set(trailUnit, { y: 0 });
         },
         onLeaveBack: function () { tl.progress(0, false); },
       }
     });
 
-    /* Heading fades early so it is gone before the section unsticks.
-       Without this it would "drop" visually when sticky ends and the
-       section returns to flow position. */
-    if (shopHeading) {
-      tl.to(shopHeading, { opacity: 0, duration: 0.20, ease: 'power1.in' }, 0.02);
+    if (bridgeWrap) {
+      gsap.set(bridgeWrap, { opacity: 0, scale: 0.85 });
+      tl.fromTo(bridgeWrap,
+        { scale: 0.85, opacity: 0 },
+        { scale: 1,    opacity: 1, duration: 0.04, ease: 'back.out(2)' },
+        0.96);
     }
 
     /* Timeline:
-         0.00 → 0.22   heading fade
          0.05 → 0.35   Starter exits + Habit/Protocol/trail-unit lift
          0.36 → 0.66   Habit   exits + Protocol/trail-unit lift
          0.66 → 0.96   Protocol exits (trail-unit STAYS)
-         0.96 → 1.00   handoff pause                                      */
+         0.96 → 1.00   bridgeWrap pop                                     */
     const liftAll1 = [habit, protocol].concat(trailUnit);
     const liftAll2 = [protocol].concat(trailUnit);
 
@@ -511,6 +517,8 @@ window.initLanding = async function () {
       section.style.position = '';
       section.style.top      = '';
       shop.style.minHeight   = '';
+      gsap.set([starter, habit, protocol], { clearProps: 'display' });
+      gsap.set(trailUnit, { clearProps: 'y' });
     };
   }
 
@@ -562,24 +570,26 @@ window.initLanding = async function () {
   mm.add('(min-width: 992px)', function () {
     attachProductCardsExitDesktop(1000, bridgeWrap);
     return function () {
-      gsap.killTweensOf(bridgeWrap);
-      if (bridgeWrap) gsap.set(bridgeWrap, { scale: 1, opacity: 0, y: 0 });
+      var section = document.getElementById('ritual-products');
+      if (section) {
+        var cards = section.querySelectorAll('.premium-product-card');
+        gsap.set(Array.from(cards), { clearProps: 'display' });
+      }
+      if (bridgeWrap) gsap.set(bridgeWrap, { clearProps: 'opacity,scale' });
     };
   });
   mm.add('(max-width: 991px)', function () {
     var mobileProdCleanup = attachProductCardsExitMobile(1500, bridgeWrap);
     var editorialWrapper = document.querySelector('.dynamic-editorial-wrapper');
     if (editorialWrapper) {
-      var sect = document.getElementById('ritual-products');
-      if (sect) {
-        var gap = sect.offsetHeight + 20 - window.innerHeight + pinTopOffset();
-        if (gap > 0) editorialWrapper.style.marginTop = '-' + Math.round(gap) + 'px';
-      }
+      /* Gap = void space in #shop after sticky releases = pinDuration - viewport_height.
+         (section.offsetHeight cancels out in the derivation.) */
+      var gap = 1500 - window.innerHeight;
+      if (gap > 0) editorialWrapper.style.marginTop = '-' + Math.round(gap) + 'px';
     }
     return function () {
       if (mobileProdCleanup) mobileProdCleanup();
-      gsap.killTweensOf(bridgeWrap);
-      if (bridgeWrap) gsap.set(bridgeWrap, { scale: 1, opacity: 0, y: 0 });
+      if (bridgeWrap) gsap.set(bridgeWrap, { clearProps: 'opacity,scale' });
       if (editorialWrapper) editorialWrapper.style.marginTop = '';
     };
   });
