@@ -465,20 +465,18 @@ window.initLanding = async function () {
     productCards.forEach(function (c) { c.style.transition = 'border-color var(--t-base) ease'; });
 
     /* CSS sticky replaces GSAP pin:true.
-       sticky_duration = shop.height - hSmall - stickyTop
-       We want sticky_duration === pinDuration, so:
-         shop.minHeight = hSmall + stickyTop + pinDuration
-       where hSmall = section height after cards are display:none.
-       Temporary hide + measure gives hSmall without a visible flash.
-       With this formula the sticky releases EXACTLY when ScrollTrigger ends:
-       no dead scroll, editorial appears seamlessly at the sticky bottom. */
+       Sticky releases when the section's bottom exits the parent:
+         release_scroll = shop.top + shop.height - section.height - stickyTop
+       We want release_scroll === ScrollTrigger end scroll, so:
+         shop.minHeight = hOrig + pinDuration
+       where hOrig = section.offsetHeight with all 3 cards visible.
+       Using hSmall instead caused the sticky to release ~halfway through
+       the animation (when hOrig >> hSmall, sticky exit was far too early). */
     const stickyTop = pinTopOffset();
     section.style.position = 'sticky';
     section.style.top      = stickyTop + 'px';
-    gsap.set([starter, habit, protocol], { display: 'none' });
-    const hSmall = section.offsetHeight;
-    gsap.set([starter, habit, protocol], { clearProps: 'display' });
-    shop.style.minHeight = (hSmall + stickyTop + pinDuration) + 'px';
+    const hOrig = section.offsetHeight;
+    shop.style.minHeight = (hOrig + pinDuration) + 'px';
 
     const trailingInfo = section.querySelector('.shop-trailing-info');
     const paymentGroup = section.querySelector('.ritual-payment-group');
