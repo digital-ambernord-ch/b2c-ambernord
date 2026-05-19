@@ -465,19 +465,20 @@ window.initLanding = async function () {
     productCards.forEach(function (c) { c.style.transition = 'border-color var(--t-base) ease'; });
 
     /* CSS sticky replaces GSAP pin:true.
-       GSAP pin inserts a DOM spacer at scroll-time → sudden layout reflow
-       → trust-badge jitter. CSS sticky is native, smooth, no DOM mutations
-       during scroll. We pre-size #shop so the sticky persists exactly
-       pinDuration px before the element flows off the bottom of #shop.
-
-       Derivation (box-sizing:border-box on #shop, topPad=20px mobile):
-         sticky_duration = shop.totalHeight - section.offsetHeight - topPad
-         => shop.minHeight = section.offsetHeight + topPad + pinDuration
-                           = section.offsetHeight + 20 + 1500              */
+       sticky_duration = shop.height - hSmall - stickyTop
+       We want sticky_duration === pinDuration, so:
+         shop.minHeight = hSmall + stickyTop + pinDuration
+       where hSmall = section height after cards are display:none.
+       Temporary hide + measure gives hSmall without a visible flash.
+       With this formula the sticky releases EXACTLY when ScrollTrigger ends:
+       no dead scroll, editorial appears seamlessly at the sticky bottom. */
     const stickyTop = pinTopOffset();
     section.style.position = 'sticky';
     section.style.top      = stickyTop + 'px';
-    shop.style.minHeight   = (section.offsetHeight + 20 + pinDuration) + 'px';
+    gsap.set([starter, habit, protocol], { display: 'none' });
+    const hSmall = section.offsetHeight;
+    gsap.set([starter, habit, protocol], { clearProps: 'display' });
+    shop.style.minHeight = (hSmall + stickyTop + pinDuration) + 'px';
 
     const trailingInfo = section.querySelector('.shop-trailing-info');
     const paymentGroup = section.querySelector('.ritual-payment-group');
@@ -609,22 +610,9 @@ window.initLanding = async function () {
   });
   mm.add('(max-width: 991px)', function () {
     var mobileProdCleanup = attachProductCardsExitMobile(1500, bridgeWrap);
-    var editorialWrapper = document.querySelector('.dynamic-editorial-wrapper');
-    var section = document.getElementById('ritual-products');
-    if (editorialWrapper && section) {
-      /* editorial is outside #shop. shop.minHeight = hOrig+20+1500 (JS-set).
-         Without correction, editorial enters viewport at: S_shop + shop.minHeight - vh.
-         We want it at: S_shop + pinTopOffset + 1500 (= onLeave scroll).
-         marginTop = (pinTopOffset + 1500 + vh) - (hOrig + 20 + 1500) - vh
-                   = pinTopOffset - hOrig - 20
-         Negative → pulls editorial up so it appears when bottle/payment first show. */
-      var gap = pinTopOffset() + window.innerHeight - section.offsetHeight - 20;
-      editorialWrapper.style.marginTop = Math.round(gap) + 'px';
-    }
     return function () {
       if (mobileProdCleanup) mobileProdCleanup();
       if (bridgeWrap) gsap.set(bridgeWrap, { clearProps: 'opacity,scale' });
-      if (editorialWrapper) editorialWrapper.style.marginTop = '';
     };
   });
 
