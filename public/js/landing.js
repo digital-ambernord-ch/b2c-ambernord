@@ -497,11 +497,12 @@ window.initLanding = async function () {
            releases (scrub lag would otherwise leave cards mid-animation). */
         onLeave: function () {
           tl.progress(1, false);
-          /* Cards exit via xPercent (no layout change). Remove from flow so
-             shopHeading + bridgeWrap + trailing content scroll without gap. */
           gsap.set([starter, habit, protocol], { display: 'none' });
-          /* Reset trailUnit y so natural scroll takes over without offset. */
           gsap.set(trailUnit, { y: 0 });
+          /* Cards are now display:none → section shrank to hSmall.
+             Recalculate shop.minHeight so sticky releases at the current
+             scroll position: eliminates dead scroll after the animation. */
+          shop.style.minHeight = Math.round(section.offsetHeight - shop.getBoundingClientRect().top + stickyTop) + 'px';
         },
         onLeaveBack: function () {
           tl.progress(0, false);
