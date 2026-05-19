@@ -472,11 +472,12 @@ window.initLanding = async function () {
        where hOrig = section.offsetHeight with all 3 cards visible.
        Using hSmall instead caused the sticky to release ~halfway through
        the animation (when hOrig >> hSmall, sticky exit was far too early). */
-    const stickyTop = pinTopOffset();
+    const stickyTop      = pinTopOffset();
     section.style.position = 'sticky';
     section.style.top      = stickyTop + 'px';
-    const hOrig = section.offsetHeight;
-    shop.style.minHeight = (hOrig + pinDuration) + 'px';
+    const hOrig          = section.offsetHeight;
+    const hOrigMinHeight = hOrig + pinDuration;
+    shop.style.minHeight = hOrigMinHeight + 'px';
 
     const trailingInfo = section.querySelector('.shop-trailing-info');
     const paymentGroup = section.querySelector('.ritual-payment-group');
@@ -500,14 +501,20 @@ window.initLanding = async function () {
           gsap.set([starter, habit, protocol], { display: 'none' });
           gsap.set(trailUnit, { y: 0 });
           /* Cards are now display:none → section shrank to hSmall.
-             Recalculate shop.minHeight so sticky releases at the current
-             scroll position: eliminates dead scroll after the animation. */
+             Trim minHeight so sticky releases at current scroll position
+             (no dead scroll). Then refresh all ScrollTriggers so editorial
+             blocks recalculate their trigger positions after the layout shift. */
           shop.style.minHeight = Math.round(section.offsetHeight - shop.getBoundingClientRect().top + stickyTop) + 'px';
+          requestAnimationFrame(function () { ScrollTrigger.refresh(); });
         },
         onLeaveBack: function () {
           tl.progress(0, false);
           gsap.set([starter, habit, protocol], { clearProps: 'display,xPercent,opacity' });
           gsap.set(trailUnit, { clearProps: 'y' });
+          /* Restore original minHeight so the sticky animation range is intact
+             when scrolling back; refresh so editorial positions update too. */
+          shop.style.minHeight = hOrigMinHeight + 'px';
+          requestAnimationFrame(function () { ScrollTrigger.refresh(); });
         },
       }
     });
