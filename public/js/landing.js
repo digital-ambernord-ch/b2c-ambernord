@@ -556,6 +556,129 @@ window.initLanding = async function () {
 
   const bridgeWrap = attachBridgeBottle();
 
+  /* =========================================================================
+     GLASS RITUAL — prototype animation section (mobile only).
+     Injected after #shop via JS so no HTML changes are needed.
+     Bottle (left) + SVG glass (right): juice pours in, water drops added,
+     spoon stirs, label "1:10" appears, then everything exits upward before
+     the editorial (Unser Manifest) scrolls in.
+     ========================================================================= */
+
+  function attachGlassAnimation() {
+    if (reducedMotion) return null;
+    const shop = document.getElementById('shop');
+    if (!shop) return null;
+
+    /* ── Build DOM ─────────────────────────────────────────────────────── */
+    const sec = document.createElement('section');
+    sec.id = 'glass-ritual-anim';
+    sec.setAttribute('aria-hidden', 'true');
+    sec.style.cssText = 'background:#0a0a0a;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;overflow:hidden;';
+
+    /* Row: bottle + glass side by side */
+    const row = document.createElement('div');
+    row.style.cssText = 'display:flex;align-items:center;gap:48px;padding:0 36px;will-change:transform,opacity;';
+
+    /* Bottle image */
+    const btl = document.createElement('img');
+    btl.src = 'https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:good,h_600/v1775476093/ambernord-bio-sanddornsaft-zelt-edition-250ml-schweiz.webp_kl6nqj.png';
+    btl.alt = '';
+    btl.style.cssText = 'width:110px;object-fit:contain;filter:drop-shadow(0 0 28px rgba(237,163,35,0.22));flex-shrink:0;';
+
+    /* Glass wrapper (SVG + spoon overlay) */
+    const glassWrap = document.createElement('div');
+    glassWrap.style.cssText = 'position:relative;width:90px;height:150px;flex-shrink:0;';
+
+    /* Glass SVG: trapezoid shape, amber juice fill via clipPath */
+    glassWrap.innerHTML =
+      '<svg id="gr-svg" viewBox="0 0 90 150" width="90" height="150" overflow="visible" style="display:block;">' +
+        '<defs>' +
+          '<clipPath id="gr-clip">' +
+            '<path d="M11,6 L79,6 L71,143 Q70,148 63,148 L27,148 Q20,148 19,143 Z"/>' +
+          '</clipPath>' +
+        '</defs>' +
+        /* juice fill — starts at y=148 (empty), animates upward */
+        '<rect id="gr-juice" x="0" y="148" width="90" height="148" fill="rgba(237,163,35,0.82)" clip-path="url(#gr-clip)"/>' +
+        /* glass walls */
+        '<path d="M11,6 L79,6 L71,143 Q70,148 63,148 L27,148 Q20,148 19,143 Z" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="2.5" stroke-linejoin="round"/>' +
+        /* glass rim */
+        '<ellipse cx="45" cy="6" rx="34" ry="6" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>' +
+        /* highlight streak */
+        '<path d="M23,24 Q25,68 23,112" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="4" stroke-linecap="round"/>' +
+        /* water drops — fall from above the glass rim */
+        '<ellipse id="gr-d1" cx="45" cy="-14" rx="4.5" ry="6.5" fill="rgba(160,210,255,0.75)" opacity="0"/>' +
+        '<ellipse id="gr-d2" cx="36" cy="-26" rx="3.5" ry="5" fill="rgba(160,210,255,0.7)" opacity="0"/>' +
+        '<ellipse id="gr-d3" cx="54" cy="-20" rx="3" ry="4.5" fill="rgba(160,210,255,0.7)" opacity="0"/>' +
+      '</svg>' +
+      /* spoon — SVG overlaid on the glass */
+      '<div id="gr-spoon" style="position:absolute;top:2px;right:-14px;width:24px;height:118px;opacity:0;transform-origin:50% 20%;will-change:transform,opacity;">' +
+        '<svg viewBox="0 0 24 118" width="24" height="118">' +
+          '<ellipse cx="12" cy="13" rx="9" ry="11" fill="rgba(237,163,35,0.5)" stroke="rgba(237,163,35,0.75)" stroke-width="1.5"/>' +
+          '<line x1="12" y1="24" x2="12" y2="114" stroke="rgba(237,163,35,0.65)" stroke-width="2.5" stroke-linecap="round"/>' +
+        '</svg>' +
+      '</div>';
+
+    row.appendChild(btl);
+    row.appendChild(glassWrap);
+
+    /* "1:10 / Das tägliche Ritual" label — centred below the row */
+    const lbl = document.createElement('div');
+    lbl.style.cssText = 'position:absolute;bottom:17%;left:50%;transform:translateX(-50%);text-align:center;opacity:0;white-space:nowrap;will-change:opacity;';
+    lbl.innerHTML =
+      '<div style="font-family:var(--font-heading,\'Playfair Display\',serif);font-size:30px;font-weight:700;color:rgba(237,163,35,0.92);letter-spacing:4px;">1 : 10</div>' +
+      '<div style="font-size:10px;color:rgba(255,255,255,0.52);letter-spacing:4px;margin-top:8px;text-transform:uppercase;">Das tägliche Ritual</div>';
+
+    sec.appendChild(row);
+    sec.appendChild(lbl);
+    shop.insertAdjacentElement('afterend', sec);
+
+    /* ── GSAP references ───────────────────────────────────────────────── */
+    const juice = sec.querySelector('#gr-juice');
+    const spoon = sec.querySelector('#gr-spoon');
+    const d1    = sec.querySelector('#gr-d1');
+    const d2    = sec.querySelector('#gr-d2');
+    const d3    = sec.querySelector('#gr-d3');
+
+    gsap.set(glassWrap, { opacity: 0, y: 22 });
+
+    /* ── Timeline (scrub 0.5 = fluid but responsive) ───────────────────── */
+    const tl = gsap.timeline({ scrollTrigger: pinScrollTrigger(sec, 1400, undefined, 0.5) });
+
+    /* glass fades in                                                        */
+    tl.to(glassWrap, { opacity: 1, y: 0, duration: 0.13, ease: 'power2.out' }, 0.03);
+
+    /* juice pours in — amber fill rises from empty to ~58% full            */
+    tl.to(juice, { attr: { y: 62 }, duration: 0.36, ease: 'power1.inOut' }, 0.15);
+
+    /* water drops fall in from above (staggered)                           */
+    tl.set(d1, { opacity: 1 }, 0.51);
+    tl.to(d1, { attr: { cy: 95 }, opacity: 0, duration: 0.09, ease: 'power2.in' }, 0.51);
+    tl.set(d2, { opacity: 1 }, 0.55);
+    tl.to(d2, { attr: { cy: 85 }, opacity: 0, duration: 0.08, ease: 'power2.in' }, 0.55);
+    tl.set(d3, { opacity: 1 }, 0.58);
+    tl.to(d3, { attr: { cy: 90 }, opacity: 0, duration: 0.08, ease: 'power2.in' }, 0.58);
+
+    /* juice rises a touch more as water is added                           */
+    tl.to(juice, { attr: { y: 50 }, duration: 0.07, ease: 'power2.out' }, 0.53);
+
+    /* spoon appears + label fades in                                       */
+    tl.to(spoon, { opacity: 1, duration: 0.07, ease: 'power2.out' }, 0.63);
+    tl.to(lbl,   { opacity: 1, duration: 0.13, ease: 'power2.out' }, 0.64);
+
+    /* spoon stirs — 3 oscillations                                         */
+    tl.to(spoon, { rotation:  14, duration: 0.05, ease: 'power1.inOut' }, 0.67);
+    tl.to(spoon, { rotation: -13, duration: 0.08, ease: 'power1.inOut' }, 0.72);
+    tl.to(spoon, { rotation:  11, duration: 0.07, ease: 'power1.inOut' }, 0.80);
+    tl.to(spoon, { rotation:   0, duration: 0.05, ease: 'power1.out'   }, 0.87);
+
+    /* everything exits upward — Unser Manifest follows immediately         */
+    tl.to([row, lbl], { y: -65, opacity: 0, duration: 0.11, ease: 'power2.in' }, 0.89);
+
+    return function () {
+      if (sec.parentNode) sec.parentNode.removeChild(sec);
+    };
+  }
+
   /* pinScrollTrigger shared with desktop editorial; not used for mobile product. */
   mm.add('(min-width: 992px)', function () {
     attachProductCardsExitDesktop(1000, bridgeWrap);
@@ -574,8 +697,10 @@ window.initLanding = async function () {
   });
   mm.add('(max-width: 991px)', function () {
     var mobileProdCleanup = attachProductCardsExitMobile(1500, bridgeWrap);
+    var glassCleanup      = attachGlassAnimation();
     return function () {
       if (mobileProdCleanup) mobileProdCleanup();
+      if (glassCleanup)      glassCleanup();
       if (bridgeWrap) gsap.set(bridgeWrap, { clearProps: 'opacity,scale' });
     };
   });
