@@ -455,29 +455,13 @@ window.initLanding = async function () {
     if (reducedMotion) return null;
 
     const section = document.getElementById('ritual-products');
-    const shop    = document.getElementById('shop');
-    if (!section || !shop) return null;
+    if (!section) return null;
 
     const productCards = section.querySelectorAll('.premium-product-card');
     if (productCards.length < 3) return null;
 
     const [starter, habit, protocol] = productCards;
     productCards.forEach(function (c) { c.style.transition = 'border-color var(--t-base) ease'; });
-
-    /* CSS sticky replaces GSAP pin:true.
-       Sticky releases when the section's bottom exits the parent:
-         release_scroll = shop.top + shop.height - section.height - stickyTop
-       We want release_scroll === ScrollTrigger end scroll, so:
-         shop.minHeight = hOrig + pinDuration
-       where hOrig = section.offsetHeight with all 3 cards visible.
-       Using hSmall instead caused the sticky to release ~halfway through
-       the animation (when hOrig >> hSmall, sticky exit was far too early). */
-    const stickyTop      = pinTopOffset();
-    section.style.position = 'sticky';
-    section.style.top      = stickyTop + 'px';
-    const hOrig          = section.offsetHeight;
-    const hOrigMinHeight = hOrig + pinDuration;
-    shop.style.minHeight = hOrigMinHeight + 'px';
 
     const trailingInfo = section.querySelector('.shop-trailing-info');
     const paymentGroup = section.querySelector('.ritual-payment-group');
@@ -487,46 +471,21 @@ window.initLanding = async function () {
     const card1Lift = function () { return -(starter.offsetHeight + margin()); };
     const card2Lift = function () { return -(starter.offsetHeight + habit.offsetHeight + 2 * margin()); };
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: section,
-        start:   'top top+=' + stickyTop,
-        end:     '+=' + pinDuration,
-        scrub:   0.8,
-        /* Snap to final/initial state immediately when scroll goes beyond the
-           trigger boundaries — prevents partially-visible cards when sticky
-           releases (scrub lag would otherwise leave cards mid-animation). */
-        onLeave: function () {
-          tl.progress(1, false);
-          gsap.set([starter, habit, protocol], { display: 'none' });
-          gsap.set(trailUnit, { y: 0 });
-          /* Cards are now display:none → section shrank to hSmall.
-             Trim minHeight so sticky releases at current scroll position
-             (no dead scroll). Then refresh all ScrollTriggers so editorial
-             blocks recalculate their trigger positions after the layout shift. */
-          shop.style.minHeight = Math.round(section.offsetHeight - shop.getBoundingClientRect().top + stickyTop) + 'px';
-          requestAnimationFrame(function () { ScrollTrigger.refresh(); });
-        },
-        onLeaveBack: function () {
-          /* Do NOT force tl to progress 0 — that makes scrub "catch up"
-             from 0 to ~1 in the wrong direction, replaying all exits.
-             Let scrub control reverse playback from the current position.
-             Only clear the manual display:none / y:0 set in onLeave so
-             the timeline can resume control of those properties. */
-          gsap.set([starter, habit, protocol], { clearProps: 'display' });
-          gsap.set(trailUnit, { clearProps: 'y' });
-          shop.style.minHeight = hOrigMinHeight + 'px';
-          requestAnimationFrame(function () { ScrollTrigger.refresh(); });
-        },
-      }
-    });
+    const stConfig = pinScrollTrigger(section, pinDuration, undefined, 0.8);
+    stConfig.onLeave = function () {
+      tl.progress(1, false);
+      gsap.set([starter, habit, protocol], { display: 'none' });
+      gsap.set(trailUnit, { y: 0 });
+    };
+    stConfig.onLeaveBack = function () {
+      gsap.set([starter, habit, protocol], { clearProps: 'display' });
+      gsap.set(trailUnit, { clearProps: 'y' });
+    };
+
+    const tl = gsap.timeline({ scrollTrigger: stConfig });
 
     if (bridgeWrap) {
       gsap.set(bridgeWrap, { opacity: 0 });
-      /* At 0.89: hide cards + snap trailUnit to y:0 so Das tägliche Ritual
-         appears simultaneously with the bridge bottle. BridgeWrap fades in
-         immediately after (0.90), and the timeline ends at 1.00 = pin ends
-         with zero dead scroll — section starts scrolling upward instantly. */
       tl.set([starter, habit, protocol], { display: 'none' }, 0.89);
       tl.set(trailUnit, { y: 0 }, 0.89);
       tl.to(bridgeWrap, { opacity: 1, duration: 0.10, ease: 'power1.out' }, 0.90);
@@ -536,8 +495,8 @@ window.initLanding = async function () {
          0.05 → 0.35   Starter exits + Habit/Protocol/trail-unit lift
          0.36 → 0.66   Habit   exits + Protocol/trail-unit lift
          0.66 → 0.96   Protocol exits
-         0.89          cards display:none + trailUnit y:0 (both appear together)
-         0.90 → 1.00   bridgeWrap fade in → pin ends immediately after          */
+         0.89          cards display:none + trailUnit y:0
+         0.90 → 1.00   bridgeWrap fade in                                  */
     const liftAll1 = [habit, protocol].concat(trailUnit);
     const liftAll2 = [protocol].concat(trailUnit);
 
@@ -548,10 +507,7 @@ window.initLanding = async function () {
       .to(protocol,  { xPercent:  160, opacity: 0, ease: 'power2.in',    duration: 0.30 }, 0.66);
 
     return function () {
-      section.style.position = '';
-      section.style.top      = '';
-      shop.style.minHeight   = '';
-      gsap.set([starter, habit, protocol], { clearProps: 'display' });
+      gsap.set(Array.from(productCards), { clearProps: 'display,xPercent,opacity' });
       gsap.set(trailUnit, { clearProps: 'y' });
     };
   }

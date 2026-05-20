@@ -13,7 +13,8 @@
       "PowerShell($content = [System.IO.File]::ReadAllText\\(\"public\\\\data\\\\de\\\\contact.json\"\\); $content.Substring\\(0, 50\\) | Out-String)",
       "Bash(python3 *)",
       "PowerShell(py *)",
-      "Bash(node *)"
+      "Bash(node *)",
+      "WebFetch(domain:a611d235.b2c-ambernord.pages.dev)"
     ]
   }
 }
