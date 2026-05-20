@@ -486,52 +486,55 @@ window.initLanding = async function () {
 
     if (bridgeWrap) {
       gsap.set(bridgeWrap, { opacity: 0 });
-      if (glassEls) gsap.set(glassEls.glassWrap, { opacity: 0, y: 18 });
-      tl.set([starter, habit, protocol], { display: 'none' }, 0.89);
-      tl.set(trailUnit, { y: 0 }, 0.89);
-      /* bridgeWrap (bottle + glass container) appears instantly */
-      tl.to(bridgeWrap, { opacity: 1, duration: 0.02, ease: 'none' }, 0.90);
+      if (glassEls) gsap.set(glassEls.glassWrap, { opacity: 0, y: 20 });
+      tl.set([starter, habit, protocol], { display: 'none' }, 0.76);
+      tl.set(trailUnit, { y: 0 }, 0.76);
+      /* bridgeWrap (bottle + glass container) snaps visible */
+      tl.to(bridgeWrap, { opacity: 1, duration: 0.02, ease: 'none' }, 0.77);
     }
 
-    /* Timeline:
-         0.05 → 0.35   Starter exits + Habit/Protocol/trail-unit lift
-         0.36 → 0.66   Habit   exits + Protocol/trail-unit lift
-         0.66 → 0.96   Protocol exits
-         0.89          cards display:none + trailUnit y:0
-         0.90          bridgeWrap snaps visible
-         0.91 → 1.00   glass ritual animation (only when glassEls present)   */
+    /* Timeline (pinDuration 3000px → each 0.01 = 30px of scroll):
+         0.05 → 0.29   Starter exits  + lift Habit/Protocol/trail (~720px)
+         0.30 → 0.53   Habit   exits  + lift Protocol/trail       (~690px)
+         0.54 → 0.77   Protocol exits                             (~690px)
+         0.76           cards display:none + trailUnit y:0
+         0.77           bridgeWrap snaps visible
+         0.78 → 0.95   glass animation                            (~510px)
+         0.95 → 1.00   bridgeWrap exits upward → Manifest follows (~150px) */
     const liftAll1 = [habit, protocol].concat(trailUnit);
     const liftAll2 = [protocol].concat(trailUnit);
 
-    tl.to(starter,   { xPercent: -160, opacity: 0, ease: 'power2.in',    duration: 0.30 }, 0.05)
-      .to(liftAll1,  { y: card1Lift,               ease: 'power1.inOut', duration: 0.30 }, 0.05)
-      .to(habit,     { xPercent:  160, opacity: 0, ease: 'power2.in',    duration: 0.30 }, 0.36)
-      .to(liftAll2,  { y: card2Lift,               ease: 'power1.inOut', duration: 0.30 }, 0.36)
-      .to(protocol,  { xPercent:  160, opacity: 0, ease: 'power2.in',    duration: 0.30 }, 0.66);
+    tl.to(starter,   { xPercent: -160, opacity: 0, ease: 'power2.in',    duration: 0.24 }, 0.05)
+      .to(liftAll1,  { y: card1Lift,               ease: 'power1.inOut', duration: 0.24 }, 0.05)
+      .to(habit,     { xPercent:  160, opacity: 0, ease: 'power2.in',    duration: 0.24 }, 0.30)
+      .to(liftAll2,  { y: card2Lift,               ease: 'power1.inOut', duration: 0.24 }, 0.30)
+      .to(protocol,  { xPercent:  160, opacity: 0, ease: 'power2.in',    duration: 0.24 }, 0.54);
 
     if (glassEls) {
       const { glassWrap, juice, spoon, d1, d2, d3, lbl } = glassEls;
       /* glass slides up into view */
-      tl.to(glassWrap, { opacity: 1, y: 0, duration: 0.07, ease: 'power2.out' }, 0.91);
-      /* amber juice pours in — rect.y animates upward (fill rises) */
-      tl.to(juice, { attr: { y: 50 }, duration: 0.24, ease: 'power1.inOut' }, 0.93);
+      tl.to(glassWrap, { opacity: 1, y: 0, duration: 0.07, ease: 'power2.out' }, 0.78);
+      /* amber juice pours in */
+      tl.to(juice, { attr: { y: 60 }, duration: 0.22, ease: 'power1.inOut' }, 0.80);
       /* water drops fall in (staggered) */
-      tl.set(d1, { opacity: 1 }, 0.955);
-      tl.to(d1,  { attr: { cy: 84 }, opacity: 0, duration: 0.05, ease: 'power2.in' }, 0.955);
-      tl.set(d2, { opacity: 1 }, 0.962);
-      tl.to(d2,  { attr: { cy: 74 }, opacity: 0, duration: 0.05, ease: 'power2.in' }, 0.962);
-      tl.set(d3, { opacity: 1 }, 0.968);
-      tl.to(d3,  { attr: { cy: 80 }, opacity: 0, duration: 0.04, ease: 'power2.in' }, 0.968);
-      /* juice rises slightly as water is added */
-      tl.to(juice, { attr: { y: 42 }, duration: 0.04, ease: 'power2.out' }, 0.960);
+      tl.set(d1, { opacity: 1 }, 0.860); tl.to(d1, { attr: { cy: 100 }, opacity: 0, duration: 0.04, ease: 'power2.in' }, 0.860);
+      tl.set(d2, { opacity: 1 }, 0.876); tl.to(d2, { attr: { cy:  90 }, opacity: 0, duration: 0.04, ease: 'power2.in' }, 0.876);
+      tl.set(d3, { opacity: 1 }, 0.890); tl.to(d3, { attr: { cy:  96 }, opacity: 0, duration: 0.03, ease: 'power2.in' }, 0.890);
+      /* juice rises a touch as water is added */
+      tl.to(juice, { attr: { y: 50 }, duration: 0.03, ease: 'power2.out' }, 0.874);
       /* spoon + label appear */
-      tl.to(spoon, { opacity: 1, duration: 0.04, ease: 'power2.out' }, 0.972);
-      tl.to(lbl,   { opacity: 1, duration: 0.06, ease: 'power2.out' }, 0.974);
+      tl.to(spoon, { opacity: 1, duration: 0.03, ease: 'power2.out' }, 0.900);
+      tl.to(lbl,   { opacity: 1, duration: 0.05, ease: 'power2.out' }, 0.902);
       /* spoon stirs — 3 oscillations */
-      tl.to(spoon, { rotation:  11, duration: 0.025, ease: 'power1.inOut' }, 0.978);
-      tl.to(spoon, { rotation: -10, duration: 0.030, ease: 'power1.inOut' }, 0.982);
-      tl.to(spoon, { rotation:   8, duration: 0.025, ease: 'power1.inOut' }, 0.987);
-      tl.to(spoon, { rotation:   0, duration: 0.020, ease: 'power1.out'   }, 0.991);
+      tl.to(spoon, { rotation:  12, duration: 0.022, ease: 'power1.inOut' }, 0.912);
+      tl.to(spoon, { rotation: -11, duration: 0.025, ease: 'power1.inOut' }, 0.922);
+      tl.to(spoon, { rotation:   9, duration: 0.022, ease: 'power1.inOut' }, 0.934);
+      tl.to(spoon, { rotation:   0, duration: 0.018, ease: 'power1.out'   }, 0.944);
+    }
+
+    /* Exit upward — bottle + glass fly off screen, Manifest follows immediately */
+    if (bridgeWrap) {
+      tl.to(bridgeWrap, { y: -80, opacity: 0, duration: 0.05, ease: 'power2.in' }, 0.95);
     }
 
     return function () {
@@ -597,49 +600,58 @@ window.initLanding = async function () {
     const btl = bWrap.querySelector('img');
     if (!btl) return null;
 
-    /* Shrink bottle to leave room for the glass beside it */
-    btl.style.width  = '68px';
-    btl.style.height = '136px';
+    /* Resize bottle — larger than before, fits side-by-side with the glass */
+    btl.style.width  = '110px';
+    btl.style.height = '220px';
 
-    /* Update wrap layout for side-by-side row */
-    bWrap.style.gap      = '36px';
-    bWrap.style.padding  = '40px 20px';
-    bWrap.style.position = 'relative';  /* for absolute label */
+    /* Wrap bottle + glass in a horizontal pair row, then make bWrap a column
+       so the "1:10" label can sit fixed at the screen bottom via absolute pos */
+    const pairWrap = document.createElement('div');
+    pairWrap.style.cssText = 'display:flex;align-items:center;gap:36px;';
+    bWrap.insertBefore(pairWrap, btl);
+    pairWrap.appendChild(btl);
 
-    /* Glass wrapper */
+    /* Glass (90×155) — proportionally larger than before */
     const glassWrap = document.createElement('div');
-    glassWrap.style.cssText = 'position:relative;width:76px;height:130px;flex-shrink:0;opacity:0;will-change:opacity,transform;';
+    glassWrap.style.cssText = 'position:relative;width:90px;height:155px;flex-shrink:0;opacity:0;will-change:opacity,transform;';
 
     glassWrap.innerHTML =
-      '<svg viewBox="0 0 76 130" width="76" height="130" overflow="visible" style="display:block;">' +
+      '<svg viewBox="0 0 90 155" width="90" height="155" overflow="visible" style="display:block;">' +
         '<defs>' +
           '<clipPath id="grb-clip">' +
-            '<path d="M9,5 L67,5 L60,124 Q59,129 53,129 L23,129 Q17,129 16,124 Z"/>' +
+            '<path d="M11,6 L79,6 L71,148 Q70,153 63,153 L27,153 Q20,153 19,148 Z"/>' +
           '</clipPath>' +
         '</defs>' +
-        '<rect id="grb-juice" x="0" y="129" width="76" height="129" fill="rgba(237,163,35,0.82)" clip-path="url(#grb-clip)"/>' +
-        '<path d="M9,5 L67,5 L60,124 Q59,129 53,129 L23,129 Q17,129 16,124 Z" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="2.5" stroke-linejoin="round"/>' +
-        '<ellipse cx="38" cy="5" rx="29" ry="5" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>' +
-        '<path d="M19,20 Q21,58 19,96" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="3.5" stroke-linecap="round"/>' +
-        '<ellipse id="grb-d1" cx="38" cy="-12" rx="3.8" ry="5.2" fill="rgba(160,210,255,0.75)" opacity="0"/>' +
-        '<ellipse id="grb-d2" cx="30" cy="-20" rx="3"   ry="4.2" fill="rgba(160,210,255,0.7)"  opacity="0"/>' +
-        '<ellipse id="grb-d3" cx="46" cy="-16" rx="2.5" ry="3.8" fill="rgba(160,210,255,0.7)"  opacity="0"/>' +
+        '<rect id="grb-juice" x="0" y="153" width="90" height="153" fill="rgba(237,163,35,0.82)" clip-path="url(#grb-clip)"/>' +
+        '<path d="M11,6 L79,6 L71,148 Q70,153 63,153 L27,153 Q20,153 19,148 Z" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="2.5" stroke-linejoin="round"/>' +
+        '<ellipse cx="45" cy="6" rx="34" ry="6" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>' +
+        '<path d="M23,24 Q25,70 23,116" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="4" stroke-linecap="round"/>' +
+        '<ellipse id="grb-d1" cx="45" cy="-14" rx="4.5" ry="6.2" fill="rgba(160,210,255,0.75)" opacity="0"/>' +
+        '<ellipse id="grb-d2" cx="36" cy="-24" rx="3.5" ry="5"   fill="rgba(160,210,255,0.7)"  opacity="0"/>' +
+        '<ellipse id="grb-d3" cx="55" cy="-19" rx="3"   ry="4.5" fill="rgba(160,210,255,0.7)"  opacity="0"/>' +
       '</svg>' +
-      '<div id="grb-spoon" style="position:absolute;top:2px;right:-11px;width:19px;height:100px;opacity:0;transform-origin:50% 18%;will-change:transform,opacity;">' +
-        '<svg viewBox="0 0 19 100" width="19" height="100">' +
-          '<ellipse cx="9.5" cy="10" rx="7.5" ry="9" fill="rgba(237,163,35,0.5)" stroke="rgba(237,163,35,0.75)" stroke-width="1.5"/>' +
-          '<line x1="9.5" y1="19" x2="9.5" y2="96" stroke="rgba(237,163,35,0.65)" stroke-width="2" stroke-linecap="round"/>' +
+      '<div id="grb-spoon" style="position:absolute;top:2px;right:-14px;width:22px;height:120px;opacity:0;transform-origin:50% 18%;will-change:transform,opacity;">' +
+        '<svg viewBox="0 0 22 120" width="22" height="120">' +
+          '<ellipse cx="11" cy="12" rx="9" ry="11" fill="rgba(237,163,35,0.5)" stroke="rgba(237,163,35,0.75)" stroke-width="1.5"/>' +
+          '<line x1="11" y1="23" x2="11" y2="116" stroke="rgba(237,163,35,0.65)" stroke-width="2.5" stroke-linecap="round"/>' +
         '</svg>' +
       '</div>';
 
-    bWrap.appendChild(glassWrap);
+    pairWrap.appendChild(glassWrap);
 
-    /* "1:10" label — centred below the pair */
+    /* bWrap becomes a column: pair centred, label pinned to the screen bottom */
+    bWrap.style.flexDirection  = 'column';
+    bWrap.style.justifyContent = 'center';
+    bWrap.style.minHeight      = '68vh';
+    bWrap.style.padding        = '32px 20px 88px';
+    bWrap.style.position       = 'relative';
+
+    /* "1:10" label — absolute to bWrap, visually at the screen bottom */
     const lbl = document.createElement('div');
-    lbl.style.cssText = 'position:absolute;bottom:10px;left:50%;transform:translateX(-50%);text-align:center;opacity:0;white-space:nowrap;will-change:opacity;';
+    lbl.style.cssText = 'position:absolute;bottom:20px;left:50%;transform:translateX(-50%);text-align:center;opacity:0;white-space:nowrap;will-change:opacity;';
     lbl.innerHTML =
-      '<div style="font-family:var(--font-heading,\'Playfair Display\',serif);font-size:24px;font-weight:700;color:rgba(237,163,35,0.92);letter-spacing:4px;">1 : 10</div>' +
-      '<div style="font-size:9px;color:rgba(255,255,255,0.52);letter-spacing:4px;margin-top:5px;text-transform:uppercase;">Das tägliche Ritual</div>';
+      '<div style="font-family:var(--font-heading,\'Playfair Display\',serif);font-size:26px;font-weight:700;color:rgba(237,163,35,0.92);letter-spacing:5px;">1 : 10</div>' +
+      '<div style="font-size:10px;color:rgba(255,255,255,0.52);letter-spacing:4px;margin-top:6px;text-transform:uppercase;">Das tägliche Ritual</div>';
     bWrap.appendChild(lbl);
 
     const juice = glassWrap.querySelector('#grb-juice');
@@ -656,11 +668,15 @@ window.initLanding = async function () {
       cleanup: function () {
         btl.style.width  = '';
         btl.style.height = '';
-        bWrap.style.gap      = '';
-        bWrap.style.padding  = '30px 0';
-        bWrap.style.position = '';
-        if (glassWrap.parentNode) glassWrap.parentNode.removeChild(glassWrap);
-        if (lbl.parentNode)       lbl.parentNode.removeChild(lbl);
+        /* Move bottle back to bWrap, then remove pairWrap */
+        bWrap.insertBefore(btl, pairWrap);
+        if (pairWrap.parentNode) pairWrap.parentNode.removeChild(pairWrap);
+        if (lbl.parentNode)      lbl.parentNode.removeChild(lbl);
+        bWrap.style.flexDirection  = '';
+        bWrap.style.justifyContent = '';
+        bWrap.style.minHeight      = '';
+        bWrap.style.padding        = '30px 0';
+        bWrap.style.position       = '';
       }
     };
   }
@@ -683,7 +699,7 @@ window.initLanding = async function () {
   });
   mm.add('(max-width: 991px)', function () {
     var glassEls          = injectGlassIntoBridge(bridgeWrap);
-    var mobileProdCleanup = attachProductCardsExitMobile(2500, bridgeWrap, glassEls);
+    var mobileProdCleanup = attachProductCardsExitMobile(3000, bridgeWrap, glassEls);
     return function () {
       if (mobileProdCleanup) mobileProdCleanup();
       if (glassEls)          glassEls.cleanup();
