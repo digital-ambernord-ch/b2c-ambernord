@@ -849,7 +849,7 @@ window.initLanding = async function () {
      Fades the block up once on viewport entry; background gets a subtle
      parallax zoom while scrolling past. Word shards from splitIntoWordShards()
      remain in the DOM but are not animated — they render as normal inline text. */
-  function attachRitualReveal(block) {
+  function attachRitualReveal(block, startStr) {
     if (reducedMotion || !block.wrapper) return;
     const innerBlock = block.wrapper.querySelector('.nature-hero-block');
     if (!innerBlock) return;
@@ -863,7 +863,7 @@ window.initLanding = async function () {
       ease:     'power2.out',
       scrollTrigger: {
         trigger: block.wrapper,
-        start:   'top 80%',
+        start:   startStr || 'top 80%',
         toggleActions: 'play none none none',
         invalidateOnRefresh: true
       }
@@ -934,13 +934,19 @@ window.initLanding = async function () {
     if (editorialBlocks[1]) attachRitualReveal(editorialBlocks[1]);
   });
   mm.add('(max-width: 991px)', function () {
-    /* Both editorial blocks use plain scroll-reveal on mobile. Pinning Manifest
-       caused magnetic-pull from anticipatePin and conflicted with the -800px
-       CSS overlap on .dynamic-editorial-wrapper. fitBlockToViewport was only
-       needed for the pinned-viewport fit — scroll-reveal blocks render at
-       natural size. */
-    if (editorialBlocks[0]) attachRitualReveal(editorialBlocks[0]);
-    if (editorialBlocks[1]) attachRitualReveal(editorialBlocks[1]);
+    if (editorialBlocks[0]) {
+      fitBlockToViewport(editorialBlocks[0]);
+      attachManifestShatter(editorialBlocks[0], 220, 800, editorialPinStart(editorialBlocks[0].wrapper));
+    }
+    /* 'top bottom' fires as soon as Das Ritual enters the viewport from below,
+       so there is no black gap between Manifest pin end and Ritual fade-in. */
+    if (editorialBlocks[1]) attachRitualReveal(editorialBlocks[1], 'top bottom');
+    return function () {
+      if (editorialBlocks[0]) {
+        var inner = editorialBlocks[0].wrapper.querySelector('.nature-hero-block');
+        if (inner) { inner.style.transform = ''; inner.style.transformOrigin = ''; }
+      }
+    };
   });
 
   /* =========================================================================
