@@ -508,11 +508,13 @@ window.initLanding = async function () {
           requestAnimationFrame(function () { ScrollTrigger.refresh(); });
         },
         onLeaveBack: function () {
-          tl.progress(0, false);
-          gsap.set([starter, habit, protocol], { clearProps: 'display,xPercent,opacity' });
+          /* Do NOT force tl to progress 0 — that makes scrub "catch up"
+             from 0 to ~1 in the wrong direction, replaying all exits.
+             Let scrub control reverse playback from the current position.
+             Only clear the manual display:none / y:0 set in onLeave so
+             the timeline can resume control of those properties. */
+          gsap.set([starter, habit, protocol], { clearProps: 'display' });
           gsap.set(trailUnit, { clearProps: 'y' });
-          /* Restore original minHeight so the sticky animation range is intact
-             when scrolling back; refresh so editorial positions update too. */
           shop.style.minHeight = hOrigMinHeight + 'px';
           requestAnimationFrame(function () { ScrollTrigger.refresh(); });
         },
