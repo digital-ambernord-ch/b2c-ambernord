@@ -402,7 +402,7 @@ window.initLanding = async function () {
      (hover translateY becomes instant — minor cost).
      ========================================================================= */
 
-  function attachProductCardsExitDesktop(pinDuration, bridgeWrap) {
+  function attachProductCardsExitDesktop(pinDuration) {
     if (reducedMotion) return;
 
     const section = document.getElementById('ritual-products');
@@ -415,44 +415,56 @@ window.initLanding = async function () {
     const cards = [starter, habit, protocol];
     productCards.forEach(function (c) { c.style.transition = 'border-color var(--t-base) ease'; });
 
-    /* Trust ribbon now lives INSIDE this section (after the cards). It is the
-       "proof" beat that should land exactly when the product animation ends. */
+    /* Trust + payment footer (payment is merged into this wrapper on desktop
+       by the mm block below). It must land early and STAY visible as the
+       anchored proof/checkout bar for the rest of the product animation. */
     const trustBand = section.querySelector('.conversion-booster-wrapper');
 
     const stConfig = pinScrollTrigger(section, pinDuration);
     stConfig.onLeaveBack = function () {
       gsap.set(cards, { clearProps: 'xPercent,opacity,height,marginBottom,paddingTop,paddingBottom,borderWidth,overflow' });
-      if (trustBand)  gsap.set(trustBand,  { clearProps: 'opacity,y' });
-      if (bridgeWrap) gsap.set(bridgeWrap, { clearProps: 'opacity,scale,filter' });
+      if (trustBand) gsap.set(trustBand, { clearProps: 'opacity,y' });
     };
 
     const tl = gsap.timeline({ scrollTrigger: stConfig });
 
-    /* Cards slide out sideways, then COLLAPSE their height so everything below
-       (trust ribbon → bridge bottle → trailing info) flows smoothly up into the
-       pinned viewport. Collapsing layout (instead of transform-lifting the
-       trail) avoids both the per-element lift math and any post-pin
-       mis-positioning — the content simply reflows as the cards shrink. */
-    tl.to(starter,  { xPercent: -160, opacity: 0, ease: 'power2.in', duration: 0.20 }, 0.10)
-      .to(habit,    { xPercent:  160, opacity: 0, ease: 'power2.in', duration: 0.20 }, 0.22)
-      .to(protocol, { xPercent:  160, opacity: 0, ease: 'power2.in', duration: 0.20 }, 0.34)
-      .set(cards,   { overflow: 'hidden' }, 0.42)
+    /* Cards slide out and COLLAPSE their height EARLY so the trust + payment
+       footer reflows up into the pinned viewport and stays visible for the
+       rest of the animation. Collapsing layout (vs transform-lifting) avoids
+       per-element lift math and any post-pin mis-positioning. */
+    tl.to(starter,  { xPercent: -160, opacity: 0, ease: 'power2.in', duration: 0.18 }, 0.06)
+      .to(habit,    { xPercent:  160, opacity: 0, ease: 'power2.in', duration: 0.18 }, 0.16)
+      .to(protocol, { xPercent:  160, opacity: 0, ease: 'power2.in', duration: 0.18 }, 0.26)
+      .set(cards,   { overflow: 'hidden' }, 0.34)
       .to(cards,    { height: 0, marginBottom: 0, paddingTop: 0, paddingBottom: 0, borderWidth: 0,
-                      ease: 'power1.inOut', duration: 0.22 }, 0.44);
+                      ease: 'power1.inOut', duration: 0.22 }, 0.36);
 
-    /* Trust badges resolve in — fade + slight rise, right as the cards clear. */
+    /* Trust + payment footer settles in as the cards clear, then holds. */
     if (trustBand) {
-      gsap.set(trustBand, { opacity: 0, y: 26 });
-      tl.to(trustBand, { opacity: 1, y: 0, ease: 'power2.out', duration: 0.20 }, 0.58);
+      gsap.set(trustBand, { opacity: 0, y: 24 });
+      tl.to(trustBand, { opacity: 1, y: 0, ease: 'power2.out', duration: 0.22 }, 0.40);
     }
+  }
 
-    /* Bridge bottle EMERGES FROM DEPTH — scales up from a small, blurred core
-       (as if rising out of the dark) and sharpens to full size, then carries
-       upward with the natural scroll to lead into the Manifest scene. */
-    if (bridgeWrap) {
-      gsap.set(bridgeWrap, { opacity: 0, scale: 0.42, filter: 'blur(16px)', transformOrigin: '50% 62%' });
-      tl.to(bridgeWrap, { opacity: 1, scale: 1, filter: 'blur(0px)', ease: 'power2.out', duration: 0.32 }, 0.66);
-    }
+  /* =========================================================================
+     BRIDGE BOTTLE RISE — desktop.
+     The bottle is ALREADY in place (no depth/zoom emergence). As it scrolls
+     through, a gentle parallax drifts it upward ("uzbrauc augšā") so it leads
+     the eye out of the product block and into the Manifest scene.
+     ========================================================================= */
+  function attachBridgeBottleRiseDesktop(bWrap) {
+    if (reducedMotion || !bWrap) return;
+    gsap.fromTo(bWrap,
+      { yPercent: 14 },
+      { yPercent: -46, ease: 'none',
+        scrollTrigger: {
+          trigger: bWrap,
+          start: 'top bottom',
+          end:   'bottom top',
+          scrub: 1,
+          invalidateOnRefresh: true
+        }
+      });
   }
 
   function attachProductCardsExitMobile(pinDuration, bridgeWrap, glassEls) {
@@ -686,16 +698,33 @@ window.initLanding = async function () {
 
   /* pinScrollTrigger shared with desktop editorial; not used for mobile product. */
   mm.add('(min-width: 992px)', function () {
-    attachProductCardsExitDesktop(1100, bridgeWrap);
+    var section   = document.getElementById('ritual-products');
+    var trustBand = section && section.querySelector('.conversion-booster-wrapper');
+    var payment   = section && section.querySelector('.ritual-payment-group');
+    var trailing  = section && section.querySelector('.shop-trailing-info');
+
+    /* Desktop composition:
+       1) Merge payment icons INTO the trust wrapper → one anchored proof bar.
+       2) Move the bridge bottle to the very END (after trailing) so it is the
+          riser that leads into the Manifest, and make it visible in place
+          (it's "already there", no depth emergence). */
+    if (trustBand && payment) trustBand.appendChild(payment);
+    if (section && bridgeWrap) section.appendChild(bridgeWrap);
+    if (bridgeWrap) gsap.set(bridgeWrap, { opacity: 1, clearProps: 'scale,filter' });
+
+    attachProductCardsExitDesktop(1100);
+    attachBridgeBottleRiseDesktop(bridgeWrap);
+
     return function () {
-      var section = document.getElementById('ritual-products');
       if (section) {
-        var cards     = section.querySelectorAll('.premium-product-card');
-        var trustBand = section.querySelector('.conversion-booster-wrapper');
+        var cards = section.querySelectorAll('.premium-product-card');
         gsap.set(Array.from(cards), { clearProps: 'xPercent,opacity,height,marginBottom,paddingTop,paddingBottom,borderWidth,overflow' });
         if (trustBand) gsap.set(trustBand, { clearProps: 'opacity,y' });
+        /* Restore the mobile DOM order: payment after trailing, bottle before it. */
+        if (payment && trailing)    trailing.after(payment);
+        if (bridgeWrap && trailing) trailing.before(bridgeWrap);
       }
-      if (bridgeWrap) gsap.set(bridgeWrap, { clearProps: 'opacity,scale,filter' });
+      if (bridgeWrap) gsap.set(bridgeWrap, { clearProps: 'opacity,scale,filter,yPercent,y' });
     };
   });
   mm.add('(max-width: 991px)', function () {
@@ -1206,50 +1235,87 @@ window.initLanding = async function () {
      LIGHTBOX — desktop gallery image viewer
      ========================================================================= */
 
-  const galleryImgs   = document.querySelectorAll('.mini-gallery-item img');
+  const galleryImgs   = Array.from(document.querySelectorAll('.mini-gallery-item img'));
   const lightbox      = document.getElementById('gallery-lightbox');
   const lightboxClose = document.getElementById('lightbox-close');
 
   if (galleryImgs.length && lightbox) {
 
-    galleryImgs.forEach(function (img) {
+    /* Current gallery + helpers are stashed on the lightbox element so the
+       arrow/keyboard handlers (bound ONCE below) always act on the latest
+       SPA-rendered gallery, while the per-image click listeners are rebound
+       fresh on every initLanding. */
+    lightbox._lbItems = galleryImgs;
+
+    function lbHiRes(src) {
+      return src.replace(/w_\d+/, 'w_1200').replace(/w_320/, 'w_1200').replace(/w_400/, 'w_1200');
+    }
+    function lbEnsureImg() {
+      var img = document.getElementById('lightbox-img');
+      if (!img) {
+        img = document.createElement('img');
+        img.id = 'lightbox-img';
+        img.className = 'lightbox-image';
+        img.alt = 'Vergrössertes Bild';
+        lightbox.appendChild(img);
+      }
+      return img;
+    }
+    function lbShow(index) {
+      var items = lightbox._lbItems || [];
+      if (!items.length) return;
+      var i = (index + items.length) % items.length;
+      lightbox._lbIndex = i;
+      lbEnsureImg().src = lbHiRes(items[i].src);
+    }
+    function lbOpen(index) { lbShow(index); lightbox.classList.add('is-active', 'has-nav'); }
+    function lbClose() {
+      lightbox.classList.remove('is-active', 'has-nav');
+      var img = document.getElementById('lightbox-img');
+      if (img) setTimeout(function () { img.src = ''; }, 300);
+    }
+    /* Re-point the once-bound handlers at this init's functions/state. */
+    lightbox._lbShow  = lbShow;
+    lightbox._lbClose = lbClose;
+
+    /* Prev / next arrows + global handlers — created and bound a single time.
+       Gated by .has-nav so the shared dossier lightbox is unaffected. */
+    if (!lightbox._lbBound) {
+      lightbox._lbBound = true;
+
+      var mkArrow = function (id, cls, label, path) {
+        var b = document.createElement('button');
+        b.id = id; b.type = 'button';
+        b.className = 'lightbox-nav ' + cls;
+        b.setAttribute('aria-label', label);
+        b.innerHTML = '<svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" ' +
+                      'stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="' + path + '"/></svg>';
+        lightbox.appendChild(b);
+        return b;
+      };
+      var prevBtn = mkArrow('landing-lb-prev', 'lightbox-nav--prev', 'Vorheriges Bild', 'M15 18l-6-6 6-6');
+      var nextBtn = mkArrow('landing-lb-next', 'lightbox-nav--next', 'Nächstes Bild',   'M9 18l6-6-6-6');
+
+      prevBtn.addEventListener('click', function (e) { e.stopPropagation(); if (lightbox._lbShow) lightbox._lbShow((lightbox._lbIndex || 0) - 1); });
+      nextBtn.addEventListener('click', function (e) { e.stopPropagation(); if (lightbox._lbShow) lightbox._lbShow((lightbox._lbIndex || 0) + 1); });
+
+      if (lightboxClose) lightboxClose.addEventListener('click', function () { if (lightbox._lbClose) lightbox._lbClose(); });
+      lightbox.addEventListener('click', function (e) { if (e.target === lightbox && lightbox._lbClose) lightbox._lbClose(); });
+      document.addEventListener('keydown', function (e) {
+        if (!lightbox.classList.contains('is-active') || !lightbox.classList.contains('has-nav')) return;
+        if (e.key === 'Escape')          { if (lightbox._lbClose) lightbox._lbClose(); }
+        else if (e.key === 'ArrowLeft')  { if (lightbox._lbShow) lightbox._lbShow((lightbox._lbIndex || 0) - 1); }
+        else if (e.key === 'ArrowRight') { if (lightbox._lbShow) lightbox._lbShow((lightbox._lbIndex || 0) + 1); }
+      });
+    }
+
+    /* Per-init: bind click on each (freshly rendered) gallery image. */
+    galleryImgs.forEach(function (img, i) {
       img.addEventListener('click', function (e) {
         if (window.innerWidth < 992) return;
         e.preventDefault();
-
-        const highResSrc = img.src
-          .replace(/w_\d+/, 'w_1200')
-          .replace(/w_320/, 'w_1200')
-          .replace(/w_400/, 'w_1200');
-
-        let lightboxImg = document.getElementById('lightbox-img');
-        if (!lightboxImg) {
-          lightboxImg    = document.createElement('img');
-          lightboxImg.id = 'lightbox-img';
-          lightboxImg.className = 'lightbox-image';
-          lightboxImg.alt = 'Vergössertes Bild';
-          lightbox.appendChild(lightboxImg);
-        }
-
-        lightboxImg.src = highResSrc;
-        lightbox.classList.add('is-active');
+        lbOpen(i);
       });
-    });
-
-    function closeLightbox() {
-      lightbox.classList.remove('is-active');
-      const img = document.getElementById('lightbox-img');
-      if (img) setTimeout(function () { img.src = ''; }, 300);
-    }
-
-    if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
-
-    lightbox.addEventListener('click', function (e) {
-      if (e.target === lightbox) closeLightbox();
-    });
-
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && lightbox.classList.contains('is-active')) closeLightbox();
     });
   }
 

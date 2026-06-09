@@ -1255,6 +1255,43 @@ html.landing-hero-active .ambernord-topbar .ambernord-logo-eubio {
   color: var(--color-gold);
 }
 
+/* Prev / next gallery arrows — only shown while the landing lightbox is open
+   (gated by .has-nav so the shared dossier lightbox is unaffected). */
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(20, 16, 12, 0.55);
+  border: 1px solid rgba(237, 163, 35, 0.35);
+  color: var(--color-text);
+  cursor: pointer;
+  padding: 0;
+  z-index: 5;
+  transition: background var(--t-fast) ease, color var(--t-fast) ease, transform var(--t-fast) ease;
+}
+
+.lightbox-overlay.is-active.has-nav .lightbox-nav { display: inline-flex; }
+
+.lightbox-nav--prev { left: 32px; }
+.lightbox-nav--next { right: 32px; }
+
+.lightbox-nav:hover,
+.lightbox-nav:focus-visible {
+  background: rgba(237, 163, 35, 0.92);
+  color: #0a0a0a;
+  transform: translateY(-50%) scale(1.06);
+}
+
+@media (max-width: 991px) {
+  .lightbox-nav { display: none !important; }
+}
+
 /* =========================================================================
    12. RESPONSIVE — MOBILE NAV
    ========================================================================= */

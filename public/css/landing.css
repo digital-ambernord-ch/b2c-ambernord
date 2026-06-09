@@ -66,8 +66,13 @@
 
 .scroll-track {
   position: relative;
-  height: 200vh;   /* fallback for browsers without dvh support */
-  height: 200dvh;  /* dvh tracks the visible viewport, unaffected by iOS address bar */
+  /* Reduced 200→160 so the dead black scroll between the hero exit and the
+     product section is roughly halved. The hero timeline is scrub-linked, so
+     it simply replays over less scroll — the animation + RELATIVE timing
+     (cards vs bottle) are unchanged, just less empty void at the handoff.
+     This number is the tuning lever: lower = tighter/faster, higher = airier. */
+  height: 160vh;   /* fallback for browsers without dvh support */
+  height: 160dvh;  /* dvh tracks the visible viewport, unaffected by iOS address bar */
   background-color: var(--color-bg);
   width: 100%;
 }
@@ -1058,6 +1063,33 @@
 
 .trust-payment-row img:hover { opacity: 0.9; }
 
+/* Combined trust + secure-payment footer (desktop) — the anchored proof bar
+   beneath the product cards. Trust badges row, a hairline gold divider, then
+   the payment methods, wrapped in one subtle premium panel. The payment group
+   is moved into this wrapper by landing.js on desktop only. */
+@media (min-width: 992px) {
+  #conversion-boosters {
+    max-width: 720px;
+    margin: 8px auto 0;
+    padding: 20px 34px 18px;
+    background: linear-gradient(160deg, rgba(40, 32, 22, 0.30) 0%, rgba(15, 12, 10, 0.50) 100%);
+    border: 1px solid rgba(237, 163, 35, 0.22);
+    border-radius: 20px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.40);
+  }
+  #conversion-boosters .trust-ribbon {
+    margin: 0;
+    padding: 4px 0 16px;
+    border-bottom: 1px solid rgba(237, 163, 35, 0.16);
+  }
+  #conversion-boosters .ritual-payment-group {
+    margin: 0;
+    border-top: none;
+    padding: 16px 0 0;
+  }
+  #conversion-boosters .trust-payment-row { margin: 0; }
+}
+
 .protocol-info-block {
   max-width: 700px;
   margin: 0 auto;
@@ -1364,23 +1396,27 @@
     border: none;
     border-radius: 0;
     box-shadow: none;
-    min-height: 100vh;
-    justify-content: flex-end;   /* prose settles in the lower third */
+    /* 88vh (was 100vh) + content vertically centred → the image is visible
+       above AND below the prose, so there is far less dead black at the top of
+       the scene. Halves the black void at the payment → Manifest handoff. */
+    min-height: 88vh;
+    justify-content: center;
   }
   .nature-hero-block:hover { border-color: transparent; }
 
   /* Background bleeds full-screen; brightness trimmed for premium contrast. */
-  .nature-hero-bg { filter: brightness(0.74) contrast(1.07); }
+  .nature-hero-bg { filter: brightness(0.78) contrast(1.06); }
 
-  /* Dark at BOTH ends, image visible through the middle — a soft vignette.
-     Adjacent blocks therefore meet black-on-black = seamless scene cross-fade. */
+  /* Dark at both ends, image visible through the middle — a soft vignette with
+     a THINNER top band so the photo reveals sooner (less black at the top).
+     Adjacent blocks still meet black-on-black = seamless scene cross-fade. */
   .nature-hero-overlay {
     background: linear-gradient(
       to bottom,
       #0a0a0a 0%,
-      rgba(10,10,10,0.32) 30%,
-      rgba(10,10,10,0.42) 58%,
-      rgba(10,10,10,0.92) 86%,
+      rgba(10,10,10,0.30) 12%,
+      rgba(10,10,10,0.34) 48%,
+      rgba(10,10,10,0.88) 84%,
       #0a0a0a 100%
     );
   }
@@ -1389,11 +1425,23 @@
   .nature-hero-content {
     max-width: 1320px;
     margin: 0 auto;
-    padding: 0 7vw 13vh;
+    padding: 6vh 7vw;
     text-align: left;
     align-items: flex-start;
   }
   .nature-hero-content > * { max-width: 640px; }
+
+  /* Brighter, more legible prose — matched to the Exclusive Sourcing section
+     (full --color-text + drop-shadow) so the copy reads cleanly over the photo. */
+  .nature-hero-content .ambernord-content-text,
+  .nature-hero-content .editorial-lead {
+    color: var(--color-text);
+    font-weight: 400;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.92), 0 0 4px rgba(0,0,0,0.7);
+  }
+  .nature-hero-content .ambernord-content-title {
+    text-shadow: 0 2px 14px rgba(0,0,0,0.85);
+  }
 
   /* Ritual (2nd block) mirrors to the right edge for visual rhythm; the text
      itself stays left-aligned so the drop-cap + prose still read naturally. */
@@ -1406,6 +1454,11 @@
     margin-left: 0;
     margin-right: 0;
   }
+
+  /* Trim the product section's bottom padding so the bottle → Manifest handoff
+     is tight (less black before the first full-bleed scene). */
+  #shop.ambernord-section-wrapper { padding-bottom: 24px; }
+  .editorial-bento-grid { padding-top: 0; }
 }
 
 /* =========================================================================
