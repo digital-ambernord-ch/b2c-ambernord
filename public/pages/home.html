@@ -142,23 +142,6 @@
   </div>
 </section>
 
-<div class="conversion-booster-wrapper" id="conversion-boosters">
-  <div class="trust-ribbon" role="list" aria-label="Vertrauensmerkmale">
-    <div class="trust-item" role="listitem">
-      <span class="trust-text" data-i18n="trust.lab.title">Laborgeprüft</span>
-      <span class="trust-subtext" data-i18n="trust.lab.subtitle">Höchste Reinheitsstandards</span>
-    </div>
-    <div class="trust-item" role="listitem">
-      <span class="trust-text" data-i18n="trust.premium.title">Bio-zertifiziert</span>
-      <span class="trust-subtext" data-i18n="trust.premium.subtitle">Schweizer Manufaktur</span>
-    </div>
-    <div class="trust-item" role="listitem">
-      <span class="trust-text" data-i18n="trust.shipping.title">Versand in 24h</span>
-      <span class="trust-subtext" data-i18n="trust.shipping.subtitle">Direkt aus Aarau</span>
-    </div>
-  </div>
-</div>
-
 <div id="shop" class="ambernord-section-wrapper">
   <div class="ambernord-section-inner" id="ritual-products">
 
@@ -278,6 +261,27 @@
     </a>
 
     </div><!-- /.ritual-cards-group -->
+
+    <!-- Trust ribbon — revealed as the product cards exit (desktop) so the
+         proof signals land exactly when the product animation resolves, right
+         before the bridge bottle emerges. On mobile it stays display:none and
+         its items are reparented into the hero animation (see landing.js). -->
+    <div class="conversion-booster-wrapper" id="conversion-boosters">
+      <div class="trust-ribbon" role="list" aria-label="Vertrauensmerkmale">
+        <div class="trust-item" role="listitem">
+          <span class="trust-text" data-i18n="trust.lab.title">Laborgeprüft</span>
+          <span class="trust-subtext" data-i18n="trust.lab.subtitle">Höchste Reinheitsstandards</span>
+        </div>
+        <div class="trust-item" role="listitem">
+          <span class="trust-text" data-i18n="trust.premium.title">Bio-zertifiziert</span>
+          <span class="trust-subtext" data-i18n="trust.premium.subtitle">Schweizer Manufaktur</span>
+        </div>
+        <div class="trust-item" role="listitem">
+          <span class="trust-text" data-i18n="trust.shipping.title">Versand in 24h</span>
+          <span class="trust-subtext" data-i18n="trust.shipping.subtitle">Direkt aus Aarau</span>
+        </div>
+      </div>
+    </div>
 
     <!-- "Das tägliche Ritual" lives INSIDE #ritual-products, OUTSIDE the
          cards-group + payment-group wrappers. On mobile it's the 4th card

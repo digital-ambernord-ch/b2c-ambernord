@@ -91,11 +91,12 @@
   z-index: 20;        /* stay above the rising product section during animation */
 }
 
-/* Product section rises immediately when hero exits — no dark gap */
+/* Trust ribbon now lives INSIDE #ritual-products (after the product cards) so
+   it resolves with the product-exit animation. Neutral flow positioning here;
+   the desktop reveal (lift + fade) is driven by GSAP in landing.js. */
 .conversion-booster-wrapper {
   position: relative;
   z-index: 1;
-  margin-top: calc(-100vh + var(--nav-height));
   background-color: var(--color-bg);
 }
 
@@ -489,13 +490,12 @@
    ========================================================================= */
 
 .conversion-booster-wrapper {
-  background-color: var(--color-bg);
+  background-color: transparent;
   position: relative;
   z-index: var(--z-above);
-  padding: 20px var(--container-pad) 0;
   max-width: 1100px;
-  margin: -200px auto 0 auto;
-  padding-top: 40px;
+  margin: 0 auto;
+  padding: 10px var(--container-pad) 0;
 }
 
 .trust-ribbon {
@@ -1333,6 +1333,78 @@
   .editorial-pullquote {
     font-size: 18px;
     padding: var(--space-xs) var(--space-sm);
+  }
+}
+
+/* =========================================================================
+   FULL-BLEED CINEMATIC EDITORIAL — desktop only.
+   Replaces the isolated "rounded card on black" treatment with an
+   edge-to-edge cinematic strip: the Manifest + Ritual backgrounds bleed to
+   the viewport edges, dark vignette overlays at BOTH top and bottom fuse
+   adjacent blocks (no visible seam = one continuous scroll), and the prose
+   is side-aligned (Manifest column left, Ritual column right) and slides in
+   on scroll (driven by GSAP in landing.js). Mobile keeps the original pinned
+   card layout untouched.
+   ========================================================================= */
+@media (min-width: 992px) {
+  /* Break out of the centered max-width container → blocks go edge-to-edge. */
+  .editorial-bento-grid {
+    max-width: none;
+    padding: 0;
+  }
+
+  /* Blocks butt directly together — their dark vignette ends meet
+     black-on-black, so the two scenes read as one continuous sequence. */
+  .nature-hero-wrapper + .nature-hero-wrapper {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .nature-hero-block {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    min-height: 100vh;
+    justify-content: flex-end;   /* prose settles in the lower third */
+  }
+  .nature-hero-block:hover { border-color: transparent; }
+
+  /* Background bleeds full-screen; brightness trimmed for premium contrast. */
+  .nature-hero-bg { filter: brightness(0.74) contrast(1.07); }
+
+  /* Dark at BOTH ends, image visible through the middle — a soft vignette.
+     Adjacent blocks therefore meet black-on-black = seamless scene cross-fade. */
+  .nature-hero-overlay {
+    background: linear-gradient(
+      to bottom,
+      #0a0a0a 0%,
+      rgba(10,10,10,0.32) 30%,
+      rgba(10,10,10,0.42) 58%,
+      rgba(10,10,10,0.92) 86%,
+      #0a0a0a 100%
+    );
+  }
+
+  /* Side-aligned magazine column. Manifest sits left by default. */
+  .nature-hero-content {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 7vw 13vh;
+    text-align: left;
+    align-items: flex-start;
+  }
+  .nature-hero-content > * { max-width: 640px; }
+
+  /* Ritual (2nd block) mirrors to the right edge for visual rhythm; the text
+     itself stays left-aligned so the drop-cap + prose still read naturally. */
+  .nature-hero-wrapper:nth-of-type(2) .nature-hero-content {
+    align-items: flex-end;
+  }
+
+  /* Pull-quote inherits the column alignment instead of being force-centered. */
+  .nature-hero-content .editorial-pullquote {
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 

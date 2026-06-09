@@ -1,4 +1,5 @@
 {
+  "model": "claude-opus-4-8",
   "permissions": {
     "allow": [
       "Bash(node -c public/js/router.js)",
@@ -14,7 +15,8 @@
       "Bash(python3 *)",
       "PowerShell(py *)",
       "Bash(node *)",
-      "WebFetch(domain:a611d235.b2c-ambernord.pages.dev)"
+      "WebFetch(domain:a611d235.b2c-ambernord.pages.dev)",
+      "WebFetch(domain:172447de.b2c-ambernord.pages.dev)"
     ]
   }
 }

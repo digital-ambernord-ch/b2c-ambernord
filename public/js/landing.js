@@ -345,14 +345,16 @@ window.initLanding = async function () {
       .fromTo('.float-img',     { scale: 0.1, opacity: 0 },
                                 { scale: 1, opacity: 1, duration: 1.5, stagger: 0.12, ease: 'back.out(1.4)' }, 3.2)
 
-    /* Phase 3: Cards exit upward fast */
-      .to('.float-img',         { y: '-100vh', duration: 2.5, ease: 'power2.in' }, 5.2)
+    /* Phase 3: Cards drift upward — shorter distance + gentler ease so the
+       exit reads as ONE unified rise together with the bottle (which trails
+       just slightly behind), instead of the cards rocketing off ahead. */
+      .to('.float-img',         { y: '-75vh', duration: 3.2, ease: 'power1.in' }, 5.4)
 
-    /* Phase 4: Hero rises another 20vh from its centred resting point */
-      .to('.scalable-hero',     { y: function () { return computeHeroCenterY(55) - window.innerHeight * 0.2; },
-                                  duration: 2.5, ease: 'power2.in' }, 5.0);
+    /* Phase 4: Hero + bottle rise WITH the cards, lagging only slightly. */
+      .to('.scalable-hero',     { y: function () { return computeHeroCenterY(55) - window.innerHeight * 0.55; },
+                                  duration: 3.2, ease: 'power1.in' }, 5.7);
 
-    return createFlyingBottle(tl, true, 5.0, 2.5, 0.2);
+    return createFlyingBottle(tl, true, 5.7, 3.2, 0.55);
   });
 
   mm.add('(max-width: 991px)', function () {
@@ -410,44 +412,46 @@ window.initLanding = async function () {
     if (productCards.length < 3) return;
 
     const [starter, habit, protocol] = productCards;
+    const cards = [starter, habit, protocol];
     productCards.forEach(function (c) { c.style.transition = 'border-color var(--t-base) ease'; });
 
-    const trailingInfo = section.querySelector('.shop-trailing-info');
-    const paymentGroup = section.querySelector('.ritual-payment-group');
-    const trailUnit    = [trailingInfo, paymentGroup].filter(Boolean);
+    /* Trust ribbon now lives INSIDE this section (after the cards). It is the
+       "proof" beat that should land exactly when the product animation ends. */
+    const trustBand = section.querySelector('.conversion-booster-wrapper');
 
     const stConfig = pinScrollTrigger(section, pinDuration);
-    stConfig.onLeave = function () {
-      /* Cards are invisible (opacity:0 from exits) but still occupy layout space.
-         Hiding them lets shopHeading + bridgeWrap + trailingInfo flow without gap. */
-      gsap.set([starter, habit, protocol], { display: 'none' });
-    };
     stConfig.onLeaveBack = function () {
-      gsap.set([starter, habit, protocol], { clearProps: 'display,xPercent,opacity' });
-      gsap.set(trailUnit, { clearProps: 'y' });
-      if (bridgeWrap) gsap.set(bridgeWrap, { opacity: 0 });
+      gsap.set(cards, { clearProps: 'xPercent,opacity,height,marginBottom,paddingTop,paddingBottom,borderWidth,overflow' });
+      if (trustBand)  gsap.set(trustBand,  { clearProps: 'opacity,y' });
+      if (bridgeWrap) gsap.set(bridgeWrap, { clearProps: 'opacity,scale,filter' });
     };
 
     const tl = gsap.timeline({ scrollTrigger: stConfig });
 
-    /* Lift trailing info into the pinned viewport while cards animate out.
-       The section may be taller than the viewport — animate trailUnit upward
-       so it remains visible throughout the pin. */
-    if (trailUnit.length) {
-      var liftY = function () {
-        var excess = section.offsetHeight - (window.innerHeight - pinTopOffset()) + 20;
-        return excess > 0 ? -excess : 0;
-      };
-      tl.to(trailUnit, { y: liftY, ease: 'power1.out', duration: 0.50 }, 0.12);
+    /* Cards slide out sideways, then COLLAPSE their height so everything below
+       (trust ribbon → bridge bottle → trailing info) flows smoothly up into the
+       pinned viewport. Collapsing layout (instead of transform-lifting the
+       trail) avoids both the per-element lift math and any post-pin
+       mis-positioning — the content simply reflows as the cards shrink. */
+    tl.to(starter,  { xPercent: -160, opacity: 0, ease: 'power2.in', duration: 0.20 }, 0.10)
+      .to(habit,    { xPercent:  160, opacity: 0, ease: 'power2.in', duration: 0.20 }, 0.22)
+      .to(protocol, { xPercent:  160, opacity: 0, ease: 'power2.in', duration: 0.20 }, 0.34)
+      .set(cards,   { overflow: 'hidden' }, 0.42)
+      .to(cards,    { height: 0, marginBottom: 0, paddingTop: 0, paddingBottom: 0, borderWidth: 0,
+                      ease: 'power1.inOut', duration: 0.22 }, 0.44);
+
+    /* Trust badges resolve in — fade + slight rise, right as the cards clear. */
+    if (trustBand) {
+      gsap.set(trustBand, { opacity: 0, y: 26 });
+      tl.to(trustBand, { opacity: 1, y: 0, ease: 'power2.out', duration: 0.20 }, 0.58);
     }
 
-    tl.to(starter,  { xPercent: -160, opacity: 0, ease: 'power2.in', duration: 0.30 }, 0.12)
-      .to(habit,    { xPercent:  160, opacity: 0, ease: 'power2.in', duration: 0.30 }, 0.30)
-      .to(protocol, { xPercent:  160, opacity: 0, ease: 'power2.in', duration: 0.30 }, 0.48);
-
+    /* Bridge bottle EMERGES FROM DEPTH — scales up from a small, blurred core
+       (as if rising out of the dark) and sharpens to full size, then carries
+       upward with the natural scroll to lead into the Manifest scene. */
     if (bridgeWrap) {
-      gsap.set(bridgeWrap, { opacity: 0 });
-      tl.to(bridgeWrap, { opacity: 1, duration: 0.25, ease: 'power1.out' }, 0.78);
+      gsap.set(bridgeWrap, { opacity: 0, scale: 0.42, filter: 'blur(16px)', transformOrigin: '50% 62%' });
+      tl.to(bridgeWrap, { opacity: 1, scale: 1, filter: 'blur(0px)', ease: 'power2.out', duration: 0.32 }, 0.66);
     }
   }
 
@@ -487,10 +491,10 @@ window.initLanding = async function () {
     if (bridgeWrap) {
       gsap.set(bridgeWrap, { opacity: 0 });
       if (glassEls) gsap.set(glassEls.glassWrap, { opacity: 0, y: 20 });
-      tl.set([starter, habit, protocol], { display: 'none' }, 0.76);
-      tl.set(trailUnit, { y: 0 }, 0.76);
+      tl.set([starter, habit, protocol], { display: 'none' }, 0.78);
+      tl.set(trailUnit, { y: 0 }, 0.78);
       /* bridgeWrap (bottle + glass container) snaps visible */
-      tl.to(bridgeWrap, { opacity: 1, duration: 0.02, ease: 'none' }, 0.77);
+      tl.to(bridgeWrap, { opacity: 1, duration: 0.02, ease: 'none' }, 0.79);
     }
 
     /* Timeline (pinDuration 3000px → each 0.01 = 30px of scroll):
@@ -571,7 +575,7 @@ window.initLanding = async function () {
 
     var wrap = document.createElement('div');
     wrap.setAttribute('aria-hidden', 'true');
-    wrap.style.cssText = 'display:flex;justify-content:center;align-items:center;width:100%;padding:30px 0;opacity:0;will-change:opacity;';
+    wrap.style.cssText = 'display:flex;justify-content:center;align-items:center;width:100%;padding:30px 0;opacity:0;will-change:opacity,transform,filter;';
 
     var btl = document.createElement('img');
     btl.src = 'https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:good,h_1000/v1775476093/ambernord-bio-sanddornsaft-zelt-edition-250ml-schweiz.webp_kl6nqj.png';
@@ -673,7 +677,6 @@ window.initLanding = async function () {
         if (pairWrap.parentNode) pairWrap.parentNode.removeChild(pairWrap);
         if (lbl.parentNode)      lbl.parentNode.removeChild(lbl);
         bWrap.style.flexDirection  = '';
-        bWrap.style.justifyContent = '';
         bWrap.style.minHeight      = '';
         bWrap.style.padding        = '30px 0';
         bWrap.style.position       = '';
@@ -683,18 +686,16 @@ window.initLanding = async function () {
 
   /* pinScrollTrigger shared with desktop editorial; not used for mobile product. */
   mm.add('(min-width: 992px)', function () {
-    attachProductCardsExitDesktop(1000, bridgeWrap);
+    attachProductCardsExitDesktop(1100, bridgeWrap);
     return function () {
       var section = document.getElementById('ritual-products');
       if (section) {
-        var cards    = section.querySelectorAll('.premium-product-card');
-        var trailing = section.querySelector('.shop-trailing-info');
-        var payment  = section.querySelector('.ritual-payment-group');
-        gsap.set(Array.from(cards), { clearProps: 'display,xPercent,opacity' });
-        if (trailing) gsap.set(trailing, { clearProps: 'y' });
-        if (payment)  gsap.set(payment,  { clearProps: 'y' });
+        var cards     = section.querySelectorAll('.premium-product-card');
+        var trustBand = section.querySelector('.conversion-booster-wrapper');
+        gsap.set(Array.from(cards), { clearProps: 'xPercent,opacity,height,marginBottom,paddingTop,paddingBottom,borderWidth,overflow' });
+        if (trustBand) gsap.set(trustBand, { clearProps: 'opacity,y' });
       }
-      if (bridgeWrap) gsap.set(bridgeWrap, { clearProps: 'opacity' });
+      if (bridgeWrap) gsap.set(bridgeWrap, { clearProps: 'opacity,scale,filter' });
     };
   });
   mm.add('(max-width: 991px)', function () {
@@ -1013,10 +1014,59 @@ window.initLanding = async function () {
     }
   }
 
+  /* =========================================================================
+     FULL-BLEED CINEMATIC EDITORIAL — desktop.
+     Replaces the pinned "isolated card on black" treatment. Each block is a
+     full-viewport scene (CSS makes it edge-to-edge with a top+bottom dark
+     vignette so adjacent scenes fuse seamlessly). On scroll the prose slides
+     in from the side — Manifest from the left, Ritual from the right — and the
+     background gets a gentle parallax drift. No pin: the page never locks, so
+     the section reads as one continuous cinematic flow instead of a frame that
+     freezes, plays, and evaporates.
+     ========================================================================= */
+  function attachEditorialCinematic(block, fromLeft) {
+    if (reducedMotion || !block.wrapper) return;
+    const content = block.wrapper.querySelector('.nature-hero-content');
+    if (!content) return;
+    const items = Array.from(content.children);
+    if (!items.length) return;
+
+    const dir = fromLeft ? -1 : 1;
+
+    /* Prose slides in from the side as the scene enters the lower viewport. */
+    gsap.set(items, { opacity: 0, x: dir * 90, y: 24 });
+    gsap.to(items, {
+      opacity: 1, x: 0, y: 0,
+      duration: 1.1, stagger: 0.1, ease: 'power3.out',
+      scrollTrigger: {
+        trigger: block.wrapper,
+        start: 'top 62%',
+        toggleActions: 'play none none reverse',
+        invalidateOnRefresh: true
+      }
+    });
+
+    /* Background parallax drift (extra scale gives headroom so the translate
+       never exposes an edge). Keeps the full-bleed image alive while scrolling. */
+    if (block.bg) {
+      gsap.fromTo(block.bg,
+        { yPercent: -6, scale: 1.12 },
+        { yPercent: 6, scale: 1.12, ease: 'none',
+          scrollTrigger: {
+            trigger: block.wrapper,
+            start: 'top bottom',
+            end:   'bottom top',
+            scrub: 1.2,
+            invalidateOnRefresh: true
+          }
+        });
+    }
+  }
+
   mm.add('(min-width: 992px)', function () {
-    if (editorialBlocks[0]) attachManifestShatter(editorialBlocks[0], 550, 1000, editorialPinStart(editorialBlocks[0].wrapper));
-    /* Ritual converted to plain scroll-reveal — pin and word eruption removed. */
-    if (editorialBlocks[1]) attachRitualReveal(editorialBlocks[1]);
+    /* Manifest reads in from the left, Ritual mirrors in from the right. */
+    if (editorialBlocks[0]) attachEditorialCinematic(editorialBlocks[0], true);
+    if (editorialBlocks[1]) attachEditorialCinematic(editorialBlocks[1], false);
   });
   mm.add('(max-width: 991px)', function () {
     if (editorialBlocks[0]) {
