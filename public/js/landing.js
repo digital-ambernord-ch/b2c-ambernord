@@ -402,61 +402,67 @@ window.initLanding = async function () {
      (hover translateY becomes instant — minor cost).
      ========================================================================= */
 
-  function attachProductCardsExitDesktop(pinDuration) {
-    if (reducedMotion) return;
+  /* =========================================================================
+     DESKTOP BRIDGE BOTTLE SCENE — big, glowing, screen-filling.
+     The product section is STATIC (cards + payment + trust always visible).
+     After it, this bottle scene fills the viewport with a large bottle wrapped
+     in a warm gold halo to grab attention, then rises with the scroll into the
+     Manifest. ("Das tägliche Ritual" usage text sits directly beneath it.)
+     ========================================================================= */
+  function setupDesktopBridge(bWrap) {
+    if (reducedMotion || !bWrap) return;
+    const img = bWrap.querySelector('img');
+    if (!img) return;
 
-    const section = document.getElementById('ritual-products');
-    if (!section) return;
+    /* Big bottle — fills most of the viewport height. */
+    img.style.width    = 'auto';
+    img.style.height   = Math.round(window.innerHeight * 0.74) + 'px';
+    img.style.maxWidth = '90vw';
+    img.style.position = 'relative';
+    img.style.zIndex   = '2';
+    img.style.filter   = 'drop-shadow(0 0 60px rgba(237,163,35,0.42)) drop-shadow(0 0 140px rgba(237,163,35,0.20))';
 
-    const productCards = section.querySelectorAll('.premium-product-card');
-    if (productCards.length < 3) return;
+    /* Scene wrapper becomes a full-height stage. */
+    bWrap.style.position  = 'relative';
+    bWrap.style.minHeight = '92vh';
+    bWrap.style.padding   = '0';
+    bWrap.style.overflow  = 'visible';
 
-    const [starter, habit, protocol] = productCards;
-    const cards = [starter, habit, protocol];
-    productCards.forEach(function (c) { c.style.transition = 'border-color var(--t-base) ease'; });
-
-    /* Trust + payment footer (payment is merged into this wrapper on desktop
-       by the mm block below). It must land early and STAY visible as the
-       anchored proof/checkout bar for the rest of the product animation. */
-    const trustBand = section.querySelector('.conversion-booster-wrapper');
-
-    const stConfig = pinScrollTrigger(section, pinDuration);
-    stConfig.onLeaveBack = function () {
-      gsap.set(cards, { clearProps: 'xPercent,opacity,height,marginBottom,paddingTop,paddingBottom,borderWidth,overflow' });
-      if (trustBand) gsap.set(trustBand, { clearProps: 'opacity,y' });
-    };
-
-    const tl = gsap.timeline({ scrollTrigger: stConfig });
-
-    /* Cards slide out and COLLAPSE their height EARLY so the trust + payment
-       footer reflows up into the pinned viewport and stays visible for the
-       rest of the animation. Collapsing layout (vs transform-lifting) avoids
-       per-element lift math and any post-pin mis-positioning. */
-    tl.to(starter,  { xPercent: -160, opacity: 0, ease: 'power2.in', duration: 0.18 }, 0.06)
-      .to(habit,    { xPercent:  160, opacity: 0, ease: 'power2.in', duration: 0.18 }, 0.16)
-      .to(protocol, { xPercent:  160, opacity: 0, ease: 'power2.in', duration: 0.18 }, 0.26)
-      .set(cards,   { overflow: 'hidden' }, 0.34)
-      .to(cards,    { height: 0, marginBottom: 0, paddingTop: 0, paddingBottom: 0, borderWidth: 0,
-                      ease: 'power1.inOut', duration: 0.22 }, 0.36);
-
-    /* Trust + payment footer settles in as the cards clear, then holds. */
-    if (trustBand) {
-      gsap.set(trustBand, { opacity: 0, y: 24 });
-      tl.to(trustBand, { opacity: 1, y: 0, ease: 'power2.out', duration: 0.22 }, 0.40);
+    /* Warm gold halo behind the bottle. */
+    let glow = bWrap.querySelector('.bridge-glow');
+    if (!glow) {
+      glow = document.createElement('div');
+      glow.className = 'bridge-glow';
+      glow.setAttribute('aria-hidden', 'true');
+      var glowSize = 'min(100vh, 92vw)';
+      glow.style.cssText =
+        'position:absolute;top:50%;left:50%;width:' + glowSize + ';height:' + glowSize + ';' +
+        'transform:translate(-50%,-50%);z-index:1;pointer-events:none;border-radius:50%;' +
+        'background:radial-gradient(circle at center,rgba(237,163,35,0.26) 0%,' +
+        'rgba(237,163,35,0.12) 36%,rgba(237,163,35,0.04) 56%,transparent 70%);';
+      bWrap.insertBefore(glow, img);
     }
   }
 
-  /* =========================================================================
-     BRIDGE BOTTLE RISE — desktop.
-     The bottle is ALREADY in place (no depth/zoom emergence). As it scrolls
-     through, a gentle parallax drifts it upward ("uzbrauc augšā") so it leads
-     the eye out of the product block and into the Manifest scene.
-     ========================================================================= */
+  function cleanupDesktopBridge(bWrap) {
+    if (!bWrap) return;
+    const img = bWrap.querySelector('img');
+    if (img) {
+      img.style.width = ''; img.style.height = ''; img.style.maxWidth = '';
+      img.style.position = ''; img.style.zIndex = ''; img.style.filter = '';
+    }
+    bWrap.style.position = ''; bWrap.style.minHeight = ''; bWrap.style.padding = '30px 0'; bWrap.style.overflow = '';
+    const glow = bWrap.querySelector('.bridge-glow');
+    if (glow && glow.parentNode) glow.parentNode.removeChild(glow);
+  }
+
+  /* Gentle parallax — the whole bottle scene drifts upward as it scrolls,
+     leading the eye out of the product block and up into the Manifest. */
   function attachBridgeBottleRiseDesktop(bWrap) {
     if (reducedMotion || !bWrap) return;
     gsap.fromTo(bWrap,
-      { yPercent: 14 },
-      { yPercent: -46, ease: 'none',
+      { yPercent: 8 },
+      { yPercent: -30, ease: 'none',
         scrollTrigger: {
           trigger: bWrap,
           start: 'top bottom',
@@ -698,32 +704,32 @@ window.initLanding = async function () {
 
   /* pinScrollTrigger shared with desktop editorial; not used for mobile product. */
   mm.add('(min-width: 992px)', function () {
-    var section   = document.getElementById('ritual-products');
-    var trustBand = section && section.querySelector('.conversion-booster-wrapper');
-    var payment   = section && section.querySelector('.ritual-payment-group');
-    var trailing  = section && section.querySelector('.shop-trailing-info');
+    var section    = document.getElementById('ritual-products');
+    var cardsGroup = section && section.querySelector('.ritual-cards-group');
+    var trustBand  = section && section.querySelector('.conversion-booster-wrapper');
+    var payment    = section && section.querySelector('.ritual-payment-group');
+    var trailing   = section && section.querySelector('.shop-trailing-info');
 
-    /* Desktop composition:
-       1) Merge payment icons INTO the trust wrapper → one anchored proof bar.
-       2) Move the bridge bottle to the very END (after trailing) so it is the
-          riser that leads into the Manifest, and make it visible in place
-          (it's "already there", no depth emergence). */
-    if (trustBand && payment) trustBand.appendChild(payment);
-    if (section && bridgeWrap) section.appendChild(bridgeWrap);
-    if (bridgeWrap) gsap.set(bridgeWrap, { opacity: 1, clearProps: 'scale,filter' });
+    /* Desktop STATIC order: cards → payment → (breathing gap) trust →
+       big bottle scene → "Das tägliche Ritual" trailing. Payment + trust are
+       permanent parts of the product block (always visible, never revealed at
+       the end). The cards compact via CSS so it all fits the viewport. */
+    if (cardsGroup && payment)   cardsGroup.after(payment);
+    if (payment && trustBand)    payment.after(trustBand);
+    if (trustBand && bridgeWrap) trustBand.after(bridgeWrap);
+    if (bridgeWrap && trailing)  bridgeWrap.after(trailing);
 
-    attachProductCardsExitDesktop(1100);
+    if (bridgeWrap) gsap.set(bridgeWrap, { opacity: 1, clearProps: 'scale,filter,y' });
+    setupDesktopBridge(bridgeWrap);
     attachBridgeBottleRiseDesktop(bridgeWrap);
 
     return function () {
-      if (section) {
-        var cards = section.querySelectorAll('.premium-product-card');
-        gsap.set(Array.from(cards), { clearProps: 'xPercent,opacity,height,marginBottom,paddingTop,paddingBottom,borderWidth,overflow' });
-        if (trustBand) gsap.set(trustBand, { clearProps: 'opacity,y' });
-        /* Restore the mobile DOM order: payment after trailing, bottle before it. */
-        if (payment && trailing)    trailing.after(payment);
-        if (bridgeWrap && trailing) trailing.before(bridgeWrap);
-      }
+      cleanupDesktopBridge(bridgeWrap);
+      /* Restore mobile DOM order: cards, trust, bottle(before trailing), trailing, payment. */
+      if (cardsGroup && trustBand) cardsGroup.after(trustBand);
+      if (trustBand && trailing)   trustBand.after(trailing);
+      if (trailing && payment)     trailing.after(payment);
+      if (bridgeWrap && trailing)  trailing.before(bridgeWrap);
       if (bridgeWrap) gsap.set(bridgeWrap, { clearProps: 'opacity,scale,filter,yPercent,y' });
     };
   });
