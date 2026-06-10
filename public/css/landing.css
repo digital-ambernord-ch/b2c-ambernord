@@ -66,13 +66,15 @@
 
 .scroll-track {
   position: relative;
-  /* Reduced 200→130 so the dead black scroll between the hero exit and the
-     product section is cut hard. The hero timeline is scrub-linked, so it
-     simply replays over less scroll — the animation + RELATIVE timing (cards
-     vs bottle) are unchanged, just much less empty void at the handoff.
-     This number is the tuning lever: lower = tighter/faster, higher = airier. */
-  height: 130vh;   /* fallback for browsers without dvh support */
-  height: 130dvh;  /* dvh tracks the visible viewport, unaffected by iOS address bar */
+  /* 240vh = 140vh of scrub range for the hero timeline. 130vh compressed the
+     whole choreography into ~30vh of scroll — it flashed past in one wheel
+     tick and left a full viewport of dead black until #shop arrived. The
+     dead black at the handoff is now solved by OVERLAP instead of a short
+     track: #shop is pulled up under the hero's exit phase (see the desktop
+     #shop margin-top rule), so the heading rises into view while the bottle
+     is still exiting. This number is the pacing lever: lower = faster. */
+  height: 240vh;   /* fallback for browsers without dvh support */
+  height: 240dvh;  /* dvh tracks the visible viewport, unaffected by iOS address bar */
   background-color: var(--color-bg);
   width: 100%;
 }
@@ -94,6 +96,9 @@
   justify-content: center;
   overflow: hidden;   /* clip hero & card exit cleanly within the pinned area */
   z-index: 20;        /* stay above the rising product section during animation */
+  /* #shop now slides up UNDER this layer during the hero exit — without this
+     the transparent sticky area would swallow clicks on the product cards. */
+  pointer-events: none;
 }
 
 /* Trust ribbon now lives INSIDE #ritual-products (after the product cards) so
@@ -107,6 +112,7 @@
 
 .scalable-hero {
   position: relative;
+  pointer-events: auto; /* hero CTA stays clickable inside the inert sticky layer */
   width: calc(100vw - 40px);
   /* Keep hero shorter than .sticky-viewport (top: nav+aktion+8) so the hero
      never overflows when aktion bar is active on mobile; otherwise the bottom
@@ -1473,7 +1479,12 @@
      keep the bottle → trailing → Manifest handoff tight (minimal black). */
   #shop .premium-product-card { padding: 26px 44px; margin-bottom: 20px; }
   #shop .shop-heading-wrap { margin-bottom: 32px; }
-  #shop.ambernord-section-wrapper { padding-top: 12px; padding-bottom: 8px; }
+  /* margin-top -50vh overlaps #shop with the hero's exit phase: the timeline's
+     rise (last ~36% of a 140vh scrub range) begins right as the heading enters
+     the viewport bottom, so the bottle exits upward WHILE the products rise in
+     — no dead black between the two scenes. Shop content paints above the
+     scroll-track bg (z 10) but below the sticky hero layer (z 20). */
+  #shop.ambernord-section-wrapper { margin-top: -50vh; padding-top: 12px; padding-bottom: 8px; }
   #shop .shop-trailing-info { margin-top: 16px; padding: 8px 0 0; }
   .editorial-bento-grid { padding-top: 0; }
 }
@@ -1658,7 +1669,9 @@
 /* Mini gallery (desktop 3-col grid, mobile horizontal scroll) */
 .sourcing-mini-gallery {
   max-width: 1100px;
-  margin: 0 auto 120px auto;
+  /* 48px (was 120px): together with the closing CTA's own padding this kept
+     a ~280px black band between the gallery and "Wähle dein Ritual". */
+  margin: 0 auto 48px auto;
   padding: 0 var(--container-pad);
 }
 
@@ -1915,7 +1928,7 @@
   position: relative;
   z-index: 10;
   background-color: var(--color-bg);
-  padding: 120px var(--container-pad) 140px;
+  padding: 80px var(--container-pad) 110px;
   text-align: center;
 }
 

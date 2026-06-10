@@ -360,8 +360,10 @@ window.initLanding = async function () {
   mm.add('(max-width: 991px)', function () {
     if (reducedMotion) return;
 
+    /* 210dvh = 110dvh of scrub range for the 9.5-unit mobile timeline; at the
+       CSS fallback height the whole choreography flashed past in ~40dvh. */
     const scrollTrack = document.getElementById('scrollTrack');
-    if (scrollTrack) scrollTrack.style.height = '140dvh';
+    if (scrollTrack) scrollTrack.style.height = '210dvh';
 
     const tlMobile = gsap.timeline({
       scrollTrigger: {
@@ -422,9 +424,11 @@ window.initLanding = async function () {
     img.style.zIndex   = '2';
     img.style.filter   = 'drop-shadow(0 0 60px rgba(237,163,35,0.42)) drop-shadow(0 0 140px rgba(237,163,35,0.20))';
 
-    /* Scene wrapper becomes a full-height stage. */
+    /* Scene wrapper becomes a (near) full-height stage. 80vh, not 92vh —
+       combined with the parallax drift the taller stage left a black hole
+       between the bottle and the "Das tägliche Ritual" trailing text. */
     bWrap.style.position  = 'relative';
-    bWrap.style.minHeight = '92vh';
+    bWrap.style.minHeight = '80vh';
     bWrap.style.padding   = '0';
     bWrap.style.overflow  = 'visible';
 
@@ -460,9 +464,11 @@ window.initLanding = async function () {
      leading the eye out of the product block and up into the Manifest. */
   function attachBridgeBottleRiseDesktop(bWrap) {
     if (reducedMotion || !bWrap) return;
+    /* Drift kept gentle (6 → -12): the old -30 endpoint pulled the bottle a
+       quarter-viewport up and opened a black gap before the trailing text. */
     gsap.fromTo(bWrap,
-      { yPercent: 8 },
-      { yPercent: -30, ease: 'none',
+      { yPercent: 6 },
+      { yPercent: -12, ease: 'none',
         scrollTrigger: {
           trigger: bWrap,
           start: 'top bottom',
@@ -492,6 +498,21 @@ window.initLanding = async function () {
     const margin    = function () { return parseFloat(getComputedStyle(starter).marginBottom) || 40; };
     const card1Lift = function () { return -(starter.offsetHeight + margin()); };
     const card2Lift = function () { return -(starter.offsetHeight + habit.offsetHeight + 2 * margin()); };
+
+    /* The pin spacer reserves the section's FULL height (3 visible cards),
+       but at pin end the cards are display:none — without compensation the
+       user scrolls through ~2 viewports of dead black between the payment
+       icons and the Manifest. Pull the editorial wrapper up by the height
+       the hidden cards used to occupy. Static (set before the editorial
+       ScrollTriggers are created) so all downstream trigger positions are
+       computed against the corrected layout. */
+    const editorialWrap = document.querySelector('.dynamic-editorial-wrapper');
+    if (editorialWrap) {
+      const collapsed = Math.round(
+        starter.offsetHeight + habit.offsetHeight + protocol.offsetHeight + 3 * margin()
+      );
+      editorialWrap.style.marginTop = -Math.max(0, collapsed) + 'px';
+    }
 
     const stConfig = pinScrollTrigger(section, pinDuration, undefined, 0.8);
     stConfig.onLeave = function () {
@@ -562,6 +583,7 @@ window.initLanding = async function () {
     return function () {
       gsap.set(Array.from(productCards), { clearProps: 'display,xPercent,opacity' });
       gsap.set(trailUnit, { clearProps: 'y' });
+      if (editorialWrap) editorialWrap.style.marginTop = '';
     };
   }
 

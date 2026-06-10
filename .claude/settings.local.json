@@ -1,5 +1,4 @@
 {
-  "model": "claude-opus-4-8",
   "permissions": {
     "allow": [
       "Bash(node -c public/js/router.js)",
@@ -16,7 +15,13 @@
       "PowerShell(py *)",
       "Bash(node *)",
       "WebFetch(domain:a611d235.b2c-ambernord.pages.dev)",
-      "WebFetch(domain:172447de.b2c-ambernord.pages.dev)"
+      "WebFetch(domain:172447de.b2c-ambernord.pages.dev)",
+      "PowerShell(Test-Path *)",
+      "PowerShell(New-Item *)",
+      "PowerShell(npm *)",
+      "PowerShell(Set-Location *)",
+      "PowerShell(node -c C:\\\\Users\\\\eriks\\\\Documents\\\\GitHub\\\\b2c-ambernord\\\\public\\\\js\\\\landing.js; if \\($?\\) { \"JS OK\" })"
     ]
-  }
+  },
+  "model": "claude-fable-5"
 }
