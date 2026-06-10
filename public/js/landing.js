@@ -486,6 +486,103 @@ window.initLanding = async function () {
   }
 
   /* =========================================================================
+     GOLD CONSTELLATION — builds an abstract gold dot-and-line sketch behind
+     the product cards. Returns helpers the pin timeline drives:
+       drawCluster(tl, idx, at) — self-draws cluster `idx` (lines via
+                                  dash-offset, dots scale in) at timeline `at`
+       reset()                  — back to the pre-draw blank state
+       cleanup()                — remove the layer, restore the cards group
+     Pure SVG overlay (pointer-events:none, z-index 0 → behind the cards). If
+     the cards group is missing it returns null and the pin runs unchanged. */
+  function buildGoldConstellation(section) {
+    if (reducedMotion || !section) return null;
+    const cardsGroup = section.querySelector('.ritual-cards-group');
+    if (!cardsGroup) return null;
+
+    const W = cardsGroup.offsetWidth;
+    const H = cardsGroup.offsetHeight;
+    if (!W || !H) return null;
+
+    const GOLD = 'rgba(237,163,35,0.9)';
+    const R    = Math.max(4, Math.round(W * 0.0042));
+
+    /* Normalised clusters (x,y in 0..1 of the cards-group box). Each later
+       cluster includes one line back to the previous one so the whole thing
+       reads as a single constellation, not three islands. */
+    const CLUSTERS = [
+      { dots: [[0.20,0.30],[0.36,0.22],[0.30,0.41]],
+        lines: [[0.20,0.30,0.36,0.22],[0.20,0.30,0.30,0.41]] },
+      { dots: [[0.66,0.47],[0.81,0.38],[0.73,0.57]],
+        lines: [[0.66,0.47,0.81,0.38],[0.66,0.47,0.73,0.57],[0.36,0.22,0.66,0.47]] },
+      { dots: [[0.31,0.74],[0.17,0.83],[0.47,0.80]],
+        lines: [[0.31,0.74,0.17,0.83],[0.31,0.74,0.47,0.80],[0.73,0.57,0.47,0.80]] }
+    ];
+
+    const SVGNS = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(SVGNS, 'svg');
+    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    svg.setAttribute('preserveAspectRatio', 'none');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.style.cssText =
+      'position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;' +
+      'pointer-events:none;overflow:visible;will-change:opacity;' +
+      'filter:drop-shadow(0 0 5px rgba(237,163,35,0.55));';
+
+    const clusters = CLUSTERS.map(function (c) {
+      const lineEls = c.lines.map(function (l) {
+        const ln = document.createElementNS(SVGNS, 'line');
+        ln.setAttribute('x1', l[0] * W); ln.setAttribute('y1', l[1] * H);
+        ln.setAttribute('x2', l[2] * W); ln.setAttribute('y2', l[3] * H);
+        ln.setAttribute('stroke', GOLD);
+        ln.setAttribute('stroke-width', '1.6');
+        ln.setAttribute('stroke-linecap', 'round');
+        ln.setAttribute('opacity', '0.55');
+        ln.setAttribute('pathLength', '1');
+        ln.setAttribute('stroke-dasharray', '1');
+        ln.setAttribute('stroke-dashoffset', '1');
+        svg.appendChild(ln);
+        return ln;
+      });
+      const dotEls = c.dots.map(function (d) {
+        const ci = document.createElementNS(SVGNS, 'circle');
+        ci.setAttribute('cx', d[0] * W); ci.setAttribute('cy', d[1] * H);
+        ci.setAttribute('r', '0');
+        ci.setAttribute('fill', GOLD);
+        svg.appendChild(ci);
+        return ci;
+      });
+      return { lines: lineEls, dots: dotEls };
+    });
+
+    cardsGroup.style.position = 'relative';
+    cardsGroup.insertBefore(svg, cardsGroup.firstChild);
+
+    const allLines = clusters.reduce(function (a, c) { return a.concat(c.lines); }, []);
+    const allDots  = clusters.reduce(function (a, c) { return a.concat(c.dots); }, []);
+
+    function reset() {
+      gsap.set(svg, { opacity: 1 });
+      gsap.set(allLines, { attr: { 'stroke-dashoffset': 1 } });
+      gsap.set(allDots,  { attr: { r: 0 }, opacity: 1 });
+    }
+
+    return {
+      svg: svg,
+      reset: reset,
+      drawCluster: function (tl, idx, at) {
+        const c = clusters[idx];
+        if (!c) return;
+        tl.to(c.lines, { attr: { 'stroke-dashoffset': 0 }, ease: 'none', duration: 0.10 }, at);
+        tl.to(c.dots,  { attr: { r: R }, ease: 'back.out(2.2)', duration: 0.10, stagger: 0.02 }, at + 0.02);
+      },
+      cleanup: function () {
+        if (svg.parentNode) svg.parentNode.removeChild(svg);
+        cardsGroup.style.position = '';
+      }
+    };
+  }
+
+  /* =========================================================================
      PRODUCT CARDS — desktop pinned exit (full-size cards).
      #ritual-products (heading + 3 full-size cards + payment + trust) pins under
      the topbar; The Starter flies LEFT, The Habit RIGHT, The Protocol RIGHT
@@ -520,9 +617,18 @@ window.initLanding = async function () {
       starter.offsetHeight + habit.offsetHeight + protocol.offsetHeight + 3 * cardMargin
     );
 
+    /* GOLD CONSTELLATION — an abstract gold dot-and-line sketch drawn BEHIND
+       the cards. As each card flies away it reveals a fresh cluster being
+       "drawn" (dots scale in, connecting lines self-draw via dash-offset);
+       once all three cards have left, the whole constellation fades out before
+       the bottle arrives — so the vacated card area is never plain black.
+       Purely additive: its own SVG layer + tweens on the SAME timeline. */
+    const constellation = buildGoldConstellation(section);
+
     const stConfig = pinScrollTrigger(section, pinDuration);
     stConfig.onLeaveBack = function () {
       gsap.set(cards, { clearProps: 'xPercent,opacity,height,marginBottom,paddingTop,paddingBottom,borderWidth,overflow' });
+      if (constellation) constellation.reset();
     };
 
     const tl = gsap.timeline({ scrollTrigger: stConfig });
@@ -536,10 +642,20 @@ window.initLanding = async function () {
       .to(cards,    { height: 0, marginBottom: 0, paddingTop: 0, paddingBottom: 0, borderWidth: 0,
                       ease: 'power1.inOut', duration: 0.30 }, 0.50);
 
+    /* Constellation draws cluster-by-cluster as each card clears, then fades. */
+    if (constellation) {
+      constellation.reset();
+      constellation.drawCluster(tl, 0, 0.18);   /* after Starter (top) leaves   */
+      constellation.drawCluster(tl, 1, 0.32);   /* after Habit  (mid) leaves    */
+      constellation.drawCluster(tl, 2, 0.46);   /* after Protocol (bot) leaves  */
+      tl.to(constellation.svg, { opacity: 0, ease: 'power1.in', duration: 0.16 }, 0.56);
+    }
+
     return {
       collapsedH: collapsedH,
       cleanup: function () {
         gsap.set(cards, { clearProps: 'xPercent,opacity,height,marginBottom,paddingTop,paddingBottom,borderWidth,overflow' });
+        if (constellation) constellation.cleanup();
       }
     };
   }
