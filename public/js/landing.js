@@ -345,16 +345,19 @@ window.initLanding = async function () {
       .fromTo('.float-img',     { scale: 0.1, opacity: 0 },
                                 { scale: 1, opacity: 1, duration: 1.5, stagger: 0.12, ease: 'back.out(1.4)' }, 3.2)
 
-    /* Phase 3: Cards drift upward — shorter distance + gentler ease so the
-       exit reads as ONE unified rise together with the bottle (which trails
-       just slightly behind), instead of the cards rocketing off ahead. */
-      .to('.float-img',         { y: '-75vh', duration: 3.2, ease: 'power1.in' }, 5.4)
+    /* Phase 3: ONLY the surrounding cards drift away upward — they clear out
+       of the frame so attention lands on the centred bottle. */
+      .to('.float-img',         { y: '-85vh', duration: 3.2, ease: 'power1.in' }, 5.4)
 
-    /* Phase 4: Hero + bottle rise WITH the cards, lagging only slightly. */
-      .to('.scalable-hero',     { y: function () { return computeHeroCenterY(55) - window.innerHeight * 0.55; },
+    /* Phase 4: The hero card + bottle barely rise — they stay near centre so
+       the END of the hero is NOT an empty black viewport. The bottle remains
+       on screen as the product section scrolls up to meet it, so the hero →
+       shop handoff has almost no dead black (the old 0.55 rise lifted the
+       bottle fully off the top, leaving a full black viewport to scroll past). */
+      .to('.scalable-hero',     { y: function () { return computeHeroCenterY(55) - window.innerHeight * 0.12; },
                                   duration: 3.2, ease: 'power1.in' }, 5.7);
 
-    return createFlyingBottle(tl, true, 5.7, 3.2, 0.55);
+    return createFlyingBottle(tl, true, 5.7, 3.2, 0.12);
   });
 
   mm.add('(max-width: 991px)', function () {
@@ -788,39 +791,39 @@ window.initLanding = async function () {
 
   /* pinScrollTrigger shared with desktop editorial; not used for mobile product. */
   mm.add('(min-width: 992px)', function () {
-    var shop       = document.getElementById('shop');
-    var section    = document.getElementById('ritual-products');
-    var cardsGroup = section && section.querySelector('.ritual-cards-group');
-    var trustBand  = section && section.querySelector('.conversion-booster-wrapper');
-    var payment    = section && section.querySelector('.ritual-payment-group');
-    var trailing   = section && section.querySelector('.shop-trailing-info');
+    var section      = document.getElementById('ritual-products');
+    var cardsGroup   = section && section.querySelector('.ritual-cards-group');
+    var trustBand    = section && section.querySelector('.conversion-booster-wrapper');
+    var payment      = section && section.querySelector('.ritual-payment-group');
+    var trailing     = section && section.querySelector('.shop-trailing-info');
+    var editorialWrap = document.querySelector('.dynamic-editorial-wrapper');
 
-    /* Inside the pinned section keep ONLY: cards → payment → trust. The bottle
-       scene + "Das tägliche Ritual" move OUT to #shop, AFTER the section, so
-       they are not part of the pinned block (a tall pinned block whose cards
-       collapse leaves a dead spacer band — kept short here instead). */
+    /* DOM order INSIDE the pinned section: cards → payment → trust → BOTTLE
+       scene → "Das tägliche Ritual". The bottle stays in NORMAL FLOW below the
+       trust badges, so block layout guarantees it can never overlap them — as
+       the cards collapse, payment + trust reflow UP ("pushed up") and the
+       bottle sits beneath them. Das tägliche Ritual is directly under the
+       bottle. The collapse leaves a pin-spacer overshoot AFTER the whole
+       section; that is absorbed by pulling the editorial up (far below — no
+       overlap with anything on screen), exactly like the mobile path. */
     if (cardsGroup && payment)   cardsGroup.after(payment);
     if (payment && trustBand)    payment.after(trustBand);
-    if (shop && bridgeWrap)      shop.appendChild(bridgeWrap);
-    if (shop && trailing)        shop.appendChild(trailing);
+    if (trustBand && bridgeWrap) trustBand.after(bridgeWrap);
+    if (bridgeWrap && trailing)  bridgeWrap.after(trailing);
 
     setupDesktopBridgeScene(bridgeWrap);
-    attachBridgeBottleRiseDesktop(bridgeWrap);
     var pin = attachProductCardsExitDesktop(1500);
 
-    /* Absorb the pin-spacer overshoot left by the collapsing cards so the
-       bottle scene follows payment + trust with no dead black band. */
-    if (pin && bridgeWrap) {
-      bridgeWrap.style.marginTop = -pin.collapsedH + 'px';
+    if (pin && editorialWrap) {
+      editorialWrap.style.marginTop = -pin.collapsedH + 'px';
     }
 
     return function () {
       if (pin && pin.cleanup) pin.cleanup();
       cleanupDesktopBridgeScene(bridgeWrap);
-      if (bridgeWrap) bridgeWrap.style.marginTop = '';
+      if (editorialWrap) editorialWrap.style.marginTop = '';
       /* Restore original mobile DOM order inside #ritual-products:
-         cards → trust → bottle → trailing → payment. Appending in sequence
-         re-orders the (possibly relocated) nodes back into the section. */
+         cards → trust → bottle → trailing → payment. */
       if (section) {
         [cardsGroup, trustBand, bridgeWrap, trailing, payment].forEach(function (el) {
           if (el) section.appendChild(el);

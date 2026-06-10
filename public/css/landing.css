@@ -72,8 +72,8 @@
      track and #shop follows in normal flow (NO overlap), so the heading never
      slides over the floating cards/bottle. This number is the pacing lever:
      lower = tighter/faster, higher = airier. */
-  height: 160vh;   /* fallback for browsers without dvh support */
-  height: 160dvh;  /* dvh tracks the visible viewport, unaffected by iOS address bar */
+  height: 150vh;   /* fallback for browsers without dvh support */
+  height: 150dvh;  /* dvh tracks the visible viewport, unaffected by iOS address bar */
   background-color: var(--color-bg);
   width: 100%;
 }
