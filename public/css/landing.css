@@ -1475,19 +1475,34 @@
     margin-right: 0;
   }
 
-  /* Compact the product cards so cards + payment + trust stay on-screen, and
-     keep the bottle → trailing → Manifest handoff tight (minimal black). */
-  #shop .premium-product-card { padding: 26px 44px; margin-bottom: 20px; }
-  #shop .shop-heading-wrap { margin-bottom: 32px; }
+  /* Compact the product block so heading + 3 cards + payment + trust ALL fit
+     inside the pinned viewport — payment + trust must stay visible (anchored,
+     unmoving) for the entire card-exit animation. */
+  #shop .premium-product-card { padding: 20px 44px; margin-bottom: 14px; }
+  #shop .shop-heading-wrap { margin-bottom: 20px; }
+  #shop .ritual-payment-group { margin-top: 10px; padding-top: 14px; }
+  #shop .trust-payment-row { margin-bottom: 0; }
+  #shop .conversion-booster-wrapper { padding-top: 0; }
+  #shop .trust-ribbon { padding: 14px 0 6px; margin-bottom: 0; }
+
   /* margin-top -50vh overlaps #shop with the hero's exit phase: the timeline's
      rise (last ~36% of a 140vh scrub range) begins right as the heading enters
      the viewport bottom, so the bottle exits upward WHILE the products rise in
-     — no dead black between the two scenes. Shop content paints above the
-     scroll-track bg (z 10) but below the sticky hero layer (z 20). */
-  #shop.ambernord-section-wrapper { margin-top: -50vh; padding-top: 12px; padding-bottom: 8px; }
+     — no dead black between the two scenes. z-index 30 (> sticky-viewport's 20)
+     + the opaque background turn the section into a rising CURTAIN: it covers
+     whatever state the hero animation is in, so on fast scrolls the heading
+     never reads as sliding UNDER the floating cards/bottle — there is always
+     a clean horizontal boundary between the two scenes. */
+  #shop.ambernord-section-wrapper { margin-top: -50vh; padding-top: 12px; padding-bottom: 8px; z-index: 30; }
   #shop .shop-trailing-info { margin-top: 16px; padding: 8px 0 0; }
   .editorial-bento-grid { padding-top: 0; }
 }
+
+/* Short desktop viewports: heading + 3 cards + payment + trust must all fit
+   the pinned area so the proof rows stay anchored on screen for the whole
+   card-exit animation. The actual scaling is computed per-viewport in JS
+   (fitProductSectionDesktop in landing.js) via `zoom` on the section's
+   children — zoom affects layout, so the pin spacer stays correct. */
 
 /* =========================================================================
    EXCLUSIVE SECTION (scroll-triggered background reveal)

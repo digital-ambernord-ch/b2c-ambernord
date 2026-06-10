@@ -20,7 +20,9 @@
       "PowerShell(New-Item *)",
       "PowerShell(npm *)",
       "PowerShell(Set-Location *)",
-      "PowerShell(node -c C:\\\\Users\\\\eriks\\\\Documents\\\\GitHub\\\\b2c-ambernord\\\\public\\\\js\\\\landing.js; if \\($?\\) { \"JS OK\" })"
+      "PowerShell(node -c C:\\\\Users\\\\eriks\\\\Documents\\\\GitHub\\\\b2c-ambernord\\\\public\\\\js\\\\landing.js; if \\($?\\) { \"JS OK\" })",
+      "PowerShell(git show b0cde4d:public/js/landing.js | Select-String -Pattern 'attachProductCardsExitDesktop' -Context 0,0; \\(git show b0cde4d:public/js/landing.js | Measure-Object -Line\\).Lines)",
+      "PowerShell(Set-Content *)"
     ]
   },
   "model": "claude-fable-5"

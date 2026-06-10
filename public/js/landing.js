@@ -405,32 +405,77 @@ window.initLanding = async function () {
      ========================================================================= */
 
   /* =========================================================================
-     DESKTOP BRIDGE BOTTLE SCENE — big, glowing, screen-filling.
-     The product section is STATIC (cards + payment + trust always visible).
-     After it, this bottle scene fills the viewport with a large bottle wrapped
-     in a warm gold halo to grab attention, then rises with the scroll into the
-     Manifest. ("Das tägliche Ritual" usage text sits directly beneath it.)
+     DESKTOP BRIDGE BOTTLE OVERLAY — the bottle that fills the card hole.
+     The product section pins while the three cards fly out (left/right/right);
+     payment icons + trust badges stay put the whole time. The bottle is an
+     ABSOLUTE overlay covering exactly the card area (no flow slot → no dead
+     spacer void after the pin). During the pin it rises from below the fold
+     into the hole the cards left, so the section scrolls away as a complete
+     composition: heading / bottle / payment / trust.
      ========================================================================= */
-  function setupDesktopBridge(bWrap) {
-    if (reducedMotion || !bWrap) return;
-    const img = bWrap.querySelector('img');
-    if (!img) return;
+  /* Fit the product block into the pinned area: if heading + cards + payment
+     + trust would overflow the space under the topbar, scale the section's
+     children down via `zoom` (it affects layout, so the GSAP pin spacer stays
+     correct; applied to the children, never the pinned element itself). The
+     payment + trust proof rows must stay on screen, anchored, for the whole
+     card-exit animation. Runs BEFORE the bottle overlay measures the card
+     area, so the overlay matches the scaled layout. */
+  function fitProductSectionDesktop() {
+    const section = document.getElementById('ritual-products');
+    if (!section) return null;
+    const parts = ['.ritual-cards-group', '.ritual-payment-group',
+                   '.conversion-booster-wrapper', '.shop-trailing-info']
+      .map(function (s) { return section.querySelector(s); })
+      .filter(Boolean);
+    if (!parts.length) return null;
 
-    /* Big bottle — fills most of the viewport height. */
-    img.style.width    = 'auto';
-    img.style.height   = Math.round(window.innerHeight * 0.74) + 'px';
-    img.style.maxWidth = '90vw';
+    parts.forEach(function (el) { el.style.zoom = ''; });
+
+    const cs      = getComputedStyle(document.documentElement);
+    const navH    = parseFloat(cs.getPropertyValue('--nav-height'))    || 80;
+    const aktionH = parseFloat(cs.getPropertyValue('--aktion-height')) || 0;
+    const avail   = window.innerHeight - navH - aktionH - 20;
+
+    /* Trailing info may reveal below the fold after the pin — exclude it. */
+    const trailing = section.querySelector('.shop-trailing-info');
+    const contentH = section.offsetHeight - (trailing ? trailing.offsetHeight : 0);
+
+    if (contentH > avail) {
+      const z = Math.max(0.6, avail / contentH);
+      parts.forEach(function (el) { el.style.zoom = z; });
+    }
+    return function () {
+      parts.forEach(function (el) { el.style.zoom = ''; });
+    };
+  }
+
+  function setupBridgeOverlayDesktop(bWrap) {
+    if (reducedMotion || !bWrap) return null;
+    const section = document.getElementById('ritual-products');
+    const cards   = section ? section.querySelectorAll('.premium-product-card') : [];
+    const img     = bWrap.querySelector('img');
+    if (!section || cards.length < 3 || !img) return null;
+
+    const prevWrapCss = bWrap.style.cssText;
+
+    /* Card area in section-local coords (rect diffs are scroll-invariant). */
+    const sTop = section.getBoundingClientRect().top;
+    const fRect = cards[0].getBoundingClientRect();
+    const lRect = cards[cards.length - 1].getBoundingClientRect();
+    const areaTop = Math.round(fRect.top - sTop);
+    const areaH   = Math.round(lRect.bottom - fRect.top);
+
+    section.style.position = 'relative';
+    bWrap.style.cssText =
+      'position:absolute;left:0;right:0;top:' + areaTop + 'px;height:' + areaH + 'px;' +
+      'display:flex;justify-content:center;align-items:center;padding:0;margin:0;' +
+      'opacity:1;pointer-events:none;z-index:1;overflow:visible;will-change:transform;';
+
+    img.style.width  = 'auto';
+    img.style.height = Math.round(areaH * 0.96) + 'px';
     img.style.position = 'relative';
     img.style.zIndex   = '2';
-    img.style.filter   = 'drop-shadow(0 0 60px rgba(237,163,35,0.42)) drop-shadow(0 0 140px rgba(237,163,35,0.20))';
-
-    /* Scene wrapper becomes a (near) full-height stage. 80vh, not 92vh —
-       combined with the parallax drift the taller stage left a black hole
-       between the bottle and the "Das tägliche Ritual" trailing text. */
-    bWrap.style.position  = 'relative';
-    bWrap.style.minHeight = '80vh';
-    bWrap.style.padding   = '0';
-    bWrap.style.overflow  = 'visible';
+    img.style.filter   = 'drop-shadow(0 0 50px rgba(237,163,35,0.40)) drop-shadow(0 0 120px rgba(237,163,35,0.18))';
 
     /* Warm gold halo behind the bottle. */
     let glow = bWrap.querySelector('.bridge-glow');
@@ -438,45 +483,78 @@ window.initLanding = async function () {
       glow = document.createElement('div');
       glow.className = 'bridge-glow';
       glow.setAttribute('aria-hidden', 'true');
-      var glowSize = 'min(100vh, 92vw)';
+      const glowSize = Math.round(areaH * 1.5);
       glow.style.cssText =
-        'position:absolute;top:50%;left:50%;width:' + glowSize + ';height:' + glowSize + ';' +
+        'position:absolute;top:50%;left:50%;width:' + glowSize + 'px;height:' + glowSize + 'px;' +
         'transform:translate(-50%,-50%);z-index:1;pointer-events:none;border-radius:50%;' +
         'background:radial-gradient(circle at center,rgba(237,163,35,0.26) 0%,' +
         'rgba(237,163,35,0.12) 36%,rgba(237,163,35,0.04) 56%,transparent 70%);';
       bWrap.insertBefore(glow, img);
     }
-  }
 
-  function cleanupDesktopBridge(bWrap) {
-    if (!bWrap) return;
-    const img = bWrap.querySelector('img');
-    if (img) {
-      img.style.width = ''; img.style.height = ''; img.style.maxWidth = '';
+    return function () {
+      bWrap.style.cssText = prevWrapCss;
+      img.style.width = ''; img.style.height = '';
       img.style.position = ''; img.style.zIndex = ''; img.style.filter = '';
-    }
-    bWrap.style.position = ''; bWrap.style.minHeight = ''; bWrap.style.padding = '30px 0'; bWrap.style.overflow = '';
-    const glow = bWrap.querySelector('.bridge-glow');
-    if (glow && glow.parentNode) glow.parentNode.removeChild(glow);
+      const g = bWrap.querySelector('.bridge-glow');
+      if (g && g.parentNode) g.parentNode.removeChild(g);
+      section.style.position = '';
+    };
   }
 
-  /* Gentle parallax — the whole bottle scene drifts upward as it scrolls,
-     leading the eye out of the product block and up into the Manifest. */
-  function attachBridgeBottleRiseDesktop(bWrap) {
-    if (reducedMotion || !bWrap) return;
-    /* Drift kept gentle (6 → -12): the old -30 endpoint pulled the bottle a
-       quarter-viewport up and opened a black gap before the trailing text. */
-    gsap.fromTo(bWrap,
-      { yPercent: 6 },
-      { yPercent: -12, ease: 'none',
-        scrollTrigger: {
-          trigger: bWrap,
-          start: 'top bottom',
-          end:   'bottom top',
-          scrub: 1,
-          invalidateOnRefresh: true
-        }
-      });
+  /* =========================================================================
+     PRODUCT CARDS — desktop pinned exit.
+     The whole #ritual-products section locks under the topbar; The Starter
+     flies out LEFT, The Habit RIGHT, The Protocol RIGHT (sequentially).
+     Payment icons + trust badges never move. The bottle overlay starts
+     rising from below the fold just before the Protocol finishes its exit.
+     Nothing collapses, so the pin spacer matches the section height exactly
+     — zero dead scroll after the release.
+     ========================================================================= */
+  function attachProductCardsExitDesktop(pinDuration, bWrap) {
+    if (reducedMotion) return null;
+
+    const section = document.getElementById('ritual-products');
+    if (!section) return null;
+
+    const productCards = section.querySelectorAll('.premium-product-card');
+    if (productCards.length < 3) return null;
+
+    const [starter, habit, protocol] = productCards;
+    const cards = [starter, habit, protocol];
+    productCards.forEach(function (c) { c.style.transition = 'border-color var(--t-base) ease'; });
+
+    /* Tighter top offset than the shared pinTopOffset(): the section is tall,
+       so every pixel of headroom helps keep payment + trust above the fold. */
+    const stConfig = pinScrollTrigger(section, pinDuration, function () {
+      const cs      = getComputedStyle(document.documentElement);
+      const navH    = parseFloat(cs.getPropertyValue('--nav-height'))    || 80;
+      const aktionH = parseFloat(cs.getPropertyValue('--aktion-height')) || 0;
+      return 'top top+=' + (navH + aktionH + 12);
+    });
+    stConfig.onLeaveBack = function () {
+      gsap.set(cards, { clearProps: 'xPercent,opacity' });
+    };
+
+    const tl = gsap.timeline({ scrollTrigger: stConfig });
+
+    tl.to(starter,  { xPercent: -160, opacity: 0, ease: 'power2.in', duration: 0.20 }, 0.06)
+      .to(habit,    { xPercent:  160, opacity: 0, ease: 'power2.in', duration: 0.20 }, 0.30)
+      .to(protocol, { xPercent:  160, opacity: 0, ease: 'power2.in', duration: 0.20 }, 0.54);
+
+    /* Bottle approaches from below while the Protocol is still exiting —
+       it is already rising as the last card leaves, so the hole never sits
+       empty. The initial below-the-fold offset is set immediately so the
+       overlay never flashes inside the card area before the pin begins. */
+    if (bWrap) {
+      gsap.set(bWrap, { y: window.innerHeight });
+      tl.to(bWrap, { y: 0, ease: 'power1.out', duration: 0.34 }, 0.50);
+    }
+
+    return function () {
+      gsap.set(cards, { clearProps: 'xPercent,opacity' });
+      if (bWrap) gsap.set(bWrap, { clearProps: 'y' });
+    };
   }
 
   function attachProductCardsExitMobile(pinDuration, bridgeWrap, glassEls) {
@@ -732,21 +810,24 @@ window.initLanding = async function () {
     var payment    = section && section.querySelector('.ritual-payment-group');
     var trailing   = section && section.querySelector('.shop-trailing-info');
 
-    /* Desktop STATIC order: cards → payment → (breathing gap) trust →
-       big bottle scene → "Das tägliche Ritual" trailing. Payment + trust are
-       permanent parts of the product block (always visible, never revealed at
-       the end). The cards compact via CSS so it all fits the viewport. */
+    /* Desktop flow order: cards → payment → trust → "Das tägliche Ritual".
+       Payment + trust are permanent parts of the pinned product block — they
+       stay anchored in place for the entire card-exit animation. The bottle
+       (bridgeWrap) becomes an absolute overlay over the card area, so its DOM
+       slot doesn't matter for layout. */
     if (cardsGroup && payment)   cardsGroup.after(payment);
     if (payment && trustBand)    payment.after(trustBand);
-    if (trustBand && bridgeWrap) trustBand.after(bridgeWrap);
-    if (bridgeWrap && trailing)  bridgeWrap.after(trailing);
+    if (trustBand && trailing)   trustBand.after(trailing);
+    if (bridgeWrap && trailing)  trailing.before(bridgeWrap);
 
-    if (bridgeWrap) gsap.set(bridgeWrap, { opacity: 1, clearProps: 'scale,filter,y' });
-    setupDesktopBridge(bridgeWrap);
-    attachBridgeBottleRiseDesktop(bridgeWrap);
+    var fitCleanup     = fitProductSectionDesktop();
+    var overlayCleanup = setupBridgeOverlayDesktop(bridgeWrap);
+    var pinCleanup     = attachProductCardsExitDesktop(1500, overlayCleanup ? bridgeWrap : null);
 
     return function () {
-      cleanupDesktopBridge(bridgeWrap);
+      if (pinCleanup)     pinCleanup();
+      if (overlayCleanup) overlayCleanup();
+      if (fitCleanup)     fitCleanup();
       /* Restore mobile DOM order: cards, trust, bottle(before trailing), trailing, payment. */
       if (cardsGroup && trustBand) cardsGroup.after(trustBand);
       if (trustBand && trailing)   trustBand.after(trailing);
