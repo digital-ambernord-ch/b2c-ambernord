@@ -72,8 +72,8 @@
      track and #shop follows in normal flow (NO overlap), so the heading never
      slides over the floating cards/bottle. This number is the pacing lever:
      lower = tighter/faster, higher = airier. */
-  height: 150vh;   /* fallback for browsers without dvh support */
-  height: 150dvh;  /* dvh tracks the visible viewport, unaffected by iOS address bar */
+  height: 162vh;   /* fallback for browsers without dvh support */
+  height: 162dvh;  /* dvh tracks the visible viewport, unaffected by iOS address bar */
   background-color: var(--color-bg);
   width: 100%;
 }
@@ -1429,22 +1429,39 @@
     align-items: flex-start;
   }
 
-  /* Type sizing is IDENTICAL to the Exclusive Sourcing section — Manifest +
-     Ritual inherit the default .ambernord-content-{title,subtitle,text} sizes
-     (title clamp(32px,4vw,46px), subtitle 11px, body 16px). Only the colour +
-     text-shadow are added so the prose stays legible over the full-bleed
-     photo. No size overrides, no drop-cap — full visual parity. */
+  /* PREMIUM MAGAZINE TYPOGRAPHY. Sizes stay restrained (no pixelated giants —
+     the earlier clamp-58 felt blown-up); the premium feel comes from rhythm, a
+     gold drop-cap, refined hairlines and letter-spacing. Shadows are crisp
+     (tight blur) so the type reads SHARP over the photo, not fuzzy. */
+  .nature-hero-content .ambernord-content-subtitle {
+    font-size: 13px;
+    letter-spacing: 5px;
+  }
+  .nature-hero-content .ambernord-content-title {
+    font-size: clamp(34px, 4.2vw, 50px);
+    line-height: 1.12;
+    letter-spacing: -0.3px;
+    margin-bottom: 26px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.88);
+  }
   .nature-hero-content .ambernord-content-text,
   .nature-hero-content .editorial-lead {
     color: var(--color-text);
     font-weight: 400;
+    font-size: 17px;
+    line-height: 1.9;
+    letter-spacing: 0.1px;
     text-shadow: 0 2px 8px rgba(0,0,0,0.9), 0 0 4px rgba(0,0,0,0.7);
   }
-  .nature-hero-content .ambernord-content-title {
-    text-shadow: 0 2px 10px rgba(0,0,0,0.85);
+  .nature-hero-content .editorial-pullquote {
+    font-size: clamp(24px, 2.9vw, 34px);
+    line-height: 1.3;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 22px 0;
+    border-top: 1px solid rgba(237,163,35,0.38);
+    border-bottom: 1px solid rgba(237,163,35,0.38);
   }
-  /* Match Exclusive Sourcing's column width. */
-  .nature-hero-content > * { max-width: 620px; }
 
   /* Ritual (2nd block) mirrors to the right edge for visual rhythm; the text
      itself stays left-aligned so the drop-cap + prose still read naturally. */
@@ -1452,10 +1469,13 @@
     align-items: flex-end;
   }
 
-  /* Pull-quote inherits the column alignment instead of being force-centered. */
+  /* ONE consistent column width for EVERY child (overrides the 640/760 split)
+     so all lines share the same edge — this kills the staggered paragraph
+     offsets that showed in the right-aligned Das Ritual block. */
+  .nature-hero-content > *,
+  .nature-hero-content .editorial-lead,
   .nature-hero-content .editorial-pullquote {
-    margin-left: 0;
-    margin-right: 0;
+    max-width: 640px;
   }
 
   /* "Das tägliche Ritual" usage text sits directly beneath the bottle scene

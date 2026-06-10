@@ -113,12 +113,13 @@ window.initLanding = async function () {
 
   document.documentElement.classList.add('landing-hero-active');
 
-  /* Mobile: 80px works perfectly — kept as-is. Desktop fires a little later so
-     the hero EU leaf has had time to fade. Pixel values only — % in the second
-     token of a ScrollTrigger start string is ambiguous and can throw, which
-     would abort the rest of initLanding and break the hero animation. */
+  /* Fire right as the hero EU leaf finishes fading (#heroText fades within the
+     first ~80px of scroll), so the topbar badge "lands" by the logo IMMEDIATELY
+     instead of after a long gap. Pixel values only — % in the second token of a
+     ScrollTrigger start string is ambiguous and can throw, which would abort the
+     rest of initLanding and break the hero animation. */
   const isDesktop      = window.matchMedia('(min-width: 992px)').matches;
-  const badgeThreshold = isDesktop ? 220 : 80;
+  const badgeThreshold = isDesktop ? 80 : 80;
 
   ScrollTrigger.create({
     trigger: '.scroll-track',
@@ -345,9 +346,11 @@ window.initLanding = async function () {
       .fromTo('.float-img',     { scale: 0.1, opacity: 0 },
                                 { scale: 1, opacity: 1, duration: 1.5, stagger: 0.12, ease: 'back.out(1.4)' }, 3.2)
 
-    /* Phase 3: ONLY the surrounding cards drift away upward — they clear out
-       of the frame so attention lands on the centred bottle. */
-      .to('.float-img',         { y: '-85vh', duration: 3.2, ease: 'power1.in' }, 5.4)
+    /* Phase 3: Surrounding cards drift away upward — start TOGETHER with the
+       bottle/hero rise (5.7, was 5.4) and travel a shorter distance, so they
+       lift into the air at the same beat as the bottle instead of rocketing
+       off ahead of it. */
+      .to('.float-img',         { y: '-58vh', duration: 3.2, ease: 'power1.in' }, 5.7)
 
     /* Phase 4: The hero card + bottle barely rise — they stay near centre so
        the END of the hero is NOT an empty black viewport. The bottle remains
@@ -626,6 +629,9 @@ window.initLanding = async function () {
     const constellation = buildGoldConstellation(section);
 
     const stConfig = pinScrollTrigger(section, pinDuration);
+    /* Pin a hair early so the relative→fixed switch is seamless — kills the
+       tiny "drop/shuffle" the product block did the instant it locked. */
+    stConfig.anticipatePin = 1;
     stConfig.onLeaveBack = function () {
       gsap.set(cards, { clearProps: 'xPercent,opacity,height,marginBottom,paddingTop,paddingBottom,borderWidth,overflow' });
       if (constellation) constellation.reset();
@@ -1357,19 +1363,51 @@ window.initLanding = async function () {
     observer.observe(scrollTrack);
   }
 
+  /* Land precisely at the product block's PIN-START — the exact framing the
+     user gets scrolling top-to-bottom (heading + 3 cards under the topbar,
+     before the cards animate out). Same target for the hero CTA, the closing
+     CTA and the sticky-nav button so every "go to the shop" action lands
+     identically. The position is the product pin's own trigger offset
+     (nav + aktion + 40), read live so it's correct whether the aktion bar is
+     visible or not. */
+  function scrollToProductsStart() {
+    /* Reference #shop (the wrapper), NOT #ritual-products: the inner section is
+       GSAP-pinned, so its getBoundingClientRect shifts by the pin distance
+       depending on where you click from (top vs bottom) — using it made the
+       hero CTA and the closing CTA land 1500px apart. #shop is never pinned, so
+       its top is a stable anchor from any scroll position. The pin engages when
+       #ritual-products' top reaches nav+aktion+40 (its pinScrollTrigger start),
+       and #ritual-products' natural top = #shop top + #shop padding-top. */
+    const shop = document.getElementById('shop');
+    if (!shop || typeof window.smoothScrollTo !== 'function') return;
+    const cs       = getComputedStyle(document.documentElement);
+    const navH     = parseFloat(cs.getPropertyValue('--nav-height'))    || 80;
+    const aktionH  = parseFloat(cs.getPropertyValue('--aktion-height')) || 0;
+    const shopPad  = parseFloat(getComputedStyle(shop).paddingTop) || 0;
+    const shopTop  = shop.getBoundingClientRect().top + window.scrollY;
+    const targetY  = shopTop + shopPad - (navH + aktionH + 40);
+    window.smoothScrollTo(Math.max(0, targetY));
+  }
+
+  /* Intercept the CTAs in the CAPTURE phase (before the router's per-link
+     handler), so they use the precise scroll above instead of the generic
+     hash offset. Bound once per page-load; it looks up the target fresh each
+     click, so it survives SPA re-inits. */
+  if (!window._anScrollProductsBound) {
+    window._anScrollProductsBound = true;
+    document.addEventListener('click', function (e) {
+      const btn = e.target && e.target.closest ? e.target.closest('[data-scroll-products]') : null;
+      if (!btn) return;
+      e.preventDefault();
+      e.stopPropagation();
+      scrollToProductsStart();
+      if (typeof window.closeMobileMenu === 'function') window.closeMobileMenu();
+    }, true);
+  }
+
   const stickyNavBtn = document.getElementById('landingStickyNavBtn');
   if (stickyNavBtn) {
-    stickyNavBtn.addEventListener('click', function () {
-      const shopSection = document.getElementById('shop');
-      if (!shopSection) return;
-      const navHeight = document.getElementById('siteNav')?.offsetHeight || 80;
-      const targetY   = shopSection.getBoundingClientRect().top + window.scrollY - navHeight - 160;
-      if (typeof window.smoothScrollTo === 'function') {
-        window.smoothScrollTo(targetY);
-      } else {
-        shopSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
+    stickyNavBtn.addEventListener('click', function () { scrollToProductsStart(); });
   }
 
   /* =========================================================================
