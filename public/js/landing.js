@@ -119,7 +119,7 @@ window.initLanding = async function () {
      ScrollTrigger start string is ambiguous and can throw, which would abort the
      rest of initLanding and break the hero animation. */
   const isDesktop      = window.matchMedia('(min-width: 992px)').matches;
-  const badgeThreshold = isDesktop ? 80 : 80;
+  const badgeThreshold = isDesktop ? 110 : 90;
 
   ScrollTrigger.create({
     trigger: '.scroll-track',
@@ -612,13 +612,22 @@ window.initLanding = async function () {
     const cards = [starter, habit, protocol];
     productCards.forEach(function (c) { c.style.transition = 'border-color var(--t-base) ease'; });
 
-    /* Height the cards occupy (incl. bottom margins) — the spacer overshoot to
-       absorb once they collapse to 0. */
+    /* The payment-icon row leaves TOGETHER with The Protocol (flies right +
+       fades, then collapses), so only the trust badges remain after the exit. */
+    const payment = section.querySelector('.ritual-payment-group');
+
+    /* Height the cards (+ payment row) occupy — the spacer overshoot to absorb
+       once they collapse to 0, so the editorial still follows with no gap. */
     const cs = getComputedStyle(starter);
     const cardMargin = parseFloat(cs.marginBottom) || 20;
-    const collapsedH = Math.round(
-      starter.offsetHeight + habit.offsetHeight + protocol.offsetHeight + 3 * cardMargin
-    );
+    let collapsedH = starter.offsetHeight + habit.offsetHeight + protocol.offsetHeight + 3 * cardMargin;
+    if (payment) {
+      const pcs = getComputedStyle(payment);
+      collapsedH += payment.offsetHeight
+                  + (parseFloat(pcs.marginTop)    || 0)
+                  + (parseFloat(pcs.marginBottom) || 0);
+    }
+    collapsedH = Math.round(collapsedH);
 
     /* GOLD CONSTELLATION — an abstract gold dot-and-line sketch drawn BEHIND
        the cards. As each card flies away it reveals a fresh cluster being
@@ -632,21 +641,32 @@ window.initLanding = async function () {
     /* Pin a hair early so the relative→fixed switch is seamless — kills the
        tiny "drop/shuffle" the product block did the instant it locked. */
     stConfig.anticipatePin = 1;
+    const PAY_PROPS = 'xPercent,opacity,height,marginTop,marginBottom,paddingTop,paddingBottom,borderTopWidth,overflow';
     stConfig.onLeaveBack = function () {
       gsap.set(cards, { clearProps: 'xPercent,opacity,height,marginBottom,paddingTop,paddingBottom,borderWidth,overflow' });
+      if (payment) gsap.set(payment, { clearProps: PAY_PROPS });
       if (constellation) constellation.reset();
     };
 
     const tl = gsap.timeline({ scrollTrigger: stConfig });
 
-    /* Fly out: Starter LEFT, Habit RIGHT, Protocol RIGHT — sequentially. */
+    /* Fly out: Starter LEFT, Habit RIGHT, Protocol RIGHT — sequentially. The
+       payment-icon row flies out RIGHT with The Protocol (same beat). */
     tl.to(starter,  { xPercent: -160, opacity: 0, ease: 'power2.in', duration: 0.16 }, 0.06)
       .to(habit,    { xPercent:  160, opacity: 0, ease: 'power2.in', duration: 0.16 }, 0.20)
-      .to(protocol, { xPercent:  160, opacity: 0, ease: 'power2.in', duration: 0.16 }, 0.34)
-    /* Then collapse height so payment + trust reflow up into view and hold. */
-      .set(cards,   { overflow: 'hidden' }, 0.48)
+      .to(protocol, { xPercent:  160, opacity: 0, ease: 'power2.in', duration: 0.16 }, 0.34);
+    if (payment) {
+      tl.to(payment, { xPercent: 160, opacity: 0, ease: 'power2.in', duration: 0.16 }, 0.34);
+    }
+    /* Then collapse height so ONLY the trust badges reflow up into view and hold. */
+    tl.set(cards,   { overflow: 'hidden' }, 0.48)
       .to(cards,    { height: 0, marginBottom: 0, paddingTop: 0, paddingBottom: 0, borderWidth: 0,
                       ease: 'power1.inOut', duration: 0.30 }, 0.50);
+    if (payment) {
+      tl.set(payment, { overflow: 'hidden' }, 0.48)
+        .to(payment,  { height: 0, marginTop: 0, marginBottom: 0, paddingTop: 0, paddingBottom: 0, borderTopWidth: 0,
+                        ease: 'power1.inOut', duration: 0.30 }, 0.50);
+    }
 
     /* Constellation draws cluster-by-cluster as each card clears, then fades. */
     if (constellation) {
@@ -661,6 +681,7 @@ window.initLanding = async function () {
       collapsedH: collapsedH,
       cleanup: function () {
         gsap.set(cards, { clearProps: 'xPercent,opacity,height,marginBottom,paddingTop,paddingBottom,borderWidth,overflow' });
+        if (payment) gsap.set(payment, { clearProps: PAY_PROPS });
         if (constellation) constellation.cleanup();
       }
     };
