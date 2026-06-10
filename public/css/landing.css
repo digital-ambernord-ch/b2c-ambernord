@@ -66,15 +66,14 @@
 
 .scroll-track {
   position: relative;
-  /* 240vh = 140vh of scrub range for the hero timeline. 130vh compressed the
-     whole choreography into ~30vh of scroll — it flashed past in one wheel
-     tick and left a full viewport of dead black until #shop arrived. The
-     dead black at the handoff is now solved by OVERLAP instead of a short
-     track: #shop is pulled up under the hero's exit phase (see the desktop
-     #shop margin-top rule), so the heading rises into view while the bottle
-     is still exiting. This number is the pacing lever: lower = faster. */
-  height: 240vh;   /* fallback for browsers without dvh support */
-  height: 240dvh;  /* dvh tracks the visible viewport, unaffected by iOS address bar */
+  /* 160vh = 60vh of scrub range for the hero timeline — enough room for the
+     full choreography (shrink · cards pop · bottle fly · rise) to read at a
+     natural pace without flashing past. The hero un-pins at the end of this
+     track and #shop follows in normal flow (NO overlap), so the heading never
+     slides over the floating cards/bottle. This number is the pacing lever:
+     lower = tighter/faster, higher = airier. */
+  height: 160vh;   /* fallback for browsers without dvh support */
+  height: 160dvh;  /* dvh tracks the visible viewport, unaffected by iOS address bar */
   background-color: var(--color-bg);
   width: 100%;
 }
@@ -96,9 +95,6 @@
   justify-content: center;
   overflow: hidden;   /* clip hero & card exit cleanly within the pinned area */
   z-index: 20;        /* stay above the rising product section during animation */
-  /* #shop now slides up UNDER this layer during the hero exit — without this
-     the transparent sticky area would swallow clicks on the product cards. */
-  pointer-events: none;
 }
 
 /* Trust ribbon now lives INSIDE #ritual-products (after the product cards) so
@@ -112,7 +108,6 @@
 
 .scalable-hero {
   position: relative;
-  pointer-events: auto; /* hero CTA stays clickable inside the inert sticky layer */
   width: calc(100vw - 40px);
   /* Keep hero shorter than .sticky-viewport (top: nav+aktion+8) so the hero
      never overflows when aktion bar is active on mobile; otherwise the bottom
@@ -1434,34 +1429,22 @@
     align-items: flex-start;
   }
 
-  /* Brighter, BIGGER, more legible prose — matched to (and a touch larger than)
-     the Exclusive Sourcing section so the headlines + copy immediately draw the
-     eye and read cleanly over the photo. */
-  .nature-hero-content .ambernord-content-subtitle {
-    font-size: 14px;
-    letter-spacing: 5px;
-  }
-  .nature-hero-content .ambernord-content-title {
-    font-size: clamp(40px, 4.8vw, 58px);
-    line-height: 1.18;
-    text-shadow: 0 2px 14px rgba(0,0,0,0.85);
-  }
+  /* Type sizing is IDENTICAL to the Exclusive Sourcing section — Manifest +
+     Ritual inherit the default .ambernord-content-{title,subtitle,text} sizes
+     (title clamp(32px,4vw,46px), subtitle 11px, body 16px). Only the colour +
+     text-shadow are added so the prose stays legible over the full-bleed
+     photo. No size overrides, no drop-cap — full visual parity. */
   .nature-hero-content .ambernord-content-text,
   .nature-hero-content .editorial-lead {
     color: var(--color-text);
     font-weight: 400;
-    font-size: 19px;
-    line-height: 1.85;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.92), 0 0 4px rgba(0,0,0,0.7);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.9), 0 0 4px rgba(0,0,0,0.7);
   }
-  .nature-hero-content .editorial-lead::first-letter {
-    font-size: 4em;
+  .nature-hero-content .ambernord-content-title {
+    text-shadow: 0 2px 10px rgba(0,0,0,0.85);
   }
-  .nature-hero-content .editorial-pullquote {
-    font-size: clamp(26px, 3vw, 34px);
-  }
-  /* The column needs a touch more width now the type is larger. */
-  .nature-hero-content > * { max-width: 700px; }
+  /* Match Exclusive Sourcing's column width. */
+  .nature-hero-content > * { max-width: 620px; }
 
   /* Ritual (2nd block) mirrors to the right edge for visual rhythm; the text
      itself stays left-aligned so the drop-cap + prose still read naturally. */
@@ -1475,34 +1458,11 @@
     margin-right: 0;
   }
 
-  /* Compact the product block so heading + 3 cards + payment + trust ALL fit
-     inside the pinned viewport — payment + trust must stay visible (anchored,
-     unmoving) for the entire card-exit animation. */
-  #shop .premium-product-card { padding: 20px 44px; margin-bottom: 14px; }
-  #shop .shop-heading-wrap { margin-bottom: 20px; }
-  #shop .ritual-payment-group { margin-top: 10px; padding-top: 14px; }
-  #shop .trust-payment-row { margin-bottom: 0; }
-  #shop .conversion-booster-wrapper { padding-top: 0; }
-  #shop .trust-ribbon { padding: 14px 0 6px; margin-bottom: 0; }
-
-  /* margin-top -50vh overlaps #shop with the hero's exit phase: the timeline's
-     rise (last ~36% of a 140vh scrub range) begins right as the heading enters
-     the viewport bottom, so the bottle exits upward WHILE the products rise in
-     — no dead black between the two scenes. z-index 30 (> sticky-viewport's 20)
-     + the opaque background turn the section into a rising CURTAIN: it covers
-     whatever state the hero animation is in, so on fast scrolls the heading
-     never reads as sliding UNDER the floating cards/bottle — there is always
-     a clean horizontal boundary between the two scenes. */
-  #shop.ambernord-section-wrapper { margin-top: -50vh; padding-top: 12px; padding-bottom: 8px; z-index: 30; }
-  #shop .shop-trailing-info { margin-top: 16px; padding: 8px 0 0; }
+  /* "Das tägliche Ritual" usage text sits directly beneath the bottle scene
+     — a tight gap so the bottle and its caption read as one unit. */
+  #shop .shop-trailing-info { margin-top: 0; padding: 8px 0 0; }
   .editorial-bento-grid { padding-top: 0; }
 }
-
-/* Short desktop viewports: heading + 3 cards + payment + trust must all fit
-   the pinned area so the proof rows stay anchored on screen for the whole
-   card-exit animation. The actual scaling is computed per-viewport in JS
-   (fitProductSectionDesktop in landing.js) via `zoom` on the section's
-   children — zoom affects layout, so the pin spacer stays correct. */
 
 /* =========================================================================
    EXCLUSIVE SECTION (scroll-triggered background reveal)
