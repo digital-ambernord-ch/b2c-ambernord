@@ -1,13 +1,13 @@
 {
   "meta": {
     "title": "Return & Refund Policy | AmberNord",
-    "description": "Our transparent return and refund policy for AmberNord organic sea buckthorn juice – quality, hygiene and your trust come first.",
+    "description": "30-day money-back guarantee on your first order – our transparent return and refund policy for AmberNord organic sea buckthorn juice.",
     "canonical": "https://ambernord.ch/en/hilfe/rueckgabe/",
     "slug": "/en/rueckgabe/",
     "robots": "index, follow",
     "og": {
       "title": "Return & Refund Policy | AmberNord",
-      "description": "Our transparent return and refund policy for AmberNord organic sea buckthorn juice.",
+      "description": "30-day money-back guarantee on your first order – our transparent return and refund policy.",
       "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/ambernord-og-default",
       "type": "website"
     },
@@ -25,15 +25,23 @@
   },
   "sections": [
     {
-      "id": "grundsatz",
-      "heading": "1. Principle: No Right of Return for Food Products",
+      "id": "garantie",
+      "heading": "1. Our 30-Day Money-Back Guarantee",
       "paragraphs": [
-        "As we operate in the field of premium organic food products (such as organic sea buckthorn juice), quality, hygiene and food safety are our highest priority. For reasons of health protection and hygiene, a general right of return or exchange for our products is excluded. We also note that under Swiss law, no statutory right of withdrawal applies to online retail purchases."
+        "We are convinced of the quality of our essence – which is why we voluntarily go further than the law requires. If you are not satisfied with your first order, we will refund you the purchase price of one bottle (250 ml). To claim the guarantee, contact us within 30 days of receiving the goods, stating your order number, by email at: <a href=\"mailto:info@ambernord.ch\">info@ambernord.ch</a>",
+        "For hygiene reasons, returning the products is <strong>not required</strong>. The guarantee applies exclusively to your first order, is limited to the value of one bottle (250 ml) and may be claimed once per customer or household. Shipping costs are not refunded. The refund will be made within 14 days to the payment method used at the time of purchase."
+      ]
+    },
+    {
+      "id": "grundsatz",
+      "heading": "2. Principle: No General Right of Return for Food Products",
+      "paragraphs": [
+        "Beyond the voluntary money-back guarantee described in section 1, the following applies: As we operate in the field of premium organic food products (such as organic sea buckthorn juice), quality, hygiene and food safety are our highest priority. For reasons of health protection and hygiene, a general right of return or exchange for our products is excluded. We also note that under Swiss law, no statutory right of withdrawal applies to online retail purchases."
       ]
     },
     {
       "id": "maengel",
-      "heading": "2. Defects and Transport Damage",
+      "heading": "3. Defects and Transport Damage",
       "paragraphs": [
         "Your satisfaction is of course very important to us. Should a product arrive damaged (e.g. broken glass during transport) or show a quality defect, please contact us immediately – no later than 3 days after receipt of the goods.",
         "Please send us an email with a brief description of the issue and corresponding photographs to: <a href=\"mailto:info@ambernord.ch\">info@ambernord.ch</a>",
@@ -42,7 +50,7 @@
     },
     {
       "id": "ruecksendungen",
-      "heading": "3. Returns (by Prior Agreement Only)",
+      "heading": "4. Returns (by Prior Agreement Only)",
       "paragraphs": [
         "Please do not send any products back to us without prior authorisation. A physical return is only requested in rare exceptional cases and only after our express written confirmation.",
         "If a return has been explicitly approved by us, please ship the goods to our business address:",
@@ -51,13 +59,13 @@
     },
     {
       "id": "erstattungen",
-      "heading": "4. Refunds",
+      "heading": "5. Refunds",
       "paragraphs": [
         "Once a refund has been approved by us, the corresponding amount will be returned to the original payment method used at the time of purchase within 14 days."
       ]
     }
   ],
   "footer": {
-    "lastUpdated": "Last updated: February 2026"
+    "lastUpdated": "Last updated: June 2026"
   }
 }

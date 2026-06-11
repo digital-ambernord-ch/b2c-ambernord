@@ -1,13 +1,13 @@
 {
   "meta": {
     "title": "Politique de retour et remboursement | AmberNord",
-    "description": "Notre politique de retour et de remboursement transparente pour le jus d'argousier bio AmberNord – qualité, hygiène et votre confiance avant tout.",
+    "description": "Garantie satisfait ou remboursé de 30 jours sur votre première commande – notre politique de retour et de remboursement transparente pour le jus d'argousier bio AmberNord.",
     "canonical": "https://ambernord.ch/fr/hilfe/rueckgabe/",
     "slug": "/fr/rueckgabe/",
     "robots": "index, follow",
     "og": {
       "title": "Politique de retour et remboursement | AmberNord",
-      "description": "Notre politique de retour et de remboursement transparente pour le jus d'argousier bio AmberNord.",
+      "description": "Garantie satisfait ou remboursé de 30 jours sur votre première commande – notre politique de retour et de remboursement transparente.",
       "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/ambernord-og-default",
       "type": "website"
     },
@@ -25,15 +25,23 @@
   },
   "sections": [
     {
-      "id": "grundsatz",
-      "heading": "1. Principe : Aucun droit de retour pour les denrées alimentaires",
+      "id": "garantie",
+      "heading": "1. Notre garantie satisfait ou remboursé de 30 jours",
       "paragraphs": [
-        "Notre activité étant centrée sur des produits alimentaires biologiques haut de gamme (tels que le jus d'argousier bio), la qualité, l'hygiène et la sécurité alimentaire constituent notre priorité absolue. Pour des raisons de protection de la santé et d'hygiène, tout droit général de retour ou d'échange est exclu pour nos produits. Nous précisons également qu'en vertu du droit suisse, aucun droit légal de rétractation n'existe dans le commerce en ligne."
+        "Nous sommes convaincus de la qualité de notre essence – c'est pourquoi nous allons volontairement plus loin que ce que la loi exige. Si vous n'êtes pas satisfait de votre première commande, nous vous remboursons le prix d'achat d'une bouteille (250 ml). Pour cela, contactez-nous dans les 30 jours suivant la réception de la marchandise, en indiquant votre numéro de commande, par e-mail à : <a href=\"mailto:info@ambernord.ch\">info@ambernord.ch</a>",
+        "Pour des raisons d'hygiène, le retour des produits n'est <strong>pas nécessaire</strong>. La garantie s'applique exclusivement à la première commande, est limitée à la valeur d'une bouteille (250 ml) et ne peut être utilisée qu'une seule fois par client ou par ménage. Les frais de port ne sont pas remboursés. Le remboursement est effectué dans les 14 jours sur le moyen de paiement utilisé lors de l'achat."
+      ]
+    },
+    {
+      "id": "grundsatz",
+      "heading": "2. Principe : aucun droit général de retour pour les denrées alimentaires",
+      "paragraphs": [
+        "Au-delà de la garantie volontaire satisfait ou remboursé décrite au point 1, le principe suivant s'applique : notre activité étant centrée sur des produits alimentaires biologiques haut de gamme (tels que le jus d'argousier bio), la qualité, l'hygiène et la sécurité alimentaire constituent notre priorité absolue. Pour des raisons de protection de la santé et d'hygiène, tout droit général de retour ou d'échange est exclu pour nos produits. Nous précisons également qu'en vertu du droit suisse, aucun droit légal de rétractation n'existe dans le commerce en ligne."
       ]
     },
     {
       "id": "maengel",
-      "heading": "2. Défauts et dommages de transport",
+      "heading": "3. Défauts et dommages de transport",
       "paragraphs": [
         "Votre satisfaction nous tient bien entendu à cœur. Si un produit vous parvient endommagé (p. ex. bris de verre lors du transport) ou présente un défaut de qualité, veuillez nous contacter immédiatement et au plus tard dans les 3 jours suivant la réception de la marchandise.",
         "Merci de nous adresser dans ce cas un e-mail avec une brève description du problème ainsi que des photos à : <a href=\"mailto:info@ambernord.ch\">info@ambernord.ch</a>",
@@ -42,7 +50,7 @@
     },
     {
       "id": "ruecksendungen",
-      "heading": "3. Retours (uniquement après accord préalable)",
+      "heading": "4. Retours (uniquement après accord préalable)",
       "paragraphs": [
         "Merci de ne pas nous retourner de produits sans autorisation préalable. Un retour physique n'est demandé que dans de rares cas exceptionnels et uniquement après confirmation écrite expresse de notre part.",
         "Si un retour a été expressément approuvé par nos soins, veuillez expédier la marchandise à notre adresse commerciale :",
@@ -51,13 +59,13 @@
     },
     {
       "id": "erstattungen",
-      "heading": "4. Remboursements",
+      "heading": "5. Remboursements",
       "paragraphs": [
         "Lorsqu'un remboursement a été approuvé par nos soins, le montant correspondant sera restitué dans les 14 jours sur le moyen de paiement utilisé lors de l'achat."
       ]
     }
   ],
   "footer": {
-    "lastUpdated": "Dernière mise à jour : février 2026"
+    "lastUpdated": "Dernière mise à jour : juin 2026"
   }
 }

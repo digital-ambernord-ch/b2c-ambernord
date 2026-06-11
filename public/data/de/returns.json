@@ -1,13 +1,13 @@
 {
   "meta": {
     "title": "Rückgabe- & Erstattungsrichtlinie | AmberNord",
-    "description": "Unsere transparente Rückgabe- und Erstattungsrichtlinie für AmberNord Bio-Sanddornsaft – Qualität, Hygiene und Ihr Vertrauen stehen für uns an erster Stelle.",
+    "description": "30 Tage Geld-zurück-Garantie auf Ihre erste Bestellung – unsere transparente Rückgabe- und Erstattungsrichtlinie für AmberNord Bio-Sanddornsaft.",
     "canonical": "https://ambernord.ch/hilfe/rueckgabe/",
     "slug": "/rueckgabe/",
     "robots": "index, follow",
     "og": {
       "title": "Rückgabe- & Erstattungsrichtlinie | AmberNord",
-      "description": "Unsere transparente Rückgabe- und Erstattungsrichtlinie für AmberNord Bio-Sanddornsaft.",
+      "description": "30 Tage Geld-zurück-Garantie auf Ihre erste Bestellung – unsere transparente Rückgabe- und Erstattungsrichtlinie.",
       "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/ambernord-og-default",
       "type": "website"
     },
@@ -25,15 +25,23 @@
   },
   "sections": [
     {
-      "id": "grundsatz",
-      "heading": "1. Grundsatz: Kein Rückgaberecht für Lebensmittel",
+      "id": "garantie",
+      "heading": "1. Unsere 30-Tage-Geld-zurück-Garantie",
       "paragraphs": [
-        "Da wir im Bereich der hochwertigen Bio-Lebensmittel (wie z. B. Bio-Sanddornsaft) tätig sind, sind Qualität, Hygiene und Lebensmittelsicherheit unser oberstes Gebot. Aus Gründen des Gesundheitsschutzes und der Hygiene ist ein generelles Rückgabe- oder Umtauschrecht für unsere Produkte ausgeschlossen. Zudem weisen wir darauf hin, dass gemäss Schweizer Recht im Online-Handel kein gesetzliches Widerrufsrecht besteht."
+        "Wir sind von der Qualität unserer Essenz überzeugt – deshalb gehen wir freiwillig weiter, als das Gesetz verlangt. Sind Sie mit Ihrer ersten Bestellung nicht zufrieden, erstatten wir Ihnen den Kaufpreis einer Flasche (250 ml) zurück. Kontaktieren Sie uns dazu innerhalb von 30 Tagen nach Erhalt der Ware unter Angabe Ihrer Bestellnummer per E-Mail an: <a href=\"mailto:info@ambernord.ch\">info@ambernord.ch</a>",
+        "Eine Rücksendung der Produkte ist aus Hygienegründen <strong>nicht erforderlich</strong>. Die Garantie gilt ausschliesslich für die erste Bestellung, ist auf den Wert einer Flasche (250 ml) begrenzt und kann einmalig pro Kunde bzw. Haushalt in Anspruch genommen werden. Versandkosten werden nicht erstattet. Die Rückerstattung erfolgt innerhalb von 14 Tagen auf das beim Kauf verwendete Zahlungsmittel."
+      ]
+    },
+    {
+      "id": "grundsatz",
+      "heading": "2. Grundsatz: Kein generelles Rückgaberecht für Lebensmittel",
+      "paragraphs": [
+        "Über die in Ziffer 1 beschriebene freiwillige Geld-zurück-Garantie hinaus gilt: Da wir im Bereich der hochwertigen Bio-Lebensmittel (wie z. B. Bio-Sanddornsaft) tätig sind, sind Qualität, Hygiene und Lebensmittelsicherheit unser oberstes Gebot. Aus Gründen des Gesundheitsschutzes und der Hygiene ist ein generelles Rückgabe- oder Umtauschrecht für unsere Produkte ausgeschlossen. Zudem weisen wir darauf hin, dass gemäss Schweizer Recht im Online-Handel kein gesetzliches Widerrufsrecht besteht."
       ]
     },
     {
       "id": "maengel",
-      "heading": "2. Mängel und Transportschäden",
+      "heading": "3. Mängel und Transportschäden",
       "paragraphs": [
         "Ihre Zufriedenheit ist uns selbstverständlich sehr wichtig. Sollte ein Produkt beschädigt bei Ihnen eintreffen (z. B. Glasbruch durch den Transport) oder ein Qualitätsmangel vorliegen, kontaktieren Sie uns bitte umgehend, spätestens jedoch innerhalb von 3 Tagen nach Erhalt der Ware.",
         "Bitte senden Sie uns in diesem Fall eine E-Mail mit einer kurzen Beschreibung des Problems sowie entsprechenden Fotos an: <a href=\"mailto:info@ambernord.ch\">info@ambernord.ch</a>",
@@ -42,7 +50,7 @@
     },
     {
       "id": "ruecksendungen",
-      "heading": "3. Rücksendungen (nur nach vorheriger Absprache)",
+      "heading": "4. Rücksendungen (nur nach vorheriger Absprache)",
       "paragraphs": [
         "Bitte senden Sie keine Produkte unaufgefordert an uns zurück. Eine physische Rücksendung wird nur in seltenen Ausnahmefällen und nach vorheriger schriftlicher Bestätigung durch uns verlangt.",
         "Falls eine Rücksendung von uns ausdrücklich genehmigt wurde, senden Sie die Ware bitte an unsere Geschäftsadresse:",
@@ -51,13 +59,13 @@
     },
     {
       "id": "erstattungen",
-      "heading": "4. Rückerstattungen",
+      "heading": "5. Rückerstattungen",
       "paragraphs": [
         "Wurde eine Rückerstattung von uns genehmigt, wird der entsprechende Betrag innerhalb von 14 Tagen auf das von Ihnen beim Kauf verwendete Zahlungsmittel zurückerstattet."
       ]
     }
   ],
   "footer": {
-    "lastUpdated": "Letzte Aktualisierung: Februar 2026"
+    "lastUpdated": "Letzte Aktualisierung: Juni 2026"
   }
 }

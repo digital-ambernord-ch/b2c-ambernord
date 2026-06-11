@@ -1,13 +1,13 @@
 {
   "meta": {
     "title": "Politica di reso e rimborso | AmberNord",
-    "description": "La nostra politica di reso e rimborso trasparente per il succo di olivello spinoso bio AmberNord – qualità, igiene e la vostra fiducia al primo posto.",
+    "description": "Garanzia soddisfatti o rimborsati di 30 giorni sul primo ordine – la nostra politica di reso e rimborso trasparente per il succo di olivello spinoso bio AmberNord.",
     "canonical": "https://ambernord.ch/it/hilfe/rueckgabe/",
     "slug": "/it/rueckgabe/",
     "robots": "index, follow",
     "og": {
       "title": "Politica di reso e rimborso | AmberNord",
-      "description": "La nostra politica di reso e rimborso trasparente per il succo di olivello spinoso bio AmberNord.",
+      "description": "Garanzia soddisfatti o rimborsati di 30 giorni sul primo ordine – la nostra politica di reso e rimborso trasparente.",
       "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/ambernord-og-default",
       "type": "website"
     },
@@ -25,15 +25,23 @@
   },
   "sections": [
     {
-      "id": "grundsatz",
-      "heading": "1. Principio: Nessun diritto di reso per gli alimenti",
+      "id": "garantie",
+      "heading": "1. La nostra garanzia soddisfatti o rimborsati di 30 giorni",
       "paragraphs": [
-        "Operando nel settore degli alimenti biologici di alta qualità (come il succo di olivello spinoso bio), qualità, igiene e sicurezza alimentare rappresentano la nostra priorità assoluta. Per ragioni di tutela della salute e di igiene, è escluso qualsiasi diritto generale di reso o di cambio per i nostri prodotti. Precisiamo inoltre che, ai sensi del diritto svizzero, non esiste alcun diritto legale di recesso nel commercio online."
+        "Siamo convinti della qualità della nostra essenza – per questo andiamo volontariamente oltre quanto richiesto dalla legge. Se non siete soddisfatti del vostro primo ordine, vi rimborsiamo il prezzo di acquisto di una bottiglia (250 ml). A tal fine contattateci entro 30 giorni dal ricevimento della merce, indicando il numero d'ordine, via e-mail a: <a href=\"mailto:info@ambernord.ch\">info@ambernord.ch</a>",
+        "Per ragioni igieniche, la restituzione dei prodotti <strong>non è necessaria</strong>. La garanzia vale esclusivamente per il primo ordine, è limitata al valore di una bottiglia (250 ml) e può essere utilizzata una sola volta per cliente o nucleo familiare. Le spese di spedizione non vengono rimborsate. Il rimborso avviene entro 14 giorni sul mezzo di pagamento utilizzato al momento dell'acquisto."
+      ]
+    },
+    {
+      "id": "grundsatz",
+      "heading": "2. Principio: nessun diritto generale di reso per gli alimenti",
+      "paragraphs": [
+        "Oltre alla garanzia volontaria soddisfatti o rimborsati descritta al punto 1, vale quanto segue: operando nel settore degli alimenti biologici di alta qualità (come il succo di olivello spinoso bio), qualità, igiene e sicurezza alimentare rappresentano la nostra priorità assoluta. Per ragioni di tutela della salute e di igiene, è escluso qualsiasi diritto generale di reso o di cambio per i nostri prodotti. Precisiamo inoltre che, ai sensi del diritto svizzero, non esiste alcun diritto legale di recesso nel commercio online."
       ]
     },
     {
       "id": "maengel",
-      "heading": "2. Difetti e danni da trasporto",
+      "heading": "3. Difetti e danni da trasporto",
       "paragraphs": [
         "La vostra soddisfazione è ovviamente molto importante per noi. Qualora un prodotto dovesse arrivarvi danneggiato (ad es. rottura del vetro durante il trasporto) o presentasse un difetto di qualità, vi preghiamo di contattarci immediatamente e al più tardi entro 3 giorni dal ricevimento della merce.",
         "Vi chiediamo di inviarci in tal caso un'e-mail con una breve descrizione del problema e relative fotografie all'indirizzo: <a href=\"mailto:info@ambernord.ch\">info@ambernord.ch</a>",
@@ -42,7 +50,7 @@
     },
     {
       "id": "ruecksendungen",
-      "heading": "3. Resi (solo previo accordo)",
+      "heading": "4. Resi (solo previo accordo)",
       "paragraphs": [
         "Vi preghiamo di non rispedirci prodotti senza autorizzazione preventiva. Una restituzione fisica viene richiesta solo in rari casi eccezionali e soltanto dopo nostra esplicita conferma scritta.",
         "Se un reso è stato espressamente approvato da noi, spedite la merce al nostro indirizzo commerciale:",
@@ -51,13 +59,13 @@
     },
     {
       "id": "erstattungen",
-      "heading": "4. Rimborsi",
+      "heading": "5. Rimborsi",
       "paragraphs": [
         "Una volta approvato il rimborso da parte nostra, l'importo corrispondente verrà restituito entro 14 giorni sul mezzo di pagamento utilizzato al momento dell'acquisto."
       ]
     }
   ],
   "footer": {
-    "lastUpdated": "Ultimo aggiornamento: febbraio 2026"
+    "lastUpdated": "Ultimo aggiornamento: giugno 2026"
   }
 }
