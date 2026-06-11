@@ -19,6 +19,7 @@
     }
   },
   "stickyBtn": "Zum Ritual",
+  "factStrip": { "ariaLabel": "Wirkstoff-Fakten" },
   "bewertungChip": {
     "label": "Bewertungen",
     "ariaLabel": "Kundenbewertungen ansehen"

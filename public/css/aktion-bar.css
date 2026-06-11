@@ -44,8 +44,11 @@ html.aktion-active .ambernord-topbar {
   top: 36px;
 }
 
+/* transform participates in the mobile hide-on-scroll header (main.css sets
+   html.an-nav-hidden transforms); on desktop transform never changes, so the
+   extra transition property is inert there. */
 .ambernord-topbar {
-  transition: top 0.28s var(--ease-smooth);
+  transition: top 0.28s var(--ease-smooth), transform 0.3s var(--ease-smooth);
 }
 
 /* --------------------------------------------------------------------------
@@ -155,6 +158,7 @@ html.aktion-active .ambernord-topbar {
 }
 
 .aktion-bar-close {
+  position: relative;
   flex: 0 0 auto;
   width: 28px;
   height: 28px;
@@ -180,6 +184,14 @@ html.aktion-active .ambernord-topbar {
   border-color: rgba(237, 163, 35, 0.35);
 }
 
+/* Mobile: transform is driven by the hide-on-scroll class (main.css) and the
+   swipe-to-dismiss gesture (aktion-bar.js) — animate it smoothly. */
+@media (max-width: 991px) {
+  html.aktion-active .aktion-bar {
+    transition: transform 0.3s var(--ease-smooth);
+  }
+}
+
 @media (max-width: 768px) {
   /* No room for ambient tickers on phones — pill + X only, centred. */
   .aktion-bar-info { display: none; }
@@ -190,6 +202,15 @@ html.aktion-active .ambernord-topbar {
     letter-spacing: 0.8px;
     justify-content: center;
     gap: 0;
+  }
+
+  /* Invisible touch-target extension: visual × stays 26px, the tappable area
+     reaches ~44px. The pill keeps a 12px gap so the extended close area never
+     swallows taps aimed at the offer link. */
+  .aktion-bar-close::after {
+    content: '';
+    position: absolute;
+    inset: -9px -8px;
   }
 
   .aktion-bar-eyebrow,
@@ -206,7 +227,7 @@ html.aktion-active .ambernord-topbar {
   }
 
   .aktion-bar-pill-wrap {
-    gap: 6px;
+    gap: 12px;
   }
 
   .aktion-bar-close {

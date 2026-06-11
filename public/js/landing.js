@@ -27,54 +27,8 @@ window.initLanding = async function () {
     }
   });
 
-  /* =========================================================================
-     TAGLINE AUTO-FIT — never wrap on mobile.
-     "100% RACCOLTO A MANO | SPREMUTO A FREDDO | CERTIFICATO BIO" (IT, longest)
-     overflows the hero column on narrow phones. Rather than letting the line
-     wrap, we shrink the font + letter-spacing until everything fits on a
-     single line. Runs once on init (after i18n applies the localized text)
-     and on viewport resize. Reverts to default sizing on desktop.
-     ========================================================================= */
-
-  function fitTagline() {
-    const tagline = document.querySelector('.tagline-part-1');
-    const heroContent = document.getElementById('ambernord-hero-content');
-    if (!tagline || !heroContent) return;
-
-    /* Desktop: clear inline styles so the stylesheet's 11px / 4px takes over */
-    if (window.innerWidth > 991) {
-      tagline.style.fontSize = '';
-      tagline.style.letterSpacing = '';
-      return;
-    }
-
-    /* Reset to mobile default before measuring; iterate down 0.5px at a time
-       until the inline content (white-space:nowrap) no longer overflows the
-       hero content area. Floor at 6px so it never becomes unreadable. */
-    let fontPx = 10;
-    let lsPx   = 1.5;
-    tagline.style.fontSize      = fontPx + 'px';
-    tagline.style.letterSpacing = lsPx   + 'px';
-
-    const cs = getComputedStyle(heroContent);
-    const padX = (parseFloat(cs.paddingLeft)  || 0)
-               + (parseFloat(cs.paddingRight) || 0);
-    const available = heroContent.clientWidth - padX - 4;
-
-    while (tagline.scrollWidth > available && fontPx > 6) {
-      fontPx -= 0.5;
-      lsPx    = Math.max(0.2, lsPx - 0.15);
-      tagline.style.fontSize      = fontPx + 'px';
-      tagline.style.letterSpacing = lsPx   + 'px';
-    }
-  }
-
-  fitTagline();
-  let _taglineResizeT;
-  window.addEventListener('resize', function () {
-    clearTimeout(_taglineResizeT);
-    _taglineResizeT = setTimeout(fitTagline, 100);
-  });
+  /* Tagline: no JS auto-fit anymore — on mobile the line wraps into two
+     editorial rows (CSS in landing.css), with an 11px floor in every locale. */
 
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
     console.warn('[Landing] GSAP not available yet — retrying...');
@@ -264,56 +218,13 @@ window.initLanding = async function () {
     tl.to(glow, { scale: 1, opacity: 1, duration: isDesktop ? 0.9 : 0.5, ease: 'power2.out' }, glowIn);
     tl.to(glow, { scale: 0.7, opacity: 0, duration: isDesktop ? 0.7 : 0.4, ease: 'power1.in' }, glowOut);
 
-    /* Mobile only: reparent real .trust-item elements into sticky-viewport for
-       the scroll animation. They stagger in below the bottle, then exit upward
-       with it. .conversion-booster-wrapper is display:none on mobile via CSS,
-       so these items only live in the animation — they never return. */
-    let trustContainer = null;
-    if (!isDesktop) {
-      const trustRibbonEl = document.querySelector('.trust-ribbon');
-      if (trustRibbonEl) {
-        const trustItemEls = Array.from(trustRibbonEl.querySelectorAll('.trust-item'));
-        if (trustItemEls.length) {
-          trustContainer = document.createElement('div');
-          trustContainer.setAttribute('aria-hidden', 'true');
-          trustContainer.style.cssText = 'position:absolute;top:0;left:0;right:0;pointer-events:none;z-index:12;display:flex;flex-direction:column;align-items:center;gap:18px;padding:0 20px;will-change:transform,opacity;';
-
-          trustItemEls.forEach(function (item) {
-            gsap.set(item, { opacity: 0, y: 15 });
-            trustContainer.appendChild(item);
-          });
-          stickyVP.appendChild(trustContainer);
-
-          function trustContainerY() {
-            var e = endProps();
-            return e.y + e.h + 24;
-          }
-          gsap.set(trustContainer, { y: function () { return trustContainerY(); } });
-
-          /* Staggered entrance after bottle arrives at centre */
-          tl.to(trustItemEls, {
-            opacity:  1,
-            y:        0,
-            duration: 0.6,
-            stagger:  0.15,
-            ease:     'power2.out',
-          }, 3.2);
-
-          /* Exit upward with bottle — no opacity fade, clips naturally through
-             sticky-viewport overflow:hidden when it reaches y < 0. */
-          tl.to(trustContainer, {
-            y:        function () { return trustContainerY() - window.innerHeight * riseAmt; },
-            duration: riseDur,
-            ease:     'power1.in',
-          }, riseStart);
-        }
-      }
-    }
+    /* Trust items are NO LONGER reparented into the hero animation on mobile —
+       they live permanently as a static row under the product cards (CSS),
+       always visible, screen-reader accessible, reduced-motion safe. */
 
     return function () {
       if (fly.parentNode)  fly.parentNode.removeChild(fly);
       if (glow.parentNode) glow.parentNode.removeChild(glow);
-      if (trustContainer && trustContainer.parentNode) trustContainer.parentNode.removeChild(trustContainer);
       heroBottle.style.opacity = '';
       const hero = document.querySelector('.scalable-hero');
       const bgv  = document.querySelector('.hero-bg-video');
@@ -364,12 +275,23 @@ window.initLanding = async function () {
   });
 
   mm.add('(max-width: 991px)', function () {
-    if (reducedMotion) return;
-
-    /* 210dvh = 110dvh of scrub range for the 9.5-unit mobile timeline; at the
-       CSS fallback height the whole choreography flashed past in ~40dvh. */
     const scrollTrack = document.getElementById('scrollTrack');
-    if (scrollTrack) scrollTrack.style.height = '210dvh';
+    const dvhOk = (window.CSS && CSS.supports && CSS.supports('height', '1dvh'));
+
+    /* Reduced motion: no choreography → no scrub range. Collapse the track to
+       one viewport so there is no dead pinned scroll. */
+    if (reducedMotion) {
+      if (scrollTrack) scrollTrack.style.height = dvhOk ? '100dvh' : '100vh';
+      return function () {
+        if (scrollTrack) scrollTrack.style.height = '';
+      };
+    }
+
+    /* 160dvh = 60dvh of scrub range for the shortened ~6-unit mobile timeline
+       (shrink + bottle fly + rise — the ONLY pinned scene on mobile). The
+       trust posms and the product-card pin were removed: everything after the
+       hero is normal momentum scrolling. */
+    if (scrollTrack) scrollTrack.style.height = dvhOk ? '160dvh' : '160vh';
 
     const tlMobile = gsap.timeline({
       scrollTrigger: {
@@ -388,9 +310,9 @@ window.initLanding = async function () {
       .to('#heroText',          { opacity: 0, duration: 1 }, 1)
       .to('#ambernordHeroShade',{ opacity: 0, duration: 1.5 }, 1.5)
       .to('.scalable-hero',     { y: function () { return -window.innerHeight * 0.75; },
-                                  duration: 3.0, ease: 'power1.in' }, 5.0);
+                                  duration: 2.0, ease: 'power1.in' }, 4.0);
 
-    const btlCleanup = createFlyingBottle(tlMobile, false, 5.0, 4.5, 0.3);
+    const btlCleanup = createFlyingBottle(tlMobile, false, 4.0, 2.0, 0.3);
 
     return function () {
       if (scrollTrack) scrollTrack.style.height = '';
@@ -687,113 +609,11 @@ window.initLanding = async function () {
     };
   }
 
-  function attachProductCardsExitMobile(pinDuration, bridgeWrap, glassEls) {
-    if (reducedMotion) return null;
-
-    const section = document.getElementById('ritual-products');
-    if (!section) return null;
-
-    const productCards = section.querySelectorAll('.premium-product-card');
-    if (productCards.length < 3) return null;
-
-    const [starter, habit, protocol] = productCards;
-    productCards.forEach(function (c) { c.style.transition = 'border-color var(--t-base) ease'; });
-
-    const trailingInfo = section.querySelector('.shop-trailing-info');
-    const paymentGroup = section.querySelector('.ritual-payment-group');
-    const trailUnit    = [trailingInfo, paymentGroup].filter(Boolean);
-
-    const margin    = function () { return parseFloat(getComputedStyle(starter).marginBottom) || 40; };
-    const card1Lift = function () { return -(starter.offsetHeight + margin()); };
-    const card2Lift = function () { return -(starter.offsetHeight + habit.offsetHeight + 2 * margin()); };
-
-    /* The pin spacer reserves the section's FULL height (3 visible cards),
-       but at pin end the cards are display:none — without compensation the
-       user scrolls through ~2 viewports of dead black between the payment
-       icons and the Manifest. Pull the editorial wrapper up by the height
-       the hidden cards used to occupy. Static (set before the editorial
-       ScrollTriggers are created) so all downstream trigger positions are
-       computed against the corrected layout. */
-    const editorialWrap = document.querySelector('.dynamic-editorial-wrapper');
-    if (editorialWrap) {
-      const collapsed = Math.round(
-        starter.offsetHeight + habit.offsetHeight + protocol.offsetHeight + 3 * margin()
-      );
-      editorialWrap.style.marginTop = -Math.max(0, collapsed) + 'px';
-    }
-
-    const stConfig = pinScrollTrigger(section, pinDuration, undefined, 0.8);
-    stConfig.onLeave = function () {
-      tl.progress(1, false);
-      gsap.set([starter, habit, protocol], { display: 'none' });
-      gsap.set(trailUnit, { y: 0 });
-    };
-    stConfig.onLeaveBack = function () {
-      gsap.set([starter, habit, protocol], { clearProps: 'display' });
-      gsap.set(trailUnit, { clearProps: 'y' });
-    };
-
-    const tl = gsap.timeline({ scrollTrigger: stConfig });
-
-    if (bridgeWrap) {
-      gsap.set(bridgeWrap, { opacity: 0 });
-      if (glassEls) gsap.set(glassEls.glassWrap, { opacity: 0, y: 20 });
-      tl.set([starter, habit, protocol], { display: 'none' }, 0.78);
-      tl.set(trailUnit, { y: 0 }, 0.78);
-      /* bridgeWrap (bottle + glass container) snaps visible */
-      tl.to(bridgeWrap, { opacity: 1, duration: 0.02, ease: 'none' }, 0.79);
-    }
-
-    /* Timeline (pinDuration 3000px → each 0.01 = 30px of scroll):
-         0.05 → 0.29   Starter exits  + lift Habit/Protocol/trail (~720px)
-         0.30 → 0.53   Habit   exits  + lift Protocol/trail       (~690px)
-         0.54 → 0.77   Protocol exits                             (~690px)
-         0.76           cards display:none + trailUnit y:0
-         0.77           bridgeWrap snaps visible
-         0.78 → 0.95   glass animation                            (~510px)
-         0.95 → 1.00   bridgeWrap exits upward → Manifest follows (~150px) */
-    const liftAll1 = [habit, protocol].concat(trailUnit);
-    const liftAll2 = [protocol].concat(trailUnit);
-
-    tl.to(starter,   { xPercent: -160, opacity: 0, ease: 'power2.in',    duration: 0.24 }, 0.05)
-      .to(liftAll1,  { y: card1Lift,               ease: 'power1.inOut', duration: 0.24 }, 0.05)
-      .to(habit,     { xPercent:  160, opacity: 0, ease: 'power2.in',    duration: 0.24 }, 0.30)
-      .to(liftAll2,  { y: card2Lift,               ease: 'power1.inOut', duration: 0.24 }, 0.30)
-      .to(protocol,  { xPercent:  160, opacity: 0, ease: 'power2.in',    duration: 0.24 }, 0.54);
-
-    if (glassEls) {
-      const { glassWrap, juice, spoon, d1, d2, d3, lbl } = glassEls;
-      /* glass slides up into view */
-      tl.to(glassWrap, { opacity: 1, y: 0, duration: 0.07, ease: 'power2.out' }, 0.78);
-      /* amber juice pours in */
-      tl.to(juice, { attr: { y: 60 }, duration: 0.22, ease: 'power1.inOut' }, 0.80);
-      /* water drops fall in (staggered) */
-      tl.set(d1, { opacity: 1 }, 0.860); tl.to(d1, { attr: { cy: 100 }, opacity: 0, duration: 0.04, ease: 'power2.in' }, 0.860);
-      tl.set(d2, { opacity: 1 }, 0.876); tl.to(d2, { attr: { cy:  90 }, opacity: 0, duration: 0.04, ease: 'power2.in' }, 0.876);
-      tl.set(d3, { opacity: 1 }, 0.890); tl.to(d3, { attr: { cy:  96 }, opacity: 0, duration: 0.03, ease: 'power2.in' }, 0.890);
-      /* juice rises a touch as water is added */
-      tl.to(juice, { attr: { y: 50 }, duration: 0.03, ease: 'power2.out' }, 0.874);
-      /* spoon + label appear */
-      tl.to(spoon, { opacity: 1, duration: 0.03, ease: 'power2.out' }, 0.900);
-      tl.to(lbl,   { opacity: 1, duration: 0.05, ease: 'power2.out' }, 0.902);
-      /* spoon stirs — 3 oscillations */
-      tl.to(spoon, { rotation:  12, duration: 0.022, ease: 'power1.inOut' }, 0.912);
-      tl.to(spoon, { rotation: -11, duration: 0.025, ease: 'power1.inOut' }, 0.922);
-      tl.to(spoon, { rotation:   9, duration: 0.022, ease: 'power1.inOut' }, 0.934);
-      tl.to(spoon, { rotation:   0, duration: 0.018, ease: 'power1.out'   }, 0.944);
-    }
-
-    /* Exit upward — bottle + glass fly off screen, Manifest follows immediately */
-    if (bridgeWrap) {
-      tl.to(bridgeWrap, { y: -80, opacity: 0, duration: 0.05, ease: 'power2.in' }, 0.95);
-    }
-
-    return function () {
-      gsap.set(Array.from(productCards), { clearProps: 'display,xPercent,opacity' });
-      gsap.set(trailUnit, { clearProps: 'y' });
-      if (editorialWrap) editorialWrap.style.marginTop = '';
-    };
-  }
+  /* Mobile product presentation is now a STATIC premium stack — the pinned
+     card-exit choreography (and the glass/spoon SVG scene, which carried
+     hardcoded German copy) was removed. Cards reveal once with a calm
+     fade-up and stay put so the three editions can be compared freely;
+     The Habit announces itself with a single border-glow "breath" (CSS). */
 
   /* =========================================================================
      BRIDGE BOTTLE — appears inside #ritual-products after Protocol card exits,
@@ -839,99 +659,6 @@ window.initLanding = async function () {
 
   const bridgeWrap = attachBridgeBottle();
 
-  /* =========================================================================
-     GLASS RITUAL — injected INTO the existing bridgeWrap (mobile only).
-     Bottle (already in bridgeWrap) shrinks to sit left; SVG glass appears
-     to its right. Juice pours in, water drops fall, spoon stirs, "1:10"
-     label fades in — all as part of the product-cards-exit timeline.
-     No new section, no new ScrollTrigger.
-     ========================================================================= */
-
-  function injectGlassIntoBridge(bWrap) {
-    if (!bWrap) return null;
-    const btl = bWrap.querySelector('img');
-    if (!btl) return null;
-
-    /* Resize bottle — larger than before, fits side-by-side with the glass */
-    btl.style.width  = '110px';
-    btl.style.height = '220px';
-
-    /* Wrap bottle + glass in a horizontal pair row, then make bWrap a column
-       so the "1:10" label can sit fixed at the screen bottom via absolute pos */
-    const pairWrap = document.createElement('div');
-    pairWrap.style.cssText = 'display:flex;align-items:center;gap:36px;';
-    bWrap.insertBefore(pairWrap, btl);
-    pairWrap.appendChild(btl);
-
-    /* Glass (90×155) — proportionally larger than before */
-    const glassWrap = document.createElement('div');
-    glassWrap.style.cssText = 'position:relative;width:90px;height:155px;flex-shrink:0;opacity:0;will-change:opacity,transform;';
-
-    glassWrap.innerHTML =
-      '<svg viewBox="0 0 90 155" width="90" height="155" overflow="visible" style="display:block;">' +
-        '<defs>' +
-          '<clipPath id="grb-clip">' +
-            '<path d="M11,6 L79,6 L71,148 Q70,153 63,153 L27,153 Q20,153 19,148 Z"/>' +
-          '</clipPath>' +
-        '</defs>' +
-        '<rect id="grb-juice" x="0" y="153" width="90" height="153" fill="rgba(237,163,35,0.82)" clip-path="url(#grb-clip)"/>' +
-        '<path d="M11,6 L79,6 L71,148 Q70,153 63,153 L27,153 Q20,153 19,148 Z" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="2.5" stroke-linejoin="round"/>' +
-        '<ellipse cx="45" cy="6" rx="34" ry="6" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>' +
-        '<path d="M23,24 Q25,70 23,116" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="4" stroke-linecap="round"/>' +
-        '<ellipse id="grb-d1" cx="45" cy="-14" rx="4.5" ry="6.2" fill="rgba(160,210,255,0.75)" opacity="0"/>' +
-        '<ellipse id="grb-d2" cx="36" cy="-24" rx="3.5" ry="5"   fill="rgba(160,210,255,0.7)"  opacity="0"/>' +
-        '<ellipse id="grb-d3" cx="55" cy="-19" rx="3"   ry="4.5" fill="rgba(160,210,255,0.7)"  opacity="0"/>' +
-      '</svg>' +
-      '<div id="grb-spoon" style="position:absolute;top:2px;right:-14px;width:22px;height:120px;opacity:0;transform-origin:50% 18%;will-change:transform,opacity;">' +
-        '<svg viewBox="0 0 22 120" width="22" height="120">' +
-          '<ellipse cx="11" cy="12" rx="9" ry="11" fill="rgba(237,163,35,0.5)" stroke="rgba(237,163,35,0.75)" stroke-width="1.5"/>' +
-          '<line x1="11" y1="23" x2="11" y2="116" stroke="rgba(237,163,35,0.65)" stroke-width="2.5" stroke-linecap="round"/>' +
-        '</svg>' +
-      '</div>';
-
-    pairWrap.appendChild(glassWrap);
-
-    /* bWrap becomes a column: pair centred, label pinned to the screen bottom */
-    bWrap.style.flexDirection  = 'column';
-    bWrap.style.justifyContent = 'center';
-    bWrap.style.minHeight      = '68vh';
-    bWrap.style.padding        = '32px 20px 88px';
-    bWrap.style.position       = 'relative';
-
-    /* "1:10" label — absolute to bWrap, visually at the screen bottom */
-    const lbl = document.createElement('div');
-    lbl.style.cssText = 'position:absolute;bottom:20px;left:50%;transform:translateX(-50%);text-align:center;opacity:0;white-space:nowrap;will-change:opacity;';
-    lbl.innerHTML =
-      '<div style="font-family:var(--font-heading,\'Playfair Display\',serif);font-size:26px;font-weight:700;color:rgba(237,163,35,0.92);letter-spacing:5px;">1 : 10</div>' +
-      '<div style="font-size:10px;color:rgba(255,255,255,0.52);letter-spacing:4px;margin-top:6px;text-transform:uppercase;">Das tägliche Ritual</div>';
-    bWrap.appendChild(lbl);
-
-    const juice = glassWrap.querySelector('#grb-juice');
-    const spoon = glassWrap.querySelector('#grb-spoon');
-    const d1    = glassWrap.querySelector('#grb-d1');
-    const d2    = glassWrap.querySelector('#grb-d2');
-    const d3    = glassWrap.querySelector('#grb-d3');
-
-    return {
-      glassWrap: glassWrap,
-      juice: juice, spoon: spoon,
-      d1: d1, d2: d2, d3: d3,
-      lbl: lbl,
-      cleanup: function () {
-        btl.style.width  = '';
-        btl.style.height = '';
-        /* Move bottle back to bWrap, then remove pairWrap */
-        bWrap.insertBefore(btl, pairWrap);
-        if (pairWrap.parentNode) pairWrap.parentNode.removeChild(pairWrap);
-        if (lbl.parentNode)      lbl.parentNode.removeChild(lbl);
-        bWrap.style.flexDirection  = '';
-        bWrap.style.minHeight      = '';
-        bWrap.style.padding        = '30px 0';
-        bWrap.style.position       = '';
-      }
-    };
-  }
-
   /* pinScrollTrigger shared with desktop editorial; not used for mobile product. */
   mm.add('(min-width: 992px)', function () {
     var section      = document.getElementById('ritual-products');
@@ -976,12 +703,52 @@ window.initLanding = async function () {
     };
   });
   mm.add('(max-width: 991px)', function () {
-    var glassEls          = injectGlassIntoBridge(bridgeWrap);
-    var mobileProdCleanup = attachProductCardsExitMobile(3000, bridgeWrap, glassEls);
+    /* The bridge bottle scene is desktop-only; on mobile the product section
+       is plain flow, so the (opacity:0) wrap would just leave a hole. */
+    if (bridgeWrap) gsap.set(bridgeWrap, { display: 'none' });
+
+    if (reducedMotion) {
+      return function () {
+        if (bridgeWrap) gsap.set(bridgeWrap, { clearProps: 'display' });
+      };
+    }
+
+    /* Static premium stack: each card (and the trust row) fades up ONCE on
+       entry, then stays put — the user compares the three editions in peace.
+       The Habit gets its border-glow "breath" right after its reveal. */
+    var section   = document.getElementById('ritual-products');
+    var cards     = section ? Array.from(section.querySelectorAll('.premium-product-card')) : [];
+    var trustWrap = section ? section.querySelector('.conversion-booster-wrapper') : null;
+    var revealEls = cards.concat(trustWrap ? [trustWrap] : []);
+
+    revealEls.forEach(function (el) {
+      gsap.fromTo(el,
+        { opacity: 0, y: 28 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.9,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 88%',
+            toggleActions: 'play none none none',
+            invalidateOnRefresh: true
+          },
+          onComplete: function () {
+            if (el.classList && el.classList.contains('highlight-habit')) {
+              el.classList.add('an-breathe');
+            }
+          }
+        }
+      );
+    });
+
     return function () {
-      if (mobileProdCleanup) mobileProdCleanup();
-      if (glassEls)          glassEls.cleanup();
-      if (bridgeWrap) gsap.set(bridgeWrap, { clearProps: 'opacity,y' });
+      revealEls.forEach(function (el) {
+        if (el.classList) el.classList.remove('an-breathe');
+      });
+      if (bridgeWrap) gsap.set(bridgeWrap, { clearProps: 'display' });
     };
   });
 
@@ -1071,143 +838,6 @@ window.initLanding = async function () {
     };
   }
 
-  /* Shared timeline phases for both editorial blocks (positions in 0..1):
-       0.00 → 0.12   settle pause       (block locks in, brief beat)
-       0.12 → 0.83   main animation     (shatter / eruption)
-       0.83 → 1.00   evaporate frame    (block fades + scales down, NOTHING left)
-     The evaporation animates .nature-hero-block so its border, box-shadow,
-     bg image and overlay ALL fade together — no leftover empty rectangle. */
-
-  function attachManifestShatter(block, maxDist, pinDuration, startStr) {
-    if (reducedMotion || !block.wrapper || !block.shards.length) return;
-
-    const vectors = block.shards.map(function (_, i) {
-      const angle = (i * 137.508) * Math.PI / 180;
-      const dist  = (maxDist * 0.55) + (i * 31) % (maxDist * 0.45);
-      return {
-        x:   Math.cos(angle) * dist,
-        y:   Math.sin(angle) * dist * 0.55,
-        rot: ((i * 23) % 90) - 45
-      };
-    });
-
-    const tl = gsap.timeline({ scrollTrigger: pinScrollTrigger(block.wrapper, pinDuration, startStr) });
-
-    block.shards.forEach(function (shard, i) {
-      const v = vectors[i];
-      tl.to(shard, {
-        x: v.x, y: v.y,
-        rotation: v.rot,
-        opacity:  0,
-        filter:  'blur(6px)',
-        ease:    'power2.in',
-        duration: 0.45
-      }, 0.12 + i * 0.006);
-    });
-
-    if (block.bg) {
-      /* NO filter transition — every transition between filter states caused
-         a brief gray flash (the browser re-rasterises the layer, blending
-         the placeholder + dark overlay through whatever intermediate filter
-         state is mid-interpolation). Only scale the bg; keep it at the CSS
-         default filter the entire animation — user explicitly asked for
-         "100% original image" during the animation. */
-      tl.to(block.bg, {
-        scale:  1.04,
-        ease:  'power1.in',
-        duration: 0.65
-      }, 0.12);
-    }
-
-    const innerBlock = block.wrapper.querySelector('.nature-hero-block');
-    if (innerBlock) {
-      /* Slow evaporation — spans last 30% of pin (was 17%) so the Manifest
-         block stays visible longer while user scrolls past the shatter. The
-         visual overlap with the approaching Ritual block (positioned 100px
-         below in flow on mobile) makes the section handoff feel quicker.
-         Opacity-only — NO scale tween (would clobber mobile fit-to-viewport). */
-      tl.to(innerBlock, {
-        opacity: 0,
-        ease:   'power1.in',
-        duration: 0.30
-      }, 0.70);
-    }
-  }
-
-  function attachRitualEruption(block, maxDist, pinDuration, startStr) {
-    if (reducedMotion || !block.wrapper || !block.shards.length) return;
-
-    /* On mobile we MUST skip the expensive per-shard effects (textShadow,
-       filter blur, rotation, scale up + scale down) — running them on 50-80
-       shards simultaneously was overheating the phone. Mobile gets a lean
-       version: color tint for the gold mood + outward/upward translate +
-       opacity fade. Desktop keeps the full eruption choreography. */
-    const isLight = window.matchMedia('(max-width: 991px)').matches;
-
-    /* Volcano vectors: angles distributed in the UPPER hemisphere only
-       (-150° to -30°, where -90° is straight up), so all shards erupt
-       skyward with horizontal spread. */
-    const vectors = block.shards.map(function (_, i) {
-      const angleDeg = -150 + ((i * 47) % 121); /* -150 .. -30 inclusive */
-      const rad      = angleDeg * Math.PI / 180;
-      const dist     = (maxDist * 0.5) + (i * 37) % (maxDist * 0.5);
-      return {
-        x:   Math.cos(rad) * dist,
-        y:   Math.sin(rad) * dist,
-        rot: isLight ? 0 : (((i * 29) % 120) - 60)
-      };
-    });
-
-    const tl = gsap.timeline({ scrollTrigger: pinScrollTrigger(block.wrapper, pinDuration, startStr) });
-
-    /* Phase 1 (0.12 → 0.40): GLOW. Words tint gold.
-       Desktop adds scale + textShadow for the "energy charging" feel. */
-    const glowProps = { color: '#FFD56B', ease: 'power1.inOut', duration: 0.28 };
-    if (!isLight) {
-      glowProps.scale = 1.28;
-      glowProps.textShadow = '0 0 18px rgba(255, 213, 107, 0.85), 0 0 36px rgba(237, 163, 35, 0.55)';
-      glowProps.stagger = { each: 0.004, from: 'random' };
-    }
-    tl.to(block.shards, glowProps, 0.12);
-
-    if (block.bg) {
-      tl.to(block.bg, { scale: 1.03, ease: 'power1.inOut', duration: 0.28 }, 0.12);
-    }
-
-    /* Phase 2 (0.40 → 0.83): ERUPT.
-       Mobile: just translate + opacity. Desktop also rotates, scales down,
-       and blurs each shard. */
-    block.shards.forEach(function (shard, i) {
-      const v = vectors[i];
-      const eruptProps = {
-        x: v.x, y: v.y,
-        opacity: 0,
-        ease: 'power2.in',
-        duration: 0.40
-      };
-      if (!isLight) {
-        eruptProps.rotation = v.rot;
-        eruptProps.scale    = 0.25;
-        eruptProps.filter   = 'blur(5px)';
-      }
-      tl.to(shard, eruptProps, 0.40 + i * 0.005);
-    });
-
-    if (block.bg) {
-      tl.to(block.bg, { scale: 1.06, ease: 'power1.in', duration: 0.43 }, 0.40);
-    }
-
-    /* Phase 3 (0.70 → 1.00): SLOW EVAPORATE. Extended from 0.17 → 0.30 duration
-       so the Ritual block stays visible while user scrolls toward Exclusive
-       Sourcing — the visual overlap with the approaching next section makes
-       the handoff feel quicker, not draggy. Opacity-only so the mobile
-       fit-to-viewport inline transform on .nature-hero-block survives. */
-    const innerBlock = block.wrapper.querySelector('.nature-hero-block');
-    if (innerBlock) {
-      tl.to(innerBlock, { opacity: 0, ease: 'power1.in', duration: 0.30 }, 0.70);
-    }
-  }
-
   /* Ritual block: plain scroll-reveal replacing the pinned eruption.
      Fades the block up once on viewport entry; background gets a subtle
      parallax zoom while scrolling past. Word shards from splitIntoWordShards()
@@ -1247,47 +877,6 @@ window.initLanding = async function () {
           }
         }
       );
-    }
-  }
-
-  /* Editorial pin position — visually centered in the area BELOW the
-     topbar. Returns a function so ScrollTrigger.invalidateOnRefresh
-     re-measures on resize (block content height varies with localized
-     text and viewport width). Guarantees min 40px gap from topbar so the
-     block never tucks under nav/aktion-bar. */
-  function editorialPinStart(wrapper) {
-    return function () {
-      const cs      = getComputedStyle(document.documentElement);
-      const navH    = parseFloat(cs.getPropertyValue('--nav-height'))    || 80;
-      const aktionH = parseFloat(cs.getPropertyValue('--aktion-height')) || 0;
-      const topBar  = navH + aktionH;
-      const availV  = window.innerHeight - topBar;
-      const blockH  = wrapper.offsetHeight;
-      const buffer  = Math.max(40, Math.round((availV - blockH) / 2));
-      return 'top top+=' + (topBar + buffer);
-    };
-  }
-
-  /* On mobile, if a block is too tall to fit under the topbar with
-     breathing room, scale it down via CSS transform on .nature-hero-block.
-     GSAP animates ONLY the .nature-hero-bg / shards / wrapper opacity, so
-     setting a base scale on the block itself does NOT conflict with the
-     timeline (different targets). */
-  function fitBlockToViewport(block) {
-    const inner = block.wrapper.querySelector('.nature-hero-block');
-    if (!inner) return;
-    inner.style.transform = '';
-    inner.style.transformOrigin = '';
-
-    const cs      = getComputedStyle(document.documentElement);
-    const navH    = parseFloat(cs.getPropertyValue('--nav-height'))    || 80;
-    const aktionH = parseFloat(cs.getPropertyValue('--aktion-height')) || 0;
-    const availV  = window.innerHeight - navH - aktionH - 80; /* 80px total breathing room */
-    const naturalH = inner.offsetHeight;
-    if (naturalH > availV) {
-      const scale = availV / naturalH;
-      inner.style.transformOrigin = 'top center';
-      inner.style.transform = 'scale(' + scale + ')';
     }
   }
 
@@ -1346,39 +935,77 @@ window.initLanding = async function () {
     if (editorialBlocks[1]) attachEditorialCinematic(editorialBlocks[1], false);
   });
   mm.add('(max-width: 991px)', function () {
-    if (editorialBlocks[0]) {
-      fitBlockToViewport(editorialBlocks[0]);
-      attachManifestShatter(editorialBlocks[0], 220, 800, editorialPinStart(editorialBlocks[0].wrapper));
-    }
-    /* 'top bottom' fires as soon as Das Ritual enters the viewport from below,
-       so there is no black gap between Manifest pin end and Ritual fade-in. */
+    /* Mobile editorial = readable-first: no pin, no shatter. Both blocks use
+       the same calm fade-up + background parallax so the user reads the
+       Manifest and Ritual prose at their own pace. */
+    if (editorialBlocks[0]) attachRitualReveal(editorialBlocks[0], 'top 80%');
     if (editorialBlocks[1]) attachRitualReveal(editorialBlocks[1], 'top bottom');
-    return function () {
-      if (editorialBlocks[0]) {
-        var inner = editorialBlocks[0].wrapper.querySelector('.nature-hero-block');
-        if (inner) { inner.style.transform = ''; inner.style.transformOrigin = ''; }
-      }
-    };
   });
 
   /* =========================================================================
-     LANDING-PAGE STICKY NAV
-     Appears after the hero section has scrolled past the viewport.
+     PAST-HERO STATE — one IntersectionObserver drives:
+       · the bewertung chip (bottom-left social proof)
+       · MOBILE ONLY: the topbar CTA swap to "Zum Ritual" (html.an-cta-ritual
+         + data-scroll-products on the button, so it scrolls to the cards
+         instead of navigating to /shop/). The old .landing-sticky-nav bar was
+         removed — it rendered underneath the always-visible topbar.
      ========================================================================= */
 
-  const landingStickyNav     = document.getElementById('landingStickyNav');
   const landingBewertungChip = document.getElementById('landingBewertungChip');
   const scrollTrack          = document.getElementById('scrollTrack');
+  const navBtnGlobal         = document.querySelector('.nav-btn--global');
 
-  /* Sticky nav (top) and the bewertung chip (bottom-left) share the same
-     trigger — both appear once the hero has scrolled out of view. One observer
-     toggles both so we don't waste an extra IntersectionObserver. */
-  if (scrollTrack && (landingStickyNav || landingBewertungChip)) {
+  /* Chip visibility with mobile context zones: past the hero, but QUIET while
+     the product cards or the closing CTA are on screen — social proof steps
+     back at the decision moments. Desktop keeps the simple past-hero rule. */
+  function updateChipVisibility() {
+    const chip = document.getElementById('landingBewertungChip');
+    if (!chip) return;
+    let visible = !!window._anPastHero;
+    if (visible && window.matchMedia('(max-width: 991px)').matches) {
+      const vh   = window.innerHeight;
+      const shop = document.getElementById('shop');
+      if (shop) {
+        const r = shop.getBoundingClientRect();
+        if (r.top < vh && r.bottom > 0) visible = false;
+      }
+      const ccta = document.querySelector('.landing-closing-cta');
+      if (visible && ccta && ccta.getBoundingClientRect().top < vh) visible = false;
+    }
+    chip.classList.toggle('is-visible', visible);
+  }
+  window._anUpdateChip = updateChipVisibility;
+
+  if (!window._anChipZonesBound) {
+    window._anChipZonesBound = true;
+    let chipTick = false;
+    window.addEventListener('scroll', function () {
+      if (chipTick || window.innerWidth > 991) return;
+      chipTick = true;
+      requestAnimationFrame(function () {
+        chipTick = false;
+        if (typeof window._anUpdateChip === 'function') window._anUpdateChip();
+      });
+    }, { passive: true });
+  }
+
+  if (scrollTrack && (landingBewertungChip || navBtnGlobal)) {
     const observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
-        const visible = !entry.isIntersecting && entry.boundingClientRect.top < 0;
-        if (landingStickyNav)     landingStickyNav.classList.toggle('is-visible', visible);
-        if (landingBewertungChip) landingBewertungChip.classList.toggle('is-visible', visible);
+        const past = !entry.isIntersecting && entry.boundingClientRect.top < 0;
+        window._anPastHero = past;
+        updateChipVisibility();
+
+        if (window.matchMedia('(max-width: 991px)').matches) {
+          document.documentElement.classList.toggle('an-cta-ritual', past);
+          if (navBtnGlobal) {
+            if (past) navBtnGlobal.setAttribute('data-scroll-products', '');
+            else      navBtnGlobal.removeAttribute('data-scroll-products');
+          }
+        } else {
+          document.documentElement.classList.remove('an-cta-ritual');
+          if (navBtnGlobal) navBtnGlobal.removeAttribute('data-scroll-products');
+        }
       });
     }, { threshold: 0 });
     observer.observe(scrollTrack);
@@ -1419,16 +1046,15 @@ window.initLanding = async function () {
     document.addEventListener('click', function (e) {
       const btn = e.target && e.target.closest ? e.target.closest('[data-scroll-products]') : null;
       if (!btn) return;
+      /* Only hijack the click while the landing shop section actually exists —
+         a stale data-scroll-products attribute on another page must fall
+         through to normal navigation instead of dead-ending. */
+      if (!document.getElementById('shop')) return;
       e.preventDefault();
       e.stopPropagation();
       scrollToProductsStart();
       if (typeof window.closeMobileMenu === 'function') window.closeMobileMenu();
     }, true);
-  }
-
-  const stickyNavBtn = document.getElementById('landingStickyNavBtn');
-  if (stickyNavBtn) {
-    stickyNavBtn.addEventListener('click', function () { scrollToProductsStart(); });
   }
 
   /* =========================================================================

@@ -484,6 +484,12 @@
          Landing's init re-adds it; subpages leave it off so the badge is shown. */
       document.documentElement.classList.remove('landing-hero-active');
 
+      /* Reset the landing-only mobile CTA swap ("Zum Ritual") — subpages show
+         the default "Jetzt bestellen" → /shop/ behaviour again. */
+      document.documentElement.classList.remove('an-cta-ritual');
+      const navBtnGlobal = document.querySelector('.nav-btn--global');
+      if (navBtnGlobal) navBtnGlobal.removeAttribute('data-scroll-products');
+
       /* Swap DOM, scroll, attach handlers, run init — all while invisible. */
       app.innerHTML = html;
 

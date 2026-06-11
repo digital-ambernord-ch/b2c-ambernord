@@ -19,6 +19,7 @@
     }
   },
   "stickyBtn": "To the Ritual",
+  "factStrip": { "ariaLabel": "Active-ingredient facts" },
   "bewertungChip": {
     "label": "Reviews",
     "ariaLabel": "Read customer reviews"

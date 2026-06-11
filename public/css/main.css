@@ -1297,6 +1297,13 @@ html.landing-hero-active .ambernord-topbar .ambernord-logo-eubio {
    ========================================================================= */
 
 @media (max-width: 991px) {
+  /* Slim mobile chrome: 64px topbar (desktop keeps 80px). Every layout calc
+     reads the token live, so subpage paddings, the landing hero pin and the
+     mobile menu header all adapt automatically. */
+  :root {
+    --nav-height: 64px;
+  }
+
   .nav-links {
     display: none;
   }
@@ -1305,4 +1312,54 @@ html.landing-hero-active .ambernord-topbar .ambernord-logo-eubio {
     display: flex;
   }
 
+  .ambernord-logo-eubio {
+    top: 10px;
+  }
+
+  /* Hide-on-scroll header (mobile only): scrolling down slides the topbar +
+     aktion bar away so the content owns the screen; any scroll up brings them
+     back. Layout tokens (--nav-height/--aktion-height) stay CONSTANT so
+     sticky/pinned calculations never shift — this is transform-only.
+     html.an-nav-hidden is toggled by ui.js. */
+  .ambernord-topbar {
+    transition: top 0.28s var(--ease-smooth), transform 0.3s var(--ease-smooth);
+  }
+
+  html.an-nav-hidden .ambernord-topbar {
+    transform: translateY(calc(-100% - 40px));
+  }
+
+  html.an-nav-hidden.aktion-active .aktion-bar {
+    transform: translateY(-110%);
+  }
+}
+
+/* =========================================================================
+   13. TOPBAR CTA — LANDING "ZUM RITUAL" SWAP (mobile only)
+   Once the landing hero scrolls past, landing.js sets html.an-cta-ritual:
+   the global CTA label swaps to "Zum Ritual" (and the button gets
+   data-scroll-products, so it scrolls to the product cards instead of
+   navigating to /shop/). A single soft gold pulse announces the change.
+   Desktop always shows the default label. {Both labels live in the DOM and
+   are translated by loadCommonI18n.}
+   ========================================================================= */
+
+.nav-btn-label--ritual { display: none; }
+
+@media (max-width: 991px) {
+  html.an-cta-ritual .nav-btn--global .nav-btn-label--default { display: none; }
+  html.an-cta-ritual .nav-btn--global .nav-btn-label--ritual  { display: inline; }
+
+  html.an-cta-ritual .nav-btn--global {
+    animation: anCtaGoldPulse 1.4s var(--ease-out) 1;
+  }
+}
+
+@keyframes anCtaGoldPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(237, 163, 35, 0.55); }
+  100% { box-shadow: 0 0 0 16px rgba(237, 163, 35, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.an-cta-ritual .nav-btn--global { animation: none; }
 }

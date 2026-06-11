@@ -19,6 +19,7 @@
     }
   },
   "stickyBtn": "Vers le Rituel",
+  "factStrip": { "ariaLabel": "Faits sur les principes actifs" },
   "bewertungChip": {
     "label": "Avis",
     "ariaLabel": "Voir les avis clients"

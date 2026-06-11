@@ -4,61 +4,11 @@
    Hero · Trust ribbon · Shop · Editorial · Exclusive section · Magic Garden · MasterBox
    ========================================================================= */
 
-/* =========================================================================
-   LANDING-PAGE STICKY NAV
-   Appears after hero scrolls off screen. Different from the global nav.
-   ========================================================================= */
-
-.landing-sticky-nav {
-  position: fixed;
-  top: -100px;
-  left: 0;
-  width: 100%;
-  box-sizing: border-box;
-  background: rgba(10, 10, 10, 0.97);
-  backdrop-filter: blur(10px);
-  z-index: var(--z-sticky);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 40px;
-  transition: top 0.4s var(--ease-smooth);
-  border-bottom: 1px solid var(--color-border-gold);
-}
-
-.landing-sticky-nav.is-visible {
-  top: 0;
-}
-
-.landing-sticky-nav-right {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.landing-sticky-nav-btn {
-  background-color: var(--color-gold);
-  color: var(--color-bg);
-  padding: 12px 30px;
-  font-family: var(--font-sans);
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  border-radius: 4px;
-  cursor: pointer;
-  border: none;
-  transition: background-color var(--t-fast) ease;
-}
-
-.landing-sticky-nav-btn:hover {
-  background-color: var(--color-gold-hover);
-}
-
-@media (max-width: 768px) {
-  .landing-sticky-nav    { padding: 15px 20px; }
-  .landing-sticky-nav-btn { padding: 10px 20px; font-size: 10px; }
-}
+/* The former .landing-sticky-nav (fixed top bar with "Zum Ritual" button) was
+   removed: it rendered at top:0 with z-index below the always-visible topbar,
+   so it was never actually visible. Its job is now done by the global topbar
+   CTA, which swaps to "Zum Ritual" on mobile once the hero scrolls past
+   (see html.an-cta-ritual rules in main.css + the observer in landing.js). */
 
 /* =========================================================================
    GSAP HERO SECTION
@@ -406,9 +356,10 @@
 
 /* --------------------------------------------------------------------------
    FLOATING BEWERTUNG CHIP — bottom-left ambient social-proof badge.
-   Hidden until the user has scrolled past the hero (toggled by the same
-   IntersectionObserver that controls .landing-sticky-nav), then slides in
-   from the left edge. Click → /bewertungen/ via router (smooth scroll).
+   Hidden until the user has scrolled past the hero (IntersectionObserver in
+   landing.js), then slides in from the left edge. On mobile it additionally
+   steps back while the product cards or the closing CTA are on screen.
+   Click → /bewertungen/ via router (smooth scroll).
    -------------------------------------------------------------------------- */
 .landing-bewertung-chip {
   position: fixed;
@@ -441,6 +392,15 @@
 
 .landing-bewertung-chip.is-visible {
   transform: translateX(0);
+}
+
+/* Invisible touch-target extension — keeps the chip visually slim while the
+   tappable area reaches the 44px minimum. */
+.landing-bewertung-chip::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: inherit;
 }
 
 .landing-bewertung-chip:hover {
@@ -715,6 +675,14 @@
 .shop-reviews-pin__star:nth-child(4) { animation-delay: 0.54s; }
 .shop-reviews-pin__star:nth-child(5) { animation-delay: 0.72s; }
 
+/* Invisible touch-target extension to ~44px — visual size stays petite. */
+.shop-reviews-pin::after {
+  content: '';
+  position: absolute;
+  inset: -10px;
+  border-radius: inherit;
+}
+
 .shop-reviews-pin__label {
   font-family: var(--font-sans);
   font-size: 8.5px;
@@ -749,7 +717,7 @@
   }
 
   .shop-reviews-pin__label {
-    font-size: 8px;
+    font-size: 9.5px;
     letter-spacing: 1.2px;
   }
 }
@@ -1136,12 +1104,11 @@
   }
 }
 
-/* Mobile-only: tighten the gap between #shop (where the product pin
-   evaporates) and the editorial section (Manifest). Without this the
-   user scrolls through a big black gap after the payment icons exit
-   the top of the viewport. */
+/* Mobile-only spacing: the product section is plain flow (no pin) — the fact
+   strip above provides the top rhythm, and a modest bottom pad hands over to
+   the Manifest without a dead black band. */
 @media (max-width: 991px) {
-  #shop { padding-top: 3px; padding-bottom: 20px; }
+  #shop { padding-top: 14px; padding-bottom: 36px; }
   .editorial-bento-grid { padding-top: 20px; }
 }
 
@@ -1787,53 +1754,114 @@
     padding-bottom: 0;
   }
 
+  /* Two-line editorial tagline: line 1 = "HANDLESE | KALTGEPRESST",
+     line 2 = inline EU-bio leaf + "BIO-ZERTIFIZIERT". No JS auto-fit, no
+     micro-fonts — 11px floor in every locale, wraps gracefully instead. */
   .tagline-part-1 {
     display: block;
-    font-size: 10px;
+    font-size: 11px;
     letter-spacing: 1.5px;
+    line-height: 1.7;
     border-bottom: 1px solid rgba(237, 163, 35, 0.4);
-    padding-bottom: 8px;
-    /* JS in initLanding shrinks font-size until the line fits — never wrap */
-    white-space: nowrap;
+    padding-bottom: 10px;
+    white-space: normal;
   }
 
-  /* Mobile: keep .bio-wrapper as inline-block (inherited from desktop) so
-     the prefix tagline + bio label remain one continuous paragraph. The
-     50px top margin extends the line-box height for the line the wrapper
-     sits on, reserving room above the wrapper for the absolute-positioned
-     floating logo. This way the floating logo never overlaps the wrapped
-     line above — works in every locale (DE/EN/FR/IT) regardless of
-     whether the tagline fits on one line or wraps. */
+  .tagline-sep--bio { display: none; }
+
   .bio-wrapper {
-    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 6px;
   }
 
-  .eu-bio-logo    { height: 38px; bottom: calc(100% + 5px); }
+  .eu-bio-logo {
+    position: static;
+    height: 22px;
+    bottom: auto;
+  }
+
   .hero-product-img { height: 160px; width: 80px; }
   .hero-benefits-list { font-size: 15px; }
-  .native-oils-text   { font-size: 9px; margin-top: 12px; }
+  .native-oils-text   { font-size: 11px; margin-top: 12px; }
 
-  .trust-ribbon { flex-direction: column; gap: 25px; padding: 20px 0; }
-  .conversion-booster-wrapper { display: none; }
+  /* Trust signals — ALWAYS visible on mobile as one calm row directly under
+     the product cards (decision distance from the CTA). Titles only; the
+     desktop subtitles are hidden to keep it a single quiet line. */
+  .conversion-booster-wrapper {
+    display: block;
+    padding: 0 var(--container-pad);
+  }
+  .trust-ribbon {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 22px;
+    padding: 18px 0 4px;
+    margin-bottom: 0;
+  }
+  .trust-item { padding: 0; gap: 0; }
+  .trust-text { font-size: 11px; letter-spacing: 1.8px; }
+  .trust-subtext { display: none; }
 
+  /* Mobile card hierarchy — product first, price as the argument, CTA as the
+     closer: [bottle shot top-right] name → units → positioning line →
+     benefits → price block → shipping → full-width CTA. The two desktop
+     wrapper columns are flattened with display:contents so the leaf elements
+     can be re-ordered without touching the desktop DOM/layout. */
   .premium-product-card {
     flex-direction: column;
-    align-items: flex-start;
-    padding: 35px 25px 25px 25px;
-    gap: 25px;
+    align-items: stretch;
+    padding: 30px 22px 24px;
+    gap: 0;
   }
 
-  .product-info-left  { min-width: 100%; }
-  .product-card-right { width: 100%; justify-content: flex-start; }
+  .product-info-left,
+  .product-card-right,
+  .card-details { display: contents; }
+
+  .card-img {
+    position: absolute;
+    top: 28px;
+    right: 20px;
+    width: 56px;
+    max-height: 140px;
+    margin: 0;
+  }
+  .premium-product-card.highlight-habit .card-img { width: 64px; }
+
+  .card-title    { order: 1; font-size: 22px; margin: 0 92px 2px 0; }
+  .card-units    { order: 2; margin: 0 92px 10px 0; }
+  .p-extra-info  { order: 3; margin: 0 92px 6px 0; }
+  .benefit-list  { order: 4; margin: 6px 92px 16px 0; }
+  .card-price-block { order: 5; margin-bottom: 2px; }
+  .card-shipping-note { order: 6; font-size: 11px; margin: 4px 0 16px; }
+
+  .ambernord-card-btn {
+    order: 7;
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+  }
+
+  .card-arrow { display: none; }
+
   .product-badge { top: -30px; right: 20px; }
   .badge-bestseller { font-size: 14px; padding: 12px 24px; }
-  .card-img  { width: 65px; margin-right: 20px; }
-  .premium-product-card.highlight-habit .card-img { width: 75px; }
-  .card-title { font-size: 22px; }
-  .daily-price { font-size: 24px; }
-  .card-arrow { margin-left: auto; }
+  .card-price-daily { font-size: 30px; }
   .protocol-info-block { text-align: left; }
   .protocol-info-text  { font-size: 13px; }
+
+  /* The bestseller card "breathes" once after its reveal — a soft gold
+     border-glow pulse instead of motion, so the recommendation registers
+     without disturbing the calm comparison. Class added by landing.js. */
+  .premium-product-card.highlight-habit.an-breathe {
+    animation: habitBreath 2.4s ease-in-out 2;
+  }
 
   .wide-split-row {
     flex-direction: column;
@@ -1880,10 +1908,99 @@
 @media (max-width: 768px) {
   #scrollTrack h1 { font-size: clamp(20px, 5.5vw, 28px); margin-bottom: 25px; }
   .ambernord-btn-clean { padding: 14px 35px; font-size: 13px; margin-bottom: 35px; }
+}
 
-  body.landing-page-active {
-    padding-bottom: 40px;
+/* =========================================================================
+   MOBILE FACT STRIP — compact horizontal snap-scroll chips carrying the
+   desktop float-card facts (hidden ≥992px, where the floating cards play).
+   Small cards, strong text contrast: white serif values on near-black
+   surface, body copy at 11.5px/#d0d0d0 (≈13:1) so small stays legible.
+   ========================================================================= */
+
+.mobile-fact-strip { display: none; }
+
+@media (max-width: 991px) {
+  .mobile-fact-strip {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 26px var(--container-pad) 8px;
+    background-color: var(--color-bg);
+    position: relative;
+    z-index: var(--z-above);
   }
+
+  .mobile-fact-strip::-webkit-scrollbar { display: none; }
+
+  .mobile-fact-chip {
+    flex: 0 0 172px;
+    scroll-snap-align: start;
+    background-color: var(--color-surface-2);
+    border: 1px solid var(--color-border-gold);
+    border-radius: 14px;
+    padding: 14px 14px 13px;
+    box-sizing: border-box;
+  }
+
+  .mobile-fact-chip__eyebrow {
+    display: block;
+    color: var(--color-gold);
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    margin-bottom: 7px;
+  }
+
+  .mobile-fact-chip__value {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: 22px;
+    line-height: 1.15;
+    color: var(--color-text);
+    margin-bottom: 7px;
+  }
+
+  .mobile-fact-chip__value small {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-gold);
+    white-space: nowrap;
+  }
+
+  .mobile-fact-chip__text {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: 11.5px;
+    font-weight: 400;
+    line-height: 1.55;
+    color: var(--color-text-muted);
+  }
+}
+
+/* Bestseller "breath" — border-glow pulse only, no movement. */
+@keyframes habitBreath {
+  0%, 100% {
+    box-shadow:
+      0 0 0 1px rgba(237, 163, 35, 0.15),
+      0 12px 40px rgba(237, 163, 35, 0.12),
+      inset 0 1px 0 rgba(237, 163, 35, 0.08);
+  }
+  50% {
+    box-shadow:
+      0 0 0 1px rgba(237, 163, 35, 0.5),
+      0 12px 52px rgba(237, 163, 35, 0.3),
+      inset 0 1px 0 rgba(237, 163, 35, 0.12);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .premium-product-card.highlight-habit.an-breathe { animation: none; }
 }
 
 /* =========================================================================
@@ -1993,19 +2110,6 @@
   box-shadow: 0 10px 32px rgba(237, 163, 35, 0.4);
 }
 
-/* Mobile lands directly on The Habit (the bestseller) so the recommended
-   choice is centred without scrolling. Desktop has more vertical room and
-   benefits from showing the full bento grid (#shop) so all three editions
-   are comparable side-by-side. Each variant is hidden at the wrong viewport
-   so only the right link is interactive. */
-@media (min-width: 992px) {
-  .landing-closing-cta__btn--mobile { display: none; }
-}
-
-@media (max-width: 991px) {
-  .landing-closing-cta__btn--desktop { display: none; }
-}
-
 @media (max-width: 768px) {
   .landing-closing-cta {
     padding: 80px var(--container-pad) 100px;
@@ -2014,9 +2118,5 @@
     padding: 16px 36px;
     width: 100%;
     max-width: 320px;
-  }
-
-  .trust-item {
-    padding: 0 22px;
   }
 }

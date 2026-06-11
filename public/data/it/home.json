@@ -19,6 +19,7 @@
     }
   },
   "stickyBtn": "Al Rituale",
+  "factStrip": { "ariaLabel": "Fatti sui principi attivi" },
   "bewertungChip": {
     "label": "Recensioni",
     "ariaLabel": "Vedi le recensioni clienti"

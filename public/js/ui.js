@@ -168,6 +168,50 @@
     });
   }
 
+  /* Mobile hide-on-scroll header: scrolling down slides the topbar + aktion
+     bar away (transform only — layout tokens stay constant, so sticky/pinned
+     calculations never shift); any scroll up brings them back. Desktop is
+     untouched. Suppressed while the mobile menu or a topbar dropdown is open,
+     and always shown near the top of the page. */
+  function setupMobileNavAutoHide() {
+    const mq = window.matchMedia('(max-width: 991px)');
+    let lastY   = window.scrollY || 0;
+    let ticking = false;
+    let hidden  = false;
+
+    function setHidden(v) {
+      if (hidden === v) return;
+      hidden = v;
+      document.documentElement.classList.toggle('an-nav-hidden', v);
+    }
+
+    window.addEventListener('scroll', function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        ticking = false;
+
+        if (!mq.matches) { setHidden(false); lastY = window.scrollY; return; }
+
+        const y  = window.scrollY || 0;
+        const dy = y - lastY;
+
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuOpen   = mobileMenu && mobileMenu.classList.contains('is-open');
+        const ddOpen     = document.querySelector('.ambernord-topbar [aria-expanded="true"]');
+
+        if (menuOpen || ddOpen || y < 140) {
+          setHidden(false);
+        } else if (dy > 6) {
+          setHidden(true);
+        } else if (dy < -6) {
+          setHidden(false);
+        }
+        lastY = y;
+      });
+    }, { passive: true });
+  }
+
   /* GA4 + TikTok Pixel are no longer auto-loaded here. They are gated by the
      consent module (cookie-consent.js) via <script type="text/plain"
      data-cookie-category="..."> placeholders in index.html. The placeholders
@@ -177,6 +221,7 @@
     setupMobileMenu();
     setupDropdowns();
     setupLangButtons();
+    setupMobileNavAutoHide();
   });
 
 })();

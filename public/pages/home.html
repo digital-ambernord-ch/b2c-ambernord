@@ -6,14 +6,6 @@
   <span class="landing-bewertung-chip__arrow" aria-hidden="true">→</span>
 </a>
 
-<div class="landing-sticky-nav" id="landingStickyNav" aria-hidden="true">
-  <div class="landing-sticky-nav-right">
-    <button class="landing-sticky-nav-btn" id="landingStickyNavBtn" data-i18n-attr="aria-label:stickyBtn" aria-label="Zum Shop scrollen">
-      <span data-i18n="stickyBtn">Zum Ritual</span>
-    </button>
-  </div>
-</div>
-
 <section class="scroll-track" id="scrollTrack">
   <div class="sticky-viewport">
 
@@ -93,7 +85,7 @@
 
           <div class="top-tagline-container">
             <span class="tagline-part-1">
-              <span data-i18n="hero.taglineHandpick">100% HANDLESE</span> | <span data-i18n="hero.taglineColdPress">KALTGEPRESST</span> |
+              <span data-i18n="hero.taglineHandpick">100% HANDLESE</span> <span class="tagline-sep" aria-hidden="true">|</span> <span data-i18n="hero.taglineColdPress">KALTGEPRESST</span> <span class="tagline-sep tagline-sep--bio" aria-hidden="true">|</span>
               <span class="bio-wrapper">
                 <img
                   class="eu-bio-logo"
@@ -141,6 +133,33 @@
     </div>
   </div>
 </section>
+
+<!-- MOBILE FACT STRIP — the six desktop float-cards are display:none on
+     phones; this compact horizontal snap-scroll strip carries the same
+     scientific selling points (same i18n keys) so mobile users get the full
+     argumentation. Hidden ≥992px — desktop keeps the floating cards. -->
+<div class="mobile-fact-strip" role="list" data-i18n-attr="aria-label:factStrip.ariaLabel" aria-label="Wirkstoff-Fakten">
+  <div class="mobile-fact-chip" role="listitem">
+    <span class="mobile-fact-chip__eyebrow" data-i18n="floatCards.vitamins.eyebrow">Vitamine</span>
+    <span class="mobile-fact-chip__value">B12 + C</span>
+    <p class="mobile-fact-chip__text" data-i18n="floatCards.vitamins.text">Seltene pflanzliche B12-Quelle und hoher natürlicher Vitamin-C-Gehalt.</p>
+  </div>
+  <div class="mobile-fact-chip" role="listitem">
+    <span class="mobile-fact-chip__eyebrow" data-i18n="floatCards.balance.eyebrow">Zelluläre Balance</span>
+    <span class="mobile-fact-chip__value">Omega-7 <small>32&nbsp;–&nbsp;42&nbsp;%</small></span>
+    <p class="mobile-fact-chip__text" data-i18n="floatCards.balance.text">Eine der seltensten pflanzlichen Quellen für Palmitoleinsäure – essenziell für Haut &amp; Schleimhäute.</p>
+  </div>
+  <div class="mobile-fact-chip" role="listitem">
+    <span class="mobile-fact-chip__eyebrow" data-i18n="floatCards.immunity.eyebrow">Immun-Resilienz</span>
+    <span class="mobile-fact-chip__value">190+</span>
+    <p class="mobile-fact-chip__text" data-i18n="floatCards.immunity.text">Bioaktive Wirkstoffe und ein extrem hoher natürlicher Vitamin-C-Gehalt in jedem Tropfen.</p>
+  </div>
+  <div class="mobile-fact-chip" role="listitem">
+    <span class="mobile-fact-chip__eyebrow" data-i18n="floatCards.craft.eyebrow">Handwerk</span>
+    <span class="mobile-fact-chip__value">100%</span>
+    <p class="mobile-fact-chip__text" data-i18n="floatCards.craft.text">Behutsame Handlese und Zero-Waste Kaltpressung für absolute Reinheit.</p>
+  </div>
+</div>
 
 <div id="shop" class="ambernord-section-wrapper">
   <div class="ambernord-section-inner" id="ritual-products">
@@ -317,8 +336,13 @@
     <div class="nature-hero-wrapper">
       <div class="nature-hero-block">
         <div class="nature-hero-bg" aria-hidden="true">
-          <img class="nature-hero-bg__placeholder" src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_30,w_640/v1774812486/ambernord-natuerliche-energie-zelt-vs-energy-drinks-sanddorn-wald.webp_o0hswh.jpg" alt="" decoding="sync" fetchpriority="high">
-          <img class="nature-hero-bg__full" src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_1920/v1774812486/ambernord-natuerliche-energie-zelt-vs-energy-drinks-sanddorn-wald.webp_o0hswh.jpg" alt="" loading="eager" fetchpriority="high" decoding="async">
+          <img class="nature-hero-bg__placeholder" src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_30,w_640/v1774812486/ambernord-natuerliche-energie-zelt-vs-energy-drinks-sanddorn-wald.webp_o0hswh.jpg" alt="" decoding="async">
+          <img class="nature-hero-bg__full"
+               src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_1920/v1774812486/ambernord-natuerliche-energie-zelt-vs-energy-drinks-sanddorn-wald.webp_o0hswh.jpg"
+               srcset="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_750/v1774812486/ambernord-natuerliche-energie-zelt-vs-energy-drinks-sanddorn-wald.webp_o0hswh.jpg 750w,
+                       https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_1080/v1774812486/ambernord-natuerliche-energie-zelt-vs-energy-drinks-sanddorn-wald.webp_o0hswh.jpg 1080w,
+                       https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_1920/v1774812486/ambernord-natuerliche-energie-zelt-vs-energy-drinks-sanddorn-wald.webp_o0hswh.jpg 1920w"
+               sizes="100vw" alt="" loading="lazy" decoding="async">
         </div>
         <div class="nature-hero-overlay" aria-hidden="true"></div>
         <div class="nature-hero-content">
@@ -338,8 +362,13 @@
     <div class="nature-hero-wrapper">
       <div class="nature-hero-block">
         <div class="nature-hero-bg" aria-hidden="true">
-          <img class="nature-hero-bg__placeholder" src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_30,w_640/v1774812498/ambernord-zelt-taegliches-ritual-sanddorn-konzentrat-morgenroutine.webp_tnwv2r.jpg" alt="" decoding="sync" fetchpriority="high">
-          <img class="nature-hero-bg__full" src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_1920/v1774812498/ambernord-zelt-taegliches-ritual-sanddorn-konzentrat-morgenroutine.webp_tnwv2r.jpg" alt="" loading="eager" fetchpriority="high" decoding="async">
+          <img class="nature-hero-bg__placeholder" src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_30,w_640/v1774812498/ambernord-zelt-taegliches-ritual-sanddorn-konzentrat-morgenroutine.webp_tnwv2r.jpg" alt="" decoding="async">
+          <img class="nature-hero-bg__full"
+               src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_1920/v1774812498/ambernord-zelt-taegliches-ritual-sanddorn-konzentrat-morgenroutine.webp_tnwv2r.jpg"
+               srcset="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_750/v1774812498/ambernord-zelt-taegliches-ritual-sanddorn-konzentrat-morgenroutine.webp_tnwv2r.jpg 750w,
+                       https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_1080/v1774812498/ambernord-zelt-taegliches-ritual-sanddorn-konzentrat-morgenroutine.webp_tnwv2r.jpg 1080w,
+                       https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_1920/v1774812498/ambernord-zelt-taegliches-ritual-sanddorn-konzentrat-morgenroutine.webp_tnwv2r.jpg 1920w"
+               sizes="100vw" alt="" loading="lazy" decoding="async">
         </div>
         <div class="nature-hero-overlay" aria-hidden="true"></div>
         <div class="nature-hero-content">
@@ -360,7 +389,11 @@
 
   <div class="exclusive-section-wrapper" id="exclusiveSection">
     <div class="exclusive-bg" id="exclusiveBg" aria-hidden="true">
-      <img src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:good,w_2000/v1773686862/sonnengekuesster-sanddorn_jxkico.jpg" alt="" loading="eager" fetchpriority="high" decoding="async">
+      <img src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:good,w_2000/v1773686862/sonnengekuesster-sanddorn_jxkico.jpg"
+           srcset="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:good,w_750/v1773686862/sonnengekuesster-sanddorn_jxkico.jpg 750w,
+                   https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:good,w_1080/v1773686862/sonnengekuesster-sanddorn_jxkico.jpg 1080w,
+                   https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:good,w_2000/v1773686862/sonnengekuesster-sanddorn_jxkico.jpg 2000w"
+           sizes="100vw" alt="" loading="lazy" decoding="async">
       <div class="exclusive-bg-overlay"></div>
     </div>
 
@@ -436,7 +469,6 @@
     <span class="landing-closing-cta__eyebrow" data-i18n="closingCta.eyebrow">Bereit?</span>
     <h2 id="landing-closing-cta-title" class="landing-closing-cta__title" data-i18n-html="closingCta.title">Wähle <span>dein Ritual.</span></h2>
     <p class="landing-closing-cta__sub" data-i18n="closingCta.sub">Drei Editionen — eine für jeden Rhythmus.</p>
-    <a href="#shop" class="landing-closing-cta__btn landing-closing-cta__btn--desktop" data-link data-scroll-products data-i18n="closingCta.btn">Mein Ritual wählen</a>
-    <a href="#shop" class="landing-closing-cta__btn landing-closing-cta__btn--mobile" data-link data-scroll-products data-i18n="closingCta.btn">Mein Ritual wählen</a>
+    <a href="#shop" class="landing-closing-cta__btn" data-link data-scroll-products data-i18n="closingCta.btn">Mein Ritual wählen</a>
   </div>
 </section>
