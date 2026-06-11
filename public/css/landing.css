@@ -1188,10 +1188,20 @@
 .ritual-interlude {
   position: relative;
   width: 100%;
-  height: clamp(260px, 42vh, 500px);
+  /* NARROW — a thin connective strip, much slimmer than a full band. */
+  height: clamp(150px, 19vh, 270px);
   overflow: hidden;
   background-color: var(--color-bg);
+  /* MUST sit above #shop: the product section's box (tall GSAP pin-spacer +
+     opaque black bg, z-above) extends down over this strip, so a lower z-index
+     would bury the image behind that black. At equal z-above the Manifest
+     (later in the DOM) still paints over the strip's bottom — giving the lower
+     fusion — while the strip paints over #shop's empty black tail at the top. */
   z-index: var(--z-above);
+  /* Negative margins pull the strip up under "Das tägliche Ritual" and pull
+     "Unser Manifest" up onto its bottom, so both fuse over the black fades. */
+  margin-top: -3vh;
+  margin-bottom: -3.5vh;
 }
 
 .ritual-interlude__img {
@@ -1201,28 +1211,33 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
-  /* Dimmed + desaturated → premium, restrained, no colour chaos. */
-  filter: brightness(0.5) saturate(0.8) contrast(1.03);
+  /* The aerial plantation image is ALREADY dark + muted; keep it readable as a
+     textured strip while staying quiet and premium. */
+  filter: brightness(0.85) saturate(0.9) contrast(1.05);
 }
 
 .ritual-interlude__overlay {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  /* Soft gold warmth at centre ties it to the palette; black top/bottom fades
-     blend the band into the surrounding sections. */
+  /* Faint gold warmth at centre + black top/bottom fades so the plantation
+     rows melt into the surrounding black sections instead of a hard band. */
   background:
-    radial-gradient(120% 78% at 50% 50%, rgba(237,163,35,0.07) 0%, transparent 56%),
+    radial-gradient(120% 82% at 50% 50%, rgba(237,163,35,0.08) 0%, transparent 60%),
     linear-gradient(to bottom,
       #0a0a0a 0%,
-      rgba(10,10,10,0.55) 24%,
-      rgba(10,10,10,0.40) 50%,
-      rgba(10,10,10,0.62) 78%,
+      rgba(10,10,10,0.42) 24%,
+      rgba(10,10,10,0.12) 50%,
+      rgba(10,10,10,0.44) 76%,
       #0a0a0a 100%);
 }
 
 @media (max-width: 991px) {
-  .ritual-interlude { height: clamp(190px, 30vh, 340px); }
+  .ritual-interlude {
+    height: clamp(120px, 15vh, 200px);
+    margin-top: -2.5vh;
+    margin-bottom: -3vh;
+  }
 }
 
 
