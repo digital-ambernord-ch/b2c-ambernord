@@ -982,22 +982,31 @@
   background-color: var(--color-gold-hover);
 }
 
-.product-badge {
+/* Centred "hanging tag" pinned to the card's TOP EDGE, fully INSIDE the
+   card — the old `top:-12px` overhang was clipped by the highlight-habit
+   card's overflow:hidden, leaving a broken-off corner.
+   Two-class selector: must outrank `.premium-product-card.highlight-habit > *`
+   (also 0,2,0 but earlier in the file), which forces position:relative and
+   would drop the badge back into the flow. */
+.premium-product-card .product-badge {
   position: absolute;
-  top: -12px;
-  right: 30px;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
   font-family: var(--font-sans);
   font-size: 10px;
   font-weight: 700;
   padding: 6px 16px;
-  border-radius: 4px;
+  border-radius: 0 0 10px 10px;
   z-index: var(--z-above);
   line-height: 1.3;
   letter-spacing: 0.5px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.35);
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  text-align: center;
   min-height: 28px;
   width: max-content;
   max-width: 90%;
@@ -1007,10 +1016,11 @@
   background: var(--color-gold);
   color: var(--color-bg);
   border: 1px solid var(--color-gold);
-  font-size: 14px;
+  border-top: none;
+  font-size: 12px;
   font-weight: 800;
-  letter-spacing: 1px;
-  padding: 10px 24px;
+  letter-spacing: 1.6px;
+  padding: 8px 22px;
 }
 
 .trust-payment-row {
@@ -1075,15 +1085,11 @@
   padding: 20px 0;
 }
 
-/* On mobile, drop the extra margin so trailing info sits EXACTLY one
-   card-margin (40px, inherited from Protocol's margin-bottom which the
-   .ritual-cards-group wrapper retains at its bottom) below Protocol — i.e.
-   the same gap as between any two cards. This makes the translateY-based
-   queue progression visually align perfectly: trailing info ends up where
-   Protocol/Habit/Starter were after each successive lift. */
+/* Mobile: clear breathing room between the trust badges row above and the
+   "Das tägliche Ritual" usage note — they read as separate blocks. */
 @media (max-width: 991px) {
   .shop-trailing-info {
-    margin-top: 0;
+    margin-top: 44px;
     padding-top: 0;
   }
 }
@@ -1109,7 +1115,6 @@
    the Manifest without a dead black band. */
 @media (max-width: 991px) {
   #shop { padding-top: 14px; padding-bottom: 36px; }
-  .editorial-bento-grid { padding-top: 20px; }
 }
 
 .protocol-info-title {
@@ -1176,12 +1181,12 @@
   margin-bottom: 100px;
 }
 
-/* Mobile: tighten the inter-block gap so Ritual approaches Manifest sooner
-   in the scroll. */
+/* Mobile: cinematic full-bleed (same as desktop) — blocks butt directly
+   together so their dark vignette ends fuse seamlessly. */
 @media (max-width: 991px) {
   .nature-hero-wrapper + .nature-hero-wrapper {
-    margin-top: 100px;
-    margin-bottom: 60px;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 }
 
@@ -1241,16 +1246,22 @@
   opacity: 1;
 }
 
+/* Dark at both ends, image visible through the middle — a soft vignette with
+   a thinner top band so the photo reveals sooner. Adjacent blocks meet
+   black-on-black = seamless scene cross-fade (desktop AND mobile both use
+   the full-bleed cinematic treatment). */
 .nature-hero-overlay {
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
   z-index: 1;
   background: linear-gradient(
-    to top,
-    #111111 0%,
-    rgba(10,10,10,0.6) 60%,
-    rgba(10,10,10,0.2) 100%
+    to bottom,
+    #0a0a0a 0%,
+    rgba(10,10,10,0.30) 12%,
+    rgba(10,10,10,0.34) 48%,
+    rgba(10,10,10,0.88) 84%,
+    #0a0a0a 100%
   );
   transition: background var(--t-base) ease;
 }
@@ -1372,20 +1383,6 @@
 
   /* Background bleeds full-screen; brightness trimmed for premium contrast. */
   .nature-hero-bg { filter: brightness(0.78) contrast(1.06); }
-
-  /* Dark at both ends, image visible through the middle — a soft vignette with
-     a THINNER top band so the photo reveals sooner (less black at the top).
-     Adjacent blocks still meet black-on-black = seamless scene cross-fade. */
-  .nature-hero-overlay {
-    background: linear-gradient(
-      to bottom,
-      #0a0a0a 0%,
-      rgba(10,10,10,0.30) 12%,
-      rgba(10,10,10,0.34) 48%,
-      rgba(10,10,10,0.88) 84%,
-      #0a0a0a 100%
-    );
-  }
 
   /* Side-aligned magazine column. Manifest sits left by default. */
   .nature-hero-content {
@@ -1810,12 +1807,17 @@
      closer: [bottle shot top-right] name → units → positioning line →
      benefits → price block → shipping → full-width CTA. The two desktop
      wrapper columns are flattened with display:contents so the leaf elements
-     can be re-ordered without touching the desktop DOM/layout. */
+     can be re-ordered without touching the desktop DOM/layout.
+     Compact + refined: tighter padding/type/gaps than desktop so the three
+     editions scan quickly, with a crisper border to keep them expressive. */
   .premium-product-card {
     flex-direction: column;
     align-items: stretch;
-    padding: 30px 22px 24px;
+    padding: 20px 18px 18px;
     gap: 0;
+    margin-bottom: 22px;
+    border-radius: 18px;
+    border-color: rgba(237, 163, 35, 0.22);
   }
 
   .product-info-left,
@@ -1824,35 +1826,37 @@
 
   .card-img {
     position: absolute;
-    top: 28px;
-    right: 20px;
-    width: 56px;
-    max-height: 140px;
+    top: 20px;
+    right: 18px;
+    width: 50px;
+    max-height: 120px;
     margin: 0;
   }
-  .premium-product-card.highlight-habit .card-img { width: 64px; }
+  .premium-product-card.highlight-habit .card-img { width: 58px; top: 34px; }
 
-  .card-title    { order: 1; font-size: 22px; margin: 0 92px 2px 0; }
-  .card-units    { order: 2; margin: 0 92px 10px 0; }
-  .p-extra-info  { order: 3; margin: 0 92px 6px 0; }
-  .benefit-list  { order: 4; margin: 6px 92px 16px 0; }
+  .card-title    { order: 1; font-size: 20px; margin: 0 84px 2px 0; }
+  .card-units    { order: 2; margin: 0 84px 8px 0; }
+  .p-extra-info  { order: 3; font-size: 13px; margin: 0 84px 4px 0; }
+  .benefit-list  { order: 4; margin: 4px 84px 12px 0; }
+  .benefit-list li { font-size: 12px; margin-bottom: 6px; }
   .card-price-block { order: 5; margin-bottom: 2px; }
-  .card-shipping-note { order: 6; font-size: 11px; margin: 4px 0 16px; }
+  .card-shipping-note { order: 6; font-size: 11px; margin: 4px 0 12px; }
 
   .ambernord-card-btn {
     order: 7;
     display: block;
     text-align: center;
-    padding: 14px 16px;
+    padding: 13px 16px;
     font-size: 12px;
     letter-spacing: 1.5px;
   }
 
   .card-arrow { display: none; }
 
-  .product-badge { top: -30px; right: 20px; }
-  .badge-bestseller { font-size: 14px; padding: 12px 24px; }
-  .card-price-daily { font-size: 30px; }
+  /* Bestseller card needs headroom for the centred hanging badge. */
+  #habit-card { padding-top: 48px; }
+  .badge-bestseller { font-size: 11px; padding: 8px 18px; }
+  .card-price-daily { font-size: 26px; }
   .protocol-info-block { text-align: left; }
   .protocol-info-text  { font-size: 13px; }
 
@@ -1900,7 +1904,58 @@
 
   .mini-gallery-item img { width: 100%; height: 100%; object-fit: cover; }
 
-  .nature-hero-content { padding: 30px 20px; }
+  /* CINEMATIC FULL-BLEED EDITORIAL — mobile mirrors the desktop treatment:
+     the Manifest + Ritual photos run edge-to-edge (no card frame, no rounded
+     corners), the prose is a left-aligned magazine column that slides in from
+     the side (landing.js), and the shared vignette overlay fuses adjacent
+     scenes black-on-black. */
+  .editorial-bento-grid {
+    max-width: none;
+    padding: 0;
+  }
+
+  .nature-hero-block {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    min-height: 86vh;   /* fallback */
+    min-height: 86dvh;  /* dvh: correct on iOS */
+    justify-content: center;
+  }
+  .nature-hero-block:hover { border-color: transparent; }
+
+  .nature-hero-content {
+    padding: 10vh 24px;
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .nature-hero-content .ambernord-content-title {
+    font-size: clamp(30px, 8.8vw, 40px);
+    line-height: 1.14;
+    letter-spacing: -0.3px;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.88);
+  }
+
+  .nature-hero-content .ambernord-content-text,
+  .nature-hero-content .editorial-lead {
+    color: var(--color-text);
+    font-weight: 400;
+    font-size: 15.5px;
+    line-height: 1.8;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9), 0 0 4px rgba(0, 0, 0, 0.7);
+  }
+
+  .nature-hero-content .editorial-pullquote {
+    text-align: left;
+    font-size: 20px;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 16px 0;
+    border-top: 1px solid rgba(237, 163, 35, 0.38);
+    border-bottom: 1px solid rgba(237, 163, 35, 0.38);
+  }
 
   .bottom-announcement { font-size: 9px; padding: 10px; }
 }
@@ -1911,10 +1966,11 @@
 }
 
 /* =========================================================================
-   MOBILE FACT STRIP — compact horizontal snap-scroll chips carrying the
-   desktop float-card facts (hidden ≥992px, where the floating cards play).
-   Small cards, strong text contrast: white serif values on near-black
-   surface, body copy at 11.5px/#d0d0d0 (≈13:1) so small stays legible.
+   MOBILE FACT STRIP — horizontal snap-scroll cards mirroring ALL SIX desktop
+   float-cards (hidden ≥992px, where the floating cards play): 4 fact cards
+   with the same background photos + dark gradient overlay, 2 purely visual
+   photo cards. Text sits on the gradient like the desktop float-card-content,
+   with brightened body copy + text-shadow so it stays legible over imagery.
    ========================================================================= */
 
 .mobile-fact-strip { display: none; }
@@ -1931,17 +1987,53 @@
     padding: 26px var(--container-pad) 8px;
     background-color: var(--color-bg);
     position: relative;
-    z-index: var(--z-above);
+    /* Pulled up over the tail of the hero scroll-track so the cards arrive
+       right under the bottle instead of after a long black region; must
+       paint ABOVE .sticky-viewport (z-index 20). */
+    margin-top: -12vh;
+    margin-top: -12dvh;
+    z-index: 21;
   }
 
   .mobile-fact-strip::-webkit-scrollbar { display: none; }
 
   .mobile-fact-chip {
-    flex: 0 0 172px;
+    flex: 0 0 196px;
+    min-height: 208px;
     scroll-snap-align: start;
+    position: relative;
     background-color: var(--color-surface-2);
+    background-size: cover;
+    background-position: center;
     border: 1px solid var(--color-border-gold);
     border-radius: 14px;
+    overflow: hidden;
+    box-sizing: border-box;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+  }
+
+  /* Same gradient logic as the desktop .float-card-overlay — near-black at
+     the text, opens up to the photo at the top. */
+  .mobile-fact-chip::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top,
+      rgba(10, 10, 10, 0.96) 0%,
+      rgba(10, 10, 10, 0.78) 48%,
+      rgba(10, 10, 10, 0.30) 100%);
+  }
+
+  .mobile-fact-chip--visual { flex: 0 0 130px; }
+  .mobile-fact-chip--visual::before { background: rgba(0, 0, 0, 0.18); }
+
+  .mobile-fact-chip__inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+    min-height: inherit;
     padding: 14px 14px 13px;
     box-sizing: border-box;
   }
@@ -1955,6 +2047,7 @@
     letter-spacing: 1.8px;
     text-transform: uppercase;
     margin-bottom: 7px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
   }
 
   .mobile-fact-chip__value {
@@ -1964,6 +2057,7 @@
     line-height: 1.15;
     color: var(--color-text);
     margin-bottom: 7px;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
   }
 
   .mobile-fact-chip__value small {
@@ -1979,7 +2073,9 @@
     font-size: 11.5px;
     font-weight: 400;
     line-height: 1.55;
-    color: var(--color-text-muted);
+    /* Brighter than --color-text-muted: body copy sits on a photo here. */
+    color: #ececec;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95);
   }
 }
 

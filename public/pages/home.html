@@ -135,29 +135,48 @@
 </section>
 
 <!-- MOBILE FACT STRIP — the six desktop float-cards are display:none on
-     phones; this compact horizontal snap-scroll strip carries the same
-     scientific selling points (same i18n keys) so mobile users get the full
-     argumentation. Hidden ≥992px — desktop keeps the floating cards. -->
+     phones; this horizontal snap-scroll strip mirrors ALL SIX of them
+     (same i18n keys, same background photos: 4 fact cards + 2 visual
+     cards) so mobile users get the full argumentation AND the imagery.
+     Hidden ≥992px — desktop keeps the floating cards. -->
 <div class="mobile-fact-strip" role="list" data-i18n-attr="aria-label:factStrip.ariaLabel" aria-label="Wirkstoff-Fakten">
-  <div class="mobile-fact-chip" role="listitem">
-    <span class="mobile-fact-chip__eyebrow" data-i18n="floatCards.vitamins.eyebrow">Vitamine</span>
-    <span class="mobile-fact-chip__value">B12 + C</span>
-    <p class="mobile-fact-chip__text" data-i18n="floatCards.vitamins.text">Seltene pflanzliche B12-Quelle und hoher natürlicher Vitamin-C-Gehalt.</p>
+  <div class="mobile-fact-chip" role="listitem"
+       style="background-image: url('https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_400/v1773686998/reinste-essenz-der-natur_rz2l8i.jpg');">
+    <div class="mobile-fact-chip__inner">
+      <span class="mobile-fact-chip__eyebrow" data-i18n="floatCards.vitamins.eyebrow">Vitamine</span>
+      <span class="mobile-fact-chip__value">B12 + C</span>
+      <p class="mobile-fact-chip__text" data-i18n="floatCards.vitamins.text">Seltene pflanzliche B12-Quelle und hoher natürlicher Vitamin-C-Gehalt.</p>
+    </div>
   </div>
-  <div class="mobile-fact-chip" role="listitem">
-    <span class="mobile-fact-chip__eyebrow" data-i18n="floatCards.balance.eyebrow">Zelluläre Balance</span>
-    <span class="mobile-fact-chip__value">Omega-7 <small>32&nbsp;–&nbsp;42&nbsp;%</small></span>
-    <p class="mobile-fact-chip__text" data-i18n="floatCards.balance.text">Eine der seltensten pflanzlichen Quellen für Palmitoleinsäure – essenziell für Haut &amp; Schleimhäute.</p>
+  <div class="mobile-fact-chip mobile-fact-chip--visual" role="listitem" aria-hidden="true"
+       style="background-image: url('https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_400/v1773687332/kraft-der-wilden-beeren_teowyo.webp');">
   </div>
-  <div class="mobile-fact-chip" role="listitem">
-    <span class="mobile-fact-chip__eyebrow" data-i18n="floatCards.immunity.eyebrow">Immun-Resilienz</span>
-    <span class="mobile-fact-chip__value">190+</span>
-    <p class="mobile-fact-chip__text" data-i18n="floatCards.immunity.text">Bioaktive Wirkstoffe und ein extrem hoher natürlicher Vitamin-C-Gehalt in jedem Tropfen.</p>
+  <div class="mobile-fact-chip" role="listitem"
+       style="background-image: url('https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_400/v1773686914/gold-der-ostsee-kueste_dwnagq.jpg');">
+    <div class="mobile-fact-chip__inner">
+      <span class="mobile-fact-chip__eyebrow" data-i18n="floatCards.balance.eyebrow">Zelluläre Balance</span>
+      <span class="mobile-fact-chip__value">Omega-7 <small>32&nbsp;–&nbsp;42&nbsp;%</small></span>
+      <p class="mobile-fact-chip__text" data-i18n="floatCards.balance.text">Eine der seltensten pflanzlichen Quellen für Palmitoleinsäure – essenziell für Haut &amp; Schleimhäute.</p>
+    </div>
   </div>
-  <div class="mobile-fact-chip" role="listitem">
-    <span class="mobile-fact-chip__eyebrow" data-i18n="floatCards.craft.eyebrow">Handwerk</span>
-    <span class="mobile-fact-chip__value">100%</span>
-    <p class="mobile-fact-chip__text" data-i18n="floatCards.craft.text">Behutsame Handlese und Zero-Waste Kaltpressung für absolute Reinheit.</p>
+  <div class="mobile-fact-chip" role="listitem"
+       style="background-image: url('https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_400/v1773686963/handverlesene-genuesslichkeiten_y9rzmm.jpg');">
+    <div class="mobile-fact-chip__inner">
+      <span class="mobile-fact-chip__eyebrow" data-i18n="floatCards.immunity.eyebrow">Immun-Resilienz</span>
+      <span class="mobile-fact-chip__value">190+</span>
+      <p class="mobile-fact-chip__text" data-i18n="floatCards.immunity.text">Bioaktive Wirkstoffe und ein extrem hoher natürlicher Vitamin-C-Gehalt in jedem Tropfen.</p>
+    </div>
+  </div>
+  <div class="mobile-fact-chip mobile-fact-chip--visual" role="listitem" aria-hidden="true"
+       style="background-image: url('https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_400/v1773687279/biologisches-oekosystem-im-norden_prm6n2.jpg');">
+  </div>
+  <div class="mobile-fact-chip" role="listitem"
+       style="background-image: url('https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_400/v1773686862/sonnengekuesster-sanddorn_jxkico.jpg');">
+    <div class="mobile-fact-chip__inner">
+      <span class="mobile-fact-chip__eyebrow" data-i18n="floatCards.craft.eyebrow">Handwerk</span>
+      <span class="mobile-fact-chip__value">100%</span>
+      <p class="mobile-fact-chip__text" data-i18n="floatCards.craft.text">Behutsame Handlese und Zero-Waste Kaltpressung für absolute Reinheit.</p>
+    </div>
   </div>
 </div>
 
@@ -217,7 +236,7 @@
     </a>
 
     <a href="/shop/habit/" id="habit-card" class="premium-product-card highlight-habit" data-link>
-      <div class="product-badge badge-bestseller" data-i18n="shop.habit.badge">AM BELIEBTESTEN</div>
+      <div class="product-badge badge-bestseller" data-i18n="shop.habit.badge">MEISTGEWÄHLT</div>
       <div class="product-info-left">
         <div class="card-price-block">
           <div class="card-price-daily" data-i18n="shop.habit.price.daily">2.30 CHF / Tag</div>

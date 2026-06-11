@@ -287,11 +287,13 @@ window.initLanding = async function () {
       };
     }
 
-    /* 160dvh = 60dvh of scrub range for the shortened ~6-unit mobile timeline
+    /* 145dvh = 45dvh of scrub range for the shortened ~6-unit mobile timeline
        (shrink + bottle fly + rise — the ONLY pinned scene on mobile). The
        trust posms and the product-card pin were removed: everything after the
-       hero is normal momentum scrolling. */
-    if (scrollTrack) scrollTrack.style.height = dvhOk ? '160dvh' : '160vh';
+       hero is normal momentum scrolling. Tightened from 160dvh: the final
+       phase no longer flies the bottle off-screen, so less runway is needed
+       and the fact strip arrives sooner after the bottle. */
+    if (scrollTrack) scrollTrack.style.height = dvhOk ? '145dvh' : '145vh';
 
     const tlMobile = gsap.timeline({
       scrollTrigger: {
@@ -309,10 +311,14 @@ window.initLanding = async function () {
                                   duration: 3 }, 0)
       .to('#heroText',          { opacity: 0, duration: 1 }, 1)
       .to('#ambernordHeroShade',{ opacity: 0, duration: 1.5 }, 1.5)
-      .to('.scalable-hero',     { y: function () { return -window.innerHeight * 0.75; },
+      /* Final phase: the hero/bottle barely rise (same lesson as desktop) —
+         the old -0.75 rise flew the bottle fully off the top, leaving a huge
+         black viewport between the bottle and the fact strip. Now the bottle
+         stays near centre and the fact strip scrolls up to meet it. */
+      .to('.scalable-hero',     { y: function () { return computeHeroCenterY(50) - window.innerHeight * 0.12; },
                                   duration: 2.0, ease: 'power1.in' }, 4.0);
 
-    const btlCleanup = createFlyingBottle(tlMobile, false, 4.0, 2.0, 0.3);
+    const btlCleanup = createFlyingBottle(tlMobile, false, 4.0, 2.0, 0.12);
 
     return function () {
       if (scrollTrack) scrollTrack.style.height = '';
@@ -838,50 +844,8 @@ window.initLanding = async function () {
     };
   }
 
-  /* Ritual block: plain scroll-reveal replacing the pinned eruption.
-     Fades the block up once on viewport entry; background gets a subtle
-     parallax zoom while scrolling past. Word shards from splitIntoWordShards()
-     remain in the DOM but are not animated — they render as normal inline text. */
-  function attachRitualReveal(block, startStr) {
-    if (reducedMotion || !block.wrapper) return;
-    const innerBlock = block.wrapper.querySelector('.nature-hero-block');
-    if (!innerBlock) return;
-
-    gsap.set(innerBlock, { opacity: 0, y: 40 });
-
-    gsap.to(innerBlock, {
-      opacity:  1,
-      y:        0,
-      duration: 1.0,
-      ease:     'power2.out',
-      scrollTrigger: {
-        trigger: block.wrapper,
-        start:   startStr || 'top 80%',
-        toggleActions: 'play none none none',
-        invalidateOnRefresh: true
-      }
-    });
-
-    if (block.bg) {
-      gsap.fromTo(block.bg,
-        { scale: 1.0 },
-        {
-          scale: 1.06,
-          ease:  'none',
-          scrollTrigger: {
-            trigger: block.wrapper,
-            start:   'top bottom',
-            end:     'bottom top',
-            scrub:   1.5,
-            invalidateOnRefresh: true
-          }
-        }
-      );
-    }
-  }
-
   /* =========================================================================
-     FULL-BLEED CINEMATIC EDITORIAL — desktop.
+     FULL-BLEED CINEMATIC EDITORIAL — desktop + mobile.
      Replaces the pinned "isolated card on black" treatment. Each block is a
      full-viewport scene (CSS makes it edge-to-edge with a top+bottom dark
      vignette so adjacent scenes fuse seamlessly). On scroll the prose slides
@@ -929,18 +893,10 @@ window.initLanding = async function () {
     }
   }
 
-  mm.add('(min-width: 992px)', function () {
-    /* Manifest reads in from the left, Ritual mirrors in from the right. */
-    if (editorialBlocks[0]) attachEditorialCinematic(editorialBlocks[0], true);
-    if (editorialBlocks[1]) attachEditorialCinematic(editorialBlocks[1], false);
-  });
-  mm.add('(max-width: 991px)', function () {
-    /* Mobile editorial = readable-first: no pin, no shatter. Both blocks use
-       the same calm fade-up + background parallax so the user reads the
-       Manifest and Ritual prose at their own pace. */
-    if (editorialBlocks[0]) attachRitualReveal(editorialBlocks[0], 'top 80%');
-    if (editorialBlocks[1]) attachRitualReveal(editorialBlocks[1], 'top bottom');
-  });
+  /* Desktop AND mobile share the cinematic treatment: Manifest reads in from
+     the left, Ritual mirrors in from the right (CSS makes both full-bleed). */
+  if (editorialBlocks[0]) attachEditorialCinematic(editorialBlocks[0], true);
+  if (editorialBlocks[1]) attachEditorialCinematic(editorialBlocks[1], false);
 
   /* =========================================================================
      PAST-HERO STATE — one IntersectionObserver drives:
@@ -956,17 +912,18 @@ window.initLanding = async function () {
   const navBtnGlobal         = document.querySelector('.nav-btn--global');
 
   /* Chip visibility with mobile context zones: past the hero, but QUIET while
-     the product cards or the closing CTA are on screen — social proof steps
-     back at the decision moments. Desktop keeps the simple past-hero rule. */
+     the "Wählen Sie Ihr Protokoll" heading or the closing CTA are on screen —
+     the chip pops back in the moment the heading scrolls away, accompanying
+     the product cards as social proof. Desktop keeps the simple past-hero rule. */
   function updateChipVisibility() {
     const chip = document.getElementById('landingBewertungChip');
     if (!chip) return;
     let visible = !!window._anPastHero;
     if (visible && window.matchMedia('(max-width: 991px)').matches) {
       const vh   = window.innerHeight;
-      const shop = document.getElementById('shop');
-      if (shop) {
-        const r = shop.getBoundingClientRect();
+      const head = document.querySelector('.shop-heading-wrap');
+      if (head) {
+        const r = head.getBoundingClientRect();
         if (r.top < vh && r.bottom > 0) visible = false;
       }
       const ccta = document.querySelector('.landing-closing-cta');
