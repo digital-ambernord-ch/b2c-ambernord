@@ -1177,6 +1177,54 @@
   width: 100%;
 }
 
+/* ---------------------------------------------------------------------------
+   RITUAL INTERLUDE — connective sea-buckthorn-garden band between the
+   "Das tägliche Ritual" usage note and the Manifest. It is intentionally QUIET:
+   dimmed + desaturated so it never competes with the editorial scenes, with
+   top + bottom black fades that meet the black of the trailing text above and
+   the Manifest's dark vignette below — so the colour eases in and out instead
+   of jumping. The black fades double as the "breathing" space.
+   --------------------------------------------------------------------------- */
+.ritual-interlude {
+  position: relative;
+  width: 100%;
+  height: clamp(260px, 42vh, 500px);
+  overflow: hidden;
+  background-color: var(--color-bg);
+  z-index: var(--z-above);
+}
+
+.ritual-interlude__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  /* Dimmed + desaturated → premium, restrained, no colour chaos. */
+  filter: brightness(0.5) saturate(0.8) contrast(1.03);
+}
+
+.ritual-interlude__overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  /* Soft gold warmth at centre ties it to the palette; black top/bottom fades
+     blend the band into the surrounding sections. */
+  background:
+    radial-gradient(120% 78% at 50% 50%, rgba(237,163,35,0.07) 0%, transparent 56%),
+    linear-gradient(to bottom,
+      #0a0a0a 0%,
+      rgba(10,10,10,0.55) 24%,
+      rgba(10,10,10,0.40) 50%,
+      rgba(10,10,10,0.62) 78%,
+      #0a0a0a 100%);
+}
+
+@media (max-width: 991px) {
+  .ritual-interlude { height: clamp(190px, 30vh, 340px); }
+}
+
 
 .editorial-bento-grid {
   /* Block layout (not flex) so GSAP ScrollTrigger's pinSpacer can correctly
