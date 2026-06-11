@@ -276,24 +276,27 @@ window.initLanding = async function () {
 
   mm.add('(max-width: 991px)', function () {
     const scrollTrack = document.getElementById('scrollTrack');
-    const dvhOk = (window.CSS && CSS.supports && CSS.supports('height', '1dvh'));
+    /* svh, NOT dvh: dvh is dynamic — it changed mid-scroll whenever the
+       mobile URL bar collapsed, resizing the track and jolting all content
+       below it (visible stutter on real devices). svh is a constant. */
+    const svhOk = (window.CSS && CSS.supports && CSS.supports('height', '1svh'));
 
     /* Reduced motion: no choreography → no scrub range. Collapse the track to
        one viewport so there is no dead pinned scroll. */
     if (reducedMotion) {
-      if (scrollTrack) scrollTrack.style.height = dvhOk ? '100dvh' : '100vh';
+      if (scrollTrack) scrollTrack.style.height = svhOk ? '100svh' : '100vh';
       return function () {
         if (scrollTrack) scrollTrack.style.height = '';
       };
     }
 
-    /* 145dvh = 45dvh of scrub range for the shortened ~6-unit mobile timeline
+    /* 145svh = ~45svh of scrub range for the shortened ~6-unit mobile timeline
        (shrink + bottle fly + rise — the ONLY pinned scene on mobile). The
        trust posms and the product-card pin were removed: everything after the
-       hero is normal momentum scrolling. Tightened from 160dvh: the final
+       hero is normal momentum scrolling. Tightened from 160: the final
        phase no longer flies the bottle off-screen, so less runway is needed
        and the fact strip arrives sooner after the bottle. */
-    if (scrollTrack) scrollTrack.style.height = dvhOk ? '145dvh' : '145vh';
+    if (scrollTrack) scrollTrack.style.height = svhOk ? '145svh' : '145vh';
 
     const tlMobile = gsap.timeline({
       scrollTrigger: {
@@ -727,17 +730,19 @@ window.initLanding = async function () {
     var trustWrap = section ? section.querySelector('.conversion-booster-wrapper') : null;
     var revealEls = cards.concat(trustWrap ? [trustWrap] : []);
 
+    /* Gentle, early reveal: small travel + early trigger so on a real device
+       the card never visibly "jumps" into place mid-viewport. */
     revealEls.forEach(function (el) {
       gsap.fromTo(el,
-        { opacity: 0, y: 28 },
+        { opacity: 0, y: 16 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.9,
+          duration: 0.7,
           ease: 'power2.out',
           scrollTrigger: {
             trigger: el,
-            start: 'top 88%',
+            start: 'top 94%',
             toggleActions: 'play none none none',
             invalidateOnRefresh: true
           },
@@ -897,6 +902,67 @@ window.initLanding = async function () {
      the left, Ritual mirrors in from the right (CSS makes both full-bleed). */
   if (editorialBlocks[0]) attachEditorialCinematic(editorialBlocks[0], true);
   if (editorialBlocks[1]) attachEditorialCinematic(editorialBlocks[1], false);
+
+  /* WIDE-SPLIT ROWS (Exclusive Sourcing + Handwerk) — same cinematic language
+     as Manifest/Ritual: the photo (or video facade) swims up and settles with
+     a brief brightness flash, the prose column slides in from the side it
+     occupies in the desktop row layout (Sourcing right, Handwerk left). */
+  if (!reducedMotion) {
+    document.querySelectorAll('.wide-split-row').forEach(function (row) {
+      const img = row.querySelector('.wide-split-img');
+      const txt = row.querySelector('.wide-split-text');
+      const dir = row.classList.contains('reverse') ? -1 : 1;
+
+      /* Per-element triggers: on mobile the row is a tall stacked column, so
+         a row-level trigger would fire the text while it is still below the
+         fold and the user would only ever see the finished state. */
+      if (img) {
+        gsap.fromTo(img,
+          { opacity: 0, y: 60, scale: 0.96 },
+          { opacity: 1, y: 0, scale: 1, duration: 1.2, ease: 'power3.out',
+            scrollTrigger: {
+              trigger: img,
+              start: 'top 84%',
+              toggleActions: 'play none none reverse',
+              invalidateOnRefresh: true
+            }
+          });
+        const photo = img.querySelector('img');
+        if (photo) {
+          /* The "shine": image lands bright and settles to its normal grade.
+             clearProps afterwards so the CSS hover transition works again. */
+          gsap.fromTo(photo,
+            { filter: 'brightness(1.4) saturate(1.08)' },
+            { filter: 'brightness(0.95) saturate(1)', duration: 1.6, ease: 'power2.out',
+              clearProps: 'filter',
+              scrollTrigger: {
+                trigger: img,
+                start: 'top 84%',
+                toggleActions: 'play none none none',
+                invalidateOnRefresh: true
+              }
+            });
+        }
+      }
+
+      if (txt) {
+        const items = Array.from(txt.children);
+        if (items.length) {
+          gsap.set(items, { opacity: 0, x: dir * 70, y: 18 });
+          gsap.to(items, {
+            opacity: 1, x: 0, y: 0,
+            duration: 1.0, stagger: 0.1, ease: 'power3.out',
+            scrollTrigger: {
+              trigger: txt,
+              start: 'top 86%',
+              toggleActions: 'play none none reverse',
+              invalidateOnRefresh: true
+            }
+          });
+        }
+      }
+    });
+  }
 
   /* =========================================================================
      PAST-HERO STATE — one IntersectionObserver drives:

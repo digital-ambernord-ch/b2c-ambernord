@@ -22,8 +22,13 @@
      track and #shop follows in normal flow (NO overlap), so the heading never
      slides over the floating cards/bottle. This number is the pacing lever:
      lower = tighter/faster, higher = airier. */
-  height: 162vh;   /* fallback for browsers without dvh support */
-  height: 162dvh;  /* dvh tracks the visible viewport, unaffected by iOS address bar */
+  height: 162vh;   /* fallback for browsers without svh support */
+  /* svh = SMALL viewport unit: a CONSTANT, sized to the viewport with the
+     mobile URL bar visible. dvh was used before, but dvh is DYNAMIC — it
+     grows/shrinks mid-scroll as the URL bar collapses, resizing this track
+     and jolting all content below it (the "raustās" stutter on real
+     devices). svh never changes during scroll. */
+  height: 162svh;
   background-color: var(--color-bg);
   width: 100%;
 }
@@ -34,7 +39,11 @@
      hero pinches the topbar at exactly the same distance as every other page. */
   top: calc(var(--nav-height) + var(--aktion-height) + 8px);
   height: calc(100vh  - var(--nav-height) - var(--aktion-height) - 8px); /* fallback */
-  height: calc(100dvh - var(--nav-height) - var(--aktion-height) - 8px); /* dvh: correct on iOS */
+  /* svh, NOT dvh: a stable height that never changes mid-scroll when the
+     mobile URL bar hides (dvh resized this box every scroll direction change
+     → visible stutter). When the bar collapses the extra ~6vh below stays
+     track-background black — invisible. */
+  height: calc(100svh - var(--nav-height) - var(--aktion-height) - 8px);
   width: 100vw;
   display: flex;
   /* Anchor the hero at the TOP of the pinned area instead of vertically
@@ -63,7 +72,7 @@
      never overflows when aktion bar is active on mobile; otherwise the bottom
      of the hero gets clipped by sticky-viewport's overflow:hidden. */
   height: calc(100vh  - var(--nav-height) - var(--aktion-height) - 40px); /* fallback */
-  height: calc(100dvh - var(--nav-height) - var(--aktion-height) - 40px); /* dvh: correct on iOS */
+  height: calc(100svh - var(--nav-height) - var(--aktion-height) - 40px); /* svh: stable during scroll */
   border-radius: 24px;
   display: flex;
   align-items: center;
@@ -1114,7 +1123,10 @@
    strip above provides the top rhythm, and a modest bottom pad hands over to
    the Manifest without a dead black band. */
 @media (max-width: 991px) {
-  #shop { padding-top: 14px; padding-bottom: 36px; }
+  /* Generous gap above the heading (away from the fact strip) and a bit more
+     air between the heading/reviews-pin and the first product card. */
+  #shop { padding-top: 48px; padding-bottom: 36px; }
+  .shop-heading-wrap { margin-bottom: 84px; }
 }
 
 .protocol-info-title {
@@ -1555,8 +1567,12 @@
   max-width: 500px;
 }
 
+/* Same scale as the Manifest/Ritual titles so the editorial voice stays
+   consistent through Exclusive Sourcing + Handwerk. */
 .wide-split-text h2 {
-  font-size: clamp(36px, 4vw, 52px);
+  font-size: clamp(34px, 4.2vw, 50px);
+  line-height: 1.12;
+  letter-spacing: -0.3px;
   margin-bottom: 30px;
 }
 
@@ -1878,6 +1894,20 @@
   .wide-split-img.yt-video-wrapper { height: auto; aspect-ratio: 16 / 9; }
   .wide-split-text { max-width: 100%; padding: 0 10px; }
 
+  /* Match the Manifest/Ritual mobile typography exactly. */
+  .wide-split-text h2 {
+    font-size: clamp(30px, 8.8vw, 40px);
+    line-height: 1.14;
+    margin-bottom: 20px;
+  }
+  .wide-split-text p {
+    font-size: 15.5px;
+    line-height: 1.8;
+  }
+
+  /* Tighter handoff from the Das Ritual scene above into Exclusive Sourcing. */
+  .magic-garden-core { padding-top: 36px; }
+
   .sourcing-mini-gallery {
     display: flex;
     flex-direction: row;
@@ -1919,7 +1949,7 @@
     border-radius: 0;
     box-shadow: none;
     min-height: 86vh;   /* fallback */
-    min-height: 86dvh;  /* dvh: correct on iOS */
+    min-height: 86svh;  /* svh: stable during scroll (dvh resized mid-scroll) */
     justify-content: center;
   }
   .nature-hero-block:hover { border-color: transparent; }
@@ -1989,9 +2019,10 @@
     position: relative;
     /* Pulled up over the tail of the hero scroll-track so the cards arrive
        right under the bottle instead of after a long black region; must
-       paint ABOVE .sticky-viewport (z-index 20). */
-    margin-top: -12vh;
-    margin-top: -12dvh;
+       paint ABOVE .sticky-viewport (z-index 20). FIXED px — a vh/dvh value
+       here changed mid-scroll with the mobile URL bar and jolted everything
+       below the strip. */
+    margin-top: -96px;
     z-index: 21;
   }
 
