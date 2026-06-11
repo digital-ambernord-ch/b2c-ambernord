@@ -20,22 +20,22 @@
   },
   "stickyBtn": "Vers le Rituel",
   "factStrip": { "ariaLabel": "Faits sur les principes actifs" },
-  "bewertungChip": {
-    "label": "Avis",
-    "ariaLabel": "Voir les avis clients"
+  "guarantee": {
+    "label": "Garantie satisfait ou remboursé 30 jours",
+    "ariaLabel": "Voir la garantie satisfait ou remboursé de 30 jours"
   },
   "floatCards": {
     "vitamins": {
       "eyebrow": "Vitamines",
-      "text": "Source végétale rare de B12 et teneur naturelle exceptionnelle en vitamine C."
+      "text": "Haute teneur naturelle en vitamine C – contribue à réduire la fatigue et l'épuisement."
     },
     "balance": {
-      "eyebrow": "Équilibre Cellulaire",
-      "text": "L'une des sources végétales les plus rares d'acide palmitoléique – essentielle pour la peau & les muqueuses."
+      "eyebrow": "Peau & Intestin",
+      "text": "L'une des sources végétales d'Oméga-7 les plus rares – soutient la peau et les muqueuses de l'intérieur."
     },
     "immunity": {
-      "eyebrow": "Résilience Immunitaire",
-      "text": "Composés bioactifs et teneur naturelle exceptionnelle en vitamine C dans chaque goutte."
+      "eyebrow": "Système immunitaire",
+      "text": "Composés bioactifs et vitamine C naturelle – contribue au fonctionnement normal du système immunitaire."
     },
     "craft": {
       "eyebrow": "Artisanat",
@@ -47,18 +47,17 @@
     "taglineColdPress": "PRESSÉ À FROID",
     "taglineBio": "CERTIFIÉ BIO",
     "bioLogoAlt": "Certifié EU Organic",
-    "h1": "Le corps ne réagit pas aux promesses.<br><span>Mais à ce qu'il peut véritablement absorber.</span>",
+    "h1": "L'or liquide du Nord.<br><span>Concentré d'argousier bio pressé à froid. Plus de 190 composés bioactifs. Un rituel de 30 secondes par jour.</span>",
     "productAlt": "Bouteille AmberNord Édition Premium",
     "benefit1": "Énergie tangible grâce à 190+ composés bioactifs",
-    "benefit2": "Oméga-7 pour la peau, l'intestin & les barrières protectrices",
-    "benefit3": "B12 naturelle – biodisponible, non synthétique",
-    "nativeOils": "Y compris les huiles natives<br>de la pulpe &amp; du noyau",
-    "cta": "Commencer le rituel"
+    "benefit2": "Oméga-7 pour la peau & l'intestin – l'une des sources les plus rares de la nature",
+    "nativeOils": "La baie entière : huiles de pulpe &amp; de pépin –<br>rien ne se perd",
+    "cta": "Essayer maintenant – dès 24,90 CHF"
   },
   "closingCta": {
     "eyebrow": "Prêt ?",
-    "title": "Choisis <span>ton rituel.</span>",
-    "sub": "Trois éditions — une pour chaque rythme.",
+    "title": "Choisissez <span>votre rituel.</span>",
+    "sub": "Trois formats — un pour chaque rythme.",
     "btn": "Choisir mon rituel"
   },
   "trust": {
@@ -68,7 +67,7 @@
     "reviews": { "title": "Lire les avis", "subtitle": "Voix réelles de Suisse" }
   },
   "shop": {
-    "title": "Choisissez Votre Protocole",
+    "title": "Votre rituel. Trois formats.",
     "starter": {
       "price": {
         "daily": "2,49 CHF / jour",
@@ -76,7 +75,7 @@
       },
       "extra": "Idéal pour essayer",
       "benefit1": "Première rencontre avec le rituel",
-      "benefit2": "Effet perceptible dès le 7e jour",
+      "benefit2": "Un rituel de 30 secondes par jour seulement",
       "benefit3": "Entrée sans risque",
       "units": "1× 250 ml",
       "shipping": "+ frais de port",
@@ -91,8 +90,8 @@
       },
       "extra": "Le rituel de 30 jours",
       "benefit1": "30 jours de rituel quotidien",
-      "benefit2": "Effet perceptible dès le 7e jour",
-      "benefit3": "Régénération cellulaire complète",
+      "benefit2": "Seulement 30 secondes par jour",
+      "benefit3": "Protection des cellules contre le stress oxydatif",
       "units": "3× 250 ml",
       "shipping": "<span class=\"card-shipping-note__free\">livraison gratuite</span> incluse",
       "btn": "Commencer 30 jours"
@@ -105,7 +104,7 @@
       },
       "extra": "Pour la famille & la concentration à long terme",
       "benefit1": "60 jours d'approvisionnement continu",
-      "benefit2": "À partager en couple ou en famille",
+      "benefit2": "À partager à deux – ou 60 jours pour vous",
       "benefit3": "Meilleur prix par dose journalière",
       "units": "6× 250 ml",
       "shipping": "<span class=\"card-shipping-note__free\">livraison gratuite</span> incluse",
@@ -119,8 +118,8 @@
   },
   "manifest": {
     "eyebrow": "Notre Manifeste",
-    "h2": "La fin de<br><span class=\"ambernord-text-gold\">l'énergie artificielle.</span>",
-    "lead": "Nous vivons dans une ère de raccourcis synthétiques. Les boissons énergisantes conventionnelles et les stimulants artificiels prêtent au corps une énergie qu'il devra rembourser avec intérêts.",
+    "h2": "La fin des<br><span class=\"ambernord-text-gold\">raccourcis synthétiques.</span>",
+    "lead": "Les compléments isolés synthétiquement et les stimulants artificiels prêtent au corps une énergie qu'il devra rembourser avec intérêts.",
     "pullquote": "« La vraie énergie ne connaît pas de dettes. »",
     "body": "C'est précisément là qu'AmberNord intervient — la réponse à une véritable performance cellulaire. Pas un coup de fouet à court terme, mais un <strong class=\"ambernord-fw-500\">upgrade biologique</strong>. Nous extrayons l'essence la plus pure de la nature nordique pour vous offrir un outil de biohacking durable et de régénération profonde, directement en Suisse."
   },
@@ -129,7 +128,7 @@
     "h2": "Une part d'or.<br><span class=\"ambernord-text-gold\">Dix parts de vie.</span>",
     "lead": "La plupart des compléments alimentaires sont isolés synthétiquement et les boissons santé conventionnelles sont remplies de sucre caché. AmberNord emprunte une voie totalement différente.",
     "pullquote": "« L'essence, pas l'imitation. »",
-    "body": "Nous vous proposons une essence brute, pure et hautement concentrée – conçue pour une alchimie cellulaire parfaite avec l'eau. Le protocole 1:10 (1 part d'essence, 10 parts d'eau) est votre catalyseur quotidien. Dans cette symbiose, les rares acides gras Oméga, les acides aminés et la vitamine C naturelle sont absorbés au maximum par le corps. Le résultat : hydratation profonde, concentration mesurablement plus aiguë et protection cellulaire robuste."
+    "body": "Nous vous proposons une essence brute, pure et hautement concentrée – conçue pour une synergie parfaite avec l'eau. Le protocole 1:10 (1 part d'essence, 10 parts d'eau) est votre catalyseur quotidien. Dans cette symbiose, les rares acides gras Oméga, les acides aminés et la vitamine C naturelle sont absorbés au maximum par le corps. Le résultat : hydratation profonde, nettement moins de fatigue et protection des cellules contre le stress oxydatif."
   },
   "sourcing": {
     "eyebrow": "Sourcing Exclusif",

@@ -20,22 +20,22 @@
   },
   "stickyBtn": "Zum Ritual",
   "factStrip": { "ariaLabel": "Wirkstoff-Fakten" },
-  "bewertungChip": {
-    "label": "Bewertungen",
-    "ariaLabel": "Kundenbewertungen ansehen"
+  "guarantee": {
+    "label": "30 Tage Geld-zurück-Garantie",
+    "ariaLabel": "30 Tage Geld-zurück-Garantie ansehen"
   },
   "floatCards": {
     "vitamins": {
       "eyebrow": "Vitamine",
-      "text": "Seltene pflanzliche B12-Quelle und hoher natürlicher Vitamin-C-Gehalt."
+      "text": "Hoher natürlicher Vitamin-C-Gehalt – trägt zur Verringerung von Müdigkeit und Erschöpfung bei."
     },
     "balance": {
-      "eyebrow": "Zelluläre Balance",
-      "text": "Eine der seltensten pflanzlichen Quellen für Palmitoleinsäure – essenziell für Haut & Schleimhäute."
+      "eyebrow": "Haut & Darm",
+      "text": "Eine der seltensten pflanzlichen Omega-7-Quellen – unterstützt Haut und Schleimhäute von innen."
     },
     "immunity": {
-      "eyebrow": "Immun-Resilienz",
-      "text": "Bioaktive Wirkstoffe und ein extrem hoher natürlicher Vitamin-C-Gehalt in jedem Tropfen."
+      "eyebrow": "Immunsystem",
+      "text": "Bioaktive Wirkstoffe und natürliches Vitamin C – trägt zur normalen Funktion des Immunsystems bei."
     },
     "craft": {
       "eyebrow": "Handwerk",
@@ -47,18 +47,17 @@
     "taglineColdPress": "KALTGEPRESST",
     "taglineBio": "BIO-ZERTIFIZIERT",
     "bioLogoAlt": "EU Organic zertifiziert",
-    "h1": "Der Körper reagiert nicht auf Versprechen.<br><span>Sondern auf das, was er wirklich aufnehmen kann.</span>",
+    "h1": "Das flüssige Gold des Nordens.<br><span>Kaltgepresstes Bio-Sanddorn-Konzentrat. 190+ Bioaktivstoffe. Ein Ritual von 30 Sekunden am Tag.</span>",
     "productAlt": "AmberNord Premium-Edition Flasche",
     "benefit1": "Spürbare Energie durch 190+ Bioaktivstoffe",
-    "benefit2": "Omega-7 für Haut, Darm & Schutzbarrieren",
-    "benefit3": "Natürliches B12 – bioverfügbar, nicht synthetisch",
-    "nativeOils": "Inklusive nativer Öle aus<br>Fruchtfleisch &amp; Kern",
-    "cta": "Jetzt Ritual starten"
+    "benefit2": "Omega-7 für Haut & Darm – eine der seltensten Quellen der Natur",
+    "nativeOils": "Ganze Beere: Öle aus Fruchtfleisch &amp; Kern –<br>nichts geht verloren",
+    "cta": "Jetzt probieren – ab 24.90 CHF"
   },
   "closingCta": {
     "eyebrow": "Bereit?",
-    "title": "Wähle <span>dein Ritual.</span>",
-    "sub": "Drei Editionen — eine für jeden Rhythmus.",
+    "title": "Wählen Sie <span>Ihr Ritual.</span>",
+    "sub": "Drei Grössen — eine für jeden Rhythmus.",
     "btn": "Mein Ritual wählen"
   },
   "trust": {
@@ -68,7 +67,7 @@
     "reviews": { "title": "Bewertungen lesen", "subtitle": "Echte Stimmen aus der Schweiz" }
   },
   "shop": {
-    "title": "Wählen Sie Ihr Protokoll",
+    "title": "Ihr Ritual. Drei Grössen.",
     "starter": {
       "price": {
         "daily": "2.49 CHF / Tag",
@@ -76,7 +75,7 @@
       },
       "extra": "Ideal zum Probieren",
       "benefit1": "Erste Begegnung mit dem Ritual",
-      "benefit2": "Spürbare Wirkung ab Tag 7",
+      "benefit2": "Ein Ritual von nur 30 Sekunden am Tag",
       "benefit3": "Risikoarmer Einstieg",
       "units": "1× 250 ml",
       "shipping": "zzgl. Versand",
@@ -91,8 +90,8 @@
       },
       "extra": "Das 30-Tage-Ritual",
       "benefit1": "30 Tage tägliches Ritual",
-      "benefit2": "Spürbare Wirkung ab Tag 7",
-      "benefit3": "Volle Zellregeneration",
+      "benefit2": "Nur 30 Sekunden am Tag",
+      "benefit3": "Zellschutz vor oxidativem Stress",
       "units": "3× 250 ml",
       "shipping": "inkl. <span class=\"card-shipping-note__free\">kostenlosem Versand</span>",
       "btn": "30 Tage starten"
@@ -105,7 +104,7 @@
       },
       "extra": "Für Familie & langfristigen Fokus",
       "benefit1": "60 Tage durchgehende Versorgung",
-      "benefit2": "Geteilt für Paar oder Familie",
+      "benefit2": "Geteilt für zwei – oder 60 Tage für Sie",
       "benefit3": "Bester Preis pro Tagesration",
       "units": "6× 250 ml",
       "shipping": "inkl. <span class=\"card-shipping-note__free\">kostenlosem Versand</span>",
@@ -119,8 +118,8 @@
   },
   "manifest": {
     "eyebrow": "Unser Manifest",
-    "h2": "Das Ende der<br><span class=\"ambernord-text-gold\">künstlichen Energie.</span>",
-    "lead": "Wir leben in einer Ära der synthetischen Abkürzungen. Herkömmliche Energy-Drinks und künstliche Stimulanzien leihen dem Körper Energie, die er später mit Zinsen zurückzahlen muss.",
+    "h2": "Das Ende der<br><span class=\"ambernord-text-gold\">synthetischen Abkürzungen.</span>",
+    "lead": "Synthetisch isolierte Präparate und künstliche Stimulanzien leihen dem Körper Energie, die er später mit Zinsen zurückzahlen muss.",
     "pullquote": "«Echte Energie kennt keine Schulden.»",
     "body": "Genau hier setzt AmberNord an — die Antwort auf echte, zelluläre Performance. Kein kurzfristiger Kick, sondern ein <strong class=\"ambernord-fw-500\">biologisches Upgrade</strong>. Wir extrahieren die reinste Essenz der nordischen Wildnis, um Ihnen ein Werkzeug für nachhaltiges Biohacking und tiefgreifende Regeneration direkt in die Schweiz zu bringen."
   },
@@ -129,7 +128,7 @@
     "h2": "Ein Teil Gold.<br><span class=\"ambernord-text-gold\">Zehn Teile Leben.</span>",
     "lead": "Die meisten Nahrungsergänzungen sind synthetisch isoliert, und herkömmliche Gesundheitsgetränke sind voller verstecktem Zucker. AmberNord geht einen völlig anderen Weg.",
     "pullquote": "«Die Essenz, nicht das Imitat.»",
-    "body": "Wir bieten Ihnen eine kompromisslos reine, hochkonzentrierte Rohessenz – entworfen für die perfekte zelluläre Alchemie mit Wasser. Das 1:10 Protokoll (1 Teil Essenz, 10 Teile Wasser) ist Ihr täglicher Katalysator. In dieser Symbiose werden die seltenen Omega-Fettsäuren, Aminosäuren und das natürliche Vitamin C vom Körper maximal absorbiert. Das Ergebnis: Tiefe Hydratation, ein messbar schärferer Fokus und robuster Zellschutz."
+    "body": "Wir bieten Ihnen eine kompromisslos reine, hochkonzentrierte Rohessenz – entworfen für die perfekte Synergie mit Wasser. Das 1:10 Protokoll (1 Teil Essenz, 10 Teile Wasser) ist Ihr täglicher Katalysator. In dieser Symbiose werden die seltenen Omega-Fettsäuren, Aminosäuren und das natürliche Vitamin C vom Körper maximal absorbiert. Das Ergebnis: Tiefe Hydratation, spürbar weniger Müdigkeit und Zellschutz vor oxidativem Stress."
   },
   "sourcing": {
     "eyebrow": "Exklusives Sourcing",

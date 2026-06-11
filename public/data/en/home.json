@@ -20,22 +20,22 @@
   },
   "stickyBtn": "To the Ritual",
   "factStrip": { "ariaLabel": "Active-ingredient facts" },
-  "bewertungChip": {
-    "label": "Reviews",
-    "ariaLabel": "Read customer reviews"
+  "guarantee": {
+    "label": "30-Day Money-Back Guarantee",
+    "ariaLabel": "View the 30-day money-back guarantee"
   },
   "floatCards": {
     "vitamins": {
       "eyebrow": "Vitamins",
-      "text": "A rare plant-based source of B12 and exceptionally high natural Vitamin C content."
+      "text": "High natural Vitamin C content – contributes to the reduction of tiredness and fatigue."
     },
     "balance": {
-      "eyebrow": "Cellular Balance",
-      "text": "One of the rarest plant-based sources of palmitoleic acid – essential for skin & mucous membranes."
+      "eyebrow": "Skin & Gut",
+      "text": "One of the rarest plant-based sources of Omega-7 – supports skin and mucous membranes from within."
     },
     "immunity": {
-      "eyebrow": "Immune Resilience",
-      "text": "Bioactive compounds and an exceptionally high natural Vitamin C content in every drop."
+      "eyebrow": "Immune System",
+      "text": "Bioactive compounds and natural Vitamin C – contributes to the normal function of the immune system."
     },
     "craft": {
       "eyebrow": "Craft",
@@ -47,18 +47,17 @@
     "taglineColdPress": "COLD-PRESSED",
     "taglineBio": "ORGANIC CERTIFIED",
     "bioLogoAlt": "EU Organic certified",
-    "h1": "The body does not respond to promises.<br><span>It responds to what it can truly absorb.</span>",
+    "h1": "The liquid gold of the North.<br><span>Cold-pressed organic sea buckthorn concentrate. 190+ bioactive compounds. A 30-second daily ritual.</span>",
     "productAlt": "AmberNord Premium Edition bottle",
     "benefit1": "Tangible energy from 190+ bioactive compounds",
-    "benefit2": "Omega-7 for skin, gut & protective barriers",
-    "benefit3": "Natural B12 – bioavailable, not synthetic",
-    "nativeOils": "Including native oils from<br>fruit pulp &amp; seed",
-    "cta": "Start Your Ritual"
+    "benefit2": "Omega-7 for skin & gut – one of nature's rarest sources",
+    "nativeOils": "The whole berry: oils from pulp &amp; seed –<br>nothing goes to waste",
+    "cta": "Try It Now – from 24.90 CHF"
   },
   "closingCta": {
     "eyebrow": "Ready?",
     "title": "Choose <span>your ritual.</span>",
-    "sub": "Three editions — one for every rhythm.",
+    "sub": "Three sizes — one for every rhythm.",
     "btn": "Choose my ritual"
   },
   "trust": {
@@ -68,7 +67,7 @@
     "reviews": { "title": "Read Reviews", "subtitle": "Real voices from Switzerland" }
   },
   "shop": {
-    "title": "Choose Your Protocol",
+    "title": "Your Ritual. Three Sizes.",
     "starter": {
       "price": {
         "daily": "2.49 CHF / day",
@@ -76,7 +75,7 @@
       },
       "extra": "Ideal to try",
       "benefit1": "First encounter with the ritual",
-      "benefit2": "Noticeable effect from day 7",
+      "benefit2": "A ritual of just 30 seconds a day",
       "benefit3": "Low-risk entry",
       "units": "1× 250 ml",
       "shipping": "+ shipping",
@@ -91,8 +90,8 @@
       },
       "extra": "The 30-day ritual",
       "benefit1": "30 days of daily ritual",
-      "benefit2": "Noticeable effect from day 7",
-      "benefit3": "Full cellular regeneration",
+      "benefit2": "Just 30 seconds a day",
+      "benefit3": "Cell protection against oxidative stress",
       "units": "3× 250 ml",
       "shipping": "incl. <span class=\"card-shipping-note__free\">free shipping</span>",
       "btn": "Start 30 Days"
@@ -105,7 +104,7 @@
       },
       "extra": "For family & long-term focus",
       "benefit1": "60 days of continuous supply",
-      "benefit2": "Shared for couple or family",
+      "benefit2": "Shared by two – or 60 days for you",
       "benefit3": "Best price per daily dose",
       "units": "6× 250 ml",
       "shipping": "incl. <span class=\"card-shipping-note__free\">free shipping</span>",
@@ -119,8 +118,8 @@
   },
   "manifest": {
     "eyebrow": "Our Manifesto",
-    "h2": "The end of<br><span class=\"ambernord-text-gold\">artificial energy.</span>",
-    "lead": "We live in an era of synthetic shortcuts. Conventional energy drinks and artificial stimulants lend the body energy that it must later repay with interest.",
+    "h2": "The end of<br><span class=\"ambernord-text-gold\">synthetic shortcuts.</span>",
+    "lead": "Synthetically isolated supplements and artificial stimulants lend the body energy that it must later repay with interest.",
     "pullquote": "“Real energy knows no debts.”",
     "body": "This is precisely where AmberNord begins — the answer to genuine cellular performance. Not a short-term kick, but a <strong class=\"ambernord-fw-500\">biological upgrade</strong>. We extract the purest essence of the nordic wilderness to bring you a tool for sustainable biohacking and deep regeneration directly to Switzerland."
   },
@@ -129,7 +128,7 @@
     "h2": "One part gold.<br><span class=\"ambernord-text-gold\">Ten parts life.</span>",
     "lead": "Most nutritional supplements are synthetically isolated, and conventional health drinks are full of hidden sugar. AmberNord takes a completely different path.",
     "pullquote": "“The essence, not the imitation.”",
-    "body": "We offer you an uncompromisingly pure, highly concentrated raw essence – designed for perfect cellular alchemy with water. The 1:10 protocol (1 part essence, 10 parts water) is your daily catalyst. In this symbiosis, the rare Omega fatty acids, amino acids and natural Vitamin C are absorbed by the body to the maximum. The result: deep hydration, measurably sharper focus and robust cellular protection."
+    "body": "We offer you an uncompromisingly pure, highly concentrated raw essence – designed for perfect synergy with water. The 1:10 protocol (1 part essence, 10 parts water) is your daily catalyst. In this symbiosis, the rare Omega fatty acids, amino acids and natural Vitamin C are absorbed by the body to the maximum. The result: deep hydration, noticeably less fatigue and cell protection against oxidative stress."
   },
   "sourcing": {
     "eyebrow": "Exclusive Sourcing",
