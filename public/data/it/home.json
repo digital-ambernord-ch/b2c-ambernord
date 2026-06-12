@@ -92,7 +92,14 @@
       "benefit3": "Inizio senza rischio",
       "units": "1× 250 ml",
       "shipping": "+ spedizione",
-      "btn": "Inizi ora"
+      "btn": "Inizi ora",
+      "flip": {
+        "heading": "Il Suo Inizio",
+        "item1": "Il primo sorso: luminoso, acidulo, vivo — olivello spinoso allo stato puro.",
+        "item2": "Una delle rare fonti di tutti e 4 gli acidi grassi omega (3, 6, 7 & 9).",
+        "item3": "10 giorni di rituale — esattamente una bottiglia.",
+        "cta": "Ordini ora — 24.90 CHF"
+      }
     },
     "habit": {
       "badge": "IL PIÙ SCELTO",
@@ -107,7 +114,14 @@
       "benefit3": "La vitamina C contribuisce alla protezione delle cellule dallo stress ossidativo",
       "units": "3× 250 ml",
       "shipping": "<span class=\"card-shipping-note__free\">spedizione gratuita</span> inclusa",
-      "btn": "Inizi i 30 giorni"
+      "btn": "Inizi i 30 giorni",
+      "flip": {
+        "heading": "La Trasformazione",
+        "item1": "La vitamina C contribuisce alla riduzione della stanchezza e dell'affaticamento — fine del calo pomeridiano.",
+        "item2": "Fino al 42 % di Omega-7 — una delle fonti più ricche della natura.",
+        "item3": "La matrice completa della bacca intera — oli da polpa e seme.",
+        "cta": "Ordini ora — 69.00 CHF"
+      }
     },
     "protocol": {
       "price": {
@@ -121,7 +135,14 @@
       "benefit3": "Miglior prezzo per dose giornaliera",
       "units": "6× 250 ml",
       "shipping": "<span class=\"card-shipping-note__free\">spedizione gratuita</span> inclusa",
-      "btn": "Inizi il Suo rituale"
+      "btn": "Inizi il Suo rituale",
+      "flip": {
+        "heading": "Il Livello Master",
+        "item1": "La vitamina C contribuisce alla protezione delle cellule dallo stress ossidativo — 60 giorni senza interruzioni.",
+        "item2": "Carotenoidi naturali dalla bacca intera.",
+        "item3": "Oltre 190 sostanze bioattive attive.",
+        "cta": "Ordini ora — 129.00 CHF"
+      }
     },
     "paymentLabel": "Metodi di pagamento sicuri",
     "protocolInfo": {

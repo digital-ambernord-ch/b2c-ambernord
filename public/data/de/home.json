@@ -92,7 +92,14 @@
       "benefit3": "Risikoarmer Einstieg",
       "units": "1× 250 ml",
       "shipping": "zzgl. Versand",
-      "btn": "Jetzt starten"
+      "btn": "Jetzt starten",
+      "flip": {
+        "heading": "Ihr Einstieg",
+        "item1": "Der erste Schluck: hell, sauer, lebendig — Sanddorn in Reinform.",
+        "item2": "Eine der seltenen Quellen aller 4 Omega-Fettsäuren (3, 6, 7 & 9).",
+        "item3": "10 Tage Ritual — exakt eine Flasche.",
+        "cta": "Jetzt bestellen — 24.90 CHF"
+      }
     },
     "habit": {
       "badge": "MEISTGEWÄHLT",
@@ -107,7 +114,14 @@
       "benefit3": "Vitamin C trägt zum Schutz der Zellen vor oxidativem Stress bei",
       "units": "3× 250 ml",
       "shipping": "inkl. <span class=\"card-shipping-note__free\">kostenlosem Versand</span>",
-      "btn": "30 Tage starten"
+      "btn": "30 Tage starten",
+      "flip": {
+        "heading": "Die Transformation",
+        "item1": "Vitamin C trägt zur Verringerung von Müdigkeit bei — Schluss mit dem Nachmittags-Tief.",
+        "item2": "Bis zu 42 % Omega-7 — eine der reichsten Quellen der Natur.",
+        "item3": "Die volle Matrix der ganzen Beere — Öle aus Fruchtfleisch und Kern.",
+        "cta": "Jetzt bestellen — 69.00 CHF"
+      }
     },
     "protocol": {
       "price": {
@@ -121,7 +135,14 @@
       "benefit3": "Bester Preis pro Tagesration",
       "units": "6× 250 ml",
       "shipping": "inkl. <span class=\"card-shipping-note__free\">kostenlosem Versand</span>",
-      "btn": "Mein Ritual starten"
+      "btn": "Mein Ritual starten",
+      "flip": {
+        "heading": "Das Meister-Level",
+        "item1": "Vitamin C trägt zum Schutz der Zellen vor oxidativem Stress bei — 60 Tage lückenlos.",
+        "item2": "Natürliche Carotinoide aus der ganzen Beere.",
+        "item3": "Über 190 bioaktive Wirkstoffe aktiv.",
+        "cta": "Jetzt bestellen — 129.00 CHF"
+      }
     },
     "paymentLabel": "Sichere Zahlungsmethoden",
     "protocolInfo": {

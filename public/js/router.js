@@ -549,6 +549,10 @@
 
       killGSAP();
 
+      /* Reset the landing-only "hide topbar bio badge" state on every nav.
+         Landing's init re-adds it; subpages leave it off so the badge shows. */
+      document.documentElement.classList.remove('landing-hero-active');
+
       /* Swap DOM, scroll, attach handlers, run init — all while invisible. */
       app.innerHTML = html;
 

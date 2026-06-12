@@ -223,6 +223,62 @@
 .img-5 { top: 35%;  right: -2%; width: 240px; height: 320px; }
 .img-6 { bottom: 6%; right: 10%;width: 240px; height: 300px; }
 
+/* --------------------------------------------------------------------------
+   FLOAT CARDS — laptop bands (992–1400px). The full-size cards above overlap
+   each other (and the 380px shrunk hero) on shorter/narrower desktops, so in
+   these bands each column becomes three fixed rows at top 3% / 36% / 68%
+   with uniform card heights. Math (workspace W = min(vw, 1200), centered;
+   shrunk hero spans W/2 ± 190 in workspace coords; sticky height H):
+   – vertical: rows never meet while 0.33·H ≥ card height (H ≥ ~500px), and
+     the bottom row stays inside the viewport for H ≥ ~516px;
+   – horizontal: every left-card right edge stays ≤ W/2−190−12 and every
+     right-card left edge ≥ W/2+190+12, checked at both band ends — so no
+     two card boxes (nor card and hero) can ever intersect in the band.
+   <992px untouched: cards stay display:none, the mobile fact strip takes over.
+   -------------------------------------------------------------------------- */
+@media (min-width: 1200px) and (max-width: 1400px) {
+  .img-1 { top: 3%;  left: 1%;   width: 240px; height: 165px; }
+  .img-2 { top: 36%; left: -3%;  width: 220px; height: 165px; }
+  .img-3 { top: 68%; bottom: auto; left: 0%;  width: 250px; height: 165px; }
+  .img-4 { top: 3%;  right: 4%;  width: 220px; height: 165px; }
+  .img-5 { top: 36%; right: -3%; width: 220px; height: 165px; }
+  .img-6 { top: 68%; bottom: auto; right: 6%; width: 240px; height: 165px; }
+
+  .float-card-content { padding: 16px; }
+  .float-card .card-eyebrow { font-size: 9px; margin-bottom: 6px; }
+  .float-card .card-value   { font-size: 24px; margin-bottom: 6px; }
+  .float-card .card-text {
+    font-size: 11px;
+    line-height: 1.45;
+    /* Long locales (fr/it) can outgrow the compact card — clamp gracefully. */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    overflow: hidden;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .img-1 { top: 3%;  left: 1%;   width: 210px; height: 160px; }
+  .img-2 { top: 36%; left: -3%;  width: 190px; height: 160px; }
+  .img-3 { top: 68%; bottom: auto; left: 0%;  width: 220px; height: 160px; }
+  .img-4 { top: 3%;  right: 2%;  width: 190px; height: 160px; }
+  .img-5 { top: 36%; right: -3%; width: 190px; height: 160px; }
+  .img-6 { top: 68%; bottom: auto; right: 3%; width: 210px; height: 160px; }
+
+  .float-card-content { padding: 14px; }
+  .float-card .card-eyebrow { font-size: 9px; margin-bottom: 6px; }
+  .float-card .card-value   { font-size: 22px; margin-bottom: 6px; }
+  .float-card .card-text {
+    font-size: 10.5px;
+    line-height: 1.45;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    overflow: hidden;
+  }
+}
+
 /* Hero inner content */
 #ambernord-hero-content {
   position: relative;
@@ -1014,6 +1070,113 @@
 
 .premium-product-card:hover .ambernord-card-btn {
   background-color: var(--color-gold-hover);
+}
+
+/* --------------------------------------------------------------------------
+   CARD BENEFIT FACE — second "face" of each product card, revealed while the
+   card is off-screen during the ≥768px exit/return flip choreography
+   (landing.js toggles .is-flipped at the off-screen midpoint). Same card
+   frame, slightly darker surface, gold accent line along the top edge.
+   pointer-events stays none in BOTH states: the face only paints — clicks
+   always fall through to the card anchor underneath.
+   The `.premium-product-card` prefix is required: it must outrank the
+   earlier `.premium-product-card.highlight-habit > *` rule (position
+   relative, z-index 1) at equal specificity.
+   -------------------------------------------------------------------------- */
+.premium-product-card .card-benefit-face {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 32px 50px;
+  border-radius: inherit;
+  background: linear-gradient(150deg, #0d0c0a 0%, #14110d 100%);
+  opacity: 0;
+  pointer-events: none;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.card-benefit-face::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--color-gold) 50%, transparent 100%);
+  opacity: 0.8;
+}
+
+.card-benefit-face__heading {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 14px;
+}
+
+.card-benefit-face__list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px 0;
+}
+
+.card-benefit-face__list li {
+  color: var(--color-text-muted);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: 8px;
+  position: relative;
+  padding-left: 20px;
+}
+
+.card-benefit-face__list li::before {
+  content: '—';
+  color: var(--color-gold);
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* Faux button — a span, NOT a link (the whole card is already an anchor). */
+.card-benefit-face__cta {
+  display: inline-block;
+  padding: 10px 22px;
+  background-color: var(--color-gold);
+  color: var(--color-bg);
+  border-radius: 4px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Face swap. visibility (not opacity) hides the normal content: in the
+   768–991px band .product-info-left/.product-card-right/.card-details are
+   display:contents, where opacity is a no-op but visibility still inherits
+   down to the real boxes. Layout is preserved (card keeps its height) and
+   the anchor itself stays fully clickable in both faces. */
+.premium-product-card.is-flipped > :not(.card-benefit-face) {
+  visibility: hidden;
+}
+
+.premium-product-card.is-flipped .card-benefit-face {
+  opacity: 1;
+}
+
+/* While the flip scrub drives the cards' transform every frame, the base
+   transform transition (hover lift) must not chase the scrub — keep only
+   the border-color transition. Class set by landing.js, ≥768px branch. */
+#ritual-products.has-flip-scrub .premium-product-card {
+  transition: border-color var(--t-base) ease;
 }
 
 /* Centred "hanging tag" pinned to the card's TOP EDGE, fully INSIDE the
@@ -1880,6 +2043,14 @@
   }
 
   .card-arrow { display: none; }
+
+  /* Benefit face on the compact column card (flip plays in 768–991px too):
+     tighter padding + type so the three bullets and faux CTA fit the
+     shorter frame. <768px the face never shows (no flip choreography). */
+  .premium-product-card .card-benefit-face { padding: 20px 18px; }
+  .card-benefit-face__heading { margin-bottom: 10px; }
+  .card-benefit-face__list { margin-bottom: 14px; }
+  .card-benefit-face__list li { font-size: 12px; margin-bottom: 6px; }
 
   /* Bestseller card needs headroom for the centred hanging badge. */
   #habit-card { padding-top: 48px; }

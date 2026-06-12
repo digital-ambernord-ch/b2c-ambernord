@@ -92,7 +92,14 @@
       "benefit3": "Low-risk entry",
       "units": "1× 250 ml",
       "shipping": "+ shipping",
-      "btn": "Start Now"
+      "btn": "Start Now",
+      "flip": {
+        "heading": "Your Start",
+        "item1": "The first sip: bright, sour, alive — sea buckthorn in its pure form.",
+        "item2": "One of the rare sources of all 4 omega fatty acids (3, 6, 7 & 9).",
+        "item3": "A 10-day ritual — exactly one bottle.",
+        "cta": "Order now — 24.90 CHF"
+      }
     },
     "habit": {
       "badge": "MOST CHOSEN",
@@ -107,7 +114,14 @@
       "benefit3": "Vitamin C contributes to the protection of cells from oxidative stress",
       "units": "3× 250 ml",
       "shipping": "incl. <span class=\"card-shipping-note__free\">free shipping</span>",
-      "btn": "Start 30 Days"
+      "btn": "Start 30 Days",
+      "flip": {
+        "heading": "The Transformation",
+        "item1": "Vitamin C contributes to the reduction of tiredness and fatigue — no more afternoon slump.",
+        "item2": "Up to 42 % Omega-7 — one of nature's richest sources.",
+        "item3": "The full matrix of the whole berry — oils from pulp and seed.",
+        "cta": "Order now — 69.00 CHF"
+      }
     },
     "protocol": {
       "price": {
@@ -121,7 +135,14 @@
       "benefit3": "Best price per daily dose",
       "units": "6× 250 ml",
       "shipping": "incl. <span class=\"card-shipping-note__free\">free shipping</span>",
-      "btn": "Start My Ritual"
+      "btn": "Start My Ritual",
+      "flip": {
+        "heading": "The Master Level",
+        "item1": "Vitamin C contributes to the protection of cells from oxidative stress — 60 days without a gap.",
+        "item2": "Natural carotenoids from the whole berry.",
+        "item3": "Over 190 bioactive compounds active.",
+        "cta": "Order now — 129.00 CHF"
+      }
     },
     "paymentLabel": "Secure payment methods",
     "protocolInfo": {
