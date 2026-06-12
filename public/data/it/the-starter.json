@@ -32,7 +32,7 @@
     "subtitleH3": "Il primo passo:",
     "subtitleSpan": "Vivere la chiarezza cellulare.",
     "lead": "Volete prima provare la forza dell'oro nordico? «The Starter» è il vostro ingresso nel mondo AmberNord. Ogni bottiglia è ottenuta da bacche raccolte a mano della nostra esclusiva <span class=\"p-gold\">Selezione Zelt</span> — con 9× più vitamina C naturale degli agrumi. La vitamina C contribuisce alla protezione delle cellule dallo stress ossidativo.",
-    "ctaPrimary": "Ordini 1× elisir",
+    "ctaPrimary": "Ordini ora — 24.90 CHF",
     "advantageHeading": "Il vostro vantaggio esclusivo",
     "advantageBody": "The Starter è il vostro punto d'ingresso senza rischio nel rituale. Il primo sorso: luminoso, acidulo, vivo — olivello spinoso allo stato puro. Così il rituale diventa parte integrante della vostra quotidianità.",
     "scienceHeading": "La scienza dietro",
@@ -41,7 +41,13 @@
     "scienceItem3": "Rende oltre <span class=\"p-gold\">2.5 litri</span> di bevanda premium vitalizzante.",
     "scienceItem4": "<strong>Purezza assoluta:</strong> senza zuccheri aggiunti, senza aromi artificiali. <span class=\"p-gold\">100 % natura.</span>",
     "shippingLabel": "Spedizione & Logistica",
-    "shippingText": "Spedizione premium affidabile all'interno della Svizzera (spese di spedizione escluse). Spedizione diretta dal nostro centro logistico di Aarau."
+    "shippingText": "Spedizione premium affidabile all'interno della Svizzera (spese di spedizione escluse). Spedizione diretta dal nostro centro logistico di Aarau.",
+    "trust": {
+      "bio": "Certificato bio",
+      "lab": "Testato in laboratorio",
+      "shipping": "Spedizione in 24 h da Aarau",
+      "paymentsLabel": "Metodi di pagamento sicuri"
+    }
   },
   "related": {
     "heading": "Altre Edizioni",

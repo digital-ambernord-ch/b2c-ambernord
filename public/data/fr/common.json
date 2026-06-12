@@ -13,7 +13,6 @@
     "reviews": "Avis",
     "returns": "Retours",
     "cta": "Commander",
-    "ctaRitual": "Vers le Rituel →",
     "b2bAriaLabel": "Espace B2B"
   },
   "footer": {
@@ -21,7 +20,10 @@
     "privacy": "Confidentialité",
     "terms": "CGV",
     "refunds": "Politique de retour",
-    "serviceBy": "Un service de"
+    "serviceBy": "Un service de",
+    "imprint": "Mentions légales",
+    "shipFromCH": "Expédition depuis la Suisse",
+    "paymentsLabel": "Méthodes de paiement sécurisées"
   },
   "aktion": {
     "eyebrow": "Édition de lancement",

@@ -1363,3 +1363,154 @@ html.landing-hero-active .ambernord-topbar .ambernord-logo-eubio {
 @media (prefers-reduced-motion: reduce) {
   html.an-cta-ritual .nav-btn--global { animation: none; }
 }
+
+/* =========================================================================
+   PURCHASE TOGGLE — Einmalkauf ↔ Abo radio group (PDP + shop cards).
+   Default = one-time purchase; the single primary CTA follows the choice.
+   ========================================================================= */
+
+.purchase-toggle {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px 0 4px;
+  padding: 0;
+  border: 0;
+}
+
+.purchase-toggle__legend {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-text-dim);
+  margin-bottom: 8px;
+  padding: 0;
+}
+
+.purchase-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.02);
+  cursor: pointer;
+  transition: border-color var(--t-fast) ease, background var(--t-fast) ease;
+}
+
+.purchase-option:hover {
+  border-color: var(--color-border-gold);
+}
+
+.purchase-option:has(input:checked) {
+  border-color: var(--color-gold);
+  background: var(--color-gold-dimmer);
+}
+
+.purchase-option input[type="radio"] {
+  accent-color: var(--color-gold);
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.purchase-option__label {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+.purchase-option:has(input:checked) .purchase-option__label {
+  color: var(--color-text);
+}
+
+/* =========================================================================
+   PDP TRUST BAR — proof signals + payment icons next to the buy box.
+   ========================================================================= */
+
+.pdp-trust-bar {
+  margin: 4px 0 24px;
+  padding: 14px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.pdp-trust-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  list-style: none;
+  margin: 0 0 12px;
+  padding: 0;
+}
+
+.pdp-trust-list li {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.pdp-trust-list li::before {
+  content: '✓';
+  color: var(--color-gold);
+  font-weight: 700;
+}
+
+.pdp-trust-payments {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.pdp-trust-payments img {
+  height: 26px;
+  width: auto;
+  opacity: 0.85;
+}
+
+/* =========================================================================
+   FOOTER TRUST ROW — payment icons + "Versand aus der Schweiz".
+   ========================================================================= */
+
+.ambernord-footer-trust {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin: 28px auto 4px;
+  padding: 0 var(--container-pad);
+}
+
+.ambernord-footer-trust__payments {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.ambernord-footer-trust__payments img {
+  height: 24px;
+  width: auto;
+  opacity: 0.7;
+}
+
+.ambernord-footer-trust__note {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-text-dim);
+}

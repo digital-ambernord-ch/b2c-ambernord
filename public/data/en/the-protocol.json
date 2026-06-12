@@ -38,15 +38,23 @@
     "scienceItem2": "The absolute <strong>most efficient investment</strong> in your cellular health.",
     "scienceItem3": "Yields over <span class=\"p-gold\">16 litres</span> of vitalising premium drink.",
     "scienceItem4": "<strong>Free premium shipping</strong> directly from our logistics centre in Aarau.",
-    "abo": {
-      "label": "Save with subscription — cancel anytime",
-      "top": "Save with subscription (−8 %)",
-      "price": "119.00 CHF",
-      "subtext": "per month",
-      "guarantee": "✓ Cancel anytime"
-    },
     "shippingLabel": "Shipping & Logistics",
-    "shippingText": "Free premium shipping within Switzerland. Direct shipping from our logistics centre in Aarau."
+    "shippingText": "Free premium shipping within Switzerland. Direct shipping from our logistics centre in Aarau.",
+    "purchase": {
+      "legend": "Choose purchase option",
+      "oneTimeLabel": "One-time purchase 129.00 CHF",
+      "aboLabel": "Subscription 119.00 CHF/month — you save 10.– (−8 %) · cancel anytime",
+      "ctaOneTime": "Order now — 129.00 CHF",
+      "ctaAbo": "Start subscription — 119.00 CHF/month",
+      "oneTimeHref": "https://buy.stripe.com/3cI6oJbi3gFjb8R8HtbQY02",
+      "aboHref": "https://buy.stripe.com/9B600lcm7bkZ0ud2j5bQY05"
+    },
+    "trust": {
+      "bio": "Certified organic",
+      "lab": "Lab-tested",
+      "shipping": "Ships in 24 h from Aarau",
+      "paymentsLabel": "Secure payment methods"
+    }
   },
   "related": {
     "heading": "Other Editions",

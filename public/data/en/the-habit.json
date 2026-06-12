@@ -41,15 +41,23 @@
     "scienceItem2": "<strong>30 days</strong> of daily ritual — one bottle every 10 days.",
     "scienceItem3": "Yields over <span class=\"p-gold\">8 litres</span> of vitalising premium drink.",
     "scienceItem4": "<strong>Free premium shipping</strong> directly from Aarau.",
-    "abo": {
-      "label": "Save with subscription — cancel anytime",
-      "top": "Save with subscription (−9 %)",
-      "price": "63.00 CHF",
-      "subtext": "per month",
-      "guarantee": "✓ Cancel anytime"
-    },
     "shippingLabel": "Shipping & Logistics",
-    "shippingText": "Free premium shipping within Switzerland. Direct shipping from our logistics centre in Aarau."
+    "shippingText": "Free premium shipping within Switzerland. Direct shipping from our logistics centre in Aarau.",
+    "purchase": {
+      "legend": "Choose purchase option",
+      "oneTimeLabel": "One-time purchase 69.00 CHF",
+      "aboLabel": "Subscription 63.00 CHF/month — you save 6.– (−9 %) · cancel anytime",
+      "ctaOneTime": "Order now — 69.00 CHF",
+      "ctaAbo": "Start subscription — 63.00 CHF/month",
+      "oneTimeHref": "https://buy.stripe.com/cNi3cx3PB2Ot6SB4rdbQY01",
+      "aboHref": "https://buy.stripe.com/aFa6oJ71N60F4Kt3n9bQY04"
+    },
+    "trust": {
+      "bio": "Certified organic",
+      "lab": "Lab-tested",
+      "shipping": "Ships in 24 h from Aarau",
+      "paymentsLabel": "Secure payment methods"
+    }
   },
   "related": {
     "heading": "Other Editions",

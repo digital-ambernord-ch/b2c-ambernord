@@ -408,6 +408,13 @@
     cursor: zoom-in;
 }
 
+/* Zoom triggers are keyboard-focusable (role="button" + tabindex, set in
+   dossier.js) — give them a visible focus ring. */
+.dossier-zoom img:focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 4px;
+}
+
 
 /* --------------------------------------------------------------------------
 

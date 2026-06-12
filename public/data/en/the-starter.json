@@ -32,7 +32,7 @@
     "subtitleH3": "The first step:",
     "subtitleSpan": "Experience cellular clarity.",
     "lead": "Would you like to try the power of nordic gold first? «The Starter» is your entry into the AmberNord world. Every bottle is obtained from hand-picked berries of our exclusive <span class=\"p-gold\">Zelt Selection</span> — with 9× more natural Vitamin C than citrus fruit. Vitamin C contributes to the protection of cells from oxidative stress.",
-    "ctaPrimary": "Order 1× elixir",
+    "ctaPrimary": "Order now — 24.90 CHF",
     "advantageHeading": "Your exclusive advantage",
     "advantageBody": "The Starter is your low-risk entry into the ritual. The first sip: bright, sour, alive — sea buckthorn in its pure form. This is how the ritual becomes a permanent part of your daily life.",
     "scienceHeading": "The science behind it",
@@ -41,7 +41,13 @@
     "scienceItem3": "Yields over <span class=\"p-gold\">2.5 litres</span> of vitalising premium drink.",
     "scienceItem4": "<strong>Absolute purity:</strong> no added sugar, no artificial flavours. <span class=\"p-gold\">100% nature.</span>",
     "shippingLabel": "Shipping & Logistics",
-    "shippingText": "Reliable premium shipping within Switzerland (excl. shipping costs). Direct shipping from our logistics centre in Aarau."
+    "shippingText": "Reliable premium shipping within Switzerland (excl. shipping costs). Direct shipping from our logistics centre in Aarau.",
+    "trust": {
+      "bio": "Certified organic",
+      "lab": "Lab-tested",
+      "shipping": "Ships in 24 h from Aarau",
+      "paymentsLabel": "Secure payment methods"
+    }
   },
   "related": {
     "heading": "Other Editions",

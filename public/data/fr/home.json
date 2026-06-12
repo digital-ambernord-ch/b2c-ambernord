@@ -18,8 +18,9 @@
       "x-default": "https://ambernord.ch/"
     }
   },
-  "stickyBtn": "Vers le Rituel",
-  "factStrip": { "ariaLabel": "Faits sur les principes actifs" },
+  "factStrip": {
+    "ariaLabel": "Faits sur les principes actifs"
+  },
   "guarantee": {
     "label": "Garantie satisfait ou remboursé 30 jours",
     "ariaLabel": "Voir la garantie satisfait ou remboursé de 30 jours"
@@ -58,13 +59,25 @@
     "eyebrow": "Prêt ?",
     "title": "Choisissez <span>votre rituel.</span>",
     "sub": "Trois formats — un pour chaque rythme.",
-    "btn": "Choisir mon rituel"
+    "btn": "Choisir le rituel →"
   },
   "trust": {
-    "lab": { "title": "Testé en laboratoire", "subtitle": "Plus hauts standards de pureté" },
-    "premium": { "title": "Certifié bio", "subtitle": "Manufacture suisse" },
-    "shipping": { "title": "Expédition en 24h", "subtitle": "Direct depuis Aarau" },
-    "reviews": { "title": "Lire les avis", "subtitle": "Voix réelles de Suisse" }
+    "lab": {
+      "title": "Testé en laboratoire",
+      "subtitle": "Plus hauts standards de pureté"
+    },
+    "premium": {
+      "title": "Certifié bio",
+      "subtitle": "Manufacture suisse"
+    },
+    "shipping": {
+      "title": "Expédition en 24h",
+      "subtitle": "Direct depuis Aarau"
+    },
+    "reviews": {
+      "title": "Lire les avis",
+      "subtitle": "Voix réelles de Suisse"
+    }
   },
   "shop": {
     "title": "Votre rituel. Trois formats.",

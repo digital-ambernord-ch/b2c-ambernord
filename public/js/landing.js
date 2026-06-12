@@ -43,10 +43,9 @@ window.initLanding = async function () {
      jump mid-scroll in mobile Safari whenever the address bar transitions. */
   ScrollTrigger.config({ ignoreMobileResize: true });
 
-  /* Force 3D-promoted transforms on every animated element so heavy
-     simultaneous tweens (mobile card lifts + horizontal exits + trailing
-     info translateY) run on the GPU compositor instead of the CPU. Fixes
-     the "raustīšanās" / stutter the user reported on slower phones. */
+  /* Force 3D-promoted transforms on every animated element so simultaneous
+     tweens (hero shrink + flying bottle + reveals) run on the GPU compositor
+     instead of the CPU — avoids stutter on slower phones. */
   gsap.config({ force3D: true });
 
   /* =========================================================================
@@ -54,39 +53,6 @@ window.initLanding = async function () {
      ========================================================================= */
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* =========================================================================
-     TOPBAR BIO BADGE — landing-only swap
-     While the hero EU bio leaf is on screen we hide the small badge that
-     normally sits on the logo, so only ONE bio mark is visible. Once the user
-     scrolls past the hero (and the hero leaf has faded), we remove the class
-     and the topbar badge "lands" with a bouncy pop-in (CSS transition).
-     The router clears `landing-hero-active` on every navigation, so on every
-     other page the badge is always present.
-     ========================================================================= */
-
-  document.documentElement.classList.add('landing-hero-active');
-
-  /* Fire right as the hero EU leaf finishes fading (#heroText fades within the
-     first ~80px of scroll), so the topbar badge "lands" by the logo IMMEDIATELY
-     instead of after a long gap. Pixel values only — % in the second token of a
-     ScrollTrigger start string is ambiguous and can throw, which would abort the
-     rest of initLanding and break the hero animation. */
-  const isDesktop      = window.matchMedia('(min-width: 992px)').matches;
-  const badgeThreshold = isDesktop ? 110 : 90;
-
-  ScrollTrigger.create({
-    trigger: '.scroll-track',
-    start:   'top top-=' + badgeThreshold,
-    onEnter:     function () { document.documentElement.classList.remove('landing-hero-active'); },
-    onLeaveBack: function () { document.documentElement.classList.add('landing-hero-active'); }
-  });
-
-  /* Hard reload at non-zero scroll: ScrollTrigger callbacks only fire on
-     transitions, so sync the initial state once. */
-  if (window.scrollY > badgeThreshold) {
-    document.documentElement.classList.remove('landing-hero-active');
-  }
 
   /* =========================================================================
      HERO SCROLL ANIMATION
@@ -234,7 +200,23 @@ window.initLanding = async function () {
   }
 
   mm.add('(min-width: 992px)', function () {
-    if (reducedMotion) return;
+    /* Reduced motion: no choreography → no scrub range. Collapse the track to
+       one viewport so there is no dead pinned scroll (mirrors the mobile path).
+       The float cards stay at their CSS resting state, covered by the
+       full-size hero (z-index 10 vs workspace 5), so nothing flashes. */
+    const scrollTrackDesk = document.getElementById('scrollTrack');
+    const deskSvhOk = (window.CSS && CSS.supports && CSS.supports('height', '1svh'));
+    if (reducedMotion) {
+      if (scrollTrackDesk) scrollTrackDesk.style.height = deskSvhOk ? '100svh' : '100vh';
+      return function () {
+        if (scrollTrackDesk) scrollTrackDesk.style.height = '';
+      };
+    }
+
+    /* CSS no longer hides the float cards (content must be visible without
+       JS) — apply the pre-pop hidden state here, JS-only, so phase 1 (hero
+       shrink) doesn't expose six static cards before their pop-in at 3.2. */
+    gsap.set('.float-img', { scale: 0.1, opacity: 0 });
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -330,397 +312,44 @@ window.initLanding = async function () {
   });
 
   /* =========================================================================
-     PRODUCT CARDS — pinned exit animation
-     Desktop: all three cards fit in the viewport, so we pin the WHOLE
-     #ritual-products section and animate them out sequentially, then
-     evaporate the frame.
-     Mobile: cards are tall (vertical stack), so all three never fit at
-     once. We pin EACH CARD individually — it locks at the top, plays its
-     fly-out, releases, and the next card scrolls up into the same spot.
-     CSS transform-transition is cleared so GSAP scrub isn't smoothed twice
-     (hover translateY becomes instant — minor cost).
+     PRODUCT CARDS — static premium stack (all viewports).
+     The pinned exit / "evaporation" choreography (card fly-outs, gold
+     constellation, bridge bottle scene) was removed: the three editions
+     render as a plain vertical stack that stays fully visible while
+     scrolling past — no pinning, never a state with zero cards on screen.
+     CSS keeps the cards visible by default; the hidden pre-reveal state is
+     applied here, JS-only, so content renders fine without JavaScript.
      ========================================================================= */
 
-  /* =========================================================================
-     DESKTOP BRIDGE BOTTLE SCENE — a real, full-size scene in the flow AFTER
-     the pinned product block. Cards (full size) fly out and collapse; payment
-     + trust reflow up and hold (anchored with the card block). Once the pin
-     releases, THIS bottle scene rises from below — big, glowing — and the
-     "Das tägliche Ritual" usage text sits directly beneath it.
-     ========================================================================= */
-  function setupDesktopBridgeScene(bWrap) {
-    if (reducedMotion || !bWrap) return;
-    const img = bWrap.querySelector('img');
-    if (!img) return;
-
-    /* Big bottle — fills most of the viewport height. */
-    img.style.width    = 'auto';
-    img.style.height   = Math.round(window.innerHeight * 0.72) + 'px';
-    img.style.maxWidth = '90vw';
-    img.style.position = 'relative';
-    img.style.zIndex   = '2';
-    img.style.filter   = 'drop-shadow(0 0 60px rgba(237,163,35,0.42)) drop-shadow(0 0 140px rgba(237,163,35,0.20))';
-
-    /* Scene wrapper is a tall stage; the bottle is centred. */
-    bWrap.style.position  = 'relative';
-    bWrap.style.minHeight = '88vh';
-    bWrap.style.display   = 'flex';
-    bWrap.style.justifyContent = 'center';
-    bWrap.style.alignItems = 'center';
-    bWrap.style.padding   = '0';
-    bWrap.style.overflow  = 'visible';
-    bWrap.style.opacity   = '1';
-
-    /* Warm gold halo behind the bottle. */
-    let glow = bWrap.querySelector('.bridge-glow');
-    if (!glow) {
-      glow = document.createElement('div');
-      glow.className = 'bridge-glow';
-      glow.setAttribute('aria-hidden', 'true');
-      var glowSize = 'min(96vh, 90vw)';
-      glow.style.cssText =
-        'position:absolute;top:50%;left:50%;width:' + glowSize + ';height:' + glowSize + ';' +
-        'transform:translate(-50%,-50%);z-index:1;pointer-events:none;border-radius:50%;' +
-        'background:radial-gradient(circle at center,rgba(237,163,35,0.26) 0%,' +
-        'rgba(237,163,35,0.12) 36%,rgba(237,163,35,0.04) 56%,transparent 70%);';
-      bWrap.insertBefore(glow, img);
-    }
-  }
-
-  function cleanupDesktopBridgeScene(bWrap) {
-    if (!bWrap) return;
-    const img = bWrap.querySelector('img');
-    if (img) {
-      img.style.width = ''; img.style.height = ''; img.style.maxWidth = '';
-      img.style.position = ''; img.style.zIndex = ''; img.style.filter = '';
-    }
-    bWrap.style.position = ''; bWrap.style.minHeight = ''; bWrap.style.display = '';
-    bWrap.style.justifyContent = ''; bWrap.style.alignItems = '';
-    bWrap.style.padding = '30px 0'; bWrap.style.overflow = ''; bWrap.style.opacity = '';
-    const glow = bWrap.querySelector('.bridge-glow');
-    if (glow && glow.parentNode) glow.parentNode.removeChild(glow);
-  }
-
-  /* Gentle parallax — the bottle scene drifts upward as it scrolls, so it
-     reads as "approaching from below" out of the product block and up into
-     the "Das tägliche Ritual" text + Manifest. */
-  function attachBridgeBottleRiseDesktop(bWrap) {
-    if (reducedMotion || !bWrap) return;
-    gsap.fromTo(bWrap,
-      { yPercent: 12 },
-      { yPercent: -12, ease: 'none',
-        scrollTrigger: {
-          trigger: bWrap,
-          start: 'top bottom',
-          end:   'bottom top',
-          scrub: 1,
-          invalidateOnRefresh: true
-        }
-      });
-  }
-
-  /* =========================================================================
-     GOLD CONSTELLATION — builds an abstract gold dot-and-line sketch behind
-     the product cards. Returns helpers the pin timeline drives:
-       drawCluster(tl, idx, at) — self-draws cluster `idx` (lines via
-                                  dash-offset, dots scale in) at timeline `at`
-       reset()                  — back to the pre-draw blank state
-       cleanup()                — remove the layer, restore the cards group
-     Pure SVG overlay (pointer-events:none, z-index 0 → behind the cards). If
-     the cards group is missing it returns null and the pin runs unchanged. */
-  function buildGoldConstellation(section) {
-    if (reducedMotion || !section) return null;
-    const cardsGroup = section.querySelector('.ritual-cards-group');
-    if (!cardsGroup) return null;
-
-    const W = cardsGroup.offsetWidth;
-    const H = cardsGroup.offsetHeight;
-    if (!W || !H) return null;
-
-    const GOLD = 'rgba(237,163,35,0.9)';
-    const R    = Math.max(4, Math.round(W * 0.0042));
-
-    /* Normalised clusters (x,y in 0..1 of the cards-group box). Each later
-       cluster includes one line back to the previous one so the whole thing
-       reads as a single constellation, not three islands. */
-    const CLUSTERS = [
-      { dots: [[0.20,0.30],[0.36,0.22],[0.30,0.41]],
-        lines: [[0.20,0.30,0.36,0.22],[0.20,0.30,0.30,0.41]] },
-      { dots: [[0.66,0.47],[0.81,0.38],[0.73,0.57]],
-        lines: [[0.66,0.47,0.81,0.38],[0.66,0.47,0.73,0.57],[0.36,0.22,0.66,0.47]] },
-      { dots: [[0.31,0.74],[0.17,0.83],[0.47,0.80]],
-        lines: [[0.31,0.74,0.17,0.83],[0.31,0.74,0.47,0.80],[0.73,0.57,0.47,0.80]] }
-    ];
-
-    const SVGNS = 'http://www.w3.org/2000/svg';
-    const svg = document.createElementNS(SVGNS, 'svg');
-    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
-    svg.setAttribute('preserveAspectRatio', 'none');
-    svg.setAttribute('aria-hidden', 'true');
-    svg.style.cssText =
-      'position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;' +
-      'pointer-events:none;overflow:visible;will-change:opacity;' +
-      'filter:drop-shadow(0 0 5px rgba(237,163,35,0.55));';
-
-    const clusters = CLUSTERS.map(function (c) {
-      const lineEls = c.lines.map(function (l) {
-        const ln = document.createElementNS(SVGNS, 'line');
-        ln.setAttribute('x1', l[0] * W); ln.setAttribute('y1', l[1] * H);
-        ln.setAttribute('x2', l[2] * W); ln.setAttribute('y2', l[3] * H);
-        ln.setAttribute('stroke', GOLD);
-        ln.setAttribute('stroke-width', '1.6');
-        ln.setAttribute('stroke-linecap', 'round');
-        ln.setAttribute('opacity', '0.55');
-        ln.setAttribute('pathLength', '1');
-        ln.setAttribute('stroke-dasharray', '1');
-        ln.setAttribute('stroke-dashoffset', '1');
-        svg.appendChild(ln);
-        return ln;
-      });
-      const dotEls = c.dots.map(function (d) {
-        const ci = document.createElementNS(SVGNS, 'circle');
-        ci.setAttribute('cx', d[0] * W); ci.setAttribute('cy', d[1] * H);
-        ci.setAttribute('r', '0');
-        ci.setAttribute('fill', GOLD);
-        svg.appendChild(ci);
-        return ci;
-      });
-      return { lines: lineEls, dots: dotEls };
-    });
-
-    cardsGroup.style.position = 'relative';
-    cardsGroup.insertBefore(svg, cardsGroup.firstChild);
-
-    const allLines = clusters.reduce(function (a, c) { return a.concat(c.lines); }, []);
-    const allDots  = clusters.reduce(function (a, c) { return a.concat(c.dots); }, []);
-
-    function reset() {
-      gsap.set(svg, { opacity: 1 });
-      gsap.set(allLines, { attr: { 'stroke-dashoffset': 1 } });
-      gsap.set(allDots,  { attr: { r: 0 }, opacity: 1 });
-    }
-
-    return {
-      svg: svg,
-      reset: reset,
-      drawCluster: function (tl, idx, at) {
-        const c = clusters[idx];
-        if (!c) return;
-        tl.to(c.lines, { attr: { 'stroke-dashoffset': 0 }, ease: 'none', duration: 0.10 }, at);
-        tl.to(c.dots,  { attr: { r: R }, ease: 'back.out(2.2)', duration: 0.10, stagger: 0.02 }, at + 0.02);
-      },
-      cleanup: function () {
-        if (svg.parentNode) svg.parentNode.removeChild(svg);
-        cardsGroup.style.position = '';
-      }
-    };
-  }
-
-  /* =========================================================================
-     PRODUCT CARDS — desktop pinned exit (full-size cards).
-     #ritual-products (heading + 3 full-size cards + payment + trust) pins under
-     the topbar; The Starter flies LEFT, The Habit RIGHT, The Protocol RIGHT
-     (sequentially). Each card then COLLAPSES its height so the payment icons +
-     trust badges reflow UP into view and hold — they stay anchored with the
-     card block for the whole animation.
-
-     The pin spacer is sized from the section's FULL (pre-collapse) height, so
-     after the collapse the section is ~3 cards shorter than its reserved space
-     → a dead black band before the next element. The caller compensates by
-     pulling the following bottle scene up by `collapsedH` (returned here),
-     exactly like the mobile path. Returns { cleanup, collapsedH }.
-     ========================================================================= */
-  function attachProductCardsExitDesktop(pinDuration) {
-    if (reducedMotion) return null;
+  mm.add('(min-width: 768px)', function () {
+    if (reducedMotion) return;
 
     const section = document.getElementById('ritual-products');
-    if (!section) return null;
+    const cards   = section ? section.querySelectorAll('.premium-product-card') : [];
+    if (!cards.length) return;
 
-    const productCards = section.querySelectorAll('.premium-product-card');
-    if (productCards.length < 3) return null;
-
-    const [starter, habit, protocol] = productCards;
-    const cards = [starter, habit, protocol];
-    productCards.forEach(function (c) { c.style.transition = 'border-color var(--t-base) ease'; });
-
-    /* The payment-icon row leaves TOGETHER with The Protocol (flies right +
-       fades, then collapses), so only the trust badges remain after the exit. */
-    const payment = section.querySelector('.ritual-payment-group');
-
-    /* Height the cards (+ payment row) occupy — the spacer overshoot to absorb
-       once they collapse to 0, so the editorial still follows with no gap. */
-    const cs = getComputedStyle(starter);
-    const cardMargin = parseFloat(cs.marginBottom) || 20;
-    let collapsedH = starter.offsetHeight + habit.offsetHeight + protocol.offsetHeight + 3 * cardMargin;
-    if (payment) {
-      const pcs = getComputedStyle(payment);
-      collapsedH += payment.offsetHeight
-                  + (parseFloat(pcs.marginTop)    || 0)
-                  + (parseFloat(pcs.marginBottom) || 0);
-    }
-    collapsedH = Math.round(collapsedH);
-
-    /* GOLD CONSTELLATION — an abstract gold dot-and-line sketch drawn BEHIND
-       the cards. As each card flies away it reveals a fresh cluster being
-       "drawn" (dots scale in, connecting lines self-draw via dash-offset);
-       once all three cards have left, the whole constellation fades out before
-       the bottle arrives — so the vacated card area is never plain black.
-       Purely additive: its own SVG layer + tweens on the SAME timeline. */
-    const constellation = buildGoldConstellation(section);
-
-    const stConfig = pinScrollTrigger(section, pinDuration);
-    /* Pin a hair early so the relative→fixed switch is seamless — kills the
-       tiny "drop/shuffle" the product block did the instant it locked. */
-    stConfig.anticipatePin = 1;
-    const PAY_PROPS = 'xPercent,opacity,height,marginTop,marginBottom,paddingTop,paddingBottom,borderTopWidth,overflow';
-    stConfig.onLeaveBack = function () {
-      gsap.set(cards, { clearProps: 'xPercent,opacity,height,marginBottom,paddingTop,paddingBottom,borderWidth,overflow' });
-      if (payment) gsap.set(payment, { clearProps: PAY_PROPS });
-      if (constellation) constellation.reset();
-    };
-
-    const tl = gsap.timeline({ scrollTrigger: stConfig });
-
-    /* Fly out: Starter LEFT, Habit RIGHT, Protocol RIGHT — sequentially. The
-       payment-icon row flies out RIGHT with The Protocol (same beat). */
-    tl.to(starter,  { xPercent: -160, opacity: 0, ease: 'power2.in', duration: 0.16 }, 0.06)
-      .to(habit,    { xPercent:  160, opacity: 0, ease: 'power2.in', duration: 0.16 }, 0.20)
-      .to(protocol, { xPercent:  160, opacity: 0, ease: 'power2.in', duration: 0.16 }, 0.34);
-    if (payment) {
-      tl.to(payment, { xPercent: 160, opacity: 0, ease: 'power2.in', duration: 0.16 }, 0.34);
-    }
-    /* Then collapse height so ONLY the trust badges reflow up into view and hold. */
-    tl.set(cards,   { overflow: 'hidden' }, 0.48)
-      .to(cards,    { height: 0, marginBottom: 0, paddingTop: 0, paddingBottom: 0, borderWidth: 0,
-                      ease: 'power1.inOut', duration: 0.30 }, 0.50);
-    if (payment) {
-      tl.set(payment, { overflow: 'hidden' }, 0.48)
-        .to(payment,  { height: 0, marginTop: 0, marginBottom: 0, paddingTop: 0, paddingBottom: 0, borderTopWidth: 0,
-                        ease: 'power1.inOut', duration: 0.30 }, 0.50);
-    }
-
-    /* Constellation draws cluster-by-cluster as each card clears, then fades. */
-    if (constellation) {
-      constellation.reset();
-      constellation.drawCluster(tl, 0, 0.18);   /* after Starter (top) leaves   */
-      constellation.drawCluster(tl, 1, 0.32);   /* after Habit  (mid) leaves    */
-      constellation.drawCluster(tl, 2, 0.46);   /* after Protocol (bot) leaves  */
-      tl.to(constellation.svg, { opacity: 0, ease: 'power1.in', duration: 0.16 }, 0.56);
-    }
-
-    return {
-      collapsedH: collapsedH,
-      cleanup: function () {
-        gsap.set(cards, { clearProps: 'xPercent,opacity,height,marginBottom,paddingTop,paddingBottom,borderWidth,overflow' });
-        if (payment) gsap.set(payment, { clearProps: PAY_PROPS });
-        if (constellation) constellation.cleanup();
+    /* One grouped reveal: the whole stack rises together with a tight
+       stagger (≤0.4s total feel) so the section reads as a single unit. */
+    gsap.fromTo(cards,
+      { opacity: 0, y: 24 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        stagger: 0.12,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+          invalidateOnRefresh: true
+        }
       }
-    };
-  }
-
-  /* Mobile product presentation is now a STATIC premium stack — the pinned
-     card-exit choreography (and the glass/spoon SVG scene, which carried
-     hardcoded German copy) was removed. Cards reveal once with a calm
-     fade-up and stay put so the three editions can be compared freely;
-     The Habit announces itself with a single border-glow "breath" (CSS). */
-
-  /* =========================================================================
-     BRIDGE BOTTLE — appears inside #ritual-products after Protocol card exits,
-     filling the empty black space left by the exited cards. Sized to match
-     the flying bottle at its centred hero position. Fades in when the
-     Protocol exit is complete, then scrolls up naturally with the editorial.
-     Both desktop and mobile.
-     ========================================================================= */
-
-  function attachBridgeBottle() {
-    if (reducedMotion) return null;
-    const section     = document.getElementById('ritual-products');
-    const shop        = document.getElementById('shop');
-    const trailingInfo = section && section.querySelector('.shop-trailing-info');
-    if (!section || !shop || !trailingInfo) return null;
-
-    /* Bottle size: same formula as endProps() in createFlyingBottle */
-    var isBrDesktop = window.matchMedia('(min-width: 992px)').matches;
-    var heroVh = isBrDesktop ? 55 : 50;
-    var heroH  = window.innerHeight * heroVh / 100;
-    var heroW  = isBrDesktop ? 380 : window.innerWidth * 0.85;
-    var tH = heroH * 0.82;
-    var tW = tH * 0.50;
-    if (tW > heroW * 0.72) { tW = heroW * 0.72; tH = tW / 0.50; }
-    tH = Math.round(tH);
-    tW = Math.round(tW);
-
-    var wrap = document.createElement('div');
-    wrap.setAttribute('aria-hidden', 'true');
-    wrap.style.cssText = 'display:flex;justify-content:center;align-items:center;width:100%;padding:30px 0;opacity:0;will-change:opacity,transform,filter;';
-
-    var btl = document.createElement('img');
-    btl.src = 'https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:good,h_1000/v1775476093/ambernord-bio-sanddornsaft-zelt-edition-250ml-schweiz.webp_kl6nqj.png';
-    btl.alt = '';
-    btl.setAttribute('aria-hidden', 'true');
-    btl.style.cssText = 'width:' + tW + 'px;height:' + tH + 'px;object-fit:contain;filter:drop-shadow(0 0 40px rgba(237,163,35,0.25)) drop-shadow(0 0 80px rgba(237,163,35,0.12));';
-
-    wrap.appendChild(btl);
-    section.insertBefore(wrap, trailingInfo);
-
-    return wrap;
-  }
-
-  const bridgeWrap = attachBridgeBottle();
-
-  /* pinScrollTrigger shared with desktop editorial; not used for mobile product. */
-  mm.add('(min-width: 992px)', function () {
-    var section      = document.getElementById('ritual-products');
-    var cardsGroup   = section && section.querySelector('.ritual-cards-group');
-    var trustBand    = section && section.querySelector('.conversion-booster-wrapper');
-    var payment      = section && section.querySelector('.ritual-payment-group');
-    var trailing     = section && section.querySelector('.shop-trailing-info');
-    var editorialWrap = document.querySelector('.dynamic-editorial-wrapper');
-
-    /* DOM order INSIDE the pinned section: cards → payment → trust → BOTTLE
-       scene → "Das tägliche Ritual". The bottle stays in NORMAL FLOW below the
-       trust badges, so block layout guarantees it can never overlap them — as
-       the cards collapse, payment + trust reflow UP ("pushed up") and the
-       bottle sits beneath them. Das tägliche Ritual is directly under the
-       bottle. The collapse leaves a pin-spacer overshoot AFTER the whole
-       section; that is absorbed by pulling the editorial up (far below — no
-       overlap with anything on screen), exactly like the mobile path. */
-    if (cardsGroup && payment)   cardsGroup.after(payment);
-    if (payment && trustBand)    payment.after(trustBand);
-    if (trustBand && bridgeWrap) trustBand.after(bridgeWrap);
-    if (bridgeWrap && trailing)  bridgeWrap.after(trailing);
-
-    setupDesktopBridgeScene(bridgeWrap);
-    var pin = attachProductCardsExitDesktop(1500);
-
-    if (pin && editorialWrap) {
-      editorialWrap.style.marginTop = -pin.collapsedH + 'px';
-    }
-
-    return function () {
-      if (pin && pin.cleanup) pin.cleanup();
-      cleanupDesktopBridgeScene(bridgeWrap);
-      if (editorialWrap) editorialWrap.style.marginTop = '';
-      /* Restore original mobile DOM order inside #ritual-products:
-         cards → trust → bottle → trailing → payment. */
-      if (section) {
-        [cardsGroup, trustBand, bridgeWrap, trailing, payment].forEach(function (el) {
-          if (el) section.appendChild(el);
-        });
-      }
-      if (bridgeWrap) gsap.set(bridgeWrap, { clearProps: 'opacity,scale,filter,yPercent,y' });
-    };
+    );
   });
-  mm.add('(max-width: 991px)', function () {
-    /* The bridge bottle scene is desktop-only; on mobile the product section
-       is plain flow, so the (opacity:0) wrap would just leave a hole. */
-    if (bridgeWrap) gsap.set(bridgeWrap, { display: 'none' });
 
-    if (reducedMotion) {
-      return function () {
-        if (bridgeWrap) gsap.set(bridgeWrap, { clearProps: 'display' });
-      };
-    }
+  mm.add('(max-width: 767px)', function () {
+    if (reducedMotion) return;
 
     /* Static premium stack: each card (and the trust row) fades up ONCE on
        entry, then stays put — the user compares the three editions in peace.
@@ -730,19 +359,17 @@ window.initLanding = async function () {
     var trustWrap = section ? section.querySelector('.conversion-booster-wrapper') : null;
     var revealEls = cards.concat(trustWrap ? [trustWrap] : []);
 
-    /* Gentle, early reveal: small travel + early trigger so on a real device
-       the card never visibly "jumps" into place mid-viewport. */
     revealEls.forEach(function (el) {
       gsap.fromTo(el,
         { opacity: 0, y: 16 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.7,
+          duration: 0.6,
           ease: 'power2.out',
           scrollTrigger: {
             trigger: el,
-            start: 'top 94%',
+            start: 'top 85%',
             toggleActions: 'play none none none',
             invalidateOnRefresh: true
           },
@@ -759,123 +386,38 @@ window.initLanding = async function () {
       revealEls.forEach(function (el) {
         if (el.classList) el.classList.remove('an-breathe');
       });
-      if (bridgeWrap) gsap.set(bridgeWrap, { clearProps: 'display' });
     };
   });
 
   /* =========================================================================
-     EDITORIAL BLOCKS — Manifest + Ritual.
-     Both blocks pin to the viewport while their content animation plays out,
-     so the user reads the effect in place; the pin only releases once the
-     animation is essentially complete, then scrolling continues to the next
-     block. Scrub 0.5 keeps both forward AND reverse responsive (the latter
-     was the explicit ask — scrolling back snaps cleanly to original state).
-
-     - Manifest:  radial word-shatter (golden-angle vectors) + bg blur/darken
-     - Ritual:    "gold eruption" — words glow + grow, then burst upward
-                  like a volcano, on the "Ein Teil Gold, Zehn Teile Leben" beat
+     FULL-BLEED CINEMATIC EDITORIAL — Manifest + Ritual, desktop + mobile.
+     Each block is a full-viewport scene (CSS makes it edge-to-edge with a
+     top+bottom dark vignette so adjacent scenes fuse seamlessly). On scroll
+     the prose slides in from the side — Manifest from the left, Ritual from
+     the right — and the background gets a gentle parallax drift. No pin: the
+     page never locks. All hidden/offset states are applied by JS (gsap.set),
+     so the prose is fully visible without JavaScript and stays untouched
+     under reduced motion.
      ========================================================================= */
-
-  function splitIntoWordShards(rootEl) {
-    /* Walk text nodes only — preserves <br> and child tags like
-       <span class="ambernord-text-gold">. Each non-whitespace word is wrapped
-       in an inline-block span tagged .manifest-shard; whitespace stays as
-       plain text nodes so wrapping looks natural. */
-    const walker = document.createTreeWalker(rootEl, NodeFilter.SHOW_TEXT);
-    const nodes  = [];
-    while (walker.nextNode()) nodes.push(walker.currentNode);
-
-    const shards = [];
-    nodes.forEach(function (node) {
-      if (!node.textContent.trim()) return;
-      const parts = node.textContent.split(/(\s+)/);
-      const frag  = document.createDocumentFragment();
-      parts.forEach(function (p) {
-        if (!p) return;
-        if (/^\s+$/.test(p)) {
-          frag.appendChild(document.createTextNode(p));
-        } else {
-          const span = document.createElement('span');
-          span.className   = 'manifest-shard';
-          span.textContent = p;
-          frag.appendChild(span);
-          shards.push(span);
-        }
-      });
-      node.parentNode.replaceChild(frag, node);
-    });
-    return shards;
-  }
-
-  const editorialBlocks = (!reducedMotion
-    ? Array.from(document.querySelectorAll('.editorial-bento-grid > .nature-hero-wrapper'))
-    : []
-  ).map(function (wrapper) {
+  function attachEditorialCinematic(wrapper, fromLeft) {
+    if (reducedMotion || !wrapper) return;
     const content = wrapper.querySelector('.nature-hero-content');
-    return {
-      wrapper: wrapper,
-      bg:      wrapper.querySelector('.nature-hero-bg'),
-      shards:  content ? splitIntoWordShards(content) : []
-    };
-  });
-
-  /* Dynamic pin offset: read the live --nav-height / --aktion-height tokens
-     so the block lands cleanly UNDER the topbar (with a 40px breathing gap),
-     regardless of whether the aktion bar is currently visible. */
-  function pinTopOffset() {
-    const cs      = getComputedStyle(document.documentElement);
-    const navH    = parseFloat(cs.getPropertyValue('--nav-height'))    || 80;
-    const aktionH = parseFloat(cs.getPropertyValue('--aktion-height')) || 0;
-    return navH + aktionH + 40;
-  }
-
-  /* Standard pin config shared by product + desktop Manifest pins.
-     scrub: 0.3 default (tight 1:1), 0.8 for mobile product exit.
-     startStr lets callers override the trigger position. */
-  /* scrubVal: 0.3 default for editorial pins, 0.8 for mobile product exit.
-     No anticipatePin — with scrub the relative→fixed transition is already
-     smoothed; anticipatePin caused a visible "magnetic pull" on mobile where
-     elements started moving toward their pin position ~1s before the trigger,
-     which also created the trust-badge jitter on scroll-down. */
-  function pinScrollTrigger(wrapper, pinDuration, startStr, scrubVal) {
-    return {
-      trigger: wrapper,
-      start:   startStr || function () { return 'top top+=' + pinTopOffset(); },
-      end:     '+=' + pinDuration,
-      pin:     true,
-      pinSpacing: true,
-      scrub:   scrubVal !== undefined ? scrubVal : 0.3,
-      invalidateOnRefresh: true,
-    };
-  }
-
-  /* =========================================================================
-     FULL-BLEED CINEMATIC EDITORIAL — desktop + mobile.
-     Replaces the pinned "isolated card on black" treatment. Each block is a
-     full-viewport scene (CSS makes it edge-to-edge with a top+bottom dark
-     vignette so adjacent scenes fuse seamlessly). On scroll the prose slides
-     in from the side — Manifest from the left, Ritual from the right — and the
-     background gets a gentle parallax drift. No pin: the page never locks, so
-     the section reads as one continuous cinematic flow instead of a frame that
-     freezes, plays, and evaporates.
-     ========================================================================= */
-  function attachEditorialCinematic(block, fromLeft) {
-    if (reducedMotion || !block.wrapper) return;
-    const content = block.wrapper.querySelector('.nature-hero-content');
+    const bg      = wrapper.querySelector('.nature-hero-bg');
     if (!content) return;
     const items = Array.from(content.children);
     if (!items.length) return;
 
     const dir = fromLeft ? -1 : 1;
 
-    /* Prose slides in from the side as the scene enters the lower viewport. */
-    gsap.set(items, { opacity: 0, x: dir * 90, y: 24 });
+    /* Prose slides in from the side as the scene enters the lower viewport —
+       short fade + transform only, tight stagger (≤0.4s total feel). */
+    gsap.set(items, { opacity: 0, x: dir * 40, y: 16 });
     gsap.to(items, {
       opacity: 1, x: 0, y: 0,
-      duration: 1.1, stagger: 0.1, ease: 'power3.out',
+      duration: 0.8, stagger: 0.08, ease: 'power3.out',
       scrollTrigger: {
-        trigger: block.wrapper,
-        start: 'top 62%',
+        trigger: wrapper,
+        start: 'top 85%',
         toggleActions: 'play none none reverse',
         invalidateOnRefresh: true
       }
@@ -883,12 +425,12 @@ window.initLanding = async function () {
 
     /* Background parallax drift (extra scale gives headroom so the translate
        never exposes an edge). Keeps the full-bleed image alive while scrolling. */
-    if (block.bg) {
-      gsap.fromTo(block.bg,
+    if (bg) {
+      gsap.fromTo(bg,
         { yPercent: -6, scale: 1.12 },
         { yPercent: 6, scale: 1.12, ease: 'none',
           scrollTrigger: {
-            trigger: block.wrapper,
+            trigger: wrapper,
             start: 'top bottom',
             end:   'bottom top',
             scrub: 1.2,
@@ -899,15 +441,20 @@ window.initLanding = async function () {
   }
 
   /* Desktop AND mobile share the cinematic treatment: Manifest reads in from
-     the left, Ritual mirrors in from the right (CSS makes both full-bleed). */
-  if (editorialBlocks[0]) attachEditorialCinematic(editorialBlocks[0], true);
-  if (editorialBlocks[1]) attachEditorialCinematic(editorialBlocks[1], false);
+     the left, Ritual mirrors in from the right (CSS makes both full-bleed).
+     'all' matchMedia scope so every reveal lives inside gsap.matchMedia and
+     reverts cleanly with the rest. */
+  mm.add('all', function () {
+    if (reducedMotion) return;
 
-  /* WIDE-SPLIT ROWS (Exclusive Sourcing + Handwerk) — same cinematic language
-     as Manifest/Ritual: the photo (or video facade) swims up and settles with
-     a brief brightness flash, the prose column slides in from the side it
-     occupies in the desktop row layout (Sourcing right, Handwerk left). */
-  if (!reducedMotion) {
+    const editorialWrappers = Array.from(document.querySelectorAll('.editorial-bento-grid > .nature-hero-wrapper'));
+    if (editorialWrappers[0]) attachEditorialCinematic(editorialWrappers[0], true);
+    if (editorialWrappers[1]) attachEditorialCinematic(editorialWrappers[1], false);
+
+    /* WIDE-SPLIT ROWS (Exclusive Sourcing + Handwerk) — same cinematic
+       language as Manifest/Ritual: the photo (or video facade) swims up, the
+       prose column slides in from the side it occupies in the desktop row
+       layout (Sourcing right, Handwerk left). Transform + short fade only. */
     document.querySelectorAll('.wide-split-row').forEach(function (row) {
       const img = row.querySelector('.wide-split-img');
       const txt = row.querySelector('.wide-split-text');
@@ -918,43 +465,27 @@ window.initLanding = async function () {
          fold and the user would only ever see the finished state. */
       if (img) {
         gsap.fromTo(img,
-          { opacity: 0, y: 60, scale: 0.96 },
-          { opacity: 1, y: 0, scale: 1, duration: 1.2, ease: 'power3.out',
+          { opacity: 0, y: 40, scale: 0.97 },
+          { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: 'power3.out',
             scrollTrigger: {
               trigger: img,
-              start: 'top 84%',
+              start: 'top 85%',
               toggleActions: 'play none none reverse',
               invalidateOnRefresh: true
             }
           });
-        const photo = img.querySelector('img');
-        if (photo) {
-          /* The "shine": image lands bright and settles to its normal grade.
-             clearProps afterwards so the CSS hover transition works again. */
-          gsap.fromTo(photo,
-            { filter: 'brightness(1.4) saturate(1.08)' },
-            { filter: 'brightness(0.95) saturate(1)', duration: 1.6, ease: 'power2.out',
-              clearProps: 'filter',
-              scrollTrigger: {
-                trigger: img,
-                start: 'top 84%',
-                toggleActions: 'play none none none',
-                invalidateOnRefresh: true
-              }
-            });
-        }
       }
 
       if (txt) {
         const items = Array.from(txt.children);
         if (items.length) {
-          gsap.set(items, { opacity: 0, x: dir * 70, y: 18 });
+          gsap.set(items, { opacity: 0, x: dir * 40, y: 14 });
           gsap.to(items, {
             opacity: 1, x: 0, y: 0,
-            duration: 1.0, stagger: 0.1, ease: 'power3.out',
+            duration: 0.8, stagger: 0.08, ease: 'power3.out',
             scrollTrigger: {
               trigger: txt,
-              start: 'top 86%',
+              start: 'top 85%',
               toggleActions: 'play none none reverse',
               invalidateOnRefresh: true
             }
@@ -962,20 +493,17 @@ window.initLanding = async function () {
         }
       }
     });
-  }
+  });
 
   /* =========================================================================
-     PAST-HERO STATE — one IntersectionObserver drives:
-       · the bewertung chip (bottom-left social proof)
-       · MOBILE ONLY: the topbar CTA swap to "Zum Ritual" (html.an-cta-ritual
-         + data-scroll-products on the button, so it scrolls to the cards
-         instead of navigating to /shop/). The old .landing-sticky-nav bar was
-         removed — it rendered underneath the always-visible topbar.
+     PAST-HERO STATE — one IntersectionObserver drives the bewertung chip
+     (bottom-left social proof). The old mobile topbar CTA swap to
+     "Zum Ritual" was removed: the nav CTA is always "Jetzt bestellen"
+     linking to /shop/.
      ========================================================================= */
 
   const landingBewertungChip = document.getElementById('landingBewertungChip');
   const scrollTrack          = document.getElementById('scrollTrack');
-  const navBtnGlobal         = document.querySelector('.nav-btn--global');
 
   /* Chip visibility with mobile context zones: past the hero, but QUIET while
      the "Wählen Sie Ihr Protokoll" heading or the closing CTA are on screen —
@@ -1012,43 +540,26 @@ window.initLanding = async function () {
     }, { passive: true });
   }
 
-  if (scrollTrack && (landingBewertungChip || navBtnGlobal)) {
+  if (scrollTrack && landingBewertungChip) {
     const observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         const past = !entry.isIntersecting && entry.boundingClientRect.top < 0;
         window._anPastHero = past;
         updateChipVisibility();
-
-        if (window.matchMedia('(max-width: 991px)').matches) {
-          document.documentElement.classList.toggle('an-cta-ritual', past);
-          if (navBtnGlobal) {
-            if (past) navBtnGlobal.setAttribute('data-scroll-products', '');
-            else      navBtnGlobal.removeAttribute('data-scroll-products');
-          }
-        } else {
-          document.documentElement.classList.remove('an-cta-ritual');
-          if (navBtnGlobal) navBtnGlobal.removeAttribute('data-scroll-products');
-        }
       });
     }, { threshold: 0 });
     observer.observe(scrollTrack);
   }
 
-  /* Land precisely at the product block's PIN-START — the exact framing the
-     user gets scrolling top-to-bottom (heading + 3 cards under the topbar,
-     before the cards animate out). Same target for the hero CTA, the closing
-     CTA and the sticky-nav button so every "go to the shop" action lands
-     identically. The position is the product pin's own trigger offset
-     (nav + aktion + 40), read live so it's correct whether the aktion bar is
-     visible or not. */
+  /* Land precisely at the top of the product block — heading + cards framed
+     under the topbar. Same target for the hero CTA and the closing CTA so
+     every "go to the shop" action lands identically. The offset
+     (nav + aktion + 40) is read live so it's correct whether the aktion bar
+     is visible or not. */
   function scrollToProductsStart() {
-    /* Reference #shop (the wrapper), NOT #ritual-products: the inner section is
-       GSAP-pinned, so its getBoundingClientRect shifts by the pin distance
-       depending on where you click from (top vs bottom) — using it made the
-       hero CTA and the closing CTA land 1500px apart. #shop is never pinned, so
-       its top is a stable anchor from any scroll position. The pin engages when
-       #ritual-products' top reaches nav+aktion+40 (its pinScrollTrigger start),
-       and #ritual-products' natural top = #shop top + #shop padding-top. */
+    /* Reference #shop (the wrapper): its top is a stable anchor from any
+       scroll position; #ritual-products' natural top = #shop top + #shop
+       padding-top. */
     const shop = document.getElementById('shop');
     if (!shop || typeof window.smoothScrollTo !== 'function') return;
     const cs       = getComputedStyle(document.documentElement);
@@ -1082,13 +593,10 @@ window.initLanding = async function () {
 
   /* =========================================================================
      EXCLUSIVE SECTION BACKGROUND FADE
-     Desktop: bg fades in WHILE the Ritual block is still pinned and
-     evaporating (the section is pulled up via CSS margin-top: -240px so
-     it physically peeks into viewport bottom during Ritual's last beats).
-     Mobile: the editorial blocks are so much taller that the negative
-     margin was either eaten by pin spacers or pushed the bg out of view
-     entirely — so on mobile we drop the scrub and keep the bg simply
-     opacity:1 from the start. It shows up in normal flow after Ritual.
+     Desktop: the bg scrub-fades in as the section enters and back out near
+     its end. CSS keeps the bg at opacity:1 by default (visible without JS
+     and under reduced motion); the hidden pre-fade state is JS-applied here.
+     Mobile keeps the plain CSS default — the bg is simply visible in flow.
      ========================================================================= */
 
   const exclusiveBg = document.getElementById('exclusiveBg');
@@ -1111,10 +619,6 @@ window.initLanding = async function () {
         .to(exclusiveBg, { opacity: 1, duration: 6 })
         .to(exclusiveBg, { opacity: 0, ease: 'power1.inOut', duration: 2 });
     });
-
-    mm.add('(max-width: 991px)', function () {
-      gsap.set(exclusiveBg, { opacity: 1 });
-    });
   }
 
   /* =========================================================================
@@ -1122,10 +626,11 @@ window.initLanding = async function () {
      Elements with .gsap-reveal fade up on scroll entry.
      ========================================================================= */
 
-  if (!reducedMotion) {
+  mm.add('all', function () {
+    if (reducedMotion) return;
     document.querySelectorAll('.gsap-reveal').forEach(function (el) {
       gsap.fromTo(el,
-        { opacity: 0, y: 50 },
+        { opacity: 0, y: 32 },
         {
           scrollTrigger: {
             trigger:      el,
@@ -1134,12 +639,12 @@ window.initLanding = async function () {
           },
           opacity:  1,
           y:        0,
-          duration: 1,
+          duration: 0.8,
           ease:     'power2.out'
         }
       );
     });
-  }
+  });
 
   /* =========================================================================
      YOUTUBE FACADE — lazy-load iframe on thumbnail click

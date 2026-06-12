@@ -29,12 +29,14 @@
 
 /* Story section — mirrors wide-split-row from landing.css. */
 
+/* Top-aligned columns: the text column is much taller than the portrait, so
+   centering left the photo floating mid-row with large gaps above and below. */
 .about-story-flex {
     display: flex;
-    align-items: center;
-    gap: 80px;
+    align-items: flex-start;
+    gap: var(--space-xl);
     max-width: 1400px;
-    margin: 0 auto 120px;
+    margin: 0 auto var(--space-2xl);
     padding: 0 var(--container-pad);
 }
 
@@ -64,6 +66,16 @@
 .about-img-col:hover img {
     transform: scale(1.03);
     filter: grayscale(0%) contrast(105%) brightness(0.9);
+}
+
+/* Desktop: pin the portrait below the fixed nav (+ aktion bar) while the
+   long story column scrolls past — keeps it visually anchored to the text
+   instead of leaving dead space under a static image. */
+@media (min-width: 992px) {
+    .about-img-col {
+        position: sticky;
+        top: calc(var(--nav-height) + var(--aktion-height) + var(--space-md));
+    }
 }
 
 .about-text-col h3 {
@@ -157,6 +169,48 @@
     font-size: 18px;
     line-height: 1.75;
     margin: 0 0 28px;
+    transition: opacity var(--t-fast) ease;
+}
+
+/* JS swaps the quote between its collapsed teaser and the full text; the
+   brief opacity dip masks the reflow. Reduced-motion users get an instant
+   swap (the JS skips the fade timing, this just belts-and-braces the CSS). */
+.about-quote-box .quote-text.is-swapping {
+    opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .about-quote-box .quote-text {
+        transition: none;
+    }
+}
+
+/* Read-more toggle under the collapsed founder quote. Text-button only —
+   gold accent, no border or fill — so it reads as editorial, not as a CTA.
+   Injected by about.js; without JS the full quote is simply visible. */
+.about-quote-box .quote-toggle {
+    display: inline-block;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: calc(-1 * var(--space-sm)) 0 28px;
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    cursor: pointer;
+    transition: color var(--t-fast) ease;
+}
+
+.about-quote-box .quote-toggle:hover {
+    color: var(--color-gold-hover);
+}
+
+.about-quote-box .quote-toggle:focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
 }
 
 /* Tiny gold horizontal rule that sits between the quote body and the
@@ -378,6 +432,7 @@
     }
 
     .about-text-col {
+        width: 100%;
         max-width: 100%;
     }
 

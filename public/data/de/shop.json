@@ -55,7 +55,7 @@
       },
       "buttons": {
         "primary": {
-          "label": "1x Elixier Bestellen",
+          "label": "Jetzt bestellen — 24.90 CHF",
           "href": "https://buy.stripe.com/6oU8wR3PBagV3GpaPBbQY00"
         },
         "subscription": null
@@ -96,15 +96,16 @@
       },
       "buttons": {
         "primary": {
-          "label": "3x Elixier Bestellen",
+          "label": "Jetzt bestellen — 69.00 CHF",
           "href": "https://buy.stripe.com/cNi3cx3PB2Ot6SB4rdbQY01"
         },
-        "subscription": {
-          "discountLabel": "Mit Abo sparen (−9 %)",
-          "price": "63.00 CHF",
-          "subtext": "Pro Monat",
-          "guarantee": "✓ Jederzeit kündbar",
-          "href": "https://buy.stripe.com/aFa6oJ71N60F4Kt3n9bQY04"
+        "purchase": {
+          "legend": "Kaufoption wählen",
+          "oneTimeLabel": "Einmalkauf 69.00 CHF",
+          "aboLabel": "Abo 63.00 CHF/Monat — Sie sparen 6.– (−9 %) · jederzeit kündbar",
+          "ctaOneTime": "Jetzt bestellen — 69.00 CHF",
+          "ctaAbo": "Abo starten — 63.00 CHF/Monat",
+          "aboHref": "https://buy.stripe.com/aFa6oJ71N60F4Kt3n9bQY04"
         }
       },
       "shipping": {
@@ -140,15 +141,16 @@
       },
       "buttons": {
         "primary": {
-          "label": "6x Elixier Bestellen",
+          "label": "Jetzt bestellen — 129.00 CHF",
           "href": "https://buy.stripe.com/3cI6oJbi3gFjb8R8HtbQY02"
         },
-        "subscription": {
-          "discountLabel": "Mit Abo sparen (−8 %)",
-          "price": "119.00 CHF",
-          "subtext": "Pro Monat",
-          "guarantee": "✓ Jederzeit kündbar",
-          "href": "https://buy.stripe.com/9B600lcm7bkZ0ud2j5bQY05"
+        "purchase": {
+          "legend": "Kaufoption wählen",
+          "oneTimeLabel": "Einmalkauf 129.00 CHF",
+          "aboLabel": "Abo 119.00 CHF/Monat — Sie sparen 10.– (−8 %) · jederzeit kündbar",
+          "ctaOneTime": "Jetzt bestellen — 129.00 CHF",
+          "ctaAbo": "Abo starten — 119.00 CHF/Monat",
+          "aboHref": "https://buy.stripe.com/9B600lcm7bkZ0ud2j5bQY05"
         }
       },
       "shipping": {

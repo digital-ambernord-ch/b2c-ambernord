@@ -18,8 +18,9 @@
       "x-default": "https://ambernord.ch/"
     }
   },
-  "stickyBtn": "Zum Ritual",
-  "factStrip": { "ariaLabel": "Wirkstoff-Fakten" },
+  "factStrip": {
+    "ariaLabel": "Wirkstoff-Fakten"
+  },
   "guarantee": {
     "label": "30 Tage Geld-zurück-Garantie",
     "ariaLabel": "30 Tage Geld-zurück-Garantie ansehen"
@@ -58,13 +59,25 @@
     "eyebrow": "Bereit?",
     "title": "Wählen Sie <span>Ihr Ritual.</span>",
     "sub": "Drei Grössen — eine für jeden Rhythmus.",
-    "btn": "Mein Ritual wählen"
+    "btn": "Ritual wählen →"
   },
   "trust": {
-    "lab": { "title": "Laborgeprüft", "subtitle": "Höchste Reinheitsstandards" },
-    "premium": { "title": "Bio-zertifiziert", "subtitle": "Schweizer Manufaktur" },
-    "shipping": { "title": "Versand in 24h", "subtitle": "Direkt aus Aarau" },
-    "reviews": { "title": "Bewertungen lesen", "subtitle": "Echte Stimmen aus der Schweiz" }
+    "lab": {
+      "title": "Laborgeprüft",
+      "subtitle": "Höchste Reinheitsstandards"
+    },
+    "premium": {
+      "title": "Bio-zertifiziert",
+      "subtitle": "Schweizer Manufaktur"
+    },
+    "shipping": {
+      "title": "Versand in 24h",
+      "subtitle": "Direkt aus Aarau"
+    },
+    "reviews": {
+      "title": "Bewertungen lesen",
+      "subtitle": "Echte Stimmen aus der Schweiz"
+    }
   },
   "shop": {
     "title": "Ihr Ritual. Drei Grössen.",

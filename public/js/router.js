@@ -260,6 +260,15 @@
       schema:      null
     },
 
+    '/impressum/': {
+      page:        '/pages/impressum.html',
+      title:       'Impressum | AmberNord',
+      description: 'Impressum der AmberNord — Anbieterkennzeichnung gemäss schweizerischem Recht.',
+      canonical:   'https://ambernord.ch/impressum/',
+      type:        'impressum',
+      schema:      null
+    },
+
     '/b2b/': {
       page:        '/pages/b2b.html',
       title:       'B2B Klinische Rohstoffe | AmberNord',
@@ -321,6 +330,7 @@
     bestellstatus:    'initBestellstatus',
     thankyou:         'initThankyou',
     datenschutz:      'initDatenschutz',
+    impressum:        'initImpressum',
     returns:          'initReturns',
     bewertungen:      'initBewertungen',
     aktion2fuer1:     'initAktion2Fuer1',
@@ -539,16 +549,6 @@
 
       killGSAP();
 
-      /* Reset the landing-only "hide topbar bio badge" state on every nav.
-         Landing's init re-adds it; subpages leave it off so the badge is shown. */
-      document.documentElement.classList.remove('landing-hero-active');
-
-      /* Reset the landing-only mobile CTA swap ("Zum Ritual") — subpages show
-         the default "Jetzt bestellen" → /shop/ behaviour again. */
-      document.documentElement.classList.remove('an-cta-ritual');
-      const navBtnGlobal = document.querySelector('.nav-btn--global');
-      if (navBtnGlobal) navBtnGlobal.removeAttribute('data-scroll-products');
-
       /* Swap DOM, scroll, attach handlers, run init — all while invisible. */
       app.innerHTML = html;
 
@@ -565,10 +565,18 @@
 
       attachLinkListeners();
 
-      /* Await the page's init function — most do `await loadI18n(...)` and then
-         apply scroll-reveal classes (opacity:0). If we faded in #app before init
-         finished, those classes would land on already-visible content and cause
-         a "flash → vanish → fade back" flicker. */
+      /* Render the fragment immediately — no blank gap while the init runs.
+         The fade-in starts on the next frame; the page init (i18n + scroll
+         animations) executes right after and animates over the already
+         visible content. Reveal classes are applied by JS only, so content
+         stays visible even if an init throws or JS is disabled entirely. */
+      requestAnimationFrame(function () {
+        app.style.transition = 'opacity 0.18s ease';
+        requestAnimationFrame(function () {
+          app.style.opacity = '1';
+        });
+      });
+
       const initName = INITS[route.type];
       if (initName && typeof window[initName] === 'function') {
         try { await window[initName](); } catch (e) { console.error('[Router] init failed:', e); }
@@ -597,17 +605,6 @@
            clear it so it doesn't leak into a later same-tab navigation. */
         try { sessionStorage.removeItem('langSwitchScroll'); } catch (_) {}
       }
-
-      /* Two rAFs: the first commits all DOM/style changes to the next frame,
-         the second triggers the actual fade-in. Without this, the transition
-         from opacity:0 to opacity:1 happens instantly because the browser
-         coalesces both writes within the same frame. */
-      requestAnimationFrame(function () {
-        app.style.transition = 'opacity 0.25s ease';
-        requestAnimationFrame(function () {
-          app.style.opacity = '1';
-        });
-      });
     } catch (err) {
       console.error('[Router] Navigation failed:', err);
       app.innerHTML = '<div style="padding:120px 20px;text-align:center;font-family:Montserrat,sans-serif;color:#888;">Seite nicht gefunden.</div>';

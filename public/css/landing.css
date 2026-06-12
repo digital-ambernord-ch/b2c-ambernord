@@ -4,11 +4,9 @@
    Hero · Trust ribbon · Shop · Editorial · Exclusive section · Magic Garden · MasterBox
    ========================================================================= */
 
-/* The former .landing-sticky-nav (fixed top bar with "Zum Ritual" button) was
-   removed: it rendered at top:0 with z-index below the always-visible topbar,
-   so it was never actually visible. Its job is now done by the global topbar
-   CTA, which swaps to "Zum Ritual" on mobile once the hero scrolls past
-   (see html.an-cta-ritual rules in main.css + the observer in landing.js). */
+/* The former .landing-sticky-nav (fixed top bar with "Zum Ritual" button) and
+   the mobile topbar CTA swap (html.an-cta-ritual) were both removed: the
+   global topbar CTA is always "Jetzt bestellen" linking to /shop/. */
 
 /* =========================================================================
    GSAP HERO SECTION
@@ -56,9 +54,8 @@
   z-index: 20;        /* stay above the rising product section during animation */
 }
 
-/* Trust ribbon now lives INSIDE #ritual-products (after the product cards) so
-   it resolves with the product-exit animation. Neutral flow positioning here;
-   the desktop reveal (lift + fade) is driven by GSAP in landing.js. */
+/* Trust ribbon lives INSIDE #ritual-products, in plain flow after the
+   (static) product cards. */
 .conversion-booster-wrapper {
   position: relative;
   z-index: 1;
@@ -107,6 +104,22 @@
   pointer-events: none;
 }
 
+/* Subtle radial scrim centred behind the hero text block — lifts contrast
+   for the headline/benefits over the photo without darkening the whole
+   frame. Sits on the same layer as the shade so the GSAP hero fade
+   (#ambernordHeroShade → opacity 0) takes it along. */
+.ambernord-hero-shade::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 72% 58% at 50% 52%,
+    rgba(10,10,10,0.55) 0%,
+    rgba(10,10,10,0.28) 55%,
+    transparent 78%
+  );
+}
+
 .hero-content {
   position: absolute;
   top: 50%;
@@ -134,12 +147,13 @@
   z-index: 5;
 }
 
-/* Floating image cards */
+/* Floating image cards. NOT hidden by CSS — content must be visible without
+   JS. At rest they sit behind the full-size hero (z-index 10 vs workspace 5),
+   so nothing shows; the pre-pop hidden state (scale 0.1, opacity 0) is
+   applied by GSAP in landing.js, desktop motion branch only. */
 .float-img {
   position: absolute;
   border-radius: 16px;
-  opacity: 0;
-  transform: scale(0.2);
   will-change: transform, opacity;
   box-shadow: 0 15px 35px rgba(0,0,0,0.6);
 }
@@ -265,8 +279,18 @@
   letter-spacing: 0.5px;
 }
 
+/* H1 subhead — single factual line ("Kaltgepresstes Bio-Sanddorn-Konzentrat ·
+   190+ Bioaktivstoffe · 30 Sekunden am Tag."). Roman (non-italic) sans in
+   gold: reads as a quiet spec line under the serif headline. */
 #scrollTrack h1 span {
-  font-style: italic;
+  display: block;
+  margin-top: 14px;
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-size: clamp(12px, 1.3vw, 15px);
+  font-weight: 500;
+  letter-spacing: 1.2px;
+  line-height: 1.5;
   color: var(--color-gold);
 }
 
@@ -321,10 +345,13 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-family: var(--font-serif);
+  /* Sans UI font (not italic serif) — the bullets are functional benefit
+     copy, so they read in the same voice as the rest of the UI. */
+  font-family: var(--font-sans);
   font-style: normal;
-  line-height: 1.3;
-  font-size: clamp(15px, 2.5vw, 28px);
+  font-weight: 400;
+  line-height: 1.45;
+  font-size: clamp(14px, 1.6vw, 18px);
   color: var(--color-text);
 }
 
@@ -792,9 +819,7 @@
   gap: 30px;
   box-sizing: border-box;
   width: 100%;
-  /* Pre-allocate GPU layer so the heavy transforms during pin (xPercent,
-     y, opacity) don't trigger per-frame rasterisation — fixes the
-     "raustīšanās" / stutter the user reported on slower mobile devices. */
+  /* Pre-allocate GPU layer for the fade-up reveal + hover lift. */
   will-change: transform, opacity;
 }
 
@@ -1083,12 +1108,9 @@
   text-align: center;
 }
 
-/* Trailing wrapper now lives INSIDE #ritual-products, between the
-   .ritual-cards-group (heading + 3 cards) and the .ritual-payment-group
-   (payment icons). On mobile this is the 4th item in the lift queue and
-   GSAP translateY-lifts it like a card. On desktop the two groups
-   evaporate at the end of pin and the trailing info bridges into the
-   Manifest. */
+/* Trailing wrapper lives INSIDE #ritual-products, between the trust ribbon
+   and the .ritual-payment-group (payment icons) — plain flow on every
+   viewport now that the pinned choreography is gone. */
 .shop-trailing-info {
   margin-top: 40px;
   padding: 20px 0;
@@ -1333,15 +1355,6 @@
   letter-spacing: 0.2px;
 }
 
-/* Word-shard wrapper for the Manifest "explosion" scroll effect (landing.js).
-   Inline-block so transform applies per word; whitespace between shards is
-   kept as plain text nodes so line-wrapping behaves like normal prose. */
-.manifest-shard {
-  display: inline-block;
-  vertical-align: baseline;
-  will-change: transform, opacity, filter;
-}
-
 .nature-hero-content .editorial-lead,
 .nature-hero-content .editorial-pullquote {
   max-width: 760px;
@@ -1454,9 +1467,6 @@
     max-width: 640px;
   }
 
-  /* "Das tägliche Ritual" usage text sits directly beneath the bottle scene
-     — a tight gap so the bottle and its caption read as one unit. */
-  #shop .shop-trailing-info { margin-top: 0; padding: 8px 0 0; }
   .editorial-bento-grid { padding-top: 0; }
 }
 
@@ -1481,12 +1491,14 @@
   .exclusive-section-wrapper { margin-top: 0; }
 }
 
+/* Visible by default (no JS / reduced motion = content simply shows); the
+   desktop scrub fade in landing.js applies its own opacity:0 start state. */
 .exclusive-bg {
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
   z-index: 0;
-  opacity: 0;
+  opacity: 1;
   will-change: opacity;
 }
 

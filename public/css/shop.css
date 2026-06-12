@@ -418,12 +418,14 @@
    BUTTON PRIMARY — bordered gold CTA with shimmer sweep on hover.
    -------------------------------------------------------------------------- */
 
+/* Primary buy CTA is ALWAYS filled amber — outline styling is reserved for
+   secondary actions. */
 .shop-card__btn-primary {
   display: block;
   width: 100%;
-  background: #050505;
+  background: var(--color-gold);
   border: 1px solid var(--color-gold);
-  color: var(--color-gold);
+  color: #000;
   text-align: center;
   padding: 15px 0;
   font-family: var(--font-sans);
@@ -462,7 +464,7 @@
 }
 
 .shop-card__btn-primary:hover {
-  background: var(--color-gold);
+  background: var(--color-gold-hover);
   color: #000;
   box-shadow: 0 8px 20px rgba(237, 163, 35, 0.3);
 }

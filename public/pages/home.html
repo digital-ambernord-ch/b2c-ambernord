@@ -182,11 +182,9 @@
 <div id="shop" class="ambernord-section-wrapper">
   <div class="ambernord-section-inner" id="ritual-products">
 
-    <!-- Wrapper for content that EVAPORATES at the end of pin animation
-         (heading + 3 cards). Trailing info ("Das tägliche Ritual") sits
-         OUTSIDE this group inside #ritual-products so it survives the
-         evaporation on desktop AND can act as the 4th item in the mobile
-         lift queue. -->
+    <!-- Heading + 3 product cards. Static stack on every viewport — the
+         old pinned "evaporation" choreography was removed; landing.js only
+         runs a calm fade-up reveal per card. -->
     <div class="ritual-cards-group">
 
     <div class="shop-heading-wrap">
@@ -295,10 +293,8 @@
 
     </div><!-- /.ritual-cards-group -->
 
-    <!-- Trust ribbon — revealed as the product cards exit (desktop) so the
-         proof signals land exactly when the product animation resolves, right
-         before the bridge bottle emerges. On mobile it stays display:none and
-         its items are reparented into the hero animation (see landing.js). -->
+    <!-- Trust ribbon — always-visible proof signals directly under the
+         product cards on every viewport. -->
     <div class="conversion-booster-wrapper" id="conversion-boosters">
       <div class="trust-ribbon" role="list" aria-label="Vertrauensmerkmale">
         <div class="trust-item" role="listitem">
@@ -316,10 +312,8 @@
       </div>
     </div>
 
-    <!-- "Das tägliche Ritual" lives INSIDE #ritual-products, OUTSIDE the
-         cards-group + payment-group wrappers. On mobile it's the 4th card
-         in the lift queue (translates up with each lift). On desktop it
-         survives the wrapper evaporation and bridges into the Manifest. -->
+    <!-- "Das tägliche Ritual" usage note — plain flow between the trust
+         ribbon and the payment row. -->
     <div class="shop-trailing-info">
       <div class="protocol-info-block">
         <div class="protocol-info-title" data-i18n="shop.protocolInfo.title">Das tägliche Ritual</div>
@@ -483,6 +477,6 @@
     <span class="landing-closing-cta__eyebrow" data-i18n="closingCta.eyebrow">Bereit?</span>
     <h2 id="landing-closing-cta-title" class="landing-closing-cta__title" data-i18n-html="closingCta.title">Wählen Sie <span>Ihr Ritual.</span></h2>
     <p class="landing-closing-cta__sub" data-i18n="closingCta.sub">Drei Grössen — eine für jeden Rhythmus.</p>
-    <a href="#shop" class="landing-closing-cta__btn" data-link data-scroll-products data-i18n="closingCta.btn">Mein Ritual wählen</a>
+    <a href="#shop" class="landing-closing-cta__btn" data-link data-scroll-products data-i18n="closingCta.btn">Ritual wählen →</a>
   </div>
 </section>

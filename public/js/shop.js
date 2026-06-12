@@ -46,23 +46,24 @@ window.initShop = async function () {
   }
 
   /* --------------------------------------------------------------------------
-     RENDER ABO BUTTON — returns subscription CTA markup or empty string.
+     RENDER PURCHASE TOGGLE — Einmalkauf ↔ Abo radio group above the CTA.
+     Returns empty string for products without a subscription option.
      -------------------------------------------------------------------------- */
 
-  function renderAboBtn(sub) {
-    /* Builds the two-tone Abo button; returns empty string if product has no sub. */
-    if (!sub) return '';
+  function renderPurchaseToggle(purchase, productId) {
+    if (!purchase) return '';
 
-    return `<a class="shop-card__btn-abo" href="${sub.href}" target="_blank" rel="noopener noreferrer">
-        <div class="shop-card__abo-top">${sub.discountLabel}</div>
-        <div class="shop-card__abo-bottom">
-          <div class="shop-card__abo-price-wrap">
-            <span class="shop-card__abo-price">${sub.price}</span>
-            <span class="shop-card__abo-subtext">${sub.subtext}</span>
-          </div>
-          <span class="shop-card__abo-guarantee">${sub.guarantee}</span>
-        </div>
-      </a>`;
+    return `<fieldset class="purchase-toggle" data-purchase-toggle>
+        <legend class="purchase-toggle__legend">${purchase.legend}</legend>
+        <label class="purchase-option">
+          <input type="radio" name="purchase-mode-${productId}" value="once" checked>
+          <span class="purchase-option__label">${purchase.oneTimeLabel}</span>
+        </label>
+        <label class="purchase-option">
+          <input type="radio" name="purchase-mode-${productId}" value="abo">
+          <span class="purchase-option__label">${purchase.aboLabel}</span>
+        </label>
+      </fieldset>`;
   }
 
   /* --------------------------------------------------------------------------
@@ -122,7 +123,7 @@ window.initShop = async function () {
 
             </a>
 
-            <a class="shop-card__btn-primary shop-card__btn-primary--mobile" href="${p.buttons.primary.href}" target="_blank" rel="noopener noreferrer">${p.buttons.primary.label}</a>
+            <a class="shop-card__btn-primary shop-card__btn-primary--mobile" data-buy-cta href="${p.buttons.primary.href}" target="_blank" rel="noopener noreferrer">${p.buttons.primary.label}</a>
 
             <a class="shop-card__content-link shop-card__bottom-link" href="${p.slug}" data-link>
 
@@ -138,8 +139,8 @@ window.initShop = async function () {
             </a>
 
             <div class="shop-card__action">
-              <a class="shop-card__btn-primary shop-card__btn-primary--desktop" href="${p.buttons.primary.href}" target="_blank" rel="noopener noreferrer">${p.buttons.primary.label}</a>
-              ${renderAboBtn(p.buttons.subscription)}
+              ${renderPurchaseToggle(p.buttons.purchase, p.id)}
+              <a class="shop-card__btn-primary shop-card__btn-primary--desktop" data-buy-cta href="${p.buttons.primary.href}" target="_blank" rel="noopener noreferrer">${p.buttons.primary.label}</a>
               <p class="shop-card__shipping">
                 <span class="shop-card__shipping-highlight">${p.shipping.highlight}</span>${p.shipping.text}
               </p>
@@ -151,6 +152,38 @@ window.initShop = async function () {
   }
 
   renderProducts(data.products);
+
+  /* --------------------------------------------------------------------------
+     PURCHASE TOGGLE WIRING — one delegated listener per grid. Switching the
+     radio updates BOTH buy CTAs of the card (mobile + desktop) to the
+     matching label and Stripe link. Default stays the one-time purchase.
+     -------------------------------------------------------------------------- */
+
+  const grid = document.getElementById('shop-grid');
+  if (grid) {
+    const productById = {};
+    (data.products || []).forEach((p) => { productById[p.id] = p; });
+
+    grid.addEventListener('change', (e) => {
+      const input = e.target;
+      if (!input || !input.name || input.name.indexOf('purchase-mode-') !== 0) return;
+
+      const id = input.name.replace('purchase-mode-', '');
+      const p  = productById[id];
+      if (!p || !p.buttons.purchase) return;
+
+      const isAbo = input.value === 'abo';
+      const href  = isAbo ? p.buttons.purchase.aboHref : p.buttons.primary.href;
+      const label = isAbo ? p.buttons.purchase.ctaAbo  : p.buttons.purchase.ctaOneTime;
+
+      const card = input.closest('.shop-card');
+      if (!card) return;
+      card.querySelectorAll('[data-buy-cta]').forEach((cta) => {
+        cta.setAttribute('href', href);
+        cta.textContent = label;
+      });
+    });
+  }
 
   /* --------------------------------------------------------------------------
      SCROLL REVEAL — staggered IntersectionObserver entrance for each card.

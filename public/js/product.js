@@ -9,8 +9,38 @@ window.initProduct = async function () {
 
   const container = document.querySelector('.product-page-container');
   const productKey = container ? container.getAttribute('data-product') : null;
+  let i18nData = null;
   if (productKey && typeof window.loadI18n === 'function') {
-    try { await window.loadI18n(window.getLang(), productKey); } catch {}
+    try { i18nData = await window.loadI18n(window.getLang(), productKey); } catch {}
+  }
+
+  /* =========================================================================
+     PURCHASE TOGGLE — Einmalkauf ↔ Abo (The Habit + The Protocol)
+     One CTA switches label and Stripe href with the selected mode.
+     Default is the one-time purchase.
+     ========================================================================= */
+
+  const purchaseToggle = document.querySelector('[data-purchase-toggle]');
+  const buyCta         = document.querySelector('[data-buy-cta]');
+
+  if (purchaseToggle && buyCta) {
+    const purchase = (i18nData && i18nData.info && i18nData.info.purchase) || {};
+
+    function applyMode(mode) {
+      const isAbo = mode === 'abo';
+      const href  = isAbo ? (purchase.aboHref || buyCta.dataset.aboHref)
+                          : (purchase.oneTimeHref || buyCta.dataset.onceHref);
+      const label = isAbo ? purchase.ctaAbo : purchase.ctaOneTime;
+      if (href)  buyCta.setAttribute('href', href);
+      if (label) buyCta.textContent = label;
+    }
+
+    purchaseToggle.addEventListener('change', function (e) {
+      if (e.target && e.target.name === 'purchase-mode') applyMode(e.target.value);
+    });
+
+    const checked = purchaseToggle.querySelector('input[name="purchase-mode"]:checked');
+    applyMode(checked ? checked.value : 'once');
   }
 
   /* =========================================================================

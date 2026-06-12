@@ -18,6 +18,9 @@
       "x-default": "https://ambernord.ch/wissenschaft/"
     }
   },
+  "lightbox": {
+    "zoomLabel": "Agrandir l'image"
+  },
   "header": {
     "eyebrow": "Science & Philosophie",
     "h1": "Le dossier de l'argousier<br><span>de la méthodologie AmberNord.</span>",
@@ -49,14 +52,15 @@
         "<strong>Huile de pulpe :</strong> riche en MUFA (acides gras mono-insaturés) et caroténoïdes.",
         "<strong>Huile de pépins :</strong> dominée par les PUFA (acides gras essentiels poly-insaturés)."
       ]
-    }
+    },
+    "imgAlt": "Infographie : la matrice phytochimique de l'argousier — fraction aqueuse (jus), huile de pulpe et huile de pépins selon le paradigme de séparation"
   },
   "lipids": {
     "title": "Anatomie des lipides & vitamines spécifiques",
     "cards": [
-      { "title": "Huile de pulpe (Oméga-7)", "desc": "L'une des sources végétales les plus rares d'acide palmitoléique (Oméga-7), constituant une part essentielle des lipides. Un bloc constitutif naturel important pour la peau et les muqueuses.", "imgAlt": "Goutte d'huile d'argousier orange" },
-      { "title": "Huile de pépins (Oméga-3 & 6)", "desc": "L'huile de pépins jaune pâle ne contient pratiquement pas d'Oméga-7. Elle apporte plutôt l'acide linoléique (Oméga-6) et l'acide alpha-linolénique (Oméga-3) dans un rapport physiologiquement idéal.", "imgAlt": "Pépins d'argousier et poudre rustique" },
-      { "title": "Vitamines & nutriments", "desc": "Outre la teneur exceptionnellement élevée en vitamine C, le jus d'argousier est connu pour son spectre complexe de vitamines B et de composés végétaux secondaires qui agissent en synergie.", "imgAlt": "Laboratoire scientifique avec liquide ambré" }
+      { "title": "Huile de pulpe (Oméga-7)", "desc": "L'une des sources végétales les plus rares d'acide palmitoléique (Oméga-7), constituant une part essentielle des lipides. Un bloc constitutif naturel important pour la peau et les muqueuses.", "imgAlt": "Infographie : huile de pulpe d'argousier — Oméga-7 (acide palmitoléique) pour la peau et les muqueuses" },
+      { "title": "Huile de pépins (Oméga-3 & 6)", "desc": "L'huile de pépins jaune pâle ne contient pratiquement pas d'Oméga-7. Elle apporte plutôt l'acide linoléique (Oméga-6) et l'acide alpha-linolénique (Oméga-3) dans un rapport physiologiquement idéal.", "imgAlt": "Infographie : huile de pépins d'argousier — Oméga-3 et Oméga-6 dans un rapport idéal" },
+      { "title": "Vitamines & nutriments", "desc": "Outre la teneur exceptionnellement élevée en vitamine C, le jus d'argousier est connu pour son spectre complexe de vitamines B et de composés végétaux secondaires qui agissent en synergie.", "imgAlt": "Infographie : jus d'argousier — vitamine C, complexe B et spectre de nutriments" }
     ]
   },
   "science": {
@@ -65,7 +69,8 @@
       { "title": "Métabolisme & vitalité", "desc": "L'argousier fournit des nutriments essentiels et des antioxydants. Des études suggèrent que les stérols végétaux et les acides gras qu'il contient soutiennent de manière optimale une nutrition fonctionnelle et peuvent contribuer au bien-être général." },
       { "title": "Peau & dermatologie", "desc": "L'Oméga-7 est un bloc constitutif physiologique important de la barrière cutanée humaine. Les extraits d'argousier sont intensivement étudiés pour leurs propriétés de soutien à la régénération cutanée naturelle." },
       { "title": "Muqueuses", "desc": "La matrice lipidique spécifique de l'huile de pulpe est connue pour soutenir, sur le plan nutritionnel, l'équilibre hydrique naturel des muqueuses (yeux, bouche ou zones intimes)." }
-    ]
+    ],
+    "imgAlt": "Infographie : connaissances scientifiques sur l'argousier — métabolisme, peau et muqueuses"
   },
   "innovations": {
     "title": "Applications modernes & innovations du marché",
@@ -73,7 +78,8 @@
       { "title": "Haute cuisine & mixologie", "desc": "Dans la haute gastronomie, l'argousier s'impose rapidement comme le « citron du Nord ». Son profil acide complexe et multidimensionnel remplace de plus en plus les importations exotiques comme le yuzu ou le fruit de la passion et confère aux cocktails premium sans alcool la structure et l'astringence nécessaires." },
       { "title": "Nutricosmétique & clean beauty", "desc": "L'acide palmitoléique (Oméga-7) contenu dans l'huile d'argousier présente une similitude structurelle unique avec les lipides propres au stratum cornéen. Cela permet une pénétration extrêmement rapide pour renforcer la barrière cutanée et réduire la perte d'eau trans-épidermique." },
       { "title": "Food-tech & upcycling", "desc": "La microencapsulation à l'alginate de sodium permet aujourd'hui de protéger les caroténoïdes thermosensibles pour l'industrie de la boulangerie. De plus, l'autorisation EU Novel Food pour les feuilles d'argousier (2020) a ouvert de toutes nouvelles voies pour les thés premium riches en l'antioxydant cellulaire PC-8." }
-    ]
+    ],
+    "imgAlt": "Infographie : applications modernes de l'argousier — gastronomie, clean beauty et food-tech"
   },
   "sourcing": {
     "title": "Sourcing AmberNord : terroir & partenariat",
@@ -104,10 +110,12 @@
       { "title": "Extraction mécanique d'huile", "desc": "L'industrie extrait souvent par voie chimique. Ici, la pression mécanique à froid garantit la conservation des acides gras thermosensibles. L'intensité en ressources est immense : jusqu'à 200 kg de baies fraîches pour 1 litre d'huile pure." },
       { "title": "Résidu de pressage (le marc)", "desc": "Pépins et peaux sont séchés thermiquement avec douceur après désuilage. Une hydrolyse enzymatique ciblée optimise le profil de fibres, créant un « ingrédient upcyclé » hautement fonctionnel pour l'industrie alimentaire." },
       { "title": "Valorisation intégrale", "desc": "Les rameaux et l'écorce sont également valorisés sans reste. Les analyses récentes confirment dans l'écorce une teneur en phytosérotonine qui dépasse plusieurs fois celle des bananes – un potentiel énorme pour des extraits naturels « mood-support »." }
-    ]
+    ],
+    "imgAlt": "Infographie : transformation zéro déchet de l'argousier — jus direct, pression mécanique de l'huile, marc et écorce en circuit fermé"
   },
   "conclusion": {
     "tag": "Résumé scientifique",
+    "imgAlt": "L'argousier comme nutrition fonctionnelle — résumé scientifique de la méthodologie AmberNord",
     "heading": "De la plante pionnière à la<br><span class=\"dossier-gold-italic\">nutrition fonctionnelle</span>",
     "p1": "Les données confirment l'argousier comme l'un des systèmes végétaux les plus phytochimiquement complexes au monde. Le bénéfice nutritionnel réside sans aucun doute dans le profil exceptionnel de vitamines et de lipides rares.",
     "p2": "AmberNord et ses partenaires transposent ce potentiel sans compromis qualitatif en un rituel quotidien de haute qualité pour un meilleur bien-être.",

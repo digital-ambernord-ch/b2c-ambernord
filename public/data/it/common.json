@@ -13,7 +13,6 @@
     "reviews": "Recensioni",
     "returns": "Resi",
     "cta": "Ordini ora",
-    "ctaRitual": "Al Rituale →",
     "b2bAriaLabel": "Area B2B"
   },
   "footer": {
@@ -21,7 +20,10 @@
     "privacy": "Privacy",
     "terms": "Termini",
     "refunds": "Politica di reso",
-    "serviceBy": "Un servizio di"
+    "serviceBy": "Un servizio di",
+    "imprint": "Impressum",
+    "shipFromCH": "Spedizione dalla Svizzera",
+    "paymentsLabel": "Metodi di pagamento sicuri"
   },
   "aktion": {
     "eyebrow": "Edizione di lancio",

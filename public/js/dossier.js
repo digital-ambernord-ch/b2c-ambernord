@@ -134,37 +134,73 @@ window.initDossier = async function () {
     const zoomImgs      = document.querySelectorAll('.dossier-zoom img');
 
     if (lightbox && zoomImgs.length) {
-        zoomImgs.forEach((img) => {
-            img.addEventListener('click', () => {
-                const src = img.currentSrc || img.src;
-                const hires = src
-                    .replace(/w_\d+/, 'w_1600')
-                    .replace(/q_auto:eco/, 'q_auto:good');
+        const zoomLabel = data?.lightbox?.zoomLabel || 'Bild vergrössern';
 
-                let lightboxImg = document.getElementById('lightbox-img');
-                if (!lightboxImg) {
-                    lightboxImg = document.createElement('img');
-                    lightboxImg.id = 'lightbox-img';
-                    lightboxImg.className = 'lightbox-image';
-                    lightbox.appendChild(lightboxImg);
-                }
-                lightboxImg.src = hires;
-                lightboxImg.alt = img.alt || '';
-                lightbox.classList.add('is-active');
-            });
-        });
+        function openLightbox(img) {
+            const src = img.currentSrc || img.src;
+            const hires = src
+                .replace(/w_\d+/, 'w_1600')
+                .replace(/q_auto:eco/, 'q_auto:good');
+
+            let lightboxImg = document.getElementById('lightbox-img');
+            if (!lightboxImg) {
+                lightboxImg = document.createElement('img');
+                lightboxImg.id = 'lightbox-img';
+                lightboxImg.className = 'lightbox-image';
+                lightbox.appendChild(lightboxImg);
+            }
+            lightboxImg.src = hires;
+            lightboxImg.alt = img.alt || '';
+            lightbox._dzTrigger = img;                 // restore focus here on close
+            lightbox.classList.add('is-active');
+            document.body.style.overflow = 'hidden';   // same scroll lock as ui.js mobile menu
+            if (lightboxClose) lightboxClose.focus();
+        }
 
         function closeLightbox() {
             lightbox.classList.remove('is-active');
+            document.body.style.overflow = '';
             const img = document.getElementById('lightbox-img');
             if (img) setTimeout(() => { img.src = ''; }, 300);
+            const trigger = lightbox._dzTrigger;
+            lightbox._dzTrigger = null;
+            if (trigger && document.contains(trigger)) trigger.focus();
         }
+        /* Re-point the once-bound global handlers at this init's closure. */
+        lightbox._dzClose = closeLightbox;
 
-        if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
-        lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && lightbox.classList.contains('is-active')) closeLightbox();
+        zoomImgs.forEach((img) => {
+            /* Accessible trigger: keyboard-focusable, announced as a button. */
+            img.setAttribute('role', 'button');
+            img.setAttribute('tabindex', '0');
+            img.setAttribute('aria-label', `${zoomLabel}: ${img.alt || ''}`.trim());
+            img.addEventListener('click', () => openLightbox(img));
+            img.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    openLightbox(img);
+                }
+            });
         });
+
+        /* Close handlers (backdrop tap/click, × button, Escape) are document/
+           shell-level — bind them ONCE so SPA re-inits don't stack listeners.
+           The Escape handler skips the landing gallery (gated by .has-nav). */
+        if (!lightbox._dzBound) {
+            lightbox._dzBound = true;
+            if (lightboxClose) lightboxClose.addEventListener('click', () => {
+                if (lightbox._dzClose) lightbox._dzClose();
+            });
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox && lightbox._dzClose) lightbox._dzClose();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape'
+                    && lightbox.classList.contains('is-active')
+                    && !lightbox.classList.contains('has-nav')
+                    && lightbox._dzClose) lightbox._dzClose();
+            });
+        }
     }
 
     /* Scroll-reveal observer (re-binds after dynamic content is in the DOM). */

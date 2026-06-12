@@ -41,15 +41,23 @@
     "scienceItem2": "<strong>30 Tage</strong> tägliches Ritual — eine Flasche alle 10 Tage.",
     "scienceItem3": "Ergibt über <span class=\"p-gold\">8 Liter</span> vitalisierendes Premium-Getränk.",
     "scienceItem4": "<strong>Kostenloser Premium-Versand</strong> direkt aus Aarau.",
-    "abo": {
-      "label": "Mit Abo sparen — jederzeit kündbar",
-      "top": "Mit Abo sparen (−9 %)",
-      "price": "63.00 CHF",
-      "subtext": "pro Monat",
-      "guarantee": "✓ Jederzeit kündbar"
-    },
     "shippingLabel": "Versand & Logistik",
-    "shippingText": "Kostenloser Premium-Versand innerhalb der Schweiz. Direktversand aus unserem Logistikzentrum in Aarau."
+    "shippingText": "Kostenloser Premium-Versand innerhalb der Schweiz. Direktversand aus unserem Logistikzentrum in Aarau.",
+    "purchase": {
+      "legend": "Kaufoption wählen",
+      "oneTimeLabel": "Einmalkauf 69.00 CHF",
+      "aboLabel": "Abo 63.00 CHF/Monat — Sie sparen 6.– (−9 %) · jederzeit kündbar",
+      "ctaOneTime": "Jetzt bestellen — 69.00 CHF",
+      "ctaAbo": "Abo starten — 63.00 CHF/Monat",
+      "oneTimeHref": "https://buy.stripe.com/cNi3cx3PB2Ot6SB4rdbQY01",
+      "aboHref": "https://buy.stripe.com/aFa6oJ71N60F4Kt3n9bQY04"
+    },
+    "trust": {
+      "bio": "Bio-zertifiziert",
+      "lab": "Laborgeprüft",
+      "shipping": "Versand in 24 h aus Aarau",
+      "paymentsLabel": "Sichere Zahlungsmethoden"
+    }
   },
   "related": {
     "heading": "Andere Editionen",

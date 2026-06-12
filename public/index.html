@@ -51,6 +51,7 @@
           '/hilfe/bestellstatus/': 'bestellstatus',
           '/hilfe/rueckgabe/': 'returns',
           '/datenschutz/': 'datenschutz',
+          '/impressum/': 'impressum',
           '/agb/': 'agb',
           '/b2b/': 'b2b',
           '/danke/': 'thankyou',
@@ -131,17 +132,6 @@
       }
     })();
 
-    /* Landing-only — pre-hide the topbar EU bio badge on path "/" before first
-       paint, so the badge does NOT flash on initial load. The router and
-       landing.js then take over: each navigation removes this class, and only
-       initLanding re-adds it. Subpages never carry it, so the badge stays
-       visible there as before. */
-    (function () {
-      var p = window.location.pathname.replace(/^\/(en|fr|it)(?=\/|$)/, '') || '/';
-      if (p === '/' || p === '/index.html') {
-        document.documentElement.classList.add('landing-hero-active');
-      }
-    })();
   </script>
 </head>
 <body>
@@ -189,16 +179,10 @@
     <a class="ambernord-logo-link" href="/" data-link aria-label="AmberNord — Zur Startseite">
       <img class="ambernord-logo-img"
         src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:best,h_160/v1776015174/bio-sanddorn-elixier-schweiz-ambernord-ritual-with-Zelt-premium-edition_k5pn3w.png"
-        alt="AmberNord"
+        alt="AmberNord Logo"
         loading="eager"
         decoding="async"
         fetchpriority="high">
-      <img class="ambernord-logo-eubio"
-        src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:best,w_120/v1775347505/eu-organic-bio-logo.svg_ollbss.png"
-        alt=""
-        aria-hidden="true"
-        loading="eager"
-        decoding="async">
     </a>
 
     <nav class="nav-links" aria-label="Hauptnavigation">
@@ -234,7 +218,6 @@
 
     <a href="/shop/" class="nav-btn nav-btn--global" data-link>
       <span class="nav-btn-label nav-btn-label--default" data-i18n="nav.cta">Jetzt bestellen</span>
-      <span class="nav-btn-label nav-btn-label--ritual" data-i18n="nav.ctaRitual">Zum Ritual →</span>
     </a>
 
     <button class="hamburger" id="hamburgerBtn" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobileMenu">
@@ -264,13 +247,7 @@
     <a class="ambernord-logo-link" href="/" data-link aria-label="AmberNord — Zur Startseite">
       <img class="ambernord-logo-img"
         src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:best,w_150/v1776015174/bio-sanddorn-elixier-schweiz-ambernord-ritual-with-Zelt-premium-edition_k5pn3w.png"
-        alt="AmberNord" width="100" height="65" loading="eager" decoding="async">
-      <img class="ambernord-logo-eubio"
-        src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:best,w_120/v1775347505/eu-organic-bio-logo.svg_ollbss.png"
-        alt=""
-        aria-hidden="true"
-        loading="eager"
-        decoding="async">
+        alt="AmberNord Logo" width="100" height="65" loading="eager" decoding="async">
     </a>
     <button class="close-menu" id="closeMenuBtn" type="button" aria-label="Menü schließen">&times;</button>
   </div>
@@ -318,6 +295,8 @@
   </div>
 
   <nav class="ambernord-footer-links" aria-label="Rechtliches">
+    <a href="/impressum/" data-link data-i18n="footer.imprint">Impressum</a>
+    <span class="ambernord-footer-separator" aria-hidden="true">|</span>
     <a href="/agb/" data-link data-i18n="footer.terms">AGB</a>
     <span class="ambernord-footer-separator" aria-hidden="true">|</span>
     <a href="/datenschutz/" data-link data-i18n="footer.privacy">Datenschutz</a>
@@ -330,6 +309,18 @@
     <span class="ambernord-footer-separator" aria-hidden="true">|</span>
     <a href="/b2b/" data-link>B2B</a>
   </nav>
+
+  <div class="ambernord-footer-trust">
+    <div class="ambernord-footer-trust__payments" data-i18n-attr="aria-label:footer.paymentsLabel" aria-label="Sichere Zahlungsmethoden">
+      <img src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,h_80/v1776024863/twint-zahlung-schweiz_mglhm9.png" alt="TWINT" loading="lazy">
+      <img src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,h_80/v1776024864/visa-zahlungsart_rootiv.png" alt="Visa" loading="lazy">
+      <img src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,h_80/v1776024864/mastercard-zahlungsart_bnuf7i.png" alt="Mastercard" loading="lazy">
+      <img src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,h_80/v1776024864/apple-pay-zahlungsart_gmqfgs.png" alt="Apple Pay" loading="lazy">
+      <img src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,h_80/v1776024864/google-pay-zahlungsart_rc4ltk.png" alt="Google Pay" loading="lazy">
+      <img src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,h_80/v1776024864/paypal-sicher-bezahlen_fjrst5.png" alt="PayPal" loading="lazy">
+    </div>
+    <span class="ambernord-footer-trust__note" data-i18n="footer.shipFromCH">Versand aus der Schweiz</span>
+  </div>
 
   <div class="ambernord-footer-bottom">
 
@@ -484,6 +475,7 @@
 <script src="/js/bestellstatus.js" defer></script>
 <script src="/js/thankyou.js" defer></script>
 <script src="/js/datenschutz.js" defer></script>
+<script src="/js/impressum.js" defer></script>
 <script src="/js/returns.js" defer></script>
 <script src="/js/bewertungen.js" defer></script>
 <script src="/js/aktion-2-fuer-1.js" defer></script>

@@ -18,8 +18,9 @@
       "x-default": "https://ambernord.ch/"
     }
   },
-  "stickyBtn": "Al Rituale",
-  "factStrip": { "ariaLabel": "Fatti sui principi attivi" },
+  "factStrip": {
+    "ariaLabel": "Fatti sui principi attivi"
+  },
   "guarantee": {
     "label": "Garanzia soddisfatti o rimborsati 30 giorni",
     "ariaLabel": "Vedi la garanzia soddisfatti o rimborsati di 30 giorni"
@@ -58,13 +59,25 @@
     "eyebrow": "Pronto?",
     "title": "Scegliete <span>il vostro rituale.</span>",
     "sub": "Tre formati — uno per ogni ritmo.",
-    "btn": "Scegliere il mio rituale"
+    "btn": "Scelga il rituale →"
   },
   "trust": {
-    "lab": { "title": "Testato in laboratorio", "subtitle": "Massimi standard di purezza" },
-    "premium": { "title": "Certificato bio", "subtitle": "Manifattura svizzera" },
-    "shipping": { "title": "Spedizione in 24h", "subtitle": "Direttamente da Aarau" },
-    "reviews": { "title": "Leggi recensioni", "subtitle": "Voci reali dalla Svizzera" }
+    "lab": {
+      "title": "Testato in laboratorio",
+      "subtitle": "Massimi standard di purezza"
+    },
+    "premium": {
+      "title": "Certificato bio",
+      "subtitle": "Manifattura svizzera"
+    },
+    "shipping": {
+      "title": "Spedizione in 24h",
+      "subtitle": "Direttamente da Aarau"
+    },
+    "reviews": {
+      "title": "Leggi recensioni",
+      "subtitle": "Voci reali dalla Svizzera"
+    }
   },
   "shop": {
     "title": "Il vostro rituale. Tre formati.",

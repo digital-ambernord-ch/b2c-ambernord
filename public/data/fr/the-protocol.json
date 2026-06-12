@@ -38,15 +38,23 @@
     "scienceItem2": "L'<strong>investissement le plus efficace</strong> pour votre santé cellulaire.",
     "scienceItem3": "Donne plus de <span class=\"p-gold\">16 litres</span> de boisson premium revitalisante.",
     "scienceItem4": "<strong>Livraison premium gratuite</strong> directement depuis notre centre logistique d'Aarau.",
-    "abo": {
-      "label": "Économisez avec l'abonnement — résiliable à tout moment",
-      "top": "Économisez avec l'abonnement (−8 %)",
-      "price": "119.00 CHF",
-      "subtext": "par mois",
-      "guarantee": "✓ Résiliable à tout moment"
-    },
     "shippingLabel": "Expédition & Logistique",
-    "shippingText": "Livraison premium gratuite en Suisse. Expédition directe depuis notre centre logistique d'Aarau."
+    "shippingText": "Livraison premium gratuite en Suisse. Expédition directe depuis notre centre logistique d'Aarau.",
+    "purchase": {
+      "legend": "Choisir l'option d'achat",
+      "oneTimeLabel": "Achat unique 129.00 CHF",
+      "aboLabel": "Abonnement 119.00 CHF/mois — vous économisez 10.– (−8 %) · résiliable à tout moment",
+      "ctaOneTime": "Commander — 129.00 CHF",
+      "ctaAbo": "Démarrer l'abonnement — 119.00 CHF/mois",
+      "oneTimeHref": "https://buy.stripe.com/3cI6oJbi3gFjb8R8HtbQY02",
+      "aboHref": "https://buy.stripe.com/9B600lcm7bkZ0ud2j5bQY05"
+    },
+    "trust": {
+      "bio": "Certifié bio",
+      "lab": "Testé en laboratoire",
+      "shipping": "Expédition en 24 h depuis Aarau",
+      "paymentsLabel": "Méthodes de paiement sécurisées"
+    }
   },
   "related": {
     "heading": "Autres Éditions",

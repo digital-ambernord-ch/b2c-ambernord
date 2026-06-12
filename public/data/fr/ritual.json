@@ -25,38 +25,83 @@
   "benefits": {
     "srHeading": "Les 9 domaines d'action",
     "items": [
-      { "title": "Énergie cellulaire & vitalité", "desc": "La vitamine C contribue à un métabolisme énergétique normal et à réduire la fatigue. Une énergie constante — sans pic, sans crash. Parfait pour des performances soutenues au quotidien." },
-      { "title": "Skin-revival cellulaire", "desc": "La vitamine C contribue à la formation normale de collagène pour assurer la fonction normale de la peau — accompagnée de vitamine A, de vitamine E et du rare acide gras oméga-7 issus de la baie entière." },
-      { "title": "Clarté cognitive & concentration", "desc": "La vitamine C contribue à des fonctions psychologiques normales et à réduire la fatigue — l'esprit clair plutôt que le creux de l'après-midi." },
-      { "title": "Résilience immunitaire", "desc": "Vitamine C naturelle hautement dosée — la vitamine C contribue au fonctionnement normal du système immunitaire, chacun des 365 jours." },
-      { "title": "La baie entière", "desc": "Composés végétaux bioactifs et fibres naturelles — combinés tels que la nature les a conçus. Rien d'isolé, rien de synthétique." },
-      { "title": "Protection cellulaire active", "desc": "La vitamine C contribue à protéger les cellules contre le stress oxydatif — votre protection cellulaire quotidienne au cœur du rituel." },
-      { "title": "Pureté zéro déchet", "desc": "Sans sucres ajoutés, sans arômes artificiels, sans additifs synthétiques. La baie entière — huiles de pulpe et de pépin, pressées à froid. 100 % nature." },
-      { "title": "Collagène & vaisseaux", "desc": "La vitamine C contribue à la formation normale de collagène pour assurer la fonction normale des vaisseaux sanguins — la base silencieuse de toute routine de longévité." },
-      { "title": "Matrice de caroténoïdes", "desc": "Caroténoïdes naturels issus de la pulpe et de la peau — la palette dorée de la baie entière." }
+      {
+        "title": "Énergie cellulaire & vitalité",
+        "desc": "La vitamine C contribue à un métabolisme énergétique normal et à réduire la fatigue. Une énergie constante — sans pic, sans crash. Parfait pour des performances soutenues au quotidien."
+      },
+      {
+        "title": "Skin-revival cellulaire",
+        "desc": "La vitamine C contribue à la formation normale de collagène pour assurer la fonction normale de la peau — accompagnée de vitamine A, de vitamine E et du rare acide gras oméga-7 issus de la baie entière."
+      },
+      {
+        "title": "Clarté cognitive & concentration",
+        "desc": "La vitamine C contribue à des fonctions psychologiques normales et à réduire la fatigue — l'esprit clair plutôt que le creux de l'après-midi."
+      },
+      {
+        "title": "Résilience immunitaire",
+        "desc": "Vitamine C naturelle hautement dosée — la vitamine C contribue au fonctionnement normal du système immunitaire, chacun des 365 jours."
+      },
+      {
+        "title": "La baie entière",
+        "desc": "Composés végétaux bioactifs et fibres naturelles — combinés tels que la nature les a conçus. Rien d'isolé, rien de synthétique."
+      },
+      {
+        "title": "Protection cellulaire active",
+        "desc": "La vitamine C contribue à protéger les cellules contre le stress oxydatif — votre protection cellulaire quotidienne au cœur du rituel."
+      },
+      {
+        "title": "Pureté zéro déchet",
+        "desc": "Sans sucres ajoutés, sans arômes artificiels, sans additifs synthétiques. La baie entière — huiles de pulpe et de pépin, pressées à froid. 100 % nature."
+      },
+      {
+        "title": "Collagène & vaisseaux",
+        "desc": "La vitamine C contribue à la formation normale de collagène pour assurer la fonction normale des vaisseaux sanguins — la base silencieuse de toute routine de longévité."
+      },
+      {
+        "title": "Matrice de caroténoïdes",
+        "desc": "Caroténoïdes naturels issus de la pulpe et de la peau — la palette dorée de la baie entière."
+      }
     ]
   },
   "stats": {
     "label": "Statistiques produit",
     "items": [
-      { "highlight": "190+", "detail": "Composés<br>bioactifs" },
-      { "highlight": "18",   "detail": "Acides aminés<br>essentiels" },
-      { "highlight": "4",    "detail": "Acides gras Oméga<br>(3, 6, 7 & 9)" },
-      { "highlight": "9×",   "detail": "Plus de vitamine C<br>que les agrumes" }
+      {
+        "highlight": "190+",
+        "detail": "Composés<br>bioactifs"
+      },
+      {
+        "highlight": "18",
+        "detail": "Acides aminés<br>essentiels"
+      },
+      {
+        "highlight": "4",
+        "detail": "Acides gras Oméga<br>(3, 6, 7 & 9)"
+      },
+      {
+        "highlight": "9×",
+        "detail": "Plus de vitamine C<br>que les agrumes"
+      }
     ]
-  },
-  "video": {
-    "eyebrow": "Expérience visuelle",
-    "heading": "L'élixir en <span>mouvement.</span>",
-    "alt": "Espace réservé vidéo : présentation de l'élixir AmberNord",
-    "placeholder": "Espace réservé vidéo"
   },
   "protocol": {
     "heading": "Le protocole <span>quotidien.</span>",
     "items": [
-      { "step": "Étape 01", "title": "La règle dorée du matin", "desc": "Ancrez le rituel dans la première moitié de la journée — comme partie intégrante de votre routine matinale, idéalement avant le petit-déjeuner." },
-      { "step": "Étape 02", "title": "L'alchimie parfaite", "desc": "AmberNord n'est pas une boisson ordinaire, mais une essence brute hautement concentrée. Pour une hydratation maximale, mélangez <strong class=\"ritual-protocol__highlight\">1 part d'essence avec 10 parts d'eau</strong> (plate ou pétillante)." },
-      { "step": "Étape 03", "title": "La règle des 10 jours", "desc": "Comme nous renonçons totalement aux conservateurs artificiels, conservez impérativement la bouteille au réfrigérateur après ouverture et savourez l'élixir <strong class=\"ritual-protocol__highlight\">dans les 10 jours</strong>." }
+      {
+        "step": "Étape 01",
+        "title": "La règle dorée du matin",
+        "desc": "Ancrez le rituel dans la première moitié de la journée — comme partie intégrante de votre routine matinale, idéalement avant le petit-déjeuner."
+      },
+      {
+        "step": "Étape 02",
+        "title": "L'alchimie parfaite",
+        "desc": "AmberNord n'est pas une boisson ordinaire, mais une essence brute hautement concentrée. Pour une hydratation maximale, mélangez <strong class=\"ritual-protocol__highlight\">1 part d'essence avec 10 parts d'eau</strong> (plate ou pétillante)."
+      },
+      {
+        "step": "Étape 03",
+        "title": "La règle des 10 jours",
+        "desc": "Comme nous renonçons totalement aux conservateurs artificiels, conservez impérativement la bouteille au réfrigérateur après ouverture et savourez l'élixir <strong class=\"ritual-protocol__highlight\">dans les 10 jours</strong>."
+      }
     ]
   },
   "recipes": {
@@ -69,21 +114,61 @@
       "label": "Catégories de recettes"
     },
     "kalt": [
-      { "tag": "Mixologie", "title": "Nordic Spritz (sans alcool)", "desc": "L'alternative avant-gardiste à l'Aperol. Utilisez l'acidité complexe et la texture de l'essence AmberNord, mélangée à un tonic amer sur glace et garnie de romarin frais. Un profil hautement complexe, sans alcool, pour des soirées exigeantes." },
-      { "tag": "Exotique & onctueux", "title": "Amber Coconut Sour", "desc": "Une expérience soyeuse : mélangez du lait de coco crémeux, une touche de douceur de mangue et l'acidité vive de l'essence d'argousier sur glace. Une boisson qui équilibre parfaitement la douceur tropicale et le mordant nordique à chaque gorgée." },
-      { "tag": "Quotidien", "title": "Sparkling Afternoon", "desc": "1 part d'AmberNord avec de l'eau minérale glacée (gazeuse) et une branche de menthe fraîche. Parfait comme rafraîchissement rapide et substitut sans sucres ajoutés aux boissons d'après-midi conventionnelles." },
-      { "tag": "Plaisir", "title": "Vitality Smoothie", "desc": "Pour un parfait départ à l'entraînement : mixez du jus de carotte frais, un morceau de gingembre, une demi-banane pour la texture et 20 ml d'essence AmberNord. La baie entière — sous forme liquide." }
+      {
+        "tag": "Mixologie",
+        "title": "Nordic Spritz (sans alcool)",
+        "desc": "L'alternative avant-gardiste à l'Aperol. Utilisez l'acidité complexe et la texture de l'essence AmberNord, mélangée à un tonic amer sur glace et garnie de romarin frais. Un profil hautement complexe, sans alcool, pour des soirées exigeantes."
+      },
+      {
+        "tag": "Exotique & onctueux",
+        "title": "Amber Coconut Sour",
+        "desc": "Une expérience soyeuse : mélangez du lait de coco crémeux, une touche de douceur de mangue et l'acidité vive de l'essence d'argousier sur glace. Une boisson qui équilibre parfaitement la douceur tropicale et le mordant nordique à chaque gorgée."
+      },
+      {
+        "tag": "Quotidien",
+        "title": "Sparkling Afternoon",
+        "desc": "1 part d'AmberNord avec de l'eau minérale glacée (gazeuse) et une branche de menthe fraîche. Parfait comme rafraîchissement rapide et substitut sans sucres ajoutés aux boissons d'après-midi conventionnelles."
+      },
+      {
+        "tag": "Plaisir",
+        "title": "Vitality Smoothie",
+        "desc": "Pour un parfait départ à l'entraînement : mixez du jus de carotte frais, un morceau de gingembre, une demi-banane pour la texture et 20 ml d'essence AmberNord. La baie entière — sous forme liquide."
+      }
     ],
     "warm": [
-      { "tag": "Ayurveda & équilibre", "title": "Amber Golden Milk", "desc": "Une tasse réconfortante de lait végétal, une cuillère à café de curcuma, une pointe de poivre noir et 10 ml d'essence AmberNord. La synergie parfaite de phyto-nutriments — une conclusion calme et chaleureuse de la journée." },
-      { "tag": "Bien-être", "title": "Le Amber Buzz", "desc": "Jouez avec la chaleur et l'acidité : un trait d'essence AmberNord, infusé avec de l'eau chaude (non bouillante), un peu de miel de manuka et une pincée de cannelle. Un rituel apaisant et chaleureux pour les fraîches journées d'automne et d'hiver." },
-      { "tag": "Intense", "title": "Shot de gingembre haut de gamme", "desc": "Une combinaison hautement concentrée d'essence AmberNord pure, associée à du jus frais de gingembre et de curcuma ainsi qu'à une pincée de poivre noir. Un shot intense et corsé pour votre rituel quotidien." },
-      { "tag": "Rituel", "title": "Thé alpin aux herbes", "desc": "Un rituel de ralentissement : ajoutez quelques gouttes d'huile pure de pulpe d'argousier ou d'essence à de l'eau tiède avec des herbes fraîches — un moment de chaleur silencieux dans le quotidien." }
+      {
+        "tag": "Ayurveda & équilibre",
+        "title": "Amber Golden Milk",
+        "desc": "Une tasse réconfortante de lait végétal, une cuillère à café de curcuma, une pointe de poivre noir et 10 ml d'essence AmberNord. La synergie parfaite de phyto-nutriments — une conclusion calme et chaleureuse de la journée."
+      },
+      {
+        "tag": "Bien-être",
+        "title": "Le Amber Buzz",
+        "desc": "Jouez avec la chaleur et l'acidité : un trait d'essence AmberNord, infusé avec de l'eau chaude (non bouillante), un peu de miel de manuka et une pincée de cannelle. Un rituel apaisant et chaleureux pour les fraîches journées d'automne et d'hiver."
+      },
+      {
+        "tag": "Intense",
+        "title": "Shot de gingembre haut de gamme",
+        "desc": "Une combinaison hautement concentrée d'essence AmberNord pure, associée à du jus frais de gingembre et de curcuma ainsi qu'à une pincée de poivre noir. Un shot intense et corsé pour votre rituel quotidien."
+      },
+      {
+        "tag": "Rituel",
+        "title": "Thé alpin aux herbes",
+        "desc": "Un rituel de ralentissement : ajoutez quelques gouttes d'huile pure de pulpe d'argousier ou d'essence à de l'eau tiède avec des herbes fraîches — un moment de chaleur silencieux dans le quotidien."
+      }
     ],
     "kulinarik": [
-      { "tag": "Haute cuisine", "title": "Posset à l'argousier", "desc": "La preuve que la simplicité impressionne le plus. Un dessert britannique réinterprété : crème entière, sucre et essence AmberNord pure. L'acidité de l'argousier fait naturellement prendre la crème en une crème soyeuse." },
-      { "tag": "Cuisine du quotidien", "title": "Vinaigrette dorée", "desc": "Transformez n'importe quelle salade : utilisez AmberNord à la place du vinaigre ou du citron. Mélangez de l'huile d'olive de qualité, de l'essence d'argousier, une cuillère à café de moutarde de Dijon, du sel, du poivre et une goutte de sirop d'agave pour un assaisonnement spectaculairement lumineux." }
+      {
+        "tag": "Haute cuisine",
+        "title": "Posset à l'argousier",
+        "desc": "La preuve que la simplicité impressionne le plus. Un dessert britannique réinterprété : crème entière, sucre et essence AmberNord pure. L'acidité de l'argousier fait naturellement prendre la crème en une crème soyeuse."
+      },
+      {
+        "tag": "Cuisine du quotidien",
+        "title": "Vinaigrette dorée",
+        "desc": "Transformez n'importe quelle salade : utilisez AmberNord à la place du vinaigre ou du citron. Mélangez de l'huile d'olive de qualité, de l'essence d'argousier, une cuillère à café de moutarde de Dijon, du sel, du poivre et une goutte de sirop d'agave pour un assaisonnement spectaculairement lumineux."
+      }
     ],
-    "cta": "Obtenir l'élixir"
+    "cta": "Choisir le rituel →"
   }
 }

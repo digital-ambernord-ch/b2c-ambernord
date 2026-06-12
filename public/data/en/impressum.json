@@ -1,0 +1,64 @@
+{
+  "meta": {
+    "title": "Legal notice | AmberNord",
+    "description": "Legal notice (Impressum) of AmberNord — provider identification under Swiss law.",
+    "canonical": "https://ambernord.ch/en/impressum/",
+    "robots": "index, follow",
+    "og": {
+      "title": "Legal notice | AmberNord",
+      "description": "Legal notice (Impressum) of AmberNord — provider identification under Swiss law.",
+      "type": "website"
+    },
+    "hreflang": {
+      "de": "https://ambernord.ch/impressum/",
+      "en": "https://ambernord.ch/en/impressum/",
+      "fr": "https://ambernord.ch/fr/impressum/",
+      "it": "https://ambernord.ch/it/impressum/",
+      "x-default": "https://ambernord.ch/impressum/"
+    }
+  },
+  "header": {
+    "eyebrow": "Legal",
+    "h1": "Legal notice"
+  },
+  "sections": [
+    {
+      "id": "anbieter",
+      "heading": "Provider",
+      "paragraphs": [
+        "[[FIRMA]]",
+        "[[ADRESSE]]",
+        "Switzerland"
+      ]
+    },
+    {
+      "id": "kontakt",
+      "heading": "Contact",
+      "paragraphs": [
+        "E-mail: <a href=\"mailto:[[EMAIL]]\">[[EMAIL]]</a>",
+        "Contact form: <a href=\"/hilfe/kontakt/\" data-link>ambernord.ch/hilfe/kontakt/</a>"
+      ]
+    },
+    {
+      "id": "uid",
+      "heading": "Business Identification Number (UID)",
+      "paragraphs": [
+        "[[UID]]"
+      ]
+    },
+    {
+      "id": "verantwortung",
+      "heading": "Responsible for the content",
+      "paragraphs": [
+        "[[FIRMA]], [[ADRESSE]]"
+      ]
+    },
+    {
+      "id": "haftung",
+      "heading": "Disclaimer",
+      "paragraphs": [
+        "All content on this website has been prepared with the greatest care. We accept no liability for the accuracy, completeness or timeliness of the content. The operators of external links are solely responsible for their content."
+      ]
+    }
+  ]
+}

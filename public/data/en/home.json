@@ -18,8 +18,9 @@
       "x-default": "https://ambernord.ch/"
     }
   },
-  "stickyBtn": "To the Ritual",
-  "factStrip": { "ariaLabel": "Active-ingredient facts" },
+  "factStrip": {
+    "ariaLabel": "Active-ingredient facts"
+  },
   "guarantee": {
     "label": "30-Day Money-Back Guarantee",
     "ariaLabel": "View the 30-day money-back guarantee"
@@ -58,13 +59,25 @@
     "eyebrow": "Ready?",
     "title": "Choose <span>your ritual.</span>",
     "sub": "Three sizes — one for every rhythm.",
-    "btn": "Choose my ritual"
+    "btn": "Choose your ritual →"
   },
   "trust": {
-    "lab": { "title": "Lab Tested", "subtitle": "Highest purity standards" },
-    "premium": { "title": "Organic Certified", "subtitle": "Swiss manufactory" },
-    "shipping": { "title": "Shipped in 24h", "subtitle": "Direct from Aarau" },
-    "reviews": { "title": "Read Reviews", "subtitle": "Real voices from Switzerland" }
+    "lab": {
+      "title": "Lab Tested",
+      "subtitle": "Highest purity standards"
+    },
+    "premium": {
+      "title": "Organic Certified",
+      "subtitle": "Swiss manufactory"
+    },
+    "shipping": {
+      "title": "Shipped in 24h",
+      "subtitle": "Direct from Aarau"
+    },
+    "reviews": {
+      "title": "Read Reviews",
+      "subtitle": "Real voices from Switzerland"
+    }
   },
   "shop": {
     "title": "Your Ritual. Three Sizes.",

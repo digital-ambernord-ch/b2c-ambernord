@@ -55,7 +55,7 @@
       },
       "buttons": {
         "primary": {
-          "label": "Ordini 1x Elisir",
+          "label": "Ordini ora — 24.90 CHF",
           "href": "https://buy.stripe.com/6oU8wR3PBagV3GpaPBbQY00"
         },
         "subscription": null
@@ -96,15 +96,16 @@
       },
       "buttons": {
         "primary": {
-          "label": "Ordini 3x Elisir",
+          "label": "Ordini ora — 69.00 CHF",
           "href": "https://buy.stripe.com/cNi3cx3PB2Ot6SB4rdbQY01"
         },
-        "subscription": {
-          "discountLabel": "Risparmi con l'abbonamento (−9 %)",
-          "price": "CHF 63.00",
-          "subtext": "Al Mese",
-          "guarantee": "✓ Disdetta in qualsiasi momento",
-          "href": "https://buy.stripe.com/aFa6oJ71N60F4Kt3n9bQY04"
+        "purchase": {
+          "legend": "Scelga l'opzione di acquisto",
+          "oneTimeLabel": "Acquisto singolo 69.00 CHF",
+          "aboLabel": "Abbonamento 63.00 CHF/mese — risparmia 6.– (−9 %) · disdetta in qualsiasi momento",
+          "ctaOneTime": "Ordini ora — 69.00 CHF",
+          "ctaAbo": "Avvii l'abbonamento — 63.00 CHF/mese",
+          "aboHref": "https://buy.stripe.com/aFa6oJ71N60F4Kt3n9bQY04"
         }
       },
       "shipping": {
@@ -140,15 +141,16 @@
       },
       "buttons": {
         "primary": {
-          "label": "Ordini 6x Elisir",
+          "label": "Ordini ora — 129.00 CHF",
           "href": "https://buy.stripe.com/3cI6oJbi3gFjb8R8HtbQY02"
         },
-        "subscription": {
-          "discountLabel": "Risparmi con l'abbonamento (−8 %)",
-          "price": "CHF 119.00",
-          "subtext": "Al Mese",
-          "guarantee": "✓ Disdetta in qualsiasi momento",
-          "href": "https://buy.stripe.com/9B600lcm7bkZ0ud2j5bQY05"
+        "purchase": {
+          "legend": "Scelga l'opzione di acquisto",
+          "oneTimeLabel": "Acquisto singolo 129.00 CHF",
+          "aboLabel": "Abbonamento 119.00 CHF/mese — risparmia 10.– (−8 %) · disdetta in qualsiasi momento",
+          "ctaOneTime": "Ordini ora — 129.00 CHF",
+          "ctaAbo": "Avvii l'abbonamento — 119.00 CHF/mese",
+          "aboHref": "https://buy.stripe.com/9B600lcm7bkZ0ud2j5bQY05"
         }
       },
       "shipping": {

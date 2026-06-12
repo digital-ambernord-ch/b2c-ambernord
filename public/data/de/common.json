@@ -13,7 +13,6 @@
     "reviews": "Bewertungen",
     "returns": "Rückgaberecht",
     "cta": "Jetzt bestellen",
-    "ctaRitual": "Zum Ritual →",
     "b2bAriaLabel": "B2B Bereich"
   },
   "footer": {
@@ -21,7 +20,10 @@
     "privacy": "Datenschutz",
     "terms": "AGB",
     "refunds": "Rückgaberecht",
-    "serviceBy": "Ein Service von"
+    "serviceBy": "Ein Service von",
+    "imprint": "Impressum",
+    "shipFromCH": "Versand aus der Schweiz",
+    "paymentsLabel": "Sichere Zahlungsmethoden"
   },
   "aktion": {
     "eyebrow": "Markteinführungs-Edition",

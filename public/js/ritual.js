@@ -78,7 +78,6 @@ window.initRitual = async function () {
     const revealTargets = [
         ...document.querySelectorAll('.ritual-benefits__item'),
         ...document.querySelectorAll('.ritual-stats'),
-        ...document.querySelectorAll('.ritual-video'),
         ...document.querySelectorAll('.ritual-protocol__card'),
         ...document.querySelectorAll('.ritual-recipes__container'),
     ].filter(Boolean);

@@ -55,7 +55,7 @@
       },
       "buttons": {
         "primary": {
-          "label": "Order 1x Elixir",
+          "label": "Order now — 24.90 CHF",
           "href": "https://buy.stripe.com/6oU8wR3PBagV3GpaPBbQY00"
         },
         "subscription": null
@@ -96,15 +96,16 @@
       },
       "buttons": {
         "primary": {
-          "label": "Order 3x Elixir",
+          "label": "Order now — 69.00 CHF",
           "href": "https://buy.stripe.com/cNi3cx3PB2Ot6SB4rdbQY01"
         },
-        "subscription": {
-          "discountLabel": "Save with subscription (−9 %)",
-          "price": "63.00 CHF",
-          "subtext": "Per Month",
-          "guarantee": "✓ Cancel Anytime",
-          "href": "https://buy.stripe.com/aFa6oJ71N60F4Kt3n9bQY04"
+        "purchase": {
+          "legend": "Choose purchase option",
+          "oneTimeLabel": "One-time purchase 69.00 CHF",
+          "aboLabel": "Subscription 63.00 CHF/month — you save 6.– (−9 %) · cancel anytime",
+          "ctaOneTime": "Order now — 69.00 CHF",
+          "ctaAbo": "Start subscription — 63.00 CHF/month",
+          "aboHref": "https://buy.stripe.com/aFa6oJ71N60F4Kt3n9bQY04"
         }
       },
       "shipping": {
@@ -140,15 +141,16 @@
       },
       "buttons": {
         "primary": {
-          "label": "Order 6x Elixir",
+          "label": "Order now — 129.00 CHF",
           "href": "https://buy.stripe.com/3cI6oJbi3gFjb8R8HtbQY02"
         },
-        "subscription": {
-          "discountLabel": "Save with subscription (−8 %)",
-          "price": "119.00 CHF",
-          "subtext": "Per Month",
-          "guarantee": "✓ Cancel Anytime",
-          "href": "https://buy.stripe.com/9B600lcm7bkZ0ud2j5bQY05"
+        "purchase": {
+          "legend": "Choose purchase option",
+          "oneTimeLabel": "One-time purchase 129.00 CHF",
+          "aboLabel": "Subscription 119.00 CHF/month — you save 10.– (−8 %) · cancel anytime",
+          "ctaOneTime": "Order now — 129.00 CHF",
+          "ctaAbo": "Start subscription — 119.00 CHF/month",
+          "aboHref": "https://buy.stripe.com/9B600lcm7bkZ0ud2j5bQY05"
         }
       },
       "shipping": {

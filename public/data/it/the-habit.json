@@ -41,15 +41,23 @@
     "scienceItem2": "<strong>30 giorni</strong> di rituale quotidiano — una bottiglia ogni 10 giorni.",
     "scienceItem3": "Rende oltre <span class=\"p-gold\">8 litri</span> di bevanda premium vitalizzante.",
     "scienceItem4": "<strong>Spedizione premium gratuita</strong> direttamente da Aarau.",
-    "abo": {
-      "label": "Risparmi con l'abbonamento — disdicibile in qualsiasi momento",
-      "top": "Risparmi con l'abbonamento (−9 %)",
-      "price": "63.00 CHF",
-      "subtext": "al mese",
-      "guarantee": "✓ Disdicibile in qualsiasi momento"
-    },
     "shippingLabel": "Spedizione & Logistica",
-    "shippingText": "Spedizione premium gratuita all'interno della Svizzera. Spedizione diretta dal nostro centro logistico di Aarau."
+    "shippingText": "Spedizione premium gratuita all'interno della Svizzera. Spedizione diretta dal nostro centro logistico di Aarau.",
+    "purchase": {
+      "legend": "Scelga l'opzione di acquisto",
+      "oneTimeLabel": "Acquisto singolo 69.00 CHF",
+      "aboLabel": "Abbonamento 63.00 CHF/mese — risparmia 6.– (−9 %) · disdetta in qualsiasi momento",
+      "ctaOneTime": "Ordini ora — 69.00 CHF",
+      "ctaAbo": "Avvii l'abbonamento — 63.00 CHF/mese",
+      "oneTimeHref": "https://buy.stripe.com/cNi3cx3PB2Ot6SB4rdbQY01",
+      "aboHref": "https://buy.stripe.com/aFa6oJ71N60F4Kt3n9bQY04"
+    },
+    "trust": {
+      "bio": "Certificato bio",
+      "lab": "Testato in laboratorio",
+      "shipping": "Spedizione in 24 h da Aarau",
+      "paymentsLabel": "Metodi di pagamento sicuri"
+    }
   },
   "related": {
     "heading": "Altre Edizioni",

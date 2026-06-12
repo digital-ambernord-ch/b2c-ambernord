@@ -13,7 +13,6 @@
     "reviews": "Reviews",
     "returns": "Returns",
     "cta": "Order Now",
-    "ctaRitual": "To the Ritual →",
     "b2bAriaLabel": "B2B Area"
   },
   "footer": {
@@ -21,7 +20,10 @@
     "privacy": "Privacy",
     "terms": "Terms",
     "refunds": "Refund Policy",
-    "serviceBy": "A service by"
+    "serviceBy": "A service by",
+    "imprint": "Legal notice",
+    "shipFromCH": "Shipped from Switzerland",
+    "paymentsLabel": "Secure payment methods"
   },
   "aktion": {
     "eyebrow": "Launch Edition",

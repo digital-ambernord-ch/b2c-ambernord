@@ -55,7 +55,7 @@
       },
       "buttons": {
         "primary": {
-          "label": "Commander 1x Élixir",
+          "label": "Commander — 24.90 CHF",
           "href": "https://buy.stripe.com/6oU8wR3PBagV3GpaPBbQY00"
         },
         "subscription": null
@@ -96,15 +96,16 @@
       },
       "buttons": {
         "primary": {
-          "label": "Commander 3x Élixir",
+          "label": "Commander — 69.00 CHF",
           "href": "https://buy.stripe.com/cNi3cx3PB2Ot6SB4rdbQY01"
         },
-        "subscription": {
-          "discountLabel": "Économisez avec l'abonnement (−9 %)",
-          "price": "CHF 63.00",
-          "subtext": "Par Mois",
-          "guarantee": "✓ Résiliable à tout moment",
-          "href": "https://buy.stripe.com/aFa6oJ71N60F4Kt3n9bQY04"
+        "purchase": {
+          "legend": "Choisir l'option d'achat",
+          "oneTimeLabel": "Achat unique 69.00 CHF",
+          "aboLabel": "Abonnement 63.00 CHF/mois — vous économisez 6.– (−9 %) · résiliable à tout moment",
+          "ctaOneTime": "Commander — 69.00 CHF",
+          "ctaAbo": "Démarrer l'abonnement — 63.00 CHF/mois",
+          "aboHref": "https://buy.stripe.com/aFa6oJ71N60F4Kt3n9bQY04"
         }
       },
       "shipping": {
@@ -140,15 +141,16 @@
       },
       "buttons": {
         "primary": {
-          "label": "Commander 6x Élixir",
+          "label": "Commander — 129.00 CHF",
           "href": "https://buy.stripe.com/3cI6oJbi3gFjb8R8HtbQY02"
         },
-        "subscription": {
-          "discountLabel": "Économisez avec l'abonnement (−8 %)",
-          "price": "CHF 119.00",
-          "subtext": "Par Mois",
-          "guarantee": "✓ Résiliable à tout moment",
-          "href": "https://buy.stripe.com/9B600lcm7bkZ0ud2j5bQY05"
+        "purchase": {
+          "legend": "Choisir l'option d'achat",
+          "oneTimeLabel": "Achat unique 129.00 CHF",
+          "aboLabel": "Abonnement 119.00 CHF/mois — vous économisez 10.– (−8 %) · résiliable à tout moment",
+          "ctaOneTime": "Commander — 129.00 CHF",
+          "ctaAbo": "Démarrer l'abonnement — 119.00 CHF/mois",
+          "aboHref": "https://buy.stripe.com/9B600lcm7bkZ0ud2j5bQY05"
         }
       },
       "shipping": {
