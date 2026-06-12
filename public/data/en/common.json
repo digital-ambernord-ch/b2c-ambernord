@@ -25,11 +25,10 @@
   },
   "aktion": {
     "eyebrow": "Launch Edition",
-    "body": "2 × The Starter for the price of 1 · Limited to 250 spots",
+    "body": "2 × The Starter for the price of 1 · Limited to 250 sets",
     "bodyShort": "2 for 1 · The Starter",
     "cta": "Claim yours →",
-    "dismiss": "Dismiss promo",
-    "info": "Feel the effect after 14 days — share your review & inspire others"
+    "dismiss": "Dismiss promo"
   },
   "cta": {
     "startNow": "Start Now",

@@ -1,26 +1,27 @@
 {
   "meta": {
-    "title": "Customer Reviews | AmberNord",
-    "description": "Real voices from Switzerland: unfiltered experiences with the AmberNord sea-buckthorn elixir after 14 days of daily use.",
+    "title": "Customer Voices | AmberNord",
+    "description": "Verified experiences from Switzerland: voices on the AmberNord sea-buckthorn elixir after at least 14 days of daily use.",
     "canonical": "https://ambernord.ch/bewertungen/",
     "robots": "index, follow",
     "og": {
-      "title": "Customer Reviews | AmberNord",
-      "description": "Real voices from Switzerland: unfiltered experiences with the AmberNord sea-buckthorn elixir.",
+      "title": "Customer Voices | AmberNord",
+      "description": "Verified experiences from Switzerland: voices on the AmberNord sea-buckthorn elixir.",
       "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/v1774787737/AmberNord_Sanddorn_Biohacking_Longevity_Schweiz_Natur_Ritual_Essenz_jwznsd.webp",
       "type": "website"
     }
   },
   "header": {
     "eyebrow": "Real Voices",
-    "h1": "Customer<br><span>Reviews.</span>"
+    "h1": "Customer<br><span>voices.</span>"
   },
   "intro": {
-    "heading": "Customer Reviews",
-    "p1": "Unfiltered experiences from Switzerland — after at least 14 days of daily use. Every review is verified against the order number before being published."
+    "heading": "Customer Voices",
+    "p1": "Verified experiences from Switzerland — after at least 14 days of daily use. Every review is checked against the order number."
   },
   "aggregate": {
-    "countTemplate": "{n} reviews"
+    "countTemplate": "{n} reviews",
+    "countVerifiedTemplate": "{n} verified reviews"
   },
   "list": {
     "heading": "All Reviews",
@@ -39,7 +40,7 @@
     "email": "Email (private, for verification only)",
     "order": "Order number (from your order confirmation)",
     "text": "Your experience",
-    "textHint": "Describe in your own words what changed after 14 days — energy, skin, sleep, digestion —, how the elixir tastes, and what surprised you.",
+    "textHint": "Describe in your own words what changed after 14 days — energy, taste, ritual —, how the elixir tastes, and what surprised you.",
     "textPlaceholder": "",
     "consent": "I allow AmberNord to publish my first name, city and review text on the website. My email stays private.",
     "submit": {
@@ -50,5 +51,5 @@
     "error": "Submission failed. Please try again.",
     "hiddenSubject": "New review from AmberNord.ch"
   },
-  "secretNote": "No order yet? <a href=\"/2-fuer-1/\" data-link>Get 2 × The Starter for the price of 1 — limited to 250 spots.</a>"
+  "secretNote": "No order yet? <a href=\"/2-fuer-1/\" data-link>Get 2 × The Starter for the price of 1 — limited to 250 sets.</a>"
 }

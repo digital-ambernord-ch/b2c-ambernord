@@ -1,30 +1,31 @@
 {
   "meta": {
-    "title": "Recensioni clienti | AmberNord",
-    "description": "Voci autentiche dalla Svizzera: esperienze non filtrate con l'elisir di olivello spinoso AmberNord dopo 14 giorni di utilizzo quotidiano.",
+    "title": "Voci dei clienti | AmberNord",
+    "description": "Esperienze verificate dalla Svizzera: voci sull'elisir di olivello spinoso AmberNord dopo almeno 14 giorni di utilizzo quotidiano.",
     "canonical": "https://ambernord.ch/bewertungen/",
     "robots": "index, follow",
     "og": {
-      "title": "Recensioni clienti | AmberNord",
-      "description": "Voci autentiche dalla Svizzera: esperienze non filtrate con l'elisir di olivello spinoso AmberNord.",
+      "title": "Voci dei clienti | AmberNord",
+      "description": "Esperienze verificate dalla Svizzera: voci sull'elisir di olivello spinoso AmberNord.",
       "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/v1774787737/AmberNord_Sanddorn_Biohacking_Longevity_Schweiz_Natur_Ritual_Essenz_jwznsd.webp",
       "type": "website"
     }
   },
   "header": {
     "eyebrow": "Voci autentiche",
-    "h1": "Recensioni<br><span>clienti.</span>"
+    "h1": "Voci dei<br><span>clienti.</span>"
   },
   "intro": {
-    "heading": "Recensioni clienti",
-    "p1": "Esperienze non filtrate dalla Svizzera — dopo almeno 14 giorni di utilizzo quotidiano. Ogni recensione viene verificata tramite numero d'ordine prima della pubblicazione."
+    "heading": "Voci dei clienti",
+    "p1": "Esperienze verificate dalla Svizzera — dopo almeno 14 giorni di utilizzo quotidiano. Ogni recensione viene verificata tramite il numero d'ordine."
   },
   "aggregate": {
-    "countTemplate": "{n} recensioni"
+    "countTemplate": "{n} recensioni",
+    "countVerifiedTemplate": "{n} recensioni verificate"
   },
   "list": {
     "heading": "Tutte le recensioni",
-    "empty": "Ancora nessuna recensione pubblicata. Sii il primo — condividi la tua esperienza qui sotto.",
+    "empty": "Ancora nessuna recensione pubblicata. Sia la prima voce — condivida la Sua esperienza qui sotto.",
     "verified": "Acquisto verificato"
   },
   "roles": {
@@ -32,23 +33,23 @@
   },
   "form": {
     "heading": "Lascia una recensione",
-    "intro": "La tua recensione apparirà dopo la verifica del numero d'ordine. Pubblichiamo solo nome e città — la tua e-mail rimane riservata.",
+    "intro": "La Sua recensione apparirà dopo la verifica del numero d'ordine. Pubblichiamo solo nome e città — la Sua e-mail rimane riservata.",
     "stars": "Valutazione",
     "name": "Nome (o iniziali)",
     "city": "Città",
     "email": "E-mail (riservata, solo per la verifica)",
     "order": "Numero d'ordine (dalla conferma d'ordine)",
-    "text": "La tua esperienza",
-    "textHint": "Descrivi con parole tue cosa è cambiato dopo 14 giorni — energia, pelle, sonno, digestione —, come ti sembra il sapore e cosa ti ha sorpreso.",
+    "text": "La Sua esperienza",
+    "textHint": "Descriva con parole Sue cosa è cambiato dopo 14 giorni — energia, gusto, rituale —, che sapore ha l'elisir e cosa L'ha sorpresa.",
     "textPlaceholder": "",
     "consent": "Autorizzo AmberNord a pubblicare il mio nome, la mia città e il testo della recensione sul sito web. La mia e-mail rimane riservata.",
     "submit": {
       "label": "Invia recensione",
       "sending": "Invio in corso…"
     },
-    "success": "Grazie! La tua recensione è stata inviata. Dopo la verifica del numero d'ordine, apparirà qui — di solito entro 48 ore.",
-    "error": "Invio non riuscito. Riprova.",
+    "success": "Grazie! La Sua recensione è stata inviata. Dopo la verifica del numero d'ordine apparirà qui — di solito entro 48 ore.",
+    "error": "Invio non riuscito. La preghiamo di riprovare.",
     "hiddenSubject": "Nuova recensione da AmberNord.ch"
   },
-  "secretNote": "Nessun ordine ancora? <a href=\"/2-fuer-1/\" data-link>Approfittane: 2 × The Starter al prezzo di 1 — limitato a 250 posti.</a>"
+  "secretNote": "Nessun ordine ancora? <a href=\"/2-fuer-1/\" data-link>Si assicuri 2 × The Starter al prezzo di 1 — limitato a 250 set.</a>"
 }

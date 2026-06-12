@@ -12,7 +12,7 @@
     "orderStatus": "Stato dell'ordine",
     "reviews": "Recensioni",
     "returns": "Resi",
-    "cta": "Ordina ora",
+    "cta": "Ordini ora",
     "ctaRitual": "Al Rituale →",
     "b2bAriaLabel": "Area B2B"
   },
@@ -25,16 +25,15 @@
   },
   "aktion": {
     "eyebrow": "Edizione di lancio",
-    "body": "2 × The Starter al prezzo di 1 · Limitato a 250 posti",
+    "body": "2 × The Starter al prezzo di 1 · Limitato a 250 set",
     "bodyShort": "2 per 1 · The Starter",
-    "cta": "Prenota ora →",
-    "dismiss": "Chiudi promo",
-    "info": "Effetto dopo 14 giorni — condividi la recensione & ispira altri"
+    "cta": "Prenoti ora →",
+    "dismiss": "Chiudi promo"
   },
   "cta": {
-    "startNow": "Inizia ora",
-    "buyNow": "Ordina ora",
-    "discover": "Scopri"
+    "startNow": "Inizi ora",
+    "buyNow": "Ordini ora",
+    "discover": "Scopra"
   },
   "cookie": {
     "title": "Privacy e cookie",

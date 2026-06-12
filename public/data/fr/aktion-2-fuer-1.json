@@ -1,12 +1,12 @@
 {
   "meta": {
     "title": "Édition de lancement · 2 pour 1 | AmberNord",
-    "description": "Édition de lancement : 2 × The Starter pour le prix d'un. Limité à 250 places en Suisse. En contrepartie, nous demandons un avis honnête après 14 jours.",
+    "description": "Édition de lancement : 2 × The Starter pour le prix d'un. Limité à 250 sets en Suisse. En contrepartie, nous demandons un avis honnête après 14 jours.",
     "canonical": "https://ambernord.ch/2-fuer-1/",
     "robots": "index, follow",
     "og": {
       "title": "Édition de lancement · 2 pour 1 | AmberNord",
-      "description": "2 × The Starter pour le prix d'un. Limité à 250 places. En contrepartie : ta voix honnête.",
+      "description": "2 × The Starter pour le prix d'un. Limité à 250 sets. En contrepartie : votre voix honnête.",
       "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/v1778164908/Markteinf%C3%BChrungs-Aktion_2_The_Starter_zum_Preis_von_1_Im_Gegenzug_bitten_wir_nach_14_Tagen_um_eine_ehrliche_Bewertung_pbompq.jpg",
       "type": "website"
     }
@@ -14,11 +14,11 @@
   "hero": {
     "eyebrow": "Édition de lancement",
     "h1": "2 × The Starter.<br><span>Un prix. Une demande.</span>",
-    "sub": "Une bouteille dure 10 jours. La deuxième est notre engagement à l'équité — pour que tu puisses décider sereinement.",
+    "sub": "Une bouteille dure 10 jours. La deuxième est notre engagement à l'équité — pour que vous puissiez décider sereinement.",
     "imageAlt": "AmberNord The Starter — Édition de lancement",
     "ctaLabel": "Réserver l'offre",
     "ctaPrice": "24.90 CHF · frais d'expédition en sus",
-    "fine": "Limité à 250 places · Avis facultatif · Paiement sécurisé via TWINT · Carte · G-Pay · Apple Pay"
+    "fine": "Limité à 250 sets · Avis facultatif · Paiement sécurisé via TWINT · Carte · G-Pay · Apple Pay"
   },
   "deal": {
     "bottles": "2 × 250 ml The Starter",
@@ -31,7 +31,7 @@
     "heading": "Questions fréquentes",
     "q1": {
       "q": "Pourquoi la deuxième bouteille est-elle gratuite ?",
-      "a": "Nous investissons en toi au lieu d'investir en publicité. Un avis honnête vaut plus pour nous que toute annonce payée."
+      "a": "Nous investissons en vous au lieu d'investir en publicité. Un avis honnête vaut plus pour nous que toute annonce payée."
     },
     "q2": {
       "q": "Comment utiliser le concentré ?",
@@ -39,11 +39,11 @@
     },
     "q3": {
       "q": "Dois-je écrire un avis ?",
-      "a": "Non, facultatif. Tu gardes les deux bouteilles que tu écrives un avis ou non."
+      "a": "Non, facultatif. Vous gardez les deux bouteilles, que vous écriviez un avis ou non."
     },
     "q4": {
       "q": "Puis-je commander plusieurs offres par foyer ?",
-      "a": "Une seule offre par foyer est autorisée afin de garantir la diversité parmi les 250 premières places. Pour une famille nombreuse, écris-nous brièvement via le <a href=\"/hilfe/kontakt/\" data-link>formulaire de contact</a> — nous ferons une exception et livrerons jusqu'à 2× à la même adresse."
+      "a": "Une seule offre par foyer est autorisée afin de garantir la diversité parmi les 250 premiers sets. Pour une famille nombreuse, écrivez-nous brièvement via le <a href=\"/hilfe/kontakt/\" data-link>formulaire de contact</a> — nous ferons une exception et livrerons jusqu'à 2× à la même adresse."
     }
   }
 }

@@ -1,12 +1,12 @@
 {
   "meta": {
     "title": "Launch Edition · 2 for 1 | AmberNord",
-    "description": "Launch Edition: 2 × The Starter for the price of 1. Limited to 250 spots in Switzerland. In exchange, we ask for an honest review after 14 days.",
+    "description": "Launch Edition: 2 × The Starter for the price of 1. Limited to 250 sets in Switzerland. In exchange, we ask for an honest review after 14 days.",
     "canonical": "https://ambernord.ch/2-fuer-1/",
     "robots": "index, follow",
     "og": {
       "title": "Launch Edition · 2 for 1 | AmberNord",
-      "description": "2 × The Starter for the price of 1. Limited to 250 spots. In exchange: your honest voice.",
+      "description": "2 × The Starter for the price of 1. Limited to 250 sets. In exchange: your honest voice.",
       "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/v1778164908/Markteinf%C3%BChrungs-Aktion_2_The_Starter_zum_Preis_von_1_Im_Gegenzug_bitten_wir_nach_14_Tagen_um_eine_ehrliche_Bewertung_pbompq.jpg",
       "type": "website"
     }
@@ -18,7 +18,7 @@
     "imageAlt": "AmberNord The Starter — Launch Edition",
     "ctaLabel": "Claim the offer",
     "ctaPrice": "24.90 CHF · plus shipping",
-    "fine": "Limited to 250 spots · Reviews voluntary · Secure payment via TWINT · Card · G-Pay · Apple Pay"
+    "fine": "Limited to 250 sets · Reviews voluntary · Secure payment via TWINT · Card · G-Pay · Apple Pay"
   },
   "deal": {
     "bottles": "2 × 250 ml The Starter",
@@ -43,7 +43,7 @@
     },
     "q4": {
       "q": "Can I order more than one deal per household?",
-      "a": "Only one deal per household is allowed so we can ensure diversity among the first 250 spots. For larger families, drop us a note via the <a href=\"/hilfe/kontakt/\" data-link>contact form</a> — we'll make an exception and ship up to 2× to the same address."
+      "a": "Only one deal per household is allowed so we can ensure diversity among the first 250 sets. For larger families, drop us a note via the <a href=\"/hilfe/kontakt/\" data-link>contact form</a> — we'll make an exception and ship up to 2× to the same address."
     }
   }
 }

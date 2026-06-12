@@ -1,12 +1,12 @@
 {
   "meta": {
     "title": "The Habit (3× 250 ml) | AmberNord Élixir d'Argousier",
-    "description": "The Habit : le rituel de 30 jours pour une concentration durable, l'énergie et la régénération cellulaire. Certifié bio, Oméga-7, 190+ composés bioactifs.",
+    "description": "The Habit : le rituel de 30 jours à l'argousier bio pressé à froid. Certifié bio, Oméga-7, 190+ composés bioactifs.",
     "canonical": "https://ambernord.ch/fr/shop/habit/",
     "robots": "index, follow",
     "og": {
       "title": "The Habit (3× 250 ml) | AmberNord",
-      "description": "Le rituel de 30 jours pour une concentration durable et la régénération cellulaire.",
+      "description": "Le rituel de 30 jours à l'argousier bio pressé à froid.",
       "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/v1774798926/ambernord-sanddornsaft-kur-3er-pack-longevity-biohacking.webp_cg74qe.png",
       "type": "product"
     },
@@ -27,24 +27,24 @@
   "info": {
     "title": "The Habit",
     "volume": "(3× 250 ml)",
-    "price": "69,00 CHF",
+    "price": "69.00 CHF",
     "savings": "−8 % vs. Starter",
-    "daily": "≈ 2,30 CHF / jour",
+    "daily": "≈ 2.30 CHF / jour",
     "subtitleH3": "Le rituel de 30 jours :",
     "subtitleSpan": "L'énergie véritable au lieu des coups de fouet artificiels.",
-    "lead": "Les boissons énergisantes conventionnelles vous coûtent en moyenne 3 francs par canette – et ne vous rapportent que fatigue et déshydratation. Avec « The Habit », vous investissez dans une toute autre catégorie : une essence hautement concentrée qui n'a besoin d'aucune caféine synthétique.",
+    "lead": "L'alternative naturelle aux boissons énergisantes artificielles — sans sucres ajoutés, sans taurine synthétique. Avec « The Habit », vous investissez dans une toute autre catégorie : une essence hautement concentrée qui n'a besoin d'aucune caféine synthétique.",
     "ctaPrimary": "Commander 3× élixir",
     "advantageHeading": "Un upgrade biologique",
-    "advantageBody": "Notre exclusive Sélection Zelt utilise le rare <span class=\"p-gold\">acide gras Oméga-7</span> (jusqu'à 42 % de concentration), 18 acides aminés essentiels et plus de 190 composés bioactifs pour régénérer vos cellules de l'intérieur. Ce n'est pas un effet à court terme, mais une base durable pour votre concentration et votre système immunitaire.",
+    "advantageBody": "Notre exclusive Sélection Zelt fournit le rare <span class=\"p-gold\">acide gras Oméga-7</span> (jusqu'à 42 % de concentration), 18 acides aminés essentiels et plus de 190 composés bioactifs — la baie entière, pressée à froid. La vitamine C contribue au fonctionnement normal du système immunitaire et à réduire la fatigue.",
     "scienceHeading": "Le pack comprend",
     "scienceItem1": "<strong>3× 250 ml</strong> d'essence biologique pure, pressée à froid (Sélection Zelt).",
-    "scienceItem2": "<strong>30 jours</strong> de soutien complet pour la concentration et la régénération.",
-    "scienceItem3": "Donne jusqu'à <span class=\"p-gold\">9 litres</span> de boisson premium revitalisante.",
+    "scienceItem2": "<strong>30 jours</strong> de rituel quotidien — une bouteille tous les 10 jours.",
+    "scienceItem3": "Donne plus de <span class=\"p-gold\">8 litres</span> de boisson premium revitalisante.",
     "scienceItem4": "<strong>Livraison premium gratuite</strong> directement depuis Aarau.",
     "abo": {
       "label": "Économisez avec l'abonnement — résiliable à tout moment",
-      "top": "Économisez avec l'abonnement (−7,7 %)",
-      "price": "63,00 CHF",
+      "top": "Économisez avec l'abonnement (−9 %)",
+      "price": "63.00 CHF",
       "subtext": "par mois",
       "guarantee": "✓ Résiliable à tout moment"
     },
@@ -56,17 +56,17 @@
     "starter": {
       "title": "The Starter",
       "subtitle": "(1× 250 ml)",
-      "price": "24,90 CHF",
+      "price": "24.90 CHF",
       "extra": "Pour faire connaissance",
-      "daily": "Seulement 2,49 CHF / jour",
+      "daily": "Seulement 2.49 CHF / jour",
       "shipping": "+ frais de port"
     },
     "protocol": {
       "title": "The Protocol",
       "subtitle": "(6× 250 ml)",
-      "price": "129,00 CHF",
+      "price": "129.00 CHF",
       "extra": "Pour la famille & la concentration",
-      "daily": "Seulement 2,15 CHF / jour",
+      "daily": "Seulement 2.15 CHF / jour",
       "savings": "−14 % vs. Starter",
       "shipping": "Livraison gratuite | Abonnement disponible"
     }

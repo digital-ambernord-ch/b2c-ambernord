@@ -27,15 +27,15 @@
   "floatCards": {
     "vitamins": {
       "eyebrow": "Vitamines",
-      "text": "Haute teneur naturelle en vitamine C – contribue à réduire la fatigue et l'épuisement."
+      "text": "Haute teneur naturelle en vitamine C – la vitamine C contribue à réduire la fatigue."
     },
     "balance": {
-      "eyebrow": "Peau & Intestin",
-      "text": "L'une des sources végétales d'Oméga-7 les plus rares – soutient la peau et les muqueuses de l'intérieur."
+      "eyebrow": "Acides gras rares",
+      "text": "L'une des sources végétales les plus rares d'acide palmitoléique (oméga-7) — jusqu'à 42 % dans l'huile de pulpe. Un élément central de la matrice lipidique."
     },
     "immunity": {
       "eyebrow": "Système immunitaire",
-      "text": "Composés bioactifs et vitamine C naturelle – contribue au fonctionnement normal du système immunitaire."
+      "text": "Composés bioactifs et vitamine C naturelle – la vitamine C contribue au fonctionnement normal du système immunitaire."
     },
     "craft": {
       "eyebrow": "Artisanat",
@@ -47,12 +47,12 @@
     "taglineColdPress": "PRESSÉ À FROID",
     "taglineBio": "CERTIFIÉ BIO",
     "bioLogoAlt": "Certifié EU Organic",
-    "h1": "L'or liquide du Nord.<br><span>Concentré d'argousier bio pressé à froid. Plus de 190 composés bioactifs. Un rituel de 30 secondes par jour.</span>",
+    "h1": "L'or liquide du Nord.<br><span>Concentré d'argousier bio pressé à froid · 190+ composés bioactifs · 30 secondes par jour.</span>",
     "productAlt": "Bouteille AmberNord Édition Premium",
-    "benefit1": "Énergie tangible grâce à 190+ composés bioactifs",
-    "benefit2": "Oméga-7 pour la peau & l'intestin – l'une des sources les plus rares de la nature",
+    "benefit1": "La vitamine C contribue à réduire la fatigue — de l'énergie sans crash",
+    "benefit2": "Oméga-7 — l'une des sources les plus rares de la nature, jusqu'à 42 % dans l'huile de pulpe",
     "nativeOils": "La baie entière : huiles de pulpe &amp; de pépin –<br>rien ne se perd",
-    "cta": "Essayer maintenant – dès 24,90 CHF"
+    "cta": "Essayer maintenant – dès 24.90 CHF"
   },
   "closingCta": {
     "eyebrow": "Prêt ?",
@@ -70,8 +70,8 @@
     "title": "Votre rituel. Trois formats.",
     "starter": {
       "price": {
-        "daily": "2,49 CHF / jour",
-        "full": "24,90 CHF achat unique"
+        "daily": "2.49 CHF / jour",
+        "full": "24.90 CHF achat unique"
       },
       "extra": "Idéal pour essayer",
       "benefit1": "Première rencontre avec le rituel",
@@ -84,23 +84,23 @@
     "habit": {
       "badge": "LE PLUS CHOISI",
       "price": {
-        "daily": "2,30 CHF / jour",
-        "full": "69,00 CHF achat unique",
-        "perBottle": "23,00 CHF / bouteille"
+        "daily": "2.30 CHF / jour",
+        "full": "69.00 CHF achat unique",
+        "perBottle": "23.00 CHF / bouteille"
       },
       "extra": "Le rituel de 30 jours",
       "benefit1": "30 jours de rituel quotidien",
       "benefit2": "Seulement 30 secondes par jour",
-      "benefit3": "Protection des cellules contre le stress oxydatif",
+      "benefit3": "La vitamine C contribue à protéger les cellules contre le stress oxydatif",
       "units": "3× 250 ml",
       "shipping": "<span class=\"card-shipping-note__free\">livraison gratuite</span> incluse",
       "btn": "Commencer 30 jours"
     },
     "protocol": {
       "price": {
-        "daily": "2,15 CHF / jour",
-        "full": "129,00 CHF achat unique",
-        "perBottle": "21,50 CHF / bouteille"
+        "daily": "2.15 CHF / jour",
+        "full": "129.00 CHF achat unique",
+        "perBottle": "21.50 CHF / bouteille"
       },
       "extra": "Pour la famille & la concentration à long terme",
       "benefit1": "60 jours d'approvisionnement continu",
@@ -121,14 +121,14 @@
     "h2": "La fin des<br><span class=\"ambernord-text-gold\">raccourcis synthétiques.</span>",
     "lead": "Les compléments isolés synthétiquement et les stimulants artificiels prêtent au corps une énergie qu'il devra rembourser avec intérêts.",
     "pullquote": "« La vraie énergie ne connaît pas de dettes. »",
-    "body": "C'est précisément là qu'AmberNord intervient — la réponse à une véritable performance cellulaire. Pas un coup de fouet à court terme, mais un <strong class=\"ambernord-fw-500\">upgrade biologique</strong>. Nous extrayons l'essence la plus pure de la nature nordique pour vous offrir un outil de biohacking durable et de régénération profonde, directement en Suisse."
+    "body": "C'est précisément là qu'AmberNord intervient — la réponse à une véritable performance cellulaire. Pas un coup de fouet à court terme, mais un <strong class=\"ambernord-fw-500\">upgrade biologique</strong>. Nous extrayons l'essence la plus pure de la nature nordique pour vous offrir un outil de biohacking durable et un rituel d'une pureté sans compromis, directement en Suisse."
   },
   "ritualBlock": {
     "eyebrow": "Le Rituel",
     "h2": "Une part d'or.<br><span class=\"ambernord-text-gold\">Dix parts de vie.</span>",
     "lead": "La plupart des compléments alimentaires sont isolés synthétiquement et les boissons santé conventionnelles sont remplies de sucre caché. AmberNord emprunte une voie totalement différente.",
     "pullquote": "« L'essence, pas l'imitation. »",
-    "body": "Nous vous proposons une essence brute, pure et hautement concentrée – conçue pour une synergie parfaite avec l'eau. Le protocole 1:10 (1 part d'essence, 10 parts d'eau) est votre catalyseur quotidien. Dans cette symbiose, les rares acides gras Oméga, les acides aminés et la vitamine C naturelle sont absorbés au maximum par le corps. Le résultat : hydratation profonde, nettement moins de fatigue et protection des cellules contre le stress oxydatif."
+    "body": "Nous vous proposons une essence brute, pure et hautement concentrée – conçue pour une synergie parfaite avec l'eau. Le protocole 1:10 (1 part d'essence, 10 parts d'eau) est votre catalyseur quotidien. Dans cette symbiose, les rares acides gras Oméga, les acides aminés et la vitamine C naturelle sont absorbés au maximum par le corps. Le résultat : une hydratation profonde — et la vitamine C contribue à réduire la fatigue et à protéger les cellules contre le stress oxydatif."
   },
   "sourcing": {
     "eyebrow": "Sourcing Exclusif",

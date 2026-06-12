@@ -1,13 +1,13 @@
 {
   "meta": {
     "title": "Ordine confermato | AmberNord",
-    "description": "Il tuo ordine AmberNord è confermato. Stiamo preparando il tuo elisir d'ambra personale con la massima cura e precisione.",
+    "description": "Il Suo ordine AmberNord è stato ricevuto. Stiamo preparando il Suo elisir d'ambra personale con la massima cura.",
     "canonical": "https://ambernord.ch/danke/",
     "slug": "/danke/",
     "robots": "noindex, nofollow",
     "og": {
       "title": "Ordine confermato | AmberNord",
-      "description": "L'oro liquido del Nord è in viaggio verso di te.",
+      "description": "L'oro liquido del Nord è in viaggio verso di Lei.",
       "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/ambernord-og",
       "type": "website"
     },
@@ -21,16 +21,16 @@
   },
   "header": {
     "eyebrow": "Ordine confermato",
-    "h1": "La natura prende il sopravvento.<br><span>Il tuo rituale inizia.</span>"
+    "h1": "La natura prende il sopravvento.<br><span>Il Suo rituale inizia.</span>"
   },
   "confirmation": {
     "heading": "Conferma ordine"
   },
   "body": {
-    "primary": "Hai scelto l'oro liquido del Nord. Stiamo preparando il tuo elisir personale con la massima cura – con la precisione e la purezza che meriti.",
-    "secondary": "Non appena il tuo pacco sarà in viaggio, ti contatteremo. Assapora l'attesa del rinnovamento cellulare."
+    "primary": "Ha scelto l'oro liquido del Nord. Stiamo preparando il Suo elisir personale con la massima cura – con la precisione e la purezza che Lei si aspetta.",
+    "secondary": "Non appena il Suo pacco sarà in viaggio, La contatteremo. Si goda l'attesa del Suo rituale quotidiano."
   },
-  "tagline": "Grazie di cuore per la tua fiducia.",
+  "tagline": "Grazie di cuore per la Sua fiducia.",
   "cta": {
     "label": "Torna al negozio",
     "href": "https://ambernord-ritual-v2.dashnexpages.net/startseite/?go=ritual-products"
@@ -39,15 +39,15 @@
     "heading": "Cosa succede dopo",
     "step1": {
       "title": "Spedizione",
-      "text": "Imballiamo con cura il tuo ordine nel nostro centro logistico di Aarau e lo spediamo solitamente entro 24 ore."
+      "text": "Imballiamo con cura il Suo ordine nel nostro centro logistico di Aarau e lo spediamo solitamente entro 24 ore."
     },
     "step2": {
       "title": "Giorno 14 — Promemoria via e-mail",
-      "text": "Dopo 14 giorni di utilizzo quotidiano ricevi una breve e-mail che ti chiede una recensione onesta. La partecipazione è facoltativa."
+      "text": "Dopo 14 giorni di utilizzo quotidiano riceverà una breve e-mail con la richiesta di una recensione onesta. La partecipazione è facoltativa."
     },
     "step3": {
-      "title": "Condividi la tua esperienza",
-      "text": "Descrivi con parole tue cosa è cambiato — energia, pelle, sonno, digestione. Dopo la verifica del tuo numero d'ordine, la recensione apparirà sul sito."
+      "title": "Condivida la Sua esperienza",
+      "text": "Descrive con parole Sue cosa è cambiato — energia, gusto, rituale. Dopo la verifica del Suo numero d'ordine, la recensione apparirà sul sito."
     },
     "cta": "Lascia una recensione più tardi →"
   }

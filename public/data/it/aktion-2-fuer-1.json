@@ -1,12 +1,12 @@
 {
   "meta": {
     "title": "Edizione di lancio · 2 per 1 | AmberNord",
-    "description": "Edizione di lancio: 2 × The Starter al prezzo di 1. Limitato a 250 posti in Svizzera. In cambio chiediamo una recensione onesta dopo 14 giorni.",
+    "description": "Edizione di lancio: 2 × The Starter al prezzo di 1. Limitato a 250 set in Svizzera. In cambio chiediamo una recensione onesta dopo 14 giorni.",
     "canonical": "https://ambernord.ch/2-fuer-1/",
     "robots": "index, follow",
     "og": {
       "title": "Edizione di lancio · 2 per 1 | AmberNord",
-      "description": "2 × The Starter al prezzo di 1. Limitato a 250 posti. In cambio: la tua voce onesta.",
+      "description": "2 × The Starter al prezzo di 1. Limitato a 250 set. In cambio: la Sua voce onesta.",
       "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/v1778164908/Markteinf%C3%BChrungs-Aktion_2_The_Starter_zum_Preis_von_1_Im_Gegenzug_bitten_wir_nach_14_Tagen_um_eine_ehrliche_Bewertung_pbompq.jpg",
       "type": "website"
     }
@@ -14,11 +14,11 @@
   "hero": {
     "eyebrow": "Edizione di lancio",
     "h1": "2 × The Starter.<br><span>Un prezzo. Una richiesta.</span>",
-    "sub": "Una bottiglia dura 10 giorni. La seconda è il nostro impegno all'equità — per poter decidere con calma.",
+    "sub": "Una bottiglia dura 10 giorni. La seconda è il nostro impegno all'equità — così può decidere con calma.",
     "imageAlt": "AmberNord The Starter — Edizione di lancio",
-    "ctaLabel": "Prenota l'offerta",
+    "ctaLabel": "Prenoti l'offerta",
     "ctaPrice": "24.90 CHF · spese di spedizione escluse",
-    "fine": "Limitato a 250 posti · Recensione facoltativa · Pagamento sicuro con TWINT · Carta · G-Pay · Apple Pay"
+    "fine": "Limitato a 250 set · Recensione facoltativa · Pagamento sicuro con TWINT · Carta · G-Pay · Apple Pay"
   },
   "deal": {
     "bottles": "2 × 250 ml The Starter",
@@ -31,7 +31,7 @@
     "heading": "Domande frequenti",
     "q1": {
       "q": "Perché la seconda bottiglia è gratuita?",
-      "a": "Investiamo in te invece che in pubblicità. Una recensione onesta vale più per noi di qualsiasi annuncio a pagamento."
+      "a": "Investiamo in Lei invece che in pubblicità. Una recensione onesta vale più per noi di qualsiasi annuncio a pagamento."
     },
     "q2": {
       "q": "Come si usa il concentrato?",
@@ -39,11 +39,11 @@
     },
     "q3": {
       "q": "Devo scrivere una recensione?",
-      "a": "No, facoltativa. Mantieni entrambe le bottiglie, che tu scriva o meno una recensione."
+      "a": "No, facoltativa. Lei conserva entrambe le bottiglie indipendentemente dalla recensione."
     },
     "q4": {
       "q": "Posso ordinare più offerte per nucleo familiare?",
-      "a": "È consentita una sola offerta per nucleo familiare, per garantire la diversità tra i primi 250 posti. Per famiglie numerose, scrivici brevemente tramite il <a href=\"/hilfe/kontakt/\" data-link>modulo di contatto</a> — faremo un'eccezione e spediremo fino a 2× allo stesso indirizzo."
+      "a": "È consentita una sola offerta per nucleo familiare, per garantire la diversità tra i primi 250 set. Per famiglie numerose, ci scriva brevemente tramite il <a href=\"/hilfe/kontakt/\" data-link>modulo di contatto</a> — faremo un'eccezione e spediremo fino a 2× allo stesso indirizzo."
     }
   }
 }

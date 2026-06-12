@@ -24,24 +24,24 @@
   "info": {
     "title": "The Protocol",
     "volume": "(6× 250 ml)",
-    "price": "129,00 CHF",
+    "price": "129.00 CHF",
     "savings": "−14 % vs. Starter",
-    "daily": "≈ 2,15 CHF / jour",
+    "daily": "≈ 2.15 CHF / jour",
     "subtitleH3": "Le protocole ultime :",
     "subtitleSpan": "Pour les hauts performeurs et les familles.",
     "lead": "Conçu pour ceux qui ne font aucun compromis. « The Protocol » garantit que votre rituel quotidien de protection ne s'interrompt jamais – la manière la plus efficace de fournir à votre corps plus de 190 composés bioactifs et les quatre acides gras Oméga.",
     "ctaPrimary": "Commander 6× élixir",
     "advantageHeading": "Vitalité sans compromis",
-    "advantageBody": "Que ce soit pour l'équipe en télétravail, toute la famille ou comme cure de longue durée pour une régénération cellulaire maximale – <span class=\"p-gold\">ce pack offre la valeur AmberNord exceptionnelle.</span> Protégez vos yeux de la lumière bleue et renforcez votre résilience immunitaire au plus haut niveau naturel.",
+    "advantageBody": "Que ce soit pour l'équipe en télétravail, toute la famille ou comme routine de longue durée – <span class=\"p-gold\">ce pack offre la valeur AmberNord exceptionnelle.</span> La vitamine C contribue au fonctionnement normal du système immunitaire — votre fondation pour 60 jours.",
     "scienceHeading": "Le pack comprend",
     "scienceItem1": "<strong>6× 250 ml</strong> d'essence biologique pure, pressée à froid (Sélection Zelt).",
     "scienceItem2": "L'<strong>investissement le plus efficace</strong> pour votre santé cellulaire.",
-    "scienceItem3": "Donne jusqu'à <span class=\"p-gold\">18 litres</span> de boisson premium revitalisante.",
+    "scienceItem3": "Donne plus de <span class=\"p-gold\">16 litres</span> de boisson premium revitalisante.",
     "scienceItem4": "<strong>Livraison premium gratuite</strong> directement depuis notre centre logistique d'Aarau.",
     "abo": {
       "label": "Économisez avec l'abonnement — résiliable à tout moment",
-      "top": "Économisez avec l'abonnement (−9 %)",
-      "price": "119,00 CHF",
+      "top": "Économisez avec l'abonnement (−8 %)",
+      "price": "119.00 CHF",
       "subtext": "par mois",
       "guarantee": "✓ Résiliable à tout moment"
     },
@@ -53,18 +53,18 @@
     "starter": {
       "title": "The Starter",
       "subtitle": "(1× 250 ml)",
-      "price": "24,90 CHF",
+      "price": "24.90 CHF",
       "extra": "Pour faire connaissance",
-      "daily": "Seulement 2,49 CHF / jour",
+      "daily": "Seulement 2.49 CHF / jour",
       "shipping": "+ frais de port"
     },
     "habit": {
       "badge": "PLUS POPULAIRE",
       "title": "The Habit",
       "subtitle": "(3× 250 ml)",
-      "price": "69,00 CHF",
+      "price": "69.00 CHF",
       "extra": "Le rituel de 30 jours",
-      "daily": "Seulement 2,30 CHF / jour",
+      "daily": "Seulement 2.30 CHF / jour",
       "savings": "−8 % vs. Starter",
       "shipping": "Livraison gratuite | Abonnement disponible"
     }

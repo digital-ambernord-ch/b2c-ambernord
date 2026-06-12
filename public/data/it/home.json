@@ -27,11 +27,11 @@
   "floatCards": {
     "vitamins": {
       "eyebrow": "Vitamine",
-      "text": "Alto contenuto naturale di vitamina C – contribuisce alla riduzione della stanchezza e dell'affaticamento."
+      "text": "Alto contenuto naturale di vitamina C – la vitamina C contribuisce alla riduzione della stanchezza e dell'affaticamento."
     },
     "balance": {
-      "eyebrow": "Pelle & Intestino",
-      "text": "Una delle più rare fonti vegetali di Omega-7 – sostiene pelle e mucose dall'interno."
+      "eyebrow": "Acidi grassi rari",
+      "text": "Una delle più rare fonti vegetali di acido palmitoleico (Omega-7) — fino al 42 % nell'olio di polpa. Un elemento centrale della matrice lipidica."
     },
     "immunity": {
       "eyebrow": "Sistema immunitario",
@@ -47,12 +47,12 @@
     "taglineColdPress": "SPREMUTO A FREDDO",
     "taglineBio": "CERTIFICATO BIO",
     "bioLogoAlt": "Certificato EU Organic",
-    "h1": "L'oro liquido del Nord.<br><span>Concentrato di olivello spinoso bio spremuto a freddo. Oltre 190 composti bioattivi. Un rituale di 30 secondi al giorno.</span>",
+    "h1": "L'oro liquido del Nord.<br><span>Concentrato di olivello spinoso bio spremuto a freddo · 190+ composti bioattivi · 30 secondi al giorno.</span>",
     "productAlt": "Bottiglia AmberNord Edizione Premium",
-    "benefit1": "Energia tangibile da oltre 190 composti bioattivi",
-    "benefit2": "Omega-7 per pelle & intestino – una delle fonti più rare della natura",
+    "benefit1": "La vitamina C contribuisce alla riduzione della stanchezza e dell'affaticamento — energia senza crash",
+    "benefit2": "Omega-7 — una delle fonti più rare della natura, fino al 42 % nell'olio di polpa",
     "nativeOils": "La bacca intera: oli da polpa &amp; seme –<br>niente va perso",
-    "cta": "Provate ora – da 24,90 CHF"
+    "cta": "Provi ora – da 24.90 CHF"
   },
   "closingCta": {
     "eyebrow": "Pronto?",
@@ -70,8 +70,8 @@
     "title": "Il vostro rituale. Tre formati.",
     "starter": {
       "price": {
-        "daily": "2,49 CHF / giorno",
-        "full": "24,90 CHF una tantum"
+        "daily": "2.49 CHF / giorno",
+        "full": "24.90 CHF una tantum"
       },
       "extra": "Ideale da provare",
       "benefit1": "Primo incontro con il rituale",
@@ -79,28 +79,28 @@
       "benefit3": "Inizio senza rischio",
       "units": "1× 250 ml",
       "shipping": "+ spedizione",
-      "btn": "Inizia ora"
+      "btn": "Inizi ora"
     },
     "habit": {
       "badge": "IL PIÙ SCELTO",
       "price": {
-        "daily": "2,30 CHF / giorno",
-        "full": "69,00 CHF una tantum",
-        "perBottle": "23,00 CHF / bottiglia"
+        "daily": "2.30 CHF / giorno",
+        "full": "69.00 CHF una tantum",
+        "perBottle": "23.00 CHF / bottiglia"
       },
       "extra": "Il rituale di 30 giorni",
       "benefit1": "30 giorni di rituale quotidiano",
       "benefit2": "Solo 30 secondi al giorno",
-      "benefit3": "Protezione delle cellule dallo stress ossidativo",
+      "benefit3": "La vitamina C contribuisce alla protezione delle cellule dallo stress ossidativo",
       "units": "3× 250 ml",
       "shipping": "<span class=\"card-shipping-note__free\">spedizione gratuita</span> inclusa",
-      "btn": "Inizia 30 giorni"
+      "btn": "Inizi i 30 giorni"
     },
     "protocol": {
       "price": {
-        "daily": "2,15 CHF / giorno",
-        "full": "129,00 CHF una tantum",
-        "perBottle": "21,50 CHF / bottiglia"
+        "daily": "2.15 CHF / giorno",
+        "full": "129.00 CHF una tantum",
+        "perBottle": "21.50 CHF / bottiglia"
       },
       "extra": "Per la famiglia & la concentrazione a lungo termine",
       "benefit1": "60 giorni di approvvigionamento continuo",
@@ -108,7 +108,7 @@
       "benefit3": "Miglior prezzo per dose giornaliera",
       "units": "6× 250 ml",
       "shipping": "<span class=\"card-shipping-note__free\">spedizione gratuita</span> inclusa",
-      "btn": "Inizia il mio rituale"
+      "btn": "Inizi il Suo rituale"
     },
     "paymentLabel": "Metodi di pagamento sicuri",
     "protocolInfo": {
@@ -121,14 +121,14 @@
     "h2": "La fine delle<br><span class=\"ambernord-text-gold\">scorciatoie sintetiche.</span>",
     "lead": "Gli integratori isolati sinteticamente e gli stimolanti artificiali prestano al corpo un'energia che dovrà restituire con gli interessi.",
     "pullquote": "«La vera energia non conosce debiti.»",
-    "body": "È proprio qui che AmberNord interviene — la risposta a una vera performance cellulare. Non una spinta a breve termine, ma un <strong class=\"ambernord-fw-500\">upgrade biologico</strong>. Estraiamo l'essenza più pura della natura nordica per portarvi uno strumento di biohacking sostenibile e di rigenerazione profonda direttamente in Svizzera."
+    "body": "È proprio qui che AmberNord interviene — la risposta a una vera performance cellulare. Non una spinta a breve termine, ma un <strong class=\"ambernord-fw-500\">upgrade biologico</strong>. Estraiamo l'essenza più pura della natura nordica per portarvi uno strumento di biohacking sostenibile e un rituale di purezza senza compromessi direttamente in Svizzera."
   },
   "ritualBlock": {
     "eyebrow": "Il Rituale",
     "h2": "Una parte d'oro.<br><span class=\"ambernord-text-gold\">Dieci parti di vita.</span>",
     "lead": "La maggior parte degli integratori sono isolati sinteticamente e le bevande salutari convenzionali sono piene di zuccheri nascosti. AmberNord percorre una strada completamente diversa.",
     "pullquote": "«L'essenza, non l'imitazione.»",
-    "body": "Vi offriamo un'essenza grezza purissima e altamente concentrata – progettata per la perfetta sinergia con l'acqua. Il protocollo 1:10 (1 parte di essenza, 10 parti di acqua) è il vostro catalizzatore quotidiano. In questa simbiosi, i rari acidi grassi Omega, gli amminoacidi e la vitamina C naturale vengono assorbiti al massimo dal corpo. Il risultato: idratazione profonda, una stanchezza nettamente ridotta e protezione delle cellule dallo stress ossidativo."
+    "body": "Vi offriamo un'essenza grezza purissima e altamente concentrata – progettata per la perfetta sinergia con l'acqua. Il protocollo 1:10 (1 parte di essenza, 10 parti di acqua) è il vostro catalizzatore quotidiano. In questa simbiosi, i rari acidi grassi Omega, gli amminoacidi e la vitamina C naturale vengono assorbiti al massimo dal corpo. Il risultato: idratazione profonda. La vitamina C contribuisce alla riduzione della stanchezza e dell'affaticamento e alla protezione delle cellule dallo stress ossidativo."
   },
   "sourcing": {
     "eyebrow": "Sourcing Esclusivo",

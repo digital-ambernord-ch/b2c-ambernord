@@ -42,15 +42,15 @@
       "title": "The Starter",
       "quantity": "1x 250ml",
       "price": "CHF 24.90",
-      "daily": "≈ CHF 2,49 / jour",
-      "subtitle": "L'éveil cellulaire.",
-      "body": "Ressentez la différence. Dissipez le brouillard mental et inondez votre corps d'une vitalité nordique pure. Le premier pas sans compromis vers une concentration accrue.",
+      "daily": "≈ CHF 2.49 / jour",
+      "subtitle": "L'argousier à l'état pur.",
+      "body": "Découvrez la vitalité nordique pure. Le premier pas sans compromis vers votre rituel quotidien.",
       "scienceBox": {
-        "heading": "Votre Effet Immédiat",
+        "heading": "Votre Entrée en Matière",
         "items": [
-          "Clarté perceptible dès la 1ère gorgée.",
-          "L'une des rares sources des 4 acides gras oméga.",
-          "10 jours d'énergie cellulaire pure."
+          "La première gorgée : vive, acidulée, pleine de vie — l'argousier à l'état pur.",
+          "L'une des rares sources des 4 acides gras oméga (3, 6, 7 & 9).",
+          "10 jours de rituel — exactement une bouteille."
         ]
       },
       "buttons": {
@@ -82,15 +82,15 @@
       "quantity": "3x 250ml",
       "price": "CHF 69.00",
       "savings": "−8 % vs. Starter",
-      "daily": "≈ CHF 2,30 / jour",
+      "daily": "≈ CHF 2.30 / jour",
       "subtitle": "La fin de l'énergie artificielle.",
-      "body": "Dites adieu aux chutes d'énergie toxiques des boissons énergisantes artificielles et de la taurine synthétique. Ancrez une concentration durable dans votre routine.",
+      "body": "L'alternative naturelle aux boissons énergisantes artificielles — sans sucres ajoutés, sans taurine synthétique. Ancrez le rituel dans votre routine.",
       "scienceBox": {
         "heading": "La Transformation",
         "items": [
-          "Concentration mesurable, sans coup de pompe en après-midi.",
-          "Inonde les cellules d'Oméga-7 rare.",
-          "Protège et régénère les muqueuses.",
+          "La vitamine C contribue à réduire la fatigue — fini le creux de l'après-midi.",
+          "Jusqu'à 42 % d'Oméga-7 — l'une des sources les plus riches de la nature.",
+          "La matrice complète de la baie entière — huiles de pulpe et de pépin.",
           "30 jours de performance sans compromis."
         ]
       },
@@ -100,7 +100,7 @@
           "href": "https://buy.stripe.com/cNi3cx3PB2Ot6SB4rdbQY01"
         },
         "subscription": {
-          "discountLabel": "Économisez avec l'Abonnement (-7.7%)",
+          "discountLabel": "Économisez avec l'abonnement (−9 %)",
           "price": "CHF 63.00",
           "subtext": "Par Mois",
           "guarantee": "✓ Résiliable à tout moment",
@@ -126,15 +126,15 @@
       "quantity": "6x 250ml",
       "price": "CHF 129.00",
       "savings": "−14 % vs. Starter",
-      "daily": "≈ CHF 2,15 / jour",
+      "daily": "≈ CHF 2.15 / jour",
       "subtitle": "L'outil de biohacking ultime.",
-      "body": "Conçu pour les hautes performances. Maximisez votre longévité et construisez un bouclier immunologique indestructible.",
+      "body": "Conçu pour les hautes performances. Jour après jour, la vitamine C contribue au fonctionnement normal du système immunitaire — 60 jours d'affilée.",
       "scienceBox": {
         "heading": "Le Niveau Maître",
         "items": [
-          "Protection cellulaire complète pendant des mois.",
-          "Le bouclier naturel contre la lumière bleue.",
-          "Plus de 190 principes actifs bioactifs.",
+          "La vitamine C contribue à protéger les cellules contre le stress oxydatif — 60 jours sans interruption.",
+          "Caroténoïdes naturels issus de la baie entière.",
+          "Plus de 190 composés bioactifs.",
           "Rendement maximal, meilleur prix."
         ]
       },
@@ -144,7 +144,7 @@
           "href": "https://buy.stripe.com/3cI6oJbi3gFjb8R8HtbQY02"
         },
         "subscription": {
-          "discountLabel": "Économisez avec l'Abonnement (-9%)",
+          "discountLabel": "Économisez avec l'abonnement (−8 %)",
           "price": "CHF 119.00",
           "subtext": "Par Mois",
           "guarantee": "✓ Résiliable à tout moment",

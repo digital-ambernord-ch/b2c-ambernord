@@ -28,7 +28,7 @@
   },
   "body": {
     "primary": "Vous avez choisi l'or liquide du Nord. Nous préparons maintenant votre élixir personnel avec le plus grand soin – avec la précision et la pureté que vous méritez.",
-    "secondary": "Dès que votre colis sera en route, nous vous contacterons. Savourez l'anticipation du renouvellement cellulaire."
+    "secondary": "Dès que votre colis sera en route, nous vous contacterons. Savourez l'anticipation de votre rituel quotidien."
   },
   "tagline": "Grand merci pour votre confiance.",
   "cta": {
@@ -39,15 +39,15 @@
     "heading": "Ce qui se passe ensuite",
     "step1": {
       "title": "Expédition",
-      "text": "Nous emballons soigneusement ta commande dans notre centre logistique d'Aarau et l'expédions le plus souvent dans les 24 heures."
+      "text": "Nous emballons soigneusement votre commande dans notre centre logistique d'Aarau et l'expédions le plus souvent dans les 24 heures."
     },
     "step2": {
       "title": "Jour 14 — Rappel par e-mail",
-      "text": "Après 14 jours d'utilisation quotidienne, tu reçois un court e-mail te demandant un avis honnête. La participation est facultative."
+      "text": "Après 14 jours d'utilisation quotidienne, vous recevez un court e-mail vous demandant un avis honnête. La participation est facultative."
     },
     "step3": {
-      "title": "Partage ton expérience",
-      "text": "Tu décris avec tes propres mots ce qui a changé — énergie, peau, sommeil, digestion. Après vérification de ton numéro de commande, l'avis apparaît sur le site."
+      "title": "Partagez votre expérience",
+      "text": "Vous décrivez avec vos propres mots ce qui a changé — énergie, goût, rituel. Après vérification de votre numéro de commande, l'avis apparaît sur le site."
     },
     "cta": "Donner un avis plus tard →"
   }

@@ -41,16 +41,16 @@
       },
       "title": "The Starter",
       "quantity": "1x 250ml",
-      "price": "CHF 24.90",
-      "daily": "≈ CHF 2.49 / day",
-      "subtitle": "The cellular awakening.",
-      "body": "Feel the difference. Clear the mental fog and flood your body with pure Nordic vitality. The uncompromising first step toward sharper focus.",
+      "price": "24.90 CHF",
+      "daily": "≈ 2.49 CHF / day",
+      "subtitle": "Sea buckthorn in its pure form.",
+      "body": "Experience pure Nordic vitality. The uncompromising first step into your daily ritual.",
       "scienceBox": {
-        "heading": "Your Immediate Effect",
+        "heading": "Your Start",
         "items": [
-          "Perceptible clarity from the very first sip.",
-          "One of the rare sources of all 4 omega fatty acids.",
-          "10 days of pure, cellular energy."
+          "The first sip: bright, sour, alive — sea buckthorn in its pure form.",
+          "One of the rare sources of all 4 omega fatty acids (3, 6, 7 & 9).",
+          "A 10-day ritual — exactly one bottle."
         ]
       },
       "buttons": {
@@ -80,17 +80,17 @@
       },
       "title": "The Habit",
       "quantity": "3x 250ml",
-      "price": "CHF 69.00",
+      "price": "69.00 CHF",
       "savings": "−8 % vs. Starter",
-      "daily": "≈ CHF 2.30 / day",
+      "daily": "≈ 2.30 CHF / day",
       "subtitle": "The end of artificial energy.",
-      "body": "Say goodbye to toxic energy crashes from artificial energy drinks and synthetic taurine. Anchor sustained focus into your routine.",
+      "body": "The natural alternative to artificial energy drinks — no added sugar, no synthetic taurine. Anchor the ritual in your routine.",
       "scienceBox": {
         "heading": "The Transformation",
         "items": [
-          "Measurable focus without the afternoon slump.",
-          "Floods cells with rare Omega-7.",
-          "Protects and regenerates mucous membranes.",
+          "Vitamin C contributes to the reduction of tiredness and fatigue — no more afternoon slump.",
+          "Up to 42 % Omega-7 — one of nature's richest sources.",
+          "The full matrix of the whole berry — oils from pulp and seed.",
           "30 days of uncompromising performance."
         ]
       },
@@ -100,8 +100,8 @@
           "href": "https://buy.stripe.com/cNi3cx3PB2Ot6SB4rdbQY01"
         },
         "subscription": {
-          "discountLabel": "Save with Subscription (-7.7%)",
-          "price": "CHF 63.00",
+          "discountLabel": "Save with subscription (−9 %)",
+          "price": "63.00 CHF",
           "subtext": "Per Month",
           "guarantee": "✓ Cancel Anytime",
           "href": "https://buy.stripe.com/aFa6oJ71N60F4Kt3n9bQY04"
@@ -124,16 +124,16 @@
       "badge": null,
       "title": "The Protocol",
       "quantity": "6x 250ml",
-      "price": "CHF 129.00",
+      "price": "129.00 CHF",
       "savings": "−14 % vs. Starter",
-      "daily": "≈ CHF 2.15 / day",
+      "daily": "≈ 2.15 CHF / day",
       "subtitle": "The ultimate biohacking tool.",
-      "body": "Designed for high performers. Maximise your longevity and build an indestructible immunological shield.",
+      "body": "Designed for high performers. Vitamin C contributes to the normal function of the immune system — daily, for 60 days straight.",
       "scienceBox": {
         "heading": "The Master Level",
         "items": [
-          "Seamless cellular protection for months.",
-          "The natural shield against blue light.",
+          "Vitamin C contributes to the protection of cells from oxidative stress — 60 days without a gap.",
+          "Natural carotenoids from the whole berry.",
           "Over 190 bioactive compounds active.",
           "Maximum yield, best price."
         ]
@@ -144,8 +144,8 @@
           "href": "https://buy.stripe.com/3cI6oJbi3gFjb8R8HtbQY02"
         },
         "subscription": {
-          "discountLabel": "Save with Subscription (-9%)",
-          "price": "CHF 119.00",
+          "discountLabel": "Save with subscription (−8 %)",
+          "price": "119.00 CHF",
           "subtext": "Per Month",
           "guarantee": "✓ Cancel Anytime",
           "href": "https://buy.stripe.com/9B600lcm7bkZ0ud2j5bQY05"

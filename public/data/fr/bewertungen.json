@@ -1,30 +1,31 @@
 {
   "meta": {
-    "title": "Avis clients | AmberNord",
-    "description": "Voix authentiques de Suisse : expériences non filtrées avec l'élixir d'argousier AmberNord après 14 jours d'utilisation quotidienne.",
+    "title": "Voix de nos clients | AmberNord",
+    "description": "Expériences vérifiées de Suisse : témoignages sur l'élixir d'argousier AmberNord après au moins 14 jours d'utilisation quotidienne.",
     "canonical": "https://ambernord.ch/bewertungen/",
     "robots": "index, follow",
     "og": {
-      "title": "Avis clients | AmberNord",
-      "description": "Voix authentiques de Suisse : expériences non filtrées avec l'élixir d'argousier AmberNord.",
+      "title": "Voix de nos clients | AmberNord",
+      "description": "Expériences vérifiées de Suisse : témoignages sur l'élixir d'argousier AmberNord.",
       "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/v1774787737/AmberNord_Sanddorn_Biohacking_Longevity_Schweiz_Natur_Ritual_Essenz_jwznsd.webp",
       "type": "website"
     }
   },
   "header": {
     "eyebrow": "Voix authentiques",
-    "h1": "Avis<br><span>clients.</span>"
+    "h1": "Voix de<br><span>nos clients.</span>"
   },
   "intro": {
-    "heading": "Avis clients",
-    "p1": "Expériences non filtrées de Suisse — après au moins 14 jours d'utilisation quotidienne. Chaque avis est vérifié par numéro de commande avant publication."
+    "heading": "Voix de nos clients",
+    "p1": "Expériences vérifiées de Suisse — après au moins 14 jours d'utilisation quotidienne. Chaque avis est vérifié à l'aide du numéro de commande."
   },
   "aggregate": {
-    "countTemplate": "{n} avis"
+    "countTemplate": "{n} avis",
+    "countVerifiedTemplate": "{n} avis vérifiés"
   },
   "list": {
     "heading": "Tous les avis",
-    "empty": "Aucun avis publié pour l'instant. Sois le premier — partage ton expérience ci-dessous.",
+    "empty": "Aucun avis publié pour l'instant. Soyez la première voix — partagez votre expérience ci-dessous.",
     "verified": "Achat vérifié"
   },
   "roles": {
@@ -32,23 +33,23 @@
   },
   "form": {
     "heading": "Donner un avis",
-    "intro": "Ton avis apparaîtra après vérification du numéro de commande. Nous publions uniquement ton prénom et ta ville — ton e-mail reste confidentiel.",
+    "intro": "Votre avis apparaîtra après vérification du numéro de commande. Nous publions uniquement votre prénom et votre ville — votre e-mail reste confidentiel.",
     "stars": "Note",
     "name": "Prénom (ou initiales)",
     "city": "Ville",
     "email": "E-mail (confidentiel, pour vérification uniquement)",
     "order": "Numéro de commande (de la confirmation de commande)",
-    "text": "Ton expérience",
-    "textHint": "Décris dans tes propres mots ce qui a changé après 14 jours — énergie, peau, sommeil, digestion —, comment l'élixir te plaît au goût et ce qui t'a surpris.",
+    "text": "Votre expérience",
+    "textHint": "Décrivez dans vos propres mots ce qui a changé après 14 jours — énergie, goût, rituel —, comment vous trouvez le goût de l'élixir et ce qui vous a surpris.",
     "textPlaceholder": "",
     "consent": "J'autorise AmberNord à publier mon prénom, ma ville et mon texte d'avis sur le site web. Mon e-mail reste confidentiel.",
     "submit": {
       "label": "Envoyer l'avis",
       "sending": "Envoi en cours…"
     },
-    "success": "Merci ! Ton avis a été soumis. Après vérification du numéro de commande, il apparaîtra ici — généralement sous 48 heures.",
+    "success": "Merci ! Votre avis a été soumis. Après vérification du numéro de commande, il apparaîtra ici — généralement sous 48 heures.",
     "error": "Échec de l'envoi. Merci de réessayer.",
     "hiddenSubject": "Nouvel avis de AmberNord.ch"
   },
-  "secretNote": "Pas encore de commande ? <a href=\"/2-fuer-1/\" data-link>Procure-toi 2 × The Starter au prix de 1 — limité à 250 places.</a>"
+  "secretNote": "Pas encore de commande ? <a href=\"/2-fuer-1/\" data-link>Profitez de 2 × The Starter pour le prix d'un — limité à 250 sets.</a>"
 }

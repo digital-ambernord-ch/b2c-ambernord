@@ -1,12 +1,12 @@
 {
   "meta": {
-    "title": "Shop – Scegli il Tuo Elisir di Olivello | AmberNord",
-    "description": "Scopri gli elisir di olivello spinoso biologico di AmberNord: The Starter, The Habit e The Protocol. Vitalità nordica pura, spedizione diretta in Svizzera.",
+    "title": "Shop – Scelga il Suo Elisir di Olivello | AmberNord",
+    "description": "Scopra gli elisir di olivello spinoso biologico di AmberNord: The Starter, The Habit e The Protocol. Vitalità nordica pura, spedizione diretta in Svizzera.",
     "canonical": "https://ambernord.ch/shop/",
     "slug": "/shop/",
     "robots": "index, follow",
     "og": {
-      "title": "AmberNord Elisir di Olivello Spinoso – Scegli il Tuo Pacchetto",
+      "title": "AmberNord Elisir di Olivello Spinoso – Scelga il Suo Pacchetto",
       "description": "The Starter, The Habit, The Protocol. Elisir premium di olivello biologico per concentrazione, energia e longevità. Da CHF 24.90.",
       "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/v1774798926/ambernord-sanddornsaft-kur-3er-pack-longevity-biohacking.webp_cg74qe",
       "type": "website"
@@ -21,7 +21,7 @@
   },
   "header": {
     "eyebrow": "Elisir di Olivello Spinoso",
-    "h1": "Scegli il Tuo<br><span>Elisir</span>"
+    "h1": "Scelga il Suo<br><span>Elisir</span>"
   },
   "sections": [
     {
@@ -42,20 +42,20 @@
       "title": "The Starter",
       "quantity": "1x 250ml",
       "price": "CHF 24.90",
-      "daily": "≈ CHF 2,49 / giorno",
-      "subtitle": "Il risveglio cellulare.",
-      "body": "Senti la differenza. Dissolvi la nebbia mentale e inondi il tuo corpo di pura vitalità nordica. Il primo passo senza compromessi verso una maggiore concentrazione.",
+      "daily": "≈ CHF 2.49 / giorno",
+      "subtitle": "Olivello spinoso allo stato puro.",
+      "body": "Provi la pura vitalità nordica. Il primo passo senza compromessi nel Suo rituale quotidiano.",
       "scienceBox": {
-        "heading": "Il Tuo Effetto Immediato",
+        "heading": "Il Suo Inizio",
         "items": [
-          "Chiarezza percepibile dal 1° sorso.",
-          "Una delle rare fonti di tutti e 4 gli acidi grassi omega.",
-          "10 giorni di pura energia cellulare."
+          "Il primo sorso: luminoso, acidulo, vivo — olivello spinoso allo stato puro.",
+          "Una delle rare fonti di tutti e 4 gli acidi grassi omega (3, 6, 7 & 9).",
+          "10 giorni di rituale — esattamente una bottiglia."
         ]
       },
       "buttons": {
         "primary": {
-          "label": "Ordina 1x Elisir",
+          "label": "Ordini 1x Elisir",
           "href": "https://buy.stripe.com/6oU8wR3PBagV3GpaPBbQY00"
         },
         "subscription": null
@@ -82,28 +82,28 @@
       "quantity": "3x 250ml",
       "price": "CHF 69.00",
       "savings": "−8 % vs. Starter",
-      "daily": "≈ CHF 2,30 / giorno",
+      "daily": "≈ CHF 2.30 / giorno",
       "subtitle": "La fine dell'energia artificiale.",
-      "body": "Di' addio ai cali di energia tossici delle bevande energetiche artificiali e della taurina sintetica. Radica una concentrazione duratura nella tua routine.",
+      "body": "L'alternativa naturale alle bevande energetiche artificiali — senza zuccheri aggiunti, senza taurina sintetica. Ancori il rituale nella Sua routine.",
       "scienceBox": {
         "heading": "La Trasformazione",
         "items": [
-          "Concentrazione misurabile, senza calo pomeridiano.",
-          "Inondi le cellule con il raro Omega-7.",
-          "Protegge e rigenera le mucose.",
+          "La vitamina C contribuisce alla riduzione della stanchezza e dell'affaticamento — fine del calo pomeridiano.",
+          "Fino al 42 % di Omega-7 — una delle fonti più ricche della natura.",
+          "La matrice completa della bacca intera — oli da polpa e seme.",
           "30 giorni di performance senza compromessi."
         ]
       },
       "buttons": {
         "primary": {
-          "label": "Ordina 3x Elisir",
+          "label": "Ordini 3x Elisir",
           "href": "https://buy.stripe.com/cNi3cx3PB2Ot6SB4rdbQY01"
         },
         "subscription": {
-          "discountLabel": "Risparmia con Abbonamento (-7.7%)",
+          "discountLabel": "Risparmi con l'abbonamento (−9 %)",
           "price": "CHF 63.00",
           "subtext": "Al Mese",
-          "guarantee": "✓ Disdici quando vuoi",
+          "guarantee": "✓ Disdetta in qualsiasi momento",
           "href": "https://buy.stripe.com/aFa6oJ71N60F4Kt3n9bQY04"
         }
       },
@@ -126,28 +126,28 @@
       "quantity": "6x 250ml",
       "price": "CHF 129.00",
       "savings": "−14 % vs. Starter",
-      "daily": "≈ CHF 2,15 / giorno",
+      "daily": "≈ CHF 2.15 / giorno",
       "subtitle": "Lo strumento di biohacking definitivo.",
-      "body": "Progettato per i top performer. Massimizza la tua longevità e costruisci uno scudo immunologico indistruttibile.",
+      "body": "Progettato per i top performer. La vitamina C contribuisce alla normale funzione del sistema immunitario — ogni giorno, per 60 giorni di seguito.",
       "scienceBox": {
         "heading": "Il Livello Master",
         "items": [
-          "Protezione cellulare completa per mesi.",
-          "Lo scudo naturale contro la luce blu.",
+          "La vitamina C contribuisce alla protezione delle cellule dallo stress ossidativo — 60 giorni senza interruzioni.",
+          "Carotenoidi naturali dalla bacca intera.",
           "Oltre 190 sostanze bioattive attive.",
           "Resa massima, miglior prezzo."
         ]
       },
       "buttons": {
         "primary": {
-          "label": "Ordina 6x Elisir",
+          "label": "Ordini 6x Elisir",
           "href": "https://buy.stripe.com/3cI6oJbi3gFjb8R8HtbQY02"
         },
         "subscription": {
-          "discountLabel": "Risparmia con Abbonamento (-9%)",
+          "discountLabel": "Risparmi con l'abbonamento (−8 %)",
           "price": "CHF 119.00",
           "subtext": "Al Mese",
-          "guarantee": "✓ Disdici quando vuoi",
+          "guarantee": "✓ Disdetta in qualsiasi momento",
           "href": "https://buy.stripe.com/9B600lcm7bkZ0ud2j5bQY05"
         }
       },

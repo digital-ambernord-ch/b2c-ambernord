@@ -27,11 +27,11 @@
   "floatCards": {
     "vitamins": {
       "eyebrow": "Vitamins",
-      "text": "High natural Vitamin C content – contributes to the reduction of tiredness and fatigue."
+      "text": "High natural Vitamin C content – Vitamin C contributes to the reduction of tiredness and fatigue."
     },
     "balance": {
-      "eyebrow": "Skin & Gut",
-      "text": "One of the rarest plant-based sources of Omega-7 – supports skin and mucous membranes from within."
+      "eyebrow": "Rare Fatty Acids",
+      "text": "One of the rarest plant-based sources of palmitoleic acid (Omega-7) — up to 42 % in the pulp oil. A key building block of the lipid matrix."
     },
     "immunity": {
       "eyebrow": "Immune System",
@@ -49,8 +49,8 @@
     "bioLogoAlt": "EU Organic certified",
     "h1": "The liquid gold of the North.<br><span>Cold-pressed organic sea buckthorn concentrate. 190+ bioactive compounds. A 30-second daily ritual.</span>",
     "productAlt": "AmberNord Premium Edition bottle",
-    "benefit1": "Tangible energy from 190+ bioactive compounds",
-    "benefit2": "Omega-7 for skin & gut – one of nature's rarest sources",
+    "benefit1": "Vitamin C contributes to the reduction of tiredness and fatigue — energy without the crash",
+    "benefit2": "Omega-7 — one of nature's rarest sources, up to 42 % in the pulp oil",
     "nativeOils": "The whole berry: oils from pulp &amp; seed –<br>nothing goes to waste",
     "cta": "Try It Now – from 24.90 CHF"
   },
@@ -91,7 +91,7 @@
       "extra": "The 30-day ritual",
       "benefit1": "30 days of daily ritual",
       "benefit2": "Just 30 seconds a day",
-      "benefit3": "Cell protection against oxidative stress",
+      "benefit3": "Vitamin C contributes to the protection of cells from oxidative stress",
       "units": "3× 250 ml",
       "shipping": "incl. <span class=\"card-shipping-note__free\">free shipping</span>",
       "btn": "Start 30 Days"
@@ -121,14 +121,14 @@
     "h2": "The end of<br><span class=\"ambernord-text-gold\">synthetic shortcuts.</span>",
     "lead": "Synthetically isolated supplements and artificial stimulants lend the body energy that it must later repay with interest.",
     "pullquote": "“Real energy knows no debts.”",
-    "body": "This is precisely where AmberNord begins — the answer to genuine cellular performance. Not a short-term kick, but a <strong class=\"ambernord-fw-500\">biological upgrade</strong>. We extract the purest essence of the nordic wilderness to bring you a tool for sustainable biohacking and deep regeneration directly to Switzerland."
+    "body": "This is precisely where AmberNord begins — the answer to genuine cellular performance. Not a short-term kick, but a <strong class=\"ambernord-fw-500\">biological upgrade</strong>. We extract the purest essence of the nordic wilderness to bring you a tool for sustainable biohacking and an uncompromisingly pure ritual directly to Switzerland."
   },
   "ritualBlock": {
     "eyebrow": "The Ritual",
     "h2": "One part gold.<br><span class=\"ambernord-text-gold\">Ten parts life.</span>",
     "lead": "Most nutritional supplements are synthetically isolated, and conventional health drinks are full of hidden sugar. AmberNord takes a completely different path.",
     "pullquote": "“The essence, not the imitation.”",
-    "body": "We offer you an uncompromisingly pure, highly concentrated raw essence – designed for perfect synergy with water. The 1:10 protocol (1 part essence, 10 parts water) is your daily catalyst. In this symbiosis, the rare Omega fatty acids, amino acids and natural Vitamin C are absorbed by the body to the maximum. The result: deep hydration, noticeably less fatigue and cell protection against oxidative stress."
+    "body": "We offer you an uncompromisingly pure, highly concentrated raw essence – designed for perfect synergy with water. The 1:10 protocol (1 part essence, 10 parts water) is your daily catalyst. In this symbiosis, the rare Omega fatty acids, amino acids and natural Vitamin C are absorbed by the body to the maximum. The result: deep hydration — and Vitamin C, which contributes to the reduction of tiredness and fatigue and to the protection of cells from oxidative stress."
   },
   "sourcing": {
     "eyebrow": "Exclusive Sourcing",
