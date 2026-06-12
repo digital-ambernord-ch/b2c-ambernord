@@ -1,12 +1,12 @@
 {
   "meta": {
     "title": "The Habit (3× 250 ml) | AmberNord Sanddorn Elixier",
-    "description": "The Habit: Das 30-Tage-Ritual für nachhaltigen Fokus, Energie und Zellregeneration. Bio-zertifiziert, Omega-7, 190+ Bioaktivstoffe.",
+    "description": "The Habit: Das 30-Tage-Ritual mit kaltgepresstem Bio-Sanddorn. Bio-zertifiziert, Omega-7, 190+ Bioaktivstoffe.",
     "canonical": "https://ambernord.ch/shop/habit/",
     "robots": "index, follow",
     "og": {
       "title": "The Habit (3× 250 ml) | AmberNord",
-      "description": "Das 30-Tage-Ritual für nachhaltigen Fokus und Zellregeneration.",
+      "description": "Das 30-Tage-Ritual mit kaltgepresstem Bio-Sanddorn.",
       "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/v1774798926/ambernord-sanddornsaft-kur-3er-pack-longevity-biohacking.webp_cg74qe.png",
       "type": "product"
     },
@@ -32,18 +32,18 @@
     "daily": "≈ 2.30 CHF / Tag",
     "subtitleH3": "Das 30-Tage-Ritual:",
     "subtitleSpan": "Wahre Energie statt künstlicher Kicks.",
-    "lead": "Herkömmliche Energy-Drinks kosten Sie im Schnitt 3 Franken pro Dose – und zahlen Ihnen nur Müdigkeit und Dehydration zurück. Mit «The Habit» investieren Sie in eine völlig andere Liga: eine hochkonzentrierte Essenz, die kein synthetisches Koffein benötigt.",
+    "lead": "Die natürliche Alternative zu künstlichen Energy-Drinks — ohne Zuckerzusatz, ohne synthetisches Taurin. Mit «The Habit» investieren Sie in eine völlig andere Liga: eine hochkonzentrierte Essenz, die kein synthetisches Koffein benötigt.",
     "ctaPrimary": "3× Elixier bestellen",
     "advantageHeading": "Ein biologisches Upgrade",
-    "advantageBody": "Unsere exklusive Zelt-Selektion nutzt die seltene <span class=\"p-gold\">Omega-7-Fettsäure</span> (bis zu 42 % Konzentration), 18 essenzielle Aminosäuren und über 190 bioaktive Verbindungen, um Ihre Zellen von innen heraus zu regenerieren. Es ist kein kurzfristiger Rausch, sondern ein nachhaltiges Fundament für Ihren Fokus und Ihr Immunsystem.",
+    "advantageBody": "Unsere exklusive Zelt-Selektion liefert die seltene <span class=\"p-gold\">Omega-7-Fettsäure</span> (bis zu 42 % Konzentration), 18 essenzielle Aminosäuren und über 190 bioaktive Verbindungen — die ganze Beere, kaltgepresst. Vitamin C trägt zu einer normalen Funktion des Immunsystems und zur Verringerung von Müdigkeit und Ermüdung bei.",
     "scienceHeading": "Das Paket beinhaltet",
     "scienceItem1": "<strong>3× 250 ml</strong> reinste, kaltgepresste Bio-Essenz (Zelt-Selektion).",
-    "scienceItem2": "<strong>30 Tage</strong> volle Unterstützung für Fokus und Regeneration.",
-    "scienceItem3": "Ergibt bis zu <span class=\"p-gold\">9 Liter</span> vitalisierendes Premium-Getränk.",
+    "scienceItem2": "<strong>30 Tage</strong> tägliches Ritual — eine Flasche alle 10 Tage.",
+    "scienceItem3": "Ergibt über <span class=\"p-gold\">8 Liter</span> vitalisierendes Premium-Getränk.",
     "scienceItem4": "<strong>Kostenloser Premium-Versand</strong> direkt aus Aarau.",
     "abo": {
       "label": "Mit Abo sparen — jederzeit kündbar",
-      "top": "Mit Abo sparen (−7.7 %)",
+      "top": "Mit Abo sparen (−9 %)",
       "price": "63.00 CHF",
       "subtext": "pro Monat",
       "guarantee": "✓ Jederzeit kündbar"

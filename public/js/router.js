@@ -96,7 +96,7 @@
     '/shop/habit/': {
       page:        '/pages/the-habit.html',
       title:       'The Habit (3× 250 ml) | AmberNord Sanddorn Elixier',
-      description: 'The Habit: Das 30-Tage-Ritual für nachhaltigen Fokus, Energie und Zellregeneration. Bio-zertifiziert, Omega-7, 190+ Bioaktivstoffe.',
+      description: 'The Habit: Das 30-Tage-Ritual mit kaltgepresstem Bio-Sanddorn. Bio-zertifiziert, Omega-7, 190+ Bioaktivstoffe.',
       canonical:   'https://ambernord.ch/shop/habit/',
       type:        'product',
       schema: {
@@ -104,6 +104,9 @@
         "@type": "Product",
         "name": "The Habit (3× 250 ml)",
         "description": "The Habit: Das 30-Tage-Ritual. Bio-zertifiziert, kaltgepresst, reich an Omega-7.",
+        "image": [
+          "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_800/v1774798926/ambernord-sanddornsaft-kur-3er-pack-longevity-biohacking.webp_cg74qe.png"
+        ],
         "brand": { "@type": "Brand", "name": "AmberNord" },
         "offers": {
           "@type": "Offer",
@@ -127,6 +130,9 @@
         "@type": "Product",
         "name": "The Protocol (6× 250 ml)",
         "description": "The Protocol: Das ultimative Protokoll für Familien und Höchstleister. Bio-zertifiziert.",
+        "image": [
+          "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_800/v1774798936/ambernord-sanddorn-elixier-6er-vorratspack-premium-qualit%C3%A4t.webp_v9c6bd.png"
+        ],
         "brand": { "@type": "Brand", "name": "AmberNord" },
         "offers": {
           "@type": "Offer",
@@ -214,7 +220,7 @@
     '/danke/': {
       page:        '/pages/thankyou.html',
       title:       'Bestellung bestätigt | AmberNord',
-      description: 'Deine Bestellung ist eingegangen. AmberNord bereitet dein Elixier vor.',
+      description: 'Ihre Bestellung ist eingegangen. AmberNord bereitet Ihr Elixier vor.',
       canonical:   'https://ambernord.ch/danke/',
       type:        'thankyou',
       schema:      null
@@ -222,8 +228,8 @@
 
     '/bewertungen/': {
       page:        '/pages/bewertungen.html',
-      title:       'Kundenbewertungen | AmberNord',
-      description: 'Echte Stimmen aus der Schweiz: ungefilterte Erfahrungen mit dem AmberNord Sanddorn-Elixier nach 14 Tagen täglicher Anwendung.',
+      title:       'Kundenstimmen | AmberNord',
+      description: 'Verifizierte Erfahrungen aus der Schweiz: Stimmen zum AmberNord Sanddorn-Elixier nach mindestens 14 Tagen täglicher Anwendung.',
       canonical:   'https://ambernord.ch/bewertungen/',
       type:        'bewertungen',
       schema:      null
@@ -232,7 +238,7 @@
     '/2-fuer-1/': {
       page:        '/pages/aktion-2-fuer-1.html',
       title:       'Markteinführungs-Edition · 2 für 1 | AmberNord',
-      description: 'Markteinführungs-Edition: 2 × The Starter zum Preis von 1. Limitiert auf 250 Plätze in der Schweiz. Im Gegenzug bitten wir nach 14 Tagen um eine ehrliche Bewertung.',
+      description: 'Markteinführungs-Edition: 2 × The Starter zum Preis von 1. Limitiert auf 250 Sets in der Schweiz. Im Gegenzug bitten wir nach 14 Tagen um eine ehrliche Bewertung.',
       canonical:   'https://ambernord.ch/2-fuer-1/',
       type:        'aktion2fuer1',
       schema:      null
@@ -241,7 +247,7 @@
     '/2-fuer-1/danke/': {
       page:        '/pages/aktion-2-fuer-1-danke.html',
       title:       'Aktion gesichert | AmberNord',
-      description: 'Du bist Teil der Markteinführungs-Edition. Deine Bestellung ist eingegangen.',
+      description: 'Sie sind Teil der Markteinführungs-Edition. Ihre Bestellung ist eingegangen.',
       canonical:   'https://ambernord.ch/2-fuer-1/danke/',
       type:        'aktion2fuer1Danke',
       schema:      null

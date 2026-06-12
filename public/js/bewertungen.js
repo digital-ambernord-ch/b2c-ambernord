@@ -84,6 +84,10 @@ window.initBewertungen = async function () {
       const verifiedLabel = (i18n.list && i18n.list.verified) || 'Verifizierte Bestellung';
       const roles         = (i18n.roles) || {};
 
+      /* The review by "B." always leads the list; everything else keeps
+         its JSON order behind it. */
+      reviews.sort((a, b) => (a.author === 'B.' ? -1 : 0) - (b.author === 'B.' ? -1 : 0));
+
       const html = reviews.map((r) => {
         const roleLabel = r.roleKey && roles[r.roleKey];
         return `
@@ -103,13 +107,31 @@ window.initBewertungen = async function () {
 
       listEl.insertAdjacentHTML('beforeend', html);
 
-      if (data.aggregate && aggSection && Number(data.aggregate.count) > 0) {
+      /* Aggregate score policy: the star average only renders once at least
+         5 VERIFIED reviews exist. Below that threshold we show a plain
+         "{n} verifizierte Bewertungen" line — no average, no stars. */
+      const verifiedCount = reviews.filter((r) => r.verified).length;
+      if (aggSection && verifiedCount > 0) {
         aggSection.hidden = false;
-        if (aggStarsEl) aggStarsEl.textContent = renderStars(data.aggregate.average);
-        if (aggAvgEl)   aggAvgEl.textContent   = Number(data.aggregate.average).toFixed(1);
-        if (aggCountEl) {
-          const tmpl = (i18n.aggregate && i18n.aggregate.countTemplate) || '{n} Bewertungen';
-          aggCountEl.textContent = tmpl.replace('{n}', data.aggregate.count);
+        const showAverage = verifiedCount >= 5;
+        const starsRow    = aggStarsEl;
+        const divider     = aggSection.querySelector('.bewertungen-aggregate-divider');
+
+        if (showAverage) {
+          if (starsRow) starsRow.textContent = renderStars(data.aggregate && data.aggregate.average);
+          if (aggAvgEl) aggAvgEl.textContent = Number(data.aggregate && data.aggregate.average).toFixed(1);
+          if (aggCountEl) {
+            const tmpl = (i18n.aggregate && i18n.aggregate.countTemplate) || '{n} Bewertungen';
+            aggCountEl.textContent = tmpl.replace('{n}', verifiedCount);
+          }
+        } else {
+          if (starsRow) starsRow.remove();
+          if (aggAvgEl) aggAvgEl.remove();
+          if (divider)  divider.remove();
+          if (aggCountEl) {
+            const tmpl = (i18n.aggregate && i18n.aggregate.countVerifiedTemplate) || '{n} verifizierte Bewertungen';
+            aggCountEl.textContent = tmpl.replace('{n}', verifiedCount);
+          }
         }
       }
     }

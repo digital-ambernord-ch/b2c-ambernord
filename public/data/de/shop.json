@@ -43,14 +43,14 @@
       "quantity": "1x 250ml",
       "price": "24.90 CHF",
       "daily": "≈ 2.49 CHF / Tag",
-      "subtitle": "Das zelluläre Erwachen.",
-      "body": "Spüren Sie den Unterschied. Lösen Sie den mentalen Nebel auf und fluten Sie Ihren Körper mit reiner, nordischer Lebenskraft. Der kompromisslose erste Schritt zu mehr Fokus.",
+      "subtitle": "Sanddorn in Reinform.",
+      "body": "Erleben Sie reine, nordische Lebenskraft. Der kompromisslose erste Schritt in Ihr tägliches Ritual.",
       "scienceBox": {
-        "heading": "Ihr Sofort-Effekt",
+        "heading": "Ihr Einstieg",
         "items": [
-          "Spürbare Klarheit ab dem 1. Schluck.",
-          "Eine der seltenen Quellen aller 4 Omega-Fettsäuren.",
-          "10 Tage reine, zelluläre Energie."
+          "Der erste Schluck: hell, sauer, lebendig — Sanddorn in Reinform.",
+          "Eine der seltenen Quellen aller 4 Omega-Fettsäuren (3, 6, 7 & 9).",
+          "10 Tage Ritual — exakt eine Flasche."
         ]
       },
       "buttons": {
@@ -84,13 +84,13 @@
       "savings": "−8 % vs. Starter",
       "daily": "≈ 2.30 CHF / Tag",
       "subtitle": "Das Ende künstlicher Energie.",
-      "body": "Verabschieden Sie sich von toxischen Energie-Löchern durch künstliche Energy-Drinks und synthetisches Taurin. Verankern Sie anhaltenden Fokus in Ihrer Routine.",
+      "body": "Die natürliche Alternative zu künstlichen Energy-Drinks — ohne Zuckerzusatz, ohne synthetisches Taurin. Verankern Sie das Ritual in Ihrer Routine.",
       "scienceBox": {
         "heading": "Die Transformation",
         "items": [
-          "Messbarer Fokus ohne Nachmittags-Tief.",
-          "Flutet die Zellen mit seltenem Omega-7.",
-          "Schützt und regeneriert die Schleimhäute.",
+          "Vitamin C trägt zur Verringerung von Müdigkeit bei — Schluss mit dem Nachmittags-Tief.",
+          "Bis zu 42 % Omega-7 — eine der reichsten Quellen der Natur.",
+          "Die volle Matrix der ganzen Beere — Öle aus Fruchtfleisch und Kern.",
           "30 Tage kompromisslose Performance."
         ]
       },
@@ -100,7 +100,7 @@
           "href": "https://buy.stripe.com/cNi3cx3PB2Ot6SB4rdbQY01"
         },
         "subscription": {
-          "discountLabel": "Mit Abo Sparen (-7.7%)",
+          "discountLabel": "Mit Abo sparen (−9 %)",
           "price": "63.00 CHF",
           "subtext": "Pro Monat",
           "guarantee": "✓ Jederzeit kündbar",
@@ -128,12 +128,12 @@
       "savings": "−14 % vs. Starter",
       "daily": "≈ 2.15 CHF / Tag",
       "subtitle": "Das ultimative Biohacking-Tool.",
-      "body": "Entworfen für High-Performer. Maximieren Sie Ihre Longevity und bauen Sie einen unzerstörbaren immunologischen Schild auf.",
+      "body": "Entworfen für High-Performer. Vitamin C trägt täglich zu einer normalen Funktion des Immunsystems bei — 60 Tage am Stück.",
       "scienceBox": {
         "heading": "Das Meister-Level",
         "items": [
-          "Lückenloser Zellschutz für Monate.",
-          "Der natürliche Schild gegen Blaulicht.",
+          "Vitamin C trägt zum Schutz der Zellen vor oxidativem Stress bei — 60 Tage lückenlos.",
+          "Natürliche Carotinoide aus der ganzen Beere.",
           "Über 190 bioaktive Wirkstoffe aktiv.",
           "Maximale Ausbeute, bester Preis."
         ]
@@ -144,7 +144,7 @@
           "href": "https://buy.stripe.com/3cI6oJbi3gFjb8R8HtbQY02"
         },
         "subscription": {
-          "discountLabel": "Mit Abo Sparen (-9%)",
+          "discountLabel": "Mit Abo sparen (−8 %)",
           "price": "119.00 CHF",
           "subtext": "Pro Monat",
           "guarantee": "✓ Jederzeit kündbar",

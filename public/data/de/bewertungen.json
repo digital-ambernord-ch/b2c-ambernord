@@ -1,30 +1,31 @@
 {
   "meta": {
-    "title": "Kundenbewertungen | AmberNord",
-    "description": "Echte Stimmen aus der Schweiz: ungefilterte Erfahrungen mit dem AmberNord Sanddorn-Elixier nach 14 Tagen täglicher Anwendung.",
+    "title": "Kundenstimmen | AmberNord",
+    "description": "Verifizierte Erfahrungen aus der Schweiz: Stimmen zum AmberNord Sanddorn-Elixier nach mindestens 14 Tagen täglicher Anwendung.",
     "canonical": "https://ambernord.ch/bewertungen/",
     "robots": "index, follow",
     "og": {
-      "title": "Kundenbewertungen | AmberNord",
-      "description": "Echte Stimmen aus der Schweiz: ungefilterte Erfahrungen mit dem AmberNord Sanddorn-Elixier.",
+      "title": "Kundenstimmen | AmberNord",
+      "description": "Verifizierte Erfahrungen aus der Schweiz: Stimmen zum AmberNord Sanddorn-Elixier.",
       "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/v1774787737/AmberNord_Sanddorn_Biohacking_Longevity_Schweiz_Natur_Ritual_Essenz_jwznsd.webp",
       "type": "website"
     }
   },
   "header": {
     "eyebrow": "Echte Stimmen",
-    "h1": "Kunden<br><span>bewertungen.</span>"
+    "h1": "Kunden<br><span>stimmen.</span>"
   },
   "intro": {
-    "heading": "Kundenbewertungen",
-    "p1": "Ungefilterte Erfahrungen aus der Schweiz — nach mindestens 14 Tagen täglicher Anwendung. Jede Bewertung wird von uns auf Bestellnummer geprüft, bevor sie veröffentlicht wird."
+    "heading": "Kundenstimmen",
+    "p1": "Verifizierte Erfahrungen aus der Schweiz — nach mindestens 14 Tagen täglicher Anwendung. Jede Bewertung wird anhand der Bestellnummer geprüft."
   },
   "aggregate": {
-    "countTemplate": "{n} Bewertungen"
+    "countTemplate": "{n} Bewertungen",
+    "countVerifiedTemplate": "{n} verifizierte Bewertungen"
   },
   "list": {
     "heading": "Alle Bewertungen",
-    "empty": "Noch keine Bewertungen veröffentlicht. Sei der Erste — teile deine Erfahrung unten.",
+    "empty": "Noch keine Bewertungen veröffentlicht. Seien Sie die erste Stimme — teilen Sie Ihre Erfahrung unten.",
     "verified": "Verifizierte Bestellung"
   },
   "roles": {
@@ -32,23 +33,23 @@
   },
   "form": {
     "heading": "Bewertung abgeben",
-    "intro": "Deine Bewertung erscheint nach Prüfung der Bestellnummer. Wir veröffentlichen nur Vorname und Stadt — deine E-Mail bleibt vertraulich.",
+    "intro": "Ihre Bewertung erscheint nach Prüfung der Bestellnummer. Wir veröffentlichen nur Vorname und Stadt — Ihre E-Mail bleibt vertraulich.",
     "stars": "Bewertung",
     "name": "Vorname (oder Initialen)",
     "city": "Stadt",
     "email": "E-Mail (vertraulich, nur für Verifizierung)",
     "order": "Bestellnummer (aus der Bestellbestätigung)",
-    "text": "Deine Erfahrung",
-    "textHint": "Beschreibe in deinen eigenen Worten, was sich nach 14 Tagen verändert hat — Energie, Haut, Schlaf, Verdauung —, wie das Elixier schmeckt und was dich überrascht hat.",
+    "text": "Ihre Erfahrung",
+    "textHint": "Beschreiben Sie in Ihren eigenen Worten, was sich nach 14 Tagen verändert hat — Energie, Geschmack, Ritual —, wie das Elixier schmeckt und was Sie überrascht hat.",
     "textPlaceholder": "",
     "consent": "Ich erlaube AmberNord, meinen Vornamen, meine Stadt und meinen Bewertungstext auf der Website zu veröffentlichen. Meine E-Mail bleibt vertraulich.",
     "submit": {
       "label": "Bewertung absenden",
       "sending": "Wird gesendet…"
     },
-    "success": "Vielen Dank! Deine Bewertung wurde eingereicht. Nach Prüfung der Bestellnummer erscheint sie hier — meist innerhalb von 48 Stunden.",
+    "success": "Vielen Dank! Ihre Bewertung wurde eingereicht. Nach Prüfung der Bestellnummer erscheint sie hier — meist innerhalb von 48 Stunden.",
     "error": "Fehler beim Senden. Bitte erneut versuchen.",
     "hiddenSubject": "Neue Bewertung von AmberNord.ch"
   },
-  "secretNote": "Noch keine Bestellung? <a href=\"/2-fuer-1/\" data-link>Sichere dir 2 × The Starter zum Preis von 1 — limitiert auf 250 Plätze.</a>"
+  "secretNote": "Noch keine Bestellung? <a href=\"/2-fuer-1/\" data-link>Sichern Sie sich 2 × The Starter zum Preis von 1 — limitiert auf 250 Sets.</a>"
 }

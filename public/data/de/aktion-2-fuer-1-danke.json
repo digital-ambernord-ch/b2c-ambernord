@@ -1,46 +1,46 @@
 {
   "meta": {
     "title": "Aktion gesichert | AmberNord",
-    "description": "Du bist Teil der Markteinführungs-Edition. Deine Bestellung ist eingegangen.",
+    "description": "Sie sind Teil der Markteinführungs-Edition. Ihre Bestellung ist eingegangen.",
     "canonical": "https://ambernord.ch/2-fuer-1/danke/",
     "robots": "noindex, nofollow",
     "og": {
       "title": "Aktion gesichert | AmberNord",
-      "description": "Du bist Teil der Markteinführungs-Edition.",
+      "description": "Sie sind Teil der Markteinführungs-Edition.",
       "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/v1778164908/Markteinf%C3%BChrungs-Aktion_2_The_Starter_zum_Preis_von_1_Im_Gegenzug_bitten_wir_nach_14_Tagen_um_eine_ehrliche_Bewertung_pbompq.jpg",
       "type": "website"
     }
   },
   "header": {
     "eyebrow": "Markteinführungs-Edition",
-    "h1": "Du bist dabei.<br><span>Eine der 250 Stimmen.</span>"
+    "h1": "Sie sind dabei.<br><span>Eine der 250 Stimmen.</span>"
   },
   "confirm": {
     "heading": "Bestellung bestätigt",
-    "lead": "Deine Markteinführungs-Bestellung ist eingegangen. Beide Flaschen werden noch heute oder spätestens morgen aus unserem Logistikzentrum in Aarau verschickt."
+    "lead": "Ihre Markteinführungs-Bestellung ist eingegangen. Beide Flaschen werden noch heute oder spätestens morgen aus unserem Logistikzentrum in Aarau verschickt."
   },
   "next": {
     "title": "Was als Nächstes passiert",
     "step1": {
       "title": "Versand & Bestätigung",
-      "text": "Du erhältst eine Versandbestätigung per E-Mail mit Tracking-Link, sobald das Paket auf dem Weg ist."
+      "text": "Sie erhalten eine Versandbestätigung per E-Mail mit Tracking-Link, sobald das Paket auf dem Weg ist."
     },
     "step2": {
       "title": "14 Tage täglich anwenden",
-      "text": "Tagesdosis ca. 25 ml — pur als Shot, mit Wasser, im Smoothie, Saft, Salat oder Tee. Eine Flasche reicht für rund 10 Tage; die zweite deckt deine vollständige Beobachtungsphase ab."
+      "text": "Tagesdosis ca. 25 ml — pur als Shot, mit Wasser, im Smoothie, Saft, Salat oder Tee. Eine Flasche reicht für rund 10 Tage; die zweite deckt Ihre vollständige Beobachtungsphase ab."
     },
     "step3": {
       "title": "Tag 14 — Erinnerung per E-Mail",
-      "text": "Wir senden dir eine kurze E-Mail mit dem direkten Link zum Bewertungsformular. Der Link enthält bereits deine Bestellnummer — du musst nichts manuell eingeben."
+      "text": "Wir senden Ihnen eine kurze E-Mail mit dem direkten Link zum Bewertungsformular. Der Link enthält bereits Ihre Bestellnummer — Sie müssen nichts manuell eingeben."
     },
     "step4": {
-      "title": "Deine Bewertung",
-      "text": "Etwa drei Minuten Aufwand. Du beschreibst in eigenen Worten, was sich verändert hat — Energie, Haut, Schlaf, Verdauung. Die Teilnahme bleibt freiwillig."
+      "title": "Ihre Bewertung",
+      "text": "Etwa drei Minuten Aufwand. Sie beschreiben in eigenen Worten, was sich verändert hat — Energie, Geschmack, Ritual. Die Teilnahme bleibt freiwillig."
     }
   },
   "actions": {
     "reviewsCta": "Zum Bewertungsbereich →",
     "homeCta": "Zurück zur Startseite"
   },
-  "thanks": "Merci vilmal — du bist Teil von etwas Echtem."
+  "thanks": "Merci vilmal — Sie sind Teil von etwas Echtem."
 }

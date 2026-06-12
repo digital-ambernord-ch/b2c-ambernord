@@ -25,15 +25,15 @@
   "benefits": {
     "srHeading": "Die 9 Wirkungsbereiche",
     "items": [
-      { "title": "Zelluläre Energie & Vitalität", "desc": "Natürliche Vitamine und Mineralien mindern Ermüdung und liefern einen langanhaltenden Energie-Boost. Perfekt für anhaltende Performance im Alltag." },
-      { "title": "Zelluläres Skin-Revival", "desc": "Reich an Vitaminen A und E sowie der seltenen Omega-7-Fettsäure. Diese Synergie kurbelt die Kollagensynthese an und verleiht der Haut einen tiefen, natürlichen Glow." },
-      { "title": "Kognitive Klarheit & Fokus", "desc": "B-Vitamine und Tryptophan (die Vorstufe von Serotonin) helfen nachweislich, Stress abzubauen, die Stimmung aufzuhellen und mentale Schärfe zu fördern." },
-      { "title": "Absolute Immun-Resilienz", "desc": "Mit einer extrem hohen, bioverfügbaren Vitamin-C-Konzentration stärkt das Elixier das Immunsystem und senkt das Risiko für Infektionen spürbar." },
-      { "title": "Mikrobiom-Balance", "desc": "Bioaktive Pflanzenstoffe und Ballaststoffe fördern gezielt eine gesunde Darmflora, optimieren die Verdauung und unterstützen den Schutz der Magenschleimhaut." },
-      { "title": "Aktive Zellprotektion", "desc": "Hochkonzentrierte Antioxidantien bekämpfen freie Radikale auf zellulärer Ebene, dämpfen chronische Entzündungsprozesse und beschleunigen die körperliche Erholung." },
-      { "title": "Deep Detox & Leberfunktion", "desc": "Unterstützt die natürlichen Entgiftungsprozesse des Körpers, fördert aktiv die Regeneration der Leberzellen und schützt vor oxidativen Umwelteinflüssen." },
-      { "title": "Kardiovaskuläre Langlebigkeit", "desc": "Flavonoide sowie hochdosierte Omega-Fettsäuren helfen, das Cholesterin-Profil zu optimieren und die Elastizität der Blutgefässe nachhaltig zu verbessern." },
-      { "title": "Der Digitale Schild", "desc": "Hochkonzentriertes Vitamin A und Carotinoide wirken als natürlicher zellulärer Filter gegen Blaulicht und mindern das Risiko digitaler Augenermüdung." }
+      { "title": "Zelluläre Energie & Vitalität", "desc": "Vitamin C trägt zu einem normalen Energiestoffwechsel und zur Verringerung von Müdigkeit und Ermüdung bei. Konstante Energie — ohne Spike, ohne Crash. Perfekt für anhaltende Performance im Alltag." },
+      { "title": "Zelluläres Skin-Revival", "desc": "Vitamin C trägt zu einer normalen Kollagenbildung für eine normale Funktion der Haut bei — flankiert von Vitamin A, Vitamin E und der seltenen Omega-7-Fettsäure aus der ganzen Beere." },
+      { "title": "Kognitive Klarheit & Fokus", "desc": "Vitamin C trägt zur normalen psychischen Funktion und zur Verringerung von Müdigkeit und Ermüdung bei — klarer Kopf statt Nachmittags-Tief." },
+      { "title": "Immun-Resilienz", "desc": "Hochdosiertes natürliches Vitamin C trägt zu einer normalen Funktion des Immunsystems bei — an jedem der 365 Tage." },
+      { "title": "Die ganze Beere", "desc": "Bioaktive Pflanzenstoffe und natürliche Ballaststoffe — kombiniert, wie die Natur sie angelegt hat. Nichts isoliert, nichts synthetisch." },
+      { "title": "Aktive Zellprotektion", "desc": "Vitamin C trägt dazu bei, die Zellen vor oxidativem Stress zu schützen — Ihr täglicher Zellschutz im Ritual." },
+      { "title": "Zero-Waste-Reinheit", "desc": "Ohne Zuckerzusatz, ohne künstliche Aromen, ohne synthetische Zusätze. Die ganze Beere — Öle aus Fruchtfleisch und Kern, kaltgepresst. 100 % Natur." },
+      { "title": "Kollagen & Gefässe", "desc": "Vitamin C trägt zu einer normalen Kollagenbildung für eine normale Funktion der Blutgefässe bei — die stille Basis jeder Longevity-Routine." },
+      { "title": "Carotinoid-Matrix", "desc": "Natürliche Carotinoide aus Fruchtfleisch und Schale — die goldene Farbpalette der ganzen Beere." }
     ]
   },
   "stats": {
@@ -54,7 +54,7 @@
   "protocol": {
     "heading": "Das tägliche <span>Protokoll.</span>",
     "items": [
-      { "step": "Schritt 01", "title": "Die goldene Morgenregel", "desc": "Wegen der enormen Dosis an natürlichem Vitamin C und dem stark vitalisierenden Effekt empfehlen wir, das Ritual in der ersten Tageshälfte zu integrieren. Vermeiden Sie den Konsum kurz vor der Nachtruhe." },
+      { "step": "Schritt 01", "title": "Die goldene Morgenregel", "desc": "Verankern Sie das Ritual in der ersten Tageshälfte — als fester Bestandteil Ihrer Morgenroutine, am besten vor dem Frühstück." },
       { "step": "Schritt 02", "title": "Die perfekte Alchemie", "desc": "AmberNord ist kein gewöhnliches Getränk, sondern eine hochkonzentrierte Rohessenz. Für maximale Hydratation mischen Sie <strong class=\"ritual-protocol__highlight\">1 Teil der Essenz mit 10 Teilen Wasser</strong> (still oder prickelnd)." },
       { "step": "Schritt 03", "title": "Die 10-Tage-Regel", "desc": "Da wir vollständig auf künstliche Konservierungsstoffe verzichten, bewahren Sie die Flasche nach dem Öffnen zwingend im Kühlschrank auf und geniessen Sie das Elixier <strong class=\"ritual-protocol__highlight\">innerhalb von 10 Tagen</strong>." }
     ]
@@ -71,14 +71,14 @@
     "kalt": [
       { "tag": "Mixologie", "title": "Nordic Spritz (No-ABV)", "desc": "Die avantgardistische Alternative zum Aperol. Nutzen Sie die komplexe Säure und Textur der AmberNord Essenz, gemischt mit herbem Tonic Water auf Eis und garniert mit frischem Rosmarin. Ein hochkomplexes, alkoholfreies Profil für anspruchsvolle Abende." },
       { "tag": "Exotisch & Cremig", "title": "Amber Coconut Sour", "desc": "Ein seidiges Erlebnis: Mischen Sie cremige Kokosmilch, etwas Mangosüsse und die lebendige Säure der Sanddorn-Essenz auf Eis. Ein Getränk, das mit jedem Schluck tropische Weichheit und nordischen Biss perfekt ausbalanciert." },
-      { "tag": "Alltag", "title": "Sparkling Afternoon", "desc": "1 Teil AmberNord mit eiskaltem Mineralwasser (Sprudel) und einem Zweig frischer Minze. Perfekt als schnelle Erfrischung und gesunder, zuckerfreier Ersatz für konventionelle Nachmittagsgetränke." },
-      { "tag": "Gesundheit", "title": "Vitality Smoothie", "desc": "Für den perfekten Start ins Training: Pürieren Sie frischen Karottensaft, ein Stück Ingwer, eine halbe Banane für die Textur und 20 ml AmberNord Essenz. Ein antioxidativer Schutzschild in flüssiger Form." }
+      { "tag": "Alltag", "title": "Sparkling Afternoon", "desc": "1 Teil AmberNord mit eiskaltem Mineralwasser (Sprudel) und einem Zweig frischer Minze. Perfekt als schnelle Erfrischung und Ersatz ohne Zuckerzusatz für konventionelle Nachmittagsgetränke." },
+      { "tag": "Genuss", "title": "Vitality Smoothie", "desc": "Für den perfekten Start ins Training: Pürieren Sie frischen Karottensaft, ein Stück Ingwer, eine halbe Banane für die Textur und 20 ml AmberNord Essenz. Die ganze Beere — in flüssiger Form." }
     ],
     "warm": [
-      { "tag": "Ayurveda & Balance", "title": "Amber Golden Milk", "desc": "Eine wärmende Tasse Pflanzenmilch, ein Teelöffel Kurkuma, ein Hauch schwarzer Pfeffer und 10 ml AmberNord Essenz. Die perfekte Synergie an Phytonährstoffen, um das Nervensystem am Abend zu beruhigen und Entzündungen über Nacht abzubauen." },
-      { "tag": "Wohlbefinden", "title": "Der Amber Buzz", "desc": "Spielen Sie mit Wärme und Säure: Ein Schuss AmberNord Essenz, aufgegossen mit heissem (nicht kochendem) Wasser, etwas Manuka-Honig und einer Prise Zimt. Ein beruhigendes, wärmendes Ritual für kühle Herbst- und Wintertage." },
-      { "tag": "Immunsystem", "title": "High-End Ingwer-Shot", "desc": "Eine hochkonzentrierte Kombination aus der puren AmberNord Essenz, gepaart mit frisch gepresstem Ingwer- und Kurkumasaft sowie einer Prise schwarzem Pfeffer. Ein intensiver, scharfer Shot für die maximale Immunabwehr." },
-      { "tag": "Ritual", "title": "Alpiner Detox-Tee", "desc": "Ein Ritual der Entschleunigung: Geben Sie einige Tropfen reines Sanddorn-Fruchtfleischöl oder Essenz in warmes Wasser mit frischen Kräutern, um den Stoffwechsel aktiv zu unterstützen und Zelllipide zu schützen." }
+      { "tag": "Ayurveda & Balance", "title": "Amber Golden Milk", "desc": "Eine wärmende Tasse Pflanzenmilch, ein Teelöffel Kurkuma, ein Hauch schwarzer Pfeffer und 10 ml AmberNord Essenz. Die perfekte Synergie an Phytonährstoffen — ein ruhiger, warmer Abschluss des Tages." },
+      { "tag": "Wohlbefinden", "title": "Der Amber Buzz", "desc": "Spielen Sie mit Wärme und Säure: Ein Schuss AmberNord Essenz, aufgegossen mit heissem (nicht kochendem) Wasser, etwas Manuka-Honig und einer Prise Zimt. Ein wohltuendes, wärmendes Ritual für kühle Herbst- und Wintertage." },
+      { "tag": "Intensiv", "title": "High-End Ingwer-Shot", "desc": "Eine hochkonzentrierte Kombination aus der puren AmberNord Essenz, gepaart mit frisch gepresstem Ingwer- und Kurkumasaft sowie einer Prise schwarzem Pfeffer. Ein intensiver, scharfer Shot für Ihr tägliches Ritual." },
+      { "tag": "Ritual", "title": "Alpiner Kräuter-Tee", "desc": "Ein Ritual der Entschleunigung: Geben Sie einige Tropfen reines Sanddorn-Fruchtfleischöl oder Essenz in warmes Wasser mit frischen Kräutern — ein stiller Moment der Wärme im Alltag." }
     ],
     "kulinarik": [
       { "tag": "Haute Cuisine", "title": "Sanddorn Posset", "desc": "Ein Beweis dafür, dass Einfachheit am meisten beeindruckt. Ein britisches Dessert, neu interpretiert: Vollrahm, Zucker und die pure AmberNord Essenz. Die Säure des Sanddorns lässt den Rahm auf natürliche Weise zu einer seidigen Creme stocken." },

@@ -1,13 +1,13 @@
 {
   "meta": {
     "title": "Bestellung bestätigt | AmberNord",
-    "description": "Deine Bestellung bei AmberNord ist eingegangen. Wir bereiten dein persönliches Bernstein-Elixier mit grösster Sorgfalt vor.",
+    "description": "Ihre Bestellung bei AmberNord ist eingegangen. Wir bereiten Ihr persönliches Bernstein-Elixier mit grösster Sorgfalt vor.",
     "canonical": "https://ambernord.ch/danke/",
     "slug": "/danke/",
     "robots": "noindex, nofollow",
     "og": {
       "title": "Bestellung bestätigt | AmberNord",
-      "description": "Das flüssige Gold des Nordens ist auf dem Weg zu dir.",
+      "description": "Das flüssige Gold des Nordens ist auf dem Weg zu Ihnen.",
       "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/ambernord-og",
       "type": "website"
     },
@@ -21,16 +21,16 @@
   },
   "header": {
     "eyebrow": "Bestellung bestätigt",
-    "h1": "Die Natur übernimmt.<br><span>Dein Ritual beginnt.</span>"
+    "h1": "Die Natur übernimmt.<br><span>Ihr Ritual beginnt.</span>"
   },
   "confirmation": {
     "heading": "Bestellbestätigung"
   },
   "body": {
-    "primary": "Du hast dich für das flüssige Gold des Nordens entschieden. Wir bereiten dein persönliches Elixier nun mit grösster Sorgfalt vor – mit der Präzision und Reinheit, die du erwartest.",
-    "secondary": "Sobald dein Paket auf dem Weg ist, melden wir uns bei dir. Geniesse die Vorfreude auf zelluläre Erneuerung."
+    "primary": "Sie haben sich für das flüssige Gold des Nordens entschieden. Wir bereiten Ihr persönliches Elixier nun mit grösster Sorgfalt vor – mit der Präzision und Reinheit, die Sie erwarten.",
+    "secondary": "Sobald Ihr Paket auf dem Weg ist, melden wir uns bei Ihnen. Geniessen Sie die Vorfreude auf Ihr tägliches Ritual."
   },
-  "tagline": "Merci vilmal für dis Vertraue.",
+  "tagline": "Merci vilmal für Ihr Vertrauen.",
   "cta": {
     "label": "Zurück zum Shop",
     "href": "https://ambernord-ritual-v2.dashnexpages.net/startseite/?go=ritual-products"
@@ -39,15 +39,15 @@
     "heading": "Was als Nächstes passiert",
     "step1": {
       "title": "Versand",
-      "text": "Wir verpacken deine Bestellung sorgfältig in unserem Logistikzentrum in Aarau und versenden sie meist innerhalb von 24 Stunden."
+      "text": "Wir verpacken Ihre Bestellung sorgfältig in unserem Logistikzentrum in Aarau und versenden sie meist innerhalb von 24 Stunden."
     },
     "step2": {
       "title": "Tag 14 — Erinnerung per E-Mail",
-      "text": "Nach 14 Tagen täglicher Anwendung erhältst du eine kurze E-Mail mit der Bitte um eine ehrliche Bewertung. Die Teilnahme ist freiwillig."
+      "text": "Nach 14 Tagen täglicher Anwendung erhalten Sie eine kurze E-Mail mit der Bitte um eine ehrliche Bewertung. Die Teilnahme ist freiwillig."
     },
     "step3": {
-      "title": "Deine Erfahrung teilen",
-      "text": "Du beschreibst in eigenen Worten, was sich verändert hat — Energie, Haut, Schlaf, Verdauung. Nach Prüfung deiner Bestellnummer erscheint die Bewertung auf der Website."
+      "title": "Ihre Erfahrung teilen",
+      "text": "Sie beschreiben in eigenen Worten, was sich verändert hat — Energie, Geschmack, Ritual. Nach Prüfung Ihrer Bestellnummer erscheint die Bewertung auf der Website."
     },
     "cta": "Bewertung später abgeben →"
   }

@@ -27,11 +27,11 @@
   "floatCards": {
     "vitamins": {
       "eyebrow": "Vitamine",
-      "text": "Hoher natürlicher Vitamin-C-Gehalt – trägt zur Verringerung von Müdigkeit und Erschöpfung bei."
+      "text": "Hoher natürlicher Vitamin-C-Gehalt – Vitamin C trägt zur Verringerung von Müdigkeit und Ermüdung bei."
     },
     "balance": {
-      "eyebrow": "Haut & Darm",
-      "text": "Eine der seltensten pflanzlichen Omega-7-Quellen – unterstützt Haut und Schleimhäute von innen."
+      "eyebrow": "Seltene Fettsäuren",
+      "text": "Eine der seltensten pflanzlichen Quellen für Palmitoleinsäure (Omega-7) — bis zu 42 % im Fruchtfleischöl. Ein zentraler Baustein der Lipid-Matrix."
     },
     "immunity": {
       "eyebrow": "Immunsystem",
@@ -47,10 +47,10 @@
     "taglineColdPress": "KALTGEPRESST",
     "taglineBio": "BIO-ZERTIFIZIERT",
     "bioLogoAlt": "EU Organic zertifiziert",
-    "h1": "Das flüssige Gold des Nordens.<br><span>Kaltgepresstes Bio-Sanddorn-Konzentrat. 190+ Bioaktivstoffe. Ein Ritual von 30 Sekunden am Tag.</span>",
+    "h1": "Das flüssige Gold des Nordens.<br><span>Kaltgepresstes Bio-Sanddorn-Konzentrat · 190+ Bioaktivstoffe · 30 Sekunden am Tag.</span>",
     "productAlt": "AmberNord Premium-Edition Flasche",
-    "benefit1": "Spürbare Energie durch 190+ Bioaktivstoffe",
-    "benefit2": "Omega-7 für Haut & Darm – eine der seltensten Quellen der Natur",
+    "benefit1": "Vitamin C trägt zur Verringerung von Müdigkeit und Ermüdung bei — Energie ohne Crash",
+    "benefit2": "Omega-7 — eine der seltensten Quellen der Natur, bis zu 42 % im Fruchtfleischöl",
     "nativeOils": "Ganze Beere: Öle aus Fruchtfleisch &amp; Kern –<br>nichts geht verloren",
     "cta": "Jetzt probieren – ab 24.90 CHF"
   },
@@ -91,7 +91,7 @@
       "extra": "Das 30-Tage-Ritual",
       "benefit1": "30 Tage tägliches Ritual",
       "benefit2": "Nur 30 Sekunden am Tag",
-      "benefit3": "Zellschutz vor oxidativem Stress",
+      "benefit3": "Vitamin C trägt zum Schutz der Zellen vor oxidativem Stress bei",
       "units": "3× 250 ml",
       "shipping": "inkl. <span class=\"card-shipping-note__free\">kostenlosem Versand</span>",
       "btn": "30 Tage starten"
@@ -121,14 +121,14 @@
     "h2": "Das Ende der<br><span class=\"ambernord-text-gold\">synthetischen Abkürzungen.</span>",
     "lead": "Synthetisch isolierte Präparate und künstliche Stimulanzien leihen dem Körper Energie, die er später mit Zinsen zurückzahlen muss.",
     "pullquote": "«Echte Energie kennt keine Schulden.»",
-    "body": "Genau hier setzt AmberNord an — die Antwort auf echte, zelluläre Performance. Kein kurzfristiger Kick, sondern ein <strong class=\"ambernord-fw-500\">biologisches Upgrade</strong>. Wir extrahieren die reinste Essenz der nordischen Wildnis, um Ihnen ein Werkzeug für nachhaltiges Biohacking und tiefgreifende Regeneration direkt in die Schweiz zu bringen."
+    "body": "Genau hier setzt AmberNord an — die Antwort auf echte, zelluläre Performance. Kein kurzfristiger Kick, sondern ein <strong class=\"ambernord-fw-500\">biologisches Upgrade</strong>. Wir extrahieren die reinste Essenz der nordischen Wildnis, um Ihnen ein Werkzeug für nachhaltiges Biohacking und ein kompromisslos reines Ritual direkt in die Schweiz zu bringen."
   },
   "ritualBlock": {
     "eyebrow": "Das Ritual",
     "h2": "Ein Teil Gold.<br><span class=\"ambernord-text-gold\">Zehn Teile Leben.</span>",
     "lead": "Die meisten Nahrungsergänzungen sind synthetisch isoliert, und herkömmliche Gesundheitsgetränke sind voller verstecktem Zucker. AmberNord geht einen völlig anderen Weg.",
     "pullquote": "«Die Essenz, nicht das Imitat.»",
-    "body": "Wir bieten Ihnen eine kompromisslos reine, hochkonzentrierte Rohessenz – entworfen für die perfekte Synergie mit Wasser. Das 1:10 Protokoll (1 Teil Essenz, 10 Teile Wasser) ist Ihr täglicher Katalysator. In dieser Symbiose werden die seltenen Omega-Fettsäuren, Aminosäuren und das natürliche Vitamin C vom Körper maximal absorbiert. Das Ergebnis: Tiefe Hydratation, spürbar weniger Müdigkeit und Zellschutz vor oxidativem Stress."
+    "body": "Wir bieten Ihnen eine kompromisslos reine, hochkonzentrierte Rohessenz – entworfen für die perfekte Synergie mit Wasser. Das 1:10 Protokoll (1 Teil Essenz, 10 Teile Wasser) ist Ihr täglicher Katalysator. In dieser Symbiose werden die seltenen Omega-Fettsäuren, Aminosäuren und das natürliche Vitamin C vom Körper maximal absorbiert. Das Ergebnis: tiefe Hydratation — und Vitamin C, das zur Verringerung von Müdigkeit und zum Schutz der Zellen vor oxidativem Stress beiträgt."
   },
   "sourcing": {
     "eyebrow": "Exklusives Sourcing",
