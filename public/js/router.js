@@ -2,6 +2,36 @@
 
 (function () {
 
+  /* ------------------------------------------------------------------------
+     LOCALE-PREFIXED URLS — /en/, /fr/, /it/ prefix a route; German lives at
+     the root (no /de/). The locale is fixed per page load: switching language
+     triggers a full reload onto the prefixed URL (see i18n.js setLang), so
+     everything downstream can treat `currentLocale` as a constant. There are
+     NO automatic geo/language redirects — the URL alone decides the locale.
+     ------------------------------------------------------------------------ */
+
+  function pathLocale(path) {
+    const m = /^\/(en|fr|it)(?=\/|$)/.exec(path || '');
+    return m ? m[1] : 'de';
+  }
+
+  function stripLocale(path) {
+    return ((path || '/').replace(/^\/(en|fr|it)(?=\/|$)/, '')) || '/';
+  }
+
+  const currentLocale = pathLocale(window.location.pathname);
+
+  window.getLocale = function () { return currentLocale; };
+
+  /* localePath('/story/') → '/story/' (de) or '/fr/story/' (fr). Idempotent:
+     an already-prefixed path is stripped first, so it is safe to call on
+     hrefs that may or may not carry a prefix. External URLs pass through. */
+  window.localePath = function (path) {
+    if (!path || path.charAt(0) !== '/') return path;
+    const clean = stripLocale(path);
+    return currentLocale === 'de' ? clean : '/' + currentLocale + clean;
+  };
+
   /* Map old paths to new ones so existing inbound links / SEO history keep working. */
   const REDIRECTS = {
     '/ueber-uns/':       '/story/',
@@ -28,7 +58,29 @@
       description: 'Entdecken Sie die Kraft von Sanddorn. AmberNord bietet natürliche Biohacking- und Longevity-Essenzen aus der Schweiz für Ihr tägliches Ritual.',
       canonical:   'https://ambernord.ch/',
       type:        'landing',
-      schema:      null
+      schema: {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "AmberNord",
+        "url": "https://ambernord.ch/",
+        "logo": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:best,h_160/v1776015174/bio-sanddorn-elixier-schweiz-ambernord-ritual-with-Zelt-premium-edition_k5pn3w.png",
+        "founder": {
+          "@type": "Person",
+          "name": "Eriks Matisons",
+          "jobTitle": "Gründer"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Aarau",
+          "addressCountry": "CH"
+        },
+        "sameAs": [
+          "https://www.facebook.com/ambernord.ch/",
+          "https://www.instagram.com/ambernord.ch/",
+          "https://www.tiktok.com/@ambernord.ch",
+          "https://www.youtube.com/@ambernord"
+        ]
+      }
     },
 
     '/story/': {
@@ -385,7 +437,7 @@
      any sublink — the dropdown stays closed but signals "you are here". */
   function markActiveNavLink(currentPath) {
     const norm = function (p) {
-      return (p || '').replace(/^https?:\/\/[^/]+/, '').replace(/\/$/, '') || '/';
+      return stripLocale((p || '').replace(/^https?:\/\/[^/]+/, '')).replace(/\/$/, '') || '/';
     };
     const target = norm(currentPath || window.location.pathname);
 
@@ -424,17 +476,18 @@
   }
 
   async function navigate(path, pushState) {
-    const cleanPath = normalisePath(path);
+    /* Route matching always happens on the locale-less path; the visible URL
+       keeps the current locale prefix via localePath(). */
+    const cleanPath = normalisePath(stripLocale(path));
     const hash      = path.includes('#') ? path.split('#')[1] : null;
     const { route, canonicalPath } = resolveRoute(cleanPath);
 
-    /* If this is a redirect, rewrite the URL silently to the new path. */
-    const finalPath = (canonicalPath !== cleanPath ? canonicalPath : path);
+    const localizedPath = window.localePath(canonicalPath) + (hash ? '#' + hash : '');
 
     if (pushState) {
-      history.pushState({ path: canonicalPath }, route.title, finalPath);
-    } else if (canonicalPath !== cleanPath) {
-      history.replaceState({ path: canonicalPath }, route.title, canonicalPath + (hash ? '#' + hash : ''));
+      history.pushState({ path: canonicalPath }, route.title, localizedPath);
+    } else if (canonicalPath !== cleanPath || pathLocale(window.location.pathname) !== currentLocale) {
+      history.replaceState({ path: canonicalPath }, route.title, localizedPath);
     }
 
     /* Reflect the new path on every nav link in the mobile overlay so the
@@ -568,6 +621,14 @@
       if (el.dataset.routerBound) return;
       el.dataset.routerBound = 'true';
 
+      /* Keep visible hrefs locale-aware (hover, copy-link, open-in-new-tab,
+         crawlers on prerendered HTML). Markup authors always write the
+         root-relative DE path; we prefix it here once per element. */
+      const rawHref = el.getAttribute('href') || '';
+      if (rawHref.charAt(0) === '/' && currentLocale !== 'de') {
+        el.setAttribute('href', window.localePath(rawHref.split('#')[0]) + (rawHref.includes('#') ? '#' + rawHref.split('#')[1] : ''));
+      }
+
       el.addEventListener('click', function (e) {
         const href = el.getAttribute('href');
         if (!href) return;
@@ -580,9 +641,10 @@
         e.preventDefault();
 
         const normalised = href.replace('https://ambernord.ch', '');
-        const pathPart   = normalised.split('#')[0];
+        const rawPath    = normalised.split('#')[0];
+        const pathPart   = rawPath ? stripLocale(rawPath) : '';
         const hashPart   = normalised.includes('#') ? normalised.split('#')[1] : null;
-        const samePage   = pathPart === '' || pathPart === window.location.pathname;
+        const samePage   = pathPart === '' || pathPart === stripLocale(window.location.pathname);
 
         if (samePage && hashPart) {
           const target     = document.getElementById(hashPart);

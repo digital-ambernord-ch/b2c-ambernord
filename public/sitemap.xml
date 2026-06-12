@@ -1,78 +1,579 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://ambernord.ch/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/en/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/fr/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/it/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/"/>
   </url>
   <url>
     <loc>https://ambernord.ch/story/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/story/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/story/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/story/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/story/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/story/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/en/story/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/story/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/story/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/story/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/story/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/story/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/fr/story/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/story/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/story/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/story/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/story/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/story/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/it/story/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/story/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/story/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/story/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/story/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/story/"/>
   </url>
   <url>
     <loc>https://ambernord.ch/wissenschaft/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/wissenschaft/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/wissenschaft/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/wissenschaft/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/wissenschaft/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/wissenschaft/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/en/wissenschaft/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/wissenschaft/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/wissenschaft/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/wissenschaft/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/wissenschaft/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/wissenschaft/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/fr/wissenschaft/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/wissenschaft/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/wissenschaft/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/wissenschaft/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/wissenschaft/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/wissenschaft/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/it/wissenschaft/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/wissenschaft/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/wissenschaft/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/wissenschaft/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/wissenschaft/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/wissenschaft/"/>
   </url>
   <url>
     <loc>https://ambernord.ch/ritual/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/ritual/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/ritual/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/ritual/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/ritual/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/ritual/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/en/ritual/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/ritual/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/ritual/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/ritual/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/ritual/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/ritual/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/fr/ritual/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/ritual/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/ritual/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/ritual/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/ritual/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/ritual/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/it/ritual/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/ritual/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/ritual/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/ritual/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/ritual/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/ritual/"/>
   </url>
   <url>
     <loc>https://ambernord.ch/shop/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/shop/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/shop/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/shop/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/shop/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/shop/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/en/shop/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/shop/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/shop/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/shop/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/shop/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/shop/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/fr/shop/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/shop/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/shop/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/shop/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/shop/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/shop/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/it/shop/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/shop/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/shop/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/shop/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/shop/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/shop/"/>
   </url>
   <url>
     <loc>https://ambernord.ch/shop/starter/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/shop/starter/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/shop/starter/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/shop/starter/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/shop/starter/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/shop/starter/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/en/shop/starter/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/shop/starter/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/shop/starter/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/shop/starter/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/shop/starter/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/shop/starter/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/fr/shop/starter/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/shop/starter/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/shop/starter/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/shop/starter/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/shop/starter/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/shop/starter/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/it/shop/starter/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/shop/starter/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/shop/starter/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/shop/starter/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/shop/starter/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/shop/starter/"/>
   </url>
   <url>
     <loc>https://ambernord.ch/shop/habit/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/shop/habit/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/shop/habit/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/shop/habit/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/shop/habit/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/shop/habit/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/en/shop/habit/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/shop/habit/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/shop/habit/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/shop/habit/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/shop/habit/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/shop/habit/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/fr/shop/habit/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/shop/habit/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/shop/habit/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/shop/habit/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/shop/habit/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/shop/habit/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/it/shop/habit/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/shop/habit/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/shop/habit/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/shop/habit/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/shop/habit/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/shop/habit/"/>
   </url>
   <url>
     <loc>https://ambernord.ch/shop/protocol/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/shop/protocol/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/shop/protocol/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/shop/protocol/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/shop/protocol/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/shop/protocol/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/en/shop/protocol/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/shop/protocol/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/shop/protocol/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/shop/protocol/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/shop/protocol/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/shop/protocol/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/fr/shop/protocol/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/shop/protocol/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/shop/protocol/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/shop/protocol/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/shop/protocol/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/shop/protocol/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/it/shop/protocol/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/shop/protocol/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/shop/protocol/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/shop/protocol/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/shop/protocol/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/shop/protocol/"/>
   </url>
   <url>
     <loc>https://ambernord.ch/shop/master-box/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/shop/master-box/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/shop/master-box/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/shop/master-box/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/shop/master-box/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/shop/master-box/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/en/shop/master-box/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/shop/master-box/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/shop/master-box/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/shop/master-box/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/shop/master-box/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/shop/master-box/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/fr/shop/master-box/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/shop/master-box/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/shop/master-box/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/shop/master-box/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/shop/master-box/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/shop/master-box/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/it/shop/master-box/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/shop/master-box/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/shop/master-box/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/shop/master-box/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/shop/master-box/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/shop/master-box/"/>
   </url>
   <url>
     <loc>https://ambernord.ch/hilfe/faq/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/hilfe/faq/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/hilfe/faq/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/hilfe/faq/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/hilfe/faq/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/hilfe/faq/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/en/hilfe/faq/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/hilfe/faq/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/hilfe/faq/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/hilfe/faq/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/hilfe/faq/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/hilfe/faq/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/fr/hilfe/faq/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/hilfe/faq/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/hilfe/faq/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/hilfe/faq/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/hilfe/faq/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/hilfe/faq/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/it/hilfe/faq/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/hilfe/faq/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/hilfe/faq/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/hilfe/faq/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/hilfe/faq/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/hilfe/faq/"/>
   </url>
   <url>
     <loc>https://ambernord.ch/hilfe/kontakt/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/hilfe/kontakt/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/hilfe/kontakt/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/hilfe/kontakt/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/hilfe/kontakt/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/hilfe/kontakt/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/en/hilfe/kontakt/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/hilfe/kontakt/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/hilfe/kontakt/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/hilfe/kontakt/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/hilfe/kontakt/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/hilfe/kontakt/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/fr/hilfe/kontakt/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/hilfe/kontakt/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/hilfe/kontakt/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/hilfe/kontakt/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/hilfe/kontakt/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/hilfe/kontakt/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/it/hilfe/kontakt/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/hilfe/kontakt/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/hilfe/kontakt/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/hilfe/kontakt/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/hilfe/kontakt/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/hilfe/kontakt/"/>
   </url>
   <url>
     <loc>https://ambernord.ch/hilfe/bestellstatus/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/hilfe/bestellstatus/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/hilfe/bestellstatus/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/hilfe/bestellstatus/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/hilfe/bestellstatus/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/hilfe/bestellstatus/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/en/hilfe/bestellstatus/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/hilfe/bestellstatus/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/hilfe/bestellstatus/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/hilfe/bestellstatus/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/hilfe/bestellstatus/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/hilfe/bestellstatus/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/fr/hilfe/bestellstatus/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/hilfe/bestellstatus/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/hilfe/bestellstatus/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/hilfe/bestellstatus/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/hilfe/bestellstatus/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/hilfe/bestellstatus/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/it/hilfe/bestellstatus/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/hilfe/bestellstatus/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/hilfe/bestellstatus/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/hilfe/bestellstatus/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/hilfe/bestellstatus/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/hilfe/bestellstatus/"/>
   </url>
   <url>
     <loc>https://ambernord.ch/hilfe/rueckgabe/</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/hilfe/rueckgabe/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/hilfe/rueckgabe/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/hilfe/rueckgabe/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/hilfe/rueckgabe/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/hilfe/rueckgabe/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/en/hilfe/rueckgabe/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/hilfe/rueckgabe/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/hilfe/rueckgabe/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/hilfe/rueckgabe/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/hilfe/rueckgabe/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/hilfe/rueckgabe/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/fr/hilfe/rueckgabe/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/hilfe/rueckgabe/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/hilfe/rueckgabe/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/hilfe/rueckgabe/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/hilfe/rueckgabe/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/hilfe/rueckgabe/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/it/hilfe/rueckgabe/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/hilfe/rueckgabe/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/hilfe/rueckgabe/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/hilfe/rueckgabe/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/hilfe/rueckgabe/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/hilfe/rueckgabe/"/>
   </url>
   <url>
     <loc>https://ambernord.ch/datenschutz/</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/datenschutz/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/datenschutz/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/datenschutz/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/datenschutz/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/datenschutz/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/en/datenschutz/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/datenschutz/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/datenschutz/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/datenschutz/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/datenschutz/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/datenschutz/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/fr/datenschutz/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/datenschutz/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/datenschutz/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/datenschutz/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/datenschutz/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/datenschutz/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/it/datenschutz/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/datenschutz/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/datenschutz/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/datenschutz/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/datenschutz/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/datenschutz/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/agb/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/agb/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/agb/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/agb/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/agb/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/agb/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/en/agb/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/agb/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/agb/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/agb/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/agb/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/agb/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/fr/agb/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/agb/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/agb/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/agb/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/agb/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/agb/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/it/agb/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/agb/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/agb/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/agb/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/agb/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/agb/"/>
   </url>
   <url>
     <loc>https://ambernord.ch/b2b/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/b2b/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/b2b/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/b2b/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/b2b/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/b2b/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/en/b2b/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/b2b/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/b2b/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/b2b/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/b2b/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/b2b/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/fr/b2b/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/b2b/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/b2b/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/b2b/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/b2b/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/b2b/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/it/b2b/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/b2b/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/b2b/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/b2b/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/b2b/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/b2b/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/bewertungen/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/bewertungen/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/bewertungen/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/bewertungen/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/bewertungen/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/bewertungen/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/en/bewertungen/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/bewertungen/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/bewertungen/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/bewertungen/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/bewertungen/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/bewertungen/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/fr/bewertungen/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/bewertungen/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/bewertungen/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/bewertungen/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/bewertungen/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/bewertungen/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/it/bewertungen/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/bewertungen/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/bewertungen/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/bewertungen/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/bewertungen/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/bewertungen/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/2-fuer-1/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/2-fuer-1/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/2-fuer-1/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/2-fuer-1/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/2-fuer-1/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/2-fuer-1/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/en/2-fuer-1/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/2-fuer-1/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/2-fuer-1/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/2-fuer-1/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/2-fuer-1/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/2-fuer-1/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/fr/2-fuer-1/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/2-fuer-1/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/2-fuer-1/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/2-fuer-1/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/2-fuer-1/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/2-fuer-1/"/>
+  </url>
+  <url>
+    <loc>https://ambernord.ch/it/2-fuer-1/</loc>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://ambernord.ch/2-fuer-1/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ambernord.ch/en/2-fuer-1/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://ambernord.ch/fr/2-fuer-1/"/>
+    <xhtml:link rel="alternate" hreflang="it-CH" href="https://ambernord.ch/it/2-fuer-1/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ambernord.ch/2-fuer-1/"/>
   </url>
 </urlset>

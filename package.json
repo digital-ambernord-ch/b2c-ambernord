@@ -1,0 +1,8 @@
+{
+  "name": "ambernord-b2c",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/prerender.mjs"
+  }
+}
