@@ -33,7 +33,7 @@ window.initLanding = async function () {
   /* Landing-only topbar state: hide the topbar EU-bio badge while the hero's
      own bio leaf is on screen (only ONE bio mark at a time — CSS rule in
      main.css). The router removes the class on every navigation; the bio
-     badge fly-in below removes it mid-scroll once the hero text is gone. */
+     badge toggle below removes it mid-scroll once the hero text is gone. */
   document.documentElement.classList.add('landing-hero-active');
 
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
@@ -221,8 +221,14 @@ window.initLanding = async function () {
 
     /* CSS no longer hides the float cards (content must be visible without
        JS) — apply the pre-pop hidden state here, JS-only, so phase 1 (hero
-       shrink) doesn't expose six static cards before their pop-in at 3.2. */
-    gsap.set('.float-img', { scale: 0.1, opacity: 0 });
+       shrink) doesn't expose six static cards before their pop-in at 3.2.
+       Only the VISIBLE cards are animated: in the 992–1399px laptop bands the
+       two image-only .visual-card tiles are display:none (landing.css), and
+       tweening hidden elements would corrupt the stagger rhythm. */
+    const floatCards = gsap.utils.toArray('.float-img').filter(function (el) {
+      return el.offsetParent !== null;
+    });
+    gsap.set(floatCards, { scale: 0.1, opacity: 0 });
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -241,15 +247,16 @@ window.initLanding = async function () {
       .to('#heroText',          { opacity: 0, duration: 1, ease: 'power1.in' }, 0.3)
       .to('#ambernordHeroShade',{ opacity: 0, duration: 1, ease: 'none' }, 0.8)
 
-    /* Phase 2: 6 cards pop in around the shrunk hero */
-      .fromTo('.float-img',     { scale: 0.1, opacity: 0 },
+    /* Phase 2: the visible cards pop in around the shrunk hero (6 at ≥1400px,
+       4 in the laptop bands) */
+      .fromTo(floatCards,       { scale: 0.1, opacity: 0 },
                                 { scale: 1, opacity: 1, duration: 1.5, stagger: 0.12, ease: 'back.out(1.4)' }, 3.2)
 
     /* Phase 3: Surrounding cards drift away upward — start TOGETHER with the
        bottle/hero rise (5.7, was 5.4) and travel a shorter distance, so they
        lift into the air at the same beat as the bottle instead of rocketing
        off ahead of it. */
-      .to('.float-img',         { y: '-58vh', duration: 3.2, ease: 'power1.in' }, 5.7)
+      .to(floatCards,           { y: '-58vh', duration: 3.2, ease: 'power1.in' }, 5.7)
 
     /* Phase 4: The hero card + bottle barely rise — they stay near centre so
        the END of the hero is NOT an empty black viewport. The bottle remains
@@ -318,14 +325,12 @@ window.initLanding = async function () {
   });
 
   /* =========================================================================
-     BIO BADGE FLY-IN — the moment the hero tagline/content has faded out in
-     the hero choreography, the EU-bio mark "flies" onto the topbar logo:
-     a fixed-position clone of the hero leaf animates FLIP-style (rect →
-     rect) to the topbar badge position, then the real badge is revealed by
-     removing `landing-hero-active` (reveal transition lives in main.css).
-     Scrolling back up re-adds the class — the topbar badge scale/fades back
-     out via its CSS transition (the reverse fly is intentionally just that).
-     Reduced motion: no clone, the class toggles at the same trigger point.
+     BIO BADGE HANDOVER — the topbar EU-bio mark simply APPEARS the moment the
+     hero tagline/headline has faded out in the hero choreography (no flying
+     clone): removing `landing-hero-active` lets the badge's own scale/fade
+     transition in main.css play. Scrolling back up re-adds the class and the
+     same transition reverses. State-toggled (badgeShown gate) so scrubbing
+     never spams the classList. Reduced motion: identical class toggle.
      ========================================================================= */
 
   mm.add('all', function () {
@@ -334,75 +339,17 @@ window.initLanding = async function () {
     if (!track || !topbarBadge) return;
 
     const htmlEl   = document.documentElement;
-    let badgeShown = false;   /* state gate — guards clone spam while scrubbing */
-    let flyClone   = null;
-    let flyTween   = null;
-
-    function killClone() {
-      if (flyTween) { flyTween.kill(); flyTween = null; }
-      if (flyClone && flyClone.parentNode) flyClone.parentNode.removeChild(flyClone);
-      flyClone = null;
-    }
-
-    /* Target rect: the topbar badge's VISIBLE resting position. While hidden
-       it carries a scale/translate transform from the landing-hero-active
-       class, so neutralise transform inline for one synchronous measurement —
-       reverted in the same task, so no frame is ever painted with it. */
-    function badgeTargetRect() {
-      const s = topbarBadge.style;
-      s.setProperty('transition', 'none', 'important');
-      s.setProperty('transform',  'none', 'important');
-      const r = topbarBadge.getBoundingClientRect();
-      s.removeProperty('transform');
-      s.removeProperty('transition');
-      return r;
-    }
+    let badgeShown = false;   /* state gate — guards class spam while scrubbing */
 
     function showBadge() {
       if (badgeShown) return;
       badgeShown = true;
-
-      const heroLeaf = document.querySelector('.scalable-hero .eu-bio-logo');
-      const from     = heroLeaf ? heroLeaf.getBoundingClientRect() : null;
-      const to       = badgeTargetRect();
-
-      /* Reduced motion (or nothing measurable): plain class toggle. */
-      if (reducedMotion || !from || !from.width || !to.width) {
-        htmlEl.classList.remove('landing-hero-active');
-        return;
-      }
-
-      killClone();
-      flyClone = heroLeaf.cloneNode(false);
-      flyClone.removeAttribute('id');
-      flyClone.setAttribute('aria-hidden', 'true');
-      flyClone.style.cssText =
-        'position:fixed;margin:0;left:' + from.left + 'px;top:' + from.top + 'px;' +
-        'width:' + from.width + 'px;height:' + from.height + 'px;bottom:auto;right:auto;' +
-        'z-index:2000;pointer-events:none;will-change:transform,opacity;';
-      document.body.appendChild(flyClone);
-
-      flyTween = gsap.to(flyClone, {
-        x:      to.left - from.left,
-        y:      to.top  - from.top,
-        scaleX: to.width  / from.width,
-        scaleY: to.height / from.height,
-        transformOrigin: 'top left',
-        duration: 0.5,
-        ease: 'power2.inOut',
-        onComplete: function () {
-          /* Hand-over: reveal the real badge underneath, then fade the clone
-             away so the swap reads as one continuous object. */
-          htmlEl.classList.remove('landing-hero-active');
-          flyTween = gsap.to(flyClone, { opacity: 0, duration: 0.25, ease: 'power1.out', onComplete: killClone });
-        }
-      });
+      htmlEl.classList.remove('landing-hero-active');
     }
 
     function hideBadge() {
       if (!badgeShown) return;
       badgeShown = false;
-      killClone();
       htmlEl.classList.add('landing-hero-active');
     }
 
@@ -416,38 +363,40 @@ window.initLanding = async function () {
         onLeaveBack: hideBadge
       });
     } else {
-      /* Same beat as the hero choreography: #heroText is fully faded at
-         ~1.3/8.9 of the desktop timeline and ~2/6 of the mobile one; the
-         thresholds sit just past that (scrub lag included). Evaluated per
-         frame from raw progress so fast scrubbing in either direction can
-         never double-run or skip the swap. */
+      /* EXACT beat of the hero text fade-out: #heroText reaches opacity 0 at
+         1.3 of the 8.9-unit desktop timeline (≈0.15) and at 2 of the 6-unit
+         mobile one (≈0.33). Raw track progress runs slightly AHEAD of the
+         scrub-lagged visuals, so the badge appears right as the text dies,
+         never seconds after. Evaluated per frame from raw progress so fast
+         scrubbing in either direction can never double-run or skip the swap. */
       ScrollTrigger.create({
         trigger: track,
         start: 'top top',
         end:   'bottom bottom',
         invalidateOnRefresh: true,
         onUpdate: function (self) {
-          const p = window.matchMedia('(min-width: 992px)').matches ? 0.20 : 0.40;
+          const p = window.matchMedia('(min-width: 992px)').matches ? 0.15 : 0.33;
           if (self.progress >= p) showBadge(); else hideBadge();
         }
       });
     }
-
-    return killClone;
   });
 
   /* =========================================================================
-     PRODUCT CARDS — premium stack (no pinning, all viewports).
-     ≥768px: grouped fade-up reveal, then the scrubbed exit/return "flip"
-     choreography (cards slide out sideways, swap to their benefit face while
-     off-screen, slide back in — never a state with zero cards on screen).
-     <768px: calm per-card fade-up only. Reduced motion: everything static,
-     normal face. CSS keeps the cards visible by default; the hidden
-     pre-reveal state is applied here, JS-only, so content renders fine
-     without JavaScript.
+     PRODUCT CARDS.
+     ≥992px: the cards group is PINNED (pinSpacing on, ~2 viewport heights of
+     scrub) and the flip sequence plays INSIDE the pin — real dwell on the
+     sales faces first, staggered exit/flip/return, dwell on the benefit
+     faces, then the page continues. Owner-confirmed: the audit's "no
+     pinning" rule applies only below 768px.
+     768–991px: NO pin, NO flip — calm per-card fade-up (the choreography
+     needs desktop room). <768px: same fade-up, unchanged. Reduced motion:
+     everything static, normal faces, no pin. CSS keeps the cards visible by
+     default; the hidden pre-reveal state is applied here, JS-only, so
+     content renders fine without JavaScript.
      ========================================================================= */
 
-  mm.add('(min-width: 768px)', function () {
+  mm.add('(min-width: 992px)', function () {
     if (reducedMotion) return;
 
     const section = document.getElementById('ritual-products');
@@ -455,7 +404,8 @@ window.initLanding = async function () {
     if (!cards.length) return;
 
     /* One grouped reveal: the whole stack rises together with a tight
-       stagger (≤0.4s total feel) so the section reads as a single unit. */
+       stagger (≤0.4s total feel) so the section reads as a single unit.
+       Plays before the pin engages (trigger 85% vs pin near the top). */
     gsap.fromTo(cards,
       { opacity: 0, y: 24 },
       {
@@ -473,12 +423,15 @@ window.initLanding = async function () {
       }
     );
 
-    /* EXIT/RETURN FLIP — two-phase scroll-scrubbed choreography (no pin,
-       transform only): each card slides fully out of the viewport
-       (1st left, 2nd right, 3rd left), swaps to its BENEFIT FACE while
-       off-screen (.is-flipped — overlay + visibility swap in landing.css),
-       then slides back in mirrored. Cards are sequenced so card i returns
-       while card i+1 leaves — at least one card is always fully visible.
+    /* PINNED EXIT/RETURN FLIP — the heading + cards group pins for ~2
+       viewport heights while a scrubbed timeline plays in three phases:
+       A (~23%): pure dwell — all three SALES faces fully visible, users see
+         the products first;
+       B: cards exit one by one (1st left, 2nd right, 3rd left), swap to the
+         BENEFIT FACE while off-screen (.is-flipped — overlay + visibility
+         swap in landing.css) and return mirrored; the stagger guarantees at
+         least two cards are on screen at any moment;
+       C (~23%): dwell on the three benefit faces, then the pin releases.
        Scrub reverses everything; the anchor stays clickable in both faces.
        The .has-flip-scrub class swaps the cards' CSS transform transition
        off so the hover-lift transition never chases the scrub. */
@@ -487,12 +440,26 @@ window.initLanding = async function () {
     const group  = section.querySelector('.ritual-cards-group') || section;
     const dirs   = [-1, 1, -1];
     const flipAt = [];
+    const DWELL  = 2;     /* phase A/C length in timeline units */
 
     const flipTl = gsap.timeline({
       scrollTrigger: {
         trigger: group,
-        start: 'top 45%',
-        end:   'bottom 60%',
+        /* Centre the group in the viewport when it fits; otherwise anchor it
+           just under the topbar so as much of the stack as possible is
+           visible during the pin. Function-based — re-measured on refresh. */
+        start: function () {
+          const cs      = getComputedStyle(document.documentElement);
+          const navH    = parseFloat(cs.getPropertyValue('--nav-height'))    || 80;
+          const aktionH = parseFloat(cs.getPropertyValue('--aktion-height')) || 0;
+          const topMin  = navH + aktionH + 16;
+          const free    = (window.innerHeight - group.offsetHeight) / 2;
+          return 'top ' + Math.max(topMin, free) + 'px';
+        },
+        end:   '+=200%',
+        pin:   group,
+        pinSpacing: true,
+        anticipatePin: 1,
         scrub: true,
         invalidateOnRefresh: true
       }
@@ -500,7 +467,7 @@ window.initLanding = async function () {
 
     cards.forEach(function (card, i) {
       const dir = dirs[i % dirs.length];
-      const s   = i * 1.2;
+      const s   = DWELL + i * 1.2;
       /* Slide fully past the viewport edge: half the leftover viewport plus
          the card's own width (function-based — re-measured on refresh). */
       const offX = function () { return dir * ((window.innerWidth + card.offsetWidth) / 2 + 60); };
@@ -508,6 +475,10 @@ window.initLanding = async function () {
       flipTl.to(card, { x: 0,    duration: 1, ease: 'power2.out' }, s + 1.2);
       flipAt.push(s + 1.1); /* off-screen midpoint — face swap is invisible */
     });
+
+    /* Phase C: empty spacer tween extends the timeline past the last return
+       so the finished benefit faces hold the frame before the unpin. */
+    flipTl.to({}, { duration: DWELL }, DWELL + (cards.length - 1) * 1.2 + 2.2);
 
     /* Face swap derived from the playhead EVERY frame (not .call()): a fast
        scrub can jump several timeline-seconds per tick in either direction —
@@ -525,7 +496,7 @@ window.initLanding = async function () {
     };
   });
 
-  mm.add('(max-width: 767px)', function () {
+  mm.add('(max-width: 991px)', function () {
     if (reducedMotion) return;
 
     /* Static premium stack: each card (and the trust row) fades up ONCE on

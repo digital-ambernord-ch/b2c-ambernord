@@ -94,10 +94,11 @@
       "shipping": "zzgl. Versand",
       "btn": "Jetzt starten",
       "flip": {
-        "heading": "Ihr Einstieg",
-        "item1": "Der erste Schluck: hell, sauer, lebendig — Sanddorn in Reinform.",
-        "item2": "Eine der seltenen Quellen aller 4 Omega-Fettsäuren (3, 6, 7 & 9).",
-        "item3": "10 Tage Ritual — exakt eine Flasche.",
+        "heading": "Warum AmberNord",
+        "item1": "100 % Handlese — keine Erntemaschinen.",
+        "item2": "Kaltgepresst direkt an der Quelle.",
+        "item3": "Bis zu 42 % Omega-7 im Fruchtfleischöl.",
+        "savings": "30 Tage Geld-zurück-Garantie",
         "cta": "Jetzt bestellen — 24.90 CHF"
       }
     },
@@ -116,10 +117,11 @@
       "shipping": "inkl. <span class=\"card-shipping-note__free\">kostenlosem Versand</span>",
       "btn": "30 Tage starten",
       "flip": {
-        "heading": "Die Transformation",
-        "item1": "Vitamin C trägt zur Verringerung von Müdigkeit bei — Schluss mit dem Nachmittags-Tief.",
-        "item2": "Bis zu 42 % Omega-7 — eine der reichsten Quellen der Natur.",
-        "item3": "Die volle Matrix der ganzen Beere — Öle aus Fruchtfleisch und Kern.",
+        "heading": "Reinheit & Herkunft",
+        "item1": "Zero-Waste: die ganze Beere — nichts geht verloren.",
+        "item2": "Nordische Böden — aussergewöhnlich tiefe Pestizid- und Schwermetallwerte.",
+        "item3": "Jede Charge laborgeprüft.",
+        "savings": "−8 % vs. Starter · Abo: weitere −9 %",
         "cta": "Jetzt bestellen — 69.00 CHF"
       }
     },
@@ -137,10 +139,11 @@
       "shipping": "inkl. <span class=\"card-shipping-note__free\">kostenlosem Versand</span>",
       "btn": "Mein Ritual starten",
       "flip": {
-        "heading": "Das Meister-Level",
-        "item1": "Vitamin C trägt zum Schutz der Zellen vor oxidativem Stress bei — 60 Tage lückenlos.",
-        "item2": "Natürliche Carotinoide aus der ganzen Beere.",
-        "item3": "Über 190 bioaktive Wirkstoffe aktiv.",
+        "heading": "Die volle Matrix",
+        "item1": "Exklusive Zelt-Selektion — eine einzige Premium-Monosorte.",
+        "item2": "190+ Bioaktivstoffe, 18 Aminosäuren, alle 4 Omega-Fettsäuren.",
+        "item3": "Glasflasche — ohne Zuckerzusatz, ohne künstliche Aromen.",
+        "savings": "−14 % vs. Starter · Abo: weitere −8 %",
         "cta": "Jetzt bestellen — 129.00 CHF"
       }
     },

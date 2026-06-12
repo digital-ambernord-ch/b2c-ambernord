@@ -94,10 +94,11 @@
       "shipping": "+ shipping",
       "btn": "Start Now",
       "flip": {
-        "heading": "Your Start",
-        "item1": "The first sip: bright, sour, alive — sea buckthorn in its pure form.",
-        "item2": "One of the rare sources of all 4 omega fatty acids (3, 6, 7 & 9).",
-        "item3": "A 10-day ritual — exactly one bottle.",
+        "heading": "Why AmberNord",
+        "item1": "100 % hand-picked — no harvesting machines.",
+        "item2": "Cold-pressed directly at the source.",
+        "item3": "Up to 42 % omega-7 in the pulp oil.",
+        "savings": "30-day money-back guarantee",
         "cta": "Order now — 24.90 CHF"
       }
     },
@@ -116,10 +117,11 @@
       "shipping": "incl. <span class=\"card-shipping-note__free\">free shipping</span>",
       "btn": "Start 30 Days",
       "flip": {
-        "heading": "The Transformation",
-        "item1": "Vitamin C contributes to the reduction of tiredness and fatigue — no more afternoon slump.",
-        "item2": "Up to 42 % Omega-7 — one of nature's richest sources.",
-        "item3": "The full matrix of the whole berry — oils from pulp and seed.",
+        "heading": "Purity & origin",
+        "item1": "Zero waste: the whole berry — nothing is lost.",
+        "item2": "Nordic soils — exceptionally low pesticide and heavy-metal levels.",
+        "item3": "Every batch lab-tested.",
+        "savings": "−8 % vs. Starter · subscription: a further −9 %",
         "cta": "Order now — 69.00 CHF"
       }
     },
@@ -137,10 +139,11 @@
       "shipping": "incl. <span class=\"card-shipping-note__free\">free shipping</span>",
       "btn": "Start My Ritual",
       "flip": {
-        "heading": "The Master Level",
-        "item1": "Vitamin C contributes to the protection of cells from oxidative stress — 60 days without a gap.",
-        "item2": "Natural carotenoids from the whole berry.",
-        "item3": "Over 190 bioactive compounds active.",
+        "heading": "The full matrix",
+        "item1": "Exclusive Zelt selection — a single premium variety.",
+        "item2": "190+ bioactive compounds, 18 amino acids, all 4 omega fatty acids.",
+        "item3": "Glass bottle — no added sugar, no artificial flavours.",
+        "savings": "−14 % vs. Starter · subscription: a further −8 %",
         "cta": "Order now — 129.00 CHF"
       }
     },

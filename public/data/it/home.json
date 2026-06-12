@@ -94,10 +94,11 @@
       "shipping": "+ spedizione",
       "btn": "Inizi ora",
       "flip": {
-        "heading": "Il Suo Inizio",
-        "item1": "Il primo sorso: luminoso, acidulo, vivo — olivello spinoso allo stato puro.",
-        "item2": "Una delle rare fonti di tutti e 4 gli acidi grassi omega (3, 6, 7 & 9).",
-        "item3": "10 giorni di rituale — esattamente una bottiglia.",
+        "heading": "Perché AmberNord",
+        "item1": "100 % raccolta a mano — nessuna macchina.",
+        "item2": "Spremuto a freddo direttamente alla fonte.",
+        "item3": "Fino al 42 % di omega-7 nell'olio di polpa.",
+        "savings": "Garanzia soddisfatti o rimborsati di 30 giorni",
         "cta": "Ordini ora — 24.90 CHF"
       }
     },
@@ -116,10 +117,11 @@
       "shipping": "<span class=\"card-shipping-note__free\">spedizione gratuita</span> inclusa",
       "btn": "Inizi i 30 giorni",
       "flip": {
-        "heading": "La Trasformazione",
-        "item1": "La vitamina C contribuisce alla riduzione della stanchezza e dell'affaticamento — fine del calo pomeridiano.",
-        "item2": "Fino al 42 % di Omega-7 — una delle fonti più ricche della natura.",
-        "item3": "La matrice completa della bacca intera — oli da polpa e seme.",
+        "heading": "Purezza & origine",
+        "item1": "Zero waste: la bacca intera — nulla va perso.",
+        "item2": "Suoli nordici — livelli eccezionalmente bassi di pesticidi e metalli pesanti.",
+        "item3": "Ogni lotto testato in laboratorio.",
+        "savings": "−8 % vs Starter · abbonamento: ulteriore −9 %",
         "cta": "Ordini ora — 69.00 CHF"
       }
     },
@@ -137,10 +139,11 @@
       "shipping": "<span class=\"card-shipping-note__free\">spedizione gratuita</span> inclusa",
       "btn": "Inizi il Suo rituale",
       "flip": {
-        "heading": "Il Livello Master",
-        "item1": "La vitamina C contribuisce alla protezione delle cellule dallo stress ossidativo — 60 giorni senza interruzioni.",
-        "item2": "Carotenoidi naturali dalla bacca intera.",
-        "item3": "Oltre 190 sostanze bioattive attive.",
+        "heading": "La matrice completa",
+        "item1": "Selezione Zelt esclusiva — un'unica mono-varietà premium.",
+        "item2": "190+ composti bioattivi, 18 amminoacidi, tutti i 4 omega.",
+        "item3": "Bottiglia di vetro — senza zuccheri aggiunti, senza aromi artificiali.",
+        "savings": "−14 % vs Starter · abbonamento: ulteriore −8 %",
         "cta": "Ordini ora — 129.00 CHF"
       }
     },

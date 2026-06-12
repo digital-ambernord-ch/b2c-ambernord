@@ -94,10 +94,11 @@
       "shipping": "+ frais de port",
       "btn": "Commencer",
       "flip": {
-        "heading": "Votre Entrée en Matière",
-        "item1": "La première gorgée : vive, acidulée, pleine de vie — l'argousier à l'état pur.",
-        "item2": "L'une des rares sources des 4 acides gras oméga (3, 6, 7 & 9).",
-        "item3": "10 jours de rituel — exactement une bouteille.",
+        "heading": "Pourquoi AmberNord",
+        "item1": "100 % cueillette à la main — aucune machine de récolte.",
+        "item2": "Pressé à froid directement à la source.",
+        "item3": "Jusqu'à 42 % d'oméga-7 dans l'huile de pulpe.",
+        "savings": "Garantie satisfait ou remboursé de 30 jours",
         "cta": "Commander — 24.90 CHF"
       }
     },
@@ -116,10 +117,11 @@
       "shipping": "<span class=\"card-shipping-note__free\">livraison gratuite</span> incluse",
       "btn": "Commencer 30 jours",
       "flip": {
-        "heading": "La Transformation",
-        "item1": "La vitamine C contribue à réduire la fatigue — fini le creux de l'après-midi.",
-        "item2": "Jusqu'à 42 % d'Oméga-7 — l'une des sources les plus riches de la nature.",
-        "item3": "La matrice complète de la baie entière — huiles de pulpe et de pépin.",
+        "heading": "Pureté & origine",
+        "item1": "Zéro déchet : la baie entière — rien ne se perd.",
+        "item2": "Sols nordiques — teneurs exceptionnellement basses en pesticides et métaux lourds.",
+        "item3": "Chaque lot testé en laboratoire.",
+        "savings": "−8 % vs Starter · abonnement : −9 % supplémentaires",
         "cta": "Commander — 69.00 CHF"
       }
     },
@@ -137,10 +139,11 @@
       "shipping": "<span class=\"card-shipping-note__free\">livraison gratuite</span> incluse",
       "btn": "Commencer mon rituel",
       "flip": {
-        "heading": "Le Niveau Maître",
-        "item1": "La vitamine C contribue à protéger les cellules contre le stress oxydatif — 60 jours sans interruption.",
-        "item2": "Caroténoïdes naturels issus de la baie entière.",
-        "item3": "Plus de 190 composés bioactifs.",
+        "heading": "La matrice complète",
+        "item1": "Sélection Zelt exclusive — une seule mono-variété premium.",
+        "item2": "190+ composés bioactifs, 18 acides aminés, les 4 oméga.",
+        "item3": "Bouteille en verre — sans sucres ajoutés, sans arômes artificiels.",
+        "savings": "−14 % vs Starter · abonnement : −8 % supplémentaires",
         "cta": "Commander — 129.00 CHF"
       }
     },
