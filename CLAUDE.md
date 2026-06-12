@@ -4,10 +4,11 @@ Swiss premium sea-buckthorn (Sanddorn) brand. Vanilla-JS SPA hosted on Cloudflar
 
 ## Stack & deploy
 
-- Static site under [public/](public/) — no build step, served as-is by Cloudflare Pages.
+- Static site under [public/](public/) — runs as-is for local dev. Production build: `npm run build` ([scripts/prerender.mjs](scripts/prerender.mjs)) emits ~84 prerendered pages (route × locale) into `dist/` with localized meta, self-canonical, hreflang cluster and JSON-LD per page; CF Pages build command `npm run build`, output dir `dist`.
+- Locale URLs: `/en/`, `/fr/`, `/it/` path prefixes; DE = root (no `/de/`). The router strips the prefix before route matching (`getLocale()`/`localePath()` in [public/js/router.js](public/js/router.js)); the URL is the locale source of truth — no automatic redirects.
 - SPA fallback: [public/_redirects](public/_redirects) sends every path to `/index.html`.
 - Security headers + CSP allowlist (Cloudinary, Stripe, GA, TikTok, fonts.gstatic, Web3Forms): [public/_headers](public/_headers).
-- [wrangler.toml](wrangler.toml), [functions/_middleware.js](functions/_middleware.js), [functions/api/checkout.js](functions/api/checkout.js), [functions/api/contact.js](functions/api/contact.js), [functions/api/health.js](functions/api/health.js), [.env](.env) are **all empty stubs** — no server-side logic in this repo. Checkout uses Stripe payment links; contact form uses Web3Forms.
+- [functions/_middleware.js](functions/_middleware.js) adds `X-Robots-Tag: noindex, nofollow` on `*.pages.dev` preview hosts. [wrangler.toml](wrangler.toml), [functions/api/checkout.js](functions/api/checkout.js), [functions/api/contact.js](functions/api/contact.js), [functions/api/health.js](functions/api/health.js), [.env](.env) are **empty stubs** — no other server-side logic. Checkout uses Stripe payment links; contact form uses Web3Forms.
 - Third-party JS loaded from CDN: GSAP + ScrollTrigger 3.12.2 ([public/index.html:358-359](public/index.html#L358-L359)), Google Fonts (Montserrat + Playfair Display).
 
 ## SPA architecture
@@ -76,6 +77,7 @@ Swiss premium sea-buckthorn (Sanddorn) brand. Vanilla-JS SPA hosted on Cloudflar
 | `/hilfe/bestellstatus/` | [bestellstatus.html](public/pages/bestellstatus.html) | `initBestellstatus` | done (form-only, no backend) |
 | `/hilfe/rueckgabe/` | [returns.html](public/pages/returns.html) | `initReturns` | done |
 | `/datenschutz/` | [datenschutz.html](public/pages/datenschutz.html) | `initDatenschutz` | done |
+| `/impressum/` | [impressum.html](public/pages/impressum.html) | `initImpressum` | placeholders `[[FIRMA]] [[ADRESSE]] [[UID]] [[EMAIL]]` pending |
 | `/agb/` | [agb.html](public/pages/agb.html) | `initAgb` | done (reuses returns CSS) |
 | `/b2b/` | [b2b.html](public/pages/b2b.html) | `initB2b` | done |
 | `/danke/` | [thankyou.html](public/pages/thankyou.html) | `initThankyou` | done |
