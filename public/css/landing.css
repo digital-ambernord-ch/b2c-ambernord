@@ -1078,9 +1078,9 @@
 }
 
 /* --------------------------------------------------------------------------
-   CARD BENEFIT FACE — second "face" of each product card, revealed while the
-   card is off-screen during the ≥992px PINNED flip choreography (landing.js
-   toggles .is-flipped at the off-screen midpoint). Two-column layout:
+   CARD BENEFIT FACE — second "face" of each product card, revealed at the
+   edge-on 90° moment of the ≥992px "gold coin" somersault flip (landing.js
+   toggles .is-flipped while the card is a sliver). Two-column layout:
    product column left (bottle shot + gold serif title + muted per-day
    price), info column right (gold uppercase heading, 3 gold-bullet items,
    highlighted savings chip, amber faux-CTA). Same card frame/radius,
@@ -1248,11 +1248,118 @@
   opacity: 1;
 }
 
-/* While the pinned flip scrub drives the cards' transform every frame, the
-   base transform transition (hover lift) must not chase the scrub — keep
-   only the border-color transition. Class set by landing.js, ≥992px branch. */
-#ritual-products.has-flip-scrub .premium-product-card {
-  transition: border-color var(--t-base) ease;
+/* --------------------------------------------------------------------------
+   GOLD COIN FLIP (≥992px, landing.js) — CSS half of the in-place somersault.
+   No pin, no scrub: GSAP plays time-based per-card timelines; this block
+   provides the perspective, the airborne shadow, the edge glint and the
+   landing shimmer.
+   -------------------------------------------------------------------------- */
+
+/* Shared vanishing point: perspective on the PARENT so all three cards
+   foreshorten toward the same horizon during their rotateX somersault. */
+@media (min-width: 992px) {
+  .ritual-cards-group { perspective: 1200px; }
+}
+
+/* While the coin-flip system owns the cards' transform, the CSS hover-lift
+   must not fight GSAP — drop the transform transition (and the hover
+   translate), keep border-color, add box-shadow for the airborne grow/
+   contract. Class set by landing.js, ≥992px branch. */
+#ritual-products.has-coin-flip .premium-product-card {
+  transition: border-color var(--t-base) ease, box-shadow 0.35s ease;
+}
+
+#ritual-products.has-coin-flip .premium-product-card:hover {
+  transform: none;
+}
+
+/* Airborne: the card visibly leaves the page — shadow grows + blurs during
+   the lift, contracts on landing (class toggled from the flip timeline; the
+   box-shadow transition above animates both directions). The habit variant
+   keeps its gold ring/inset so the list interpolates instead of snapping. */
+.premium-product-card.is-airborne {
+  box-shadow:
+    0 18px 30px rgba(0, 0, 0, 0.35),
+    0 38px 70px rgba(0, 0, 0, 0.45);
+}
+
+.premium-product-card.highlight-habit.is-airborne {
+  box-shadow:
+    0 0 0 1px rgba(237, 163, 35, 0.15),
+    0 38px 70px rgba(237, 163, 35, 0.20),
+    inset 0 1px 0 rgba(237, 163, 35, 0.08);
+}
+
+/* GOLD EDGE GLINT — thin gold "spine" across the card's vertical centre,
+   invisible at rest. It flares for ~0.1s around the 90° edge-on moment of
+   the somersault: the foreshortened card reads as a glowing coin edge
+   catching the light. ::after is free on the card (highlight-habit owns
+   ::before); z-index 3 puts the flash above BOTH faces (benefit face: 2). */
+.premium-product-card::after {
+  content: '';
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  top: 50%;
+  height: 4px;
+  transform: translateY(-50%);
+  border-radius: 999px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    var(--color-gold) 30%,
+    #fff3d6 50%,
+    var(--color-gold) 70%,
+    transparent 100%);
+  box-shadow: 0 0 18px 6px rgba(237, 163, 35, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.premium-product-card.is-glinting::after {
+  animation: an-edge-glint 0.26s ease-out;
+}
+
+@keyframes an-edge-glint {
+  0%   { opacity: 0; }
+  35%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* LANDING SHIMMER — one-shot gold light sweep across the freshly revealed
+   benefit face (same visual language as .shop-card__btn-primary::after in
+   shop.css). landing.js adds .is-shimmering after the card lands and
+   removes it on animationend; keyframes drive opacity, so the band is
+   invisible outside the sweep. Clipped by the face's overflow:hidden. */
+.card-benefit-face::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(237, 163, 35, 0.16) 50%,
+    rgba(255, 255, 255, 0) 100%);
+  transform: skewX(-25deg);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.premium-product-card.is-shimmering .card-benefit-face::after {
+  animation: an-face-shimmer 0.9s ease-out;
+}
+
+@keyframes an-face-shimmer {
+  0%   { opacity: 0; transform: translateX(0) skewX(-25deg); }
+  20%  { opacity: 1; }
+  100% { opacity: 0; transform: translateX(420%) skewX(-25deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .premium-product-card.is-glinting::after,
+  .premium-product-card.is-shimmering .card-benefit-face::after { animation: none; }
 }
 
 /* Centred "hanging tag" pinned to the card's TOP EDGE, fully INSIDE the
