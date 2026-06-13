@@ -445,6 +445,8 @@ window.initLanding = async function () {
     const hoverFine = window.matchMedia('(hover: hover) and (pointer: fine)');
     /* Per-card: target face, in-flight guard, live timeline, deal-in-played. */
     const state     = cards.map(function () { return { face: 'sales', busy: false, tl: null, dealt: false }; });
+    /* Per-card debounce timer for the hover toggle (see below). */
+    const hoverTimers = cards.map(function () { return null; });
     let   engaged   = false;   /* true while scrolled past the flip trigger */
     let   cascade   = null;
 
@@ -556,8 +558,11 @@ window.initLanding = async function () {
         const st = state[i];
         if (st.face === face && !st.busy) return;   /* already there */
         const quick = face === 'sales' || st.dealt;
-        cascade.add(buildFlip(card, i, face, quick), i * (quick ? 0.25 : 0.6));
+        cascade.add(buildFlip(card, i, face, quick), i * (quick ? 0.25 : 0.9));
       });
+      /* Global pacing: ~15% slower so the whole somersault reads as calm,
+         deliberate motion rather than a rapid snap. */
+      cascade.timeScale(0.85);
     }
 
     /* HOVER TOGGLE (pointer-fine only): once a card sits on its benefit
@@ -571,16 +576,23 @@ window.initLanding = async function () {
       if (state[i].face !== target) buildFlip(card, i, target, true);
     }
 
+    /* Debounced so a pointer merely sweeping across the stack doesn't set off
+       a chain of flips: each enter/leave schedules a settle 120ms out and
+       cancels any pending one, then re-reads the real :hover state and only
+       flips if the face is actually wrong. Quick passes net to no motion. */
     if (hoverFine.matches) {
+      function scheduleHover(card, i) {
+        if (hoverTimers[i]) clearTimeout(hoverTimers[i]);
+        hoverTimers[i] = setTimeout(function () {
+          hoverTimers[i] = null;
+          if (!engaged || state[i].busy) return;
+          const target = card.matches(':hover') ? 'sales' : 'benefit';
+          if (state[i].face !== target) buildFlip(card, i, target, true);
+        }, 120);
+      }
       cards.forEach(function (card, i) {
-        card.addEventListener('mouseenter', function () {
-          if (!engaged || state[i].busy || state[i].face !== 'benefit') return;
-          buildFlip(card, i, 'sales', true);
-        });
-        card.addEventListener('mouseleave', function () {
-          if (!engaged || state[i].busy || state[i].face !== 'sales') return;
-          buildFlip(card, i, 'benefit', true);
-        });
+        card.addEventListener('mouseenter', function () { scheduleHover(card, i); });
+        card.addEventListener('mouseleave', function () { scheduleHover(card, i); });
       });
     }
 
@@ -599,6 +611,7 @@ window.initLanding = async function () {
     return function () {
       coinST.kill();
       if (cascade) cascade.kill();
+      hoverTimers.forEach(function (t) { if (t) clearTimeout(t); });
       state.forEach(function (st) { if (st.tl) st.tl.kill(); });
       section.classList.remove('has-coin-flip');
       cards.forEach(function (card) {
