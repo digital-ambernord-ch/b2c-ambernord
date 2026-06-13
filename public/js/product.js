@@ -47,49 +47,89 @@ window.initProduct = async function () {
      GALLERY — thumbnail click + mobile swipe
      ========================================================================= */
 
-  const mainImage     = document.getElementById('main-product-image');
+  const mainImage      = document.getElementById('main-product-image');
   const swipeContainer = document.getElementById('swipe-container');
-  const thumbnails    = document.querySelectorAll('.thumb-container img');
+  const thumbnails     = document.querySelectorAll('.thumb-container img');
 
   if (!mainImage || !thumbnails.length) return;
 
+  /* Bestseller badge (only present on The Habit) lives inside the image box and
+     must show on the FIRST image (the bottle) only — it's hidden on every
+     other gallery shot. */
+  const galleryBadge = swipeContainer ? swipeContainer.querySelector('.product-badge') : null;
+
   let currentIndex = 0;
   let touchStartX  = 0;
-  let touchEndX    = 0;
+  let swapToken    = 0;     /* guards against stale swaps when swiping fast */
 
-  function updateMainImage(index) {
+  /* Scroll the active thumbnail to the centre of the THUMB STRIP only (mobile),
+     scrolling that element horizontally — never the page — so switching images
+     no longer makes the viewport jump. */
+  function centerThumb(thumb) {
+    const strip = thumb.parentElement;
+    if (!strip || strip.scrollWidth <= strip.clientWidth) return;
+    const target = thumb.offsetLeft - (strip.clientWidth - thumb.offsetWidth) / 2;
+    strip.scrollTo({ left: Math.max(0, target), behavior: 'smooth' });
+  }
+
+  function setMainImage(index, dir) {
+    const prev = currentIndex;
     if (index < 0) index = thumbnails.length - 1;
     if (index >= thumbnails.length) index = 0;
+    if (dir === undefined) dir = index === prev ? 0 : (index > prev ? 1 : -1);
 
     currentIndex = index;
+    const thumb     = thumbnails[currentIndex];
+    const newSrc    = thumb.dataset.mainSrc || thumb.src;
+    const newSrcset = thumb.dataset.mainSrcset || '';
 
-    const thumb = thumbnails[currentIndex];
-
-    mainImage.style.opacity = '0';
-
-    setTimeout(function () {
-      if (thumb.dataset.mainSrc)    mainImage.src    = thumb.dataset.mainSrc;
-      if (thumb.dataset.mainSrcset) mainImage.srcset = thumb.dataset.mainSrcset;
-      mainImage.style.opacity = '1';
-    }, 150);
+    if (galleryBadge) galleryBadge.classList.toggle('badge-hidden', currentIndex !== 0);
 
     thumbnails.forEach(function (t) {
       t.classList.remove('active-thumb');
       t.style.borderColor = 'rgba(255,255,255,0.1)';
     });
-
     thumb.classList.add('active-thumb');
     thumb.style.borderColor = '#EDA323';
+    centerThumb(thumb);
 
-    if (window.innerWidth <= 991) {
-      thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-    }
+    /* Decode-synced crossfade: fade the current image out while the next one is
+       preloaded + decoded off-screen, then swap (no blank flash) and slide it
+       in from the swipe direction. */
+    const token = ++swapToken;
+    mainImage.style.opacity = '0';
+
+    const decoded = (function () {
+      const pre = new Image();
+      if (newSrcset) pre.srcset = newSrcset;
+      pre.src = newSrc;
+      if (pre.decode) return pre.decode().catch(function () {});
+      return new Promise(function (res) {
+        if (pre.complete) res();
+        else { pre.onload = res; pre.onerror = res; }
+      });
+    })();
+    const faded = new Promise(function (res) { setTimeout(res, 170); });
+
+    Promise.all([decoded, faded]).then(function () {
+      if (token !== swapToken) return;            /* a newer swap won — bail */
+      if (newSrcset) mainImage.srcset = newSrcset;
+      else mainImage.removeAttribute('srcset');
+      mainImage.src = newSrc;
+
+      mainImage.style.transition = 'none';
+      mainImage.style.transform  = 'translateX(' + (dir * 18) + 'px)';
+      void mainImage.offsetWidth;                 /* commit the start offset */
+      mainImage.style.transition = '';
+      requestAnimationFrame(function () {
+        mainImage.style.opacity   = '1';
+        mainImage.style.transform = 'translateX(0)';
+      });
+    });
   }
 
   thumbnails.forEach(function (thumb, index) {
-    thumb.addEventListener('click', function () {
-      updateMainImage(index);
-    });
+    thumb.addEventListener('click', function () { setMainImage(index); });
   });
 
   if (swipeContainer) {
@@ -98,11 +138,10 @@ window.initProduct = async function () {
     }, { passive: true });
 
     swipeContainer.addEventListener('touchend', function (e) {
-      touchEndX = e.changedTouches[0].screenX;
-      const delta = touchEndX - touchStartX;
-
-      if (Math.abs(delta) > 50) {
-        updateMainImage(currentIndex + (delta < 0 ? 1 : -1));
+      const delta = e.changedTouches[0].screenX - touchStartX;
+      if (Math.abs(delta) > 40) {
+        const dir = delta < 0 ? 1 : -1;
+        setMainImage(currentIndex + dir, dir);
       }
     }, { passive: true });
   }
