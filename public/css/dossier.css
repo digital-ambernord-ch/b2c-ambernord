@@ -645,6 +645,67 @@
 
 /* --------------------------------------------------------------------------
 
+   IMAGE LOAD-FADE
+
+   Content images start transparent and fade in once decoded (dossier.js adds
+   .is-loaded on the image's load event). On a slow connection this turns a
+   blank frame into an intentional reveal over the dark bordered frame, so it
+   reads as a design effect rather than network lag. The dark placeholder
+   background fills the frame while the bytes are still in flight.
+
+   -------------------------------------------------------------------------- */
+
+.dossier-image-wrapper,
+.dossier-card__image-wrap {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.dossier-image-wrapper img,
+.dossier-section-figure img,
+.dossier-card__image-wrap img {
+    opacity: 0;
+    transition: opacity 0.7s ease, filter var(--t-slow), transform var(--t-slow);
+}
+
+.dossier-image-wrapper img.is-loaded,
+.dossier-section-figure img.is-loaded,
+.dossier-card__image-wrap img.is-loaded {
+    opacity: 1;
+}
+
+
+/* --------------------------------------------------------------------------
+
+   REDUCED MOTION
+
+   Honour prefers-reduced-motion: no scroll-reveal travel, no image fade —
+   everything is shown immediately.
+
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+    .dossier-page {
+        animation: none;
+    }
+
+    .dossier-reveal,
+    .dossier-reveal.is-visible {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .dossier-image-wrapper img,
+    .dossier-section-figure img,
+    .dossier-card__image-wrap img {
+        opacity: 1;
+        transition: none;
+    }
+}
+
+
+/* --------------------------------------------------------------------------
+
    RESPONSIVE
 
    Mobile breakpoints: 991px (tablet), 768px (mobile).

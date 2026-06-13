@@ -19,6 +19,21 @@ window.initDossier = async function () {
         renderZerowaste(data.zerowaste?.items);
     }
 
+    /* Image load-fade — each content image starts transparent (CSS) and fades
+       in the moment it decodes. A slow network then reads as an intentional
+       reveal over the dark frame instead of a blank box that "snaps" full.
+       Runs after the dynamic grids are rendered so their <img> exist too. */
+    document.querySelectorAll(
+        '.dossier-image-wrapper img, .dossier-section-figure img, .dossier-card__image-wrap img'
+    ).forEach((img) => {
+        if (img.complete && img.naturalWidth) {
+            img.classList.add('is-loaded');
+        } else {
+            img.addEventListener('load',  () => img.classList.add('is-loaded'), { once: true });
+            img.addEventListener('error', () => img.classList.add('is-loaded'), { once: true });
+        }
+    });
+
     function renderList(id, items) {
         const el = document.getElementById(id);
         if (!el || !Array.isArray(items)) return;
@@ -212,19 +227,24 @@ window.initDossier = async function () {
         ...document.querySelectorAll('.dossier-conclusion-text'),
     ].filter(Boolean);
 
-    revealTargets.forEach((el, i) => {
+    revealTargets.forEach((el) => {
         if (!el.classList.contains('dossier-reveal')) el.classList.add('dossier-reveal');
-        el.style.transitionDelay = `${i * 0.08}s`;
     });
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
+    /* Stagger ONLY the elements that enter together in a single observer batch,
+       and cap it. The previous code assigned a page-wide cumulative delay
+       (index × 0.08s), so elements deep in the page inherited 1.5–2s delays and
+       appeared to "load slowly". Now the worst-case wait is ~0.24s + the 0.6s
+       fade, regardless of how far down the page an element sits. */
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries
+            .filter((entry) => entry.isIntersecting)
+            .forEach((entry, i) => {
+                entry.target.style.transitionDelay = `${Math.min(i, 4) * 0.06}s`;
                 entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.15 });
+                obs.unobserve(entry.target);
+            });
+    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
 
     revealTargets.forEach((el) => observer.observe(el));
 };
