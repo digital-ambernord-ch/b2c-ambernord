@@ -53,7 +53,11 @@
     "benefit1": "La vitamine C contribue à réduire la fatigue — de l'énergie sans crash",
     "benefit2": "Oméga-7 — l'une des sources les plus rares de la nature, jusqu'à 42 % dans l'huile de pulpe",
     "nativeOils": "La baie entière : huiles de pulpe &amp; de pépin –<br>rien ne se perd",
-    "cta": "Essayer maintenant – dès 24.90 CHF"
+    "cta": "Essayer maintenant – dès 24.90 CHF",
+    "value": {
+      "days": "1 flacon = 10 jours de rituel",
+      "litres": "2.5 L d'argousier par flacon"
+    }
   },
   "closingCta": {
     "eyebrow": "Prêt ?",

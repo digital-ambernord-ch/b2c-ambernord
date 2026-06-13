@@ -403,6 +403,13 @@ window.initLanding = async function () {
     const cards   = section ? Array.from(section.querySelectorAll('.premium-product-card')) : [];
     if (!cards.length) return;
 
+    /* The non-transforming wrapper around each card. Hover is detected on the
+       slot (stable box) instead of the card (whose rotateX foreshortens it
+       under the pointer), so a flip can never trip its own mouseleave. */
+    const slots = cards.map(function (card) {
+      return card.closest('.product-card-slot') || card.parentElement;
+    });
+
     /* Reset stray state from a previous init (SPA re-entry, GSAP retry):
        no leaked faces, no leftover inline transforms, no one-shot classes. */
     cards.forEach(function (card) {
@@ -485,17 +492,18 @@ window.initLanding = async function () {
       });
       st.tl = tl;
 
-      /* 1 — anticipation dip, then lift off the page (shadow grows). */
-      tl.call(function () { card.classList.add('is-airborne'); });
+      /* 1+2 — somersault to edge-on. Quick (hover) flips rotate calmly in
+         place: no translate/scale, so the card stays put and the stable
+         .product-card-slot keeps the hover region steady. The full (sales-
+         reset) path still lifts off the page first. */
       if (quick) {
-        tl.to(card, { y: -12, scale: 1.015, duration: 0.1, ease: 'power2.out' });
+        tl.to(card, { rotationX: 90, duration: 0.34, ease: 'power2.inOut' });
       } else {
+        tl.call(function () { card.classList.add('is-airborne'); });
         tl.to(card, { y: 4, duration: 0.12, ease: 'power1.in' })
-          .to(card, { y: -25, scale: 1.03, duration: 0.3, ease: 'power2.out' });
+          .to(card, { y: -25, scale: 1.03, duration: 0.3, ease: 'power2.out' })
+          .to(card, { rotationX: 90, duration: 0.18, ease: 'power1.in' });
       }
-
-      /* 2 — somersault to edge-on. */
-      tl.to(card, { rotationX: 90, duration: quick ? 0.14 : 0.18, ease: 'power1.in' });
 
       /* Deal-in hidden states: applied INSIDE the timeline, right at the
          edge-on moment — the benefit face never starts CSS-hidden. */
@@ -519,11 +527,12 @@ window.initLanding = async function () {
         tl.set(savings, { scale: 1, opacity: 1 });
       }
 
-      /* 3 — rotate in with a small overshoot, land, shadow contracts. */
+      /* 3 — rotate in from edge-on with a soft overshoot, then settle.
+         Quick path is ~0.84s total (0.34 + 0.34 + 0.16) for a calm,
+         deliberate flip; no shadow to contract since it never lifted. */
       if (quick) {
-        tl.to(card, { rotationX: 0, duration: 0.16, ease: 'power1.out' })
-          .to(card, { y: 0, scale: 1, duration: 0.14, ease: 'power2.out' }, '<0.04')
-          .call(function () { card.classList.remove('is-airborne'); });
+        tl.to(card, { rotationX: 2, duration: 0.34, ease: 'power2.out' })
+          .to(card, { rotationX: 0, duration: 0.16, ease: 'sine.inOut' });
       } else {
         tl.to(card, { rotationX: 2, duration: 0.22, ease: 'power1.out' })
           .add('land')
@@ -567,7 +576,7 @@ window.initLanding = async function () {
        the face if the pointer moved mid-flip. */
     function settleHover(card, i) {
       if (!engaged || !hoverFine.matches || state[i].busy) return;
-      const target = card.matches(':hover') ? 'benefit' : 'sales';
+      const target = slots[i].matches(':hover') ? 'benefit' : 'sales';
       if (state[i].face !== target) buildFlip(card, i, target, true);
     }
 
@@ -581,13 +590,13 @@ window.initLanding = async function () {
         hoverTimers[i] = setTimeout(function () {
           hoverTimers[i] = null;
           if (!engaged || state[i].busy) return;
-          const target = card.matches(':hover') ? 'benefit' : 'sales';
+          const target = slots[i].matches(':hover') ? 'benefit' : 'sales';
           if (state[i].face !== target) buildFlip(card, i, target, true);
         }, 120);
       }
       cards.forEach(function (card, i) {
-        card.addEventListener('mouseenter', function () { scheduleHover(card, i); });
-        card.addEventListener('mouseleave', function () { scheduleHover(card, i); });
+        slots[i].addEventListener('mouseenter', function () { scheduleHover(card, i); });
+        slots[i].addEventListener('mouseleave', function () { scheduleHover(card, i); });
       });
     }
 

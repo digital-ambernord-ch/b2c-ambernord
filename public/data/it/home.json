@@ -53,7 +53,11 @@
     "benefit1": "La vitamina C contribuisce alla riduzione della stanchezza e dell'affaticamento — energia senza crash",
     "benefit2": "Omega-7 — una delle fonti più rare della natura, fino al 42 % nell'olio di polpa",
     "nativeOils": "La bacca intera: oli da polpa &amp; seme –<br>niente va perso",
-    "cta": "Provi ora – da 24.90 CHF"
+    "cta": "Provi ora – da 24.90 CHF",
+    "value": {
+      "days": "1 flacone = 10 giorni di rituale",
+      "litres": "2.5 L di olivello spinoso per flacone"
+    }
   },
   "closingCta": {
     "eyebrow": "Pronto?",

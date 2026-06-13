@@ -214,14 +214,25 @@
   font-weight: 400;
   margin: 0;
   text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+  /* Long locales (fr/it) must never spill past the (now shorter) card. */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+  overflow: hidden;
 }
 
-.img-1 { top: 6%;   left: 0%;   width: 260px; height: 280px; }
-.img-2 { top: 38%;  left: -5%;  width: 240px; height: 300px; }
-.img-3 { bottom: 5%; left: -3%; width: 300px; height: 240px; }
-.img-4 { top: 10%;  right: 6%;  width: 200px; height: 260px; }
-.img-5 { top: 35%;  right: -2%; width: 240px; height: 320px; }
-.img-6 { bottom: 6%; right: 10%;width: 240px; height: 300px; }
+/* Six full-size cards, three per side. Heights kept modest and every row
+   top-anchored (not bottom) so the three rows always clear each other AND
+   stay inside the workspace down to H ≈ 865px — covers a maximised 1920×1200
+   window (H ≈ 960–1000px) even with the aktion bar active. Earlier the tall
+   300–320px bottom-anchored cards (img-5/img-6) collided with the middle row
+   on shorter desktops. */
+.img-1 { top: 5%;  left: 0%;   width: 260px; height: 250px; }
+.img-2 { top: 38%; left: -5%;  width: 240px; height: 240px; }
+.img-3 { top: 70%; left: -3%;  width: 300px; height: 235px; }
+.img-4 { top: 7%;  right: 6%;  width: 210px; height: 240px; }
+.img-5 { top: 39%; right: -2%; width: 240px; height: 250px; }
+.img-6 { top: 70%; right: 10%; width: 240px; height: 235px; }
 
 /* --------------------------------------------------------------------------
    FLOAT CARDS — laptop bands (992–1399px). Six full-size cards overlap each
@@ -392,6 +403,31 @@
   margin-top: -10px;
   margin-bottom: 50px;
   width: 100%;
+}
+
+/* Value reframe line above the hero CTA — small, gold-accented, reads as a
+   quiet value cue (one bottle = 10 days / 2.5 L) rather than another bullet,
+   to shift the eye from price to value just before the button. */
+.hero-value-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: -22px;
+  margin-bottom: 26px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-text);
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+}
+
+.hero-value-line__sep {
+  color: var(--color-gold);
+  font-weight: 700;
 }
 
 .hero-product-img {
@@ -1258,7 +1294,12 @@
 /* Shared vanishing point: perspective on the PARENT so all three cards
    foreshorten toward the same horizon during their rotateX somersault. */
 @media (min-width: 992px) {
-  .ritual-cards-group { perspective: 1200px; }
+  /* Stable hover region: the slot never transforms, so GSAP can rotate the
+     card inside it without the pointer ever falling outside the hit area —
+     which used to oscillate mouseenter/mouseleave and fire repeat flips.
+     Perspective lives on the slot so the card's rotateX keeps its 3D
+     foreshortening now that the card is one level deeper in the tree. */
+  .product-card-slot { perspective: 1200px; }
 }
 
 /* While the coin-flip system owns the cards' transform, the CSS hover-lift
@@ -2120,6 +2161,7 @@
   .hero-product-img { height: 160px; width: 80px; }
   .hero-benefits-list { font-size: 15px; }
   .native-oils-text   { font-size: 11px; margin-top: 12px; }
+  .hero-value-line    { font-size: 11px; letter-spacing: 1px; gap: 7px; margin-top: -10px; margin-bottom: 20px; }
 
   /* Trust signals — ALWAYS visible on mobile as one calm row directly under
      the product cards (decision distance from the CTA). Titles only; the

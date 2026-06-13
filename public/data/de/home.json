@@ -53,7 +53,11 @@
     "benefit1": "Vitamin C trägt zur Verringerung von Müdigkeit und Ermüdung bei — Energie ohne Crash",
     "benefit2": "Omega-7 — eine der seltensten Quellen der Natur, bis zu 42 % im Fruchtfleischöl",
     "nativeOils": "Ganze Beere: Öle aus Fruchtfleisch &amp; Kern –<br>nichts geht verloren",
-    "cta": "Jetzt probieren – ab 24.90 CHF"
+    "cta": "Jetzt probieren – ab 24.90 CHF",
+    "value": {
+      "days": "1 Flasche = 10 Tage Ritual",
+      "litres": "2.5 L Sanddorn pro Flasche"
+    }
   },
   "closingCta": {
     "eyebrow": "Bereit?",
