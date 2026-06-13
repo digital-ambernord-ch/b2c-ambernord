@@ -205,5 +205,27 @@
     "alt3": "Il raccolto fresco",
     "alt4": "Lavorazione delicata",
     "alt5": "Pura forza vegetale"
+  },
+  "purity": {
+    "eyebrow": "Purezza & Origine",
+    "title": "Un’unica origine. Completamente tracciabile.",
+    "lead": "Il nostro olivello spinoso proviene da un’unica origine nordica — raccolto a mano, spremuto a freddo e tracciabile fino al lotto. Non una miscela di provenienza globale.",
+    "ours": {
+      "label": "AmberNord",
+      "p1": "Un’origine — olivello spinoso nordico",
+      "p2": "100% raccolto a mano, spremuto a freddo con delicatezza",
+      "p3": "Completamente tracciabile fino al lotto",
+      "p4": "Certificato bio · ProCert CH-BIO-038",
+      "p5": "Niente aggiunto, niente diluito"
+    },
+    "others": {
+      "label": "Estratti convenzionali",
+      "p1": "Acquistati e miscelati in tutto il mondo",
+      "p2": "Origine spesso non verificabile",
+      "p3": "Concentrati e additivi possibili",
+      "p4": "Raramente certificati in modo indipendente",
+      "p5": "Difficili da tracciare"
+    },
+    "more": "Scopri di più su origine e purezza →"
   }
 }

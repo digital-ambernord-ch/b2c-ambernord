@@ -205,5 +205,27 @@
     "alt3": "Die Frische Ernte",
     "alt4": "Schonende Verarbeitung",
     "alt5": "Pure Pflanzenkraft"
+  },
+  "purity": {
+    "eyebrow": "Reinheit & Herkunft",
+    "title": "Eine Herkunft. Voll rückverfolgbar.",
+    "lead": "Unser Sanddorn stammt aus einer einzigen nordischen Herkunft — handgelesen, kaltgepresst und bis zur Charge rückverfolgbar. Kein weltweit zusammengekaufter Mix.",
+    "ours": {
+      "label": "AmberNord",
+      "p1": "Eine Herkunft — nordischer Sanddorn",
+      "p2": "100% Handlese, schonend kaltgepresst",
+      "p3": "Voll rückverfolgbar bis zur Charge",
+      "p4": "Bio-zertifiziert · ProCert CH-BIO-038",
+      "p5": "Nichts zugesetzt, nichts verdünnt"
+    },
+    "others": {
+      "label": "Konventionelle Extrakte",
+      "p1": "Weltweit zusammengekauft & gemischt",
+      "p2": "Herkunft oft nicht nachvollziehbar",
+      "p3": "Konzentrate & Zusätze möglich",
+      "p4": "Selten unabhängig zertifiziert",
+      "p5": "Schwer rückverfolgbar"
+    },
+    "more": "Mehr über Herkunft & Reinheit →"
   }
 }

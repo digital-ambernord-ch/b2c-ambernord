@@ -80,18 +80,20 @@
 
       <div class="ambernord-hero-shade" id="ambernordHeroShade" aria-hidden="true"></div>
 
-      <!-- Composition medallion: the brand's two headline facts (Vitamin C
-           "9× more than citrus" + all four Omega acids) minted as a gold seal
-           (reeded coin bezel + sunburst) in the hero corner. Faded out with
-           #heroText on scroll (landing.js). -->
-      <div class="hero-medallion" id="heroWatermark" aria-hidden="true">
-        <div class="hero-medallion__core">
-          <span class="hero-medallion__omega">
-            <span data-i18n="hero.watermark.omegaLabel">OMEGA</span>&nbsp; 3·6·7·9
+      <!-- Neutral quality watermark: the brand's two headline facts (Vitamin C
+           "9× more than citrus" + all four Omega acids) as a quiet, low-key
+           mark in the hero corner — kept understated so the focus stays on the
+           central hero. Faded out with #heroText on scroll (landing.js). -->
+      <div class="hero-watermark" id="heroWatermark" aria-hidden="true">
+        <div class="hero-watermark__row">
+          <span class="hero-watermark__mult">9&hairsp;&times;</span>
+          <span class="hero-watermark__vitc">
+            <span class="hero-watermark__vitc-label" data-i18n="hero.watermark.vitcLabel">VITAMIN C</span>
+            <span class="hero-watermark__vitc-sub" data-i18n="hero.watermark.vitcSub">als Zitrusfrüchte</span>
           </span>
-          <span class="hero-medallion__mult">9&hairsp;&times;</span>
-          <span class="hero-medallion__vitc" data-i18n="hero.watermark.vitcLabel">VITAMIN C</span>
-          <span class="hero-medallion__sub" data-i18n="hero.watermark.vitcSub">als Zitrusfrüchte</span>
+        </div>
+        <div class="hero-watermark__omega">
+          <span class="hero-watermark__omega-label" data-i18n="hero.watermark.omegaLabel">OMEGA</span> 3 · 6 · 7 · 9
         </div>
       </div>
 
@@ -447,6 +449,43 @@
 
   </div>
 </div>
+
+<!-- Purity / traceability comparison — single-origin, fully traceable Nordic
+     sea-buckthorn vs. generic globally-sourced extracts. Category comparison
+     only (no competitor named); "others" claims are hedged. Links to the
+     detailed, sourced version on the Wissenschaft (dossier) page. -->
+<section class="purity-compare" aria-labelledby="purity-compare-title">
+  <div class="purity-compare__inner">
+    <span class="purity-compare__eyebrow" data-i18n="purity.eyebrow">Reinheit & Herkunft</span>
+    <h2 id="purity-compare-title" class="purity-compare__title" data-i18n="purity.title">Eine Herkunft. Voll rückverfolgbar.</h2>
+    <p class="purity-compare__lead" data-i18n="purity.lead">Unser Sanddorn stammt aus einer einzigen nordischen Herkunft — handgelesen, kaltgepresst und bis zur Charge rückverfolgbar. Kein weltweit zusammengekaufter Mix.</p>
+
+    <div class="purity-compare__cols">
+      <div class="purity-col purity-col--ours">
+        <span class="purity-col__brand" data-i18n="purity.ours.label">AmberNord</span>
+        <ul class="purity-col__list">
+          <li data-i18n="purity.ours.p1">Eine Herkunft — nordischer Sanddorn</li>
+          <li data-i18n="purity.ours.p2">100% Handlese, schonend kaltgepresst</li>
+          <li data-i18n="purity.ours.p3">Voll rückverfolgbar bis zur Charge</li>
+          <li data-i18n="purity.ours.p4">Bio-zertifiziert · ProCert CH-BIO-038</li>
+          <li data-i18n="purity.ours.p5">Nichts zugesetzt, nichts verdünnt</li>
+        </ul>
+      </div>
+      <div class="purity-col purity-col--others">
+        <span class="purity-col__brand" data-i18n="purity.others.label">Konventionelle Extrakte</span>
+        <ul class="purity-col__list">
+          <li data-i18n="purity.others.p1">Weltweit zusammengekauft & gemischt</li>
+          <li data-i18n="purity.others.p2">Herkunft oft nicht nachvollziehbar</li>
+          <li data-i18n="purity.others.p3">Konzentrate & Zusätze möglich</li>
+          <li data-i18n="purity.others.p4">Selten unabhängig zertifiziert</li>
+          <li data-i18n="purity.others.p5">Schwer rückverfolgbar</li>
+        </ul>
+      </div>
+    </div>
+
+    <a href="/wissenschaft/" class="purity-compare__more" data-link data-i18n="purity.more">Mehr über Herkunft &amp; Reinheit →</a>
+  </div>
+</section>
 
 <div class="dynamic-editorial-wrapper" id="dynamicEditorialBg">
 

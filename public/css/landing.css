@@ -136,79 +136,83 @@
 }
 
 /* ===========================================================================
-   HERO MEDALLION — the two headline composition facts (Vitamin C "9× more than
-   citrus" + all four Omega acids) minted as a circular gold seal: a reeded
-   coin bezel + sunburst (medallion-bezel.svg) behind a big serif 9×. Sits
-   above the photo+shade but below the hero text (z 10). landing.js fades it
-   with #heroText on scroll.
+   HERO QUALITY WATERMARK — neutral, quiet fact mark carrying the two headline
+   composition facts (Vitamin C "9× more than citrus" + all four Omega acids).
+   Deliberately understated so it recedes behind the central hero content; only
+   the "9×" carries a touch of gold. landing.js fades it with #heroText.
    =========================================================================== */
-.hero-medallion {
+.hero-watermark {
   position: absolute;
   left: 30px;
   bottom: 28px;
   z-index: 6;
-  width: 152px;
-  height: 152px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background:
-    url('/img/medallion-bezel.svg') center / 100% 100% no-repeat,
-    radial-gradient(circle at 50% 46%, rgba(10,10,10,0.42) 0%, rgba(10,10,10,0.66) 70%);
-  -webkit-backdrop-filter: blur(5px);
-  backdrop-filter: blur(5px);
-  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.45),
-              inset 0 0 26px rgba(237, 163, 35, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 11px 15px;
+  text-align: left;
+  border-radius: 10px;
+  background: rgba(10, 10, 10, 0.26);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  opacity: 0.9;
   pointer-events: none;
   will-change: opacity;
 }
 
-.hero-medallion__core {
+.hero-watermark__row {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.hero-watermark__mult {
+  font-family: var(--font-serif);
+  font-size: 30px;
+  line-height: 0.9;
+  color: var(--color-gold);
+}
+
+.hero-watermark__vitc {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  line-height: 1;
+  gap: 1px;
 }
 
-.hero-medallion__omega {
-  font-size: 9px;
-  letter-spacing: 2px;
+.hero-watermark__vitc-label {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
   font-weight: 600;
-  text-transform: uppercase;
-  color: var(--color-gold);
-  white-space: nowrap;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.1;
 }
 
-.hero-medallion__mult {
-  font-family: var(--font-serif);
-  font-size: 50px;
-  line-height: 0.92;
-  margin: 4px 0 2px;
-  color: var(--color-gold);
-  text-shadow: 0 0 22px rgba(237, 163, 35, 0.55),
-               0 2px 6px rgba(0, 0, 0, 0.5);
+.hero-watermark__vitc-sub {
+  font-size: 9px;
+  letter-spacing: 0.3px;
+  color: rgba(255, 255, 255, 0.48);
+  line-height: 1.1;
 }
 
-.hero-medallion__vitc {
-  font-size: 12px;
-  letter-spacing: 2.5px;
+.hero-watermark__omega {
+  font-size: 11px;
+  letter-spacing: 1.3px;
   text-transform: uppercase;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.hero-watermark__omega-label {
   font-weight: 700;
-  color: var(--color-text);
-}
-
-.hero-medallion__sub {
-  margin-top: 2px;
-  font-size: 8.5px;
-  letter-spacing: 0.5px;
-  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 /* ===========================================================================
    HERO CERTIFICATION BADGE — official BIO ProCert standard mark (Swiss organic,
    CH-BIO-038) on its native white chip, with a caption stating the audit.
-   Links to the certificate PDF; sits opposite the .hero-medallion seal.
+   Links to the certificate PDF; sits opposite the .hero-watermark mark.
    =========================================================================== */
 .hero-cert {
   position: absolute;
@@ -289,16 +293,17 @@
 /* Phones: scale the seals down so they stay corner marks and clear the
    CTA in the content-dense mobile hero. */
 @media (max-width: 600px) {
-  .hero-medallion {
+  .hero-watermark {
     left: 16px;
     bottom: 18px;
-    width: 118px;
-    height: 118px;
+    gap: 6px;
+    padding: 9px 12px;
   }
-  .hero-medallion__omega { font-size: 7.5px; letter-spacing: 1.5px; }
-  .hero-medallion__mult { font-size: 38px; margin: 3px 0 1px; }
-  .hero-medallion__vitc { font-size: 10px; letter-spacing: 1.8px; }
-  .hero-medallion__sub { font-size: 7.5px; }
+  .hero-watermark__row { gap: 8px; }
+  .hero-watermark__mult { font-size: 26px; }
+  .hero-watermark__vitc-label { font-size: 10px; letter-spacing: 1.2px; }
+  .hero-watermark__vitc-sub { font-size: 8px; }
+  .hero-watermark__omega { font-size: 9.5px; letter-spacing: 1px; }
 
   /* On phones the caption would crowd the hero — show just the recognizable
      logo chip in the corner; full audit text stays available on desktop. */
@@ -2803,4 +2808,131 @@
     width: 100%;
     max-width: 320px;
   }
+}
+
+/* ===========================================================================
+   PURITY / TRACEABILITY COMPARISON — single-origin, fully traceable Nordic
+   sea-buckthorn vs. generic globally-sourced extracts. Category comparison,
+   no competitor named. Lives on the home page under the product cards; the
+   detailed version is on the Wissenschaft (dossier) page.
+   =========================================================================== */
+.purity-compare {
+  background: var(--color-bg);
+  padding: 72px var(--container-pad);
+  display: flex;
+  justify-content: center;
+}
+
+.purity-compare__inner {
+  width: 100%;
+  max-width: 920px;
+  text-align: center;
+}
+
+.purity-compare__eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--color-gold);
+  margin-bottom: 14px;
+}
+
+.purity-compare__title {
+  font-family: var(--font-serif);
+  font-size: 34px;
+  line-height: 1.15;
+  color: var(--color-text);
+  margin: 0 0 14px;
+}
+
+.purity-compare__lead {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  max-width: 620px;
+  margin: 0 auto 36px;
+}
+
+.purity-compare__cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  text-align: left;
+}
+
+.purity-col {
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 24px 24px 26px;
+}
+
+.purity-col--ours {
+  border-color: var(--color-border-gold);
+  background: radial-gradient(ellipse at top, rgba(237, 163, 35, 0.08), transparent 70%);
+}
+
+.purity-col__brand {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.purity-col--ours .purity-col__brand { color: var(--color-gold); }
+.purity-col--others .purity-col__brand { color: var(--color-text-dim); }
+
+.purity-col__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.purity-col__list li {
+  position: relative;
+  padding-left: 28px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.purity-col__list li::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.purity-col--ours .purity-col__list li { color: var(--color-text); }
+.purity-col--ours .purity-col__list li::before { content: '\2713'; color: var(--color-gold); }
+.purity-col--others .purity-col__list li { color: var(--color-text-dim); }
+.purity-col--others .purity-col__list li::before { content: '\2715'; color: #6b6b6b; }
+
+.purity-compare__more {
+  display: inline-block;
+  margin-top: 34px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: var(--color-gold);
+  text-decoration: none;
+  transition: opacity var(--t-fast) ease;
+}
+
+.purity-compare__more:hover { opacity: 0.8; }
+
+@media (max-width: 600px) {
+  .purity-compare { padding: 56px var(--container-pad); }
+  .purity-compare__title { font-size: 26px; }
+  .purity-compare__lead { font-size: 14px; }
+  .purity-compare__cols { grid-template-columns: 1fr; gap: 14px; }
 }

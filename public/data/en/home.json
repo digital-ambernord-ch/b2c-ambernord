@@ -205,5 +205,27 @@
     "alt3": "The fresh harvest",
     "alt4": "Gentle processing",
     "alt5": "Pure plant power"
+  },
+  "purity": {
+    "eyebrow": "Purity & Origin",
+    "title": "One origin. Fully traceable.",
+    "lead": "Our sea-buckthorn comes from a single Nordic origin — hand-picked, cold-pressed and traceable down to the batch. Not a globally sourced blend.",
+    "ours": {
+      "label": "AmberNord",
+      "p1": "One origin — Nordic sea-buckthorn",
+      "p2": "100% hand-picked, gently cold-pressed",
+      "p3": "Fully traceable down to the batch",
+      "p4": "Organic-certified · ProCert CH-BIO-038",
+      "p5": "Nothing added, nothing diluted"
+    },
+    "others": {
+      "label": "Conventional extracts",
+      "p1": "Sourced and blended worldwide",
+      "p2": "Origin often untraceable",
+      "p3": "Concentrates & additives possible",
+      "p4": "Rarely independently certified",
+      "p5": "Hard to trace"
+    },
+    "more": "More on origin & purity →"
   }
 }

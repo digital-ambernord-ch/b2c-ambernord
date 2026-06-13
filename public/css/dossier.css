@@ -736,3 +736,83 @@
         gap: 14px;
     }
 }
+
+/* ===========================================================================
+   ORIGIN & TRACEABILITY COMPARISON — detailed category comparison (single-
+   origin, fully traceable vs. generic globally-sourced extracts). CSS-grid
+   "table": criterion column + AmberNord column + others column. Gap-as-lines
+   over an opaque cell background. Stacks per-criterion on phones.
+   =========================================================================== */
+.dossier-compare {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1fr;
+  gap: 1px;
+  margin-top: 30px;
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  background: var(--color-border);
+  overflow: hidden;
+}
+
+.dossier-compare > * {
+  background: var(--color-bg);
+  padding: 14px 18px;
+  font-size: 14px;
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+}
+
+.dossier-compare__col {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.dossier-compare__col--ours,
+.dossier-compare__cell--ours {
+  background:
+    linear-gradient(rgba(237, 163, 35, 0.07), rgba(237, 163, 35, 0.07)),
+    var(--color-bg);
+}
+
+.dossier-compare__col--ours { color: var(--color-gold); }
+.dossier-compare__col--others { color: var(--color-text-dim); }
+
+.dossier-compare__crit {
+  color: var(--color-text-dim);
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.dossier-compare__cell--ours { color: var(--color-text); font-weight: 500; }
+.dossier-compare__cell--others { color: var(--color-text-dim); }
+
+.dossier-compare__note {
+  margin-top: 16px;
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--color-text-dim);
+  font-style: italic;
+}
+
+@media (max-width: 600px) {
+  .dossier-compare {
+    grid-template-columns: 1fr 1fr;
+  }
+  .dossier-compare > * {
+    padding: 11px 13px;
+    font-size: 13px;
+  }
+  .dossier-compare__crit--head { display: none; }
+  .dossier-compare__crit {
+    grid-column: 1 / -1;
+    background: rgba(255, 255, 255, 0.035);
+    font-size: 10.5px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .dossier-compare__col { font-size: 10.5px; }
+}

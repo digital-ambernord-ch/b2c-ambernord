@@ -58,26 +58,56 @@
   "lipids": {
     "title": "Anatomie der Lipide & Spezifische Vitamine",
     "cards": [
-      { "title": "Fruchtfleischöl (Omega-7)", "desc": "Eine der seltensten pflanzlichen Quellen für Palmitoleinsäure (Omega-7), die einen wesentlichen Teil der Lipide ausmacht. Ein wichtiger natürlicher Baustein für Haut und Schleimhäute.", "imgAlt": "Infografik: Sanddorn-Fruchtfleischöl — Omega-7 (Palmitoleinsäure) für Haut und Schleimhäute" },
-      { "title": "Kernöl (Omega-3 & 6)", "desc": "Das blassgelbe Kernöl enthält praktisch kein Omega-7. Es liefert stattdessen Linolsäure (Omega-6) und Alpha-Linolensäure (Omega-3) in einem physiologisch idealen Verhältnis.", "imgAlt": "Infografik: Sanddorn-Kernöl — Omega-3 und Omega-6 in idealem Verhältnis" },
-      { "title": "Vitamine & Nährstoffe", "desc": "Neben dem aussergewöhnlich hohen Vitamin-C-Gehalt ist Sanddornsaft bekannt für sein komplexes Spektrum an B-Vitaminen und sekundären Pflanzenstoffen, die synergistisch wirken.", "imgAlt": "Infografik: Sanddornsaft — Vitamin C, B-Komplex und Nährstoffspektrum" }
+      {
+        "title": "Fruchtfleischöl (Omega-7)",
+        "desc": "Eine der seltensten pflanzlichen Quellen für Palmitoleinsäure (Omega-7), die einen wesentlichen Teil der Lipide ausmacht. Ein wichtiger natürlicher Baustein für Haut und Schleimhäute.",
+        "imgAlt": "Infografik: Sanddorn-Fruchtfleischöl — Omega-7 (Palmitoleinsäure) für Haut und Schleimhäute"
+      },
+      {
+        "title": "Kernöl (Omega-3 & 6)",
+        "desc": "Das blassgelbe Kernöl enthält praktisch kein Omega-7. Es liefert stattdessen Linolsäure (Omega-6) und Alpha-Linolensäure (Omega-3) in einem physiologisch idealen Verhältnis.",
+        "imgAlt": "Infografik: Sanddorn-Kernöl — Omega-3 und Omega-6 in idealem Verhältnis"
+      },
+      {
+        "title": "Vitamine & Nährstoffe",
+        "desc": "Neben dem aussergewöhnlich hohen Vitamin-C-Gehalt ist Sanddornsaft bekannt für sein komplexes Spektrum an B-Vitaminen und sekundären Pflanzenstoffen, die synergistisch wirken.",
+        "imgAlt": "Infografik: Sanddornsaft — Vitamin C, B-Komplex und Nährstoffspektrum"
+      }
     ]
   },
   "science": {
     "title": "Wissenschaftliche Erkenntnisse zu Sanddorn",
     "cards": [
-      { "title": "Stoffwechsel & Vitalität", "desc": "Sanddorn liefert essenzielle Nährstoffe und Antioxidantien. Studien deuten darauf hin, dass die enthaltenen pflanzlichen Sterole und Fettsäuren eine funktionelle Ernährung optimal unterstützen und zum allgemeinen Wohlbefinden beitragen können." },
-      { "title": "Haut & Dermatologie", "desc": "Omega-7 ist ein wichtiger physiologischer Baustein der menschlichen Hautbarriere. Sanddornextrakte werden in der Forschung intensiv auf ihre unterstützenden Eigenschaften bei der natürlichen Hautregeneration untersucht." },
-      { "title": "Schleimhäute", "desc": "Die spezifische Lipidmatrix aus dem Fruchtfleischöl ist dafür bekannt, die natürliche Feuchtigkeitsbalance von Schleimhäuten (wie Augen, Mund oder Intimbereich) auf ernährungsphysiologischer Ebene zu unterstützen." }
+      {
+        "title": "Stoffwechsel & Vitalität",
+        "desc": "Sanddorn liefert essenzielle Nährstoffe und Antioxidantien. Studien deuten darauf hin, dass die enthaltenen pflanzlichen Sterole und Fettsäuren eine funktionelle Ernährung optimal unterstützen und zum allgemeinen Wohlbefinden beitragen können."
+      },
+      {
+        "title": "Haut & Dermatologie",
+        "desc": "Omega-7 ist ein wichtiger physiologischer Baustein der menschlichen Hautbarriere. Sanddornextrakte werden in der Forschung intensiv auf ihre unterstützenden Eigenschaften bei der natürlichen Hautregeneration untersucht."
+      },
+      {
+        "title": "Schleimhäute",
+        "desc": "Die spezifische Lipidmatrix aus dem Fruchtfleischöl ist dafür bekannt, die natürliche Feuchtigkeitsbalance von Schleimhäuten (wie Augen, Mund oder Intimbereich) auf ernährungsphysiologischer Ebene zu unterstützen."
+      }
     ],
     "imgAlt": "Infografik: Wissenschaftliche Erkenntnisse zu Sanddorn — Stoffwechsel, Haut und Schleimhäute"
   },
   "innovations": {
     "title": "Moderne Applikationen & Markt-Innovationen",
     "cards": [
-      { "title": "Haute Cuisine & Mixologie", "desc": "In der Spitzengastronomie etabliert sich Sanddorn rasant als „Zitrone des Nordens\". Das komplexe, mehrdimensionale Säureprofil ersetzt zunehmend exotische Importe wie Yuzu oder Maracuja und verleiht alkoholfreien Premium-Cocktails die nötige Struktur und Adstringenz." },
-      { "title": "Nutrakosmetik & Clean Beauty", "desc": "Die in Sanddornöl enthaltene Palmitoleinsäure (Omega-7) weist eine einzigartige strukturelle Ähnlichkeit zu den hauteigenen Lipiden des Stratum corneum auf. Dies ermöglicht eine extrem schnelle Penetration zur Stärkung der Hautbarriere und Reduktion des transepidermalen Wasserverlusts." },
-      { "title": "Food-Tech & Upcycling", "desc": "Die Mikroverkapselung mit Natriumalginat ermöglicht heute den Schutz temperaturempfindlicher Carotinoide für die Backwarenindustrie. Zudem eröffnete die EU-Novel-Food-Zulassung für Sanddornblätter (2020) völlig neue Wege für Premium-Tees, reich am zellschützenden Antioxidans PC-8." }
+      {
+        "title": "Haute Cuisine & Mixologie",
+        "desc": "In der Spitzengastronomie etabliert sich Sanddorn rasant als „Zitrone des Nordens\". Das komplexe, mehrdimensionale Säureprofil ersetzt zunehmend exotische Importe wie Yuzu oder Maracuja und verleiht alkoholfreien Premium-Cocktails die nötige Struktur und Adstringenz."
+      },
+      {
+        "title": "Nutrakosmetik & Clean Beauty",
+        "desc": "Die in Sanddornöl enthaltene Palmitoleinsäure (Omega-7) weist eine einzigartige strukturelle Ähnlichkeit zu den hauteigenen Lipiden des Stratum corneum auf. Dies ermöglicht eine extrem schnelle Penetration zur Stärkung der Hautbarriere und Reduktion des transepidermalen Wasserverlusts."
+      },
+      {
+        "title": "Food-Tech & Upcycling",
+        "desc": "Die Mikroverkapselung mit Natriumalginat ermöglicht heute den Schutz temperaturempfindlicher Carotinoide für die Backwarenindustrie. Zudem eröffnete die EU-Novel-Food-Zulassung für Sanddornblätter (2020) völlig neue Wege für Premium-Tees, reich am zellschützenden Antioxidans PC-8."
+      }
     ],
     "imgAlt": "Infografik: Moderne Sanddorn-Anwendungen — Gastronomie, Clean Beauty und Food-Tech"
   },
@@ -106,10 +136,22 @@
   "zerowaste": {
     "title": "Verarbeitung & Die Zero-Waste Matrix",
     "items": [
-      { "title": "Das Elixier (Unfiltrierter Direktsaft)", "desc": "Um 1 Liter des 100 % puren Elixiers zu gewinnen, werden 1,3–1,6 kg handgelesene Beeren benötigt. Eine schonende Pasteurisierung sichert die Haltbarkeit und schützt die wertvollen Vitamine." },
-      { "title": "Mechanische Ölextraktion", "desc": "Die Industrie extrahiert oft chemisch. Hier garantiert die kalte, mechanische Pressung den Erhalt hitzeempfindlicher Fettsäuren. Die Ressourcenintensität ist immens: Bis zu 200 kg frische Beeren für 1 Liter reines Öl." },
-      { "title": "Pressrückstand (Der Trester)", "desc": "Samen und Schalen werden nach der Entölung thermisch schonend getrocknet. Durch gezielte enzymatische Hydrolyse wird das Ballaststoffprofil optimiert, wodurch ein hochfunktionales \"Upcycled Ingredient\" für die industrielle Lebensmittelproduktion entsteht." },
-      { "title": "Ganzheitliche Verwertung", "desc": "Auch Schnittholz und Rinde werden lückenlos verwertet. Neueste Analysen belegen in der Rinde einen Phytoserotonin-Gehalt, der jenen von Bananen um ein Vielfaches übertrifft – ein massives Potenzial für natürliche „Mood-Support\"-Extrakte." }
+      {
+        "title": "Das Elixier (Unfiltrierter Direktsaft)",
+        "desc": "Um 1 Liter des 100 % puren Elixiers zu gewinnen, werden 1,3–1,6 kg handgelesene Beeren benötigt. Eine schonende Pasteurisierung sichert die Haltbarkeit und schützt die wertvollen Vitamine."
+      },
+      {
+        "title": "Mechanische Ölextraktion",
+        "desc": "Die Industrie extrahiert oft chemisch. Hier garantiert die kalte, mechanische Pressung den Erhalt hitzeempfindlicher Fettsäuren. Die Ressourcenintensität ist immens: Bis zu 200 kg frische Beeren für 1 Liter reines Öl."
+      },
+      {
+        "title": "Pressrückstand (Der Trester)",
+        "desc": "Samen und Schalen werden nach der Entölung thermisch schonend getrocknet. Durch gezielte enzymatische Hydrolyse wird das Ballaststoffprofil optimiert, wodurch ein hochfunktionales \"Upcycled Ingredient\" für die industrielle Lebensmittelproduktion entsteht."
+      },
+      {
+        "title": "Ganzheitliche Verwertung",
+        "desc": "Auch Schnittholz und Rinde werden lückenlos verwertet. Neueste Analysen belegen in der Rinde einen Phytoserotonin-Gehalt, der jenen von Bananen um ein Vielfaches übertrifft – ein massives Potenzial für natürliche „Mood-Support\"-Extrakte."
+      }
     ],
     "imgAlt": "Infografik: Zero-Waste-Verarbeitung von Sanddorn — Direktsaft, mechanische Ölpressung, Trester und Rinde im Kreislauf"
   },
@@ -120,5 +162,42 @@
     "p1": "Die Datenlage bestätigt Sanddorn als eines der phytochemisch komplexesten Nutzpflanzensysteme der Welt. Der ernährungsphysiologische Nutzen liegt zweifelsfrei im aussergewöhnlichen Profil an Vitaminen und seltenen Lipiden.",
     "p2": "AmberNord und seine Partner überführen dieses Potenzial ohne qualitative Kompromisse in ein hochwertiges, tägliches Ritual für mehr Wohlbefinden.",
     "logoAlt": "AmberNord Logo"
+  },
+  "traceability": {
+    "title": "Herkunft & Rückverfolgbarkeit",
+    "lead": "Reinheit beginnt bei der Herkunft. Während viele Sanddorn-Extrakte weltweit zusammengekauft und vermischt werden, stammt AmberNord aus einer einzigen nordischen Herkunft — lückenlos rückverfolgbar bis zur einzelnen Charge.",
+    "ours": "AmberNord",
+    "others": "Konventionelle Extrakte",
+    "r1": {
+      "crit": "Herkunft",
+      "ours": "Eine nordische Herkunft (Single-Origin)",
+      "others": "Weltweit zusammengekauft & gemischt"
+    },
+    "r2": {
+      "crit": "Ernte",
+      "ours": "100% schonende Handlese",
+      "others": "Maschinell oder unbekannt"
+    },
+    "r3": {
+      "crit": "Verarbeitung",
+      "ours": "Schonende Kaltpressung",
+      "others": "Konzentrate, Erhitzung möglich"
+    },
+    "r4": {
+      "crit": "Rückverfolgbarkeit",
+      "ours": "Lückenlos bis zur Charge",
+      "others": "Oft nicht nachvollziehbar"
+    },
+    "r5": {
+      "crit": "Zertifizierung",
+      "ours": "Bio · ProCert CH-BIO-038",
+      "others": "Selten unabhängig zertifiziert"
+    },
+    "r6": {
+      "crit": "Zusätze",
+      "ours": "Keine — nichts verdünnt",
+      "others": "Zusätze & Streckung möglich"
+    },
+    "note": "Kategorienvergleich gegenüber marktüblichen, nicht herkunftszertifizierten Sanddorn-Extrakten. AmberNord ist bio-zertifiziert durch ProCert (CH-BIO-038); die Gültigkeit ist im öffentlichen ProCert-Register einsehbar."
   }
 }

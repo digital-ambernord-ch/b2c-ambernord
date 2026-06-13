@@ -205,5 +205,27 @@
     "alt3": "La récolte fraîche",
     "alt4": "Transformation délicate",
     "alt5": "Force végétale pure"
+  },
+  "purity": {
+    "eyebrow": "Pureté & Origine",
+    "title": "Une seule origine. Entièrement traçable.",
+    "lead": "Notre argousier provient d’une seule origine nordique — cueilli à la main, pressé à froid et traçable jusqu’au lot. Pas un mélange sourcé dans le monde entier.",
+    "ours": {
+      "label": "AmberNord",
+      "p1": "Une origine — argousier nordique",
+      "p2": "100% cueilli à la main, pressé à froid en douceur",
+      "p3": "Entièrement traçable jusqu’au lot",
+      "p4": "Certifié bio · ProCert CH-BIO-038",
+      "p5": "Rien d’ajouté, rien de dilué"
+    },
+    "others": {
+      "label": "Extraits conventionnels",
+      "p1": "Achetés et mélangés dans le monde entier",
+      "p2": "Origine souvent non vérifiable",
+      "p3": "Concentrés et additifs possibles",
+      "p4": "Rarement certifiés indépendamment",
+      "p5": "Difficiles à tracer"
+    },
+    "more": "En savoir plus sur l’origine et la pureté →"
   }
 }

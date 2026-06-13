@@ -58,26 +58,56 @@
   "lipids": {
     "title": "Anatomia dei lipidi & vitamine specifiche",
     "cards": [
-      { "title": "Olio di polpa (Omega-7)", "desc": "Una delle fonti vegetali più rare di acido palmitoleico (Omega-7), che costituisce una parte essenziale dei lipidi. Un importante mattone naturale per pelle e mucose.", "imgAlt": "Infografica: olio di polpa di olivello spinoso — Omega-7 (acido palmitoleico) per pelle e mucose" },
-      { "title": "Olio dei semi (Omega-3 & 6)", "desc": "L'olio dei semi giallo pallido non contiene praticamente Omega-7. Fornisce invece acido linoleico (Omega-6) e acido alfa-linolenico (Omega-3) in un rapporto fisiologicamente ideale.", "imgAlt": "Infografica: olio dei semi di olivello spinoso — Omega-3 e Omega-6 in rapporto ideale" },
-      { "title": "Vitamine & nutrienti", "desc": "Oltre al contenuto eccezionalmente alto di vitamina C, il succo di olivello spinoso è noto per il suo complesso spettro di vitamine del gruppo B e composti vegetali secondari che agiscono in sinergia.", "imgAlt": "Infografica: succo di olivello spinoso — vitamina C, complesso B e spettro di nutrienti" }
+      {
+        "title": "Olio di polpa (Omega-7)",
+        "desc": "Una delle fonti vegetali più rare di acido palmitoleico (Omega-7), che costituisce una parte essenziale dei lipidi. Un importante mattone naturale per pelle e mucose.",
+        "imgAlt": "Infografica: olio di polpa di olivello spinoso — Omega-7 (acido palmitoleico) per pelle e mucose"
+      },
+      {
+        "title": "Olio dei semi (Omega-3 & 6)",
+        "desc": "L'olio dei semi giallo pallido non contiene praticamente Omega-7. Fornisce invece acido linoleico (Omega-6) e acido alfa-linolenico (Omega-3) in un rapporto fisiologicamente ideale.",
+        "imgAlt": "Infografica: olio dei semi di olivello spinoso — Omega-3 e Omega-6 in rapporto ideale"
+      },
+      {
+        "title": "Vitamine & nutrienti",
+        "desc": "Oltre al contenuto eccezionalmente alto di vitamina C, il succo di olivello spinoso è noto per il suo complesso spettro di vitamine del gruppo B e composti vegetali secondari che agiscono in sinergia.",
+        "imgAlt": "Infografica: succo di olivello spinoso — vitamina C, complesso B e spettro di nutrienti"
+      }
     ]
   },
   "science": {
     "title": "Conoscenze scientifiche sull'olivello spinoso",
     "cards": [
-      { "title": "Metabolismo & vitalità", "desc": "L'olivello spinoso fornisce nutrienti essenziali e antiossidanti. Studi indicano che gli steroli vegetali e gli acidi grassi contenuti sostengono in modo ottimale una nutrizione funzionale e possono contribuire al benessere generale." },
-      { "title": "Pelle & dermatologia", "desc": "L'Omega-7 è un importante mattone fisiologico della barriera cutanea umana. Gli estratti di olivello spinoso sono studiati intensamente per le loro proprietà di sostegno alla rigenerazione cutanea naturale." },
-      { "title": "Mucose", "desc": "La specifica matrice lipidica dell'olio di polpa è nota per sostenere, a livello nutrizionale, l'equilibrio idrico naturale delle mucose (occhi, bocca o aree intime)." }
+      {
+        "title": "Metabolismo & vitalità",
+        "desc": "L'olivello spinoso fornisce nutrienti essenziali e antiossidanti. Studi indicano che gli steroli vegetali e gli acidi grassi contenuti sostengono in modo ottimale una nutrizione funzionale e possono contribuire al benessere generale."
+      },
+      {
+        "title": "Pelle & dermatologia",
+        "desc": "L'Omega-7 è un importante mattone fisiologico della barriera cutanea umana. Gli estratti di olivello spinoso sono studiati intensamente per le loro proprietà di sostegno alla rigenerazione cutanea naturale."
+      },
+      {
+        "title": "Mucose",
+        "desc": "La specifica matrice lipidica dell'olio di polpa è nota per sostenere, a livello nutrizionale, l'equilibrio idrico naturale delle mucose (occhi, bocca o aree intime)."
+      }
     ],
     "imgAlt": "Infografica: conoscenze scientifiche sull'olivello spinoso — metabolismo, pelle e mucose"
   },
   "innovations": {
     "title": "Applicazioni moderne & innovazioni di mercato",
     "cards": [
-      { "title": "Haute cuisine & mixology", "desc": "Nell'alta gastronomia, l'olivello spinoso si afferma rapidamente come «limone del Nord». Il profilo acido complesso e multidimensionale sostituisce sempre più le importazioni esotiche come yuzu o frutto della passione e conferisce ai cocktail premium analcolici la struttura e l'astringenza necessarie." },
-      { "title": "Nutricosmetica & clean beauty", "desc": "L'acido palmitoleico (Omega-7) contenuto nell'olio di olivello spinoso presenta una somiglianza strutturale unica con i lipidi propri della pelle dello strato corneo. Ciò consente una penetrazione estremamente rapida per rafforzare la barriera cutanea e ridurre la perdita transepidermica di acqua." },
-      { "title": "Food-tech & upcycling", "desc": "La microincapsulazione con alginato di sodio consente oggi di proteggere i carotenoidi termosensibili per l'industria della panificazione. Inoltre, l'autorizzazione EU Novel Food per le foglie di olivello spinoso (2020) ha aperto strade completamente nuove per tè premium ricchi dell'antiossidante cellulare PC-8." }
+      {
+        "title": "Haute cuisine & mixology",
+        "desc": "Nell'alta gastronomia, l'olivello spinoso si afferma rapidamente come «limone del Nord». Il profilo acido complesso e multidimensionale sostituisce sempre più le importazioni esotiche come yuzu o frutto della passione e conferisce ai cocktail premium analcolici la struttura e l'astringenza necessarie."
+      },
+      {
+        "title": "Nutricosmetica & clean beauty",
+        "desc": "L'acido palmitoleico (Omega-7) contenuto nell'olio di olivello spinoso presenta una somiglianza strutturale unica con i lipidi propri della pelle dello strato corneo. Ciò consente una penetrazione estremamente rapida per rafforzare la barriera cutanea e ridurre la perdita transepidermica di acqua."
+      },
+      {
+        "title": "Food-tech & upcycling",
+        "desc": "La microincapsulazione con alginato di sodio consente oggi di proteggere i carotenoidi termosensibili per l'industria della panificazione. Inoltre, l'autorizzazione EU Novel Food per le foglie di olivello spinoso (2020) ha aperto strade completamente nuove per tè premium ricchi dell'antiossidante cellulare PC-8."
+      }
     ],
     "imgAlt": "Infografica: applicazioni moderne dell'olivello spinoso — gastronomia, clean beauty e food-tech"
   },
@@ -106,10 +136,22 @@
   "zerowaste": {
     "title": "Lavorazione & matrice zero rifiuti",
     "items": [
-      { "title": "L'elisir (succo diretto non filtrato)", "desc": "Per ottenere 1 litro dell'elisir 100% puro servono 1,3–1,6 kg di bacche raccolte a mano. Una pastorizzazione delicata garantisce la conservazione e protegge le preziose vitamine." },
-      { "title": "Estrazione meccanica dell'olio", "desc": "L'industria estrae spesso per via chimica. Qui la spremitura meccanica a freddo garantisce la conservazione degli acidi grassi termosensibili. L'intensità delle risorse è immensa: fino a 200 kg di bacche fresche per 1 litro di olio puro." },
-      { "title": "Residuo di spremitura (la sansa)", "desc": "Semi e bucce vengono asciugati termicamente in modo delicato dopo la disoleatura. Mediante un'idrolisi enzimatica mirata si ottimizza il profilo delle fibre, creando un «ingrediente upcycled» altamente funzionale per la produzione alimentare industriale." },
-      { "title": "Valorizzazione integrale", "desc": "Anche rametti e corteccia vengono valorizzati senza scarti. Le analisi più recenti confermano nella corteccia un contenuto di fitoserotonina che supera molte volte quello delle banane – un enorme potenziale per estratti naturali di «mood support»." }
+      {
+        "title": "L'elisir (succo diretto non filtrato)",
+        "desc": "Per ottenere 1 litro dell'elisir 100% puro servono 1,3–1,6 kg di bacche raccolte a mano. Una pastorizzazione delicata garantisce la conservazione e protegge le preziose vitamine."
+      },
+      {
+        "title": "Estrazione meccanica dell'olio",
+        "desc": "L'industria estrae spesso per via chimica. Qui la spremitura meccanica a freddo garantisce la conservazione degli acidi grassi termosensibili. L'intensità delle risorse è immensa: fino a 200 kg di bacche fresche per 1 litro di olio puro."
+      },
+      {
+        "title": "Residuo di spremitura (la sansa)",
+        "desc": "Semi e bucce vengono asciugati termicamente in modo delicato dopo la disoleatura. Mediante un'idrolisi enzimatica mirata si ottimizza il profilo delle fibre, creando un «ingrediente upcycled» altamente funzionale per la produzione alimentare industriale."
+      },
+      {
+        "title": "Valorizzazione integrale",
+        "desc": "Anche rametti e corteccia vengono valorizzati senza scarti. Le analisi più recenti confermano nella corteccia un contenuto di fitoserotonina che supera molte volte quello delle banane – un enorme potenziale per estratti naturali di «mood support»."
+      }
     ],
     "imgAlt": "Infografica: lavorazione zero rifiuti dell'olivello spinoso — succo diretto, spremitura meccanica dell'olio, sansa e corteccia in circuito chiuso"
   },
@@ -120,5 +162,42 @@
     "p1": "I dati confermano l'olivello spinoso come uno dei sistemi vegetali fitochimicamente più complessi al mondo. Il beneficio nutrizionale risiede senza dubbio nello straordinario profilo di vitamine e lipidi rari.",
     "p2": "AmberNord e i suoi partner trasferiscono questo potenziale, senza compromessi qualitativi, in un rituale quotidiano di alta qualità per un maggiore benessere.",
     "logoAlt": "Logo AmberNord"
+  },
+  "traceability": {
+    "title": "Origine & Tracciabilità",
+    "lead": "La purezza inizia dall’origine. Mentre molti estratti di olivello spinoso vengono acquistati e miscelati in tutto il mondo, AmberNord proviene da un’unica origine nordica — completamente tracciabile fino al singolo lotto.",
+    "ours": "AmberNord",
+    "others": "Estratti convenzionali",
+    "r1": {
+      "crit": "Origine",
+      "ours": "Un’unica origine nordica (single-origin)",
+      "others": "Acquistati e miscelati in tutto il mondo"
+    },
+    "r2": {
+      "crit": "Raccolta",
+      "ours": "100% raccolta a mano delicata",
+      "others": "Meccanica o sconosciuta"
+    },
+    "r3": {
+      "crit": "Lavorazione",
+      "ours": "Spremitura a freddo delicata",
+      "others": "Concentrati, riscaldamento possibile"
+    },
+    "r4": {
+      "crit": "Tracciabilità",
+      "ours": "Completa, fino al lotto",
+      "others": "Spesso non verificabile"
+    },
+    "r5": {
+      "crit": "Certificazione",
+      "ours": "Bio · ProCert CH-BIO-038",
+      "others": "Raramente certificati in modo indipendente"
+    },
+    "r6": {
+      "crit": "Additivi",
+      "ours": "Nessuno — niente diluito",
+      "others": "Additivi e allungamenti possibili"
+    },
+    "note": "Confronto per categoria rispetto a comuni estratti di olivello spinoso senza origine certificata. AmberNord è certificato bio da ProCert (CH-BIO-038); la validità è consultabile nel registro pubblico ProCert."
   }
 }
