@@ -166,15 +166,15 @@ window.initB2b = async function () {
      -------------------------------------------------------------------------- */
 
   document.querySelectorAll('.b2b-trust-card').forEach((el, i) => {
-    el.style.transitionDelay = `${i * 0.08}s`;
+    el.style.transitionDelay = `${Math.min(i * 0.08, 0.3)}s`;
   });
 
   document.querySelectorAll('.b2b-product-section').forEach((el, i) => {
-    el.style.transitionDelay = `${i * 0.05}s`;
+    el.style.transitionDelay = `${Math.min(i * 0.05, 0.3)}s`;
   });
 
   document.querySelectorAll('.b2b-step-card').forEach((el, i) => {
-    el.style.transitionDelay = `${i * 0.08}s`;
+    el.style.transitionDelay = `${Math.min(i * 0.08, 0.3)}s`;
   });
 
   const targets = [...document.querySelectorAll('.page-reveal')].filter(Boolean);

@@ -190,7 +190,7 @@ window.initShop = async function () {
      -------------------------------------------------------------------------- */
 
   const targets = [...document.querySelectorAll('.shop-card')].filter(Boolean);
-  targets.forEach((el, i) => { el.style.transitionDelay = `${i * 0.12}s`; });
+  targets.forEach((el, i) => { el.style.transitionDelay = `${Math.min(i * 0.12, 0.3)}s`; });
 
   const observer = new IntersectionObserver(
     (entries) =>

@@ -14,7 +14,7 @@ window.initAktion2Fuer1Danke = async function () {
 
   targets.forEach((el, i) => {
     el.classList.add('page-reveal');
-    el.style.transitionDelay = `${i * 0.12}s`;
+    el.style.transitionDelay = `${Math.min(i * 0.12, 0.3)}s`;
   });
 
   const observer = new IntersectionObserver(

@@ -75,7 +75,7 @@ window.initReturns = async function () {
   ].filter(Boolean);
 
   targets.forEach((el, i) => {
-    el.style.transitionDelay = `${i * 0.08}s`;
+    el.style.transitionDelay = `${Math.min(i * 0.08, 0.3)}s`;
   });
 
   const observer = new IntersectionObserver(

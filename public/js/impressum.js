@@ -34,7 +34,7 @@ window.initImpressum = async function () {
   }
 
   const targets = [...document.querySelectorAll('#impressum-sections .returns-section.page-reveal')];
-  targets.forEach((el, i) => { el.style.transitionDelay = `${i * 0.08}s`; });
+  targets.forEach((el, i) => { el.style.transitionDelay = `${Math.min(i * 0.08, 0.3)}s`; });
 
   const observer = new IntersectionObserver(
     (entries) => entries.forEach((e) => {

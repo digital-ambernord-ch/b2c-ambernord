@@ -40,7 +40,7 @@ window.initBestellstatus = async function () {
 
   targets.forEach((el, i) => {
     el.classList.add('page-reveal');
-    el.style.transitionDelay = `${i * 0.1}s`;
+    el.style.transitionDelay = `${Math.min(i * 0.1, 0.3)}s`;
   });
 
   const observer = new IntersectionObserver(

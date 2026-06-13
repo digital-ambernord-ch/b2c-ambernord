@@ -91,7 +91,7 @@ window.initFaq = async function () {
         ].filter(Boolean);
         targets.forEach((el, i) => {
             el.classList.add('about-reveal');
-            el.style.transitionDelay = (i * 0.04) + 's';
+            el.style.transitionDelay = Math.min(i * 0.04, 0.3) + 's';
         });
         const obs = new IntersectionObserver((entries) => entries.forEach((e) => {
             if (e.isIntersecting) { e.target.classList.add('is-visible'); obs.unobserve(e.target); }

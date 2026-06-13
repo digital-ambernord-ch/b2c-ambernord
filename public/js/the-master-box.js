@@ -111,7 +111,7 @@ window.initTheMasterBox = async function () {
 
     targets.forEach((el, i) => {
       el.classList.add('page-reveal');
-      el.style.transitionDelay = `${i * 0.06}s`;
+      el.style.transitionDelay = `${Math.min(i * 0.06, 0.3)}s`;
     });
 
     if (!('IntersectionObserver' in window)) {
