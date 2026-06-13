@@ -56,6 +56,11 @@
     "value": {
       "days": "1 bottle = 10 days of ritual",
       "litres": "2.5 L of sea buckthorn per bottle"
+    },
+    "watermark": {
+      "vitcLabel": "VITAMIN C",
+      "vitcSub": "than citrus fruit",
+      "omegaLabel": "OMEGA"
     }
   },
   "closingCta": {

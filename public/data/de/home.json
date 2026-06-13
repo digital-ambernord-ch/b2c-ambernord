@@ -56,6 +56,11 @@
     "value": {
       "days": "1 Flasche = 10 Tage Ritual",
       "litres": "2.5 L Sanddorn pro Flasche"
+    },
+    "watermark": {
+      "vitcLabel": "VITAMIN C",
+      "vitcSub": "als Zitrusfrüchte",
+      "omegaLabel": "OMEGA"
     }
   },
   "closingCta": {

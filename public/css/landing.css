@@ -135,6 +135,110 @@
   text-align: center;
 }
 
+/* ===========================================================================
+   HERO WATERMARK — frosted "seal" in the hero corner carrying the two
+   headline composition facts: Vitamin C (9× more than citrus) and all four
+   Omega acids. Sits above the photo+shade but below the hero text (z 10),
+   so the headline always wins. landing.js fades it with #heroText on scroll.
+   =========================================================================== */
+.hero-watermark {
+  position: absolute;
+  left: 30px;
+  bottom: 28px;
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: 13px 18px;
+  text-align: left;
+  border: 1px solid var(--color-border-gold);
+  border-radius: 14px;
+  background: rgba(10, 10, 10, 0.34);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+  will-change: opacity;
+}
+
+.hero-watermark__vitc {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.hero-watermark__mult {
+  font-family: var(--font-serif);
+  font-size: 46px;
+  line-height: 0.9;
+  color: var(--color-gold);
+  text-shadow: 0 0 20px rgba(237, 163, 35, 0.5);
+}
+
+.hero-watermark__vitc-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hero-watermark__vitc-label {
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.1;
+}
+
+.hero-watermark__vitc-sub {
+  font-size: 10px;
+  letter-spacing: 0.4px;
+  color: rgba(255, 255, 255, 0.62);
+  line-height: 1.1;
+}
+
+.hero-watermark__omega {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(237, 163, 35, 0.26);
+}
+
+.hero-watermark__omega-label {
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--color-gold);
+}
+
+.hero-watermark__omega-nums {
+  font-size: 13px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+/* Phones: scale the seal down so it stays a corner watermark and clears the
+   CTA in the content-dense mobile hero. */
+@media (max-width: 600px) {
+  .hero-watermark {
+    left: 16px;
+    bottom: 18px;
+    gap: 7px;
+    padding: 10px 13px;
+    border-radius: 12px;
+  }
+  .hero-watermark__vitc { gap: 9px; }
+  .hero-watermark__mult { font-size: 34px; }
+  .hero-watermark__vitc-label { font-size: 10.5px; letter-spacing: 1.5px; }
+  .hero-watermark__vitc-sub { font-size: 9px; }
+  .hero-watermark__omega { padding-top: 7px; }
+  .hero-watermark__omega-label { font-size: 9px; letter-spacing: 2px; }
+  .hero-watermark__omega-nums { font-size: 11.5px; }
+}
+
 .animation-workspace {
   position: absolute;
   top: 0;

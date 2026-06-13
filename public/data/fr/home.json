@@ -56,6 +56,11 @@
     "value": {
       "days": "1 flacon = 10 jours de rituel",
       "litres": "2.5 L d'argousier par flacon"
+    },
+    "watermark": {
+      "vitcLabel": "VITAMINE C",
+      "vitcSub": "que les agrumes",
+      "omegaLabel": "OMÉGA"
     }
   },
   "closingCta": {

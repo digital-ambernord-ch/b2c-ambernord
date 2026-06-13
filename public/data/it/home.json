@@ -56,6 +56,11 @@
     "value": {
       "days": "1 flacone = 10 giorni di rituale",
       "litres": "2.5 L di olivello spinoso per flacone"
+    },
+    "watermark": {
+      "vitcLabel": "VITAMINA C",
+      "vitcSub": "degli agrumi",
+      "omegaLabel": "OMEGA"
     }
   },
   "closingCta": {
