@@ -48,11 +48,10 @@
     "taglineColdPress": "COLD-PRESSED",
     "taglineBio": "ORGANIC CERTIFIED",
     "bioLogoAlt": "EU Organic certified",
-    "h1": "The liquid gold of the North.<br><span>Cold-pressed organic sea buckthorn concentrate. 190+ bioactive compounds. A 30-second daily ritual.</span>",
+    "h1": "The liquid <span class=\"ambernord-text-gold\">gold</span> of the North.<br><span>190+ bioactive compounds · A 30-second daily ritual.</span>",
     "productAlt": "AmberNord Premium Edition bottle",
     "benefit1": "Vitamin C contributes to the reduction of tiredness and fatigue — energy without the crash",
     "benefit2": "Omega-7 — one of nature's rarest sources, up to 42 % in the pulp oil",
-    "nativeOils": "The whole berry: oils from pulp &amp; seed –<br>nothing goes to waste",
     "cta": "Try It Now – from 24.90 CHF",
     "value": {
       "days": "1 bottle = 10 days of ritual",

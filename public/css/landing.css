@@ -96,8 +96,8 @@
   width: 100%; height: 100%;
   background: linear-gradient(
     to bottom,
-    rgba(10,10,10,0.65) 0%,
-    rgba(10,10,10,0.85) 85%,
+    rgba(10,10,10,0.70) 0%,
+    rgba(10,10,10,0.88) 85%,
     rgba(10,10,10,1) 100%
   );
   z-index: 2;
@@ -113,10 +113,10 @@
   position: absolute;
   inset: 0;
   background: radial-gradient(
-    ellipse 72% 58% at 50% 52%,
-    rgba(10,10,10,0.55) 0%,
-    rgba(10,10,10,0.28) 55%,
-    transparent 78%
+    ellipse 70% 60% at 50% 50%,
+    rgba(10,10,10,0.78) 0%,
+    rgba(10,10,10,0.48) 52%,
+    transparent 82%
   );
 }
 
@@ -311,13 +311,16 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
-  border-bottom: 1px solid rgba(237, 163, 35, 0.4);
+  /* Neutral hairline (was gold) — gold is now reserved for the h1 accent
+     word and the CTA so they own the eye. */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
   padding-bottom: 8px;
   position: relative;
 }
 
 .tagline-part-1 {
-  color: var(--color-gold);
+  /* Muted, not gold — quiet trust badges that don't compete with the CTA. */
+  color: var(--color-text-muted);
   font-family: var(--font-sans);
   font-size: 11px;
   font-weight: 700;
@@ -325,6 +328,10 @@
   text-transform: uppercase;
   display: inline;
 }
+
+/* The "|" separators in the tagline keep a faint gold tint so the badge row
+   still reads as brand-warm without shouting. */
+.tagline-sep { color: var(--color-gold-dim); }
 
 .bio-wrapper {
   position: relative;
@@ -351,9 +358,9 @@
   letter-spacing: 0.5px;
 }
 
-/* H1 subhead — single factual line ("Kaltgepresstes Bio-Sanddorn-Konzentrat ·
-   190+ Bioaktivstoffe · 30 Sekunden am Tag."). Roman (non-italic) sans in
-   gold: reads as a quiet spec line under the serif headline. */
+/* H1 subhead — single factual spec line ("190+ Bioaktivstoffe · 30 Sekunden
+   am Tag."). Roman sans, muted (was gold): a quiet spec line under the serif
+   headline, so the only gold in the headline is the accent word. */
 #scrollTrack h1 span {
   display: block;
   margin-top: 14px;
@@ -363,7 +370,25 @@
   font-weight: 500;
   letter-spacing: 1.2px;
   line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+/* Single gold accent word inside the serif headline (e.g. "Gold" / "or" /
+   "oro") — the one place gold lives in the headline. Must stay inline: the
+   generic `#scrollTrack h1 span` rule above makes spans block (for the
+   subhead), which would otherwise drop the accent onto its own line. */
+#scrollTrack h1 .ambernord-text-gold {
+  display: inline;
+  margin-top: 0;
+  /* Reset the generic subhead-span styling back to the serif headline so the
+     accent word matches its siblings — only colour + italic differ. */
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
   color: var(--color-gold);
+  font-style: italic;
 }
 
 .ambernord-btn-clean {
@@ -442,18 +467,22 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  /* Two benefits, generously spaced and vertically centred against the
+     bottle image (parent align-items: center) so the block breathes. */
+  gap: 22px;
+  min-height: 200px;
   /* Sans UI font (not italic serif) — the bullets are functional benefit
      copy, so they read in the same voice as the rest of the UI. */
   font-family: var(--font-sans);
   font-style: normal;
   font-weight: 400;
-  line-height: 1.45;
+  line-height: 1.5;
   font-size: clamp(14px, 1.6vw, 18px);
   color: var(--color-text);
 }
 
 .hero-benefits-list span {
-  margin: 5px 0;
+  margin: 0;
   padding-left: 1.4em;  /* room for the SVG check icon */
   position: relative;
 }
@@ -470,21 +499,6 @@
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='%23EDA323' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
   background-size: contain;
   background-repeat: no-repeat;
-}
-
-.hero-benefits-list span:first-child { margin-top: 0; }
-.hero-benefits-list span:last-child  { margin-bottom: 0; }
-
-.native-oils-text {
-  font-size: 12px;
-  color: var(--color-text);
-  font-weight: 500;
-  margin-top: 15px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  font-family: var(--font-sans);
-  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
-  line-height: 1.5;
 }
 
 /* --------------------------------------------------------------------------
@@ -2159,8 +2173,7 @@
   }
 
   .hero-product-img { height: 160px; width: 80px; }
-  .hero-benefits-list { font-size: 15px; }
-  .native-oils-text   { font-size: 11px; margin-top: 12px; }
+  .hero-benefits-list { font-size: 15px; gap: 16px; min-height: 160px; }
   .hero-value-line    { font-size: 11px; letter-spacing: 1px; gap: 7px; margin-top: -10px; margin-bottom: 20px; }
 
   /* Trust signals — ALWAYS visible on mobile as one calm row directly under

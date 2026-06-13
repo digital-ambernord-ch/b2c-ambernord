@@ -48,11 +48,10 @@
     "taglineColdPress": "SPREMUTO A FREDDO",
     "taglineBio": "CERTIFICATO BIO",
     "bioLogoAlt": "Certificato EU Organic",
-    "h1": "L'oro liquido del Nord.<br><span>Concentrato di olivello spinoso bio spremuto a freddo · 190+ composti bioattivi · 30 secondi al giorno.</span>",
+    "h1": "L'<span class=\"ambernord-text-gold\">oro</span> liquido del Nord.<br><span>190+ composti bioattivi · 30 secondi al giorno.</span>",
     "productAlt": "Bottiglia AmberNord Edizione Premium",
     "benefit1": "La vitamina C contribuisce alla riduzione della stanchezza e dell'affaticamento — energia senza crash",
     "benefit2": "Omega-7 — una delle fonti più rare della natura, fino al 42 % nell'olio di polpa",
-    "nativeOils": "La bacca intera: oli da polpa &amp; seme –<br>niente va perso",
     "cta": "Provi ora – da 24.90 CHF",
     "value": {
       "days": "1 flacone = 10 giorni di rituale",

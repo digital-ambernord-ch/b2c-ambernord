@@ -48,11 +48,10 @@
     "taglineColdPress": "PRESSÉ À FROID",
     "taglineBio": "CERTIFIÉ BIO",
     "bioLogoAlt": "Certifié EU Organic",
-    "h1": "L'or liquide du Nord.<br><span>Concentré d'argousier bio pressé à froid · 190+ composés bioactifs · 30 secondes par jour.</span>",
+    "h1": "L'<span class=\"ambernord-text-gold\">or</span> liquide du Nord.<br><span>190+ composés bioactifs · 30 secondes par jour.</span>",
     "productAlt": "Bouteille AmberNord Édition Premium",
     "benefit1": "La vitamine C contribue à réduire la fatigue — de l'énergie sans crash",
     "benefit2": "Oméga-7 — l'une des sources les plus rares de la nature, jusqu'à 42 % dans l'huile de pulpe",
-    "nativeOils": "La baie entière : huiles de pulpe &amp; de pépin –<br>rien ne se perd",
     "cta": "Essayer maintenant – dès 24.90 CHF",
     "value": {
       "days": "1 flacon = 10 jours de rituel",
