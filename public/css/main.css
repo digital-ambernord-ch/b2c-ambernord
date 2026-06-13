@@ -496,7 +496,13 @@ h1 span, h2 span {
    on the brand mark and slightly extending onto the black topbar. Vertically
    tucked into the upper pocket between the logo's top edge, the "Nord" word
    and the central drawing. Decorative only, pointer-events disabled so clicks
-   still hit the home link beneath. */
+   still hit the home link beneath.
+
+   Presentation: the badge is "pinned" to the logo — it hangs slightly crooked
+   from a small metallic rivet (the ::after below), pivoting from that pin so
+   it reads as a physical enamel badge fastened on, not a flat sticker. This
+   resting tilt is permanent on every static page; on the landing route the
+   badge still flies in (landing.js) and then settles into this pinned pose. */
 .ambernord-logo-eubio {
   position: absolute;
   top: 14px;
@@ -507,11 +513,34 @@ h1 span, h2 span {
   pointer-events: none;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.45));
   opacity: 1;
-  transform: none;
-  transform-origin: 70% 30%;
+  transform: rotate(-8deg);
+  transform-origin: 50% 0;          /* pivot at the rivet so it hangs from the pin */
   transition: opacity 0.45s var(--ease-smooth),
               transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1),
               filter 0.45s var(--ease-smooth);
+}
+
+.ambernord-logo-eubio__img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* The rivet / pin head fastening the badge to the logo. A small brass dome
+   with a top-left highlight and a soft cast shadow. Sits at the top-centre
+   pivot, overlapping the badge's upper edge. */
+.ambernord-logo-eubio::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fffdf7, #e8cf94 45%, #9c7726 100%);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.55), inset 0 0.5px 0.5px rgba(255, 255, 255, 0.85);
+  pointer-events: none;
 }
 
 /* Landing-only — while the hero EU bio leaf is in view, the TOPBAR badge is
@@ -538,6 +567,11 @@ html.landing-hero-active .ambernord-topbar .ambernord-logo-eubio {
     width: 26px;
     right: -4px;
     top: 12px;
+  }
+  .ambernord-logo-eubio::after {
+    width: 6px;
+    height: 6px;
+    top: -1px;
   }
 }
 
