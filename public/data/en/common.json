@@ -23,7 +23,12 @@
     "serviceBy": "A service by",
     "imprint": "Legal notice",
     "shipFromCH": "Shipped from Switzerland",
-    "paymentsLabel": "Secure payment methods"
+    "paymentsLabel": "Secure payment methods",
+    "cert": {
+      "title": "Organic-certified by ProCert",
+      "sub": "Independently audited · CH-BIO-038 · Check the register",
+      "aria": "Verify the organic certification in the ProCert register"
+    }
   },
   "aktion": {
     "eyebrow": "Launch Edition",

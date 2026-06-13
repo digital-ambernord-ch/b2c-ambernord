@@ -23,7 +23,12 @@
     "serviceBy": "Un service de",
     "imprint": "Mentions légales",
     "shipFromCH": "Expédition depuis la Suisse",
-    "paymentsLabel": "Méthodes de paiement sécurisées"
+    "paymentsLabel": "Méthodes de paiement sécurisées",
+    "cert": {
+      "title": "Certifié bio par ProCert",
+      "sub": "Audité indépendamment · CH-BIO-038 · Vérifier au registre",
+      "aria": "Vérifier la certification bio dans le registre ProCert"
+    }
   },
   "aktion": {
     "eyebrow": "Édition de lancement",

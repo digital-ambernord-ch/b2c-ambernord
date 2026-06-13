@@ -65,7 +65,8 @@
     "cert": {
       "title": "Certified organic",
       "sub": "Independently audited by ProCert",
-      "alt": "Organic certification ProCert CH-BIO-038"
+      "alt": "Organic certification ProCert CH-BIO-038",
+      "pdfLabel": "View organic certificate (PDF)"
     }
   },
   "closingCta": {

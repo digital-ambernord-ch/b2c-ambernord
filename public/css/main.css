@@ -1552,3 +1552,61 @@ html.landing-hero-active .ambernord-topbar .ambernord-logo-eubio {
   text-transform: uppercase;
   color: var(--color-text-dim);
 }
+
+/* Swiss organic certification badge — BIO ProCert mark + audit note, linked to
+   the public ProCert register. */
+.ambernord-footer-cert {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  margin-top: 6px;
+  padding: 7px 14px 7px 7px;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  text-decoration: none;
+  text-align: left;
+  transition: border-color var(--t-fast) ease, transform var(--t-fast) ease;
+}
+
+.ambernord-footer-cert:hover,
+.ambernord-footer-cert:focus-visible {
+  border-color: var(--color-gold);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.ambernord-footer-cert__logo {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 8px;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.ambernord-footer-cert__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ambernord-footer-cert__title {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  color: var(--color-text);
+}
+
+.ambernord-footer-cert__sub {
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  letter-spacing: 0.3px;
+  color: var(--color-text-dim);
+}
+
+.ambernord-footer-cert:hover .ambernord-footer-cert__sub {
+  color: var(--color-gold);
+}

@@ -65,7 +65,8 @@
     "cert": {
       "title": "Bio-zertifiziert",
       "sub": "Unabhängig auditiert durch ProCert",
-      "alt": "Bio-Zertifizierung ProCert CH-BIO-038"
+      "alt": "Bio-Zertifizierung ProCert CH-BIO-038",
+      "pdfLabel": "Bio-Zertifikat ansehen (PDF)"
     }
   },
   "closingCta": {

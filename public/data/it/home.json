@@ -65,7 +65,8 @@
     "cert": {
       "title": "Certificato biologico",
       "sub": "Verificato in modo indipendente da ProCert",
-      "alt": "Certificazione biologica ProCert CH-BIO-038"
+      "alt": "Certificazione biologica ProCert CH-BIO-038",
+      "pdfLabel": "Vedi il certificato biologico (PDF)"
     }
   },
   "closingCta": {

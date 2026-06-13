@@ -80,20 +80,18 @@
 
       <div class="ambernord-hero-shade" id="ambernordHeroShade" aria-hidden="true"></div>
 
-      <!-- Composition watermark: the brand's two headline facts (Vitamin C
-           "9× more than citrus" + all four Omega acids) as a frosted seal in
-           the hero corner. Faded out with #heroText on scroll (landing.js). -->
-      <div class="hero-watermark" id="heroWatermark" aria-hidden="true">
-        <div class="hero-watermark__vitc">
-          <span class="hero-watermark__mult">9×</span>
-          <span class="hero-watermark__vitc-text">
-            <span class="hero-watermark__vitc-label" data-i18n="hero.watermark.vitcLabel">VITAMIN C</span>
-            <span class="hero-watermark__vitc-sub" data-i18n="hero.watermark.vitcSub">als Zitrusfrüchte</span>
+      <!-- Composition medallion: the brand's two headline facts (Vitamin C
+           "9× more than citrus" + all four Omega acids) minted as a gold seal
+           (reeded coin bezel + sunburst) in the hero corner. Faded out with
+           #heroText on scroll (landing.js). -->
+      <div class="hero-medallion" id="heroWatermark" aria-hidden="true">
+        <div class="hero-medallion__core">
+          <span class="hero-medallion__omega">
+            <span data-i18n="hero.watermark.omegaLabel">OMEGA</span>&nbsp; 3·6·7·9
           </span>
-        </div>
-        <div class="hero-watermark__omega">
-          <span class="hero-watermark__omega-label" data-i18n="hero.watermark.omegaLabel">OMEGA</span>
-          <span class="hero-watermark__omega-nums">3 · 6 · 7 · 9</span>
+          <span class="hero-medallion__mult">9&hairsp;&times;</span>
+          <span class="hero-medallion__vitc" data-i18n="hero.watermark.vitcLabel">VITAMIN C</span>
+          <span class="hero-medallion__sub" data-i18n="hero.watermark.vitcSub">als Zitrusfrüchte</span>
         </div>
       </div>
 
@@ -103,11 +101,17 @@
            standard logo ProCert permits us to display — NOT the ProCert
            company logo. Faded with #heroText on scroll (landing.js). -->
       <div class="hero-cert" id="heroCert">
-        <img class="hero-cert__logo"
-             src="/img/procert-bio-ch-bio-038.png"
-             data-i18n-attr="alt:hero.cert.alt"
-             alt="Bio-Zertifizierung ProCert CH-BIO-038"
-             width="56" height="56" loading="eager" decoding="async">
+        <a class="hero-cert__logolink"
+           href="https://api.procert.ch/zertifikate/141710.pdf"
+           target="_blank" rel="noopener noreferrer"
+           data-i18n-attr="aria-label:hero.cert.pdfLabel"
+           aria-label="Bio-Zertifikat ansehen (PDF)">
+          <img class="hero-cert__logo"
+               src="/img/procert-bio-ch-bio-038.png"
+               data-i18n-attr="alt:hero.cert.alt"
+               alt="Bio-Zertifizierung ProCert CH-BIO-038"
+               width="56" height="56" loading="eager" decoding="async">
+        </a>
         <span class="hero-cert__caption">
           <span class="hero-cert__title" data-i18n="hero.cert.title">Bio-zertifiziert</span>
           <span class="hero-cert__sub" data-i18n="hero.cert.sub">Unabhängig auditiert durch ProCert</span>
