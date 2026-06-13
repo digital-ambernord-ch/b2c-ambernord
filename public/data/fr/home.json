@@ -61,6 +61,11 @@
       "vitcLabel": "VITAMINE C",
       "vitcSub": "que les agrumes",
       "omegaLabel": "OMÉGA"
+    },
+    "cert": {
+      "title": "Certifié bio",
+      "sub": "Audité indépendamment par ProCert",
+      "alt": "Certification bio ProCert CH-BIO-038"
     }
   },
   "closingCta": {

@@ -61,6 +61,11 @@
       "vitcLabel": "VITAMIN C",
       "vitcSub": "than citrus fruit",
       "omegaLabel": "OMEGA"
+    },
+    "cert": {
+      "title": "Certified organic",
+      "sub": "Independently audited by ProCert",
+      "alt": "Organic certification ProCert CH-BIO-038"
     }
   },
   "closingCta": {

@@ -61,6 +61,11 @@
       "vitcLabel": "VITAMIN C",
       "vitcSub": "als Zitrusfrüchte",
       "omegaLabel": "OMEGA"
+    },
+    "cert": {
+      "title": "Bio-zertifiziert",
+      "sub": "Unabhängig auditiert durch ProCert",
+      "alt": "Bio-Zertifizierung ProCert CH-BIO-038"
     }
   },
   "closingCta": {

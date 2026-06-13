@@ -61,6 +61,11 @@
       "vitcLabel": "VITAMINA C",
       "vitcSub": "degli agrumi",
       "omegaLabel": "OMEGA"
+    },
+    "cert": {
+      "title": "Certificato biologico",
+      "sub": "Verificato in modo indipendente da ProCert",
+      "alt": "Certificazione biologica ProCert CH-BIO-038"
     }
   },
   "closingCta": {
