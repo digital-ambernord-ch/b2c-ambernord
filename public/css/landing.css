@@ -1290,42 +1290,6 @@
     inset 0 1px 0 rgba(237, 163, 35, 0.08);
 }
 
-/* GOLD EDGE GLINT — thin gold "spine" across the card's vertical centre,
-   invisible at rest. It flares for ~0.1s around the 90° edge-on moment of
-   the somersault: the foreshortened card reads as a glowing coin edge
-   catching the light. ::after is free on the card (highlight-habit owns
-   ::before); z-index 3 puts the flash above BOTH faces (benefit face: 2). */
-.premium-product-card::after {
-  content: '';
-  position: absolute;
-  left: 5%;
-  right: 5%;
-  top: 50%;
-  height: 4px;
-  transform: translateY(-50%);
-  border-radius: 999px;
-  background: linear-gradient(90deg,
-    transparent 0%,
-    var(--color-gold) 30%,
-    #fff3d6 50%,
-    var(--color-gold) 70%,
-    transparent 100%);
-  box-shadow: 0 0 18px 6px rgba(237, 163, 35, 0.5);
-  opacity: 0;
-  pointer-events: none;
-  z-index: 3;
-}
-
-.premium-product-card.is-glinting::after {
-  animation: an-edge-glint 0.26s ease-out;
-}
-
-@keyframes an-edge-glint {
-  0%   { opacity: 0; }
-  35%  { opacity: 1; }
-  100% { opacity: 0; }
-}
-
 /* LANDING SHIMMER — one-shot gold light sweep across the freshly revealed
    benefit face (same visual language as .shop-card__btn-primary::after in
    shop.css). landing.js adds .is-shimmering after the card lands and
@@ -1358,7 +1322,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .premium-product-card.is-glinting::after,
   .premium-product-card.is-shimmering .card-benefit-face::after { animation: none; }
 }
 

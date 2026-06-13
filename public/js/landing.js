@@ -450,13 +450,12 @@ window.initLanding = async function () {
     let   engaged   = false;   /* true while scrolled past the flip trigger */
     let   cascade   = null;
 
-    /* The glint + shimmer are one-shot CSS keyframe animations on pseudo
-       elements — remove their trigger class on animationend (bubbles from
-       the benefit face) so they can re-fire on the next flip. */
+    /* The shimmer is a one-shot CSS keyframe animation on a pseudo element —
+       remove its trigger class on animationend (bubbles from the benefit
+       face) so it can re-fire on the next flip. */
     cards.forEach(function (card) {
       card.addEventListener('animationend', function (e) {
-        if (e.animationName === 'an-edge-glint')        card.classList.remove('is-glinting');
-        else if (e.animationName === 'an-face-shimmer') card.classList.remove('is-shimmering');
+        if (e.animationName === 'an-face-shimmer') card.classList.remove('is-shimmering');
       });
     });
 
@@ -505,14 +504,9 @@ window.initLanding = async function () {
         tl.set(savings, { scale: 0.85, opacity: 0 });
       }
 
-      /* At exactly 90°: swap faces (invisible — the card is a sliver) and
-         flash the gold edge glint. Class removal + reflow restarts the
-         one-shot keyframe animation even if a previous flash is mid-flight. */
+      /* At exactly 90° (card edge-on, invisible): swap faces. */
       tl.call(function () {
         card.classList.toggle('is-flipped', toBenefit);
-        card.classList.remove('is-glinting');
-        void card.offsetWidth;
-        card.classList.add('is-glinting');
       });
       tl.set(card, { rotationX: -90 });
 
@@ -565,14 +559,15 @@ window.initLanding = async function () {
       cascade.timeScale(0.85);
     }
 
-    /* HOVER TOGGLE (pointer-fine only): once a card sits on its benefit
-       face, hovering peeks back at the sales face; leaving flips forward
-       again. Transform-only, so the <a> keeps navigating on click. In-flight
-       flips ignore the events; settleHover() (called from every flip's
-       onComplete) corrects the face if the pointer moved mid-flip. */
+    /* HOVER FLIP (pointer-fine only): cards rest on their sales face and
+       only somersault to the benefit face while the pointer is on them;
+       leaving flips back to sales. Nothing flips on scroll. Transform-only,
+       so the <a> keeps navigating on click. In-flight flips ignore the
+       events; settleHover() (called from every flip's onComplete) corrects
+       the face if the pointer moved mid-flip. */
     function settleHover(card, i) {
       if (!engaged || !hoverFine.matches || state[i].busy) return;
-      const target = card.matches(':hover') ? 'sales' : 'benefit';
+      const target = card.matches(':hover') ? 'benefit' : 'sales';
       if (state[i].face !== target) buildFlip(card, i, target, true);
     }
 
@@ -586,7 +581,7 @@ window.initLanding = async function () {
         hoverTimers[i] = setTimeout(function () {
           hoverTimers[i] = null;
           if (!engaged || state[i].busy) return;
-          const target = card.matches(':hover') ? 'sales' : 'benefit';
+          const target = card.matches(':hover') ? 'benefit' : 'sales';
           if (state[i].face !== target) buildFlip(card, i, target, true);
         }, 120);
       }
@@ -596,16 +591,15 @@ window.initLanding = async function () {
       });
     }
 
-    /* One trigger, no pin: play forward once scrolled past, flip back to
-       the sales faces when scrolling back above (callback twin of
-       toggleActions 'play none none reverse' — callbacks instead of a
-       reversible timeline because the choreography uses sets/classes). */
+    /* Gate hover flips to when the stack is actually in view, and reset any
+       hovered card back to its sales face when scrolling back above. No
+       automatic flip-to-benefit — that is hover-driven only. */
     const coinST = ScrollTrigger.create({
       trigger: group,
-      start: 'top 55%',
+      start: 'top 85%',
       invalidateOnRefresh: true,
-      onEnter:     function () { engaged = true;  flipAll('benefit'); },
-      onLeaveBack: function () { engaged = false; flipAll('sales');   }
+      onEnter:     function () { engaged = true;  },
+      onLeaveBack: function () { engaged = false; flipAll('sales'); }
     });
 
     return function () {
