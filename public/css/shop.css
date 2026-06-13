@@ -675,14 +675,61 @@
   position: absolute;
   top: 0;
   left: 50%;
-  width: 80vw;
+  width: 78vw;
   margin: 0;
+  padding: 16px 16px 18px;
+  border-radius: 18px;
+  overflow: hidden;
   transform: translateX(-50%);     /* JS overrides this per frame */
   transition: none;                /* JS drives the motion — no CSS lag while dragging */
-  will-change: transform, opacity;
+  will-change: transform, opacity, filter;
   cursor: grab;
 }
 
 .shop-grid--carousel .shop-card:active {
   cursor: grabbing;
+}
+
+/* The focused slide pops — gold ring + deep elevation — so the deck never
+   reads as one continuous block. Side slides are scaled, dimmed and blurred
+   by JS (render()), giving a shallow depth-of-field around the centre card. */
+.shop-grid--carousel .shop-card.is-center {
+  border-color: rgba(237, 163, 35, 0.55);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.06) inset,
+    0 30px 60px rgba(0, 0, 0, 0.6),
+    0 0 40px rgba(237, 163, 35, 0.18);
+}
+
+/* Compact slide: a full-height card must fit ANY phone, so the verbose
+   description / science / footer blocks are dropped in carousel mode (they
+   stay on the product page each card links to). What remains — image, name,
+   price, promise, buy CTA — flex-fills the locked height, with the product
+   image growing to fill the leftover space for a premium full-bleed feel. */
+.shop-grid--carousel .shop-card__top-link {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.shop-grid--carousel .shop-card__gallery {
+  flex: 1 1 auto;
+  min-height: 0;
+  margin-bottom: 14px;
+}
+
+.shop-grid--carousel .shop-card__image-wrap {
+  height: 100%;
+}
+
+.shop-grid--carousel .shop-card__image-wrap img {
+  max-height: 100%;
+}
+
+.shop-grid--carousel .shop-card__bottom-link,
+.shop-grid--carousel .shop-card__action {
+  display: none;
+}
+
+.shop-grid--carousel .shop-card__btn-primary--mobile {
+  margin: 4px 0 0;
 }

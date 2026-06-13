@@ -266,13 +266,18 @@ window.initShop = async function () {
       return s;
     }
 
-    function measure() {
-      step = cards[0].getBoundingClientRect().width + window.innerWidth * 0.02;
-      let max = 0;
-      cards.forEach((c) => { c.style.height = 'auto'; });
-      cards.forEach((c) => { if (c.offsetHeight > max) max = c.offsetHeight; });
-      grid.style.height = max + 'px';
-      cards.forEach((c) => { c.style.height = max + 'px'; });
+    function layout() {
+      /* Lock each slide to the height available below the fixed nav so the
+         WHOLE card always fits on screen — even on short phones. The product
+         image flex-grows to fill the leftover space (see shop.css), so the card
+         stays premium and full-bleed without ever overflowing the viewport. */
+      const cs = getComputedStyle(document.documentElement);
+      const navH = parseFloat(cs.getPropertyValue('--nav-height')) || 64;
+      const aktionH = parseFloat(cs.getPropertyValue('--aktion-height')) || 0;
+      const availH = Math.max(430, window.innerHeight - navH - aktionH - 28);
+      step = cards[0].getBoundingClientRect().width + window.innerWidth * 0.04;
+      grid.style.height = availH + 'px';
+      cards.forEach((c) => { c.style.height = availH + 'px'; });
     }
 
     function render() {
@@ -281,10 +286,12 @@ window.initShop = async function () {
         const dist = Math.abs(slot);
         const card = cards[i];
         card.style.transform =
-          'translateX(calc(-50% + ' + (slot * step) + 'px)) scale(' + (1 - dist * 0.1) + ')';
-        card.style.opacity = String(Math.max(0, 1 - dist * 0.45));
+          'translateX(calc(-50% + ' + (slot * step) + 'px)) scale(' + (1 - dist * 0.12) + ')';
+        card.style.opacity = String(Math.max(0, 1 - dist * 0.55));
+        card.style.filter = dist > 0.02 ? 'blur(' + (dist * 2.5) + 'px)' : '';
         card.style.zIndex = String(Math.round(100 - dist * 10));
         card.style.pointerEvents = dist > 1.2 ? 'none' : '';
+        card.classList.toggle('is-center', dist < 0.5);
         if (dist > 0.5) card.setAttribute('aria-hidden', 'true');
         else card.removeAttribute('aria-hidden');
       }
@@ -376,13 +383,13 @@ window.initShop = async function () {
       if (suppressClick) { e.preventDefault(); e.stopPropagation(); suppressClick = false; }
     }
 
-    function onResize() { if (active) { measure(); render(); } }
+    function onResize() { if (active) { layout(); render(); } }
 
     function activate() {
       if (active) return;
       active = true;
       grid.classList.add('shop-grid--carousel');
-      measure();
+      layout();
       pos = centerIndex; vel = 0; snapTarget = null;
       render();
       grid.addEventListener('pointerdown', onDown);
@@ -400,7 +407,8 @@ window.initShop = async function () {
       grid.style.height = '';
       cards.forEach((c) => {
         c.style.transform = ''; c.style.opacity = ''; c.style.zIndex = '';
-        c.style.height = ''; c.style.pointerEvents = '';
+        c.style.height = ''; c.style.pointerEvents = ''; c.style.filter = '';
+        c.classList.remove('is-center');
         c.removeAttribute('aria-hidden');
       });
       grid.removeEventListener('pointerdown', onDown);
