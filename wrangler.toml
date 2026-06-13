@@ -1,0 +1,19 @@
+# Cloudflare Pages configuration.
+#
+# Production deploys are Git-integrated (dashboard build command `npm run build`,
+# output directory `dist`). For Git-integrated Pages, the PRODUCTION Workers-AI
+# binding is configured in the dashboard (Settings -> Functions -> Bindings).
+# This file mirrors that binding as config-as-code and, importantly, provides
+# the `AI` binding for local development via `npx wrangler pages dev`.
+#
+# IMPORTANT: set `name` below to your ACTUAL Pages project name
+# (check it with `npx wrangler pages project list`). A mismatched name can break
+# Git-integrated deploys.
+
+name = "ambernord"                 # <-- CHANGE to your Pages project name
+pages_build_output_dir = "dist"
+compatibility_date = "2025-09-01"
+
+# Workers AI — exposes `env.AI` to the Pages Functions (used by functions/api/chat.js).
+[ai]
+binding = "AI"

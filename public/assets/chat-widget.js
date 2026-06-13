@@ -1,0 +1,312 @@
+/* =============================================================================
+ * AmberNord — AI support chat widget (self-mounting, dependency-free).
+ *
+ * Mounts itself to <body> at runtime: injects its own <style> (all selectors
+ * scoped under `.ancb-`) and its own DOM. It does NOT touch existing markup,
+ * SPA routing or stylesheets. Included once site-wide via a single <script>.
+ *
+ * Talks to the Cloudflare Pages Function at POST /api/chat. History is kept in
+ * memory only (no cookies / localStorage) → no consent needed.
+ *
+ * Design tokens are taken from the site's CSS custom properties where they
+ * exist, with hardcoded fallbacks (values extracted in Phase 1).
+ * ===========================================================================*/
+(function () {
+  'use strict';
+
+  // Guard against double-injection (e.g. hot reload / accidental double include).
+  if (window.__ancbMounted) return;
+  window.__ancbMounted = true;
+
+  /* --- Localised UI strings (bot replies are localised server-side) -------- */
+  var STRINGS = {
+    de: {
+      aria: 'AmberNord Support-Chat', open: 'Chat öffnen', close: 'Chat schliessen',
+      title: 'AmberNord Hilfe',
+      greeting: 'Hallo! 👋 Wie kann ich helfen? Fragen Sie mich zu Produkten, Inhaltsstoffen, Versand oder Bestellungen.',
+      placeholder: 'Nachricht schreiben…', send: 'Senden',
+      error: 'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder schreiben Sie an info@ambernord.ch.'
+    },
+    en: {
+      aria: 'AmberNord support chat', open: 'Open chat', close: 'Close chat',
+      title: 'AmberNord Help',
+      greeting: 'Hi! 👋 How can I help? Ask me about products, ingredients, shipping or orders.',
+      placeholder: 'Type a message…', send: 'Send',
+      error: 'Something went wrong. Please try again or email info@ambernord.ch.'
+    },
+    fr: {
+      aria: 'Chat d’assistance AmberNord', open: 'Ouvrir le chat', close: 'Fermer le chat',
+      title: 'Aide AmberNord',
+      greeting: 'Bonjour ! 👋 Comment puis-je aider ? Posez-moi vos questions sur les produits, ingrédients, la livraison ou les commandes.',
+      placeholder: 'Écrire un message…', send: 'Envoyer',
+      error: 'Une erreur est survenue. Réessayez ou écrivez à info@ambernord.ch.'
+    },
+    it: {
+      aria: 'Chat di assistenza AmberNord', open: 'Apri la chat', close: 'Chiudi la chat',
+      title: 'Aiuto AmberNord',
+      greeting: 'Ciao! 👋 Come posso aiutarti? Chiedimi di prodotti, ingredienti, spedizione o ordini.',
+      placeholder: 'Scrivi un messaggio…', send: 'Invia',
+      error: 'Si è verificato un errore. Riprova o scrivi a info@ambernord.ch.'
+    }
+  };
+
+  function getLang() {
+    var l;
+    try { l = localStorage.getItem('lang'); } catch (e) { /* ignore */ }
+    l = l || document.documentElement.getAttribute('lang') || 'de';
+    l = String(l).slice(0, 2).toLowerCase();
+    return STRINGS[l] ? l : 'de';
+  }
+  var S = STRINGS[getLang()];
+
+  /* --- Styles — every selector scoped under .ancb- ------------------------- */
+  var CSS = [
+    ':root{}', /* no globals: all rules are .ancb- scoped below */
+
+    '.ancb-launcher{',
+    '  position:fixed;right:24px;bottom:24px;z-index:4000;',
+    '  width:60px;height:60px;border:none;border-radius:50%;cursor:pointer;',
+    '  display:grid;place-items:center;padding:0;',
+    '  background:var(--color-gold,#EDA323);color:#0a0a0a;',
+    '  box-shadow:0 6px 20px rgba(237,163,35,0.45),0 4px 14px rgba(0,0,0,0.4);',
+    '  transition:transform .2s var(--ease-out,cubic-bezier(.25,.8,.25,1)),background .2s ease,box-shadow .2s ease;',
+    '  font-family:var(--font-sans,"Montserrat",sans-serif);',
+    '}',
+    '.ancb-launcher:hover{background:var(--color-gold-hover,#f0b543);transform:translateY(-2px) scale(1.05);box-shadow:0 8px 26px rgba(237,163,35,0.6);}',
+    '.ancb-launcher:focus-visible{outline:2px solid #fff;outline-offset:2px;}',
+    '.ancb-launcher svg{width:26px;height:26px;display:block;transition:opacity .18s ease,transform .18s ease;}',
+    '.ancb-launcher .ancb-ico-close{position:absolute;opacity:0;transform:rotate(-90deg) scale(.7);}',
+    '.ancb-launcher--open .ancb-ico-chat{opacity:0;transform:rotate(90deg) scale(.7);}',
+    '.ancb-launcher--open .ancb-ico-close{opacity:1;transform:rotate(0) scale(1);}',
+
+    '.ancb-panel{',
+    '  position:fixed;right:24px;bottom:96px;z-index:4000;',
+    '  width:380px;max-width:calc(100vw - 32px);',
+    '  height:560px;max-height:calc(100dvh - 132px);',
+    '  display:flex;flex-direction:column;overflow:hidden;',
+    '  background:var(--color-surface,#111111);color:var(--color-text,#fff);',
+    '  border:1px solid var(--color-border,rgba(255,255,255,.07));border-radius:16px;',
+    '  box-shadow:0 18px 50px rgba(0,0,0,0.6);',
+    '  font-family:var(--font-sans,"Montserrat",sans-serif);',
+    '  transform-origin:bottom right;',
+    '  opacity:0;visibility:hidden;pointer-events:none;',
+    '  transform:translateY(14px) scale(.98);',
+    '  transition:opacity .26s var(--ease-smooth,cubic-bezier(.165,.84,.44,1)),',
+    '             transform .26s var(--ease-smooth,cubic-bezier(.165,.84,.44,1)),',
+    '             visibility .26s;',
+    '}',
+    '.ancb-panel.ancb-open{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0) scale(1);}',
+
+    '.ancb-header{display:flex;align-items:center;gap:10px;padding:14px 16px;',
+    '  background:var(--color-surface-2,#121212);border-bottom:1px solid var(--color-border,rgba(255,255,255,.07));}',
+    '.ancb-dot{width:8px;height:8px;border-radius:50%;background:var(--color-gold,#EDA323);box-shadow:0 0 8px rgba(237,163,35,.7);flex:none;}',
+    '.ancb-title{font-family:var(--font-serif,"Playfair Display",Georgia,serif);font-size:16px;font-weight:600;color:var(--color-text,#fff);flex:1;line-height:1.2;}',
+    '.ancb-close{background:none;border:none;color:var(--color-text-dim,#888);cursor:pointer;padding:6px;border-radius:8px;display:grid;place-items:center;transition:color .2s ease,background .2s ease;}',
+    '.ancb-close:hover,.ancb-close:focus-visible{color:var(--color-gold,#EDA323);background:rgba(255,255,255,.05);outline:none;}',
+    '.ancb-close svg{width:18px;height:18px;display:block;}',
+
+    '.ancb-log{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;-webkit-overflow-scrolling:touch;}',
+    '.ancb-log::-webkit-scrollbar{width:8px;}',
+    '.ancb-log::-webkit-scrollbar-thumb{background:rgba(255,255,255,.12);border-radius:8px;}',
+
+    '.ancb-msg{max-width:85%;padding:10px 13px;font-size:14px;line-height:1.5;white-space:pre-wrap;word-wrap:break-word;overflow-wrap:anywhere;}',
+    '.ancb-msg--bot{align-self:flex-start;background:var(--color-surface-2,#121212);border:1px solid var(--color-border,rgba(255,255,255,.07));color:var(--color-text-muted,#d0d0d0);border-radius:12px 12px 12px 4px;}',
+    '.ancb-msg--user{align-self:flex-end;background:var(--color-gold,#EDA323);color:#0a0a0a;font-weight:500;border-radius:12px 12px 4px 12px;}',
+    '.ancb-msg--error{border-color:rgba(220,80,80,.5);color:#f3b4b4;}',
+
+    '.ancb-typing{display:inline-flex;gap:4px;align-items:center;}',
+    '.ancb-typing span{width:6px;height:6px;border-radius:50%;background:var(--color-text-dim,#888);animation:ancb-bounce 1.2s infinite ease-in-out;}',
+    '.ancb-typing span:nth-child(2){animation-delay:.18s;}',
+    '.ancb-typing span:nth-child(3){animation-delay:.36s;}',
+    '@keyframes ancb-bounce{0%,80%,100%{transform:translateY(0);opacity:.4;}40%{transform:translateY(-4px);opacity:1;}}',
+
+    '.ancb-form{display:flex;gap:8px;align-items:flex-end;padding:12px;border-top:1px solid var(--color-border,rgba(255,255,255,.07));background:var(--color-surface,#111);}',
+    '.ancb-input{flex:1;resize:none;max-height:96px;min-height:42px;padding:11px 12px;font-family:inherit;font-size:14px;line-height:1.4;',
+    '  color:var(--color-text,#fff);background:var(--color-bg,#0a0a0a);',
+    '  border:1px solid var(--color-border,rgba(255,255,255,.07));border-radius:10px;outline:none;transition:border-color .2s ease;}',
+    '.ancb-input::placeholder{color:var(--color-text-dim,#888);}',
+    '.ancb-input:focus{border-color:var(--color-gold,#EDA323);}',
+    '.ancb-send{flex:none;width:42px;height:42px;border:none;border-radius:10px;cursor:pointer;display:grid;place-items:center;',
+    '  background:var(--color-gold,#EDA323);color:#0a0a0a;transition:background .2s ease,opacity .2s ease,transform .15s ease;}',
+    '.ancb-send:hover:not(:disabled){background:var(--color-gold-hover,#f0b543);transform:translateY(-1px);}',
+    '.ancb-send:focus-visible{outline:2px solid #fff;outline-offset:2px;}',
+    '.ancb-send:disabled{opacity:.45;cursor:not-allowed;}',
+    '.ancb-send svg{width:18px;height:18px;display:block;}',
+
+    /* Mobile: full-width bottom sheet */
+    '@media (max-width:600px){',
+    '  .ancb-panel{right:0;left:0;bottom:0;width:100%;max-width:100%;height:82dvh;max-height:82dvh;border-radius:16px 16px 0 0;transform-origin:bottom center;transform:translateY(100%);}',
+    '  .ancb-panel.ancb-open{transform:translateY(0);}',
+    '  .ancb-launcher{right:16px;bottom:16px;}',
+    '}',
+
+    /* Respect reduced-motion */
+    '@media (prefers-reduced-motion:reduce){',
+    '  .ancb-panel,.ancb-launcher,.ancb-launcher svg,.ancb-send,.ancb-close{transition:none;}',
+    '  .ancb-typing span{animation:none;}',
+    '}'
+  ].join('');
+
+  /* --- Inline SVG icons (static, trusted) --------------------------------- */
+  var ICON_CHAT = '<svg class="ancb-ico-chat" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.6-.8L3 21l1.9-5.2A8.38 8.38 0 0 1 4 12a8.5 8.5 0 0 1 8.5-8.5A8.38 8.38 0 0 1 21 11.5z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  var ICON_CLOSE = '<svg class="ancb-ico-close" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+  var ICON_X = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+  var ICON_SEND = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+  /* --- Build DOM ----------------------------------------------------------- */
+  var style = document.createElement('style');
+  style.id = 'ancb-style';
+  style.textContent = CSS;
+  document.head.appendChild(style);
+
+  var launcher = document.createElement('button');
+  launcher.type = 'button';
+  launcher.className = 'ancb-launcher';
+  launcher.setAttribute('aria-label', S.open);
+  launcher.setAttribute('aria-expanded', 'false');
+  launcher.setAttribute('aria-controls', 'ancb-panel');
+  launcher.innerHTML = ICON_CHAT + ICON_CLOSE;
+
+  var panel = document.createElement('div');
+  panel.className = 'ancb-panel';
+  panel.id = 'ancb-panel';
+  panel.setAttribute('role', 'dialog');
+  panel.setAttribute('aria-label', S.aria);
+  panel.setAttribute('aria-hidden', 'true');
+
+  var logId = 'ancb-log';
+  panel.innerHTML =
+    '<div class="ancb-header">' +
+      '<span class="ancb-dot" aria-hidden="true"></span>' +
+      '<span class="ancb-title">' + escapeHtml(S.title) + '</span>' +
+      '<button type="button" class="ancb-close" aria-label="' + escapeHtml(S.close) + '">' + ICON_X + '</button>' +
+    '</div>' +
+    '<div class="ancb-log" id="' + logId + '" role="log" aria-live="polite" aria-relevant="additions"></div>' +
+    '<form class="ancb-form">' +
+      '<textarea class="ancb-input" rows="1" aria-label="' + escapeHtml(S.placeholder) + '" placeholder="' + escapeHtml(S.placeholder) + '"></textarea>' +
+      '<button type="submit" class="ancb-send" aria-label="' + escapeHtml(S.send) + '">' + ICON_SEND + '</button>' +
+    '</form>';
+
+  document.body.appendChild(launcher);
+  document.body.appendChild(panel);
+
+  var log = panel.querySelector('.ancb-log');
+  var form = panel.querySelector('.ancb-form');
+  var input = panel.querySelector('.ancb-input');
+  var sendBtn = panel.querySelector('.ancb-send');
+  var closeBtn = panel.querySelector('.ancb-close');
+
+  /* --- State + helpers ----------------------------------------------------- */
+  var history = [{ role: 'assistant', content: S.greeting }];
+  var pending = false;
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  function scrollBottom() { log.scrollTop = log.scrollHeight; }
+
+  // Bubbles use textContent only — never innerHTML — so model output can't
+  // inject markup.
+  function addBubble(role, text, isError) {
+    var el = document.createElement('div');
+    el.className = 'ancb-msg ' + (role === 'user' ? 'ancb-msg--user' : 'ancb-msg--bot') + (isError ? ' ancb-msg--error' : '');
+    el.textContent = text;
+    log.appendChild(el);
+    scrollBottom();
+    return el;
+  }
+
+  function addTyping() {
+    var el = document.createElement('div');
+    el.className = 'ancb-msg ancb-msg--bot ancb-typing';
+    el.setAttribute('aria-label', '…');
+    el.innerHTML = '<span></span><span></span><span></span>';
+    log.appendChild(el);
+    scrollBottom();
+    return el;
+  }
+
+  function setBusy(b) {
+    pending = b;
+    sendBtn.disabled = b;
+    input.disabled = b;
+  }
+
+  function autosize() {
+    input.style.height = 'auto';
+    input.style.height = Math.min(input.scrollHeight, 96) + 'px';
+  }
+
+  /* --- Open / close (CSS-transition driven; matches site easing tokens) ---- */
+  function openPanel() {
+    panel.classList.add('ancb-open');
+    panel.setAttribute('aria-hidden', 'false');
+    launcher.classList.add('ancb-launcher--open');
+    launcher.setAttribute('aria-expanded', 'true');
+    launcher.setAttribute('aria-label', S.close);
+    setTimeout(function () { input.focus(); }, 60);
+    scrollBottom();
+  }
+  function closePanel() {
+    panel.classList.remove('ancb-open');
+    panel.setAttribute('aria-hidden', 'true');
+    launcher.classList.remove('ancb-launcher--open');
+    launcher.setAttribute('aria-expanded', 'false');
+    launcher.setAttribute('aria-label', S.open);
+    launcher.focus();
+  }
+  function toggle() { panel.classList.contains('ancb-open') ? closePanel() : openPanel(); }
+
+  /* --- Send ---------------------------------------------------------------- */
+  function send() {
+    var text = input.value.trim();
+    if (!text || pending) return;
+
+    addBubble('user', text);
+    history.push({ role: 'user', content: text });
+    input.value = '';
+    autosize();
+    setBusy(true);
+    var typing = addTyping();
+
+    fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ messages: history })
+    })
+      .then(function (res) { return res.json().then(function (d) { return { ok: res.ok, data: d }; }); })
+      .then(function (r) {
+        typing.remove();
+        var reply = (r.data && r.data.reply) ? r.data.reply : S.error;
+        var isErr = !r.ok || (r.data && r.data.error);
+        addBubble('bot', reply, !!isErr);
+        if (r.ok && r.data && r.data.reply) history.push({ role: 'assistant', content: r.data.reply });
+      })
+      .catch(function () {
+        typing.remove();
+        addBubble('bot', S.error, true);
+      })
+      .then(function () {
+        setBusy(false);
+        input.focus();
+      });
+  }
+
+  /* --- Events -------------------------------------------------------------- */
+  launcher.addEventListener('click', toggle);
+  closeBtn.addEventListener('click', closePanel);
+  form.addEventListener('submit', function (e) { e.preventDefault(); send(); });
+  input.addEventListener('input', autosize);
+  input.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); }
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && panel.classList.contains('ancb-open')) closePanel();
+  });
+
+  /* --- Initial render ------------------------------------------------------ */
+  addBubble('bot', S.greeting);
+})();
