@@ -12,7 +12,9 @@
 import { KNOWLEDGE } from './_knowledge.js';
 import { TOOLS /*, runToolCalls */ } from './_tools.js';
 
-const MODEL = '@cf/meta/llama-3.1-8b-instruct';
+// Note: '@cf/meta/llama-3.1-8b-instruct' was deprecated 2026-05-30 (error 5028).
+// The '-fast' variant stays active and is a drop-in replacement (same API/output).
+const MODEL = '@cf/meta/llama-3.1-8b-instruct-fast';
 const MAX_TURNS = 8;      // keep only the last 8 messages of history
 const MAX_TOKENS = 400;
 const MAX_MSG_LEN = 2000; // hard cap per message to bound prompt size

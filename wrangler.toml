@@ -10,7 +10,7 @@
 # (check it with `npx wrangler pages project list`). A mismatched name can break
 # Git-integrated deploys.
 
-name = "ambernord"                 # <-- CHANGE to your Pages project name
+name = "b2c-ambernord"                 # <-- CHANGE to your Pages project name
 pages_build_output_dir = "dist"
 compatibility_date = "2025-09-01"
 
