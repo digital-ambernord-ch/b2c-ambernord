@@ -219,4 +219,212 @@ window.initShop = async function () {
     );
   }
 
+  /* --------------------------------------------------------------------------
+     MOBILE PRODUCT CAROUSEL (≤768px) — infinite, finger-driven gallery.
+
+     The three product cards become absolutely-positioned slides. A continuous
+     `pos` (a virtual, unbounded card index) is wrapped modulo N when each card
+     is placed, so the deck loops endlessly in both directions with only the
+     real cards — no clones, no duplicate radio names / links. Drag scrubs
+     `pos`; a flick adds velocity that decays with friction and then snaps onto
+     the nearest card, so you can spin the deck and stop wherever you like.
+     Habit (the featured card) starts centred, Starter peeks left, Protocol
+     right. Tablet/desktop never get the carousel class, so their grid is
+     untouched.
+     -------------------------------------------------------------------------- */
+  setupShopCarousel();
+
+  function setupShopCarousel() {
+    const grid  = document.getElementById('shop-grid');
+    const cards = grid ? Array.from(grid.querySelectorAll('.shop-card')) : [];
+    const N = cards.length;
+    if (!grid || N < 2) return;
+
+    /* Drop any carousel wired by a previous /shop/ visit so SPA re-inits don't
+       stack window listeners / rAF loops on stale, detached cards. */
+    if (window._shopCarouselTeardown) window._shopCarouselTeardown();
+
+    const mq = window.matchMedia('(max-width: 768px)');
+
+    let active = false, raf = null;
+    let pos = 0, vel = 0, step = 1, snapTarget = null, lastFrame = 0;
+    let dragging = false, moved = false, captured = false, suppressClick = false;
+    let startX = 0, startPos = 0, lastX = 0, lastT = 0;
+
+    let centerIndex = cards.findIndex((c) => c.classList.contains('shop-card--featured'));
+    if (centerIndex < 0) centerIndex = Math.floor(N / 2);
+
+    const FRICTION = 3.4;    /* velocity decay per second (exponential) */
+    const SNAP_VEL = 0.55;   /* |vel| below which we lock onto a card     */
+    const SNAP_EASE = 13;    /* how fast pos eases onto the snap target   */
+
+    /* Map any raw offset onto the symmetric range (-N/2, N/2] so each card is
+       always drawn on its nearest side of centre — the source of the loop. */
+    function wrapSlot(raw) {
+      let s = ((raw % N) + N) % N;
+      if (s > N / 2) s -= N;
+      return s;
+    }
+
+    function measure() {
+      step = cards[0].getBoundingClientRect().width + window.innerWidth * 0.02;
+      let max = 0;
+      cards.forEach((c) => { c.style.height = 'auto'; });
+      cards.forEach((c) => { if (c.offsetHeight > max) max = c.offsetHeight; });
+      grid.style.height = max + 'px';
+      cards.forEach((c) => { c.style.height = max + 'px'; });
+    }
+
+    function render() {
+      for (let i = 0; i < N; i++) {
+        const slot = wrapSlot(i - pos);
+        const dist = Math.abs(slot);
+        const card = cards[i];
+        card.style.transform =
+          'translateX(calc(-50% + ' + (slot * step) + 'px)) scale(' + (1 - dist * 0.1) + ')';
+        card.style.opacity = String(Math.max(0, 1 - dist * 0.45));
+        card.style.zIndex = String(Math.round(100 - dist * 10));
+        card.style.pointerEvents = dist > 1.2 ? 'none' : '';
+        if (dist > 0.5) card.setAttribute('aria-hidden', 'true');
+        else card.removeAttribute('aria-hidden');
+      }
+    }
+
+    function loop(now) {
+      if (!lastFrame) lastFrame = now;
+      let dt = (now - lastFrame) / 1000;
+      lastFrame = now;
+      if (dt > 0.05) dt = 0.05;
+
+      if (!dragging) {
+        if (snapTarget === null) {
+          pos += vel * dt;
+          vel *= Math.exp(-FRICTION * dt);
+          if (Math.abs(vel) < SNAP_VEL) snapTarget = Math.round(pos);
+        }
+        if (snapTarget !== null) {
+          pos += (snapTarget - pos) * Math.min(1, SNAP_EASE * dt);
+          if (Math.abs(snapTarget - pos) < 0.001) {
+            pos = snapTarget; snapTarget = null; vel = 0;
+            render(); raf = null; lastFrame = 0;
+            return;
+          }
+        }
+      }
+      render();
+      raf = requestAnimationFrame(loop);
+    }
+
+    function startLoop() {
+      if (raf == null) { lastFrame = 0; raf = requestAnimationFrame(loop); }
+    }
+
+    function onDown(e) {
+      if (!active) return;
+      dragging = true; moved = false; captured = false;
+      startX = lastX = e.clientX; startPos = pos;
+      lastT = performance.now(); vel = 0; snapTarget = null;
+      if (raf != null) { cancelAnimationFrame(raf); raf = null; }
+    }
+
+    function onMove(e) {
+      if (!dragging) return;
+      const dx = e.clientX - startX;
+      if (Math.abs(dx) > 8) {
+        moved = true;
+        /* Capture only once a horizontal intent is clear, so a vertical page
+           scroll (which never sets `moved`) is never hijacked. */
+        if (!captured) { try { grid.setPointerCapture(e.pointerId); } catch (_) {} captured = true; }
+      }
+      pos = startPos - dx / step;
+      const t = performance.now();
+      const dtt = (t - lastT) / 1000;
+      if (dtt > 0) {
+        let v = -((e.clientX - lastX) / step) / dtt;
+        if (v > 30) v = 30; else if (v < -30) v = -30;
+        vel = v;
+      }
+      lastX = e.clientX; lastT = t;
+      render();
+    }
+
+    function onUp(e) {
+      if (!dragging) return;
+      dragging = false;
+      if (captured) { try { grid.releasePointerCapture(e.pointerId); } catch (_) {} captured = false; }
+
+      if (moved) {                 /* a drag/flick — coast then snap, swallow the click */
+        suppressClick = true;
+        startLoop();
+        return;
+      }
+      /* A tap: centre a tapped neighbour; let the centre card click through. */
+      const card = e.target && e.target.closest ? e.target.closest('.shop-card') : null;
+      const idx = card ? cards.indexOf(card) : -1;
+      if (idx >= 0) {
+        const slot = wrapSlot(idx - pos);
+        if (Math.abs(slot) > 0.01) {
+          suppressClick = true;
+          snapTarget = pos + slot;
+          vel = 0;
+          startLoop();
+        }
+      }
+    }
+
+    function onClickCapture(e) {
+      if (suppressClick) { e.preventDefault(); e.stopPropagation(); suppressClick = false; }
+    }
+
+    function onResize() { if (active) { measure(); render(); } }
+
+    function activate() {
+      if (active) return;
+      active = true;
+      grid.classList.add('shop-grid--carousel');
+      measure();
+      pos = centerIndex; vel = 0; snapTarget = null;
+      render();
+      grid.addEventListener('pointerdown', onDown);
+      window.addEventListener('pointermove', onMove, { passive: true });
+      window.addEventListener('pointerup', onUp);
+      window.addEventListener('pointercancel', onUp);
+      grid.addEventListener('click', onClickCapture, true);
+    }
+
+    function deactivate() {
+      if (!active) return;
+      active = false;
+      if (raf != null) { cancelAnimationFrame(raf); raf = null; }
+      grid.classList.remove('shop-grid--carousel');
+      grid.style.height = '';
+      cards.forEach((c) => {
+        c.style.transform = ''; c.style.opacity = ''; c.style.zIndex = '';
+        c.style.height = ''; c.style.pointerEvents = '';
+        c.removeAttribute('aria-hidden');
+      });
+      grid.removeEventListener('pointerdown', onDown);
+      window.removeEventListener('pointermove', onMove);
+      window.removeEventListener('pointerup', onUp);
+      window.removeEventListener('pointercancel', onUp);
+      grid.removeEventListener('click', onClickCapture, true);
+    }
+
+    function onMqChange() { if (mq.matches) activate(); else deactivate(); }
+
+    if (mq.addEventListener) mq.addEventListener('change', onMqChange);
+    else mq.addListener(onMqChange);                 /* legacy Safari */
+    window.addEventListener('resize', onResize);
+
+    window._shopCarouselTeardown = function () {
+      deactivate();
+      if (mq.removeEventListener) mq.removeEventListener('change', onMqChange);
+      else mq.removeListener(onMqChange);
+      window.removeEventListener('resize', onResize);
+      window._shopCarouselTeardown = null;
+    };
+
+    if (mq.matches) activate();
+  }
+
 };

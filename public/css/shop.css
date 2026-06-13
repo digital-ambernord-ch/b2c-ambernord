@@ -648,3 +648,41 @@
 .shop-page-container.animating {
   will-change: opacity, transform;
 }
+
+/* ==========================================================================
+   MOBILE PRODUCT CAROUSEL (≤768px)
+
+   shop.js turns the grid into an infinite, finger-driven gallery: one product
+   centred with the previous / next peeking at the edges, so it reads as a deck
+   you can spin. Cards become absolutely-positioned slides whose transform and
+   opacity JS rewrites every animation frame; the rules below only set the
+   stage. The .shop-grid--carousel class is added by JS ONLY while the mobile
+   media query matches, so tablet and desktop keep the normal grid untouched.
+   ========================================================================== */
+
+.shop-grid--carousel {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);   /* full-bleed breakout past the section gutter */
+  touch-action: pan-y;             /* vertical page scroll stays native; JS owns horizontal */
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.shop-grid--carousel .shop-card {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 80vw;
+  margin: 0;
+  transform: translateX(-50%);     /* JS overrides this per frame */
+  transition: none;                /* JS drives the motion — no CSS lag while dragging */
+  will-change: transform, opacity;
+  cursor: grab;
+}
+
+.shop-grid--carousel .shop-card:active {
+  cursor: grabbing;
+}
