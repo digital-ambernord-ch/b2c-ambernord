@@ -77,7 +77,7 @@ Swiss premium sea-buckthorn (Sanddorn) brand. Vanilla-JS SPA hosted on Cloudflar
 | `/hilfe/bestellstatus/` | [bestellstatus.html](public/pages/bestellstatus.html) | `initBestellstatus` | done (form-only, no backend) |
 | `/hilfe/rueckgabe/` | [returns.html](public/pages/returns.html) | `initReturns` | done |
 | `/datenschutz/` | [datenschutz.html](public/pages/datenschutz.html) | `initDatenschutz` | done |
-| `/impressum/` | [impressum.html](public/pages/impressum.html) | `initImpressum` | placeholders `[[FIRMA]] [[ADRESSE]] [[UID]] [[EMAIL]]` pending |
+| `/impressum/` | [impressum.html](public/pages/impressum.html) | `initImpressum` | done |
 | `/agb/` | [agb.html](public/pages/agb.html) | `initAgb` | done (reuses returns CSS) |
 | `/b2b/` | [b2b.html](public/pages/b2b.html) | `initB2b` | done |
 | `/danke/` | [thankyou.html](public/pages/thankyou.html) | `initThankyou` | done |

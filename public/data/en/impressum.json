@@ -26,8 +26,10 @@
       "id": "anbieter",
       "heading": "Provider",
       "paragraphs": [
-        "[[FIRMA]]",
-        "[[ADRESSE]]",
+        "Matisons Selection (AmberNord)",
+        "Eriks Matisons",
+        "Alte Gasse 8",
+        "5034 Suhr",
         "Switzerland"
       ]
     },
@@ -35,7 +37,7 @@
       "id": "kontakt",
       "heading": "Contact",
       "paragraphs": [
-        "E-mail: <a href=\"mailto:[[EMAIL]]\">[[EMAIL]]</a>",
+        "E-mail: <a href=\"mailto:info@ambernord.ch\">info@ambernord.ch</a>",
         "Contact form: <a href=\"/hilfe/kontakt/\" data-link>ambernord.ch/hilfe/kontakt/</a>"
       ]
     },
@@ -43,14 +45,14 @@
       "id": "uid",
       "heading": "Business Identification Number (UID)",
       "paragraphs": [
-        "[[UID]]"
+        "CHE-226.837.934"
       ]
     },
     {
       "id": "verantwortung",
       "heading": "Responsible for the content",
       "paragraphs": [
-        "[[FIRMA]], [[ADRESSE]]"
+        "Matisons Selection (AmberNord), Eriks Matisons, Alte Gasse 8, 5034 Suhr"
       ]
     },
     {
