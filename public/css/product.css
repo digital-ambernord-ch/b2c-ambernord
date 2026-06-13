@@ -165,7 +165,7 @@
 /* Bestseller badge overlaid on main image (the-habit detail page). */
 .custom-badge-position {
   position: absolute;
-  top: 95px;
+  top: 45px;
   left: 10px;
   z-index: var(--z-above);
 }
@@ -579,7 +579,7 @@
 
   .custom-badge-position {
     left: 25%;
-    top: 75px;
+    top: 22px;
   }
 
   .ambernord-product-card {
