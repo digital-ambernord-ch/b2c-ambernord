@@ -675,11 +675,10 @@
   position: absolute;
   top: 0;
   left: 50%;
-  width: 78vw;
+  width: 76vw;
   margin: 0;
-  padding: 16px 16px 18px;
-  border-radius: 18px;
-  overflow: hidden;
+  padding: 14px 14px 16px;
+  border-radius: 16px;
   transform: translateX(-50%);     /* JS overrides this per frame */
   transition: none;                /* JS drives the motion — no CSS lag while dragging */
   will-change: transform, opacity, filter;
@@ -692,44 +691,51 @@
 
 /* The focused slide pops — gold ring + deep elevation — so the deck never
    reads as one continuous block. Side slides are scaled, dimmed and blurred
-   by JS (render()), giving a shallow depth-of-field around the centre card. */
+   by JS (render()), giving a shallow depth-of-field that keeps each card a
+   distinct object even mid-swipe. */
 .shop-grid--carousel .shop-card.is-center {
-  border-color: rgba(237, 163, 35, 0.55);
+  border-color: rgba(237, 163, 35, 0.6);
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.06) inset,
-    0 30px 60px rgba(0, 0, 0, 0.6),
-    0 0 40px rgba(237, 163, 35, 0.18);
+    0 26px 54px rgba(0, 0, 0, 0.6),
+    0 0 40px rgba(237, 163, 35, 0.2);
 }
 
-/* Compact slide: a full-height card must fit ANY phone, so the verbose
-   description / science / footer blocks are dropped in carousel mode (they
-   stay on the product page each card links to). What remains — image, name,
-   price, promise, buy CTA — flex-fills the locked height, with the product
-   image growing to fill the leftover space for a premium full-bleed feel. */
-.shop-grid--carousel .shop-card__top-link {
-  flex: 1 1 auto;
-  min-height: 0;
-}
+/* COMPACT FULL-INFO SLIDE — every block is kept (image, name, price, promise,
+   description, science list, abo toggle, shipping, CTA) but shrunk and tightened
+   so the whole card fits on a phone with the page heading still showing above.
+   The description link area flex-grows (base .shop-card__bottom-link), so the
+   shorter Starter card still fills the shared height instead of leaving a gap. */
+.shop-grid--carousel .shop-card__gallery { margin-bottom: 10px; }
+.shop-grid--carousel .shop-card__image-wrap { height: 92px; }
+.shop-grid--carousel .shop-card__image-wrap img { max-height: 84px; }
 
-.shop-grid--carousel .shop-card__gallery {
-  flex: 1 1 auto;
-  min-height: 0;
-  margin-bottom: 14px;
-}
+.shop-grid--carousel .shop-card__title { font-size: 18px; margin-bottom: 2px; }
+.shop-grid--carousel .shop-card__quantity { font-size: 11.5px; margin-bottom: 6px; }
+.shop-grid--carousel .shop-card__price-row { margin-bottom: 2px; }
+.shop-grid--carousel .shop-card__price { font-size: 16px; }
+.shop-grid--carousel .shop-card__savings { font-size: 10px; }
+.shop-grid--carousel .shop-card__daily { font-size: 11px; margin-bottom: 6px; }
+.shop-grid--carousel .shop-card__subtitle { font-size: 11.5px; line-height: 1.3; margin-bottom: 10px; }
 
-.shop-grid--carousel .shop-card__image-wrap {
-  height: 100%;
-}
+.shop-grid--carousel .shop-card__desc { font-size: 11.5px; line-height: 1.45; margin-bottom: 12px; }
 
-.shop-grid--carousel .shop-card__image-wrap img {
-  max-height: 100%;
-}
+.shop-grid--carousel .shop-card__science { padding: 10px 12px; margin-bottom: 12px; }
+.shop-grid--carousel .shop-card__science-heading { font-size: 10px; margin-bottom: 8px; }
+.shop-grid--carousel .shop-card__science-item { font-size: 11.5px; line-height: 1.35; margin-bottom: 6px; }
 
-.shop-grid--carousel .shop-card__bottom-link,
-.shop-grid--carousel .shop-card__action {
-  display: none;
+.shop-grid--carousel .shop-card__btn-primary {
+  padding: 12px 0;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  margin-bottom: 8px;
 }
+.shop-grid--carousel .shop-card__btn-primary--mobile { margin: 2px 0 12px; }
 
-.shop-grid--carousel .shop-card__btn-primary--mobile {
-  margin: 4px 0 0;
-}
+/* Abo toggle kept — compacted. */
+.shop-grid--carousel .purchase-toggle { gap: 6px; margin: 0 0 10px; }
+.shop-grid--carousel .purchase-toggle__legend { font-size: 10px; margin-bottom: 6px; }
+.shop-grid--carousel .purchase-option { padding: 8px 10px; gap: 7px; border-radius: 8px; }
+.shop-grid--carousel .purchase-option__label { font-size: 11.5px; line-height: 1.35; }
+
+.shop-grid--carousel .shop-card__shipping { font-size: 11px; padding-top: 10px; }

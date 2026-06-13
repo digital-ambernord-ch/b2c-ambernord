@@ -267,17 +267,17 @@ window.initShop = async function () {
     }
 
     function layout() {
-      /* Lock each slide to the height available below the fixed nav so the
-         WHOLE card always fits on screen — even on short phones. The product
-         image flex-grows to fill the leftover space (see shop.css), so the card
-         stays premium and full-bleed without ever overflowing the viewport. */
-      const cs = getComputedStyle(document.documentElement);
-      const navH = parseFloat(cs.getPropertyValue('--nav-height')) || 64;
-      const aktionH = parseFloat(cs.getPropertyValue('--aktion-height')) || 0;
-      const availH = Math.max(430, window.innerHeight - navH - aktionH - 28);
-      step = cards[0].getBoundingClientRect().width + window.innerWidth * 0.04;
-      grid.style.height = availH + 'px';
-      cards.forEach((c) => { c.style.height = availH + 'px'; });
+      /* Cards are sized to their (now compacted) CONTENT, not the viewport, so
+         the deck stays embedded in the page — the "Wählen Sie Ihr Elixier"
+         heading and surrounding page show around it. All slides share the
+         tallest card's height so the deck is even. The wide inter-card gap keeps
+         neighbours clearly separated. */
+      step = cards[0].getBoundingClientRect().width + window.innerWidth * 0.05;
+      let max = 0;
+      cards.forEach((c) => { c.style.height = 'auto'; });
+      cards.forEach((c) => { if (c.offsetHeight > max) max = c.offsetHeight; });
+      grid.style.height = max + 'px';
+      cards.forEach((c) => { c.style.height = max + 'px'; });
     }
 
     function render() {
@@ -286,9 +286,9 @@ window.initShop = async function () {
         const dist = Math.abs(slot);
         const card = cards[i];
         card.style.transform =
-          'translateX(calc(-50% + ' + (slot * step) + 'px)) scale(' + (1 - dist * 0.12) + ')';
+          'translateX(calc(-50% + ' + (slot * step) + 'px)) scale(' + (1 - dist * 0.13) + ')';
         card.style.opacity = String(Math.max(0, 1 - dist * 0.55));
-        card.style.filter = dist > 0.02 ? 'blur(' + (dist * 2.5) + 'px)' : '';
+        card.style.filter = dist > 0.02 ? 'blur(' + (dist * 3) + 'px)' : '';
         card.style.zIndex = String(Math.round(100 - dist * 10));
         card.style.pointerEvents = dist > 1.2 ? 'none' : '';
         card.classList.toggle('is-center', dist < 0.5);
