@@ -127,6 +127,35 @@
     position: relative;
 }
 
+/* Full-bleed background band — used by the Herkunft & Rückverfolgbarkeit
+   section. The image sits behind a dark gradient overlay so the white
+   comparison table stays fully legible. */
+.dossier-section--bg {
+    padding: clamp(60px, 8vw, 100px) 0;
+    overflow: hidden;
+}
+
+.dossier-section__bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://res.cloudinary.com/dt6ksxuqf/image/upload/v1781451212/Frischer_Sanddorn_t7hvbb.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.dossier-section__bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom,
+        var(--color-bg) 0%,
+        rgba(10, 10, 10, 0.78) 30%,
+        rgba(10, 10, 10, 0.78) 70%,
+        var(--color-bg) 100%);
+}
+
 /* Stronger title hierarchy:
    - Replaced the faint full-width 1px underline (which read as "lines stuck
      in the middle") with a short, prominent 56px gold accent rule below the
