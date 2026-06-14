@@ -71,6 +71,22 @@
           path += '/';
         }
         var slug = ROUTE_MAP[path] || 'home';
+        /* LCP preload — the home hero's largest paint is the "flying bottle"
+           PNG that landing.js injects via createElement (invisible to the
+           preload scanner, so it would otherwise download only after the JS
+           bundle + GSAP + router render). Make it discoverable at parse time,
+           high priority, home route ONLY (this same shell is served for every
+           path via the SPA fallback, so a static <link> would steal priority
+           on subpages). href must be byte-identical to landing.js's fly.src
+           — and NOT crossorigin — or the image double-downloads. */
+        if (slug === 'home') {
+          var heroPreload = document.createElement('link');
+          heroPreload.rel = 'preload';
+          heroPreload.as = 'image';
+          heroPreload.setAttribute('fetchpriority', 'high');
+          heroPreload.href = 'https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:good,h_750/v1775476093/ambernord-bio-sanddornsaft-zelt-edition-250ml-schweiz.webp_kl6nqj.png';
+          document.head.appendChild(heroPreload);
+        }
         var prewarm = [
           '/pages/' + slug + '.html',
           '/data/' + lang + '/' + slug + '.json',

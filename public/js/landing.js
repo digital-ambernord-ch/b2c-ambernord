@@ -115,6 +115,11 @@ window.initLanding = async function () {
        image has a transparent background so it composites cleanly over the
        black hero. */
     const fly = document.createElement('img');
+    /* High priority: this clone is the hero's LCP element. Matches the
+       <head> preload (home route) so the bytes are already cached on first
+       load; on in-session SPA nav to home the preload won't re-fire, so the
+       hint still earns the fetch an early slot. */
+    fly.setAttribute('fetchpriority', 'high');
     fly.src = 'https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:good,h_750/v1775476093/ambernord-bio-sanddornsaft-zelt-edition-250ml-schweiz.webp_kl6nqj.png';
     fly.alt = '';
     fly.setAttribute('aria-hidden', 'true');
