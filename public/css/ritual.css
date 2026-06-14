@@ -387,7 +387,7 @@
 }
 
 .ritual-recipes.is-in-view .ritual-recipes__bg-overlay {
-    opacity: 0.6;
+    opacity: 0.75;
     transform: scale(1);
 }
 
