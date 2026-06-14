@@ -2873,6 +2873,19 @@
 .purity-col--others .purity-col__list li { color: var(--color-text-dim); }
 .purity-col--others .purity-col__list li::before { content: '\2715'; color: #6b6b6b; }
 
+.purity-compare__figure {
+  margin: 40px 0 0;
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.purity-compare__figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .purity-compare__more {
   display: inline-block;
   margin-top: 34px;
