@@ -184,6 +184,46 @@
 }
 
 /* --------------------------------------------------------------------------
+   WHATSAPP CARD — centred glass card with icon, lead text and outlined CTA.
+   Reuses .contact-card / .contact-btn for visual cohesion.
+   -------------------------------------------------------------------------- */
+
+.contact-whatsapp {
+  text-align: center;
+}
+
+.contact-whatsapp__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  color: var(--color-gold);
+  background: rgba(237, 163, 35, 0.08);
+  border: 1px solid rgba(237, 163, 35, 0.2);
+}
+
+.contact-whatsapp__icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.contact-whatsapp .contact-card__heading {
+  margin-bottom: 16px;
+}
+
+.contact-whatsapp__text {
+  margin-bottom: 32px;
+}
+
+.contact-whatsapp__actions {
+  display: flex;
+  justify-content: center;
+}
+
+/* --------------------------------------------------------------------------
    FORM HEADER — centred heading and lead text above the input fields.
    -------------------------------------------------------------------------- */
 

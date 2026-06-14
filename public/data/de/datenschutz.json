@@ -150,8 +150,30 @@
       ]
     },
     {
+      "id": "whatsapp",
+      "heading": "6. Kommunikation über WhatsApp",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Wenn Sie uns über WhatsApp kontaktieren, verarbeiten wir die von Ihnen übermittelten Daten (Telefonnummer, Profilname sowie Inhalt Ihrer Nachrichten), um Ihre Anfrage zu bearbeiten und mit Ihnen zu kommunizieren. Der Dienst wird von WhatsApp Ireland Limited bzw. Meta Platforms Ireland Ltd. bereitgestellt; dabei können Daten auch in Drittländer (u. a. USA) übermittelt werden."
+        },
+        {
+          "type": "paragraph",
+          "text": "Rechtsgrundlage der Bearbeitung sind Ihre Einwilligung durch die Kontaktaufnahme sowie unser berechtigtes Interesse an einer effizienten Kundenkommunikation (Art. 31 revDSG). Wir nutzen WhatsApp ausschliesslich für individuelle Anfragen; eine darüber hinausgehende Auswertung Ihrer Daten erfolgt nicht."
+        },
+        {
+          "type": "paragraph",
+          "text": "Sie können die Kommunikation über WhatsApp jederzeit beenden und uns alternativ per E-Mail an <a href=\"mailto:info@ambernord.ch\">info@ambernord.ch</a> oder über unseren Chat-Assistenten auf ambernord.ch erreichen. Weitere Informationen zur Datenverarbeitung durch WhatsApp finden Sie unter: <a href=\"https://www.whatsapp.com/legal/privacy-policy\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.whatsapp.com/legal/privacy-policy</a>."
+        },
+        {
+          "type": "paragraph",
+          "text": "Verantwortlich: Matisons Selection (AmberNord), Alte Gasse 8, 5034 Suhr, Schweiz."
+        }
+      ]
+    },
+    {
       "id": "cookies",
-      "heading": "6. Cookies",
+      "heading": "7. Cookies",
       "blocks": [
         {
           "type": "paragraph",
@@ -161,7 +183,7 @@
     },
     {
       "id": "datensicherheit",
-      "heading": "7. Datensicherheit",
+      "heading": "8. Datensicherheit",
       "blocks": [
         {
           "type": "paragraph",
@@ -171,7 +193,7 @@
     },
     {
       "id": "rechte",
-      "heading": "8. Ihre Rechte",
+      "heading": "9. Ihre Rechte",
       "blocks": [
         {
           "type": "paragraph",
@@ -206,7 +228,7 @@
     },
     {
       "id": "aenderungen",
-      "heading": "9. Änderungen dieser Datenschutzerklärung",
+      "heading": "10. Änderungen dieser Datenschutzerklärung",
       "blocks": [
         {
           "type": "paragraph",

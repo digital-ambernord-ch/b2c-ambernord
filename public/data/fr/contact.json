@@ -41,6 +41,12 @@
       "html": "Matisons Selection (AmberNord)<br>Alte Gasse 8<br>5034 Suhr<br>Suisse"
     }
   },
+  "whatsapp": {
+    "heading": "Directement via WhatsApp",
+    "text": "Demandes particulières – B2B, commandes en gros ou coopérations ? Écrivez-nous directement sur WhatsApp. Pour toutes les autres questions, notre assistant de chat sur ambernord.ch vous aide 24h/24.",
+    "cta": "Nous écrire sur WhatsApp",
+    "href": "https://wa.me/41782020404"
+  },
   "form": {
     "heading": "Formulaire de contact",
     "intro": "Le moyen le plus simple et le plus rapide de nous contacter est le formulaire ci-dessous. Laissez-nous votre message et nous vous répondrons dans les plus brefs délais.",

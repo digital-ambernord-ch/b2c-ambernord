@@ -150,8 +150,30 @@
       ]
     },
     {
+      "id": "whatsapp",
+      "heading": "6. Communication via WhatsApp",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Si vous nous contactez via WhatsApp, nous traitons les données que vous transmettez (numéro de téléphone, nom de profil ainsi que le contenu de vos messages) afin de traiter votre demande et de communiquer avec vous. Le service est fourni par WhatsApp Ireland Limited ou Meta Platforms Ireland Ltd. ; dans ce cadre, des données peuvent également être transférées vers des pays tiers (notamment les États-Unis)."
+        },
+        {
+          "type": "paragraph",
+          "text": "La base juridique du traitement est votre consentement donné par votre prise de contact, ainsi que notre intérêt légitime à une communication client efficace (art. 31 LPD révisée). Nous utilisons WhatsApp exclusivement pour des demandes individuelles ; aucune analyse supplémentaire de vos données n'est effectuée."
+        },
+        {
+          "type": "paragraph",
+          "text": "Vous pouvez mettre fin à tout moment à la communication via WhatsApp et nous joindre par d'autres moyens, par e-mail à <a href=\"mailto:info@ambernord.ch\">info@ambernord.ch</a> ou via notre assistant de chat sur ambernord.ch. Vous trouverez de plus amples informations sur le traitement des données par WhatsApp à l'adresse : <a href=\"https://www.whatsapp.com/legal/privacy-policy\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.whatsapp.com/legal/privacy-policy</a>."
+        },
+        {
+          "type": "paragraph",
+          "text": "Responsable : Matisons Selection (AmberNord), Alte Gasse 8, 5034 Suhr, Suisse."
+        }
+      ]
+    },
+    {
       "id": "cookies",
-      "heading": "6. Cookies",
+      "heading": "7. Cookies",
       "blocks": [
         {
           "type": "paragraph",
@@ -161,7 +183,7 @@
     },
     {
       "id": "datensicherheit",
-      "heading": "7. Sécurité des données",
+      "heading": "8. Sécurité des données",
       "blocks": [
         {
           "type": "paragraph",
@@ -171,7 +193,7 @@
     },
     {
       "id": "rechte",
-      "heading": "8. Vos droits",
+      "heading": "9. Vos droits",
       "blocks": [
         {
           "type": "paragraph",
@@ -206,7 +228,7 @@
     },
     {
       "id": "aenderungen",
-      "heading": "9. Modifications de la présente politique de confidentialité",
+      "heading": "10. Modifications de la présente politique de confidentialité",
       "blocks": [
         {
           "type": "paragraph",

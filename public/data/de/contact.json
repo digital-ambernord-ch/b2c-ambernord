@@ -41,6 +41,12 @@
       "html": "Matisons Selection (AmberNord)<br>Alte Gasse 8<br>5034 Suhr<br>Schweiz"
     }
   },
+  "whatsapp": {
+    "heading": "Direkt per WhatsApp",
+    "text": "Besondere Anliegen – B2B, Grossbestellungen oder Kooperationen? Schreiben Sie uns direkt auf WhatsApp. Für alle anderen Fragen hilft Ihnen unser Chat-Assistent auf ambernord.ch rund um die Uhr.",
+    "cta": "Auf WhatsApp schreiben",
+    "href": "https://wa.me/41782020404"
+  },
   "form": {
     "heading": "Kontaktformular",
     "intro": "Am einfachsten und schnellsten erreichen Sie uns über das untenstehende Formular. Hinterlassen Sie uns einfach Ihre Nachricht und wir melden uns umgehend bei Ihnen zurück.",

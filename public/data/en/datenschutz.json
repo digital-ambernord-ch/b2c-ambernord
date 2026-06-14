@@ -150,8 +150,30 @@
       ]
     },
     {
+      "id": "whatsapp",
+      "heading": "6. Communication via WhatsApp",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "If you contact us via WhatsApp, we process the data you transmit (phone number, profile name and the content of your messages) in order to handle your enquiry and communicate with you. The service is provided by WhatsApp Ireland Limited or Meta Platforms Ireland Ltd.; in this context, data may also be transferred to third countries (including the USA)."
+        },
+        {
+          "type": "paragraph",
+          "text": "The legal basis for the processing is your consent given by contacting us, as well as our legitimate interest in efficient customer communication (Art. 31 revFADP). We use WhatsApp exclusively for individual enquiries; no further analysis of your data takes place."
+        },
+        {
+          "type": "paragraph",
+          "text": "You can end communication via WhatsApp at any time and reach us alternatively by email at <a href=\"mailto:info@ambernord.ch\">info@ambernord.ch</a> or via our chat assistant on ambernord.ch. Further information on data processing by WhatsApp can be found at: <a href=\"https://www.whatsapp.com/legal/privacy-policy\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.whatsapp.com/legal/privacy-policy</a>."
+        },
+        {
+          "type": "paragraph",
+          "text": "Controller: Matisons Selection (AmberNord), Alte Gasse 8, 5034 Suhr, Switzerland."
+        }
+      ]
+    },
+    {
       "id": "cookies",
-      "heading": "6. Cookies",
+      "heading": "7. Cookies",
       "blocks": [
         {
           "type": "paragraph",
@@ -161,7 +183,7 @@
     },
     {
       "id": "datensicherheit",
-      "heading": "7. Data Security",
+      "heading": "8. Data Security",
       "blocks": [
         {
           "type": "paragraph",
@@ -171,7 +193,7 @@
     },
     {
       "id": "rechte",
-      "heading": "8. Your Rights",
+      "heading": "9. Your Rights",
       "blocks": [
         {
           "type": "paragraph",
@@ -206,7 +228,7 @@
     },
     {
       "id": "aenderungen",
-      "heading": "9. Amendments to this Privacy Policy",
+      "heading": "10. Amendments to this Privacy Policy",
       "blocks": [
         {
           "type": "paragraph",
