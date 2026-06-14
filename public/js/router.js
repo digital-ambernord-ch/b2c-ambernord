@@ -440,6 +440,48 @@
 
   window.smoothScrollTo = smoothScrollTo;
 
+  /* True only when this document load is a reload (F5 / Ctrl-R), not a fresh
+     visit or a back/forward restore. Lets us restore the saved scroll on a
+     reload without wrongly restoring it on an unrelated first visit in a tab
+     that happens to still hold an old anReloadScroll value. */
+  function isReload() {
+    try {
+      const nav = performance.getEntriesByType('navigation')[0];
+      return !!nav && nav.type === 'reload';
+    } catch (_) { return false; }
+  }
+
+  /* Restore the scroll position the user had before a language switch or a
+     reload. The browser's own restoration is off (scrollRestoration='manual',
+     set in index.html) precisely so the sticky hero never paints full-size at
+     the old position before GSAP loads. We restore the position OURSELVES, but
+     only AFTER the page init has run — so ScrollTrigger is already live and
+     ScrollTrigger.refresh() snaps the scrubbed hero straight to its correct
+     state for that position instead of letting scrub smoothing visibly animate
+     it there over ~1.5s. langSwitchScroll (set by i18n.setLang) wins over the
+     reload position; both are single-use. With a URL hash the anchor scroll
+     already placed the user, so we only clear the keys. */
+  function restoreHydrateScroll(hash) {
+    let y = null;
+    try {
+      const lang = sessionStorage.getItem('langSwitchScroll');
+      if (lang !== null) { sessionStorage.removeItem('langSwitchScroll'); y = parseFloat(lang) || 0; }
+      const reload = sessionStorage.getItem('anReloadScroll');
+      if (reload !== null) sessionStorage.removeItem('anReloadScroll');
+      if (y === null && !hash && reload !== null && isReload()) y = parseFloat(reload) || 0;
+    } catch (_) {}
+    if (hash || y === null || y <= 0) return;
+    requestAnimationFrame(function () {
+      window.scrollTo({ top: y, behavior: 'instant' });
+      if (typeof ScrollTrigger !== 'undefined') {
+        ScrollTrigger.refresh();
+        /* refresh() can nudge scroll while recomputing trigger geometry — pin it
+           back to the intended position on the next frame. */
+        requestAnimationFrame(function () { window.scrollTo({ top: y, behavior: 'instant' }); });
+      }
+    });
+  }
+
   /* Both the desktop topbar and the mobile overlay menu use
      [aria-current="page"] to paint the active entry in gold. For the topbar
      dropdowns (Shop, Hilfe), we propagate the current state up to the
@@ -548,6 +590,9 @@
       if (initName && typeof window[initName] === 'function') {
         try { await window[initName](); } catch (e) { console.error('[Router] hydrate init failed:', e); }
       }
+
+      /* After init (GSAP live) restore the pre-switch / pre-reload scroll. */
+      restoreHydrateScroll(hash);
       return;
     }
 
@@ -710,6 +755,14 @@
   window.addEventListener('popstate', function (e) {
     const path = e.state ? e.state.path : window.location.pathname;
     navigate(path, false);
+  });
+
+  /* Persist scroll position for a true reload. SPA link clicks navigate via
+     pushState and never fire pagehide, so this only ever captures a genuine
+     reload / tab close / cross-document nav. restoreHydrateScroll() reads it
+     back, but only when performance navigation type is actually 'reload'. */
+  window.addEventListener('pagehide', function () {
+    try { sessionStorage.setItem('anReloadScroll', String(window.scrollY || 0)); } catch (_) {}
   });
 
   document.addEventListener('DOMContentLoaded', function () {
