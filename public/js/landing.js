@@ -127,7 +127,17 @@ window.initLanding = async function () {
     stickyVP.appendChild(glow);
     stickyVP.appendChild(fly);
 
-    heroBottle.style.opacity = '0';
+    /* Hide the in-flow bottle ONLY once the hi-res flying clone has actually
+       painted. Hiding it immediately (while the h_1000 clone is still loading)
+       left a frame with NO bottle on screen — the visible "blink" of the hero
+       on a browser refresh. At scroll-top the clone sits exactly over the
+       original, so swapping the moment it loads is seamless. */
+    function hideHeroBottle() { heroBottle.style.opacity = '0'; }
+    if (fly.complete && fly.naturalWidth > 0) {
+      hideHeroBottle();
+    } else {
+      fly.addEventListener('load', hideHeroBottle, { once: true });
+    }
 
     /* Black background: hero-bg-video fades out; the remaining shade gradient
        and the hero's background-color (#0a0a0a) create solid black. */
@@ -439,8 +449,7 @@ window.initLanding = async function () {
         scrollTrigger: {
           trigger: section,
           start: 'top 85%',
-          toggleActions: 'play none none none',
-          invalidateOnRefresh: true
+          toggleActions: 'play none none none'
         }
       }
     );
@@ -655,8 +664,7 @@ window.initLanding = async function () {
           scrollTrigger: {
             trigger: el,
             start: 'top 85%',
-            toggleActions: 'play none none none',
-            invalidateOnRefresh: true
+            toggleActions: 'play none none none'
           },
           onComplete: function () {
             if (el.classList && el.classList.contains('highlight-habit')) {
@@ -704,9 +712,11 @@ window.initLanding = async function () {
         trigger: wrapper,
         start: 'top 85%',
         /* One-shot: replaying the slide-in backwards on every scroll-up made
-           the prose flicker whenever the user hovered the trigger line. */
-        toggleActions: 'play none none none',
-        invalidateOnRefresh: true
+           the prose flicker whenever the user hovered the trigger line.
+           No invalidateOnRefresh — these are static from/to values; a refresh
+           firing mid-reveal (lazy image load) would re-init the tween and make
+           it stutter/jump on its first play. */
+        toggleActions: 'play none none none'
       }
     });
 
@@ -757,10 +767,10 @@ window.initLanding = async function () {
             scrollTrigger: {
               trigger: img,
               start: 'top 85%',
-              /* One-shot — the reverse replay at the trigger line was the
-                 "twitch" on the Exclusive Sourcing / Handwerk photos. */
-              toggleActions: 'play none none none',
-              invalidateOnRefresh: true
+              /* One-shot, no invalidateOnRefresh — the reverse replay AND a
+                 refresh re-init mid-reveal were the "twitch" on the Exclusive
+                 Sourcing / Handwerk photos (double-stutter on first appear). */
+              toggleActions: 'play none none none'
             }
           });
       }
@@ -775,8 +785,7 @@ window.initLanding = async function () {
             scrollTrigger: {
               trigger: txt,
               start: 'top 85%',
-              toggleActions: 'play none none none',
-              invalidateOnRefresh: true
+              toggleActions: 'play none none none'
             }
           });
         }
@@ -924,8 +933,7 @@ window.initLanding = async function () {
           scrollTrigger: {
             trigger:      el,
             start:        'top 85%',
-            toggleActions: 'play none none none',
-            invalidateOnRefresh: true
+            toggleActions: 'play none none none'
           },
           opacity:  1,
           y:        0,
