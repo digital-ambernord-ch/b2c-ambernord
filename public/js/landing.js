@@ -246,7 +246,6 @@ window.initLanding = async function () {
                                   duration: 3, ease: 'power2.inOut' }, 0)
       .to('#heroText',          { opacity: 0, duration: 1, ease: 'power1.in' }, 0.3)
       .to('#heroWatermark',     { opacity: 0, duration: 1, ease: 'power1.in' }, 0.3)
-      .to('#heroCert',          { opacity: 0, duration: 1, ease: 'power1.in' }, 0.3)
       .to('#ambernordHeroShade',{ opacity: 0, duration: 1, ease: 'none' }, 0.8)
 
     /* Phase 2: the visible cards pop in around the shrunk hero (6 at ≥1400px,
@@ -311,7 +310,6 @@ window.initLanding = async function () {
                                   duration: 3 }, 0)
       .to('#heroText',          { opacity: 0, duration: 1 }, 1)
       .to('#heroWatermark',     { opacity: 0, duration: 1 }, 1)
-      .to('#heroCert',          { opacity: 0, duration: 1 }, 1)
       .to('#ambernordHeroShade',{ opacity: 0, duration: 1.5 }, 1.5)
       /* Final phase: the hero/bottle barely rise (same lesson as desktop) —
          the old -0.75 rise flew the bottle fully off the top, leaving a huge

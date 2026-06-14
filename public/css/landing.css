@@ -210,97 +210,8 @@
   color: rgba(255, 255, 255, 0.9);
 }
 
-/* ===========================================================================
-   HERO CERTIFICATION BADGE — official BIO ProCert standard mark (Swiss organic,
-   CH-BIO-038) on its native white chip, with a caption stating the audit.
-   Links to the certificate PDF; sits opposite the .hero-watermark mark.
-   =========================================================================== */
-.hero-cert {
-  position: absolute;
-  right: 30px;
-  /* Lifted clear of the fixed chat launcher (bottom-right corner). */
-  bottom: 72px;
-  /* Above #heroText (z 10) so the certificate link stays clickable where the
-     centred text box overlaps the corner on wide viewports. */
-  z-index: 11;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 14px 10px 10px;
-  border-radius: 14px;
-  text-align: left;
-  border: 1px solid var(--color-border-gold);
-  background: rgba(10, 10, 10, 0.34);
-  -webkit-backdrop-filter: blur(5px);
-  backdrop-filter: blur(5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-  will-change: opacity;
-}
-
-.hero-cert__logolink {
-  display: block;
-  flex-shrink: 0;
-  line-height: 0;
-  border-radius: 9px;
-  transition: transform var(--t-fast) ease, box-shadow var(--t-fast) ease;
-}
-
-.hero-cert__logolink:hover,
-.hero-cert__logolink:focus-visible {
-  transform: translateY(-1px);
-  box-shadow: 0 0 0 2px var(--color-gold);
-  outline: none;
-}
-
-.hero-cert__logo {
-  width: 56px;
-  height: 56px;
-  display: block;
-  object-fit: contain;
-  background: #fff;
-  border-radius: 9px;
-  padding: 6px;
-  box-sizing: border-box;
-}
-
-.hero-cert__caption {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.hero-cert__title {
-  font-size: 12px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  font-weight: 700;
-  color: var(--color-text);
-  line-height: 1.1;
-}
-
-.hero-cert__sub {
-  font-size: 10px;
-  color: rgba(255, 255, 255, 0.62);
-  line-height: 1.2;
-  max-width: 150px;
-}
-
-.hero-cert__code {
-  font-size: 10px;
-  letter-spacing: 0.5px;
-  font-weight: 600;
-  color: var(--color-gold);
-}
-
-/* Tablet/phone: the hero is too content-dense to also fit the certification
-   badge clear of the fixed chat launcher (bottom-right). Hide it here — the
-   ProCert mark still shows in the footer and the purity section. */
-@media (max-width: 991px) {
-  .hero-cert { display: none; }
-}
-
-/* Phones: scale the seals down so they stay corner marks and clear the
-   CTA in the content-dense mobile hero. */
+/* Phones: scale the watermark mark down so it stays a corner mark and clears
+   the CTA in the content-dense mobile hero. */
 @media (max-width: 600px) {
   .hero-watermark {
     left: 16px;
@@ -313,18 +224,6 @@
   .hero-watermark__vitc-label { font-size: 10px; letter-spacing: 1.2px; }
   .hero-watermark__vitc-sub { font-size: 8px; }
   .hero-watermark__omega { font-size: 9.5px; letter-spacing: 1px; }
-
-  /* On phones the caption would crowd the hero — show just the recognizable
-     logo chip in the corner; full audit text stays available on desktop. */
-  .hero-cert {
-    right: 16px;
-    bottom: 18px;
-    gap: 0;
-    padding: 5px;
-    border-radius: 11px;
-  }
-  .hero-cert__logo { width: 46px; height: 46px; padding: 5px; border-radius: 8px; }
-  .hero-cert__caption { display: none; }
 }
 
 .animation-workspace {
@@ -530,13 +429,49 @@
   display: inline-block;
 }
 
-.eu-bio-logo {
-  height: 48px;
-  width: auto;
+/* Both organic seals — EU leaf + the official ProCert BIO mark — sit as one
+   row floating just above the "BIO-ZERTIFIZIERT" tagline word, same height so
+   they read as a paired trust mark and catch the eye together. */
+.bio-seals {
   position: absolute;
   bottom: calc(100% + 8px);
   left: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.eu-bio-logo {
+  height: 48px;
+  width: auto;
   display: block;
+}
+
+.procert-seal {
+  display: block;
+  line-height: 0;
+  border-radius: 8px;
+  transition: transform var(--t-fast) ease, box-shadow var(--t-fast) ease;
+}
+
+.procert-seal:hover,
+.procert-seal:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 0 0 2px var(--color-gold);
+  outline: none;
+}
+
+/* White rounded chip — mirrors the footer cert mark so the ProCert logo stays
+   legible on the dark hero. */
+.procert-seal__logo {
+  height: 48px;
+  width: 48px;
+  display: block;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 8px;
+  padding: 5px;
+  box-sizing: border-box;
 }
 
 #scrollTrack h1 {
@@ -2358,10 +2293,22 @@
     margin-top: 6px;
   }
 
-  .eu-bio-logo {
+  /* Seals drop into the line as a static inline pair next to the word. */
+  .bio-seals {
     position: static;
-    height: 22px;
     bottom: auto;
+    gap: 6px;
+  }
+
+  .eu-bio-logo {
+    height: 22px;
+  }
+
+  .procert-seal__logo {
+    height: 22px;
+    width: 22px;
+    padding: 3px;
+    border-radius: 6px;
   }
 
   .hero-product-img { height: 160px; width: 80px; }

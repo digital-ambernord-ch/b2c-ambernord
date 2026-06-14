@@ -97,30 +97,6 @@
         </div>
       </div>
 
-      <!-- Certification badge: the official BIO ProCert standard mark from our
-           valid Swiss organic certificate (Bio-Verordnung SR 910.18, control
-           body CH-BIO-038, cert-ID 141710, valid to 2027). This is the
-           standard logo ProCert permits us to display — NOT the ProCert
-           company logo. Faded with #heroText on scroll (landing.js). -->
-      <div class="hero-cert" id="heroCert">
-        <a class="hero-cert__logolink"
-           href="https://api.procert.ch/zertifikate/141710.pdf"
-           target="_blank" rel="noopener noreferrer"
-           data-i18n-attr="aria-label:hero.cert.pdfLabel"
-           aria-label="Bio-Zertifikat ansehen (PDF)">
-          <img class="hero-cert__logo"
-               src="/img/procert-bio-ch-bio-038.png"
-               data-i18n-attr="alt:hero.cert.alt"
-               alt="Bio-Zertifizierung ProCert CH-BIO-038"
-               width="56" height="56" loading="eager" decoding="async">
-        </a>
-        <span class="hero-cert__caption">
-          <span class="hero-cert__title" data-i18n="hero.cert.title">Bio-zertifiziert</span>
-          <span class="hero-cert__sub" data-i18n="hero.cert.sub">Unabhängig auditiert durch ProCert</span>
-          <span class="hero-cert__code">ProCert · CH-BIO-038</span>
-        </span>
-      </div>
-
       <div class="hero-content" id="heroText">
         <div id="ambernord-hero-content">
 
@@ -128,14 +104,35 @@
             <span class="tagline-part-1">
               <span data-i18n="hero.taglineHandpick">100% HANDLESE</span> <span class="tagline-sep" aria-hidden="true">|</span> <span data-i18n="hero.taglineColdPress">KALTGEPRESST</span> <span class="tagline-sep tagline-sep--bio" aria-hidden="true">|</span>
               <span class="bio-wrapper">
-                <img
-                  class="eu-bio-logo"
-                  src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_100/v1775347505/eu-organic-bio-logo.svg_ollbss.png"
-                  data-i18n-attr="alt:hero.bioLogoAlt"
-                  alt="EU Organic zertifiziert"
-                  width="48"
-                  height="48"
-                  loading="eager">
+                <span class="bio-seals">
+                  <img
+                    class="eu-bio-logo"
+                    src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:eco,w_100/v1775347505/eu-organic-bio-logo.svg_ollbss.png"
+                    data-i18n-attr="alt:hero.bioLogoAlt"
+                    alt="EU Organic zertifiziert"
+                    width="48"
+                    height="48"
+                    loading="eager">
+                  <!-- Official BIO ProCert standard mark (CH-BIO-038, cert-ID
+                       141710). Sits next to the EU leaf, same height; the only
+                       ProCert logo we may display. Tap/click opens the cert PDF;
+                       full audit text lives in the footer. -->
+                  <a class="procert-seal"
+                     href="https://api.procert.ch/zertifikate/141710.pdf"
+                     target="_blank" rel="noopener noreferrer"
+                     data-i18n-attr="aria-label:hero.cert.pdfLabel"
+                     aria-label="Bio-Zertifikat ansehen (PDF)">
+                    <img
+                      class="procert-seal__logo"
+                      src="/img/procert-bio-ch-bio-038.png"
+                      data-i18n-attr="alt:hero.cert.alt"
+                      alt="Bio-Zertifizierung ProCert CH-BIO-038"
+                      width="48"
+                      height="48"
+                      loading="eager"
+                      decoding="async">
+                  </a>
+                </span>
                 <span data-i18n="hero.taglineBio">BIO-ZERTIFIZIERT</span>
               </span>
             </span>
