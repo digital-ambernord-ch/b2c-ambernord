@@ -485,7 +485,7 @@
     });
   }
 
-  async function navigate(path, pushState) {
+  async function navigate(path, pushState, hydrate) {
     /* Route matching always happens on the locale-less path; the visible URL
        keeps the current locale prefix via localePath(). */
     const cleanPath = normalisePath(stripLocale(path));
@@ -507,6 +507,49 @@
 
     const app = document.getElementById('app');
     if (!app) return;
+
+    /* INITIAL-LOAD HYDRATION — the prerendered build already injected this
+       route's fragment into #app with the correct localized <title>, meta,
+       canonical, hreflang and JSON-LD (#page-schema). The old path re-fetched
+       the fragment and did app.innerHTML = html on first load too, which threw
+       all of that away: an opacity 0→1 flash, a scroll reset, and — because
+       GSAP is deferred — the sticky hero painting full-size before ScrollTrigger
+       could shrink it. Hydrate in place instead: leave the DOM and meta exactly
+       as prerendered, just toggle the subpage stripe, wire links and run init.
+       updateMeta() is intentionally NOT called — it would clobber the localized
+       title with the German ROUTES default (i18n only re-corrects it a frame
+       later). Local dev serves an empty #app, so this branch is skipped there. */
+    if (hydrate) {
+      const subpageHero = document.getElementById('ambernord-subpage-hero-bg');
+      if (subpageHero) {
+        const blackCanvas =
+          route.type === 'landing' || route.type === 'product' ||
+          route.type === 'shop'    || route.type === 'thankyou';
+        subpageHero.classList.toggle('is-visible', !blackCanvas);
+      }
+
+      /* No ScrollTriggers exist yet on a fresh load, but keep this for symmetry
+         and to clear any that a racing init somehow created. */
+      killGSAP();
+      attachLinkListeners();
+
+      /* Honour a deep-link hash (e.g. /#shop) on first load; otherwise leave
+         scroll untouched — scrollRestoration is 'manual', so we are at the top. */
+      if (hash) {
+        setTimeout(function () {
+          const target      = document.getElementById(hash);
+          const navHeight   = document.getElementById('siteNav')?.offsetHeight || 80;
+          const extraOffset = hash === 'shop' ? 160 : (hash === 'habit-card' ? 50 : 0);
+          if (target) smoothScrollTo(target.getBoundingClientRect().top + window.scrollY - navHeight - extraOffset);
+        }, 100);
+      }
+
+      const initName = INITS[route.type];
+      if (initName && typeof window[initName] === 'function') {
+        try { await window[initName](); } catch (e) { console.error('[Router] hydrate init failed:', e); }
+      }
+      return;
+    }
 
     /* Hide #app instantly (no transition) so the previous page does not stay
        visible while the new one is being prepared. */
@@ -673,7 +716,13 @@
     attachLinkListeners();
     const initialPath = window.location.pathname + window.location.search + window.location.hash;
     history.replaceState({ path: window.location.pathname }, document.title, initialPath);
-    navigate(window.location.pathname + window.location.hash, false);
+    /* If the prerendered build served real content inside #app, hydrate over it
+       in place instead of re-fetching and replacing it (see the hydrate branch
+       in navigate). Local dev ships an empty #app, so this is false there and
+       the normal fetch path runs. */
+    const app = document.getElementById('app');
+    const hydrate = !!(app && app.innerHTML.trim());
+    navigate(window.location.pathname + window.location.hash, false, hydrate);
   });
 
 })();

@@ -120,6 +120,14 @@
   <link rel="stylesheet" href="/css/aktion-2-fuer-1.css" media="print" onload="this.media='all'">
 
   <script>
+    /* SPA scroll ownership — the router decides scroll position on every
+       navigation and starts every fresh load at the top. The browser default
+       'auto' restoration fought this: reloading mid-page restored the old
+       scroll BEFORE the deferred GSAP loaded, so the position:sticky hero
+       painted full-size wherever the user happened to be — the "hero flashes
+       anywhere on the page" bug. 'manual' hands scroll control to the router. */
+    try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (_) {}
+
     /* Aktion bar — set class synchronously to avoid layout shift.
        Bump version key here AND in /js/aktion-bar.js when message changes. */
     (function () {
