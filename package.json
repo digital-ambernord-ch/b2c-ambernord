@@ -4,5 +4,8 @@
   "type": "module",
   "scripts": {
     "build": "node scripts/prerender.mjs"
+  },
+  "dependencies": {
+    "csso": "^5.0.5"
   }
 }

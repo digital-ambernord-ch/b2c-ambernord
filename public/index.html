@@ -93,11 +93,18 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
 
-  <!-- Critical CSS: render-blocking — needed for first paint on every route -->
+  <!-- Critical CSS: render-blocking — needed for first paint on every route.
+       (main = shell, landing = home hero, aktion-bar carries the bar's default
+       `display:none` so it must not flash.) -->
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/landing.css">
   <link rel="stylesheet" href="/css/aktion-bar.css">
-  <link rel="stylesheet" href="/css/cookie-consent.css">
+
+  <!-- Cookie banner is `[hidden]` until cookie-consent.js (deferred) shows it,
+       so its CSS is not needed for first paint — load it off the critical path
+       via the media="print" swap, same pattern as the page CSS below. -->
+  <link rel="stylesheet" href="/css/cookie-consent.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="/css/cookie-consent.css"></noscript>
 
   <!-- Non-critical page CSS: media="print" lets the browser download without
        blocking render; onload switches to media="all" so styles are applied

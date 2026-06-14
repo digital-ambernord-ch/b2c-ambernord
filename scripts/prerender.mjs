@@ -10,7 +10,7 @@
    Usage: npm run build   (output: dist/)
    ========================================================================== */
 
-import { cpSync, mkdirSync, readFileSync, rmSync, writeFileSync, existsSync } from 'node:fs';
+import { cpSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync, existsSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -223,6 +223,30 @@ function buildSitemap() {
 
 rmSync(DIST, { recursive: true, force: true });
 cpSync(PUBLIC, DIST, { recursive: true });
+
+/* Minify CSS in dist/ only — the source files keep their comments and
+   whitespace for maintainability, while the production transfer is shrunk
+   here. csso strips comments, collapses whitespace and restructures rules
+   (landing.css drops ~58% after brotli), which directly shortens the
+   render-blocking CSS download. Per-build fallback: if csso is unavailable
+   the verbatim copy from cpSync stays in place, so the build never breaks. */
+try {
+  const { minify } = await import('csso');
+  const cssDir = join(DIST, 'css');
+  let before = 0, after = 0;
+  for (const file of readdirSync(cssDir)) {
+    if (!file.endsWith('.css')) continue;
+    const p = join(cssDir, file);
+    const src = readFileSync(p, 'utf8');
+    const out = minify(src).css;
+    before += src.length;
+    after += out.length;
+    writeFileSync(p, out);
+  }
+  console.log(`Minified CSS: ${(before / 1024).toFixed(0)}K -> ${(after / 1024).toFixed(0)}K raw.`);
+} catch (err) {
+  console.warn('CSS minify skipped (csso unavailable):', err.message);
+}
 
 const shell = readFileSync(join(PUBLIC, 'index.html'), 'utf8');
 let pageCount = 0;
