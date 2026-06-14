@@ -23,6 +23,8 @@
   --color-border:          rgba(255, 255, 255, 0.07);
   --color-border-subtle:   rgba(255, 255, 255, 0.04);
   --color-border-gold:     rgba(237, 163, 35, 0.3);
+  --color-whatsapp:        #25D366;  /* official WhatsApp brand green */
+  --color-whatsapp-hover:  #1ebe5d;
 
   /* --- Typography --- */
   --font-serif: 'Playfair Display', Georgia, serif;
@@ -1143,6 +1145,16 @@ html.landing-hero-active .ambernord-topbar .ambernord-logo-eubio {
 
 .ambernord-footer-social a:hover svg {
   fill: var(--color-gold);
+}
+
+/* WhatsApp keeps its original brand green in every state. */
+.ambernord-footer-social a.ambernord-footer-social--whatsapp svg,
+.ambernord-footer-social a.ambernord-footer-social--whatsapp:hover svg {
+  fill: var(--color-whatsapp);
+}
+
+.ambernord-footer-social a.ambernord-footer-social--whatsapp:hover {
+  border-color: var(--color-whatsapp);
 }
 
 .ambernord-footer-links {

@@ -200,9 +200,9 @@
   height: 64px;
   margin: 0 auto 20px;
   border-radius: 50%;
-  color: var(--color-gold);
-  background: rgba(237, 163, 35, 0.08);
-  border: 1px solid rgba(237, 163, 35, 0.2);
+  color: var(--color-whatsapp);
+  background: rgba(37, 211, 102, 0.10);
+  border: 1px solid rgba(37, 211, 102, 0.30);
 }
 
 .contact-whatsapp__icon svg {
