@@ -144,7 +144,8 @@
 .hero-watermark {
   position: absolute;
   left: 30px;
-  bottom: 28px;
+  /* Lifted clear of the fixed chat launcher (bottom-right corner). */
+  bottom: 72px;
   z-index: 6;
   display: flex;
   flex-direction: column;
@@ -217,7 +218,8 @@
 .hero-cert {
   position: absolute;
   right: 30px;
-  bottom: 28px;
+  /* Lifted clear of the fixed chat launcher (bottom-right corner). */
+  bottom: 72px;
   /* Above #heroText (z 10) so the certificate link stays clickable where the
      centred text box overlaps the corner on wide viewports. */
   z-index: 11;
@@ -288,6 +290,13 @@
   letter-spacing: 0.5px;
   font-weight: 600;
   color: var(--color-gold);
+}
+
+/* Tablet/phone: the hero is too content-dense to also fit the certification
+   badge clear of the fixed chat launcher (bottom-right). Hide it here — the
+   ProCert mark still shows in the footer and the purity section. */
+@media (max-width: 991px) {
+  .hero-cert { display: none; }
 }
 
 /* Phones: scale the seals down so they stay corner marks and clear the

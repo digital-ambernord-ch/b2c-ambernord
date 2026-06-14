@@ -25,28 +25,32 @@
       title: 'AmberNord Hilfe',
       greeting: 'Hallo! 👋 Wie kann ich helfen? Fragen Sie mich zu Produkten, Inhaltsstoffen, Versand oder Bestellungen.',
       placeholder: 'Nachricht schreiben…', send: 'Senden',
-      error: 'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder schreiben Sie an info@ambernord.ch.'
+      error: 'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder schreiben Sie an info@ambernord.ch.',
+      nudge: 'Chatten Sie mit mir 👋'
     },
     en: {
       aria: 'AmberNord support chat', open: 'Open chat', close: 'Close chat',
       title: 'AmberNord Help',
       greeting: 'Hi! 👋 How can I help? Ask me about products, ingredients, shipping or orders.',
       placeholder: 'Type a message…', send: 'Send',
-      error: 'Something went wrong. Please try again or email info@ambernord.ch.'
+      error: 'Something went wrong. Please try again or email info@ambernord.ch.',
+      nudge: 'Chat with me 👋'
     },
     fr: {
       aria: 'Chat d’assistance AmberNord', open: 'Ouvrir le chat', close: 'Fermer le chat',
       title: 'Aide AmberNord',
       greeting: 'Bonjour ! 👋 Comment puis-je aider ? Posez-moi vos questions sur les produits, ingrédients, la livraison ou les commandes.',
       placeholder: 'Écrire un message…', send: 'Envoyer',
-      error: 'Une erreur est survenue. Réessayez ou écrivez à info@ambernord.ch.'
+      error: 'Une erreur est survenue. Réessayez ou écrivez à info@ambernord.ch.',
+      nudge: 'Discutez avec moi 👋'
     },
     it: {
       aria: 'Chat di assistenza AmberNord', open: 'Apri la chat', close: 'Chiudi la chat',
       title: 'Aiuto AmberNord',
       greeting: 'Ciao! 👋 Come posso aiutarti? Chiedimi di prodotti, ingredienti, spedizione o ordini.',
       placeholder: 'Scrivi un messaggio…', send: 'Invia',
-      error: 'Si è verificato un errore. Riprova o scrivi a info@ambernord.ch.'
+      error: 'Si è verificato un errore. Riprova o scrivi a info@ambernord.ch.',
+      nudge: 'Chatta con me 👋'
     }
   };
 
@@ -78,6 +82,27 @@
     '.ancb-launcher .ancb-ico-close{position:absolute;opacity:0;transform:rotate(-90deg) scale(.7);}',
     '.ancb-launcher--open .ancb-ico-chat{opacity:0;transform:rotate(90deg) scale(.7);}',
     '.ancb-launcher--open .ancb-ico-close{opacity:1;transform:rotate(0) scale(1);}',
+    /* One-off attention pulse while the nudge is showing */
+    '.ancb-launcher--attn{animation:ancb-pulse 2s ease-out 3;}',
+    '@keyframes ancb-pulse{0%{box-shadow:0 6px 20px rgba(237,163,35,.45),0 0 0 0 rgba(237,163,35,.5);}70%{box-shadow:0 6px 20px rgba(237,163,35,.45),0 0 0 14px rgba(237,163,35,0);}100%{box-shadow:0 6px 20px rgba(237,163,35,.45),0 0 0 0 rgba(237,163,35,0);}}',
+
+    /* "Chat with me" nudge bubble — appears above the launcher after a delay */
+    '.ancb-nudge{position:fixed;right:24px;bottom:98px;z-index:4000;max-width:210px;',
+    '  display:flex;align-items:center;gap:8px;padding:10px 10px 10px 13px;',
+    '  background:var(--color-surface-2,#121212);color:var(--color-text,#fff);',
+    '  border:1px solid var(--color-border-gold,rgba(237,163,35,.3));border-radius:12px;',
+    '  box-shadow:0 8px 24px rgba(0,0,0,.45);',
+    '  font-family:var(--font-sans,"Montserrat",sans-serif);font-size:13px;line-height:1.3;cursor:pointer;',
+    '  opacity:0;visibility:hidden;transform:translateY(8px);',
+    '  transition:opacity .3s var(--ease-smooth,cubic-bezier(.165,.84,.44,1)),transform .3s var(--ease-smooth,cubic-bezier(.165,.84,.44,1)),visibility .3s;}',
+    '.ancb-nudge.ancb-nudge--show{opacity:1;visibility:visible;transform:translateY(0);}',
+    '.ancb-nudge::after{content:"";position:absolute;right:24px;bottom:-6px;width:11px;height:11px;',
+    '  background:var(--color-surface-2,#121212);border-right:1px solid var(--color-border-gold,rgba(237,163,35,.3));',
+    '  border-bottom:1px solid var(--color-border-gold,rgba(237,163,35,.3));transform:rotate(45deg);}',
+    '.ancb-nudge__text{flex:1;}',
+    '.ancb-nudge__x{flex:none;border:none;background:none;color:var(--color-text-dim,#888);cursor:pointer;',
+    '  font-size:16px;line-height:1;padding:2px 4px;border-radius:5px;transition:color .2s ease;}',
+    '.ancb-nudge__x:hover,.ancb-nudge__x:focus-visible{color:var(--color-gold,#EDA323);outline:none;}',
 
     '.ancb-panel{',
     '  position:fixed;right:24px;bottom:96px;z-index:4000;',
@@ -138,12 +163,14 @@
     '  .ancb-panel{right:0;left:0;bottom:0;width:100%;max-width:100%;height:82dvh;max-height:82dvh;border-radius:16px 16px 0 0;transform-origin:bottom center;transform:translateY(100%);}',
     '  .ancb-panel.ancb-open{transform:translateY(0);}',
     '  .ancb-launcher{right:16px;bottom:16px;}',
+    '  .ancb-nudge{right:16px;bottom:88px;}',
+    '  .ancb-nudge::after{right:26px;}',
     '}',
 
     /* Respect reduced-motion */
     '@media (prefers-reduced-motion:reduce){',
-    '  .ancb-panel,.ancb-launcher,.ancb-launcher svg,.ancb-send,.ancb-close{transition:none;}',
-    '  .ancb-typing span{animation:none;}',
+    '  .ancb-panel,.ancb-launcher,.ancb-launcher svg,.ancb-send,.ancb-close,.ancb-nudge{transition:none;}',
+    '  .ancb-typing span,.ancb-launcher--attn{animation:none;}',
     '}'
   ].join('');
 
@@ -187,14 +214,26 @@
       '<button type="submit" class="ancb-send" aria-label="' + escapeHtml(S.send) + '">' + ICON_SEND + '</button>' +
     '</form>';
 
+  // "Chat with me" nudge bubble (decorative prompt; the launcher is the real
+  // control, so the nudge is aria-hidden and not in the tab order).
+  var nudge = document.createElement('div');
+  nudge.className = 'ancb-nudge';
+  nudge.setAttribute('aria-hidden', 'true');
+  nudge.innerHTML =
+    '<span class="ancb-nudge__text">' + escapeHtml(S.nudge) + '</span>' +
+    '<button type="button" class="ancb-nudge__x" tabindex="-1" aria-hidden="true">×</button>';
+
   document.body.appendChild(launcher);
   document.body.appendChild(panel);
+  document.body.appendChild(nudge);
 
   var log = panel.querySelector('.ancb-log');
   var form = panel.querySelector('.ancb-form');
   var input = panel.querySelector('.ancb-input');
   var sendBtn = panel.querySelector('.ancb-send');
   var closeBtn = panel.querySelector('.ancb-close');
+  var nudgeX = nudge.querySelector('.ancb-nudge__x');
+  var nudgeDone = false; // once dismissed or chat opened, never show again
 
   /* --- State + helpers ----------------------------------------------------- */
   var history = [{ role: 'assistant', content: S.greeting }];
@@ -240,8 +279,21 @@
     input.style.height = Math.min(input.scrollHeight, 96) + 'px';
   }
 
+  /* --- Nudge bubble -------------------------------------------------------- */
+  function hideNudge() {
+    nudge.classList.remove('ancb-nudge--show');
+    launcher.classList.remove('ancb-launcher--attn');
+  }
+  function retireNudge() { nudgeDone = true; hideNudge(); }
+  function showNudge() {
+    if (nudgeDone || panel.classList.contains('ancb-open')) return;
+    nudge.classList.add('ancb-nudge--show');
+    launcher.classList.add('ancb-launcher--attn');
+  }
+
   /* --- Open / close (CSS-transition driven; matches site easing tokens) ---- */
   function openPanel() {
+    retireNudge();
     panel.classList.add('ancb-open');
     panel.setAttribute('aria-hidden', 'false');
     launcher.classList.add('ancb-launcher--open');
@@ -298,6 +350,11 @@
   /* --- Events -------------------------------------------------------------- */
   launcher.addEventListener('click', toggle);
   closeBtn.addEventListener('click', closePanel);
+  // Click the nudge → open chat; click its × → just dismiss it.
+  nudge.addEventListener('click', function (e) {
+    if (e.target === nudgeX) { e.stopPropagation(); retireNudge(); return; }
+    openPanel();
+  });
   form.addEventListener('submit', function (e) { e.preventDefault(); send(); });
   input.addEventListener('input', autosize);
   input.addEventListener('keydown', function (e) {
@@ -309,4 +366,7 @@
 
   /* --- Initial render ------------------------------------------------------ */
   addBubble('bot', S.greeting);
+
+  // Gentle "chat with me" prompt after a short delay (once per page load).
+  setTimeout(showNudge, 9000);
 })();
