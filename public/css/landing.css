@@ -2773,13 +2773,46 @@
    detailed version is on the Wissenschaft (dossier) page.
    =========================================================================== */
 .purity-compare {
+  position: relative;
   background: var(--color-bg);
   padding: 72px var(--container-pad);
   display: flex;
   justify-content: center;
+  overflow: hidden;
+}
+
+/* Full-section background photo + dark overlay — same language as the other
+   editorial sections (.exclusive-bg / .nature-hero-bg). The gradient fades to
+   solid #0a0a0a at the top and bottom so the section blends seamlessly with the
+   black sections above and below, and darkens the middle so the comparison
+   stays legible. */
+.purity-compare__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.purity-compare__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.purity-compare__bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    #0a0a0a 0%,
+    rgba(10,10,10,0.82) 18%,
+    rgba(10,10,10,0.82) 82%,
+    #0a0a0a 100%
+  );
 }
 
 .purity-compare__inner {
+  position: relative;
+  z-index: 1;
   width: 100%;
   max-width: 920px;
   text-align: center;
@@ -2822,11 +2855,17 @@
   border: 1px solid var(--color-border);
   border-radius: 16px;
   padding: 24px 24px 26px;
+  /* Semi-opaque dark fill + blur so the cards stay legible over the section
+     background photo (background-color, NOT the `background` shorthand, so the
+     --ours gold radial below layers on top instead of replacing it). */
+  background-color: rgba(10, 10, 10, 0.58);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
 }
 
 .purity-col--ours {
   border-color: var(--color-border-gold);
-  background: radial-gradient(ellipse at top, rgba(237, 163, 35, 0.08), transparent 70%);
+  background-image: radial-gradient(ellipse at top, rgba(237, 163, 35, 0.10), transparent 70%);
 }
 
 .purity-col__brand {
@@ -2872,19 +2911,6 @@
 .purity-col--ours .purity-col__list li::before { content: '\2713'; color: var(--color-gold); }
 .purity-col--others .purity-col__list li { color: var(--color-text-dim); }
 .purity-col--others .purity-col__list li::before { content: '\2715'; color: #6b6b6b; }
-
-.purity-compare__figure {
-  margin: 40px 0 0;
-  border: 1px solid var(--color-border);
-  border-radius: 20px;
-  overflow: hidden;
-}
-
-.purity-compare__figure img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
 
 .purity-compare__more {
   display: inline-block;
