@@ -128,6 +128,16 @@
        anywhere on the page" bug. 'manual' hands scroll control to the router. */
     try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (_) {}
 
+    /* BLACK BOOT COVER — raise a full-screen black layer (#an-boot-cover)
+       synchronously, before first paint, so a reload never flashes any section,
+       image or text: the viewport is solid black until the router has rendered
+       the page, run its init (GSAP) and placed it at the final scroll position,
+       then it calls revealPage() to fade the cover away over finished content.
+       Safety net: if JS never gets that far (e.g. GSAP CDN hard-fails), drop
+       the cover after 4s so content can never be permanently hidden. */
+    document.documentElement.classList.add('an-booting');
+    setTimeout(function () { document.documentElement.classList.remove('an-booting'); }, 4000);
+
     /* Aktion bar — set class synchronously to avoid layout shift.
        Bump version key here AND in /js/aktion-bar.js when message changes. */
     (function () {
@@ -154,6 +164,12 @@
   </script>
 </head>
 <body>
+
+<!-- Black boot cover — shown via html.an-booting (set before first paint in
+     <head>) and faded away by router.revealPage() once the page is rendered,
+     initialised and placed at its final scroll position. Hidden by default so
+     no-JS users and normal SPA navigations never see it. -->
+<div id="an-boot-cover" aria-hidden="true"></div>
 
 <a href="#app" class="skip-link">Skip to content</a>
 

@@ -451,34 +451,61 @@
     } catch (_) { return false; }
   }
 
-  /* Restore the scroll position the user had before a language switch or a
-     reload. The browser's own restoration is off (scrollRestoration='manual',
-     set in index.html) precisely so the sticky hero never paints full-size at
-     the old position before GSAP loads. We restore the position OURSELVES, but
-     only AFTER the page init has run — so ScrollTrigger is already live and
-     ScrollTrigger.refresh() snaps the scrubbed hero straight to its correct
-     state for that position instead of letting scrub smoothing visibly animate
-     it there over ~1.5s. langSwitchScroll (set by i18n.setLang) wins over the
-     reload position; both are single-use. With a URL hash the anchor scroll
-     already placed the user, so we only clear the keys. */
-  function restoreHydrateScroll(hash) {
-    let y = null;
+  /* Lift the black boot cover (index.html #an-boot-cover, shown via the
+     html.an-booting class set synchronously before first paint). Called ONLY
+     after the page is fully placed at its final scroll position with the hero
+     snapped — so the reveal shows finished content, never a mid-init flash.
+     Idempotent: on SPA navigations the class is long gone, so this no-ops. */
+  function revealPage() {
+    document.documentElement.classList.remove('an-booting');
+  }
+  window.revealPage = revealPage;
+
+  /* Resolve the scroll target for an initial (hydrated) load, set it, snap the
+     scrubbed hero to it, and ONLY THEN lift the boot cover. The browser's own
+     restoration is off (scrollRestoration='manual', index.html) so nothing
+     paints at the old position before GSAP loads; we own placement entirely.
+
+     Target priority: a URL hash anchor → the scroll stashed by a language
+     switch (i18n.setLang) → the scroll stashed before a reload → top. All
+     stashed keys are single-use. We set the scroll, run ScrollTrigger.refresh()
+     so the sticky hero snaps to its exact state for that position (instead of
+     scrub smoothing animating it there over ~1.5s), set it once more (refresh
+     can nudge scroll while recomputing geometry), then reveal on the next
+     frame — the cover hides this entire dance behind solid black. */
+  function placeAndReveal(hash) {
+    /* Consume both stashed keys regardless of which target wins, so a stale
+       value never leaks into a later load. */
+    let saved = null;
     try {
       const lang = sessionStorage.getItem('langSwitchScroll');
-      if (lang !== null) { sessionStorage.removeItem('langSwitchScroll'); y = parseFloat(lang) || 0; }
+      if (lang !== null) { sessionStorage.removeItem('langSwitchScroll'); saved = parseFloat(lang) || 0; }
       const reload = sessionStorage.getItem('anReloadScroll');
       if (reload !== null) sessionStorage.removeItem('anReloadScroll');
-      if (y === null && !hash && reload !== null && isReload()) y = parseFloat(reload) || 0;
+      if (saved === null && reload !== null && isReload()) saved = parseFloat(reload) || 0;
     } catch (_) {}
-    if (hash || y === null || y <= 0) return;
-    requestAnimationFrame(function () {
-      window.scrollTo({ top: y, behavior: 'instant' });
-      if (typeof ScrollTrigger !== 'undefined') {
-        ScrollTrigger.refresh();
-        /* refresh() can nudge scroll while recomputing trigger geometry — pin it
-           back to the intended position on the next frame. */
-        requestAnimationFrame(function () { window.scrollTo({ top: y, behavior: 'instant' }); });
+
+    function targetY() {
+      if (hash) {
+        const el = document.getElementById(hash);
+        if (el) {
+          const navHeight   = document.getElementById('siteNav')?.offsetHeight || 80;
+          const extraOffset = hash === 'shop' ? 160 : (hash === 'habit-card' ? 50 : 0);
+          return Math.max(0, el.getBoundingClientRect().top + window.scrollY - navHeight - extraOffset);
+        }
+        return 0;
       }
+      return saved && saved > 0 ? saved : 0;
+    }
+
+    requestAnimationFrame(function () {
+      const y = targetY();
+      window.scrollTo({ top: y, behavior: 'instant' });
+      if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+      requestAnimationFrame(function () {
+        window.scrollTo({ top: y, behavior: 'instant' });
+        requestAnimationFrame(revealPage);
+      });
     });
   }
 
@@ -575,24 +602,15 @@
       killGSAP();
       attachLinkListeners();
 
-      /* Honour a deep-link hash (e.g. /#shop) on first load; otherwise leave
-         scroll untouched — scrollRestoration is 'manual', so we are at the top. */
-      if (hash) {
-        setTimeout(function () {
-          const target      = document.getElementById(hash);
-          const navHeight   = document.getElementById('siteNav')?.offsetHeight || 80;
-          const extraOffset = hash === 'shop' ? 160 : (hash === 'habit-card' ? 50 : 0);
-          if (target) smoothScrollTo(target.getBoundingClientRect().top + window.scrollY - navHeight - extraOffset);
-        }, 100);
-      }
-
       const initName = INITS[route.type];
       if (initName && typeof window[initName] === 'function') {
         try { await window[initName](); } catch (e) { console.error('[Router] hydrate init failed:', e); }
       }
 
-      /* After init (GSAP live) restore the pre-switch / pre-reload scroll. */
-      restoreHydrateScroll(hash);
+      /* Init done → GSAP is live. Place the page at its final scroll position
+         (hash anchor / restored scroll / top), snap the hero, THEN lift the
+         black boot cover so the reveal shows finished, correctly-placed content. */
+      placeAndReveal(hash);
       return;
     }
 
@@ -697,11 +715,18 @@
            clear it so it doesn't leak into a later same-tab navigation. */
         try { sessionStorage.removeItem('langSwitchScroll'); } catch (_) {}
       }
+
+      /* Lift the boot cover once content is rendered + init has run. Only the
+         initial local-dev load (empty prerender → this path) still has the
+         cover up; production uses the hydrate path above, and SPA navigations
+         have long since removed the class, so this no-ops there. */
+      requestAnimationFrame(revealPage);
     } catch (err) {
       console.error('[Router] Navigation failed:', err);
       app.innerHTML = '<div style="padding:120px 20px;text-align:center;font-family:Montserrat,sans-serif;color:#888;">Seite nicht gefunden.</div>';
       app.style.transition = 'opacity 0.25s ease';
       app.style.opacity = '1';
+      revealPage();
     }
   }
 
@@ -759,8 +784,8 @@
 
   /* Persist scroll position for a true reload. SPA link clicks navigate via
      pushState and never fire pagehide, so this only ever captures a genuine
-     reload / tab close / cross-document nav. restoreHydrateScroll() reads it
-     back, but only when performance navigation type is actually 'reload'. */
+     reload / tab close / cross-document nav. placeAndReveal() reads it back,
+     but only when the performance navigation type is actually 'reload'. */
   window.addEventListener('pagehide', function () {
     try { sessionStorage.setItem('anReloadScroll', String(window.scrollY || 0)); } catch (_) {}
   });
