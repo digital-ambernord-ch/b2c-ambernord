@@ -54,6 +54,26 @@ window.initLanding = async function () {
      instead of the CPU — avoids stutter on slower phones. */
   gsap.config({ force3D: true });
 
+  /* Cache the nav/aktion CSS tokens so the per-frame functional tween values
+     (computeHeroCenterY + flying-bottle endProps, both invalidateOnRefresh)
+     don't each call getComputedStyle DURING a ScrollTrigger refresh. That read,
+     landing right after GSAP's own inline-style writes, was the forced-reflow
+     chain DevTools flagged — most visible on mobile, where the bottle-fly tween
+     evaluates computeHeroCenterY several times per refresh. refreshInit fires
+     once at the very start of every refresh (before the measure phase), so the
+     tokens stay current — incl. after the aktion bar is dismissed — at the cost
+     of exactly one style flush per refresh instead of one per functional call. */
+  function anReadNavTokens() {
+    const rootStyle = getComputedStyle(document.documentElement);
+    window._anNavH    = parseFloat(rootStyle.getPropertyValue('--nav-height'))    || 80;
+    window._anAktionH = parseFloat(rootStyle.getPropertyValue('--aktion-height')) || 0;
+  }
+  anReadNavTokens();
+  if (!window._anNavTokensBound) {
+    window._anNavTokensBound = true;
+    ScrollTrigger.addEventListener('refreshInit', anReadNavTokens);
+  }
+
   /* =========================================================================
      RESPECT REDUCED MOTION — skip all animations if user prefers it
      ========================================================================= */
@@ -83,9 +103,8 @@ window.initLanding = async function () {
      the y translation from the live --nav-height / --aktion-height tokens so
      it stays correct whether the aktion bar is visible or dismissed. */
   function computeHeroCenterY(heroVh) {
-    const rootStyle = getComputedStyle(document.documentElement);
-    const navH    = parseFloat(rootStyle.getPropertyValue('--nav-height'))    || 80;
-    const aktionH = parseFloat(rootStyle.getPropertyValue('--aktion-height')) || 0;
+    const navH    = window._anNavH    || 80;
+    const aktionH = window._anAktionH || 0;
     const stickyH = window.innerHeight - navH - aktionH - 8;
     const heroH   = window.innerHeight * (heroVh / 100);
     return Math.max(0, (stickyH - heroH) / 2);
