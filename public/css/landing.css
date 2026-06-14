@@ -793,6 +793,14 @@
   transition: transform var(--t-fast) ease;
 }
 
+/* Bio-zertifiziert item links to the ProCert certificate PDF. Resets default
+   anchor styling so it stays visually identical to the other trust items. */
+.trust-item--cert {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
 .trust-item--reviews:hover {
   transform: translateY(-2px);
 }

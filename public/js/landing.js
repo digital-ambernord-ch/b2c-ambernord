@@ -110,11 +110,12 @@ window.initLanding = async function () {
 
     const heroVh = isDesktop ? 55 : 50;
 
-    /* High-res PNG — Cloudinary h_1000 parameter gives sharp pixels even at
-       the large fill size. The image has a transparent background so it
-       composites cleanly over the black hero. */
+    /* High-res PNG — Cloudinary h_750 parameter gives sharp pixels even at
+       the large fill size while keeping the eager hero payload small. The
+       image has a transparent background so it composites cleanly over the
+       black hero. */
     const fly = document.createElement('img');
-    fly.src = 'https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:good,h_1000/v1775476093/ambernord-bio-sanddornsaft-zelt-edition-250ml-schweiz.webp_kl6nqj.png';
+    fly.src = 'https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto:good,h_750/v1775476093/ambernord-bio-sanddornsaft-zelt-edition-250ml-schweiz.webp_kl6nqj.png';
     fly.alt = '';
     fly.setAttribute('aria-hidden', 'true');
     fly.style.cssText = 'position:absolute;top:0;left:0;pointer-events:none;z-index:11;object-fit:contain;filter:drop-shadow(0 0 40px rgba(237,163,35,0.25)) drop-shadow(0 0 80px rgba(237,163,35,0.12));will-change:transform,opacity;';
@@ -128,7 +129,7 @@ window.initLanding = async function () {
     stickyVP.appendChild(fly);
 
     /* Hide the in-flow bottle ONLY once the hi-res flying clone has actually
-       painted. Hiding it immediately (while the h_1000 clone is still loading)
+       painted. Hiding it immediately (while the h_750 clone is still loading)
        left a frame with NO bottle on screen — the visible "blink" of the hero
        on a browser refresh. At scroll-top the clone sits exactly over the
        original, so swapping the moment it loads is seamless. */
