@@ -67,7 +67,14 @@ window.initLanding = async function () {
      Mobile: simplified version, no floating cards.
      ========================================================================= */
 
-  const mm = gsap.matchMedia();
+  /* Revert any matchMedia contexts from a previous initLanding (SPA re-entry
+     or the GSAP-not-ready retry below): without this, each re-init stacks a
+     fresh set of ScrollTriggers on top of the old ones — two timelines then
+     fight over the same hero / cards / reveals on the next resize, which reads
+     as stutter and "broken" motion across every animated section. revert()
+     kills those triggers AND restores any inline styles they left behind. */
+  if (window._anLandingMM) window._anLandingMM.revert();
+  const mm = window._anLandingMM = gsap.matchMedia();
 
   /* Vertical-center offset for the shrunk hero. .sticky-viewport keeps
      align-items: flex-start (so the full-size hero matches the 8px gap that
@@ -696,7 +703,9 @@ window.initLanding = async function () {
       scrollTrigger: {
         trigger: wrapper,
         start: 'top 85%',
-        toggleActions: 'play none none reverse',
+        /* One-shot: replaying the slide-in backwards on every scroll-up made
+           the prose flicker whenever the user hovered the trigger line. */
+        toggleActions: 'play none none none',
         invalidateOnRefresh: true
       }
     });
@@ -748,7 +757,9 @@ window.initLanding = async function () {
             scrollTrigger: {
               trigger: img,
               start: 'top 85%',
-              toggleActions: 'play none none reverse',
+              /* One-shot — the reverse replay at the trigger line was the
+                 "twitch" on the Exclusive Sourcing / Handwerk photos. */
+              toggleActions: 'play none none none',
               invalidateOnRefresh: true
             }
           });
@@ -764,7 +775,7 @@ window.initLanding = async function () {
             scrollTrigger: {
               trigger: txt,
               start: 'top 85%',
-              toggleActions: 'play none none reverse',
+              toggleActions: 'play none none none',
               invalidateOnRefresh: true
             }
           });
@@ -913,7 +924,8 @@ window.initLanding = async function () {
           scrollTrigger: {
             trigger:      el,
             start:        'top 85%',
-            toggleActions: 'play none none reverse'
+            toggleActions: 'play none none none',
+            invalidateOnRefresh: true
           },
           opacity:  1,
           y:        0,
