@@ -433,16 +433,24 @@
   height: 400px;
   position: relative;
   margin: 120px 0;
+  overflow: hidden;
+}
+
+.b2b-atmospheric-divider::before {
+  content: '';
+  position: absolute;
+  inset: 0;
   background-image: url('https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1600/v1776938257/Ambernord-Sanddorngarden-Elixier-Ritual-BIO_y5isxg');
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
+  opacity: 0.75;
 }
 
 .b2b-atmospheric-divider__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, var(--color-bg) 0%, rgba(10, 10, 10, 0.4) 50%, var(--color-bg) 100%);
+  background: linear-gradient(to bottom, var(--color-bg) 0%, rgba(10, 10, 10, 0.7) 40%, rgba(10, 10, 10, 0.7) 60%, var(--color-bg) 100%);
 }
 
 /* --------------------------------------------------------------------------

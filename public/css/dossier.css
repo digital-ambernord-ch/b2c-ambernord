@@ -141,6 +141,7 @@
     background-image: url('https://res.cloudinary.com/dt6ksxuqf/image/upload/v1781451212/Frischer_Sanddorn_t7hvbb.jpg');
     background-size: cover;
     background-position: center;
+    opacity: 0.75;
     z-index: 0;
     pointer-events: none;
 }
@@ -151,8 +152,8 @@
     inset: 0;
     background: linear-gradient(to bottom,
         var(--color-bg) 0%,
-        rgba(10, 10, 10, 0.78) 30%,
-        rgba(10, 10, 10, 0.78) 70%,
+        rgba(10, 10, 10, 0.7) 40%,
+        rgba(10, 10, 10, 0.7) 60%,
         var(--color-bg) 100%);
 }
 
