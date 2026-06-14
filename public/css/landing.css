@@ -1714,11 +1714,12 @@
   margin-bottom: 100px;
 }
 
-/* Mobile: cinematic full-bleed (same as desktop) — blocks butt directly
-   together so their dark vignette ends fuse seamlessly. */
+/* Mobile: cinematic full-bleed (same as desktop). A small pure-black gap lets
+   the two eased vignette ends breathe between scenes instead of fusing into one
+   crammed strip — soft separation, not a void. */
 @media (max-width: 991px) {
   .nature-hero-wrapper + .nature-hero-wrapper {
-    margin-top: 0;
+    margin-top: 32px;
     margin-bottom: 0;
   }
 }
@@ -1779,10 +1780,13 @@
   opacity: 1;
 }
 
-/* Dark at both ends, image visible through the middle — a soft vignette with
-   a thinner top band so the photo reveals sooner. Adjacent blocks meet
-   black-on-black = seamless scene cross-fade (desktop AND mobile both use
-   the full-bleed cinematic treatment). */
+/* Dark at both ends, image visible through the middle — a soft vignette.
+   The top/bottom feathers are EASED (many closely-spaced stops near each edge
+   that hold the black a touch longer, then open up) so the photo dissolves
+   into #0a0a0a with no perceptible horizontal seam instead of being clipped.
+   Adjacent blocks meet black-on-black + a small breathing gap = the scenes
+   read as separate "plates" that cross-fade rather than crammed-together
+   rectangles (desktop AND mobile both use the full-bleed cinematic treatment). */
 .nature-hero-overlay {
   position: absolute;
   top: 0; left: 0;
@@ -1791,9 +1795,15 @@
   background: linear-gradient(
     to bottom,
     #0a0a0a 0%,
-    rgba(10,10,10,0.30) 12%,
-    rgba(10,10,10,0.34) 48%,
-    rgba(10,10,10,0.88) 84%,
+    rgba(10,10,10,0.96) 4%,
+    rgba(10,10,10,0.74) 9%,
+    rgba(10,10,10,0.44) 14%,
+    rgba(10,10,10,0.32) 20%,
+    rgba(10,10,10,0.30) 44%,
+    rgba(10,10,10,0.42) 62%,
+    rgba(10,10,10,0.70) 78%,
+    rgba(10,10,10,0.90) 88%,
+    rgba(10,10,10,0.98) 95%,
     #0a0a0a 100%
   );
   transition: background var(--t-base) ease;
@@ -1887,10 +1897,11 @@
     padding: 0;
   }
 
-  /* Blocks butt directly together — their dark vignette ends meet
-     black-on-black, so the two scenes read as one continuous sequence. */
+  /* A restrained pure-black gap between the full-bleed scenes: their eased
+     vignette ends already melt to #0a0a0a, and this breath separates them into
+     distinct "plates" instead of one crammed-together run of photos. */
   .nature-hero-wrapper + .nature-hero-wrapper {
-    margin-top: 0;
+    margin-top: 48px;
     margin-bottom: 0;
   }
 
@@ -1979,15 +1990,16 @@
   overflow: hidden;
   /* margin-top was -240px when Ritual was pinned: Exclusive bg peeked behind
      the evaporating Ritual block for visual continuity. Ritual is now a plain
-     scroll-reveal — no pin, no evaporation — so the negative margin only caused
-     Exclusive to overlap the bottom of the Ritual block. Removed. */
-  margin-top: 0;
+     scroll-reveal — no pin, no evaporation. A small positive gap now gives the
+     same black breath that separates the two nature-hero scenes, so Exclusive
+     melts in from black rather than butting the Ritual photo edge. */
+  margin-top: 48px;
 }
 
 @media (max-width: 991px) {
-  /* Mobile Ritual is also a scroll-reveal. The -100px mobile override was
-     likewise tied to the pin era. Both now use the same 0 default. */
-  .exclusive-section-wrapper { margin-top: 0; }
+  /* Mobile Ritual is also a scroll-reveal. Matches the 32px black gap used
+     between the two nature-hero scenes above. */
+  .exclusive-section-wrapper { margin-top: 32px; }
 }
 
 /* Visible by default (no JS / reduced motion = content simply shows); the
@@ -2010,11 +2022,18 @@
 .exclusive-bg-overlay {
   position: absolute;
   inset: 0;
+  /* Eased feather to black at both ends (see .nature-hero-overlay) so this
+     full-bleed backdrop melts into the neighbouring black sections. */
   background: linear-gradient(
     to bottom,
     #0a0a0a 0%,
-    rgba(10,10,10,0.75) 15%,
-    rgba(10,10,10,0.75) 85%,
+    rgba(10,10,10,0.97) 4%,
+    rgba(10,10,10,0.86) 9%,
+    rgba(10,10,10,0.76) 16%,
+    rgba(10,10,10,0.72) 50%,
+    rgba(10,10,10,0.76) 84%,
+    rgba(10,10,10,0.86) 91%,
+    rgba(10,10,10,0.97) 96%,
     #0a0a0a 100%
   );
 }
@@ -2809,11 +2828,17 @@
 .purity-compare__bg-overlay {
   position: absolute;
   inset: 0;
+  /* Eased feather to black at both ends (see .nature-hero-overlay) — kept
+     darker through the middle so the two comparison columns stay legible. */
   background: linear-gradient(
     to bottom,
     #0a0a0a 0%,
-    rgba(10,10,10,0.82) 18%,
-    rgba(10,10,10,0.82) 82%,
+    rgba(10,10,10,0.97) 4%,
+    rgba(10,10,10,0.88) 11%,
+    rgba(10,10,10,0.82) 20%,
+    rgba(10,10,10,0.82) 80%,
+    rgba(10,10,10,0.88) 89%,
+    rgba(10,10,10,0.97) 96%,
     #0a0a0a 100%
   );
 }
