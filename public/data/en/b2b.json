@@ -155,7 +155,7 @@
     "heading": "Start with AmberNord",
     "body": "Certified raw materials for uncompromising products.",
     "btn1": { "label": "Download Catalogue as PDF", "href": "/sanddorn-raw-katalog.html" },
-    "btn2": { "label": "Request Bulk Pricing", "href": "#request-pricing" }
+    "btn2": { "label": "Request Bulk Pricing", "href": "/hilfe/kontakt/#contact-form-section" }
   },
   "images": [
     { "cloudinaryId": "v1776937251/ambernord-sanddornbeeren-frisch-am-zweig_izbzdn", "alt": "Fresh sea buckthorn berries on branch" },

@@ -143,7 +143,7 @@
     "heading": "Inizia con AmberNord",
     "body": "Materie prime certificate per prodotti senza compromessi.",
     "btn1": { "label": "Scarica il catalogo PDF", "href": "/sanddorn-raw-katalog.html" },
-    "btn2": { "label": "Richiedi prezzi all'ingrosso", "href": "#request-pricing" }
+    "btn2": { "label": "Richiedi prezzi all'ingrosso", "href": "/hilfe/kontakt/#contact-form-section" }
   },
   "images": [
     { "cloudinaryId": "v1776937251/ambernord-sanddornbeeren-frisch-am-zweig_izbzdn", "alt": "Bacche fresche di olivello spinoso sul ramo" },

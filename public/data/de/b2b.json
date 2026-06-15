@@ -203,7 +203,7 @@
     "heading": "Starten Sie mit AmberNord",
     "body": "Zertifizierte Rohstoffe für kompromisslose Produkte.",
     "btn1": { "label": "Katalog als PDF herunterladen", "href": "/sanddorn-raw-katalog.html" },
-    "btn2": { "label": "Bulk-Preise anfragen", "href": "#request-pricing" }
+    "btn2": { "label": "Bulk-Preise anfragen", "href": "/hilfe/kontakt/#contact-form-section" }
   },
   "images": [
     { "cloudinaryId": "v1776937251/ambernord-sanddornbeeren-frisch-am-zweig_izbzdn", "alt": "Frische Sanddornbeeren am Zweig" },

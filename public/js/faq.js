@@ -57,7 +57,7 @@ window.initFaq = async function () {
         return `
             <div class="faq-footer">
                 <p>${f.leadHtml}
-                <a href="/hilfe/kontakt/" class="faq-footer__link" data-link>${escapeHtml(f.linkLabel)}</a>.
+                <a href="/hilfe/kontakt/#contact-form-section" class="faq-footer__link" data-link>${escapeHtml(f.linkLabel)}</a>.
                 </p>
                 <a class="faq-footer__cta" href="/shop/" data-link>${escapeHtml(f.cta)}</a>
             </div>

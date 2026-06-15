@@ -143,7 +143,7 @@
     "heading": "Démarrez avec AmberNord",
     "body": "Matières premières certifiées pour des produits sans compromis.",
     "btn1": { "label": "Télécharger le catalogue PDF", "href": "/sanddorn-raw-katalog.html" },
-    "btn2": { "label": "Demander les tarifs en gros", "href": "#request-pricing" }
+    "btn2": { "label": "Demander les tarifs en gros", "href": "/hilfe/kontakt/#contact-form-section" }
   },
   "images": [
     { "cloudinaryId": "v1776937251/ambernord-sanddornbeeren-frisch-am-zweig_izbzdn", "alt": "Baies d'argousier fraîches sur branche" },
