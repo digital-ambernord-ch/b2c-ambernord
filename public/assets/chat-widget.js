@@ -168,6 +168,15 @@
     '.ancb-send:disabled{opacity:.45;cursor:not-allowed;}',
     '.ancb-send svg{width:18px;height:18px;display:block;}',
 
+    /* Desktop resize grip — anchored top-left (panel is pinned bottom-right) */
+    '.ancb-resize{position:absolute;top:0;left:0;width:22px;height:22px;z-index:5;cursor:nwse-resize;touch-action:none;}',
+    '.ancb-resize::before{content:"";position:absolute;top:7px;left:7px;width:7px;height:7px;',
+    '  border-top:2px solid var(--color-text-dim,#888);border-left:2px solid var(--color-text-dim,#888);',
+    '  border-radius:1px;opacity:.45;transition:opacity .2s ease,border-color .2s ease;}',
+    '.ancb-resize:hover::before{opacity:1;border-color:var(--color-gold,#EDA323);}',
+    /* While dragging the grip, suppress the open/close transition so it tracks the pointer */
+    '.ancb-panel.ancb-resizing{transition:none;}',
+
     /* Mobile: full-width bottom sheet */
     '@media (max-width:600px){',
     '  .ancb-panel{right:0;left:0;bottom:0;width:100%;max-width:100%;height:82dvh;max-height:82dvh;border-radius:16px 16px 0 0;transform-origin:bottom center;transform:translateY(100%);}',
@@ -175,6 +184,7 @@
     '  .ancb-launcher{right:16px;bottom:16px;}',
     '  .ancb-nudge{right:16px;bottom:88px;}',
     '  .ancb-nudge::after{right:26px;}',
+    '  .ancb-resize{display:none;}', /* no drag-to-resize on the full-screen mobile sheet */
     '}',
 
     /* Respect reduced-motion */
@@ -222,7 +232,8 @@
     '<form class="ancb-form">' +
       '<textarea class="ancb-input" rows="1" aria-label="' + escapeHtml(S.placeholder) + '" placeholder="' + escapeHtml(S.placeholder) + '"></textarea>' +
       '<button type="submit" class="ancb-send" aria-label="' + escapeHtml(S.send) + '">' + ICON_SEND + '</button>' +
-    '</form>';
+    '</form>' +
+    '<div class="ancb-resize" aria-hidden="true"></div>';
 
   // "Chat with me" nudge bubble (decorative prompt; the launcher is the real
   // control, so the nudge is aria-hidden and not in the tab order).
@@ -298,6 +309,7 @@
   var input = panel.querySelector('.ancb-input');
   var sendBtn = panel.querySelector('.ancb-send');
   var closeBtn = panel.querySelector('.ancb-close');
+  var resizeHandle = panel.querySelector('.ancb-resize');
   var nudgeX = nudge.querySelector('.ancb-nudge__x');
   var nudgeDone = false; // once dismissed or chat opened, never show again
 
@@ -357,6 +369,26 @@
     launcher.classList.add('ancb-launcher--attn');
   }
 
+  function isMobile() { return window.matchMedia('(max-width:600px)').matches; }
+
+  /* --- Mobile keyboard / viewport tracking -------------------------------- *
+   * On phones the on-screen keyboard shrinks the *visual* viewport but not the
+   * layout viewport, so a `bottom:0; height:82dvh` sheet ends up half-hidden
+   * behind the keyboard. We pin the open panel to window.visualViewport instead:
+   * height = visible height, bottom = the keyboard/browser-UI inset. This makes
+   * the sheet fill the free screen top-to-bottom and follow the keyboard.      */
+  function syncMobileViewport() {
+    if (!isMobile() || !panel.classList.contains('ancb-open')) return;
+    var vv = window.visualViewport;
+    if (!vv) return;
+    var inset = window.innerHeight - vv.height - vv.offsetTop;
+    if (inset < 0) inset = 0;
+    panel.style.height = vv.height + 'px';
+    panel.style.maxHeight = vv.height + 'px';
+    panel.style.bottom = inset + 'px';
+    scrollBottom();
+  }
+
   /* --- Open / close (CSS-transition driven; matches site easing tokens) ---- */
   function openPanel() {
     retireNudge();
@@ -366,6 +398,7 @@
     launcher.classList.add('ancb-launcher--open');
     launcher.setAttribute('aria-expanded', 'true');
     launcher.setAttribute('aria-label', S.close);
+    syncMobileViewport();
     setTimeout(function () { input.focus(); }, 60);
     scrollBottom();
   }
@@ -375,6 +408,13 @@
     launcher.classList.remove('ancb-launcher--open');
     launcher.setAttribute('aria-expanded', 'false');
     launcher.setAttribute('aria-label', S.open);
+    // Drop the viewport-tracking inline styles so the next open recomputes them.
+    // Desktop keeps any user-chosen drag size (it never sets `bottom`).
+    if (isMobile()) {
+      panel.style.height = '';
+      panel.style.maxHeight = '';
+      panel.style.bottom = '';
+    }
     launcher.focus();
   }
   function toggle() { panel.classList.contains('ancb-open') ? closePanel() : openPanel(); }
@@ -432,6 +472,63 @@
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && panel.classList.contains('ancb-open')) closePanel();
   });
+
+  // Keep the open mobile sheet glued to the visible viewport (keyboard show/hide,
+  // browser-UI collapse, orientation change).
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', syncMobileViewport);
+    window.visualViewport.addEventListener('scroll', syncMobileViewport);
+  }
+  input.addEventListener('focus', function () { setTimeout(syncMobileViewport, 100); });
+
+  /* --- Desktop: drag the top-left grip to resize --------------------------- */
+  (function initResize() {
+    var MIN_W = 320, MIN_H = 380;
+    var resizing = false, startX = 0, startY = 0, startW = 0, startH = 0;
+
+    resizeHandle.addEventListener('pointerdown', function (e) {
+      if (isMobile()) return; // mobile sheet is full-screen; no manual resize
+      var rect = panel.getBoundingClientRect();
+      resizing = true;
+      startX = e.clientX; startY = e.clientY;
+      startW = rect.width; startH = rect.height;
+      panel.classList.add('ancb-resizing');
+      document.documentElement.style.userSelect = 'none';
+      try { resizeHandle.setPointerCapture(e.pointerId); } catch (err) { /* ignore */ }
+      e.preventDefault();
+    });
+
+    resizeHandle.addEventListener('pointermove', function (e) {
+      if (!resizing) return;
+      // Panel is anchored bottom-right, so dragging up/left (negative delta) grows it.
+      var w = startW + (startX - e.clientX);
+      var h = startH + (startY - e.clientY);
+      var maxW = window.innerWidth - 48;
+      var maxH = window.innerHeight - 132;
+      panel.style.width = Math.max(MIN_W, Math.min(w, maxW)) + 'px';
+      panel.style.height = Math.max(MIN_H, Math.min(h, maxH)) + 'px';
+      panel.style.maxWidth = 'none';
+      panel.style.maxHeight = 'none';
+    });
+
+    function endResize(e) {
+      if (!resizing) return;
+      resizing = false;
+      panel.classList.remove('ancb-resizing');
+      document.documentElement.style.userSelect = '';
+      try { resizeHandle.releasePointerCapture(e.pointerId); } catch (err) { /* ignore */ }
+    }
+    resizeHandle.addEventListener('pointerup', endResize);
+    resizeHandle.addEventListener('pointercancel', endResize);
+
+    // Re-clamp a user-resized panel if the window shrinks below its custom size.
+    window.addEventListener('resize', function () {
+      if (isMobile() || !panel.style.width) return;
+      var maxW = window.innerWidth - 48, maxH = window.innerHeight - 132;
+      if (parseFloat(panel.style.width) > maxW) panel.style.width = maxW + 'px';
+      if (parseFloat(panel.style.height) > maxH) panel.style.height = maxH + 'px';
+    });
+  })();
 
   /* --- Initial render ------------------------------------------------------ */
   addBubble('bot', S.greeting);
