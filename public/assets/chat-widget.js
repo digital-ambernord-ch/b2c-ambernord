@@ -119,9 +119,10 @@
     '  width:380px;max-width:calc(100vw - 32px);',
     '  height:560px;max-height:calc(100dvh - 132px);',
     '  display:flex;flex-direction:column;overflow:hidden;',
-    '  background:var(--color-surface,#111111);color:var(--color-text,#fff);',
-    '  border:1px solid var(--color-border,rgba(255,255,255,.07));border-radius:16px;',
-    '  box-shadow:0 18px 50px rgba(0,0,0,0.6);',
+    '  background:rgba(16,16,16,.82);color:var(--color-text,#fff);',
+    '  -webkit-backdrop-filter:blur(22px) saturate(1.3);backdrop-filter:blur(22px) saturate(1.3);',
+    '  border:1px solid var(--color-border-gold,rgba(237,163,35,.18));border-radius:16px;',
+    '  box-shadow:0 18px 50px rgba(0,0,0,0.55),inset 0 1px 0 rgba(255,255,255,.05);',
     '  font-family:var(--font-sans,"Montserrat",sans-serif);',
     '  transform-origin:bottom right;',
     '  opacity:0;visibility:hidden;pointer-events:none;',
@@ -133,19 +134,19 @@
     '.ancb-panel.ancb-open{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0) scale(1);}',
 
     '.ancb-header{display:flex;align-items:center;gap:10px;padding:14px 16px;',
-    '  background:var(--color-surface-2,#121212);border-bottom:1px solid var(--color-border,rgba(255,255,255,.07));}',
+    '  background:rgba(20,20,20,.55);border-bottom:1px solid var(--color-border,rgba(255,255,255,.07));}',
     '.ancb-dot{width:8px;height:8px;border-radius:50%;background:var(--color-gold,#EDA323);box-shadow:0 0 8px rgba(237,163,35,.7);flex:none;}',
     '.ancb-title{font-family:var(--font-serif,"Playfair Display",Georgia,serif);font-size:16px;font-weight:600;color:var(--color-text,#fff);flex:1;line-height:1.2;}',
     '.ancb-close{background:none;border:none;color:var(--color-text-dim,#888);cursor:pointer;padding:6px;border-radius:8px;display:grid;place-items:center;transition:color .2s ease,background .2s ease;}',
     '.ancb-close:hover,.ancb-close:focus-visible{color:var(--color-gold,#EDA323);background:rgba(255,255,255,.05);outline:none;}',
     '.ancb-close svg{width:18px;height:18px;display:block;}',
 
-    '.ancb-log{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;-webkit-overflow-scrolling:touch;}',
+    '.ancb-log{flex:1;overflow-y:auto;overscroll-behavior:contain;padding:16px;display:flex;flex-direction:column;gap:10px;-webkit-overflow-scrolling:touch;}',
     '.ancb-log::-webkit-scrollbar{width:8px;}',
     '.ancb-log::-webkit-scrollbar-thumb{background:rgba(255,255,255,.12);border-radius:8px;}',
 
     '.ancb-msg{max-width:85%;padding:10px 13px;font-size:14px;line-height:1.5;white-space:pre-wrap;word-wrap:break-word;overflow-wrap:anywhere;}',
-    '.ancb-msg--bot{align-self:flex-start;background:var(--color-surface-2,#121212);border:1px solid var(--color-border,rgba(255,255,255,.07));color:var(--color-text-muted,#d0d0d0);border-radius:12px 12px 12px 4px;}',
+    '.ancb-msg--bot{align-self:flex-start;background:rgba(34,34,34,.65);border:1px solid var(--color-border,rgba(255,255,255,.08));color:var(--color-text-muted,#d0d0d0);border-radius:12px 12px 12px 4px;}',
     '.ancb-msg--user{align-self:flex-end;background:var(--color-gold,#EDA323);color:#0a0a0a;font-weight:500;border-radius:12px 12px 4px 12px;}',
     '.ancb-msg--error{border-color:rgba(220,80,80,.5);color:#f3b4b4;}',
 
@@ -155,9 +156,9 @@
     '.ancb-typing span:nth-child(3){animation-delay:.36s;}',
     '@keyframes ancb-bounce{0%,80%,100%{transform:translateY(0);opacity:.4;}40%{transform:translateY(-4px);opacity:1;}}',
 
-    '.ancb-form{display:flex;gap:8px;align-items:flex-end;padding:12px;border-top:1px solid var(--color-border,rgba(255,255,255,.07));background:var(--color-surface,#111);}',
+    '.ancb-form{display:flex;gap:8px;align-items:flex-end;padding:12px;border-top:1px solid var(--color-border,rgba(255,255,255,.07));background:rgba(16,16,16,.5);}',
     '.ancb-input{flex:1;resize:none;max-height:96px;min-height:42px;padding:11px 12px;font-family:inherit;font-size:14px;line-height:1.4;',
-    '  color:var(--color-text,#fff);background:var(--color-bg,#0a0a0a);',
+    '  color:var(--color-text,#fff);background:rgba(8,8,8,.55);',
     '  border:1px solid var(--color-border,rgba(255,255,255,.07));border-radius:10px;outline:none;transition:border-color .2s ease;}',
     '.ancb-input::placeholder{color:var(--color-text-dim,#888);}',
     '.ancb-input:focus{border-color:var(--color-gold,#EDA323);}',
@@ -480,6 +481,17 @@
     window.visualViewport.addEventListener('scroll', syncMobileViewport);
   }
   input.addEventListener('focus', function () { setTimeout(syncMobileViewport, 100); });
+
+  // Stop touch scrolling from leaking to the page behind the open mobile sheet.
+  // The message log scrolls natively (overscroll-behavior:contain keeps it from
+  // chaining at its edges); every other touch in the panel is swallowed.
+  panel.addEventListener('touchmove', function (e) {
+    if (!isMobile()) return;
+    if (e.target === input) return; // let the textarea handle its own gestures
+    // Allow native scroll only when the log actually has overflow to scroll.
+    if (log.contains(e.target) && log.scrollHeight > log.clientHeight) return;
+    e.preventDefault();
+  }, { passive: false });
 
   /* --- Desktop: drag the top-left grip to resize --------------------------- */
   (function initResize() {
