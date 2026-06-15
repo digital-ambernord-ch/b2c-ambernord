@@ -21,11 +21,18 @@
   user-select: none;
 
   opacity: 0;
-  transition: opacity var(--t-slow) var(--ease-smooth);
+  /* Default (= the collapsing direction) is slow + soft; opening is quicker.  */
+  transition: opacity var(--t-slow) var(--ease-smooth),
+              width 0.55s var(--ease-smooth);
 }
 
 .an-secnav.is-ready { opacity: 1; }
-.an-secnav.is-open  { width: var(--secnav-open); }
+
+.an-secnav.is-open {
+  width: var(--secnav-open);
+  transition: opacity var(--t-slow) var(--ease-smooth),
+              width 0.3s var(--ease-smooth);
+}
 
 /* --- List --------------------------------------------------------------- */
 .an-secnav__list {
@@ -102,12 +109,20 @@
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.65);   /* legibility, not a background */
   opacity: 0;                               /* hidden until expanded */
   transform: translateX(10px);
-  transition: opacity var(--t-base) var(--ease-smooth),
-              transform var(--t-base) var(--ease-smooth),
+  /* Slow, soft fade-out on collapse … */
+  transition: opacity 0.55s var(--ease-smooth),
+              transform 0.55s var(--ease-smooth),
               color var(--t-base) var(--ease-smooth);
 }
 
-.an-secnav.is-open .an-secnav__label { opacity: 1; transform: none; }
+/* … quicker fade-in on open. */
+.an-secnav.is-open .an-secnav__label {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.3s var(--ease-smooth),
+              transform 0.3s var(--ease-smooth),
+              color var(--t-base) var(--ease-smooth);
+}
 
 .an-secnav__item.is-active .an-secnav__label { color: var(--color-gold); }
 
@@ -160,6 +175,28 @@
   .an-secnav__tick  { width: 20px; height: 20px; }
   .an-secnav__tick::after { width: 8px; height: 8px; }
   .an-secnav__track { right: 9px; }
+
+  /* On phones the gold can vanish over photos, so the expanded menu rides on
+     a frosted panel for guaranteed legibility. It fades with the same slow
+     (close) / quick (open) rhythm as the labels. */
+  .an-secnav__list::before {
+    content: "";
+    position: absolute;
+    inset: -12px -10px -12px -18px;
+    border-radius: 14px;
+    background: rgba(12, 12, 12, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--color-border);
+    opacity: 0;
+    pointer-events: none;
+    z-index: -1;
+    transition: opacity 0.55s var(--ease-smooth);
+  }
+  .an-secnav.is-open .an-secnav__list::before {
+    opacity: 1;
+    transition: opacity 0.3s var(--ease-smooth);
+  }
 }
 
 /* =========================================================================
@@ -169,7 +206,8 @@
   .an-secnav,
   .an-secnav__label,
   .an-secnav__tick::after,
-  .an-secnav__track-fill {
+  .an-secnav__track-fill,
+  .an-secnav__list::before {
     transition: none !important;
   }
 }

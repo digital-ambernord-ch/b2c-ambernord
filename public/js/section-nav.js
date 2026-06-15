@@ -27,6 +27,7 @@
 
   window.destroySectionNav = function () {
     if (!STATE) return;
+    if (STATE.cancel) STATE.cancel();
     window.removeEventListener('scroll', STATE.onScroll);
     window.removeEventListener('resize', STATE.onScroll);
     if (STATE.onDoc) document.removeEventListener('click', STATE.onDoc);
@@ -93,12 +94,22 @@
     document.body.appendChild(root);
 
     /* ---- Expand / collapse ----------------------------------------------- */
-    function expand()   { root.classList.add('is-open'); }
+    var closeTimer = 0;
+    function expand() {
+      if (closeTimer) { clearTimeout(closeTimer); closeTimer = 0; }
+      root.classList.add('is-open');
+    }
     function collapse() { root.classList.remove('is-open'); }
+    /* Desktop: linger open a beat after the pointer leaves, then collapse —
+       the slow CSS transition does the soft fade. Re-entering cancels it. */
+    function collapseSoon() {
+      if (closeTimer) clearTimeout(closeTimer);
+      closeTimer = setTimeout(function () { closeTimer = 0; collapse(); }, 600);
+    }
 
     if (canHover) {
       root.addEventListener('mouseenter', expand);
-      root.addEventListener('mouseleave', collapse);
+      root.addEventListener('mouseleave', collapseSoon);
     }
     /* Keyboard: opening on focus, closing when focus leaves the rail. */
     root.addEventListener('focusin', expand);
@@ -182,7 +193,10 @@
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll, { passive: true });
 
-    STATE = { root: root, onScroll: onScroll, onDoc: onDoc };
+    STATE = {
+      root: root, onScroll: onScroll, onDoc: onDoc,
+      cancel: function () { if (closeTimer) clearTimeout(closeTimer); }
+    };
 
     requestAnimationFrame(function () {
       update();
