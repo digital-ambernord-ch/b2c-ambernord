@@ -23,6 +23,14 @@
     "eyebrow": "Contact",
     "h1": "We look forward<br><span>to hearing from you</span>"
   },
+  "sectionNav": {
+    "aria": "Sections",
+    "items": {
+      "contact-card": "Reach us",
+      "contact-whatsapp": "WhatsApp",
+      "contact-form-section": "Form"
+    }
+  },
   "intro": {
     "heading": "Introduction",
     "p1": "Do you have questions about our organic sea buckthorn juice, need information about your order, or have another concern? Do not hesitate to reach out. Your satisfaction and uncompromising quality are our top priorities.",

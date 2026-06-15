@@ -6,8 +6,9 @@
 
 window.initLanding = async function () {
 
+  let homeData = null;
   if (typeof window.loadI18n === 'function') {
-    try { await window.loadI18n(window.getLang(), 'home'); } catch {}
+    try { homeData = await window.loadI18n(window.getLang(), 'home'); } catch {}
   }
 
   /* =========================================================================
@@ -1073,6 +1074,27 @@ window.initLanding = async function () {
         e.preventDefault();
         lbOpen(i);
       });
+    });
+  }
+
+  /* =========================================================================
+     SECTION-NAV RAIL (js/section-nav.js) — the same collapsible in-page table
+     of contents the dossier uses. Sections in document order; short labels per
+     locale come from home.json. The component skips any id not in the DOM and
+     the router tears the rail down on every navigation.
+     ========================================================================= */
+  if (typeof window.initSectionNav === 'function' && homeData && homeData.sectionNav) {
+    const navItems = homeData.sectionNav.items || {};
+    window.initSectionNav({
+      ariaLabel: homeData.sectionNav.aria || 'Sections',
+      sections: [
+        { id: 'scrollTrack',      label: navItems['scrollTrack'] },
+        { id: 'shop',             label: navItems['shop'] },
+        { id: 'landing-purity',   label: navItems['landing-purity'] },
+        { id: 'landing-manifest', label: navItems['landing-manifest'] },
+        { id: 'landing-ritual',   label: navItems['landing-ritual'] },
+        { id: 'exclusiveSection', label: navItems['exclusiveSection'] }
+      ]
     });
   }
 

@@ -24,6 +24,15 @@
     "eyebrow": "Original Edition · 20 × 250 ml",
     "h1": "The Master Box<br><span>Original Edition</span>"
   },
+  "sectionNav": {
+    "aria": "Sezioni",
+    "items": {
+      "master-box-product-heading": "Panoramica",
+      "master-box-savings": "Risparmio",
+      "master-box-included": "Contenuto",
+      "master-box-shipping-section": "Spedizione"
+    }
+  },
   "product": {
     "heading": "Direttamente dalla fonte: <span>La definitiva Corporate &amp; Family Edition</span>",
     "price": "370,00 CHF",

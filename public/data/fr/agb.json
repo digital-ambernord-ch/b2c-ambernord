@@ -92,5 +92,19 @@
   ],
   "footer": {
     "lastUpdated": "Dernière mise à jour : février 2026"
+  },
+  "sectionNav": {
+    "aria": "Sections",
+    "items": {
+      "sec-champ": "Champ",
+      "sec-contrat": "Contrat",
+      "sec-prix": "Prix",
+      "sec-livraison": "Livraison",
+      "sec-garantie": "Garantie",
+      "sec-responsabilite": "Responsabilité",
+      "sec-donnees": "Données",
+      "sec-droit": "Droit",
+      "sec-final": "Dispositions"
+    }
   }
 }

@@ -15,6 +15,26 @@ window.initProduct = async function () {
   }
 
   /* =========================================================================
+     SECTION-NAV — kinetic scroll-spy rail (js/section-nav.js). Sections listed
+     in document order; short single-word labels come from i18nData.sectionNav
+     per locale. The component skips any id absent from the DOM, so this stays
+     safe even on pages without a gallery (it runs before the early return
+     below). The router tears the rail down on every nav.
+     ========================================================================= */
+
+  if (typeof window.initSectionNav === 'function' && i18nData && i18nData.sectionNav) {
+    const navItems = i18nData.sectionNav.items || {};
+    window.initSectionNav({
+      ariaLabel: i18nData.sectionNav.aria || 'Sections',
+      sections: [
+        { id: 'product-overview', label: navItems['product-overview'] },
+        { id: 'product-details',  label: navItems['product-details'] },
+        { id: 'related',          label: navItems['related'] }
+      ]
+    });
+  }
+
+  /* =========================================================================
      PURCHASE TOGGLE — Einmalkauf ↔ Abo (The Habit + The Protocol)
      One CTA switches label and Stripe href with the selected mode.
      Default is the one-time purchase.

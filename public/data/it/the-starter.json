@@ -18,6 +18,14 @@
       "x-default": "https://ambernord.ch/shop/starter/"
     }
   },
+  "sectionNav": {
+    "aria": "Sezioni",
+    "items": {
+      "product-overview": "Panoramica",
+      "product-details": "Dettagli",
+      "related": "Edizioni"
+    }
+  },
   "gallery": {
     "mainAlt": "The Starter — 1× 250 ml elisir di olivello spinoso",
     "thumb1Alt": "Vista del prodotto",

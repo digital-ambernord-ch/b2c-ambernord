@@ -23,6 +23,14 @@
     "eyebrow": "Kontakt",
     "h1": "Wir freuen uns,<br><span>von Ihnen zu hören</span>"
   },
+  "sectionNav": {
+    "aria": "Abschnitte",
+    "items": {
+      "contact-card": "Kontakt",
+      "contact-whatsapp": "WhatsApp",
+      "contact-form-section": "Formular"
+    }
+  },
   "intro": {
     "heading": "Einleitung",
     "p1": "Haben Sie Fragen zu unserem Bio-Sanddornsaft, benötigen Sie Informationen zu Ihrer Bestellung oder haben Sie ein anderes Anliegen? Zögern Sie nicht, uns zu kontaktieren. Ihre Zufriedenheit und höchste Qualität stehen für uns an erster Stelle.",

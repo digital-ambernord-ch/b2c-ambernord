@@ -23,6 +23,14 @@
     "eyebrow": "Contatto",
     "h1": "Siamo lieti<br><span>di sentirvi</span>"
   },
+  "sectionNav": {
+    "aria": "Sezioni",
+    "items": {
+      "contact-card": "Contatti",
+      "contact-whatsapp": "WhatsApp",
+      "contact-form-section": "Modulo"
+    }
+  },
   "intro": {
     "heading": "Introduzione",
     "p1": "Avete domande sul nostro succo di olivello spinoso biologico, avete bisogno di informazioni sul vostro ordine o avete un'altra richiesta? Non esitate a contattarci. La vostra soddisfazione e la qualità premium sono la nostra priorità assoluta.",

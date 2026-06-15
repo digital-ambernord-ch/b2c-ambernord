@@ -18,6 +18,14 @@
       "x-default": "https://ambernord.ch/shop/starter/"
     }
   },
+  "sectionNav": {
+    "aria": "Sections",
+    "items": {
+      "product-overview": "Overview",
+      "product-details": "Details",
+      "related": "Editions"
+    }
+  },
   "gallery": {
     "mainAlt": "The Starter — 1× 250 ml sea buckthorn elixir",
     "thumb1Alt": "Product view",

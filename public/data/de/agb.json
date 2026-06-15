@@ -92,5 +92,19 @@
   ],
   "footer": {
     "lastUpdated": "Stand: Februar 2026"
+  },
+  "sectionNav": {
+    "aria": "Abschnitte",
+    "items": {
+      "sec-geltungsbereich": "Geltung",
+      "sec-vertragsschluss": "Vertrag",
+      "sec-preise": "Preise",
+      "sec-lieferung": "Lieferung",
+      "sec-gewaehrleistung": "Gewährleistung",
+      "sec-haftung": "Haftung",
+      "sec-datenschutz": "Datenschutz",
+      "sec-recht": "Recht",
+      "sec-schluss": "Schluss"
+    }
   }
 }

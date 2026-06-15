@@ -18,6 +18,15 @@
       "x-default": "https://ambernord.ch/ritual/"
     }
   },
+  "sectionNav": {
+    "aria": "Abschnitte",
+    "items": {
+      "main-content": "Wirkung",
+      "ritual-stats": "Fakten",
+      "ritual-protocol": "Protokoll",
+      "ritual-recipes-section": "Rezepte"
+    }
+  },
   "header": {
     "eyebrow": "Anwendung & Wirkung",
     "h1": "Die Wissenschaft<br><span>hinter dem Ritual.</span>"

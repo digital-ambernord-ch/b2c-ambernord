@@ -1,4 +1,15 @@
 {
+  "sectionNav": {
+    "aria": "Sezioni",
+    "items": {
+      "scrollTrack": "Inizio",
+      "shop": "Edizioni",
+      "landing-purity": "Purezza",
+      "landing-manifest": "Manifesto",
+      "landing-ritual": "Rituale",
+      "exclusiveSection": "Origine"
+    }
+  },
   "meta": {
     "title": "AmberNord | Olivello Spinoso Biohacking & Longevità Svizzera",
     "description": "Scoprite la potenza dell'olivello spinoso. AmberNord offre essenze naturali di biohacking e longevità dalla Svizzera per il vostro rituale quotidiano.",

@@ -228,4 +228,18 @@ window.initBewertungen = async function () {
     { threshold: 0.12 }
   );
   targets.forEach((el) => observer.observe(el));
+
+  /* Section-nav rail (js/section-nav.js) — short labels per locale from
+     i18n.sectionNav. The component skips missing ids and the router tears
+     the rail down on every nav. */
+  if (typeof window.initSectionNav === 'function' && i18n && i18n.sectionNav) {
+    const navItems = i18n.sectionNav.items || {};
+    window.initSectionNav({
+      ariaLabel: i18n.sectionNav.aria || 'Sections',
+      sections: [
+        { id: 'bewertungen-reviews', label: navItems['bewertungen-reviews'] },
+        { id: 'bewertung-abgeben',   label: navItems['bewertung-abgeben'] }
+      ]
+    });
+  }
 };

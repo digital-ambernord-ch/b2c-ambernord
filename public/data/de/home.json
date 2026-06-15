@@ -1,4 +1,15 @@
 {
+  "sectionNav": {
+    "aria": "Abschnitte",
+    "items": {
+      "scrollTrack": "Start",
+      "shop": "Editionen",
+      "landing-purity": "Reinheit",
+      "landing-manifest": "Manifest",
+      "landing-ritual": "Ritual",
+      "exclusiveSection": "Herkunft"
+    }
+  },
   "meta": {
     "title": "AmberNord | Sanddorn Biohacking & Longevity Schweiz",
     "description": "Entdecken Sie die Kraft von Sanddorn. AmberNord bietet natürliche Biohacking- und Longevity-Essenzen aus der Schweiz für Ihr tägliches Ritual.",

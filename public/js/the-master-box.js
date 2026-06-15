@@ -139,4 +139,23 @@ window.initTheMasterBox = async function () {
   initGallery();
   initEntranceWillChange();
   initScrollReveal();
+
+  /* ------------------------------------------------------------------------
+     SECTION-NAV RAIL — scroll-spy menu (js/section-nav.js). Sections listed
+     in document order; short labels per locale come from data.sectionNav.
+     The component skips any id absent from the DOM and renders nothing if
+     fewer than two valid sections remain. The router tears it down on nav.
+     ------------------------------------------------------------------------ */
+  if (typeof window.initSectionNav === 'function' && data && data.sectionNav) {
+    const navItems = data.sectionNav.items || {};
+    window.initSectionNav({
+      ariaLabel: data.sectionNav.aria || 'Sections',
+      sections: [
+        { id: 'master-box-product-heading',   label: navItems['master-box-product-heading'] },
+        { id: 'master-box-savings',            label: navItems['master-box-savings'] },
+        { id: 'master-box-included',           label: navItems['master-box-included'] },
+        { id: 'master-box-shipping-section',   label: navItems['master-box-shipping-section'] }
+      ]
+    });
+  }
 };

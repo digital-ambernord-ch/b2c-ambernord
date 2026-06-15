@@ -239,5 +239,20 @@
   ],
   "footer": {
     "lastUpdated": "Last updated: February 2026"
+  },
+  "sectionNav": {
+    "aria": "Sections",
+    "items": {
+      "sec-einleitung": "Introduction",
+      "sec-verantwortliche": "Controller",
+      "sec-erhebung": "Collection",
+      "sec-zwecke": "Purposes",
+      "sec-weitergabe": "Disclosure",
+      "sec-whatsapp": "WhatsApp",
+      "sec-cookies": "Cookies",
+      "sec-datensicherheit": "Security",
+      "sec-rechte": "Rights",
+      "sec-aenderungen": "Amendments"
+    }
   }
 }

@@ -55,4 +55,18 @@ window.initThankyou = async function () {
 
   targets.forEach((el) => observer.observe(el));
 
+  /* Section-nav rail (js/section-nav.js) — short labels per locale from
+     data.sectionNav. The component skips missing ids and the router tears
+     the rail down on every nav. */
+  if (typeof window.initSectionNav === 'function' && data && data.sectionNav) {
+    const navItems = data.sectionNav.items || {};
+    window.initSectionNav({
+      ariaLabel: data.sectionNav.aria || 'Sections',
+      sections: [
+        { id: 'thankyou-confirmation', label: navItems['thankyou-confirmation'] },
+        { id: 'thankyou-next-steps',   label: navItems['thankyou-next-steps'] }
+      ]
+    });
+  }
+
 };

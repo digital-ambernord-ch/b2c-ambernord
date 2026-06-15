@@ -15,6 +15,13 @@
     "eyebrow": "Launch Edition",
     "h1": "You're in.<br><span>One of the 250 voices.</span>"
   },
+  "sectionNav": {
+    "aria": "Sections",
+    "items": {
+      "aktion-danke-confirm": "Confirmation",
+      "aktion-danke-next": "Next steps"
+    }
+  },
   "confirm": {
     "heading": "Order confirmed",
     "lead": "Your Launch Edition order has been received. Both bottles will ship today or tomorrow at the latest from our logistics centre in Aarau."

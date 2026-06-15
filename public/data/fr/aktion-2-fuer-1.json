@@ -11,6 +11,13 @@
       "type": "website"
     }
   },
+  "sectionNav": {
+    "aria": "Sections",
+    "items": {
+      "aktion-main": "Offre",
+      "aktion-faq": "FAQ"
+    }
+  },
   "hero": {
     "eyebrow": "Édition de lancement",
     "h1": "2 × The Starter.<br><span>Un prix. Une demande.</span>",

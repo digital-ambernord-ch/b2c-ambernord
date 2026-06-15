@@ -48,6 +48,7 @@ window.initReturns = async function () {
       return `
         <section
           class="returns-section page-reveal"
+          id="sec-${section.id}"
           aria-labelledby="${headingId}"
         >
           <h2
@@ -91,5 +92,12 @@ window.initReturns = async function () {
   );
 
   targets.forEach((el) => observer.observe(el));
+
+  if (typeof window.initSectionNav === 'function' && data && data.sectionNav) {
+    window.initSectionNav({
+      ariaLabel: data.sectionNav.aria || 'Sections',
+      sections: data.sections.map((s) => ({ id: 'sec-' + s.id, label: (data.sectionNav.items || {})['sec-' + s.id] }))
+    });
+  }
 
 };

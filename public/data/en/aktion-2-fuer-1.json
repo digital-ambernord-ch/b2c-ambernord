@@ -11,6 +11,13 @@
       "type": "website"
     }
   },
+  "sectionNav": {
+    "aria": "Sections",
+    "items": {
+      "aktion-main": "Offer",
+      "aktion-faq": "FAQ"
+    }
+  },
   "hero": {
     "eyebrow": "Launch Edition",
     "h1": "2 × The Starter.<br><span>One price. One request.</span>",

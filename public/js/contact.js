@@ -129,4 +129,22 @@ window.initContact = async function () {
       { once: true }
     );
   }
+
+  /* --------------------------------------------------------------------------
+     SECTION-NAV — in-page rail (js/section-nav.js); sections in document order,
+     short labels from data.sectionNav per locale. The component skips any id
+     missing from the DOM and the router tears it down on every navigation.
+     -------------------------------------------------------------------------- */
+
+  if (typeof window.initSectionNav === 'function' && data && data.sectionNav) {
+    const navItems = data.sectionNav.items || {};
+    window.initSectionNav({
+      ariaLabel: data.sectionNav.aria || 'Sections',
+      sections: [
+        { id: 'contact-card',         label: navItems['contact-card'] },
+        { id: 'contact-whatsapp',     label: navItems['contact-whatsapp'] },
+        { id: 'contact-form-section', label: navItems['contact-form-section'] }
+      ]
+    });
+  }
 };

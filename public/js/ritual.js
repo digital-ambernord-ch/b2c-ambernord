@@ -131,4 +131,20 @@ window.initRitual = async function () {
     } else if (recipeSection) {
         recipeSection.classList.add('is-in-view');
     }
+
+    /* Kinetic section-nav rail (js/section-nav.js). Sections in document order;
+       short labels come from data.sectionNav per locale. The component skips any
+       id missing from the DOM, so this stays safe; router tears it down on nav. */
+    if (typeof window.initSectionNav === 'function' && data && data.sectionNav) {
+        const navItems = data.sectionNav.items || {};
+        window.initSectionNav({
+            ariaLabel: data.sectionNav.aria || 'Sections',
+            sections: [
+                { id: 'main-content',           label: navItems['main-content'] },
+                { id: 'ritual-stats',           label: navItems['ritual-stats'] },
+                { id: 'ritual-protocol',        label: navItems['ritual-protocol'] },
+                { id: 'ritual-recipes-section', label: navItems['ritual-recipes-section'] }
+            ]
+        });
+    }
 };

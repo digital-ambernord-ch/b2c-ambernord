@@ -92,5 +92,19 @@
   ],
   "footer": {
     "lastUpdated": "Last updated: February 2026"
+  },
+  "sectionNav": {
+    "aria": "Sections",
+    "items": {
+      "sec-scope": "Scope",
+      "sec-contract": "Contract",
+      "sec-prices": "Prices",
+      "sec-delivery": "Delivery",
+      "sec-warranty": "Warranty",
+      "sec-liability": "Liability",
+      "sec-privacy": "Privacy",
+      "sec-law": "Law",
+      "sec-final": "Final"
+    }
   }
 }

@@ -43,6 +43,20 @@ window.initAbout = async function () {
     );
 
     revealTargets.forEach((el) => observer.observe(el));
+
+    /* Kinetic section-nav rail (js/section-nav.js). Sections in document order;
+       short labels come from i18n.sectionNav per locale. The component skips any
+       id missing from the DOM, so this stays safe; router tears it down on nav. */
+    if (typeof window.initSectionNav === 'function' && i18n && i18n.sectionNav) {
+        const navItems = i18n.sectionNav.items || {};
+        window.initSectionNav({
+            ariaLabel: i18n.sectionNav.aria || 'Sections',
+            sections: [
+                { id: 'about-story',    label: navItems['about-story'] },
+                { id: 'about-timeline', label: navItems['about-timeline'] }
+            ]
+        });
+    }
 };
 
 /* Collapse the long founder quote to its first four sentences and append a

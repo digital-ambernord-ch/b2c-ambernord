@@ -1,4 +1,15 @@
 {
+  "sectionNav": {
+    "aria": "Sections",
+    "items": {
+      "scrollTrack": "Start",
+      "shop": "Editions",
+      "landing-purity": "Purity",
+      "landing-manifest": "Manifesto",
+      "landing-ritual": "Ritual",
+      "exclusiveSection": "Origin"
+    }
+  },
   "meta": {
     "title": "AmberNord | Sea Buckthorn Biohacking & Longevity Switzerland",
     "description": "Discover the power of sea buckthorn. AmberNord offers natural biohacking and longevity essences from Switzerland for your daily ritual.",

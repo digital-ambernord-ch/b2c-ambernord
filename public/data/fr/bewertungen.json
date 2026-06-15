@@ -15,6 +15,13 @@
     "eyebrow": "Voix authentiques",
     "h1": "Voix de<br><span>nos clients.</span>"
   },
+  "sectionNav": {
+    "aria": "Sections",
+    "items": {
+      "bewertungen-reviews": "Avis",
+      "bewertung-abgeben": "Donner un avis"
+    }
+  },
   "intro": {
     "heading": "Voix de nos clients",
     "p1": "Expériences vérifiées de Suisse — après au moins 14 jours d'utilisation quotidienne. Chaque avis est vérifié à l'aide du numéro de commande."

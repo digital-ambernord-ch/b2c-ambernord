@@ -19,6 +19,16 @@
       "x-default": "https://ambernord.ch/b2b/"
     }
   },
+  "sectionNav": {
+    "aria": "Sections",
+    "items": {
+      "b2b-trust": "Standards",
+      "b2b-masterbox": "Master Box",
+      "b2b-process": "Process",
+      "b2b-benchmark": "Benchmark",
+      "b2b-cta": "Start"
+    }
+  },
   "header": {
     "eyebrow": "Corporate & Industry",
     "h1": "Clinical Raw Materials &<br><span>B2B Supplier</span>",

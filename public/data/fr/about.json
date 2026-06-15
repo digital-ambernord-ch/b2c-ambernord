@@ -18,6 +18,13 @@
       "x-default": "https://ambernord.ch/story/"
     }
   },
+  "sectionNav": {
+    "aria": "Sections",
+    "items": {
+      "about-story": "Histoire",
+      "about-timeline": "Anatomie"
+    }
+  },
   "header": {
     "eyebrow": "L'histoire d'AmberNord",
     "h1": "Du faux coup de fouet<br><span>à la véritable clarté.</span>"

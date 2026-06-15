@@ -15,6 +15,13 @@
     "eyebrow": "Voci autentiche",
     "h1": "Voci dei<br><span>clienti.</span>"
   },
+  "sectionNav": {
+    "aria": "Sezioni",
+    "items": {
+      "bewertungen-reviews": "Recensioni",
+      "bewertung-abgeben": "Recensisci"
+    }
+  },
   "intro": {
     "heading": "Voci dei clienti",
     "p1": "Esperienze verificate dalla Svizzera — dopo almeno 14 giorni di utilizzo quotidiano. Ogni recensione viene verificata tramite il numero d'ordine."

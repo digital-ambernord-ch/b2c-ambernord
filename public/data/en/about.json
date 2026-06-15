@@ -18,6 +18,13 @@
       "x-default": "https://ambernord.ch/story/"
     }
   },
+  "sectionNav": {
+    "aria": "Sections",
+    "items": {
+      "about-story": "Story",
+      "about-timeline": "Anatomy"
+    }
+  },
   "header": {
     "eyebrow": "The Story of AmberNord",
     "h1": "From the false kick<br><span>to real clarity.</span>"

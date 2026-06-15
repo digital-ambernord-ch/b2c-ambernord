@@ -18,6 +18,14 @@
       "x-default": "https://ambernord.ch/shop/protocol/"
     }
   },
+  "sectionNav": {
+    "aria": "Sections",
+    "items": {
+      "product-overview": "Aperçu",
+      "product-details": "Détails",
+      "related": "Éditions"
+    }
+  },
   "gallery": {
     "mainAlt": "The Protocol — 6× 250 ml élixir d'argousier"
   },

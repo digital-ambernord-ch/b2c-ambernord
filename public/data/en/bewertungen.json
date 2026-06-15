@@ -15,6 +15,13 @@
     "eyebrow": "Real Voices",
     "h1": "Customer<br><span>voices.</span>"
   },
+  "sectionNav": {
+    "aria": "Sections",
+    "items": {
+      "bewertungen-reviews": "Reviews",
+      "bewertung-abgeben": "Write review"
+    }
+  },
   "intro": {
     "heading": "Customer Voices",
     "p1": "Verified experiences from Switzerland — after at least 14 days of daily use. Every review is checked against the order number."

@@ -11,6 +11,13 @@
       "type": "website"
     }
   },
+  "sectionNav": {
+    "aria": "Abschnitte",
+    "items": {
+      "aktion-main": "Angebot",
+      "aktion-faq": "Fragen"
+    }
+  },
   "hero": {
     "eyebrow": "Markteinführungs-Edition",
     "h1": "2 × The Starter.<br><span>Ein Preis. Eine Bitte.</span>",

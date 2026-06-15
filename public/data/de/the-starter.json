@@ -18,6 +18,14 @@
       "x-default": "https://ambernord.ch/shop/starter/"
     }
   },
+  "sectionNav": {
+    "aria": "Abschnitte",
+    "items": {
+      "product-overview": "Übersicht",
+      "product-details": "Details",
+      "related": "Editionen"
+    }
+  },
   "gallery": {
     "mainAlt": "The Starter — 1× 250 ml Sanddorn Elixier",
     "thumb1Alt": "Produktansicht",

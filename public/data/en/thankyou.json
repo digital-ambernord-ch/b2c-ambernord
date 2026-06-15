@@ -23,6 +23,13 @@
     "eyebrow": "Order Confirmed",
     "h1": "Nature takes over.<br><span>Your ritual begins.</span>"
   },
+  "sectionNav": {
+    "aria": "Sections",
+    "items": {
+      "thankyou-confirmation": "Confirmation",
+      "thankyou-next-steps": "Next steps"
+    }
+  },
   "confirmation": {
     "heading": "Order Confirmation"
   },

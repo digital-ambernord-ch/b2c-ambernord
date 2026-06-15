@@ -62,5 +62,15 @@
         "All content on this website has been prepared with the greatest care. We accept no liability for the accuracy, completeness or timeliness of the content. The operators of external links are solely responsible for their content."
       ]
     }
-  ]
+  ],
+  "sectionNav": {
+    "aria": "Sections",
+    "items": {
+      "sec-anbieter": "Provider",
+      "sec-kontakt": "Contact",
+      "sec-uid": "UID",
+      "sec-verantwortung": "Responsible",
+      "sec-haftung": "Disclaimer"
+    }
+  }
 }

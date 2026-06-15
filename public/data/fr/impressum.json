@@ -62,5 +62,15 @@
         "Tous les contenus de ce site ont été élaborés avec le plus grand soin. Nous déclinons toute responsabilité quant à l'exactitude, l'exhaustivité et l'actualité des contenus. Les exploitants des liens externes sont seuls responsables de leur contenu."
       ]
     }
-  ]
+  ],
+  "sectionNav": {
+    "aria": "Sections",
+    "items": {
+      "sec-anbieter": "Fournisseur",
+      "sec-kontakt": "Contact",
+      "sec-uid": "IDE",
+      "sec-verantwortung": "Responsable",
+      "sec-haftung": "Responsabilité"
+    }
+  }
 }

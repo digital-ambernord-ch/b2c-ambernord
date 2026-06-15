@@ -16,14 +16,26 @@ window.initFaq = async function () {
     bindAccordion();
     bindScrollReveal();
 
+    /* Section-nav rail (js/section-nav.js): one entry per FAQ category in
+       document order; short labels come from data.sectionNav per locale. The
+       component skips any id missing from the DOM and the router tears it down
+       on every nav. */
+    if (typeof window.initSectionNav === 'function' && data && data.sectionNav && Array.isArray(data.categories)) {
+        const navItems = data.sectionNav.items || {};
+        window.initSectionNav({
+            ariaLabel: data.sectionNav.aria || 'Sections',
+            sections:  data.categories.map((c, i) => ({ id: 'faq-cat-' + i, label: navItems['faq-cat-' + i] }))
+        });
+    }
+
     function renderCategories(cats) {
         if (!Array.isArray(cats)) return '';
         const plus = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <line x1="12" y1="5" x2="12" y2="19"></line>
             <line x1="5" y1="12" x2="19" y2="12"></line>
         </svg>`;
-        return cats.map((cat) => `
-            <div class="faq-category">${escapeHtml(cat.title)}</div>
+        return cats.map((cat, ci) => `
+            <div class="faq-category" id="faq-cat-${ci}">${escapeHtml(cat.title)}</div>
             ${(cat.items || []).map((it) => `
                 <div class="faq-item">
                     <button class="faq-btn" type="button" aria-expanded="false">

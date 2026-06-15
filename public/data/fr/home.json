@@ -1,4 +1,15 @@
 {
+  "sectionNav": {
+    "aria": "Sections",
+    "items": {
+      "scrollTrack": "Début",
+      "shop": "Éditions",
+      "landing-purity": "Pureté",
+      "landing-manifest": "Manifeste",
+      "landing-ritual": "Rituel",
+      "exclusiveSection": "Origine"
+    }
+  },
   "meta": {
     "title": "AmberNord | Argousier Biohacking & Longévité Suisse",
     "description": "Découvrez la puissance de l'argousier. AmberNord propose des essences naturelles de biohacking et de longévité depuis la Suisse pour votre rituel quotidien.",

@@ -18,6 +18,13 @@
       "x-default": "https://ambernord.ch/story/"
     }
   },
+  "sectionNav": {
+    "aria": "Sezioni",
+    "items": {
+      "about-story": "Storia",
+      "about-timeline": "Anatomia"
+    }
+  },
   "header": {
     "eyebrow": "La storia di AmberNord",
     "h1": "Dalla falsa scossa<br><span>alla vera chiarezza.</span>"

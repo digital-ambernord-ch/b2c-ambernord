@@ -18,6 +18,13 @@
       "x-default": "https://ambernord.ch/story/"
     }
   },
+  "sectionNav": {
+    "aria": "Abschnitte",
+    "items": {
+      "about-story": "Geschichte",
+      "about-timeline": "Anatomie"
+    }
+  },
   "header": {
     "eyebrow": "Die Geschichte von AmberNord",
     "h1": "Vom falschen Kick zur<br><span>echten Klarheit.</span>"

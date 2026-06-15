@@ -18,6 +18,14 @@
       "x-default": "https://ambernord.ch/shop/protocol/"
     }
   },
+  "sectionNav": {
+    "aria": "Sezioni",
+    "items": {
+      "product-overview": "Panoramica",
+      "product-details": "Dettagli",
+      "related": "Edizioni"
+    }
+  },
   "gallery": {
     "mainAlt": "The Protocol — 6× 250 ml elisir di olivello spinoso"
   },

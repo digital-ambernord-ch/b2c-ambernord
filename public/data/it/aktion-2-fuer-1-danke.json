@@ -15,6 +15,13 @@
     "eyebrow": "Edizione di lancio",
     "h1": "Lei è dei nostri.<br><span>Una delle 250 voci.</span>"
   },
+  "sectionNav": {
+    "aria": "Sezioni",
+    "items": {
+      "aktion-danke-confirm": "Conferma",
+      "aktion-danke-next": "Prossimi passi"
+    }
+  },
   "confirm": {
     "heading": "Ordine confermato",
     "lead": "Il Suo ordine Edizione di lancio è stato ricevuto. Entrambe le bottiglie verranno spedite oggi o al più tardi domani dal nostro centro logistico di Aarau."

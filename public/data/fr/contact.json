@@ -23,6 +23,14 @@
     "eyebrow": "Contact",
     "h1": "Nous sommes ravis<br><span>de vous entendre</span>"
   },
+  "sectionNav": {
+    "aria": "Sections",
+    "items": {
+      "contact-card": "Nous joindre",
+      "contact-whatsapp": "WhatsApp",
+      "contact-form-section": "Formulaire"
+    }
+  },
   "intro": {
     "heading": "Introduction",
     "p1": "Vous avez des questions sur notre jus d'argousier bio, besoin d'informations sur votre commande ou d'autres questions ? N'hésitez pas à nous contacter. Votre satisfaction et une qualité irréprochable sont notre priorité absolue.",

@@ -62,5 +62,15 @@
         "Alle Inhalte dieser Website wurden mit grösster Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte übernehmen wir keine Gewähr. Für Inhalte externer Links sind ausschliesslich deren Betreiber verantwortlich."
       ]
     }
-  ]
+  ],
+  "sectionNav": {
+    "aria": "Abschnitte",
+    "items": {
+      "sec-anbieter": "Anbieter",
+      "sec-kontakt": "Kontakt",
+      "sec-uid": "UID",
+      "sec-verantwortung": "Verantwortung",
+      "sec-haftung": "Haftung"
+    }
+  }
 }

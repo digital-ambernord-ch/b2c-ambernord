@@ -62,6 +62,7 @@ window.initDatenschutz = async function () {
       return `
         <section
           class="datenschutz-section-item page-reveal"
+          id="sec-${section.id}"
           aria-labelledby="${section.id}-heading"
         >
           <h2 class="datenschutz-section-heading" id="${section.id}-heading">
@@ -132,5 +133,12 @@ window.initDatenschutz = async function () {
   );
 
   targets.forEach((el) => observer.observe(el));
+
+  if (typeof window.initSectionNav === 'function' && data && data.sectionNav) {
+    window.initSectionNav({
+      ariaLabel: data.sectionNav.aria || 'Sections',
+      sections: data.sections.map((s) => ({ id: 'sec-' + s.id, label: (data.sectionNav.items || {})['sec-' + s.id] }))
+    });
+  }
 
 };

@@ -23,6 +23,13 @@
     "eyebrow": "Bestellung bestätigt",
     "h1": "Die Natur übernimmt.<br><span>Ihr Ritual beginnt.</span>"
   },
+  "sectionNav": {
+    "aria": "Abschnitte",
+    "items": {
+      "thankyou-confirmation": "Bestätigung",
+      "thankyou-next-steps": "Nächste Schritte"
+    }
+  },
   "confirmation": {
     "heading": "Bestellbestätigung"
   },

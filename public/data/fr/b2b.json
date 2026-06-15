@@ -19,6 +19,16 @@
       "x-default": "https://ambernord.ch/b2b/"
     }
   },
+  "sectionNav": {
+    "aria": "Sections",
+    "items": {
+      "b2b-trust": "Standards",
+      "b2b-masterbox": "Master Box",
+      "b2b-process": "Procédé",
+      "b2b-benchmark": "Comparatif",
+      "b2b-cta": "Démarrer"
+    }
+  },
   "header": {
     "eyebrow": "Corporate & Industrie",
     "h1": "Matières Premières Cliniques &<br><span>Fournisseur B2B</span>",

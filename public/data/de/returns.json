@@ -67,5 +67,15 @@
   ],
   "footer": {
     "lastUpdated": "Letzte Aktualisierung: Juni 2026"
+  },
+  "sectionNav": {
+    "aria": "Abschnitte",
+    "items": {
+      "sec-garantie": "Garantie",
+      "sec-grundsatz": "Grundsatz",
+      "sec-maengel": "Mängel",
+      "sec-ruecksendungen": "Rücksendungen",
+      "sec-erstattungen": "Erstattungen"
+    }
   }
 }

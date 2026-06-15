@@ -18,6 +18,14 @@
       "x-default": "https://ambernord.ch/shop/protocol/"
     }
   },
+  "sectionNav": {
+    "aria": "Sections",
+    "items": {
+      "product-overview": "Overview",
+      "product-details": "Details",
+      "related": "Editions"
+    }
+  },
   "gallery": {
     "mainAlt": "The Protocol — 6× 250 ml sea buckthorn elixir"
   },

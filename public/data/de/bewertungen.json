@@ -15,6 +15,13 @@
     "eyebrow": "Echte Stimmen",
     "h1": "Kunden<br><span>stimmen.</span>"
   },
+  "sectionNav": {
+    "aria": "Abschnitte",
+    "items": {
+      "bewertungen-reviews": "Bewertungen",
+      "bewertung-abgeben": "Bewerten"
+    }
+  },
   "intro": {
     "heading": "Kundenstimmen",
     "p1": "Verifizierte Erfahrungen aus der Schweiz — nach mindestens 14 Tagen täglicher Anwendung. Jede Bewertung wird anhand der Bestellnummer geprüft."

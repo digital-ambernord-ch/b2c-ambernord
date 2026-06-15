@@ -18,6 +18,14 @@
       "x-default": "https://ambernord.ch/shop/habit/"
     }
   },
+  "sectionNav": {
+    "aria": "Sections",
+    "items": {
+      "product-overview": "Aperçu",
+      "product-details": "Détails",
+      "related": "Éditions"
+    }
+  },
   "badge": {
     "bestseller": "PLUS POPULAIRE"
   },

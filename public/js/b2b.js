@@ -190,4 +190,21 @@ window.initB2b = async function () {
 
   targets.forEach((el) => observer.observe(el));
 
+  /* Kinetic section-nav rail (js/section-nav.js). Sections in document order;
+     short labels come from data.sectionNav per locale. The component skips any
+     id missing from the DOM, so this stays safe; router tears it down on nav. */
+  if (typeof window.initSectionNav === 'function' && data && data.sectionNav) {
+    const navItems = data.sectionNav.items || {};
+    window.initSectionNav({
+      ariaLabel: data.sectionNav.aria || 'Sections',
+      sections: [
+        { id: 'b2b-trust',     label: navItems['b2b-trust'] },
+        { id: 'b2b-masterbox', label: navItems['b2b-masterbox'] },
+        { id: 'b2b-process',   label: navItems['b2b-process'] },
+        { id: 'b2b-benchmark', label: navItems['b2b-benchmark'] },
+        { id: 'b2b-cta',       label: navItems['b2b-cta'] }
+      ]
+    });
+  }
+
 };

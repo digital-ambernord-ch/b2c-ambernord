@@ -22,6 +22,16 @@
     "eyebrow": "Wissen & Transparenz",
     "h1": "Häufige Fragen<br><span>zum Ritual.</span>"
   },
+  "sectionNav": {
+    "aria": "Abschnitte",
+    "items": {
+      "faq-cat-0": "Anwendung",
+      "faq-cat-1": "Inhaltsstoffe",
+      "faq-cat-2": "Verträglichkeit",
+      "faq-cat-3": "Herkunft",
+      "faq-cat-4": "Bestellung"
+    }
+  },
   "categories": [
     {
       "title": "1. Anwendung & tägliches Ritual",

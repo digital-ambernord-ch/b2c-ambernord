@@ -62,5 +62,15 @@
         "Tutti i contenuti di questo sito sono stati redatti con la massima cura. Non garantiamo l'esattezza, la completezza e l'attualità dei contenuti. I gestori dei link esterni sono gli unici responsabili dei loro contenuti."
       ]
     }
-  ]
+  ],
+  "sectionNav": {
+    "aria": "Sezioni",
+    "items": {
+      "sec-anbieter": "Fornitore",
+      "sec-kontakt": "Contatto",
+      "sec-uid": "IDI",
+      "sec-verantwortung": "Responsabile",
+      "sec-haftung": "Responsabilità"
+    }
+  }
 }

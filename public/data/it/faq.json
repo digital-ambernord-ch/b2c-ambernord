@@ -22,6 +22,16 @@
     "eyebrow": "Conoscenza & Trasparenza",
     "h1": "Domande frequenti<br><span>sul rituale.</span>"
   },
+  "sectionNav": {
+    "aria": "Sezioni",
+    "items": {
+      "faq-cat-0": "Utilizzo",
+      "faq-cat-1": "Ingredienti",
+      "faq-cat-2": "Tollerabilità",
+      "faq-cat-3": "Origine",
+      "faq-cat-4": "Ordine"
+    }
+  },
   "categories": [
     {
       "title": "1. Utilizzo & rituale quotidiano",

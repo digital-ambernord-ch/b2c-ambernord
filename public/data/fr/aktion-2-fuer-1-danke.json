@@ -15,6 +15,13 @@
     "eyebrow": "Édition de lancement",
     "h1": "Vous en faites partie.<br><span>L'une des 250 voix.</span>"
   },
+  "sectionNav": {
+    "aria": "Sections",
+    "items": {
+      "aktion-danke-confirm": "Confirmation",
+      "aktion-danke-next": "Étapes"
+    }
+  },
   "confirm": {
     "heading": "Commande confirmée",
     "lead": "Votre commande Édition de lancement a été reçue. Les deux bouteilles seront expédiées aujourd'hui ou demain au plus tard depuis notre centre logistique d'Aarau."

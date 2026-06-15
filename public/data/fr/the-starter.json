@@ -18,6 +18,14 @@
       "x-default": "https://ambernord.ch/shop/starter/"
     }
   },
+  "sectionNav": {
+    "aria": "Sections",
+    "items": {
+      "product-overview": "Aperçu",
+      "product-details": "Détails",
+      "related": "Éditions"
+    }
+  },
   "gallery": {
     "mainAlt": "The Starter — 1× 250 ml élixir d'argousier",
     "thumb1Alt": "Vue du produit",

@@ -6,7 +6,8 @@
 window.initAktion2Fuer1Danke = async function () {
 
   const lang = window.getLang();
-  try { await window.loadI18n(lang, 'aktion-2-fuer-1-danke'); } catch {}
+  let data = null;
+  try { data = await window.loadI18n(lang, 'aktion-2-fuer-1-danke'); } catch {}
 
   const targets = [
     ...document.querySelectorAll('.aktion-danke-confirm, .aktion-danke-next, .aktion-danke-actions')
@@ -27,4 +28,18 @@ window.initAktion2Fuer1Danke = async function () {
     { threshold: 0.12 }
   );
   targets.forEach((el) => observer.observe(el));
+
+  /* Section-nav rail (js/section-nav.js) — short labels per locale from
+     data.sectionNav. The component skips missing ids and the router tears
+     the rail down on every nav. */
+  if (typeof window.initSectionNav === 'function' && data && data.sectionNav) {
+    const navItems = data.sectionNav.items || {};
+    window.initSectionNav({
+      ariaLabel: data.sectionNav.aria || 'Sections',
+      sections: [
+        { id: 'aktion-danke-confirm', label: navItems['aktion-danke-confirm'] },
+        { id: 'aktion-danke-next',    label: navItems['aktion-danke-next'] }
+      ]
+    });
+  }
 };

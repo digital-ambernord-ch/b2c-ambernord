@@ -27,7 +27,7 @@ window.initAgb = async function () {
         ? section.paragraphs.map((para) => `<p>${para}</p>`).join('')
         : '';
       return `
-        <section class="returns-section page-reveal" aria-labelledby="${headingId}">
+        <section class="returns-section page-reveal" id="sec-${section.id}" aria-labelledby="${headingId}">
           <h2 class="returns-section__heading" id="${headingId}">${section.heading}</h2>
           <div class="returns-section__body">${paragraphsHtml}</div>
         </section>
@@ -56,4 +56,11 @@ window.initAgb = async function () {
     { threshold: 0.12 }
   );
   targets.forEach((el) => observer.observe(el));
+
+  if (typeof window.initSectionNav === 'function' && data && data.sectionNav) {
+    window.initSectionNav({
+      ariaLabel: data.sectionNav.aria || 'Sections',
+      sections: data.sections.map((s) => ({ id: 'sec-' + s.id, label: (data.sectionNav.items || {})['sec-' + s.id] }))
+    });
+  }
 };

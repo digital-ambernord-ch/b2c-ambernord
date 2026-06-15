@@ -23,6 +23,13 @@
     "eyebrow": "Ordine confermato",
     "h1": "La natura prende il sopravvento.<br><span>Il Suo rituale inizia.</span>"
   },
+  "sectionNav": {
+    "aria": "Sezioni",
+    "items": {
+      "thankyou-confirmation": "Conferma",
+      "thankyou-next-steps": "Prossimi passi"
+    }
+  },
   "confirmation": {
     "heading": "Conferma ordine"
   },

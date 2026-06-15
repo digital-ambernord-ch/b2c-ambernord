@@ -92,5 +92,19 @@
   ],
   "footer": {
     "lastUpdated": "Ultimo aggiornamento: febbraio 2026"
+  },
+  "sectionNav": {
+    "aria": "Sezioni",
+    "items": {
+      "sec-ambito": "Ambito",
+      "sec-contratto": "Contratto",
+      "sec-prezzi": "Prezzi",
+      "sec-consegna": "Consegna",
+      "sec-garanzia": "Garanzia",
+      "sec-responsabilita": "Responsabilità",
+      "sec-privacy": "Privacy",
+      "sec-diritto": "Diritto",
+      "sec-finali": "Finali"
+    }
   }
 }

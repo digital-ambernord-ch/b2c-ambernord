@@ -239,5 +239,20 @@
   ],
   "footer": {
     "lastUpdated": "Dernière mise à jour : février 2026"
+  },
+  "sectionNav": {
+    "aria": "Sections",
+    "items": {
+      "sec-einleitung": "Introduction",
+      "sec-verantwortliche": "Responsable",
+      "sec-erhebung": "Collecte",
+      "sec-zwecke": "Finalités",
+      "sec-weitergabe": "Transmission",
+      "sec-whatsapp": "WhatsApp",
+      "sec-cookies": "Cookies",
+      "sec-datensicherheit": "Sécurité",
+      "sec-rechte": "Droits",
+      "sec-aenderungen": "Modifications"
+    }
   }
 }

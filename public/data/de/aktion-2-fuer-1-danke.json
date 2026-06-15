@@ -15,6 +15,13 @@
     "eyebrow": "Markteinführungs-Edition",
     "h1": "Sie sind dabei.<br><span>Eine der 250 Stimmen.</span>"
   },
+  "sectionNav": {
+    "aria": "Abschnitte",
+    "items": {
+      "aktion-danke-confirm": "Bestätigung",
+      "aktion-danke-next": "Nächste Schritte"
+    }
+  },
   "confirm": {
     "heading": "Bestellung bestätigt",
     "lead": "Ihre Markteinführungs-Bestellung ist eingegangen. Beide Flaschen werden noch heute oder spätestens morgen aus unserem Logistikzentrum in Aarau verschickt."
