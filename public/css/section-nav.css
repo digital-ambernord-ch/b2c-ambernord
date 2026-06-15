@@ -91,6 +91,16 @@
 
 .an-secnav.is-open .an-secnav__link { pointer-events: auto; }
 
+/* TOUCH — limit the tap target horizontally to the word + dot only.
+   By default each row's hit area is the full rail width, so on touch the
+   expanded menu let taps land far left of the label (towards mid-screen).
+   Shrink the link to its content and pin it to the right edge, so only the
+   word + dot are tappable; the empty space left of the word is inert. The
+   row height (set in the mobile block below) is kept for comfortable
+   vertical targeting — this constrains the horizontal axis only. */
+.an-secnav.is-touch .an-secnav__item { justify-content: flex-end; }
+.an-secnav.is-touch .an-secnav__link { width: auto; }
+
 .an-secnav__link:focus-visible {
   outline: 2px solid var(--color-gold);
   outline-offset: 2px;
