@@ -1,42 +1,42 @@
 /* =========================================================================
-   SECTION-NAV — kinetic scroll-spy rail (mounted by js/section-nav.js)
-   A vertical "picker wheel": active section large + gold in the centre,
-   neighbours shrink and fade away above/below. Fixed overlay → no CLS.
+   SECTION-NAV — collapsible scroll-spy menu (mounted by js/section-nav.js)
+
+   At rest:  a column of section dots (gold progress track) + the CURRENT
+             section name.
+   Expanded: hover / keyboard focus (desktop) or tap (touch) reveals the full
+             clickable list — click any entry to jump straight there.
+   Fixed overlay → no CLS, no effect on load metrics.
    ========================================================================= */
 
 .an-secnav {
-  --secnav-slot: 2.6rem;
-
   position: fixed;
   top: 50%;
-  right: clamp(10px, 2vw, 30px);
+  right: clamp(14px, 2vw, 32px);
   transform: translateY(-50%);
-  height: calc(var(--secnav-slot) * 5);   /* active + 2 neighbours each side */
-
-  display: flex;
-  align-items: center;
-  gap: 14px;
-
   z-index: var(--z-sticky);
-  pointer-events: none;                    /* only buttons + spine are live  */
+  pointer-events: none;                     /* only live elements opt back in */
   user-select: none;
-
   opacity: 0;
   transition: opacity var(--t-slow) var(--ease-smooth);
-
-  /* Dissolve the reel into the page at the top + bottom edges. */
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 24%, #000 76%, transparent 100%);
-          mask-image: linear-gradient(to bottom, transparent 0%, #000 24%, #000 76%, transparent 100%);
 }
 
 .an-secnav.is-ready { opacity: 1; }
 
-/* Frosted backdrop — invisible at rest, fades in on hover for legibility
-   over photography without ever obstructing the page when unused. */
-.an-secnav::before {
+/* --- List + frosted backdrop ------------------------------------------- */
+.an-secnav__list {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.an-secnav__list::before {
   content: "";
   position: absolute;
-  inset: -12px -10px -12px -18px;
+  inset: -14px -12px -14px -22px;
   border-radius: 16px;
   background: rgba(10, 10, 10, 0);
   backdrop-filter: blur(0);
@@ -47,86 +47,19 @@
   z-index: -1;
 }
 
-.an-secnav:hover::before {
-  background: rgba(10, 10, 10, 0.5);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-
-/* --- The reel ---------------------------------------------------------- */
-.an-secnav__reel {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  transition: transform var(--t-slow) var(--ease-smooth);
-  will-change: transform;
-}
-
-.an-secnav__item {
-  height: var(--secnav-slot);
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-.an-secnav__btn {
-  pointer-events: auto;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  margin: 0;
-  padding: 0 2px;
-  border: 0;
-  background: none;
-  cursor: pointer;
-  font-family: inherit;
-}
-
-.an-secnav__btn:focus-visible {
-  outline: 2px solid var(--color-gold);
-  outline-offset: 4px;
-  border-radius: 4px;
-}
-
-.an-secnav__label {
-  display: inline-block;
-  transform-origin: right center;          /* grow/shrink toward the edge */
-  font-family: var(--font-sans);
-  font-size: 1.2rem;
-  font-weight: 600;
-  letter-spacing: 0.015em;
-  line-height: 1;
-  white-space: nowrap;
-  color: var(--color-text-muted);
-  transition: transform var(--t-base) var(--ease-smooth),
-              opacity   var(--t-base) var(--ease-smooth),
-              color     var(--t-base) var(--ease-smooth);
-}
-
-/* Active = the brand voice: Playfair italic, gold. */
-.an-secnav__item.is-active .an-secnav__label {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 500;
-  color: var(--color-gold);
-}
-
-/* --- Progress spine ---------------------------------------------------- */
-.an-secnav__spine {
-  order: 2;                                /* sits to the right of the reel */
-  position: relative;
+/* --- Progress track (vertical line through the dots) ------------------- */
+.an-secnav__track {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  right: 7px;                               /* aligns with the dot centres */
   width: 2px;
-  height: 100%;
   border-radius: 2px;
   background: var(--color-border);
   overflow: hidden;
-  pointer-events: none;
 }
 
-.an-secnav__spine-fill {
+.an-secnav__track-fill {
   position: absolute;
   inset: 0;
   border-radius: 2px;
@@ -136,25 +69,155 @@
   transition: transform var(--t-base) linear;
 }
 
-/* --- Mobile: tighter, closer to the edge, only the active + 1 neighbour - */
-@media (max-width: 768px) {
-  .an-secnav {
-    --secnav-slot: 2.1rem;
-    right: clamp(6px, 2.5vw, 14px);
-    gap: 10px;
-    height: calc(var(--secnav-slot) * 3);
-  }
-  .an-secnav.is-ready { opacity: 0.92; }
-  .an-secnav__label { font-size: 0.98rem; }
+/* --- Items + links ------------------------------------------------------ */
+.an-secnav__item {
+  display: flex;
+  justify-content: flex-end;
 }
 
-/* --- Reduced motion: snap instantly, no easing ------------------------- */
+.an-secnav__link {
+  pointer-events: none;                     /* opts back in when expanded */
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 32px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.an-secnav__link:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* --- Label -------------------------------------------------------------- */
+.an-secnav__label {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  white-space: nowrap;
+  color: var(--color-text-muted);
+  opacity: 0;                               /* hidden at rest … */
+  transform: translateX(10px);
+  transition: opacity var(--t-base) var(--ease-smooth),
+              transform var(--t-base) var(--ease-smooth),
+              color var(--t-base) var(--ease-smooth);
+}
+
+/* … except the active one, which is always shown (the "current section"). */
+.an-secnav__item.is-active .an-secnav__label {
+  opacity: 1;
+  transform: none;
+  color: var(--color-gold);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.12rem;
+}
+
+/* --- Dot tick ----------------------------------------------------------- */
+.an-secnav__tick {
+  flex: 0 0 auto;
+  position: relative;
+  width: 16px;
+  height: 16px;
+}
+
+.an-secnav__tick::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-text-dim);
+  transform: translate(-50%, -50%) scale(1);
+  transition: background var(--t-base) var(--ease-smooth),
+              transform var(--t-base) var(--ease-smooth);
+}
+
+.an-secnav__item.is-passed .an-secnav__tick::after { background: var(--color-gold-dim); }
+
+.an-secnav__item.is-active .an-secnav__tick::after {
+  background: var(--color-gold);
+  transform: translate(-50%, -50%) scale(1.45);
+  box-shadow: 0 0 10px var(--color-gold-dim);
+}
+
+/* --- Touch hit area (opens the menu on tap; inert on desktop) ---------- */
+.an-secnav__toggle {
+  position: absolute;
+  inset: -10px -6px -10px -12px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  pointer-events: none;
+}
+.an-secnav.is-touch:not(.is-open) .an-secnav__toggle { pointer-events: auto; }
+
+/* =========================================================================
+   EXPANDED STATE — reveal every label + make the whole list clickable
+   (keyboard focus + .is-open always; pointer hover only on hover devices)
+   ========================================================================= */
+.an-secnav:focus-within .an-secnav__label,
+.an-secnav.is-open      .an-secnav__label { opacity: 1; transform: none; }
+
+.an-secnav:focus-within .an-secnav__link,
+.an-secnav.is-open      .an-secnav__link { pointer-events: auto; }
+
+.an-secnav:focus-within .an-secnav__list::before,
+.an-secnav.is-open      .an-secnav__list::before {
+  background: rgba(10, 10, 10, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+@media (hover: hover) {
+  .an-secnav:hover .an-secnav__label { opacity: 1; transform: none; }
+  .an-secnav:hover .an-secnav__link  { pointer-events: auto; }
+  .an-secnav:hover .an-secnav__list::before {
+    background: rgba(10, 10, 10, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  /* Brighten the hovered entry so the click target is obvious. */
+  .an-secnav__link:hover .an-secnav__label { color: var(--color-text); }
+}
+
+/* =========================================================================
+   MOBILE — larger targets, closer to the edge
+   ========================================================================= */
+@media (max-width: 768px) {
+  .an-secnav { right: clamp(8px, 2.5vw, 16px); }
+
+  .an-secnav__link  { height: 40px; gap: 14px; }
+  .an-secnav__label { font-size: 1.05rem; }
+  .an-secnav__item.is-active .an-secnav__label { font-size: 1.16rem; }
+
+  .an-secnav__tick { width: 20px; height: 20px; }
+  .an-secnav__tick::after { width: 8px; height: 8px; }
+  .an-secnav__track { right: 9px; }
+}
+
+/* =========================================================================
+   REDUCED MOTION — snap, no easing
+   ========================================================================= */
 @media (prefers-reduced-motion: reduce) {
   .an-secnav,
-  .an-secnav__reel,
   .an-secnav__label,
-  .an-secnav__spine-fill,
-  .an-secnav::before {
+  .an-secnav__tick::after,
+  .an-secnav__track-fill,
+  .an-secnav__list::before {
     transition: none !important;
   }
 }
