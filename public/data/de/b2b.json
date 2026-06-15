@@ -202,7 +202,7 @@
   "cta": {
     "heading": "Starten Sie mit AmberNord",
     "body": "Zertifizierte Rohstoffe für kompromisslose Produkte.",
-    "btn1": { "label": "Katalog als PDF herunterladen", "href": "#download-catalog" },
+    "btn1": { "label": "Katalog als PDF herunterladen", "href": "/sanddorn-raw-katalog.html" },
     "btn2": { "label": "Bulk-Preise anfragen", "href": "#request-pricing" }
   },
   "images": [

@@ -154,7 +154,7 @@
   "cta": {
     "heading": "Start with AmberNord",
     "body": "Certified raw materials for uncompromising products.",
-    "btn1": { "label": "Download Catalogue as PDF", "href": "#download-catalog" },
+    "btn1": { "label": "Download Catalogue as PDF", "href": "/sanddorn-raw-katalog.html" },
     "btn2": { "label": "Request Bulk Pricing", "href": "#request-pricing" }
   },
   "images": [

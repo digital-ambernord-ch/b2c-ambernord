@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>b2b.ambernord.ch – B2B Katalog 2026</title>
+<meta name="description" content="B2B Rohstoff-Katalog 2026: Premium Sanddorn-Extrakte aus dem Baltikum. DDP Schweiz, Bio-zertifiziert.">
+<link rel="canonical" href="https://b2b.ambernord.ch/sanddorn-raw-katalog">
+
+<!-- AmberNord Favicon: B2B Switzerland (#0C7A78) — b2b.ambernord.ch -->
+<link rel="icon" type="image/svg+xml" href="/b2b-ch/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/b2b-ch/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/b2b-ch/favicon-16.png">
+<link rel="shortcut icon" href="/b2b-ch/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/b2b-ch/apple-touch-icon.png">
+<link rel="manifest" href="/b2b-ch/site.webmanifest">
+<meta name="theme-color" content="#0C7A78">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* =====================================================
+   BASE RESET
+===================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* =====================================================
+   WRAPPER — DARK DEFAULT
+===================================================== */
+#an-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #000000;
+  color: #f4f4f4;
+  line-height: 1.6;
+  overflow-x: hidden;
+  padding: 20px 0;
+  min-height: 100vh;
+  width: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+#an-wrap.light {
+  background-color: #e6e6e6;
+  color: #1a1a1a;
+}
+
+/* =====================================================
+   TOP CONTROLS
+===================================================== */
+.an-top {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  left: 20px;
+  z-index: 9999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  pointer-events: none;
+  background: transparent;
+}
+.an-top > * { pointer-events: auto; }
+.an-top-left { flex: 1; display: flex; justify-content: flex-start; gap: 6px; }
+.an-top-center { display: flex; gap: 15px; align-items: center; justify-content: center; }
+.an-top-right { flex: 1; display: flex; justify-content: flex-end; }
+
+.an-btn {
+  display: inline-block;
+  background: #0c0c0c;
+  color: #f4f4f4;
+  border: 1px solid #2a2a2a;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  border-radius: 4px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  transition: all 0.2s;
+  text-transform: none;
+  letter-spacing: normal;
+  text-decoration: none;
+  line-height: 1.4;
+  outline: none;
+}
+.an-btn:hover { border-color: #EDA323; color: #EDA323; }
+.an-btn.active { background: #EDA323; color: #000; border-color: #EDA323; }
+
+.light .an-btn { background: #ffffff; color: #1a1a1a; border-color: #e0e0e0; }
+.light .an-btn:hover { border-color: #D38D1A; color: #D38D1A; }
+.light .an-btn.active { background: #D38D1A; color: #000; border-color: #D38D1A; }
+
+.an-btn-print {
+  background: #0c0c0c;
+  color: #EDA323;
+  border: 1px solid #EDA323;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  outline: none;
+  line-height: 1.4;
+  min-width: 190px;
+  text-align: center;
+}
+.an-btn-print:hover { background: #EDA323; color: #0c0c0c; }
+.light .an-btn-print { background: #ffffff; color: #D38D1A; border-color: #D38D1A; }
+.light .an-btn-print:hover { background: #D38D1A; color: #fff; }
+
+/* =====================================================
+   CATALOG CONTAINER & A4 PAGES
+===================================================== */
+.an-container {
+  width: 100%;
+  max-width: 210mm;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 60px;
+}
+
+.an-page {
+  width: 210mm;
+  height: 297mm;
+  background-color: #0c0c0c;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 15mm 20mm;
+  overflow: hidden;
+  margin-bottom: 40px;
+  border: 1px solid #2a2a2a;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.9);
+  color: #f4f4f4;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10pt;
+  line-height: 1.6;
+}
+.an-page-cover {
+  justify-content: center;
+  text-align: center;
+}
+.light .an-page {
+  background-color: #ffffff;
+  border-color: #e0e0e0;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  color: #1a1a1a;
+}
+
+/* =====================================================
+   ACCENT
+===================================================== */
+.an-accent { color: #EDA323; }
+.light .an-accent { color: #D38D1A; }
+
+/* =====================================================
+   HEADER & FOOTER BARS
+===================================================== */
+.an-hbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #2a2a2a;
+  padding-bottom: 5mm;
+  margin-bottom: 6mm;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 9pt;
+  color: #aaaaaa;
+}
+.light .an-hbar { border-bottom-color: #e0e0e0; color: #4a4a4a; }
+
+.an-fbar {
+  margin-top: auto;
+  border-top: 1px solid #2a2a2a;
+  padding-top: 5mm;
+  display: flex;
+  justify-content: space-between;
+  font-size: 8pt;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.light .an-fbar { border-top-color: #e0e0e0; color: #777777; }
+
+/* =====================================================
+   IMAGE
+===================================================== */
+.an-img {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* =====================================================
+   FLEX LAYOUT
+===================================================== */
+.an-row { display: flex; gap: 15mm; }
+.an-col { flex: 1; min-width: 0; }
+.an-col-wide { flex: 1.5; min-width: 0; }
+
+/* =====================================================
+   STATS
+===================================================== */
+.an-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5mm;
+  margin: 5mm 0;
+}
+.an-stat {
+  text-align: center;
+  border: 1px solid #2a2a2a;
+  padding: 4mm 2mm;
+  background: #121212;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.light .an-stat { border-color: #e0e0e0; background: #fdfdfd; }
+.an-stat-n {
+  font-family: 'Playfair Display', serif;
+  font-size: 20pt;
+  color: #EDA323;
+  line-height: 1;
+  margin-bottom: 3px;
+  display: block;
+}
+.light .an-stat-n { color: #D38D1A; }
+.an-stat-l {
+  font-size: 7pt;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #666666;
+  display: block;
+}
+.light .an-stat-l { color: #777777; }
+
+/* =====================================================
+   FEATURE LIST
+===================================================== */
+.an-flist {
+  list-style: none;
+  font-size: 8.5pt;
+  color: #aaaaaa;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+.light .an-flist { color: #4a4a4a; }
+.an-flist li {
+  position: relative;
+  padding-left: 14px;
+  margin-bottom: 3px;
+  list-style: none;
+}
+.an-flist li::before {
+  content: "✦";
+  position: absolute;
+  left: 0;
+  top: 1px;
+  color: #EDA323;
+  font-size: 7pt;
+}
+.light .an-flist li::before { color: #D38D1A; }
+
+/* =====================================================
+   PRODUCT GRID
+===================================================== */
+.an-pgrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6mm 15mm;
+}
+.an-pcard {
+  display: flex;
+  flex-direction: column;
+}
+.an-pcard .an-img {
+  width: 50mm;
+  height: 50mm;
+  margin: 0 auto 3mm auto;
+  border-radius: 50%;
+  -webkit-mask-image: radial-gradient(circle at center, black 90%, transparent 100%);
+  mask-image: radial-gradient(circle at center, black 90%, transparent 100%);
+  flex-shrink: 0;
+}
+.an-pcard h3 {
+  font-size: 13pt;
+  margin-bottom: 1mm;
+  letter-spacing: 0.5px;
+  color: #f4f4f4;
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  background: transparent;
+  padding: 0;
+  border: none;
+}
+.light .an-pcard h3 { color: #1a1a1a; }
+.an-pmeta {
+  font-size: 6.5pt;
+  color: #EDA323;
+  font-weight: 600;
+  margin-bottom: 2mm;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+  display: block;
+}
+.light .an-pmeta { color: #D38D1A; }
+
+/* =====================================================
+   SPECS
+===================================================== */
+.an-specs { display: flex; flex-direction: column; gap: 2mm; }
+.an-spec {
+  font-size: 7.5pt;
+  line-height: 1.3;
+  color: #aaaaaa;
+  padding-left: 8px;
+  border-left: 2px solid #222222;
+}
+.light .an-spec { color: #4a4a4a; border-left-color: #dddddd; }
+.an-spec-lbl {
+  display: block;
+  font-size: 6pt;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin-bottom: 1px;
+}
+.light .an-spec-lbl { color: #777777; }
+.an-hl { color: #EDA323; font-weight: 600; }
+.light .an-hl { color: #D38D1A; }
+
+/* =====================================================
+   CONTACT BOX
+===================================================== */
+.an-cbox {
+  width: 100%;
+  max-width: 95%;
+  background: #151515;
+  border: 1px solid #2a2a2a;
+  padding: 10mm;
+  border-radius: 4px;
+  display: flex;
+  gap: 8mm;
+  text-align: left;
+}
+.light .an-cbox { background: #f5f5f5; border-color: #e0e0e0; }
+
+/* =====================================================
+   DIVIDERS
+===================================================== */
+.an-div {
+  width: 40px;
+  height: 2px;
+  background: #EDA323;
+  margin: 15px auto;
+  border: none;
+  display: block;
+}
+.light .an-div { background: #D38D1A; }
+.an-sdiv {
+  border: none;
+  border-top: 1px solid #2a2a2a;
+  margin: 4mm 0 0 0;
+  padding-top: 5mm;
+  display: block;
+}
+.light .an-sdiv { border-top-color: #e0e0e0; }
+
+/* =====================================================
+   MOBILE
+===================================================== */
+@media screen and (max-width: 800px) {
+  #an-wrap { padding: 0; }
+  .an-container { margin-top: 90px; }
+  .an-page {
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    padding: 10mm 5%;
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 2px solid #EDA323;
+    box-shadow: none;
+  }
+  .an-top {
+    background: #000000;
+    padding: 12px 15px;
+    top: 0; left: 0; right: 0;
+    border-bottom: 1px solid #2a2a2a;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+  .light .an-top { background: #e6e6e6; border-bottom-color: #d0d0d0; }
+  .an-row { flex-direction: column; gap: 8mm; }
+  .an-pgrid { grid-template-columns: 1fr; gap: 12mm; }
+  .an-stats { grid-template-columns: 1fr 1fr; }
+  .an-hbar { flex-direction: column; gap: 10px; text-align: center; }
+  .an-cbox { flex-direction: column; }
+}
+
+/* =====================================================
+   PRINT — PERFECT A4
+===================================================== */
+@page { size: A4; margin: 0; }
+
+@media print {
+  html, body {
+    width: 210mm;
+    min-width: 210mm;
+    max-width: 210mm;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+  }
+  #an-wrap, #an-wrap.light {
+    display: block;
+    width: 210mm;
+    min-width: 210mm;
+    max-width: 210mm;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+  }
+  .an-container {
+    display: block;
+    width: 210mm;
+    min-width: 210mm;
+    max-width: 210mm;
+    margin: 0;
+    padding: 0;
+    transform: none !important;
+  }
+  .an-page, .light .an-page {
+    display: flex;
+    width: 210mm;
+    height: 297mm;
+    min-width: 210mm;
+    max-width: 210mm;
+    margin: 0;
+    padding: 15mm 20mm;
+    box-sizing: border-box;
+    border: none;
+    box-shadow: none;
+    page-break-after: always;
+    page-break-inside: avoid;
+    overflow: hidden;
+  }
+  .an-page:last-of-type { page-break-after: auto; }
+  .an-top { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div id="an-wrap" class="light">
+
+<!-- TOP CONTROLS -->
+<div class="an-top">
+  <div class="an-top-left">
+    <button class="an-btn" onclick="if(window.history.length>1){window.history.back();}else{window.location.href='/b2b/#b2b-cta';}" data-i18n="nav_back">← Zurück</button>
+    <button class="an-btn" onclick="anToggleTheme()" id="anThemeBtn">☾ Dark Mode</button>
+  </div>
+  <div class="an-top-center">
+    <div style="display:flex;gap:6px">
+      <button class="an-btn active" onclick="anSetLang('de')" id="btn-de">DE</button>
+      <button class="an-btn" onclick="anSetLang('en')" id="btn-en">EN</button>
+      <button class="an-btn" onclick="anSetLang('fr')" id="btn-fr">FR</button>
+      <button class="an-btn" onclick="anSetLang('it')" id="btn-it">IT</button>
+    </div>
+    <div style="display:flex;gap:6px">
+      <button class="an-btn" onclick="anZoom(0.1)">+</button>
+      <button class="an-btn" onclick="anZoom(-0.1)">−</button>
+    </div>
+  </div>
+  <div class="an-top-right">
+    <button class="an-btn-print" onclick="window.print()" data-i18n="nav_print">Als PDF speichern</button>
+  </div>
+</div>
+
+<div class="an-container">
+
+<!-- PAGE 1: COVER -->
+<div class="an-page an-page-cover">
+  <div style="margin-bottom:15mm">
+    <h1 id="anBrand1" style="font-family:'Playfair Display',serif;font-size:38pt;letter-spacing:4px;line-height:1;margin:0;padding:0;color:#f4f4f4">b2b.<span class="an-accent">ambernord.ch</span></h1>
+    <p data-i18n="cover_sub" style="text-transform:uppercase;letter-spacing:4px;font-size:10pt;color:#666666;margin-top:10px">Schweizer Premium-Importeur</p>
+  </div>
+  <div class="an-img" style="width:100%;height:120mm;background-image:url('https://res.cloudinary.com/dt6ksxuqf/image/upload/v1776937251/ambernord-sanddornbeeren-frisch-am-zweig_izbzdn.png')"></div>
+  <div style="margin-top:15mm">
+    <h2 data-i18n="cover_title" style="font-family:'Playfair Display',serif;font-size:20pt;font-weight:400;letter-spacing:2px;margin:0;color:#f4f4f4;text-align:center;line-height:1.3">DAS GOLD DER <br><span class="an-accent">NÖRDLICHEN BREITENGRADE</span></h2>
+    <hr class="an-div">
+    <p data-i18n="cover_cat" style="font-size:9pt;color:#666666;letter-spacing:1px;margin:0;text-align:center">B2B ROHSTOFF-KATALOG 2026</p>
+  </div>
+</div>
+
+<!-- PAGE 2: PHILOSOPHY -->
+<div class="an-page">
+  <div class="an-hbar">
+    <div data-i18n="p2_tag1" class="an-accent" style="font-weight:600">UNSERE PHILOSOPHIE</div>
+    <div data-i18n="p2_tag2">WISSENSCHAFT &amp; PARTNERSCHAFT</div>
+  </div>
+  <h2 data-i18n="p2_h2" style="font-family:'Playfair Display',serif;font-size:26pt;margin:0 0 6mm 0;line-height:1.2;text-align:center;color:#f4f4f4;font-weight:600">Schweizer Präzision. <br><span class="an-accent">Nordische Naturkraft.</span></h2>
+  <div class="an-row">
+    <div class="an-col-wide">
+      <p data-i18n="p2_p1" style="font-size:9.5pt;color:#aaaaaa;margin:0 0 4mm 0;line-height:1.6">b2b.ambernord.ch ist ein zu 100% in der Schweiz ansässiges, bio-zertifiziertes Unternehmen (ProCert). In exklusiver Partnerschaft mit führenden nordeuropäischen Agrar-Experten importieren und vertreiben wir hochspezialisierte Premium-Sanddornrohstoffe.</p>
+      <p data-i18n="p2_p2" style="font-size:9.5pt;color:#aaaaaa;margin:0;line-height:1.6"><strong>Die Zero-Waste Architektur:</strong> Unsere Partner verwerten 100 Prozent der geernteten Biomasse. Von der hochpotenten Beere bis zur Rinde der Äste – jeder Bestandteil wird technologisch veredelt.</p>
+    </div>
+    <div class="an-col">
+      <div class="an-img" style="width:100%;height:48mm;background-image:url('https://res.cloudinary.com/dt6ksxuqf/image/upload/v1776938257/Ambernord-Sanddorngarden-Elixier-Ritual-BIO_y5isxg.jpg')"></div>
+    </div>
+  </div>
+  <div class="an-stats">
+    <div class="an-stat"><span class="an-stat-n">180+</span><span data-i18n="stat1_lbl" class="an-stat-l">Bioaktive Stoffe</span></div>
+    <div class="an-stat"><span class="an-stat-n">4</span><span class="an-stat-l">Omega (3, 6, 7, 9)</span></div>
+    <div class="an-stat"><span class="an-stat-n">18</span><span data-i18n="stat3_lbl" class="an-stat-l">Aminosäuren</span></div>
+    <div class="an-stat"><span class="an-stat-n">17</span><span data-i18n="stat4_lbl" class="an-stat-l">Natürliche Vitamine</span></div>
+  </div>
+  <div class="an-sdiv">
+    <div class="an-row" style="margin-top:0">
+      <div class="an-col">
+        <h3 data-i18n="p2_eff_h3" style="font-family:'Playfair Display',serif;font-size:11pt;color:#EDA323;margin:0 0 8px 0;font-weight:600">Wirkungsprofil</h3>
+        <ul class="an-flist">
+          <li data-i18n="p2_eff_li1">Fördert die natürliche Geweberegeneration</li>
+          <li data-i18n="p2_eff_li2">Bekannt für beruhigende und schützende Eigenschaften</li>
+          <li data-i18n="p2_eff_li3">Unterstützt Vitalität und allgemeines Wohlbefinden</li>
+          <li data-i18n="p2_eff_li4">Wertvoll für die normale Funktion von Schleimhäuten</li>
+        </ul>
+      </div>
+      <div class="an-col">
+        <h3 data-i18n="p2_val_h3" style="font-family:'Playfair Display',serif;font-size:11pt;color:#EDA323;margin:0 0 8px 0;font-weight:600">Der Wert von Sanddorn</h3>
+        <p data-i18n="p2_val_p" style="font-size:8.5pt;color:#aaaaaa;line-height:1.5;margin:0">Eine der seltensten pflanzlichen Quellen weltweit, die das komplette Spektrum an Omega-Fettsäuren vereint. Essentiell für Nutrikosmetik und Immunität.</p>
+      </div>
+    </div>
+  </div>
+  <div class="an-fbar">
+    <div data-i18n="footer_1">b2b.ambernord.ch • SWISS QUALITY</div>
+    <div data-i18n="footer_p2">SEITE 02</div>
+  </div>
+</div>
+
+<!-- PAGE 3: PORTFOLIO I -->
+<div class="an-page">
+  <div class="an-hbar">
+    <div data-i18n="p3_tag1" class="an-accent" style="font-weight:600">PRODUKTPORTFOLIO I</div>
+    <div data-i18n="p3_tag2">ESSENZEN &amp; PRIMÄREXTRAKTE</div>
+  </div>
+  <div class="an-pgrid">
+    <div class="an-pcard">
+      <div class="an-img" style="background-image:url('https://res.cloudinary.com/dt6ksxuqf/image/upload/v1776937253/ambernord-sanddorn-muttersaft-100-prozent_oo2pxp.png')"></div>
+      <h3 data-i18n="prod1_title">Sanddorn-Muttersaft</h3>
+      <span data-i18n="prod1_meta" class="an-pmeta">100% PUR | PASTEURISIERT | UNGEFILTERT</span>
+      <div class="an-specs">
+        <div class="an-spec"><span data-i18n="spec_eff" class="an-spec-lbl">Wirkung / Nutzen</span><span data-i18n="prod1_eff">Verdünnt (1:5–1:10) natürlicher Energie-Boost, reich an Antioxidantien. Für Cocktails, Tees, Dressings und Joghurt.</span></div>
+        <div class="an-spec"><span data-i18n="spec_con" class="an-spec-lbl">Inhalt / Profil</span><span data-i18n="prod1_con">Ganze Beere inkl. Saft, Fruchtfleisch und Ölen. <span class="an-hl">Vitamin C</span>, Beta-Carotin, Omega-3, -6, -7, -9.</span></div>
+        <div class="an-spec"><span data-i18n="spec_geb" class="an-spec-lbl">Erhältliche Gebinde</span><span data-i18n="prod1_geb">200L Fässer</span></div>
+      </div>
+    </div>
+    <div class="an-pcard">
+      <div class="an-img" style="background-image:url('https://res.cloudinary.com/dt6ksxuqf/image/upload/v1776937248/ambernord-premium-sanddornoel-kaltgepresst_jw2ofc.png')"></div>
+      <h3 data-i18n="prod2_title">Sanddornöl (Pur/Hanf-Mix)</h3>
+      <span data-i18n="prod2_meta" class="an-pmeta">KERN- &amp; FRUCHTFLEISCHÖL</span>
+      <div class="an-specs">
+        <div class="an-spec"><span data-i18n="spec_eff" class="an-spec-lbl">Wirkung / Nutzen</span><span data-i18n="prod2_eff">Hautregeneration, Elastizität, Nährung und Zellschutz. Kosmetik, Nutrikosmetik, Pharmakologie.</span></div>
+        <div class="an-spec"><span data-i18n="spec_con" class="an-spec-lbl">Inhalt / Profil</span><span data-i18n="prod2_con">Vitamin C, E, B, Antioxidantien, <span class="an-hl">Omega-3, -6, -7, -9</span>, Mineralien.</span></div>
+        <div class="an-spec"><span data-i18n="spec_geb" class="an-spec-lbl">Erhältliche Gebinde</span><span data-i18n="prod2_geb">10kg, 20kg, 100kg Fässer</span></div>
+      </div>
+    </div>
+    <div class="an-pcard">
+      <div class="an-img" style="background-image:url('https://res.cloudinary.com/dt6ksxuqf/image/upload/v1776937249/ambernord-sanddornsaftpulver-gefriergetrocknet_lxkgwt.png')"></div>
+      <h3 data-i18n="prod3_title">Gefriergetrocknetes Saftpulver</h3>
+      <span data-i18n="prod3_meta" class="an-pmeta">VITAMIN-C-BOOST | VITALITÄT</span>
+      <div class="an-specs">
+        <div class="an-spec"><span data-i18n="spec_eff" class="an-spec-lbl">Wirkung / Nutzen</span><span data-i18n="prod3_eff">Immunsystem-Support. Kulinarisch, Peelings, Supplements.</span></div>
+        <div class="an-spec"><span data-i18n="spec_con" class="an-spec-lbl">Inhalt / Profil</span><span data-i18n="prod3_con">Aus getrocknetem Saft. <span class="an-hl">Vitamin C &amp; Beta-Carotin</span>, Omega-3 bis -9.</span></div>
+        <div class="an-spec"><span data-i18n="spec_geb" class="an-spec-lbl">Erhältliche Gebinde</span><span data-i18n="prod3_geb">10kg, 20kg, 100kg Säcke</span></div>
+      </div>
+    </div>
+    <div class="an-pcard">
+      <div class="an-img" style="background-image:url('https://res.cloudinary.com/dt6ksxuqf/image/upload/v1776937252/ambernord-sanddorn-trester-pressrueckstaende_pihu6b.png')"></div>
+      <h3 data-i18n="prod4_title">Sanddorn-Trockentrester</h3>
+      <span data-i18n="prod4_meta" class="an-pmeta">KERNE &amp; SCHALEN | NÄHRSTOFFREICH</span>
+      <div class="an-specs">
+        <div class="an-spec"><span data-i18n="spec_eff" class="an-spec-lbl">Wirkung / Nutzen</span><span data-i18n="prod4_eff">Natürlicher Dünger, Tierfutter, Hautpflege.</span></div>
+        <div class="an-spec"><span data-i18n="spec_con" class="an-spec-lbl">Inhalt / Profil</span><span data-i18n="prod4_con">Nebenprodukt nach Ölextraktion. Nährstoffe, Vitamine, <span class="an-hl">essentielle Fettsäuren</span>.</span></div>
+        <div class="an-spec"><span data-i18n="spec_geb" class="an-spec-lbl">Erhältliche Gebinde</span><span data-i18n="prod4_geb">10kg, 20kg, 100kg Säcke</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="an-fbar">
+    <div data-i18n="footer_1">b2b.ambernord.ch • SWISS QUALITY</div>
+    <div data-i18n="footer_p3">SEITE 03</div>
+  </div>
+</div>
+
+<!-- PAGE 4: PORTFOLIO II -->
+<div class="an-page">
+  <div class="an-hbar">
+    <div data-i18n="p4_tag1" class="an-accent" style="font-weight:600">PRODUKTPORTFOLIO II</div>
+    <div data-i18n="p4_tag2">PFLANZLICHE STRUKTUREN &amp; PULVER</div>
+  </div>
+  <div class="an-pgrid">
+    <div class="an-pcard">
+      <div class="an-img" style="background-image:url('https://res.cloudinary.com/dt6ksxuqf/image/upload/v1776937249/ambernord-sanddornkerne-getrocknet_cxttwd.png')"></div>
+      <h3 data-i18n="prod5_title">Sanddornkerne</h3>
+      <span data-i18n="prod5_meta" class="an-pmeta">OMEGA-QUELLE | FÜR TEXTUR &amp; PFLEGE</span>
+      <div class="an-specs">
+        <div class="an-spec"><span data-i18n="spec_eff" class="an-spec-lbl">Wirkung / Nutzen</span><span data-i18n="prod5_eff">Peelings, Seifen, Masken. Knusprige Textur in Gerichten.</span></div>
+        <div class="an-spec"><span data-i18n="spec_con" class="an-spec-lbl">Inhalt / Profil</span><span data-i18n="prod5_con"><span class="an-hl">Omega-3 &amp; Omega-6</span>, Vitamine A, C, E.</span></div>
+        <div class="an-spec"><span data-i18n="spec_geb" class="an-spec-lbl">Erhältliche Gebinde</span><span data-i18n="prod4_geb">10kg, 20kg, 100kg Säcke</span></div>
+      </div>
+    </div>
+    <div class="an-pcard">
+      <div class="an-img" style="background-image:url('https://res.cloudinary.com/dt6ksxuqf/image/upload/v1776937252/ambernord-sanddornbeerenpulver-ballaststoffe_jwfpoy.png')"></div>
+      <h3 data-i18n="prod6_title">Sanddornbeerenpulver</h3>
+      <span data-i18n="prod6_meta" class="an-pmeta">GEMAHLENER TRESTER | BALLASTSTOFFE</span>
+      <div class="an-specs">
+        <div class="an-spec"><span data-i18n="spec_eff" class="an-spec-lbl">Wirkung / Nutzen</span><span data-i18n="prod6_eff">Joghurt, Smoothies, Backwaren. Peelings, natürlicher Farbstoff.</span></div>
+        <div class="an-spec"><span data-i18n="spec_con" class="an-spec-lbl">Inhalt / Profil</span><span data-i18n="prod6_con">100% natürlich, <span class="an-hl">ohne E-Zusatzstoffe</span>. Ballaststoffe, Proteine, A, B2, C, E.</span></div>
+        <div class="an-spec"><span data-i18n="spec_geb" class="an-spec-lbl">Erhältliche Gebinde</span><span data-i18n="prod4_geb">10kg, 20kg, 100kg Säcke</span></div>
+      </div>
+    </div>
+    <div class="an-pcard">
+      <div class="an-img" style="background-image:url('https://res.cloudinary.com/dt6ksxuqf/image/upload/v1776937250/ambernord-sanddornblaetter-getrocknet_xwlmp7.png')"></div>
+      <h3 data-i18n="prod7_title">Sanddornblätter</h3>
+      <span data-i18n="prod7_meta" class="an-pmeta">GANZ ODER GEMAHLEN | TEEBASIS</span>
+      <div class="an-specs">
+        <div class="an-spec"><span data-i18n="spec_eff" class="an-spec-lbl">Wirkung / Nutzen</span><span data-i18n="prod7_eff">Teeaufguss, ausgleichend. Hautpflege, gesunder Teint.</span></div>
+        <div class="an-spec"><span data-i18n="spec_con" class="an-spec-lbl">Inhalt / Profil</span><span data-i18n="prod7_con">Antioxidantien, Tannine, <span class="an-hl">Phytoserotonin-Vorstufen</span>.</span></div>
+        <div class="an-spec"><span data-i18n="spec_geb" class="an-spec-lbl">Erhältliche Gebinde</span><span data-i18n="prod4_geb">10kg, 20kg, 100kg Säcke</span></div>
+      </div>
+    </div>
+    <div class="an-pcard">
+      <div class="an-img" style="background-image:url('https://res.cloudinary.com/dt6ksxuqf/image/upload/v1776937248/ambernord-sanddornrinde-zweige_ghpgsu.png')"></div>
+      <h3 data-i18n="prod8_title">Rinde der Sanddornäste</h3>
+      <span data-i18n="prod8_meta" class="an-pmeta">KRÄUTERHEILKUNDE | WELLNESS</span>
+      <div class="an-specs">
+        <div class="an-spec"><span data-i18n="spec_eff" class="an-spec-lbl">Wirkung / Nutzen</span><span data-i18n="prod8_eff">Tees, Tinkturen, Salben, Umschläge.</span></div>
+        <div class="an-spec"><span data-i18n="spec_con" class="an-spec-lbl">Inhalt / Profil</span><span data-i18n="prod8_con">Bioaktive Pflanzenstoffe, beruhigende und <span class="an-hl">schützende Eigenschaften</span>.</span></div>
+        <div class="an-spec"><span data-i18n="spec_geb" class="an-spec-lbl">Erhältliche Gebinde</span><span data-i18n="prod4_geb">10kg, 20kg, 100kg Säcke</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="an-fbar">
+    <div data-i18n="footer_1">b2b.ambernord.ch • SWISS QUALITY</div>
+    <div data-i18n="footer_p4">SEITE 04</div>
+  </div>
+</div>
+
+<!-- PAGE 5: CONTACT -->
+<div class="an-page">
+  <div class="an-hbar">
+    <div data-i18n="p5_tag1" class="an-accent" style="font-weight:600">PARTNERSCHAFT</div>
+    <div data-i18n="p5_tag2">KONTAKT &amp; VERTRIEB</div>
+  </div>
+  <div style="flex-grow:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center">
+    <h2 data-i18n="p5_h2" style="font-family:'Playfair Display',serif;font-size:32pt;margin:0 0 8mm 0;line-height:1.2;color:#f4f4f4;font-weight:600">Premium-Import mit <br><span class="an-accent">Schweizer Sicherheit.</span></h2>
+    <p data-i18n="p5_p1" style="font-size:11pt;color:#aaaaaa;max-width:80%;margin:0 0 15mm 0;line-height:1.6">Als 100%iges Schweizer Unternehmen bieten wir Ihnen exklusive nordische Rohstoffe mit absoluter logistischer Sicherheit. Kompletter Import, Verzollung, Qualitätskontrolle – inklusive ProCert Bio-Zertifizierung in der Schweiz.</p>
+    <div class="an-cbox">
+      <div class="an-col">
+        <h4 data-i18n="contact_h1" style="font-family:'Montserrat',sans-serif;color:#EDA323;text-transform:uppercase;font-size:9pt;margin:0 0 5mm 0;letter-spacing:1px;font-weight:600">Vertrieb (Schweiz)</h4>
+        <p style="font-size:10pt;color:#f4f4f4;margin:0 0 3px 0"><strong>Matisons Selection</strong></p>
+        <p style="font-size:10pt;color:#aaaaaa;margin:0 0 3px 0">Alte Gasse 8</p>
+        <p style="font-size:10pt;color:#aaaaaa;margin:0 0 10px 0">5034 Suhr</p>
+        <p style="font-size:10pt;color:#aaaaaa;margin:0">UID: CHE-226.837.934</p>
+      </div>
+      <div class="an-col">
+        <h4 data-i18n="contact_h2" style="font-family:'Montserrat',sans-serif;color:#EDA323;text-transform:uppercase;font-size:9pt;margin:0 0 5mm 0;letter-spacing:1px;font-weight:600">Zertifizierungen</h4>
+        <p data-i18n="contact_lbl1" style="font-size:8pt;color:#666666;text-transform:uppercase;margin:0 0 1px 0">Produktion / Ursprung:</p>
+        <p style="font-size:9.5pt;color:#f4f4f4;margin:0 0 6px 0"><strong>EU-Bio (VO 2018/848), EU-Bio (Schweizer Äquivalenz), HACCP</strong></p>
+        <p data-i18n="contact_lbl2" style="font-size:8pt;color:#666666;text-transform:uppercase;margin:0 0 1px 0">Importeur (CH):</p>
+        <p style="font-size:9.5pt;color:#f4f4f4;margin:0"><strong>ProCert Auditiert (Bio)</strong></p>
+      </div>
+      <div class="an-col">
+        <h4 data-i18n="contact_h3" style="font-family:'Montserrat',sans-serif;color:#EDA323;text-transform:uppercase;font-size:9pt;margin:0 0 5mm 0;letter-spacing:1px;font-weight:600">Kontakt</h4>
+        <p style="font-size:10pt;color:#aaaaaa;margin:0 0 8px 0">E-Mail: <span class="an-accent" style="font-weight:500">b2b@ambernord.ch</span></p>
+        <p style="font-size:10pt;color:#aaaaaa;margin:0">Web: b2b.ambernord.ch</p>
+        <p data-i18n="contact_req" style="font-size:8.5pt;color:#666666;margin:15px 0 0 0;font-style:italic;line-height:1.3">Fordern Sie jetzt Ihr Spezifikationsblatt (CoA) an.</p>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-bottom:10mm">
+    <h1 id="anBrand2" style="font-family:'Playfair Display',serif;font-size:24pt;letter-spacing:4px;color:#f4f4f4;margin:0;font-weight:600">b2b.<span class="an-accent">ambernord.ch</span></h1>
+  </div>
+  <div class="an-fbar">
+    <div data-i18n="footer_last">SWISS BIO-IMPORTER</div>
+    <div data-i18n="footer_p5">SEITE 05</div>
+  </div>
+</div>
+
+</div><!-- /an-container -->
+</div><!-- /an-wrap -->
+
+<script>
+(function() {
+'use strict';
+
+var isLight = true;
+
+var DARK = {
+  wrapBg:'#000000', wrapColor:'#f4f4f4', pageBg:'#0c0c0c',
+  accent:'#EDA323', muted:'#aaaaaa', light:'#666666',
+  border:'#2a2a2a', statBg:'#121212', cboxBg:'#151515', specBorder:'#222222'
+};
+var LIGHT = {
+  wrapBg:'#e6e6e6', wrapColor:'#1a1a1a', pageBg:'#ffffff',
+  accent:'#D38D1A', muted:'#4a4a4a', light:'#777777',
+  border:'#e0e0e0', statBg:'#fdfdfd', cboxBg:'#f5f5f5', specBorder:'#dddddd'
+};
+
+function applyTheme(t) {
+  var w = document.getElementById('an-wrap');
+  if (!w) return;
+  w.style.backgroundColor = t.wrapBg;
+  w.style.color = t.wrapColor;
+  w.querySelectorAll('.an-page').forEach(function(p) {
+    p.style.backgroundColor = t.pageBg;
+    p.style.color = t.wrapColor;
+    p.style.borderColor = t.border;
+  });
+  w.querySelectorAll('.an-stat').forEach(function(s) {
+    s.style.background = t.statBg;
+    s.style.borderColor = t.border;
+  });
+  w.querySelectorAll('.an-stat-n').forEach(function(n) { n.style.color = t.accent; });
+  w.querySelectorAll('.an-stat-l').forEach(function(l) { l.style.color = t.light; });
+  w.querySelectorAll('.an-cbox').forEach(function(c) {
+    c.style.background = t.cboxBg;
+    c.style.borderColor = t.border;
+  });
+  w.querySelectorAll('.an-spec').forEach(function(s) {
+    s.style.borderLeftColor = t.specBorder;
+    s.style.color = t.muted;
+  });
+  w.querySelectorAll('.an-spec-lbl').forEach(function(s) { s.style.color = t.light; });
+  w.querySelectorAll('.an-hbar').forEach(function(h) {
+    h.style.borderBottomColor = t.border;
+    h.style.color = t.muted;
+  });
+  w.querySelectorAll('.an-fbar').forEach(function(f) {
+    f.style.borderTopColor = t.border;
+    f.style.color = t.light;
+  });
+  w.querySelectorAll('.an-accent, .an-hl, .an-pmeta, .an-stat-n').forEach(function(a) {
+    a.style.color = t.accent;
+  });
+  w.querySelectorAll('.an-flist').forEach(function(f) { f.style.color = t.muted; });
+  w.querySelectorAll('.an-pcard h3').forEach(function(h) { h.style.color = t.wrapColor; });
+  w.querySelectorAll('.an-div').forEach(function(d) { d.style.background = t.accent; });
+  w.querySelectorAll('.an-sdiv').forEach(function(s) { s.style.borderTopColor = t.border; });
+  var btns = w.querySelectorAll('.an-btn:not(.active)');
+  btns.forEach(function(b) {
+    b.style.background = isLight ? '#ffffff' : '#0c0c0c';
+    b.style.color = isLight ? '#1a1a1a' : '#f4f4f4';
+    b.style.borderColor = isLight ? '#e0e0e0' : '#2a2a2a';
+  });
+  var bp = w.querySelector('.an-btn-print');
+  if (bp) {
+    bp.style.background = isLight ? '#ffffff' : '#0c0c0c';
+    bp.style.color = t.accent;
+    bp.style.borderColor = t.accent;
+  }
+  var headings = [document.getElementById('anBrand1'), document.getElementById('anBrand2')];
+  headings.forEach(function(el) { if (el) el.style.color = t.wrapColor; });
+  w.querySelectorAll('.an-page h2').forEach(function(el) { el.style.color = t.wrapColor; });
+  w.querySelectorAll('.an-cbox p').forEach(function(el) {
+    var c = el.style.cssText.toLowerCase();
+    if (c.indexOf('aaaaaa') === -1 && c.indexOf('666666') === -1) el.style.color = t.wrapColor;
+  });
+}
+
+window.anToggleTheme = function() {
+  isLight = !isLight;
+  var w = document.getElementById('an-wrap');
+  var btn = document.getElementById('anThemeBtn');
+  var t = isLight ? LIGHT : DARK;
+  if (isLight) { w.classList.add('light'); } else { w.classList.remove('light'); }
+  applyTheme(t);
+  var labels = {
+    darkBtn: { de:'☾ Dark Mode', en:'☾ Dark Mode', fr:'☾ Mode Sombre', it:'☾ Modalità Scura' },
+    lightBtn: { de:'☀ Light Mode', en:'☀ Light Mode', fr:'☀ Mode Clair', it:'☀ Modalità Chiara' }
+  };
+  btn.textContent = isLight ? labels.darkBtn[window._anLang || 'de'] : labels.lightBtn[window._anLang || 'de'];
+};
+
+/* =====================================================
+   TRANSLATIONS
+===================================================== */
+var i18n = {
+  de: {
+    "nav_back":"← Zurück","nav_print":"Als PDF speichern",
+    "cover_sub":"Schweizer Premium-Importeur",
+    "cover_title":"DAS GOLD DER <br><span class=\"an-accent\">NÖRDLICHEN BREITENGRADE</span>",
+    "cover_cat":"B2B ROHSTOFF-KATALOG 2026",
+    "p2_tag1":"UNSERE PHILOSOPHIE","p2_tag2":"WISSENSCHAFT & PARTNERSCHAFT",
+    "p2_h2":"Schweizer Präzision. <br><span class=\"an-accent\">Nordische Naturkraft.</span>",
+    "p2_p1":"b2b.ambernord.ch ist ein zu 100% in der Schweiz ansässiges, bio-zertifiziertes Unternehmen (ProCert). In exklusiver Partnerschaft mit führenden nordeuropäischen Agrar-Experten importieren und vertreiben wir hochspezialisierte Premium-Sanddornrohstoffe. Die extremen Temperaturschwankungen in den nördlichen Breitengraden zwingen die Beere, ein absolutes Maximum an Schutzstoffen zu synthetisieren.",
+    "p2_p2":"<strong>Die Zero-Waste Architektur:</strong> Unsere Partner verwerten 100 Prozent der geernteten Biomasse. Von der hochpotenten Beere bis zur Rinde der Äste – jeder Bestandteil wird technologisch veredelt, um höchste klinische Reinheit für Pharma, Kosmetik und Nutraceuticals zu garantieren.",
+    "stat1_lbl":"Bioaktive Stoffe","stat3_lbl":"Aminosäuren","stat4_lbl":"Natürliche Vitamine",
+    "p2_eff_h3":"Wirkungsprofil",
+    "p2_eff_li1":"Fördert die natürliche Geweberegeneration",
+    "p2_eff_li2":"Bekannt für beruhigende und schützende Eigenschaften",
+    "p2_eff_li3":"Unterstützt Vitalität und allgemeines Wohlbefinden",
+    "p2_eff_li4":"Wertvoll für die normale Funktion von Schleimhäuten",
+    "p2_val_h3":"Der Wert von Sanddorn",
+    "p2_val_p":"Eine der seltensten pflanzlichen Quellen weltweit, die das komplette Spektrum an Omega-Fettsäuren vereint. Essentiell für Nutrikosmetik (Anti-Aging von innen) und zur Stärkung der allgemeinen Immunität.",
+    "footer_1":"b2b.ambernord.ch • SWISS QUALITY",
+    "footer_p2":"SEITE 02","footer_p3":"SEITE 03","footer_p4":"SEITE 04","footer_p5":"SEITE 05",
+    "p3_tag1":"PRODUKTPORTFOLIO I","p3_tag2":"ESSENZEN & PRIMÄREXTRAKTE",
+    "spec_eff":"Wirkung / Nutzen","spec_con":"Inhalt / Profil","spec_geb":"Erhältliche Gebinde",
+    "prod1_title":"Sanddorn-Muttersaft","prod1_meta":"100% PUR | PASTEURISIERT | UNGEFILTERT",
+    "prod1_eff":"Verdünnt (1:5 - 1:10) ein natürlicher Energie-Boost. Perfekt für Cocktails, Tees, Dressings und Joghurt.",
+    "prod1_con":"Ganze Beere inkl. Saft, Fruchtfleisch und Ölen. <span class=\"an-hl\">Vitamin C</span>, Beta-Carotin, Omega-3, -6, -7, -9.",
+    "prod1_geb":"200L Fässer",
+    "prod2_title":"Sanddornöl (Pur/Hanf-Mix)","prod2_meta":"KERN- & FRUCHTFLEISCHÖL",
+    "prod2_eff":"Hautregeneration, Elastizität und Zellschutz. Kosmetik, Nutrikosmetik, Pharmakologie.",
+    "prod2_con":"Vitamin C, E, B, Antioxidantien, <span class=\"an-hl\">Omega-3, -6, -7, -9</span>, Mineralien.",
+    "prod2_geb":"10kg, 20kg, 100kg Fässer",
+    "prod3_title":"Gefriergetrocknetes Saftpulver","prod3_meta":"VITAMIN-C-BOOST | VITALITÄT",
+    "prod3_eff":"Immunsystem-Support. Kulinarisch, Peelings, Supplements.",
+    "prod3_con":"Aus getrocknetem Saft. <span class=\"an-hl\">Vitamin C & Beta-Carotin</span>, Omega-3 bis -9.",
+    "prod3_geb":"10kg, 20kg, 100kg Säcke",
+    "prod4_title":"Sanddorn-Trockentrester","prod4_meta":"KERNE & SCHALEN | NÄHRSTOFFREICH",
+    "prod4_eff":"Natürlicher Dünger, Tierfutter, Hautpflege.",
+    "prod4_con":"Nebenprodukt nach Ölextraktion. Vitamine, Mineralien, <span class=\"an-hl\">essentielle Fettsäuren</span>.",
+    "prod4_geb":"10kg, 20kg, 100kg Säcke",
+    "p4_tag1":"PRODUKTPORTFOLIO II","p4_tag2":"PFLANZLICHE STRUKTUREN & PULVER",
+    "prod5_title":"Sanddornkerne","prod5_meta":"OMEGA-QUELLE | FÜR TEXTUR & PFLEGE",
+    "prod5_eff":"Peelings, Seifen, Masken, knusprige Textur.",
+    "prod5_con":"<span class=\"an-hl\">Omega-3 & Omega-6</span>, Vitamine A, C, E.",
+    "prod6_title":"Sanddornbeerenpulver","prod6_meta":"GEMAHLENER TRESTER | BALLASTSTOFFE",
+    "prod6_eff":"Joghurt, Smoothies, Backwaren, Peelings.",
+    "prod6_con":"100% natürlich, <span class=\"an-hl\">ohne E-Zusatzstoffe</span>. Ballaststoffe, Proteine, A, B2, C, E.",
+    "prod7_title":"Sanddornblätter","prod7_meta":"GANZ ODER GEMAHLEN | TEEBASIS",
+    "prod7_eff":"Teeaufguss, ausgleichend, Hautpflege.",
+    "prod7_con":"Antioxidantien, Tannine, <span class=\"an-hl\">Phytoserotonin-Vorstufen</span>.",
+    "prod8_title":"Rinde der Sanddornäste","prod8_meta":"KRÄUTERHEILKUNDE | WELLNESS",
+    "prod8_eff":"Tees, Tinkturen, Salben, Umschläge.",
+    "prod8_con":"Bioaktive Pflanzenstoffe, beruhigende und <span class=\"an-hl\">schützende Eigenschaften</span>.",
+    "p5_tag1":"PARTNERSCHAFT","p5_tag2":"KONTAKT & VERTRIEB",
+    "p5_h2":"Premium-Import mit <br><span class=\"an-accent\">Schweizer Sicherheit.</span>",
+    "p5_p1":"Als 100%iges Schweizer Unternehmen bieten wir Ihnen exklusive nordische Rohstoffe und absolute logistische Sicherheit. Kompletter Import, Verzollung, Qualitätskontrolle – inklusive ProCert Bio-Zertifizierung.",
+    "contact_h1":"Vertrieb (Schweiz)","contact_h2":"Zertifizierungen",
+    "contact_lbl1":"Produktion / Ursprung:","contact_lbl2":"Importeur (CH):",
+    "contact_h3":"Kontakt","contact_req":"Fordern Sie jetzt Ihr Spezifikationsblatt (CoA) an.",
+    "footer_last":"SWISS BIO-IMPORTER"
+  },
+  en: {
+    "nav_back":"← Back","nav_print":"Save as PDF",
+    "cover_sub":"Swiss Premium Importer",
+    "cover_title":"THE GOLD OF THE <br><span class=\"an-accent\">NORTHERN LATITUDES</span>",
+    "cover_cat":"B2B RAW MATERIAL CATALOG 2026",
+    "p2_tag1":"OUR PHILOSOPHY","p2_tag2":"SCIENCE & PARTNERSHIP",
+    "p2_h2":"Swiss precision. <br><span class=\"an-accent\">Nordic natural power.</span>",
+    "p2_p1":"b2b.ambernord.ch is a 100% Swiss-based, organic-certified company (ProCert). In exclusive partnership with leading Northern European agricultural experts, we import and distribute highly specialized premium sea buckthorn raw materials.",
+    "p2_p2":"<strong>The Zero-Waste Architecture:</strong> Our partners utilize 100% of the harvested biomass. Every component is technologically refined to guarantee maximum clinical purity for pharmaceuticals, cosmetics, and nutraceuticals.",
+    "stat1_lbl":"Bioactive Compounds","stat3_lbl":"Amino Acids","stat4_lbl":"Natural Vitamins",
+    "p2_eff_h3":"Action Profile",
+    "p2_eff_li1":"Promotes natural tissue regeneration",
+    "p2_eff_li2":"Known for soothing and protective properties",
+    "p2_eff_li3":"Supports vitality and general well-being",
+    "p2_eff_li4":"Valuable for normal mucous membrane function",
+    "p2_val_h3":"The Value of Sea Buckthorn",
+    "p2_val_p":"One of the rarest plant sources worldwide that combines the entire spectrum of omega fatty acids. Essential for nutricosmetics and immunity.",
+    "footer_1":"b2b.ambernord.ch • SWISS QUALITY",
+    "footer_p2":"PAGE 02","footer_p3":"PAGE 03","footer_p4":"PAGE 04","footer_p5":"PAGE 05",
+    "p3_tag1":"PRODUCT PORTFOLIO I","p3_tag2":"ESSENCES & PRIMARY EXTRACTS",
+    "spec_eff":"Effect / Benefit","spec_con":"Content / Profile","spec_geb":"Available Packaging",
+    "prod1_title":"Sea Buckthorn Mother Juice","prod1_meta":"100% PURE | PASTEURIZED | UNFILTERED",
+    "prod1_eff":"Diluted (1:5-1:10) a natural energy boost. For cocktails, teas, dressings, and yogurt.",
+    "prod1_con":"Whole berry incl. juice, pulp, natural oils. <span class=\"an-hl\">Vitamin C</span>, beta-carotene, omega-3, -6, -7, -9.",
+    "prod1_geb":"200L Barrels",
+    "prod2_title":"Sea Buckthorn Oil (Pure/Hemp Mix)","prod2_meta":"SEED & PULP OIL",
+    "prod2_eff":"Skin regeneration, elasticity, cell protection. Cosmetics, nutricosmetics, pharmacology.",
+    "prod2_con":"Vitamins C, E, B, antioxidants, <span class=\"an-hl\">omega-3, -6, -7, -9</span>, minerals.",
+    "prod2_geb":"10kg, 20kg, 100kg Barrels",
+    "prod3_title":"Freeze-dried Juice Powder","prod3_meta":"VITAMIN C BOOST | VITALITY",
+    "prod3_eff":"Immune support. Culinary, peelings, supplements.",
+    "prod3_con":"From dried juice. <span class=\"an-hl\">Vitamin C & Beta-Carotene</span>, omega-3 to -9.",
+    "prod3_geb":"10kg, 20kg, 100kg Bags",
+    "prod4_title":"Sea Buckthorn Dry Pomace","prod4_meta":"SEEDS & PEELS | NUTRIENT-RICH",
+    "prod4_eff":"Natural fertilizer, animal feed, skin care.",
+    "prod4_con":"By-product after oil extraction. Vitamins, minerals, <span class=\"an-hl\">essential fatty acids</span>.",
+    "prod4_geb":"10kg, 20kg, 100kg Bags",
+    "p4_tag1":"PRODUCT PORTFOLIO II","p4_tag2":"PLANT STRUCTURES & POWDERS",
+    "prod5_title":"Sea Buckthorn Seeds","prod5_meta":"OMEGA SOURCE | FOR TEXTURE & CARE",
+    "prod5_eff":"Peelings, soaps, masks, crunchy texture.",
+    "prod5_con":"<span class=\"an-hl\">Omega-3 & Omega-6</span>, vitamins A, C, E.",
+    "prod6_title":"Sea Buckthorn Berry Powder","prod6_meta":"GROUND POMACE | DIETARY FIBERS",
+    "prod6_eff":"Yogurt, smoothies, baked goods, peelings.",
+    "prod6_con":"100% natural, <span class=\"an-hl\">no E-additives</span>. Fiber, protein, A, B2, C, E.",
+    "prod7_title":"Sea Buckthorn Leaves","prod7_meta":"WHOLE OR GROUND | TEA BASE",
+    "prod7_eff":"Tea infusion, soothing. Skin care.",
+    "prod7_con":"Antioxidants, tannins, <span class=\"an-hl\">phytoserotonin precursors</span>.",
+    "prod8_title":"Sea Buckthorn Branch Bark","prod8_meta":"HERBAL MEDICINE | WELLNESS",
+    "prod8_eff":"Teas, tinctures, ointments, poultices.",
+    "prod8_con":"Bioactive plant compounds, soothing and <span class=\"an-hl\">protective properties</span>.",
+    "p5_tag1":"PARTNERSHIP","p5_tag2":"CONTACT & SALES",
+    "p5_h2":"Premium import with <br><span class=\"an-accent\">Swiss security.</span>",
+    "p5_p1":"As a 100% Swiss company, we offer exclusive Nordic raw materials and absolute logistical security. Complete import, customs clearance, quality control – including ProCert organic certification.",
+    "contact_h1":"Sales (Switzerland)","contact_h2":"Certifications",
+    "contact_lbl1":"Production / Origin:","contact_lbl2":"Importer (CH):",
+    "contact_h3":"Contact","contact_req":"Request your specification sheet (CoA) now.",
+    "footer_last":"SWISS ORGANIC IMPORTER"
+  },
+  fr: {
+    "nav_back":"← Retour","nav_print":"Enregistrer en PDF",
+    "cover_sub":"Importateur Premium Suisse",
+    "cover_title":"L\'OR DES <br><span class=\"an-accent\">LATITUDES NORDIQUES</span>",
+    "cover_cat":"CATALOGUE B2B DE MATIÈRES PREMIÈRES 2026",
+    "p2_tag1":"NOTRE PHILOSOPHIE","p2_tag2":"SCIENCE & PARTENARIAT",
+    "p2_h2":"Précision suisse. <br><span class=\"an-accent\">Force naturelle nordique.</span>",
+    "p2_p1":"b2b.ambernord.ch est une entreprise certifiée bio (ProCert) 100% basée en Suisse. En partenariat exclusif avec des experts agricoles du Nord, nous importons des matières premières d\'argousier premium.",
+    "p2_p2":"<strong>L\'Architecture Zéro Déchet :</strong> Nos partenaires utilisent 100% de la biomasse récoltée pour garantir une pureté clinique maximale pour pharmaceutiques, cosmétiques et nutraceutiques.",
+    "stat1_lbl":"Composés Bioactifs","stat3_lbl":"Acides Aminés","stat4_lbl":"Vitamines Naturelles",
+    "p2_eff_h3":"Profil d\'Action",
+    "p2_eff_li1":"Favorise la régénération naturelle des tissus",
+    "p2_eff_li2":"Reconnu pour ses propriétés apaisantes et protectrices",
+    "p2_eff_li3":"Soutient la vitalité et le bien-être général",
+    "p2_eff_li4":"Précieux pour le fonctionnement normal des muqueuses",
+    "p2_val_h3":"La Valeur de l\'Argousier",
+    "p2_val_p":"L\'une des rares sources végétales combinant le spectre complet des omégas. Essentiel pour la nutricosmétique et l\'immunité.",
+    "footer_1":"b2b.ambernord.ch • QUALITÉ SUISSE",
+    "footer_p2":"PAGE 02","footer_p3":"PAGE 03","footer_p4":"PAGE 04","footer_p5":"PAGE 05",
+    "p3_tag1":"PORTEFEUILLE I","p3_tag2":"ESSENCES ET EXTRAITS PRIMAIRES",
+    "spec_eff":"Effet / Bénéfice","spec_con":"Contenu / Profil","spec_geb":"Conditionnements",
+    "prod1_title":"Pur Jus d\'Argousier","prod1_meta":"100% PUR | PASTEURISÉ | NON FILTRÉ",
+    "prod1_eff":"Dilué (1:5-1:10) énergie naturelle. Pour cocktails, thés, vinaigrettes, yaourts.",
+    "prod1_con":"Baie entière, jus, pulpe, huiles. <span class=\"an-hl\">Vitamine C</span>, bêta-carotène, oméga-3, -6, -7, -9.",
+    "prod1_geb":"Fûts 200L",
+    "prod2_title":"Huile d\'Argousier (Pure/Chanvre)","prod2_meta":"HUILE DE PÉPINS ET PULPE",
+    "prod2_eff":"Régénération cutanée, élasticité. Cosmétique, nutricosmétique.",
+    "prod2_con":"Vitamines C, E, B, antioxydants, <span class=\"an-hl\">oméga-3, -6, -7, -9</span>.",
+    "prod2_geb":"Fûts 10kg, 20kg, 100kg",
+    "prod3_title":"Poudre de Jus Lyophilisée","prod3_meta":"BOOST VITAMINE C | VITALITÉ",
+    "prod3_eff":"Support immunitaire. Culinaire, gommages.",
+    "prod3_con":"Jus séché. <span class=\"an-hl\">Vitamine C & Bêta-Carotène</span>, oméga-3 à -9.",
+    "prod3_geb":"Sacs 10kg, 20kg, 100kg",
+    "prod4_title":"Marc Sec d\'Argousier","prod4_meta":"PÉPINS & PEAUX | RICHE EN NUTRIMENTS",
+    "prod4_eff":"Engrais naturel, aliment animal, soin de la peau.",
+    "prod4_con":"Sous-produit d\'extraction. Vitamines, minéraux, <span class=\"an-hl\">acides gras essentiels</span>.",
+    "prod4_geb":"Sacs 10kg, 20kg, 100kg",
+    "p4_tag1":"PORTEFEUILLE II","p4_tag2":"STRUCTURES VÉGÉTALES ET POUDRES",
+    "prod5_title":"Pépins d\'Argousier","prod5_meta":"SOURCE D\'OMÉGA | TEXTURE & SOIN",
+    "prod5_eff":"Gommages, savons, masques, texture croustillante.",
+    "prod5_con":"<span class=\"an-hl\">Oméga-3 & Oméga-6</span>, vitamines A, C, E.",
+    "prod6_title":"Poudre de Baies d\'Argousier","prod6_meta":"MARC MOULU | FIBRES ALIMENTAIRES",
+    "prod6_eff":"Yaourt, smoothies, pâtisseries, gommages.",
+    "prod6_con":"100% naturel, <span class=\"an-hl\">sans additifs E</span>. Fibres, protéines, A, B2, C, E.",
+    "prod7_title":"Feuilles d\'Argousier","prod7_meta":"ENTIÈRES OU MOULUES | BASE DE THÉ",
+    "prod7_eff":"Infusion équilibrante, soin de la peau.",
+    "prod7_con":"Antioxydants, tanins, <span class=\"an-hl\">précurseurs de phytosérotonine</span>.",
+    "prod8_title":"Écorce de Branche d\'Argousier","prod8_meta":"HERBORISTERIE | BIEN-ÊTRE",
+    "prod8_eff":"Thés, teintures, onguents, cataplasmes.",
+    "prod8_con":"Composés bioactifs, propriétés apaisantes et <span class=\"an-hl\">protectrices</span>.",
+    "p5_tag1":"PARTENARIAT","p5_tag2":"CONTACT & VENTES",
+    "p5_h2":"Importation premium avec <br><span class=\"an-accent\">sécurité suisse.</span>",
+    "p5_p1":"En tant qu\'entreprise 100% suisse, nous offrons des matières premières nordiques exclusives et une sécurité logistique absolue. Importation complète, dédouanement, contrôle qualité – inclus certification ProCert.",
+    "contact_h1":"Ventes (Suisse)","contact_h2":"Certifications",
+    "contact_lbl1":"Production / Origine :","contact_lbl2":"Importateur (CH) :",
+    "contact_h3":"Contact","contact_req":"Demandez votre fiche technique (CoA) maintenant.",
+    "footer_last":"IMPORTATEUR BIO SUISSE"
+  },
+  it: {
+    "nav_back":"← Indietro","nav_print":"Salva come PDF",
+    "cover_sub":"Importatore Premium Svizzero",
+    "cover_title":"L\'ORO DELLE <br><span class=\"an-accent\">LATITUDINI NORDICHE</span>",
+    "cover_cat":"CATALOGO MATERIE PRIME B2B 2026",
+    "p2_tag1":"LA NOSTRA FILOSOFIA","p2_tag2":"SCIENZA & PARTNERSHIP",
+    "p2_h2":"Precisione svizzera. <br><span class=\"an-accent\">Forza naturale nordica.</span>",
+    "p2_p1":"b2b.ambernord.ch è un\'azienda certificata biologica (ProCert) basata al 100% in Svizzera. Importiamo materie prime di olivello spinoso premium in partnership con esperti nordeuropei.",
+    "p2_p2":"<strong>L\'Architettura Zero Rifiuti:</strong> I nostri partner utilizzano il 100% della biomassa raccolta per garantire la massima purezza clinica per farmaceutici, cosmetici e nutraceutici.",
+    "stat1_lbl":"Composti Bioattivi","stat3_lbl":"Amminoacidi","stat4_lbl":"Vitamine Naturali",
+    "p2_eff_h3":"Profilo d\'Azione",
+    "p2_eff_li1":"Promuove la rigenerazione naturale dei tessuti",
+    "p2_eff_li2":"Noto per proprietà lenitive e protettive",
+    "p2_eff_li3":"Supporta la vitalità e il benessere generale",
+    "p2_eff_li4":"Prezioso per la normale funzione delle mucose",
+    "p2_val_h3":"Il Valore dell\'Olivello Spinoso",
+    "p2_val_p":"Una delle fonti vegetali più rare al mondo che combina l\'intero spettro degli omega. Essenziale per nutricosmetica e immunità.",
+    "footer_1":"b2b.ambernord.ch • QUALITÀ SVIZZERA",
+    "footer_p2":"PAGINA 02","footer_p3":"PAGINA 03","footer_p4":"PAGINA 04","footer_p5":"PAGINA 05",
+    "p3_tag1":"PORTAFOGLIO I","p3_tag2":"ESSENZE ED ESTRATTI PRIMARI",
+    "spec_eff":"Effetto / Beneficio","spec_con":"Contenuto / Profilo","spec_geb":"Confezioni Disponibili",
+    "prod1_title":"Succo Madre di Olivello Spinoso","prod1_meta":"100% PURO | PASTORIZZATO | NON FILTRATO",
+    "prod1_eff":"Diluito (1:5-1:10) concentrato energetico. Cocktail, tè, condimenti, yogurt.",
+    "prod1_con":"Bacca intera, succo, polpa, oli. <span class=\"an-hl\">Vitamina C</span>, beta-carotene, omega-3, -6, -7, -9.",
+    "prod1_geb":"Fusti 200L",
+    "prod2_title":"Olio di Olivello Spinoso (Puro/Canapa)","prod2_meta":"OLIO DI SEMI E POLPA",
+    "prod2_eff":"Rigenerazione cutanea, elasticità. Cosmetica, nutricosmetica.",
+    "prod2_con":"Vitamine C, E, B, antiossidanti, <span class=\"an-hl\">omega-3, -6, -7, -9</span>.",
+    "prod2_geb":"Fusti 10kg, 20kg, 100kg",
+    "prod3_title":"Polvere di Succo Liofilizzata","prod3_meta":"BOOST VITAMINA C | VITALITÀ",
+    "prod3_eff":"Supporto immunitario. Culinario, peeling.",
+    "prod3_con":"Succo essiccato. <span class=\"an-hl\">Vitamina C & Beta-Carotene</span>, omega-3 a -9.",
+    "prod3_geb":"Sacchi 10kg, 20kg, 100kg",
+    "prod4_title":"Vinaccia Secca di Olivello Spinoso","prod4_meta":"SEMI E BUCCE | NUTRIENTE",
+    "prod4_eff":"Fertilizzante, mangime, cura della pelle.",
+    "prod4_con":"Sottoprodotto. Vitamine, minerali, <span class=\"an-hl\">acidi grassi essenziali</span>.",
+    "prod4_geb":"Sacchi 10kg, 20kg, 100kg",
+    "p4_tag1":"PORTAFOGLIO II","p4_tag2":"STRUTTURE VEGETALI E POLVERI",
+    "prod5_title":"Semi di Olivello Spinoso","prod5_meta":"FONTE OMEGA | TEXTURE & CURA",
+    "prod5_eff":"Peeling, saponi, maschere, texture croccante.",
+    "prod5_con":"<span class=\"an-hl\">Omega-3 & Omega-6</span>, vitamine A, C, E.",
+    "prod6_title":"Polvere di Bacche di Olivello Spinoso","prod6_meta":"VINACCIA MACINATA | FIBRE",
+    "prod6_eff":"Yogurt, frullati, dolci, peeling.",
+    "prod6_con":"100% naturale, <span class=\"an-hl\">senza additivi E</span>. Fibre, proteine, A, B2, C, E.",
+    "prod7_title":"Foglie di Olivello Spinoso","prod7_meta":"INTERE O MACINATE | BASE TÈ",
+    "prod7_eff":"Infuso lenitivo, cura della pelle.",
+    "prod7_con":"Antiossidanti, tannini, <span class=\"an-hl\">precursori fitoserotonina</span>.",
+    "prod8_title":"Corteccia di Ramo di Olivello Spinoso","prod8_meta":"ERBORISTERIA | BENESSERE",
+    "prod8_eff":"Tè, tinture, unguenti, cataplasmi.",
+    "prod8_con":"Composti bioattivi, proprietà lenitive e <span class=\"an-hl\">protettive</span>.",
+    "p5_tag1":"PARTNERSHIP","p5_tag2":"CONTATTO E VENDITE",
+    "p5_h2":"Importazione premium con <br><span class=\"an-accent\">sicurezza svizzera.</span>",
+    "p5_p1":"Come azienda svizzera al 100%, offriamo materie prime nordiche esclusive e assoluta sicurezza logistica. Importazione completa, sdoganamento, controllo qualità – inclusa certificazione ProCert.",
+    "contact_h1":"Vendite (Svizzera)","contact_h2":"Certificazioni",
+    "contact_lbl1":"Produzione / Origine:","contact_lbl2":"Importatore (CH):",
+    "contact_h3":"Contatto","contact_req":"Richiedi ora la tua scheda tecnica (CoA).",
+    "footer_last":"IMPORTATORE BIO SVIZZERO"
+  }
+};
+
+window._anLang = 'de';
+
+window.anSetLang = function(lang) {
+  window._anLang = lang;
+  document.querySelectorAll('.an-btn[id^="btn-"]').forEach(function(b) {
+    b.classList.remove('active');
+    var t = isLight ? LIGHT : DARK;
+    b.style.background = isLight ? '#ffffff' : '#0c0c0c';
+    b.style.color = isLight ? '#1a1a1a' : '#f4f4f4';
+    b.style.borderColor = isLight ? '#e0e0e0' : '#2a2a2a';
+  });
+  var ab = document.getElementById('btn-' + lang);
+  if (ab) {
+    ab.classList.add('active');
+    var ac = isLight ? '#D38D1A' : '#EDA323';
+    ab.style.background = ac;
+    ab.style.color = '#000';
+    ab.style.borderColor = ac;
+  }
+  var dict = i18n[lang];
+  if (!dict) return;
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n');
+    if (dict[key] !== undefined) {
+      el.innerHTML = dict[key];
+      var ac = isLight ? '#D38D1A' : '#EDA323';
+      el.querySelectorAll('.an-accent').forEach(function(a) { a.style.color = ac; });
+      el.querySelectorAll('.an-hl').forEach(function(a) { a.style.color = ac; });
+    }
+  });
+  var tb = document.getElementById('anThemeBtn');
+  if (tb) {
+    var labels = {
+      dark: { de:'☾ Dark Mode', en:'☾ Dark Mode', fr:'☾ Mode Sombre', it:'☾ Modalità Scura' },
+      light: { de:'☀ Light Mode', en:'☀ Light Mode', fr:'☀ Mode Clair', it:'☀ Modalità Chiara' }
+    };
+    tb.textContent = isLight ? labels.dark[lang] : labels.light[lang];
+  }
+};
+
+/* ZOOM */
+var anZoomLevel = 1;
+window.anZoom = function(step) {
+  anZoomLevel = Math.min(2.5, Math.max(0.4, anZoomLevel + step));
+  var c = document.querySelector('.an-container');
+  if (c) {
+    c.style.transform = 'scale(' + anZoomLevel + ')';
+    c.style.transformOrigin = 'top center';
+    c.style.marginTop = (60 * anZoomLevel) + 'px';
+  }
+};
+
+/* PRINT FIX */
+window.addEventListener('beforeprint', function() {
+  var c = document.querySelector('.an-container');
+  if (c) { c.style.transform = 'none'; c.style.marginTop = '0'; }
+});
+window.addEventListener('afterprint', function() {
+  var c = document.querySelector('.an-container');
+  if (c) {
+    c.style.transform = 'scale(' + anZoomLevel + ')';
+    c.style.marginTop = (60 * anZoomLevel) + 'px';
+  }
+});
+
+/* INIT */
+function init() {
+  applyTheme(LIGHT);
+  document.querySelectorAll('.an-accent, .an-hl, .an-pmeta, .an-stat-n').forEach(function(el) {
+    el.style.color = '#D38D1A';
+  });
+  var ab = document.querySelector('.an-btn.active');
+  if (ab) { ab.style.background = '#D38D1A'; ab.style.color = '#000'; ab.style.borderColor = '#D38D1A'; }
+  [document.getElementById('anBrand1'), document.getElementById('anBrand2')].forEach(function(el) {
+    if (el) el.style.color = '#1a1a1a';
+  });
+  document.querySelectorAll('.an-page h2').forEach(function(el) { el.style.color = '#1a1a1a'; });
+  document.querySelectorAll('.an-cbox p').forEach(function(el) {
+    var c = el.style.cssText.toLowerCase();
+    if (c.indexOf('aaaaaa') === -1 && c.indexOf('666666') === -1) el.style.color = '#1a1a1a';
+  });
+}
+init();
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+window.addEventListener('load', init);
+
+})();
+</script>
+</body>
+</html>

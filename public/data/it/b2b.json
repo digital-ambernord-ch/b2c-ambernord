@@ -142,7 +142,7 @@
   "cta": {
     "heading": "Inizia con AmberNord",
     "body": "Materie prime certificate per prodotti senza compromessi.",
-    "btn1": { "label": "Scarica il catalogo PDF", "href": "#download-catalog" },
+    "btn1": { "label": "Scarica il catalogo PDF", "href": "/sanddorn-raw-katalog.html" },
     "btn2": { "label": "Richiedi prezzi all'ingrosso", "href": "#request-pricing" }
   },
   "images": [
