@@ -123,8 +123,6 @@ window.initShop = async function () {
 
             </a>
 
-            <a class="shop-card__btn-primary shop-card__btn-primary--mobile" data-buy-cta href="${p.buttons.primary.href}" target="_blank" rel="noopener noreferrer">${p.buttons.primary.label}</a>
-
             <a class="shop-card__content-link shop-card__bottom-link" href="${p.slug}" data-link>
 
               <p class="shop-card__desc">${p.body}</p>
@@ -140,7 +138,7 @@ window.initShop = async function () {
 
             <div class="shop-card__action">
               ${renderPurchaseToggle(p.buttons.purchase, p.id)}
-              <a class="shop-card__btn-primary shop-card__btn-primary--desktop" data-buy-cta href="${p.buttons.primary.href}" target="_blank" rel="noopener noreferrer">${p.buttons.primary.label}</a>
+              <a class="shop-card__btn-primary" data-buy-cta href="${p.buttons.primary.href}" target="_blank" rel="noopener noreferrer">${p.buttons.primary.label}</a>
               <p class="shop-card__shipping">
                 <span class="shop-card__shipping-highlight">${p.shipping.highlight}</span>${p.shipping.text}
               </p>
@@ -270,9 +268,12 @@ window.initShop = async function () {
       /* Cards are sized to their (now compacted) CONTENT, not the viewport, so
          the deck stays embedded in the page — the "Wählen Sie Ihr Elixier"
          heading and surrounding page show around it. All slides share the
-         tallest card's height so the deck is even. The wide inter-card gap keeps
-         neighbours clearly separated. */
-      step = cards[0].getBoundingClientRect().width + window.innerWidth * 0.05;
+         tallest card's height so the deck is even. The step is kept a touch
+         SMALLER than the card width so each neighbour fills the gutter beside
+         the centre card and peeks clearly from the moment the page loads —
+         a wider gap pushed them almost fully off-screen (~8px), so they only
+         became visible once the deck was dragged. */
+      step = cards[0].getBoundingClientRect().width - window.innerWidth * 0.08;
       let max = 0;
       cards.forEach((c) => { c.style.height = 'auto'; });
       cards.forEach((c) => { if (c.offsetHeight > max) max = c.offsetHeight; });
@@ -287,8 +288,8 @@ window.initShop = async function () {
         const card = cards[i];
         card.style.transform =
           'translateX(calc(-50% + ' + (slot * step) + 'px)) scale(' + (1 - dist * 0.13) + ')';
-        card.style.opacity = String(Math.max(0, 1 - dist * 0.55));
-        card.style.filter = dist > 0.02 ? 'blur(' + (dist * 3) + 'px)' : '';
+        card.style.opacity = String(Math.max(0, 1 - dist * 0.45));
+        card.style.filter = dist > 0.02 ? 'blur(' + (dist * 2) + 'px)' : '';
         card.style.zIndex = String(Math.round(100 - dist * 10));
         card.style.pointerEvents = dist > 1.2 ? 'none' : '';
         card.classList.toggle('is-center', dist < 0.5);

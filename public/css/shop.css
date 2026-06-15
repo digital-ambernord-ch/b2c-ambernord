@@ -469,22 +469,9 @@
   box-shadow: 0 8px 20px rgba(237, 163, 35, 0.3);
 }
 
-/* Mobile: primary CTA sits directly under the price hero so the buy action is
-   visible without scrolling. Desktop: primary CTA stays in the bottom action
-   block alongside abo + shipping (original layout). Each viewport hides the
-   variant it doesn't use. */
-.shop-card__btn-primary--mobile {
-  margin-top: 4px;
-  margin-bottom: 24px;
-}
-
-@media (min-width: 992px) {
-  .shop-card__btn-primary--mobile { display: none; }
-}
-
-@media (max-width: 991px) {
-  .shop-card__btn-primary--desktop { display: none; }
-}
+/* The primary buy CTA lives in the bottom action block (below the
+   Einmalkauf/Abo toggle) on every viewport, so the buy flow reads identically
+   on mobile, tablet and desktop. */
 
 /* --------------------------------------------------------------------------
    BUTTON SUBSCRIPTION — two-tone Abo CTA with discount label strip.
@@ -730,8 +717,6 @@
   letter-spacing: 1.5px;
   margin-bottom: 8px;
 }
-.shop-grid--carousel .shop-card__btn-primary--mobile { margin: 2px 0 12px; }
-
 /* Abo toggle kept — compacted. */
 .shop-grid--carousel .purchase-toggle { gap: 6px; margin: 0 0 10px; }
 .shop-grid--carousel .purchase-toggle__legend { font-size: 10px; margin-bottom: 6px; }

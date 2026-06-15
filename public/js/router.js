@@ -593,7 +593,7 @@
       if (subpageHero) {
         const blackCanvas =
           route.type === 'landing' || route.type === 'product' ||
-          route.type === 'shop'    || route.type === 'thankyou';
+          route.type === 'thankyou';
         subpageHero.classList.toggle('is-visible', !blackCanvas);
       }
 
@@ -639,13 +639,13 @@
       const subpageHero = document.getElementById('ambernord-subpage-hero-bg');
       if (subpageHero) {
         /* Pages that keep a pure-black canvas instead of the ambient stripe:
-           landing has its own hero, product/shop pages need a clean dark
+           landing has its own hero, the product PDPs need a clean dark
            shopping context, and thankyou is intentionally minimal. Every
-           other route shows the atmospheric stripe behind the eyebrow + h1. */
+           other route — including the /shop/ overview — shows the atmospheric
+           stripe behind the eyebrow + h1. */
         const blackCanvas =
           route.type === 'landing' ||
           route.type === 'product' ||
-          route.type === 'shop' ||
           route.type === 'thankyou';
         if (!blackCanvas) {
           subpageHero.classList.add('is-visible');
