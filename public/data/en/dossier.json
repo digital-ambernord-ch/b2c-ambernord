@@ -21,6 +21,19 @@
   "lightbox": {
     "zoomLabel": "Enlarge image"
   },
+  "sectionNav": {
+    "aria": "Sections",
+    "items": {
+      "dossier-history": "Origin",
+      "dossier-phyto": "Matrix",
+      "dossier-lipids": "Lipids",
+      "dossier-science": "Evidence",
+      "dossier-innovations": "Innovation",
+      "dossier-sourcing": "Terroir",
+      "dossier-harvest": "Craft",
+      "dossier-zerowaste": "Zero-Waste"
+    }
+  },
   "header": {
     "eyebrow": "Science & Philosophy",
     "h1": "The Sea Buckthorn Dossier<br><span>of the AmberNord methodology.</span>",

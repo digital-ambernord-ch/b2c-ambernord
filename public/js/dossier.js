@@ -247,4 +247,19 @@ window.initDossier = async function () {
     }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
 
     revealTargets.forEach((el) => observer.observe(el));
+
+    /* Kinetic section-nav rail (js/section-nav.js). Sections listed in document
+       order; short single-word labels come from data.sectionNav per locale. The
+       component skips any id not present in the DOM, so this stays safe even if
+       a section is removed. The router tears the rail down on every nav. */
+    if (typeof window.initSectionNav === 'function' && data && data.sectionNav && data.sectionNav.items) {
+        const order = [
+            'dossier-history', 'dossier-phyto', 'dossier-lipids', 'dossier-science',
+            'dossier-innovations', 'dossier-sourcing', 'dossier-harvest', 'dossier-zerowaste'
+        ];
+        window.initSectionNav({
+            ariaLabel: data.sectionNav.aria || 'Sections',
+            sections:  order.map((id) => ({ id, label: data.sectionNav.items[id] }))
+        });
+    }
 };

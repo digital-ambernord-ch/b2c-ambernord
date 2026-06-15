@@ -21,6 +21,19 @@
   "lightbox": {
     "zoomLabel": "Agrandir l'image"
   },
+  "sectionNav": {
+    "aria": "Sections",
+    "items": {
+      "dossier-history": "Origine",
+      "dossier-phyto": "Matrice",
+      "dossier-lipids": "Lipides",
+      "dossier-science": "Évidence",
+      "dossier-innovations": "Innovation",
+      "dossier-sourcing": "Terroir",
+      "dossier-harvest": "Artisanat",
+      "dossier-zerowaste": "Zéro-Déchet"
+    }
+  },
   "header": {
     "eyebrow": "Science & Philosophie",
     "h1": "Le dossier de l'argousier<br><span>de la méthodologie AmberNord.</span>",

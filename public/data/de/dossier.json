@@ -21,6 +21,19 @@
   "lightbox": {
     "zoomLabel": "Bild vergrössern"
   },
+  "sectionNav": {
+    "aria": "Abschnitte",
+    "items": {
+      "dossier-history": "Ursprung",
+      "dossier-phyto": "Matrix",
+      "dossier-lipids": "Lipide",
+      "dossier-science": "Evidenz",
+      "dossier-innovations": "Innovation",
+      "dossier-sourcing": "Terroir",
+      "dossier-harvest": "Handwerk",
+      "dossier-zerowaste": "Zero-Waste"
+    }
+  },
   "header": {
     "eyebrow": "Wissenschaft & Philosophie",
     "h1": "Das Sanddorn-Dossier<br><span>der AmberNord Methodik.</span>",

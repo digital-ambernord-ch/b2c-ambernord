@@ -1,0 +1,160 @@
+/* =========================================================================
+   SECTION-NAV — kinetic scroll-spy rail (mounted by js/section-nav.js)
+   A vertical "picker wheel": active section large + gold in the centre,
+   neighbours shrink and fade away above/below. Fixed overlay → no CLS.
+   ========================================================================= */
+
+.an-secnav {
+  --secnav-slot: 2.6rem;
+
+  position: fixed;
+  top: 50%;
+  right: clamp(10px, 2vw, 30px);
+  transform: translateY(-50%);
+  height: calc(var(--secnav-slot) * 5);   /* active + 2 neighbours each side */
+
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  z-index: var(--z-sticky);
+  pointer-events: none;                    /* only buttons + spine are live  */
+  user-select: none;
+
+  opacity: 0;
+  transition: opacity var(--t-slow) var(--ease-smooth);
+
+  /* Dissolve the reel into the page at the top + bottom edges. */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 24%, #000 76%, transparent 100%);
+          mask-image: linear-gradient(to bottom, transparent 0%, #000 24%, #000 76%, transparent 100%);
+}
+
+.an-secnav.is-ready { opacity: 1; }
+
+/* Frosted backdrop — invisible at rest, fades in on hover for legibility
+   over photography without ever obstructing the page when unused. */
+.an-secnav::before {
+  content: "";
+  position: absolute;
+  inset: -12px -10px -12px -18px;
+  border-radius: 16px;
+  background: rgba(10, 10, 10, 0);
+  backdrop-filter: blur(0);
+  -webkit-backdrop-filter: blur(0);
+  transition: background var(--t-base) var(--ease-smooth),
+              backdrop-filter var(--t-base) var(--ease-smooth);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.an-secnav:hover::before {
+  background: rgba(10, 10, 10, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* --- The reel ---------------------------------------------------------- */
+.an-secnav__reel {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  transition: transform var(--t-slow) var(--ease-smooth);
+  will-change: transform;
+}
+
+.an-secnav__item {
+  height: var(--secnav-slot);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.an-secnav__btn {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 0;
+  padding: 0 2px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.an-secnav__btn:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.an-secnav__label {
+  display: inline-block;
+  transform-origin: right center;          /* grow/shrink toward the edge */
+  font-family: var(--font-sans);
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.015em;
+  line-height: 1;
+  white-space: nowrap;
+  color: var(--color-text-muted);
+  transition: transform var(--t-base) var(--ease-smooth),
+              opacity   var(--t-base) var(--ease-smooth),
+              color     var(--t-base) var(--ease-smooth);
+}
+
+/* Active = the brand voice: Playfair italic, gold. */
+.an-secnav__item.is-active .an-secnav__label {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--color-gold);
+}
+
+/* --- Progress spine ---------------------------------------------------- */
+.an-secnav__spine {
+  order: 2;                                /* sits to the right of the reel */
+  position: relative;
+  width: 2px;
+  height: 100%;
+  border-radius: 2px;
+  background: var(--color-border);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.an-secnav__spine-fill {
+  position: absolute;
+  inset: 0;
+  border-radius: 2px;
+  background: linear-gradient(to bottom, var(--color-gold), var(--color-gold-hover));
+  transform: scaleY(0);
+  transform-origin: top center;
+  transition: transform var(--t-base) linear;
+}
+
+/* --- Mobile: tighter, closer to the edge, only the active + 1 neighbour - */
+@media (max-width: 768px) {
+  .an-secnav {
+    --secnav-slot: 2.1rem;
+    right: clamp(6px, 2.5vw, 14px);
+    gap: 10px;
+    height: calc(var(--secnav-slot) * 3);
+  }
+  .an-secnav.is-ready { opacity: 0.92; }
+  .an-secnav__label { font-size: 0.98rem; }
+}
+
+/* --- Reduced motion: snap instantly, no easing ------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .an-secnav,
+  .an-secnav__reel,
+  .an-secnav__label,
+  .an-secnav__spine-fill,
+  .an-secnav::before {
+    transition: none !important;
+  }
+}

@@ -21,6 +21,19 @@
   "lightbox": {
     "zoomLabel": "Ingrandisci immagine"
   },
+  "sectionNav": {
+    "aria": "Sezioni",
+    "items": {
+      "dossier-history": "Origine",
+      "dossier-phyto": "Matrice",
+      "dossier-lipids": "Lipidi",
+      "dossier-science": "Evidenza",
+      "dossier-innovations": "Innovazione",
+      "dossier-sourcing": "Terroir",
+      "dossier-harvest": "Artigianato",
+      "dossier-zerowaste": "Zero-Waste"
+    }
+  },
   "header": {
     "eyebrow": "Scienza & Filosofia",
     "h1": "Il dossier dell'olivello spinoso<br><span>della metodologia AmberNord.</span>",

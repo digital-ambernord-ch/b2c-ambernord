@@ -600,6 +600,7 @@
       /* No ScrollTriggers exist yet on a fresh load, but keep this for symmetry
          and to clear any that a racing init somehow created. */
       killGSAP();
+      if (typeof window.destroySectionNav === 'function') window.destroySectionNav();
       attachLinkListeners();
 
       const initName = INITS[route.type];
@@ -654,6 +655,7 @@
       }
 
       killGSAP();
+      if (typeof window.destroySectionNav === 'function') window.destroySectionNav();
 
       /* Reset the landing-only "hide topbar bio badge" state on every nav.
          Landing's init re-adds it; subpages leave it off so the badge shows. */
