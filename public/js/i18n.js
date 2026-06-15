@@ -41,8 +41,19 @@ window.loadI18n = async function (lang, page) {
     if (data.meta.og) {
       setOg('og:title',       data.meta.og.title);
       setOg('og:description', data.meta.og.description);
-      setOg('og:image',       data.meta.og.image);
       setOg('og:type',        data.meta.og.type || 'website');
+    }
+
+    /* og:image / twitter:image are route-based (single source of truth lives
+       in router.js → window.ambernordOgImage), NOT per-page JSON, so the share
+       card matches the URL on every navigation. loadI18n runs last in each nav
+       path, so applying it here guarantees it wins. */
+    const ogImage = (typeof window.ambernordOgImage === 'function')
+      ? window.ambernordOgImage()
+      : (data.meta.og && data.meta.og.image);
+    if (ogImage) {
+      setOg('og:image', ogImage);
+      setMeta('twitter:image', ogImage);
     }
 
     document.querySelectorAll('link[rel="alternate"][hreflang]').forEach((el) => el.remove());

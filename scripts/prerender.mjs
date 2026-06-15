@@ -61,6 +61,21 @@ const ROUTES = [
   { path: '/2-fuer-1/danke/',     page: 'aktion-2-fuer-1-danke.html',slug: 'aktion-2-fuer-1-danke', type: 'aktion2fuer1Danke', noindex: true }
 ];
 
+/* OG / Twitter share image per route — MIRRORS OG_IMAGES in
+   public/js/router.js. Keyed by locale-less canonical path; the PDPs and the
+   2-für-1 campaign get their own product shot, everything else falls back to
+   the brand ritual image. All variants are c_fill 1200×630 to match the static
+   og:image:width / og:image:height tags in index.html. */
+const OG_IMAGE_FALLBACK = 'https://res.cloudinary.com/dt6ksxuqf/image/upload/c_fill,w_1200,h_630,f_auto,q_auto/v1774812498/ambernord-zelt-taegliches-ritual-sanddorn-konzentrat-morgenroutine.webp_tnwv2r.jpg';
+const OG_IMAGES = {
+  '/shop/starter/':  'https://res.cloudinary.com/dt6ksxuqf/image/upload/c_fill,w_1200,h_630,f_auto,q_auto/v1774514853/ambernord-sanddornsaft-einzel-250ml_c0vwjx.jpg',
+  '/shop/habit/':    'https://res.cloudinary.com/dt6ksxuqf/image/upload/c_fill,w_1200,h_630,f_auto,q_auto/v1774514833/ambernord-sanddornsaft-3er-pack-250ml_em8h2n.jpg',
+  '/shop/protocol/': 'https://res.cloudinary.com/dt6ksxuqf/image/upload/c_fill,w_1200,h_630,f_auto,q_auto/v1774514800/ambernord-sanddornsaft-6er-pack-250ml_ofvtkj.jpg',
+  '/2-fuer-1/':      'https://res.cloudinary.com/dt6ksxuqf/image/upload/c_fill,w_1200,h_630,f_auto,q_auto/v1778164908/Markteinf%C3%BChrungs-Aktion_2_The_Starter_zum_Preis_von_1_Im_Gegenzug_bitten_wir_nach_14_Tagen_um_eine_ehrliche_Bewertung_pbompq.jpg'
+};
+
+const ogImageForRoute = (routePath) => OG_IMAGES[routePath] || OG_IMAGE_FALLBACK;
+
 /* ----------------------------------------------------------------------- */
 
 function readJson(path) {
@@ -165,7 +180,7 @@ function renderPage(shell, route, localeDef) {
   const title       = meta.title || 'AmberNord';
   const description = meta.description || '';
   const ogMeta      = meta.og || {};
-  const ogImage     = ogMeta.image || null;
+  const ogImage     = ogImageForRoute(route.path);
   const robots      = route.noindex ? 'noindex, nofollow' : (meta.robots || 'index, follow');
 
   let html = shell;
@@ -179,9 +194,10 @@ function renderPage(shell, route, localeDef) {
   html = setMetaContent(html, /(<meta property="og:description" content=")[^"]*(">)/, `$1${escapeAttr(ogMeta.description || description)}$2`);
   html = setMetaContent(html, /(<meta property="og:url" content=")[^"]*(">)/, `$1${canonical}$2`);
   html = setMetaContent(html, /(<meta property="og:locale" content=")[^"]*(">)/, `$1${localeDef.og}$2`);
-  if (ogImage) {
-    html = setMetaContent(html, /(<meta property="og:image" content=")[^"]*(">)/, `$1${escapeAttr(ogImage)}$2`);
-  }
+  /* Route-based share image — og:image + twitter:image. og:image:width/height
+     stay 1200×630 (static in the shell) since every image is c_fill 1200×630. */
+  html = setMetaContent(html, /(<meta property="og:image" content=")[^"]*(">)/, `$1${escapeAttr(ogImage)}$2`);
+  html = setMetaContent(html, /(<meta name="twitter:image" content=")[^"]*(">)/, `$1${escapeAttr(ogImage)}$2`);
 
   /* hreflang cluster + page schema land right before </head>. */
   let headExtra = '\n' + hreflangCluster(route.path) + '\n';

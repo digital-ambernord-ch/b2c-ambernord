@@ -351,6 +351,45 @@
     return { route: ROUTES['/'], canonicalPath: '/' };
   }
 
+  /* ------------------------------------------------------------------------
+     OG / Twitter share image per route. The card image is chosen by the
+     locale-less canonical path: the three sellable PDPs and the 2-für-1
+     campaign each get their own product shot; every other route falls back to
+     the brand ritual image. All variants are c_fill 1200×630, so the static
+     og:image:width / og:image:height / twitter:card tags in index.html stay
+     valid for every route. Mirrored in scripts/prerender.mjs for the static
+     build, and consumed by i18n.js (loadI18n) so it always wins as the last
+     writer of og:image on every navigation. */
+  const OG_IMAGE_FALLBACK = 'https://res.cloudinary.com/dt6ksxuqf/image/upload/c_fill,w_1200,h_630,f_auto,q_auto/v1774812498/ambernord-zelt-taegliches-ritual-sanddorn-konzentrat-morgenroutine.webp_tnwv2r.jpg';
+  const OG_IMAGES = {
+    '/shop/starter/':  'https://res.cloudinary.com/dt6ksxuqf/image/upload/c_fill,w_1200,h_630,f_auto,q_auto/v1774514853/ambernord-sanddornsaft-einzel-250ml_c0vwjx.jpg',
+    '/shop/habit/':    'https://res.cloudinary.com/dt6ksxuqf/image/upload/c_fill,w_1200,h_630,f_auto,q_auto/v1774514833/ambernord-sanddornsaft-3er-pack-250ml_em8h2n.jpg',
+    '/shop/protocol/': 'https://res.cloudinary.com/dt6ksxuqf/image/upload/c_fill,w_1200,h_630,f_auto,q_auto/v1774514800/ambernord-sanddornsaft-6er-pack-250ml_ofvtkj.jpg',
+    '/2-fuer-1/':      'https://res.cloudinary.com/dt6ksxuqf/image/upload/c_fill,w_1200,h_630,f_auto,q_auto/v1778164908/Markteinf%C3%BChrungs-Aktion_2_The_Starter_zum_Preis_von_1_Im_Gegenzug_bitten_wir_nach_14_Tagen_um_eine_ehrliche_Bewertung_pbompq.jpg'
+  };
+
+  /* Resolve the share image for a path (defaults to the current URL). Strips
+     any origin + locale prefix and follows REDIRECTS so legacy/aliased paths
+     map to the same image as their canonical route. Always returns a URL. */
+  function ogImageForPath(path) {
+    const raw       = (path || window.location.pathname).replace(/^https?:\/\/[^/]+/, '');
+    const clean     = normalisePath(stripLocale(raw));
+    const canonical = REDIRECTS[clean] || clean;
+    return OG_IMAGES[canonical] || OG_IMAGE_FALLBACK;
+  }
+  window.ambernordOgImage = ogImageForPath;
+
+  /* Set og:image + twitter:image to the route's share image. Width/height and
+     twitter:card are static in index.html (every image is 1200×630). */
+  function applyOgImage(path) {
+    const url = ogImageForPath(path);
+    const og = document.querySelector('meta[property="og:image"]');
+    if (og) og.setAttribute('content', url);
+    const tw = document.querySelector('meta[name="twitter:image"]');
+    if (tw) tw.setAttribute('content', url);
+  }
+  window.applyOgImage = applyOgImage;
+
   function updateMeta(route) {
     document.title = route.title;
 
@@ -368,6 +407,8 @@
 
     const ogUrl = document.querySelector('meta[property="og:url"]');
     if (ogUrl) ogUrl.setAttribute('content', route.canonical);
+
+    applyOgImage(route.canonical);
 
     const existingSchema = document.getElementById('page-schema');
     if (existingSchema) existingSchema.remove();
@@ -596,6 +637,11 @@
           route.type === 'thankyou';
         subpageHero.classList.toggle('is-visible', !blackCanvas);
       }
+
+      /* updateMeta() is intentionally skipped on hydrate (see above), so set the
+         share image here — prerender already emitted the correct one, this just
+         keeps og:image/twitter:image in sync before loadI18n re-applies it. */
+      applyOgImage(canonicalPath);
 
       /* No ScrollTriggers exist yet on a fresh load, but keep this for symmetry
          and to clear any that a racing init somehow created. */
