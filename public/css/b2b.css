@@ -774,9 +774,71 @@
     gap: 40px;
   }
 
-  .b2b-table th,
+  /* Benchmark table → stacked cards on mobile so it fits the viewport
+     fully with no horizontal scroll. Each row becomes a card: criterion as
+     heading, then the industry and AmberNord values labelled vertically. */
+  .b2b-table-scroller {
+    overflow-x: visible;
+  }
+
+  .b2b-table {
+    min-width: 0;
+    display: block;
+  }
+
+  .b2b-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    border: 0;
+  }
+
+  .b2b-table tbody,
+  .b2b-table tr,
   .b2b-table td {
-    padding: 16px;
+    display: block;
+    width: 100%;
+  }
+
+  .b2b-table tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 8px 0 16px;
+  }
+
+  .b2b-table tr:last-child {
+    border-bottom: none;
+  }
+
+  .b2b-table td {
+    border-bottom: none;
+    padding: 8px 20px;
+  }
+
+  .b2b-table td:first-child {
+    padding-top: 20px;
+    font-size: 16px;
+  }
+
+  .b2b-table__col--industry,
+  .b2b-table__col--ambernord {
+    border-right: none;
+  }
+
+  .b2b-table__col--industry::before,
+  .b2b-table__col--ambernord::before {
+    content: attr(data-label);
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #777;
+    margin-bottom: 4px;
   }
 
   .b2b-spec-list {

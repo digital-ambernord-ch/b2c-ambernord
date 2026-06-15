@@ -140,11 +140,13 @@ window.initB2b = async function () {
       return `<th>${h}${sub}</th>`;
     }).join('');
 
+    /* data-label carries the column header onto each cell so the mobile
+       card layout (b2b.css @768px) can show it via ::before. */
     const rows = benchmark.rows.map((row) => `
       <tr>
         <td>${row.criterion}</td>
-        <td class="b2b-table__col--industry">${row.industry}</td>
-        <td class="b2b-table__col--ambernord">${row.ambernord}</td>
+        <td class="b2b-table__col--industry" data-label="${benchmark.headers[1]}">${row.industry}</td>
+        <td class="b2b-table__col--ambernord" data-label="${benchmark.headers[2]}">${row.ambernord}</td>
       </tr>
     `).join('');
 
