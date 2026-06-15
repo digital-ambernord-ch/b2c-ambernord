@@ -18,6 +18,16 @@
   if (window.__ancbMounted) return;
   window.__ancbMounted = true;
 
+  /* --- Cloudflare Turnstile (bot protection) ------------------------------- *
+   * Paste the PUBLIC Turnstile *site key* below. It is safe to expose. The
+   * matching SECRET key lives only on the server (env.TURNSTILE_SECRET).
+   * If left blank, the widget still works but sends no token — and the server
+   * will reject requests once TURNSTILE_SECRET is configured. So: set this
+   * BEFORE deploying with the secret enabled.
+   * Recommended Turnstile widget mode: "Managed", execution "execute".        */
+  var TURNSTILE_SITEKEY = '0x4AAAAAADlHSrHV1duuF-p8';
+  var TS_API = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+
   /* --- Localised UI strings (bot replies are localised server-side) -------- */
   var STRINGS = {
     de: {
@@ -227,6 +237,62 @@
   document.body.appendChild(panel);
   document.body.appendChild(nudge);
 
+  /* --- Turnstile token plumbing ------------------------------------------- *
+   * Loads the Turnstile API lazily (on first chat open), renders one hidden
+   * widget in "execute" mode, and fetches a FRESH single-use token before each
+   * message. Gracefully no-ops if no site key is configured.                  */
+  var tsEnabled = TURNSTILE_SITEKEY && TURNSTILE_SITEKEY.indexOf('__') !== 0;
+  var tsContainer = null, tsWidgetId = null, tsLoading = null, tsResolve = null;
+
+  if (tsEnabled) {
+    tsContainer = document.createElement('div');
+    tsContainer.style.cssText = 'position:fixed;width:0;height:0;overflow:hidden;left:-9999px;bottom:0;';
+    document.body.appendChild(tsContainer);
+  }
+
+  function loadTurnstileApi() {
+    if (window.turnstile) return Promise.resolve();
+    if (tsLoading) return tsLoading;
+    tsLoading = new Promise(function (resolve, reject) {
+      var s = document.createElement('script');
+      s.src = TS_API; s.async = true; s.defer = true;
+      s.onload = function () { resolve(); };
+      s.onerror = function () { reject(new Error('turnstile load failed')); };
+      document.head.appendChild(s);
+    });
+    return tsLoading;
+  }
+
+  function ensureTsWidget() {
+    return loadTurnstileApi().then(function () {
+      if (tsWidgetId !== null) return;
+      tsWidgetId = window.turnstile.render(tsContainer, {
+        sitekey: TURNSTILE_SITEKEY,
+        size: 'invisible',
+        execution: 'execute',
+        callback: function (token) { if (tsResolve) { var r = tsResolve; tsResolve = null; r(token); } },
+        'error-callback': function () { if (tsResolve) { var r = tsResolve; tsResolve = null; r(''); } },
+        'timeout-callback': function () { if (tsResolve) { var r = tsResolve; tsResolve = null; r(''); } }
+      });
+    });
+  }
+
+  // Resolves to a fresh token, or '' if Turnstile is off/unavailable. Never
+  // rejects — a missing token is handled by the server (friendly message).
+  function getTurnstileToken() {
+    if (!tsEnabled) return Promise.resolve('');
+    return ensureTsWidget().then(function () {
+      return new Promise(function (resolve) {
+        var settled = false;
+        tsResolve = function (t) { if (!settled) { settled = true; resolve(t || ''); } };
+        // Safety timeout so a stuck challenge never hangs the UI.
+        setTimeout(function () { if (!settled) { settled = true; tsResolve = null; resolve(''); } }, 8000);
+        try { window.turnstile.reset(tsWidgetId); window.turnstile.execute(tsWidgetId); }
+        catch (e) { if (!settled) { settled = true; tsResolve = null; resolve(''); } }
+      });
+    }).catch(function () { return ''; });
+  }
+
   var log = panel.querySelector('.ancb-log');
   var form = panel.querySelector('.ancb-form');
   var input = panel.querySelector('.ancb-input');
@@ -294,6 +360,7 @@
   /* --- Open / close (CSS-transition driven; matches site easing tokens) ---- */
   function openPanel() {
     retireNudge();
+    if (tsEnabled) { ensureTsWidget().catch(function () {}); } // warm up bot check
     panel.classList.add('ancb-open');
     panel.setAttribute('aria-hidden', 'false');
     launcher.classList.add('ancb-launcher--open');
@@ -324,10 +391,12 @@
     setBusy(true);
     var typing = addTyping();
 
-    fetch('/api/chat', {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ messages: history })
+    getTurnstileToken().then(function (token) {
+      return fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ messages: history, lang: getLang(), turnstileToken: token })
+      });
     })
       .then(function (res) { return res.json().then(function (d) { return { ok: res.ok, data: d }; }); })
       .then(function (r) {

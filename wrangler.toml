@@ -17,3 +17,12 @@ compatibility_date = "2025-09-01"
 # Workers AI — exposes `env.AI` to the Pages Functions (used by functions/api/chat.js).
 [ai]
 binding = "AI"
+
+# KV namespace for the chat daily kill-switch (per-IP + global caps).
+# For Git-integrated Pages, the PRODUCTION binding is configured in the dashboard
+# (Settings -> Functions -> KV namespace bindings) with variable name CHAT_LIMITS.
+# This block mirrors it as config-as-code and provides it for `wrangler pages dev`.
+# Replace `id` with your namespace id from `npx wrangler kv namespace list`.
+[[kv_namespaces]]
+binding = "CHAT_LIMITS"
+id = "REPLACE_WITH_CHAT_LIMITS_KV_NAMESPACE_ID"

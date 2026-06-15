@@ -1,34 +1,52 @@
 // functions/api/chat.js
 // =============================================================================
 // AmberNord AI customer-support chat — Cloudflare Pages Function.
-//   POST /api/chat   body: { messages: [{ role: 'user'|'assistant', content }] }
+//   POST /api/chat
+//     body: { messages: [{ role, content }], lang?: 'de'|'fr'|'it'|'en',
+//             turnstileToken?: string }
 //   ->  200 { reply }   |   4xx/5xx { reply, error }
 //
 // Powered by Cloudflare Workers AI (env.AI binding, free tier — no paid API).
 // The bot answers ONLY from _knowledge.js and never invents prices, shipping,
 // stock or order/tracking information.
+//
+// COST / ABUSE CONTROLS (so a bot can't burn the daily Workers-AI allocation):
+//   1. Cloudflare WAF rate-limiting rule on /api/chat (configured in dashboard).
+//   2. Turnstile verification (env.TURNSTILE_SECRET) — proves a human.
+//   3. KV daily kill-switch (env.CHAT_LIMITS) — hard per-IP + global daily caps;
+//      once exceeded we return a static message WITHOUT calling the model.
+//   4. Language-split knowledge base — only one language is injected per request,
+//      cutting prompt size (and tokens/neurons) ~3-4x.
 // =============================================================================
 
-import { KNOWLEDGE } from './_knowledge.js';
+import { buildKnowledge } from './_knowledge.js';
 import { TOOLS /*, runToolCalls */ } from './_tools.js';
 
 // Note: '@cf/meta/llama-3.1-8b-instruct' was deprecated 2026-05-30 (error 5028).
 // The '-fast' variant stays active and is a drop-in replacement (same API/output).
 const MODEL = '@cf/meta/llama-3.1-8b-instruct-fast';
-const MAX_TURNS = 8;      // keep only the last 8 messages of history
+const MAX_TURNS = 6;       // keep only the last 6 messages of history
 const MAX_TOKENS = 400;
-const MAX_MSG_LEN = 2000; // hard cap per message to bound prompt size
+const MAX_MSG_LEN = 1500;  // hard cap per message to bound prompt size
+
+// --- Daily kill-switch caps (KV). Soft budget guard for the free allocation. --
+const GLOBAL_DAILY_MAX = 2000; // total model calls/day across all visitors
+const IP_DAILY_MAX = 60;       // model calls/day per IP
+const LIMIT_TTL_SECONDS = 172800; // 2 days — counters self-expire
 
 // Tools / function-calling are NOT live yet. Flip to true only once the API
 // behind each tool in _tools.js is actually implemented.
 const ENABLE_TOOLS = false;
 
-const SYSTEM_PROMPT = `You are "Amber", the friendly AI customer-support assistant for AmberNord — a Swiss premium brand of organic (Bio) sea-buckthorn (Sanddorn) juice / elixir.
+const SUPPORTED_LANGS = ['de', 'fr', 'it', 'en'];
+
+function systemPrompt(lang) {
+  return `You are "Amber", the friendly AI customer-support assistant for AmberNord — a Swiss premium brand of organic (Bio) sea-buckthorn (Sanddorn) juice / elixir.
 
 LANGUAGE
 - Detect the language of the user's latest message and reply ONLY in that language.
-- Supported: German (primary / default), English, Latvian, French, Italian. If you are unsure, answer in German.
-- The knowledge base below is written in German, English, French and Italian. If the user writes in Latvian, translate the relevant facts into natural Latvian.
+- Supported: German (primary / default), English, French, Italian, Latvian. If unsure, answer in German.
+- The knowledge base below may be written in German. Whatever its language, translate the relevant facts into natural language matching the user.
 
 BEHAVIOUR
 - Be concise, warm and helpful: a few short sentences or a short list. No filler, no over-promising.
@@ -41,13 +59,35 @@ BEHAVIOUR
 - Stay on topic (AmberNord products, ingredients, usage, orders, shipping). Politely redirect unrelated requests.
 
 --- KNOWLEDGE BASE (your ONLY source of truth) ---
-${KNOWLEDGE}`;
+${buildKnowledge(lang)}`;
+}
 
 // Friendly fallback shown to the user when something fails server-side.
 const FALLBACK_REPLY =
   'Entschuldigung, ich kann gerade nicht antworten. Bitte versuchen Sie es in einem Moment erneut ' +
   'oder schreiben Sie uns an info@ambernord.ch. — Sorry, I can’t reply right now. ' +
   'Please try again shortly or email info@ambernord.ch.';
+
+// Shown when the daily budget cap is hit (no model call). Localised by lang.
+const LIMIT_REPLY = {
+  de: 'Ich habe heute schon sehr viele Anfragen beantwortet und mache eine kurze Pause. Bitte schreiben Sie uns an info@ambernord.ch — ein Mensch hilft Ihnen gerne weiter.',
+  fr: 'J’ai déjà répondu à de très nombreuses demandes aujourd’hui et je fais une courte pause. Écrivez-nous à info@ambernord.ch — une personne se fera un plaisir de vous aider.',
+  it: 'Oggi ho già risposto a moltissime richieste e faccio una breve pausa. Scriveteci a info@ambernord.ch — una persona sarà lieta di aiutarvi.',
+  en: 'I’ve already answered a lot of questions today and I’m taking a short break. Please email info@ambernord.ch — a human will be happy to help.'
+};
+
+// Shown when human verification (Turnstile) fails. Localised by lang.
+const VERIFY_REPLY = {
+  de: 'Aus Sicherheitsgründen konnte ich Sie nicht verifizieren. Bitte laden Sie die Seite neu — oder schreiben Sie uns an info@ambernord.ch.',
+  fr: 'Pour des raisons de sécurité, je n’ai pas pu vous vérifier. Rechargez la page — ou écrivez-nous à info@ambernord.ch.',
+  it: 'Per motivi di sicurezza non ho potuto verificarvi. Ricaricate la pagina — oppure scriveteci a info@ambernord.ch.',
+  en: 'For security reasons I couldn’t verify you. Please reload the page — or email info@ambernord.ch.'
+};
+
+function pickLang(raw) {
+  const l = String(raw || '').slice(0, 2).toLowerCase();
+  return SUPPORTED_LANGS.includes(l) ? l : 'de';
+}
 
 export async function onRequestPost(context) {
   const { request, env } = context;
@@ -60,8 +100,10 @@ export async function onRequestPost(context) {
     return json({ reply: FALLBACK_REPLY, error: 'invalid_request' }, 400);
   }
 
-  // 2) Sanitize: keep only user/assistant string messages, cap length,
-  //    then keep just the last 8 turns.
+  const lang = pickLang(body.lang);
+  const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
+
+  // 2) Sanitize history: user/assistant string messages, capped, last N turns.
   const history = incoming
     .filter((m) => m && (m.role === 'user' || m.role === 'assistant') && typeof m.content === 'string')
     .map((m) => ({ role: m.role, content: m.content.slice(0, MAX_MSG_LEN) }))
@@ -71,27 +113,35 @@ export async function onRequestPost(context) {
     return json({ reply: FALLBACK_REPLY, error: 'empty_history' }, 400);
   }
 
-  // 3) Assemble the prompt: our system message + the trimmed history.
-  const messages = [{ role: 'system', content: SYSTEM_PROMPT }, ...history];
+  // 3) Human verification (Turnstile). Enforced only when a secret is configured.
+  if (env && env.TURNSTILE_SECRET) {
+    const ok = await verifyTurnstile(body.turnstileToken, ip, env.TURNSTILE_SECRET);
+    if (!ok) {
+      return json({ reply: VERIFY_REPLY[lang] || VERIFY_REPLY.de, error: 'verify_failed' }, 403);
+    }
+  }
 
-  // 4) The Workers AI binding must be configured (dashboard / wrangler).
+  // 4) Daily kill-switch (KV). Read counters; if over budget, reply statically.
+  const limit = await checkDailyLimit(env, ip);
+  if (!limit.ok) {
+    return json({ reply: LIMIT_REPLY[lang] || LIMIT_REPLY.de, error: 'rate_limited', scope: limit.scope }, 429);
+  }
+
+  // 5) The Workers AI binding must be configured (dashboard / wrangler).
   if (!env || !env.AI || typeof env.AI.run !== 'function') {
     return json({ reply: FALLBACK_REPLY, error: 'ai_binding_missing' }, 500);
   }
+
+  // 6) Assemble prompt + call the model.
+  const messages = [{ role: 'system', content: systemPrompt(lang) }, ...history];
 
   try {
     const options = { messages, max_tokens: MAX_TOKENS };
 
     // ---- FUTURE: tools / function-calling layer (see _tools.js) ------------
-    // Disabled until a real tool backend (e.g. order tracking) exists.
     if (ENABLE_TOOLS && TOOLS.length) {
       options.tools = TOOLS;
     }
-    // When enabling, after the first run you would do roughly:
-    //   if (ENABLE_TOOLS && result.tool_calls?.length) {
-    //     const toolMessages = await runToolCalls(result.tool_calls, env);
-    //     result = await env.AI.run(MODEL, { messages: [...messages, ...toolMessages] });
-    //   }
     // -----------------------------------------------------------------------
 
     const result = await env.AI.run(MODEL, options);
@@ -100,6 +150,10 @@ export async function onRequestPost(context) {
     if (!reply) {
       return json({ reply: FALLBACK_REPLY, error: 'empty_model_reply' }, 500);
     }
+
+    // Count this successful model call against the daily budget (best-effort).
+    bumpDailyLimit(env, ip, typeof context.waitUntil === 'function' ? context.waitUntil.bind(context) : null);
+
     return json({ reply });
   } catch (err) {
     return json(
@@ -107,6 +161,75 @@ export async function onRequestPost(context) {
       500
     );
   }
+}
+
+// --- Turnstile -------------------------------------------------------------
+// Verifies the client token against Cloudflare's siteverify endpoint.
+async function verifyTurnstile(token, ip, secret) {
+  if (!token || typeof token !== 'string') return false;
+  try {
+    const form = new FormData();
+    form.append('secret', secret);
+    form.append('response', token);
+    if (ip && ip !== 'unknown') form.append('remoteip', ip);
+    const res = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      body: form
+    });
+    const data = await res.json();
+    return !!(data && data.success);
+  } catch {
+    return false; // fail closed
+  }
+}
+
+// --- KV daily kill-switch ---------------------------------------------------
+// Soft, eventually-consistent budget guard. Fails OPEN if KV is unavailable so a
+// KV outage never takes the chat down — the WAF rate-limit still applies.
+function dayKey() {
+  return new Date().toISOString().slice(0, 10); // YYYY-MM-DD (UTC)
+}
+
+async function checkDailyLimit(env, ip) {
+  const kv = env && env.CHAT_LIMITS;
+  if (!kv) return { ok: true };
+  try {
+    const day = dayKey();
+    const [gRaw, ipRaw] = await Promise.all([
+      kv.get('g:' + day),
+      kv.get('ip:' + day + ':' + ip)
+    ]);
+    const g = parseInt(gRaw || '0', 10) || 0;
+    const u = parseInt(ipRaw || '0', 10) || 0;
+    if (g >= GLOBAL_DAILY_MAX) return { ok: false, scope: 'global' };
+    if (u >= IP_DAILY_MAX) return { ok: false, scope: 'ip' };
+    return { ok: true };
+  } catch {
+    return { ok: true }; // fail open
+  }
+}
+
+// Increment counters after a successful model call. Best-effort, non-blocking.
+function bumpDailyLimit(env, ip, waitUntil) {
+  const kv = env && env.CHAT_LIMITS;
+  if (!kv) return;
+  const day = dayKey();
+  const gKey = 'g:' + day;
+  const ipKey = 'ip:' + day + ':' + ip;
+  const opts = { expirationTtl: LIMIT_TTL_SECONDS };
+  const work = (async () => {
+    try {
+      const [gRaw, ipRaw] = await Promise.all([kv.get(gKey), kv.get(ipKey)]);
+      const g = (parseInt(gRaw || '0', 10) || 0) + 1;
+      const u = (parseInt(ipRaw || '0', 10) || 0) + 1;
+      await Promise.all([
+        kv.put(gKey, String(g), opts),
+        kv.put(ipKey, String(u), opts)
+      ]);
+    } catch { /* best-effort */ }
+  })();
+  // Let it run after the response is sent, if the runtime supports it.
+  if (typeof waitUntil === 'function') { try { waitUntil(work); } catch { /* ignore */ } }
 }
 
 // JSON Response helper (no caching — replies are per-conversation).
