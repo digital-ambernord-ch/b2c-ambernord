@@ -38,6 +38,11 @@
     "dismiss": "Chiudi promo",
     "info": "2 × The Starter al prezzo di 1 · Limitato a 250 set · Spedizione in 24 h da Aarau"
   },
+  "exitOffer": {
+    "aria": "Offerta esclusiva: 2 per 1",
+    "alt": "Offerta di lancio: 2 × The Starter al prezzo di 1 — in cambio, una recensione onesta dopo 14 giorni",
+    "close": "Chiudi l'offerta"
+  },
   "cta": {
     "startNow": "Inizi ora",
     "buyNow": "Ordini ora",

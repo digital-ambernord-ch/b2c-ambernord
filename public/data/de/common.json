@@ -38,6 +38,11 @@
     "dismiss": "Aktion schließen",
     "info": "2 × The Starter zum Preis von 1 · Limitiert auf 250 Sets · Versand in 24 h aus Aarau"
   },
+  "exitOffer": {
+    "aria": "Exklusives Angebot: 2 für 1",
+    "alt": "Markteinführungs-Aktion: 2 × The Starter zum Preis von 1 — im Gegenzug eine ehrliche Bewertung nach 14 Tagen",
+    "close": "Angebot schließen"
+  },
   "cta": {
     "startNow": "Jetzt starten",
     "buyNow": "Jetzt bestellen",

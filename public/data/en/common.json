@@ -38,6 +38,11 @@
     "dismiss": "Dismiss promo",
     "info": "2 × The Starter for the price of 1 · Limited to 250 sets · Ships in 24 h from Aarau"
   },
+  "exitOffer": {
+    "aria": "Exclusive offer: 2 for 1",
+    "alt": "Launch offer: 2 × The Starter for the price of 1 — in return, an honest review after 14 days",
+    "close": "Close offer"
+  },
   "cta": {
     "startNow": "Start Now",
     "buyNow": "Order Now",

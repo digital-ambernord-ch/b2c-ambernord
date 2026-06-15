@@ -125,6 +125,11 @@
   <link rel="stylesheet" href="/css/cookie-consent.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="/css/cookie-consent.css"></noscript>
 
+  <!-- Exit-intent offer modal — hidden until exit-intent.js reveals it, so its
+       CSS is off the critical path (same media="print" swap as above). -->
+  <link rel="stylesheet" href="/css/exit-offer.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="/css/exit-offer.css"></noscript>
+
   <!-- Non-critical page CSS: media="print" lets the browser download without
        blocking render; onload switches to media="all" so styles are applied
        before any SPA navigation. Files are small and Cloudflare-cached, so
@@ -450,6 +455,28 @@
 </div>
 
 <!-- ==========================================================================
+     EXIT-INTENT OFFER — the 2-für-1 promo, shown ONCE per visitor when they
+     signal intent to leave (desktop: cursor exits via the top edge; mobile: a
+     single Back-button trap). Only on home / shop overview / product pages.
+     Logic + triggers: public/js/exit-intent.js (loaded before router.js so its
+     popstate handler runs first). The artwork is the German campaign image;
+     clicking it routes to /2-fuer-1/ via the SPA router.
+     ========================================================================== -->
+<div id="exit-offer" class="exit-offer" hidden>
+  <div class="exit-offer__backdrop" data-exit-close aria-hidden="true"></div>
+  <div class="exit-offer__dialog" role="dialog" aria-modal="true" aria-labelledby="exit-offer-label">
+    <span id="exit-offer-label" class="exit-offer__sr" data-i18n="exitOffer.aria">Exklusives Angebot: 2 für 1</span>
+    <button type="button" class="exit-offer__close" data-exit-close data-i18n-attr="aria-label:exitOffer.close" aria-label="Angebot schließen">&times;</button>
+    <a href="/2-fuer-1/" class="exit-offer__link" data-link>
+      <img class="exit-offer__img"
+           src="https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_900/v1778164908/Markteinf%C3%BChrungs-Aktion_2_The_Starter_zum_Preis_von_1_Im_Gegenzug_bitten_wir_nach_14_Tagen_um_eine_ehrliche_Bewertung_pbompq.jpg"
+           data-i18n-attr="alt:exitOffer.alt"
+           alt="Markteinführungs-Aktion: 2 × The Starter zum Preis von 1" decoding="async">
+    </a>
+  </div>
+</div>
+
+<!-- ==========================================================================
      COOKIE CONSENT — GDPR/ePrivacy compliant. Banner + granular modal.
      The visible text comes from common.json (cookie.*); see cookie-consent.js.
      ========================================================================== -->
@@ -565,6 +592,9 @@
 <script src="/js/aktion-bar.js" defer></script>
 <script src="/js/ui.js" defer></script>
 <script src="/js/section-nav.js" defer></script>
+<!-- Loaded BEFORE router.js so its popstate listener is registered first and can
+     stop the router from handling the mobile Back-button exit trap. -->
+<script src="/js/exit-intent.js" defer></script>
 <script src="/js/router.js" defer></script>
 <script src="/js/landing.js" defer></script>
 <script src="/js/product.js" defer></script>

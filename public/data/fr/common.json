@@ -38,6 +38,11 @@
     "dismiss": "Fermer la promo",
     "info": "2 × The Starter pour le prix d'1 · Limité à 250 sets · Expédition en 24 h depuis Aarau"
   },
+  "exitOffer": {
+    "aria": "Offre exclusive : 2 pour 1",
+    "alt": "Offre de lancement : 2 × The Starter pour le prix d'un seul — en échange, un avis honnête après 14 jours",
+    "close": "Fermer l'offre"
+  },
   "cta": {
     "startNow": "Commencer",
     "buyNow": "Commander",

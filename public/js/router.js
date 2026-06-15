@@ -615,6 +615,11 @@
        aria-current="page"). Includes both top-level and nested sublinks. */
     markActiveNavLink(canonicalPath);
 
+    /* Notify non-routing shell modules (e.g. exit-intent.js) that the route
+       changed. Fires on the initial hydrate and every SPA navigation, after
+       history has been updated, so listeners see the final canonical path. */
+    window.dispatchEvent(new CustomEvent('an:navigated', { detail: { path: canonicalPath, type: route.type } }));
+
     const app = document.getElementById('app');
     if (!app) return;
 
