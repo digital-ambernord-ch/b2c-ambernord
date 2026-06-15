@@ -1,18 +1,18 @@
 /* SECTION-NAV — collapsible scroll-spy menu for long pages.
 
-   AT REST   the rail shows a column of section dots (a progress track that
-             fills with gold as you advance) plus the CURRENT section's name.
-   EXPANDED  on hover / keyboard focus (desktop) or tap (touch) the full list
-             of section names appears — every entry is clickable and jumps
-             straight to that section, no scrolling required.
+   COLLAPSED  only the section dots + a gold progress line (no text).
+   EXPANDED   on hover / keyboard focus (desktop) or tap (touch) every section
+              name appears in a full-width, equal-size clickable row. One tap /
+              click jumps straight there — and the menu stays open, so further
+              selections are a single tap. It collapses on mouse-leave (desktop)
+              or a tap outside (touch); collapsed = dots + line only again.
 
    window.initSectionNav(config) mounts it; window.destroySectionNav() removes
-   it (the router calls destroy on every navigation, so the rail only lives on
-   the page that mounted it).
+   it (the router calls destroy on every navigation).
 
    Performance: zero dependencies. One passive, rAF-throttled scroll listener
-   that does all DOM reads up front and all writes after — no interleaving, no
-   forced reflow. Fixed overlay → no CLS, no effect on load metrics.
+   that does all DOM reads up front and all writes after — no forced reflow.
+   Fixed overlay → no CLS, no effect on load metrics.
 
    config = {
      sections:    [{ id, label }, ...]   // document order; missing ids skipped
@@ -82,7 +82,7 @@
 
       btn.appendChild(label);
       btn.appendChild(tick);
-      btn.addEventListener('click', function () { onLinkClick(i); });
+      btn.addEventListener('click', function () { goTo(i); });
       li.appendChild(btn);
       list.appendChild(li);
 
@@ -90,28 +90,34 @@
     });
 
     root.appendChild(list);
-
-    /* Touch-only hit area: covers the collapsed rail so a tap anywhere on it
-       opens the full list (touch devices have no hover). Inert on desktop. */
-    var toggle = document.createElement('button');
-    toggle.type = 'button';
-    toggle.className = 'an-secnav__toggle';
-    toggle.setAttribute('aria-label', config.ariaLabel || 'Sections');
-    toggle.setAttribute('aria-expanded', 'false');
-    toggle.addEventListener('click', open);
-    root.appendChild(toggle);
-
     document.body.appendChild(root);
 
-    /* ---- Open / close (touch) -------------------------------------------- */
-    function open()  { root.classList.add('is-open');    toggle.setAttribute('aria-expanded', 'true');  }
-    function close() { root.classList.remove('is-open'); toggle.setAttribute('aria-expanded', 'false'); }
+    /* ---- Expand / collapse ----------------------------------------------- */
+    function expand()   { root.classList.add('is-open'); }
+    function collapse() { root.classList.remove('is-open'); }
 
-    function onLinkClick(i) {
-      /* On touch the first tap opens the menu; subsequent taps select+close. */
-      if (!canHover && !root.classList.contains('is-open')) { open(); return; }
-      goTo(i);
-      if (!canHover) close();
+    if (canHover) {
+      root.addEventListener('mouseenter', expand);
+      root.addEventListener('mouseleave', collapse);
+    }
+    /* Keyboard: opening on focus, closing when focus leaves the rail. */
+    root.addEventListener('focusin', expand);
+    root.addEventListener('focusout', function (e) {
+      if (!root.contains(e.relatedTarget)) collapse();
+    });
+
+    /* Touch: a tap on the collapsed rail opens it; a tap outside closes it.
+       Section taps (handled by goTo) leave it open for further single-tap
+       selections — no double-tap, no auto-close. */
+    var onDoc = null;
+    if (!canHover) {
+      root.addEventListener('click', function () {
+        if (!root.classList.contains('is-open')) expand();
+      });
+      onDoc = function (e) {
+        if (root.classList.contains('is-open') && !root.contains(e.target)) collapse();
+      };
+      document.addEventListener('click', onDoc);
     }
 
     /* ---- Geometry + navigation ------------------------------------------- */
@@ -145,8 +151,8 @@
       /* READS */
       var navH     = navOffset();
       var winH     = window.innerHeight;
-      var line     = navH + winH * 0.28;          // a section becomes active
-      var sy       = window.scrollY;              // once its top passes this line
+      var line     = navH + winH * 0.28;          // active = its top crosses this
+      var sy       = window.scrollY;
       var docH     = document.documentElement.scrollHeight;
       var tops     = items.map(function (it) { return it.el.getBoundingClientRect().top; });
       var atBottom = (winH + sy) >= (docH - 4);
@@ -175,15 +181,6 @@
 
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll, { passive: true });
-
-    /* Outside-tap closes the expanded menu on touch devices. */
-    var onDoc = null;
-    if (!canHover) {
-      onDoc = function (e) {
-        if (root.classList.contains('is-open') && !root.contains(e.target)) close();
-      };
-      document.addEventListener('click', onDoc);
-    }
 
     STATE = { root: root, onScroll: onScroll, onDoc: onDoc };
 

@@ -1,28 +1,33 @@
 /* =========================================================================
    SECTION-NAV — collapsible scroll-spy menu (mounted by js/section-nav.js)
 
-   At rest:  a column of section dots (gold progress track) + the CURRENT
-             section name.
-   Expanded: hover / keyboard focus (desktop) or tap (touch) reveals the full
-             clickable list — click any entry to jump straight there.
+   Collapsed: section dots + a gold progress line only (no text).
+   Expanded (hover/focus on desktop, tap on touch): every section name in a
+   full-width, equal-size clickable row. No background. One click/tap jumps.
    Fixed overlay → no CLS, no effect on load metrics.
    ========================================================================= */
 
 .an-secnav {
+  --secnav-open: 220px;
+
   position: fixed;
   top: 50%;
   right: clamp(14px, 2vw, 32px);
   transform: translateY(-50%);
   z-index: var(--z-sticky);
-  pointer-events: none;                     /* only live elements opt back in */
+
+  width: 40px;                              /* collapsed: just the dot rail   */
+  pointer-events: auto;                     /* the thin rail is the hit area  */
   user-select: none;
+
   opacity: 0;
   transition: opacity var(--t-slow) var(--ease-smooth);
 }
 
 .an-secnav.is-ready { opacity: 1; }
+.an-secnav.is-open  { width: var(--secnav-open); }
 
-/* --- List + frosted backdrop ------------------------------------------- */
+/* --- List --------------------------------------------------------------- */
 .an-secnav__list {
   position: relative;
   list-style: none;
@@ -30,21 +35,7 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-}
-
-.an-secnav__list::before {
-  content: "";
-  position: absolute;
-  inset: -14px -12px -14px -22px;
-  border-radius: 16px;
-  background: rgba(10, 10, 10, 0);
-  backdrop-filter: blur(0);
-  -webkit-backdrop-filter: blur(0);
-  transition: background var(--t-base) var(--ease-smooth),
-              backdrop-filter var(--t-base) var(--ease-smooth);
-  pointer-events: none;
-  z-index: -1;
+  align-items: stretch;                     /* rows fill the full rail width */
 }
 
 /* --- Progress track (vertical line through the dots) ------------------- */
@@ -69,16 +60,17 @@
   transition: transform var(--t-base) linear;
 }
 
-/* --- Items + links ------------------------------------------------------ */
+/* --- Items + links (the equal, full-width tap targets) ----------------- */
 .an-secnav__item {
   display: flex;
-  justify-content: flex-end;
 }
 
 .an-secnav__link {
   pointer-events: none;                     /* opts back in when expanded */
+  width: 100%;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 12px;
   height: 32px;
   margin: 0;
@@ -87,15 +79,18 @@
   background: none;
   cursor: pointer;
   font-family: inherit;
+  -webkit-tap-highlight-color: transparent;
 }
+
+.an-secnav.is-open .an-secnav__link { pointer-events: auto; }
 
 .an-secnav__link:focus-visible {
   outline: 2px solid var(--color-gold);
-  outline-offset: 3px;
+  outline-offset: 2px;
   border-radius: 4px;
 }
 
-/* --- Label -------------------------------------------------------------- */
+/* --- Label (menu font throughout; active is gold, no font swap) -------- */
 .an-secnav__label {
   font-family: var(--font-sans);
   font-size: 1rem;
@@ -104,22 +99,21 @@
   line-height: 1;
   white-space: nowrap;
   color: var(--color-text-muted);
-  opacity: 0;                               /* hidden at rest … */
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.65);   /* legibility, not a background */
+  opacity: 0;                               /* hidden until expanded */
   transform: translateX(10px);
   transition: opacity var(--t-base) var(--ease-smooth),
               transform var(--t-base) var(--ease-smooth),
               color var(--t-base) var(--ease-smooth);
 }
 
-/* … except the active one, which is always shown (the "current section"). */
-.an-secnav__item.is-active .an-secnav__label {
-  opacity: 1;
-  transform: none;
-  color: var(--color-gold);
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 500;
-  font-size: 1.12rem;
+.an-secnav.is-open .an-secnav__label { opacity: 1; transform: none; }
+
+.an-secnav__item.is-active .an-secnav__label { color: var(--color-gold); }
+
+@media (hover: hover) {
+  .an-secnav__link:hover .an-secnav__label { color: var(--color-text); }
+  .an-secnav__item.is-active .an-secnav__link:hover .an-secnav__label { color: var(--color-gold-hover); }
 }
 
 /* --- Dot tick ----------------------------------------------------------- */
@@ -152,59 +146,18 @@
   box-shadow: 0 0 10px var(--color-gold-dim);
 }
 
-/* --- Touch hit area (opens the menu on tap; inert on desktop) ---------- */
-.an-secnav__toggle {
-  position: absolute;
-  inset: -10px -6px -10px -12px;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  background: none;
-  cursor: pointer;
-  pointer-events: none;
-}
-.an-secnav.is-touch:not(.is-open) .an-secnav__toggle { pointer-events: auto; }
-
 /* =========================================================================
-   EXPANDED STATE — reveal every label + make the whole list clickable
-   (keyboard focus + .is-open always; pointer hover only on hover devices)
-   ========================================================================= */
-.an-secnav:focus-within .an-secnav__label,
-.an-secnav.is-open      .an-secnav__label { opacity: 1; transform: none; }
-
-.an-secnav:focus-within .an-secnav__link,
-.an-secnav.is-open      .an-secnav__link { pointer-events: auto; }
-
-.an-secnav:focus-within .an-secnav__list::before,
-.an-secnav.is-open      .an-secnav__list::before {
-  background: rgba(10, 10, 10, 0.6);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-
-@media (hover: hover) {
-  .an-secnav:hover .an-secnav__label { opacity: 1; transform: none; }
-  .an-secnav:hover .an-secnav__link  { pointer-events: auto; }
-  .an-secnav:hover .an-secnav__list::before {
-    background: rgba(10, 10, 10, 0.6);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-  }
-  /* Brighten the hovered entry so the click target is obvious. */
-  .an-secnav__link:hover .an-secnav__label { color: var(--color-text); }
-}
-
-/* =========================================================================
-   MOBILE — larger targets, closer to the edge
+   MOBILE — wider rail + taller rows for confident finger taps
    ========================================================================= */
 @media (max-width: 768px) {
-  .an-secnav { right: clamp(8px, 2.5vw, 16px); }
-
-  .an-secnav__link  { height: 40px; gap: 14px; }
+  .an-secnav {
+    --secnav-open: min(240px, 62vw);
+    right: clamp(8px, 2.5vw, 16px);
+    width: 44px;
+  }
+  .an-secnav__link  { height: 42px; gap: 14px; }
   .an-secnav__label { font-size: 1.05rem; }
-  .an-secnav__item.is-active .an-secnav__label { font-size: 1.16rem; }
-
-  .an-secnav__tick { width: 20px; height: 20px; }
+  .an-secnav__tick  { width: 20px; height: 20px; }
   .an-secnav__tick::after { width: 8px; height: 8px; }
   .an-secnav__track { right: 9px; }
 }
@@ -216,8 +169,7 @@
   .an-secnav,
   .an-secnav__label,
   .an-secnav__tick::after,
-  .an-secnav__track-fill,
-  .an-secnav__list::before {
+  .an-secnav__track-fill {
     transition: none !important;
   }
 }
