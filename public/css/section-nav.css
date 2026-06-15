@@ -8,7 +8,12 @@
    ========================================================================= */
 
 .an-secnav {
-  --secnav-open: 220px;
+  /* Open-panel width. On desktop (hover) every row fills this, so the width is
+     uniform across ALL pages. It is sized to the LONGEST section label on the
+     whole site ("Nächste Schritte", 16 chars) plus the dot + gap, so the hit
+     area is consistent and never stretches arbitrarily towards mid-screen.
+     Touch overrides this per-word (.is-touch rules above + mobile block). */
+  --secnav-open: 200px;
 
   position: fixed;
   top: 50%;
