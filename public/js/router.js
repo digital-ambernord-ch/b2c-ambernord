@@ -202,8 +202,25 @@
       title:       'The Master Box (20× 250 ml) | AmberNord',
       description: 'Die exklusive Original-Edition: 20 × 250 ml kaltgepresster Bio-Sanddornsaft. Über 25 % Ersparnis, kostenloser Premium-Versand aus Aarau.',
       canonical:   'https://ambernord.ch/shop/master-box/',
-      type:        'the-master-box',
-      schema:      null
+      type:        'product',
+      schema: {
+        "@context": "https://schema.org/",
+        "@type": "Product",
+        "name": "The Master Box (20× 250 ml)",
+        "description": "The Master Box: die exklusive Original-Edition mit 20× 250 ml kaltgepresstem Bio-Sanddornsaft. Über 25 % Ersparnis.",
+        "image": [
+          "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_800/v1781632763/AmberNord_the_masterbox_20x250ml_ritual_kig85d.jpg"
+        ],
+        "brand": { "@type": "Brand", "name": "AmberNord" },
+        "offers": {
+          "@type": "Offer",
+          "url": "https://ambernord.ch/shop/master-box/",
+          "priceCurrency": "CHF",
+          "price": "370.00",
+          "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition"
+        }
+      }
     },
 
     '/hilfe/faq/': {
@@ -365,6 +382,7 @@
     '/shop/starter/':  'https://res.cloudinary.com/dt6ksxuqf/image/upload/c_fill,w_1200,h_630,f_auto,q_auto/v1774514853/ambernord-sanddornsaft-einzel-250ml_c0vwjx.jpg',
     '/shop/habit/':    'https://res.cloudinary.com/dt6ksxuqf/image/upload/c_fill,w_1200,h_630,f_auto,q_auto/v1774514833/ambernord-sanddornsaft-3er-pack-250ml_em8h2n.jpg',
     '/shop/protocol/': 'https://res.cloudinary.com/dt6ksxuqf/image/upload/c_fill,w_1200,h_630,f_auto,q_auto/v1774514800/ambernord-sanddornsaft-6er-pack-250ml_ofvtkj.jpg',
+    '/shop/master-box/': 'https://res.cloudinary.com/dt6ksxuqf/image/upload/c_fill,w_1200,h_630,f_auto,q_auto/v1781632763/AmberNord_the_masterbox_20x250ml_ritual_kig85d.jpg',
     '/2-fuer-1/':      'https://res.cloudinary.com/dt6ksxuqf/image/upload/c_fill,w_1200,h_630,f_auto,q_auto/v1778164908/Markteinf%C3%BChrungs-Aktion_2_The_Starter_zum_Preis_von_1_Im_Gegenzug_bitten_wir_nach_14_Tagen_um_eine_ehrliche_Bewertung_pbompq.jpg'
   };
 

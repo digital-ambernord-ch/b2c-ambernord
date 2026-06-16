@@ -46,7 +46,7 @@ const ROUTES = [
       image: 'https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_800/v1774798936/ambernord-sanddorn-elixier-6er-vorratspack-premium-qualit%C3%A4t.webp_v9c6bd.png' } },
   { path: '/shop/master-box/',    page: 'the-master-box.html',       slug: 'the-master-box',        type: 'product',
     product: { name: 'The Master Box (20× 250 ml)', price: '370.00',
-      image: 'https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_800/v1774798904/ambernord-zelt-edition-sanddornbeeren-direktsaft-kaltgepresst.webp_qs7s4i.png' } },
+      image: 'https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_800/v1781632763/AmberNord_the_masterbox_20x250ml_ritual_kig85d.jpg' } },
   { path: '/hilfe/faq/',          page: 'faq.html',                  slug: 'faq',                   type: 'faq' },
   { path: '/hilfe/kontakt/',      page: 'contact.html',              slug: 'contact',               type: 'contact' },
   { path: '/hilfe/bestellstatus/',page: 'bestellstatus.html',        slug: 'bestellstatus',         type: 'bestellstatus' },

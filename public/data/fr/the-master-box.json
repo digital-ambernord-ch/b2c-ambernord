@@ -3,13 +3,12 @@
     "title": "The Master Box – Original Edition (20 × 250 ml) | AmberNord",
     "description": "L'Original Edition exclusive : 20 × 250 ml de jus d'argousier bio pressé à froid. Plus de 25 % d'économie, livraison premium offerte depuis Aarau.",
     "canonical": "https://ambernord.ch/fr/shop/master-box/",
-    "slug": "/the-master-box/",
     "robots": "index, follow",
     "og": {
       "title": "The Master Box – Original Edition | AmberNord",
       "description": "20 × 250 ml de jus d'argousier bio pressé à froid. Le conditionnement original exclusif — plus de 25 % d'économie, livraison premium offerte.",
-      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/v1774798904/ambernord-zelt-edition-sanddornbeeren-direktsaft-kaltgepresst.webp_qs7s4i.png",
-      "type": "website"
+      "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/v1781632763/AmberNord_the_masterbox_20x250ml_ritual_kig85d.jpg",
+      "type": "product"
     },
     "hreflang": {
       "de": "https://ambernord.ch/shop/master-box/",
@@ -19,67 +18,52 @@
       "x-default": "https://ambernord.ch/shop/master-box/"
     }
   },
-  "header": {
-    "skipLink": "Aller au contenu",
-    "eyebrow": "Original Edition · 20 × 250 ml",
-    "h1": "The Master Box<br><span>Original Edition</span>"
-  },
   "sectionNav": {
     "aria": "Sections",
     "items": {
-      "master-box-product-heading": "Aperçu",
-      "master-box-savings": "Économie",
-      "master-box-included": "Contenu",
-      "master-box-shipping-section": "Livraison"
+      "product-overview": "Aperçu",
+      "product-details": "Détails"
     }
   },
-  "product": {
-    "heading": "Directement de la source : <span>L'ultime Corporate &amp; Family Edition</span>",
+  "gallery": {
+    "mainAlt": "The Master Box – rituel quotidien avec 20 × 250 ml de jus d'argousier bio",
+    "thumb1Alt": "The Master Box – rituel quotidien",
+    "thumb2Alt": "Conditionnement original The Master Box",
+    "thumb3Alt": "Valeurs nutritionnelles, vitamines et teneur en Oméga-7",
+    "thumb4Alt": "Élixir énergétique avec verre"
+  },
+  "info": {
+    "title": "The Master Box",
+    "volume": "(20× 250 ml)",
     "price": "370,00 CHF",
-    "intro": "<strong>The Master Box</strong> est notre conditionnement original exclusif, conçu pour les véritables passionnés de longévité, les grandes familles et les entreprises visionnaires. Remplacez les boissons énergétiques sucrées du bureau — celles qui ne stimulent votre équipe que brièvement avant de la laisser épuisée — par une véritable énergie cellulaire. Notre <span class=\"is-gold\">Sélection Tente</span> apporte plus de 190 composés bioactifs et le rare acide gras Oméga-7 pour une concentration cristalline et une performance durable.",
-    "savingsHeading": "L'avantage prix intelligent",
-    "savingsBody": "En choisissant la boîte originale, nous évitons ensemble des étapes logistiques superflues. Nous vous transmettons cet avantage d'efficacité directement : vous économisez <strong>plus de 25 %</strong> par rapport à l'achat à l'unité et garantissez que le rituel de protection quotidien ne s'interrompe jamais — pour vous ou votre équipe.",
-    "includedHeading": "Ce que contient le coffret",
-    "included": [
-      "<strong>20 × 250 ml</strong> de la plus pure essence biologique pressée à froid (Sélection Tente).",
-      "Donne jusqu'à <strong class=\"is-gold\">60 litres</strong> de boisson premium revitalisante.",
-      "La <strong>solution corporate wellness</strong> idéale pour votre entreprise.",
-      "<strong>Livraison premium offerte</strong> directement depuis notre centre logistique d'Aarau."
-    ],
-    "cta": {
-      "oneTime": "Commander la Master Box",
+    "savings": "−25 % vs. achat à l'unité",
+    "daily": "≈ 1,85 CHF / jour",
+    "subtitleH3": "Directement de la source :",
+    "subtitleSpan": "L'ultime Corporate & Family Edition.",
+    "lead": "<strong>The Master Box</strong> est notre conditionnement original exclusif, conçu pour les véritables passionnés de longévité, les grandes familles et les entreprises visionnaires. Remplacez les boissons énergétiques sucrées du bureau — celles qui ne stimulent votre équipe que brièvement avant de la laisser épuisée — par une véritable énergie cellulaire. Notre <span class=\"p-gold\">Sélection Tente</span> apporte plus de 190 composés bioactifs et le rare acide gras Oméga-7 pour une concentration cristalline et une performance durable.",
+    "advantageHeading": "L'avantage prix intelligent",
+    "advantageBody": "En choisissant la boîte originale, nous évitons ensemble des étapes logistiques superflues. Nous vous transmettons cet avantage d'efficacité directement : <span class=\"p-gold\">vous économisez plus de 25 % par rapport à l'achat à l'unité</span> et garantissez que le rituel de protection quotidien ne s'interrompe jamais — pour vous ou votre équipe.",
+    "scienceHeading": "Ce que contient le coffret",
+    "scienceItem1": "<strong>20 × 250 ml</strong> de la plus pure essence biologique pressée à froid (Sélection Tente).",
+    "scienceItem2": "Donne jusqu'à <span class=\"p-gold\">60 litres</span> de boisson premium revitalisante.",
+    "scienceItem3": "La <strong>solution corporate wellness</strong> idéale pour votre entreprise.",
+    "scienceItem4": "<strong>Livraison premium offerte</strong> directement depuis notre centre logistique d'Aarau.",
+    "shippingLabel": "Livraison & Logistique",
+    "shippingText": "Livraison premium gratuite en Suisse. Expédition directe depuis notre centre logistique d'Aarau.",
+    "purchase": {
+      "legend": "Choisissez l'option d'achat",
+      "oneTimeLabel": "Achat unique 370,00 CHF",
+      "aboLabel": "Abonnement 333,00 CHF/mois — vous économisez 10 % · résiliable à tout moment",
+      "ctaOneTime": "Commander — 370,00 CHF",
+      "ctaAbo": "Démarrer l'abonnement — 333,00 CHF/mois",
       "oneTimeHref": "https://buy.stripe.com/7sYcN7fyj4WB6SB2j5bQY06",
-      "subscribe": {
-        "top": "Économisez avec l'abonnement (−10 %)",
-        "price": "333,00 CHF",
-        "subtext": "Par mois",
-        "guarantee": "✓ Résiliable à tout moment",
-        "href": "https://buy.stripe.com/bJedRb5XJ0Gl3Gp1f1bQY07"
-      }
+      "aboHref": "https://buy.stripe.com/bJedRb5XJ0Gl3Gp1f1bQY07"
     },
-    "shipping": {
-      "label": "Livraison & Logistique",
-      "text": "Livraison premium gratuite en Suisse.<br>Expédition directe depuis notre centre logistique d'Aarau."
+    "trust": {
+      "bio": "Certifié bio",
+      "lab": "Testé en laboratoire",
+      "shipping": "Expédition en 24 h depuis Aarau",
+      "paymentsLabel": "Moyens de paiement sécurisés"
     }
-  },
-  "images": [
-    {
-      "cloudinaryId": "v1774798904/ambernord-zelt-edition-sanddornbeeren-direktsaft-kaltgepresst.webp_qs7s4i.png",
-      "alt": "The Master Box — 20 × 250 ml de jus d'argousier bio pressé à froid, conditionnement original",
-      "thumbAlt": "Vignette : conditionnement original The Master Box",
-      "sizes": "(max-width:480px) 100vw,(max-width:991px) 100vw,50vw"
-    },
-    {
-      "cloudinaryId": "v1774798917/ambernord-sanddornsaft-naehrwerte-vitamine-omega-7-gehalt.webp_puorxi.png",
-      "alt": "Jus d'argousier AmberNord — valeurs nutritionnelles, vitamines et teneur en Oméga-7",
-      "thumbAlt": "Vignette : tableau nutritionnel et vitamines",
-      "sizes": "(max-width:480px) 100vw,(max-width:991px) 100vw,50vw"
-    },
-    {
-      "cloudinaryId": "v1774807731/ambernord-sanddornsaft-naehrwerte-vitamine--energy-omega-7-biohacking-elixier.webp_c8kzyp.png",
-      "alt": "Élixir énergétique d'argousier AmberNord — biohacking, Oméga-7 et micronutriments",
-      "thumbAlt": "Vignette : élixir énergétique avec verre",
-      "sizes": "(max-width:480px) 100vw,(max-width:991px) 100vw,50vw"
-    }
-  ]
+  }
 }
