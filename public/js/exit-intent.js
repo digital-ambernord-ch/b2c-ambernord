@@ -44,6 +44,16 @@
   function qualifies() { return QUALIFY.indexOf(cleanPath()) !== -1; }
   function isMobile()  { return window.matchMedia(MOBILE_MQ).matches; }
 
+  /* The aktion bar (top promo banner) is its own time-boxed offer that shows
+     for up to 90s. While it's on screen, this exit-intent promo must stay
+     suppressed — two competing offers at once read as spam and collide
+     visually. `html.aktion-active` is set synchronously in <head> and removed
+     when the bar is dismissed (X / swipe / 90s auto-timeout); aktion-bar.js
+     fires `an:aktion-dismissed` at that moment so the mobile back-trap re-arms. */
+  function aktionActive() {
+    return document.documentElement.classList.contains('aktion-active');
+  }
+
   function lockScroll(on) {
     document.documentElement.classList.toggle('exit-offer-open', on);
     document.body.classList.toggle('exit-offer-open', on);
@@ -54,7 +64,7 @@
   }
 
   function openModal() {
-    if (shown || seen() || !qualifies()) return;
+    if (shown || seen() || !qualifies() || aktionActive()) return;
     overlay = overlay || document.getElementById('exit-offer');
     if (!overlay) return;
 
@@ -90,7 +100,7 @@
 
   /* ---- Mobile trigger: Back-button trap ---------------------------------- */
   function armBackGuard() {
-    if (guardLive || !isMobile() || !qualifies()) return;
+    if (guardLive || !isMobile() || !qualifies() || aktionActive()) return;
     guardLive = true;
     try {
       history.pushState({ path: cleanPath(), anExitGuard: true }, '', window.location.href);
@@ -132,6 +142,14 @@
      screen. A prior guard for an earlier page becomes harmless buried history. */
   window.addEventListener('an:navigated', function () {
     guardLive = false;
+    if (seen() || shown) return;
+    armBackGuard();
+  });
+
+  /* The aktion bar suppressed us while it was up; once it's gone we re-arm the
+     mobile back-trap so the exit offer is available for the rest of the visit.
+     (Desktop needs no re-arm — onMouseOut re-checks aktionActive() each move.) */
+  window.addEventListener('an:aktion-dismissed', function () {
     if (seen() || shown) return;
     armBackGuard();
   });

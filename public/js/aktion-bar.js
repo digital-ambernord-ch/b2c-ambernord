@@ -19,6 +19,14 @@
 
   let autoArmed = false;
 
+  /* Notify listeners (exit-intent.js) once the bar is actually gone, so the
+     exit-offer promo — suppressed while this bar competes for attention — can
+     re-arm for the rest of the visit. Fired after the `aktion-active` class is
+     removed, so any handler reading that class sees the post-dismiss state. */
+  function notifyDismissed() {
+    try { window.dispatchEvent(new CustomEvent('an:aktion-dismissed')); } catch (_) {}
+  }
+
   function dismiss(viaAuto) {
     try { localStorage.setItem(STORAGE_KEY, '1'); } catch {}
 
@@ -31,9 +39,11 @@
       bar.style.opacity = '0';
       setTimeout(function () {
         document.documentElement.classList.remove('aktion-active');
+        notifyDismissed();
       }, 360);
     } else {
       document.documentElement.classList.remove('aktion-active');
+      notifyDismissed();
     }
   }
 
