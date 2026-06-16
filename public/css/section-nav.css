@@ -50,7 +50,9 @@
   align-items: stretch;                     /* rows fill the full rail width */
 }
 
-/* --- Progress track (vertical line through the dots) ------------------- */
+/* --- Progress track (vertical line through the dots) -------------------
+   A sibling of the <ul> (a list may only hold <li>), positioned against the
+   fixed .an-secnav root, which shares the list's box. */
 .an-secnav__track {
   position: absolute;
   top: 4px;

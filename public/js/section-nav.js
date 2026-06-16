@@ -58,12 +58,16 @@
     var list = document.createElement('ul');
     list.className = 'an-secnav__list';
 
+    /* Progress line. It is a sibling of the <ul>, NOT a child — a list may only
+       contain <li> (plus script-supporting elements), so a <div> inside it is
+       invalid and screen readers mis-announce the list. It is position:absolute
+       against the position:fixed root, which shares the list's box, so the
+       top/bottom/right alignment is identical. */
     var track = document.createElement('div');
     track.className = 'an-secnav__track';
     var trackFill = document.createElement('div');
     trackFill.className = 'an-secnav__track-fill';
     track.appendChild(trackFill);
-    list.appendChild(track);
 
     items.forEach(function (it, i) {
       var li = document.createElement('li');
@@ -90,6 +94,7 @@
       it.li = li; it.btn = btn;
     });
 
+    root.appendChild(track);                    // paints underneath the list
     root.appendChild(list);
     document.body.appendChild(root);
 
