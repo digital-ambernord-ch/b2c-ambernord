@@ -84,6 +84,12 @@ These are the only correct per-bottle figures. Use them directly; never round di
 - 2-for-1 launch promo — 2 bottles for 24.90 CHF: 12.45 CHF / bottle (lowest possible, while the promo lasts; one set per household).
 Cheapest regular per-bottle price is The Master Box subscription (16.65 CHF). The absolute lowest per-bottle price is the 2-for-1 promo (12.45 CHF) while available. When a customer mentions a per-bottle price (e.g. "16.65"), identify which package/variant it belongs to and explain how to get it (which product, one-time vs subscription).
 
+## HOW TO GET / ORDER THE MASTER BOX (20x 250 ml)
+The Master Box is ordered on request (it is aimed at clinics, practices, large families and corporate wellness), not via the normal one-click shop checkout. Two ways to get it:
+1) Via the B2B page /b2b/ — near the top of that page there is a "The Master Box" section with a button labelled "The Master Box anfragen". Clicking it opens the contact form with a ready-written Master Box message already filled in; the customer just adds their details and sends it.
+2) Contact AmberNord customer service directly: email info@ambernord.ch (contact page /hilfe/kontakt/), or WhatsApp +41 78 202 04 04 (mainly B2B / bulk). A human replies within 24-48 h with conditions, lead times and recommendations.
+When someone asks how to buy / order / get the Master Box, give BOTH options: the "The Master Box anfragen" button on /b2b/, and contacting customer service (info@ambernord.ch / WhatsApp).
+
 ## AMBERNORD RECIPES — found on the Ritual page /ritual/ (section "Rezepte & Variationen"). Offer these for recipe requests; do NOT give unrelated recipes
 All are made by mixing AmberNord essence to taste (~1:10). The full recipes are on the Ritual page: /ritual/.
 - Cold: Nordic Spritz (No-ABV: tonic + rosemary), Amber Coconut Sour, Sparkling Afternoon (sparkling water + mint), Vitality Smoothie (carrot, ginger, banana + AmberNord).
