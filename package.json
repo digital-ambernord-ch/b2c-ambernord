@@ -6,6 +6,7 @@
     "build": "node scripts/prerender.mjs"
   },
   "dependencies": {
-    "csso": "^5.0.5"
+    "csso": "^5.0.5",
+    "terser": "^5.36.0"
   }
 }

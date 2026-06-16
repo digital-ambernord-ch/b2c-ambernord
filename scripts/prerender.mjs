@@ -264,6 +264,39 @@ try {
   console.warn('CSS minify skipped (csso unavailable):', err.message);
 }
 
+/* Minify JS in dist/ only — the source under public/js keeps its comments and
+   formatting for maintainability; here the production transfer is shrunk.
+   terser strips comments/whitespace and mangles locals (the page modules drop
+   ~45% raw before brotli), cutting the parse + download cost flagged by
+   Lighthouse's "minify JavaScript" audit. Same fail-soft contract as CSS: if
+   terser is unavailable the verbatim cpSync copy stays, so the build is safe
+   without the dependency. The gated inline tags in index.html are untouched. */
+try {
+  const { minify } = await import('terser');
+  const jsFiles = [];
+  const jsDir = join(DIST, 'js');
+  if (existsSync(jsDir)) {
+    for (const file of readdirSync(jsDir)) {
+      if (file.endsWith('.js')) jsFiles.push(join(jsDir, file));
+    }
+  }
+  const chatWidget = join(DIST, 'assets', 'chat-widget.js');
+  if (existsSync(chatWidget)) jsFiles.push(chatWidget);
+
+  let before = 0, after = 0;
+  for (const p of jsFiles) {
+    const src = readFileSync(p, 'utf8');
+    const result = await minify(src, { compress: true, mangle: true });
+    if (result.code == null) continue;        /* leave verbatim on a parse miss */
+    before += src.length;
+    after += result.code.length;
+    writeFileSync(p, result.code);
+  }
+  console.log(`Minified JS: ${(before / 1024).toFixed(0)}K -> ${(after / 1024).toFixed(0)}K raw (${jsFiles.length} files).`);
+} catch (err) {
+  console.warn('JS minify skipped (terser unavailable):', err.message);
+}
+
 const shell = readFileSync(join(PUBLIC, 'index.html'), 'utf8');
 let pageCount = 0;
 
