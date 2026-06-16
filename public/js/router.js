@@ -600,9 +600,14 @@
        keeps the current locale prefix via localePath(). */
     const cleanPath = normalisePath(stripLocale(path));
     const hash      = path.includes('#') ? path.split('#')[1] : null;
+    /* Preserve any query string (e.g. ?inquiry=masterbox) — normalisePath strips
+       it for route matching, but it must survive into the pushed URL so pages
+       can read window.location.search (contact.js inquiry autofill). */
+    const beforeHash = path.split('#')[0];
+    const search     = beforeHash.includes('?') ? '?' + beforeHash.split('?').slice(1).join('?') : '';
     const { route, canonicalPath } = resolveRoute(cleanPath);
 
-    const localizedPath = window.localePath(canonicalPath) + (hash ? '#' + hash : '');
+    const localizedPath = window.localePath(canonicalPath) + search + (hash ? '#' + hash : '');
 
     if (pushState) {
       history.pushState({ path: canonicalPath }, route.title, localizedPath);
