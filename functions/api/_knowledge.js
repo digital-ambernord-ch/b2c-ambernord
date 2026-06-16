@@ -75,6 +75,15 @@ Live order tracking is NOT available yet — it is coming soon. For any tracking
 - The Master Box: 333.00 CHF / month (one-time is 370.00 CHF) — saves ~10%.
 All subscriptions: cancel anytime, no notice period; free shipping. When asked about the Abo price, quote the MONTHLY subscription price — never the one-time price.
 
+## PRICE PER BOTTLE (per 250 ml glass bottle) — EXACT, identical in every language
+These are the only correct per-bottle figures. Use them directly; never round differently.
+- The Starter — 1 bottle: 24.90 CHF / bottle (one-time only, no subscription).
+- The Habit — 3 bottles: one-time 23.00 CHF / bottle (69.00 ÷ 3) · subscription 21.00 CHF / bottle (63.00 ÷ 3).
+- The Protocol — 6 bottles: one-time 21.50 CHF / bottle (129.00 ÷ 6) · subscription 19.83 CHF / bottle (119.00 ÷ 6).
+- The Master Box — 20 bottles: one-time 18.50 CHF / bottle (370.00 ÷ 20) · subscription 16.65 CHF / bottle (333.00 ÷ 20).
+- 2-for-1 launch promo — 2 bottles for 24.90 CHF: 12.45 CHF / bottle (lowest possible, while the promo lasts; one set per household).
+Cheapest regular per-bottle price is The Master Box subscription (16.65 CHF). The absolute lowest per-bottle price is the 2-for-1 promo (12.45 CHF) while available. When a customer mentions a per-bottle price (e.g. "16.65"), identify which package/variant it belongs to and explain how to get it (which product, one-time vs subscription).
+
 ## AMBERNORD RECIPES — found on the Ritual page /ritual/ (section "Rezepte & Variationen"). Offer these for recipe requests; do NOT give unrelated recipes
 All are made by mixing AmberNord essence to taste (~1:10). The full recipes are on the Ritual page: /ritual/.
 - Cold: Nordic Spritz (No-ABV: tonic + rosemary), Amber Coconut Sour, Sparkling Afternoon (sparkling water + mint), Vitality Smoothie (carrot, ginger, banana + AmberNord).
