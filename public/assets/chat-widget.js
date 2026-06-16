@@ -149,6 +149,9 @@
     '.ancb-msg--bot{align-self:flex-start;background:rgba(34,34,34,.65);border:1px solid var(--color-border,rgba(255,255,255,.08));color:var(--color-text-muted,#d0d0d0);border-radius:12px 12px 12px 4px;}',
     '.ancb-msg--user{align-self:flex-end;background:var(--color-gold,#EDA323);color:#0a0a0a;font-weight:500;border-radius:12px 12px 4px 12px;}',
     '.ancb-msg--error{border-color:rgba(220,80,80,.5);color:#f3b4b4;}',
+    /* Clickable links inside bot replies (internal site paths + email) */
+    '.ancb-link{color:var(--color-gold,#EDA323);text-decoration:underline;text-underline-offset:2px;font-weight:500;cursor:pointer;word-break:break-word;}',
+    '.ancb-link:hover,.ancb-link:focus-visible{color:var(--color-gold-hover,#f0b543);outline:none;}',
 
     '.ancb-typing{display:inline-flex;gap:4px;align-items:center;}',
     '.ancb-typing span{width:6px;height:6px;border-radius:50%;background:var(--color-text-dim,#888);animation:ancb-bounce 1.2s infinite ease-in-out;}',
@@ -326,12 +329,52 @@
 
   function scrollBottom() { log.scrollTop = log.scrollHeight; }
 
-  // Bubbles use textContent only — never innerHTML — so model output can't
-  // inject markup.
+  /* Linkifies a bot reply WITHOUT ever using innerHTML on model output: every
+     piece is either a text node or an <a> element we build ourselves, so markup
+     still can't be injected. Recognises internal site paths (e.g. /b2b/ or
+     /ritual/#ritual-recipes-section) and email addresses. Internal paths are
+     RELATIVE on purpose — they resolve against whatever host serves the page
+     (*.pages.dev now, ambernord.ch later) and never need editing. */
+  var LINK_RE = /(\/(?:[a-z0-9]+(?:-[a-z0-9]+)*\/)+(?:#[a-z][a-z0-9-]*)?)|([a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,})/gi;
+
+  function appendRich(el, text) {
+    var last = 0, m;
+    LINK_RE.lastIndex = 0;
+    while ((m = LINK_RE.exec(text)) !== null) {
+      if (m.index > last) el.appendChild(document.createTextNode(text.slice(last, m.index)));
+      var a = document.createElement('a');
+      a.className = 'ancb-link';
+      if (m[1]) {                       // internal site path → SPA link
+        a.setAttribute('href', m[1]);
+        a.setAttribute('data-link', '');
+      } else {                          // email → mailto
+        a.setAttribute('href', 'mailto:' + m[2]);
+      }
+      a.textContent = m[0];
+      el.appendChild(a);
+      last = m.index + m[0].length;
+    }
+    if (last < text.length) el.appendChild(document.createTextNode(text.slice(last)));
+  }
+
+  // User bubbles use textContent only (no markup ever). Bot bubbles run through
+  // appendRich so site paths/emails become real links — still no innerHTML.
   function addBubble(role, text, isError) {
     var el = document.createElement('div');
     el.className = 'ancb-msg ' + (role === 'user' ? 'ancb-msg--user' : 'ancb-msg--bot') + (isError ? ' ancb-msg--error' : '');
-    el.textContent = text;
+    if (role === 'user') {
+      el.textContent = text;
+    } else {
+      appendRich(el, text);
+      var internal = el.querySelectorAll('a[data-link]');
+      if (internal.length) {
+        // Hand the new links to the SPA router (smooth nav + #section scroll;
+        // falls back to a normal full-page link if the router isn't present).
+        if (typeof window.attachLinkListeners === 'function') window.attachLinkListeners();
+        // Close the panel on navigation so the destination page is visible.
+        internal.forEach(function (a) { a.addEventListener('click', closePanel); });
+      }
+    }
     log.appendChild(el);
     scrollBottom();
     return el;
