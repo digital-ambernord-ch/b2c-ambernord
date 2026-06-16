@@ -545,34 +545,38 @@
   color: var(--color-bg);
 }
 
-/* Dual-line hero CTA — the main label stays perfectly centred (unchanged from
-   the single-line button); the espresso-brown fine-print line is absolutely
-   positioned in the bottom-right corner so it never shifts the main label
-   off-centre.
-   The unit + subscription context ("24.90 / Flasche · im Abo …") is MANDATORY
-   (PBV / UWG): the per-bottle price and subscription condition must stay on
-   screen — never let a bare daily price show alone, hence white-space:nowrap. */
+/* Dual-line hero CTA — flex column: the big price label (centred, never wraps
+   so the full "ab 16.65 / Flasche" line stays on ONE line down to small phones
+   via a fluid clamp() font-size) sits above a small espresso-brown fine-print
+   line, right-aligned. The subscription context ("im Spar-Abo mit der Master
+   Box …") is MANDATORY (PBV / UWG): the "ab" floor price is only reachable in
+   the Master Box subscription, so that condition must stay on screen. */
 .ambernord-btn-clean--dual {
-  position: relative;
-  padding-top: 16px;
-  padding-bottom: 22px;    /* room for the fine-print line below the label */
+  display: inline-flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 14px 30px;
   text-align: center;
 }
 
 .ambernord-btn-clean__main {
   display: block;
+  text-align: center;
+  white-space: nowrap;                       /* full price line never wraps */
+  font-size: clamp(9px, 2.8vw, 15px);        /* shrinks to keep one line on small phones */
+  letter-spacing: clamp(0.2px, 0.14vw, 1.8px);
+  line-height: 1.1;
 }
 
 .ambernord-btn-clean__sub {
-  position: absolute;
-  right: 16px;
-  bottom: 6px;
+  display: block;
+  margin-top: 5px;
+  text-align: right;       /* small print sits to the right under the label */
   font-size: 10px;
   font-weight: 700;
-  letter-spacing: 0.4px;
-  line-height: 1;
+  letter-spacing: 0.3px;
+  line-height: 1.3;
   text-transform: none;
-  white-space: nowrap;     /* keeps the price line on one line */
   color: #4a2c12;          /* deep espresso-brown fine-print accent, warm + legible on gold */
 }
 
@@ -2569,9 +2573,9 @@
 @media (max-width: 768px) {
   #scrollTrack h1 { font-size: clamp(20px, 5.5vw, 28px); margin-bottom: 25px; }
   .ambernord-btn-clean { padding: 14px 35px; font-size: 13px; margin-bottom: 35px; }
-  /* keep bottom room + readable fine print on mobile (shorthand above resets it) */
-  .ambernord-btn-clean--dual { padding-top: 14px; padding-bottom: 20px; }
-  .ambernord-btn-clean__sub { right: 14px; bottom: 5px; font-size: 9px; }
+  /* tighten side padding so the full label fits; fine print shrinks slightly */
+  .ambernord-btn-clean--dual { padding: 12px 12px; }
+  .ambernord-btn-clean__sub { font-size: 8.5px; }
 }
 
 /* =========================================================================
