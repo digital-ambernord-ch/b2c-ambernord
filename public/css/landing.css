@@ -149,14 +149,12 @@
   z-index: 6;
   display: flex;
   flex-direction: column;
-  gap: 7px;
-  padding: 11px 15px;
+  gap: 8px;
   text-align: left;
-  border-radius: 10px;
-  background: rgba(10, 10, 10, 0.26);
-  -webkit-backdrop-filter: blur(3px);
-  backdrop-filter: blur(3px);
-  opacity: 0.9;
+  /* No background — plain white text. A soft shadow keeps it legible over
+     the hero imagery without any box behind it. */
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.55), 0 0 2px rgba(0, 0, 0, 0.4);
+  opacity: 0.95;
   pointer-events: none;
   will-change: opacity;
 }
@@ -164,50 +162,50 @@
 .hero-watermark__row {
   display: flex;
   align-items: center;
-  gap: 9px;
+  gap: 11px;
 }
 
 .hero-watermark__mult {
   font-family: var(--font-serif);
-  font-size: 30px;
+  font-size: 38px;
   line-height: 0.9;
-  color: var(--color-gold);
+  color: #fff;
 }
 
 .hero-watermark__vitc {
   display: flex;
   flex-direction: column;
-  gap: 1px;
+  gap: 2px;
 }
 
 .hero-watermark__vitc-label {
-  font-size: 11px;
+  font-size: 14px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.82);
+  color: #fff;
   line-height: 1.1;
 }
 
 .hero-watermark__vitc-sub {
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.3px;
-  color: rgba(255, 255, 255, 0.48);
+  color: #fff;
   line-height: 1.1;
 }
 
 .hero-watermark__omega {
-  font-size: 11px;
+  font-size: 14px;
   letter-spacing: 1.3px;
   text-transform: uppercase;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.72);
+  color: #fff;
 }
 
 .hero-watermark__omega-label {
   font-weight: 700;
   letter-spacing: 2px;
-  color: rgba(255, 255, 255, 0.9);
+  color: #fff;
 }
 
 /* Phones: scale the watermark mark down so it stays a corner mark and clears
@@ -216,14 +214,13 @@
   .hero-watermark {
     left: 16px;
     bottom: 18px;
-    gap: 6px;
-    padding: 9px 12px;
+    gap: 7px;
   }
-  .hero-watermark__row { gap: 8px; }
-  .hero-watermark__mult { font-size: 26px; }
-  .hero-watermark__vitc-label { font-size: 10px; letter-spacing: 1.2px; }
-  .hero-watermark__vitc-sub { font-size: 8px; }
-  .hero-watermark__omega { font-size: 9.5px; letter-spacing: 1px; }
+  .hero-watermark__row { gap: 9px; }
+  .hero-watermark__mult { font-size: 31px; }
+  .hero-watermark__vitc-label { font-size: 12px; letter-spacing: 1.2px; }
+  .hero-watermark__vitc-sub { font-size: 10px; }
+  .hero-watermark__omega { font-size: 11.5px; letter-spacing: 1px; }
 }
 
 .animation-workspace {
