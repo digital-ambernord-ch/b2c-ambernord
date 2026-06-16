@@ -56,6 +56,9 @@
       "aboLabel": "Abonnement 333,00 CHF/mois — vous économisez 10 % · résiliable à tout moment",
       "ctaOneTime": "Commander — 370,00 CHF",
       "ctaAbo": "Démarrer l'abonnement — 333,00 CHF/mois",
+      "aboPrice": "333,00 CHF/mois",
+      "aboSavings": "−33 % vs. achat à l'unité",
+      "aboDaily": "≈ 1,67 CHF / jour",
       "oneTimeHref": "https://buy.stripe.com/7sYcN7fyj4WB6SB2j5bQY06",
       "aboHref": "https://buy.stripe.com/bJedRb5XJ0Gl3Gp1f1bQY07"
     },

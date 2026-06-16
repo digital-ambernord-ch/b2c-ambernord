@@ -56,6 +56,9 @@
       "aboLabel": "Abo 333.00 CHF/Monat — Sie sparen 10 % · jederzeit kündbar",
       "ctaOneTime": "Jetzt bestellen — 370.00 CHF",
       "ctaAbo": "Abo starten — 333.00 CHF/Monat",
+      "aboPrice": "333.00 CHF/Monat",
+      "aboSavings": "−33 % vs. Einzelkauf",
+      "aboDaily": "≈ 1.67 CHF / Tag",
       "oneTimeHref": "https://buy.stripe.com/7sYcN7fyj4WB6SB2j5bQY06",
       "aboHref": "https://buy.stripe.com/bJedRb5XJ0Gl3Gp1f1bQY07"
     },

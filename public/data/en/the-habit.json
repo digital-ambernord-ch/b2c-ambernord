@@ -57,6 +57,9 @@
       "aboLabel": "Subscription 63.00 CHF/month — you save 6.– (−9 %) · cancel anytime",
       "ctaOneTime": "Order now — 69.00 CHF",
       "ctaAbo": "Start subscription — 63.00 CHF/month",
+      "aboPrice": "63.00 CHF/month",
+      "aboSavings": "−16 % vs. Starter",
+      "aboDaily": "≈ 2.10 CHF / day",
       "oneTimeHref": "https://buy.stripe.com/cNi3cx3PB2Ot6SB4rdbQY01",
       "aboHref": "https://buy.stripe.com/aFa6oJ71N60F4Kt3n9bQY04"
     },

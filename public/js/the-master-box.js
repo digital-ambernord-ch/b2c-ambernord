@@ -140,6 +140,11 @@ window.initTheMasterBox = async function () {
   initEntranceWillChange();
   initScrollReveal();
 
+  /* PURCHASE TOGGLE — Einmalkauf ↔ Abo (shared helper in js/product.js). */
+  if (typeof window.initPurchaseToggle === 'function') {
+    window.initPurchaseToggle(data);
+  }
+
   /* ------------------------------------------------------------------------
      SECTION-NAV RAIL — scroll-spy menu (js/section-nav.js). Sections listed
      in document order; short labels per locale come from data.sectionNav.
