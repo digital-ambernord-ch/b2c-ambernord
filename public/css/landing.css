@@ -546,11 +546,12 @@
 }
 
 /* Dual-line hero CTA — the main label stays perfectly centred (unchanged from
-   the single-line button); the red fine-print line is absolutely positioned in
-   the bottom-right corner so it never shifts the main label off-centre.
-   The "im Abo … / Flasche" context is MANDATORY (PBV / UWG): the unit and the
-   subscription condition must stay on screen — never let "16.65" show alone,
-   hence white-space:nowrap so "/ Flasche" never wraps off. */
+   the single-line button); the espresso-brown fine-print line is absolutely
+   positioned in the bottom-right corner so it never shifts the main label
+   off-centre.
+   The unit + subscription context ("24.90 / Flasche · im Abo …") is MANDATORY
+   (PBV / UWG): the per-bottle price and subscription condition must stay on
+   screen — never let a bare daily price show alone, hence white-space:nowrap. */
 .ambernord-btn-clean--dual {
   position: relative;
   padding-top: 16px;
@@ -571,8 +572,8 @@
   letter-spacing: 0.4px;
   line-height: 1;
   text-transform: none;
-  white-space: nowrap;     /* keeps "/ Flasche" attached to "16.65" */
-  color: #a3120b;          /* deep red fine-print accent, legible on gold */
+  white-space: nowrap;     /* keeps the price line on one line */
+  color: #4a2c12;          /* deep espresso-brown fine-print accent, warm + legible on gold */
 }
 
 .hero-features-box {
