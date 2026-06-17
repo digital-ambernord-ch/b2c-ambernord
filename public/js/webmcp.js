@@ -3,13 +3,13 @@
    https://github.com/webmachinelearning/webmcp · Chrome "agentic browsing"
 
    Registers AmberNord's catalogue, brand facts and SPA navigation as
-   structured, agent-callable tools via navigator.modelContext, so AI agents
+   structured, agent-callable tools via the modelContext API, so AI agents
    (and Chrome's agentic-browsing audits) can read and move around the shop
    without scraping the DOM. Declarative form tools (toolname/tooldescription)
    live in the page fragments; this module covers the imperative tools.
 
    EXPERIMENTAL + FAIL-SOFT: everything is feature-detected and wrapped in
-   try/catch. A browser without navigator.modelContext — i.e. virtually all of
+   try/catch. A browser without the modelContext API — i.e. virtually all of
    them today — is completely unaffected: no tools, no errors, no overhead.
    All tools are read-only except navigate_to, which only changes the SPA route
    (no data writes, no side effects). Results are returned as strings (JSON for
@@ -18,7 +18,10 @@
 (function () {
   'use strict';
 
-  var mc = navigator.modelContext;
+  /* Entry point moved: Chrome 149 exposed navigator.modelContext; Chrome 150+
+     deprecated that in favour of document.modelContext. Prefer the current
+     surface and fall back to the older one so both trial builds work. */
+  var mc = document.modelContext || navigator.modelContext;
   if (!mc || typeof mc.registerTool !== 'function') return;   /* unsupported → no-op */
 
   var ORIGIN = 'https://ambernord.ch';
