@@ -15,7 +15,9 @@
 
     <div class="bestellstatus-card">
 
-      <form class="bestellstatus-form" id="bestellstatus-form" novalidate>
+      <form class="bestellstatus-form" id="bestellstatus-form" novalidate
+            toolname="check_order_status"
+            tooldescription="Look up the status of an existing AmberNord order by its order number.">
 
         <label class="bestellstatus-label" for="order-input" data-i18n="form.label"></label>
 
@@ -25,6 +27,7 @@
           id="order-input"
           name="orderNumber"
           data-i18n-attr="placeholder:form.placeholder"
+          toolparamdescription="The order number from the order confirmation email"
           autocomplete="off"
           required>
 

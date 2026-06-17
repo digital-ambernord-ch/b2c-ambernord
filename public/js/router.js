@@ -853,6 +853,11 @@
 
   window.attachLinkListeners = attachLinkListeners;
 
+  /* Programmatic SPA navigation for WebMCP's navigate_to tool (js/webmcp.js)
+     and any other automation entry point. Takes a canonical, locale-less path
+     (e.g. '/shop/'); the router applies the active locale prefix and hydrates. */
+  window.ambernordNavigate = function (path) { return navigate(path, true); };
+
   window.addEventListener('popstate', function (e) {
     const path = e.state ? e.state.path : window.location.pathname;
     navigate(path, false);

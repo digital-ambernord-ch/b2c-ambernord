@@ -114,7 +114,9 @@
         <p class="contact-body" data-i18n="form.intro"></p>
       </div>
 
-      <form id="contact-form" class="contact-form" novalidate>
+      <form id="contact-form" class="contact-form" novalidate
+            toolname="send_contact_message"
+            tooldescription="Send a message or question to the AmberNord customer support team.">
 
         <div class="contact-form__group">
           <label for="contact-name" class="sr-only" data-i18n="form.fields.name.label"></label>
@@ -124,6 +126,7 @@
             name="name"
             class="contact-form__input"
             data-i18n-attr="placeholder:form.fields.name.placeholder"
+            toolparamdescription="The customer's full name"
             required
             autocomplete="name"
           >
@@ -137,6 +140,7 @@
             name="email"
             class="contact-form__input"
             data-i18n-attr="placeholder:form.fields.email.placeholder"
+            toolparamdescription="The customer's email address, used for the reply"
             required
             autocomplete="email"
           >
@@ -150,6 +154,7 @@
             name="phone"
             class="contact-form__input"
             data-i18n-attr="placeholder:form.fields.phone.placeholder"
+            toolparamdescription="Optional phone number for a callback"
             autocomplete="tel"
           >
         </div>
@@ -161,6 +166,7 @@
             name="message"
             class="contact-form__input contact-form__textarea"
             data-i18n-attr="placeholder:form.fields.message.placeholder"
+            toolparamdescription="The message or question to send"
             rows="10"
             required
           ></textarea>

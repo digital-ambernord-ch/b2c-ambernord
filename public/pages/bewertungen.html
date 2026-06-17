@@ -43,12 +43,14 @@
         <h2 id="bewertungen-form-heading" class="bewertungen-section-title" data-i18n="form.heading">Bewertung abgeben</h2>
         <p class="bewertungen-form-intro" data-i18n="form.intro">Ihre Bewertung erscheint nach Pr&uuml;fung der Bestellnummer. Wir ver&ouml;ffentlichen nur Vorname und Stadt &mdash; Ihre E-Mail bleibt vertraulich.</p>
 
-        <form id="bewertung-form" class="bewertungen-form" novalidate>
+        <form id="bewertung-form" class="bewertungen-form" novalidate
+              toolname="submit_product_review"
+              tooldescription="Submit a customer product review for AmberNord. Requires a valid order number from a verified purchase.">
 
           <fieldset class="bewertungen-stars-fieldset">
             <legend class="bewertungen-label" data-i18n="form.stars">Bewertung</legend>
             <div class="bewertungen-stars-input" role="radiogroup" aria-label="Sternebewertung 1 bis 5">
-              <input type="radio" name="stars" id="star5" value="5" required>
+              <input type="radio" name="stars" id="star5" value="5" required toolparamdescription="The star rating from 1 to 5">
               <label for="star5" aria-label="5 Sterne">&#9733;</label>
               <input type="radio" name="stars" id="star4" value="4">
               <label for="star4" aria-label="4 Sterne">&#9733;</label>
@@ -63,22 +65,22 @@
 
           <div class="bewertungen-field">
             <label for="bw-name" class="bewertungen-label" data-i18n="form.name">Vorname (oder Initialen)</label>
-            <input type="text" id="bw-name" name="name" required maxlength="40" autocomplete="given-name">
+            <input type="text" id="bw-name" name="name" required maxlength="40" autocomplete="given-name" toolparamdescription="The reviewer's first name or initials (will be published)">
           </div>
 
           <div class="bewertungen-field">
             <label for="bw-city" class="bewertungen-label" data-i18n="form.city">Stadt</label>
-            <input type="text" id="bw-city" name="city" required maxlength="40" autocomplete="address-level2">
+            <input type="text" id="bw-city" name="city" required maxlength="40" autocomplete="address-level2" toolparamdescription="The reviewer's city (will be published)">
           </div>
 
           <div class="bewertungen-field">
             <label for="bw-email" class="bewertungen-label" data-i18n="form.email">E-Mail (vertraulich, nur f&uuml;r Verifizierung)</label>
-            <input type="email" id="bw-email" name="email" required maxlength="120" autocomplete="email">
+            <input type="email" id="bw-email" name="email" required maxlength="120" autocomplete="email" toolparamdescription="The reviewer's email — kept confidential, used only to verify the purchase">
           </div>
 
           <div class="bewertungen-field">
             <label for="bw-order" class="bewertungen-label" data-i18n="form.order">Bestellnummer (aus der Bestellbest&auml;tigung)</label>
-            <input type="text" id="bw-order" name="order_id" required maxlength="60" placeholder="">
+            <input type="text" id="bw-order" name="order_id" required maxlength="60" placeholder="" toolparamdescription="The order number from the order confirmation">
           </div>
 
           <div class="bewertungen-field">
@@ -86,12 +88,13 @@
             <p class="bewertungen-field-hint" data-i18n="form.textHint">Beschreiben Sie in Ihren eigenen Worten, was sich nach 14 Tagen ver&auml;ndert hat &mdash; Energie, Geschmack, Ritual &mdash;, wie das Elixier schmeckt und was Sie &uuml;berrascht hat.</p>
             <textarea id="bw-text" name="review_text" rows="6" required minlength="40" maxlength="600"
                       data-i18n-attr="placeholder:form.textPlaceholder"
+                      toolparamdescription="The review text (40-600 characters) describing the customer's experience"
                       placeholder=""></textarea>
             <span class="bewertungen-counter"><span id="bw-text-count">0</span> / 600</span>
           </div>
 
           <div class="bewertungen-field bewertungen-field-checkbox">
-            <input type="checkbox" id="bw-consent" name="consent" required>
+            <input type="checkbox" id="bw-consent" name="consent" required toolparamdescription="Consent to publish the first name, city and review text on the website">
             <label for="bw-consent" data-i18n-html="form.consent">Ich erlaube AmberNord, meinen Vornamen, meine Stadt und meinen Bewertungstext auf der Website zu ver&ouml;ffentlichen. Meine E-Mail bleibt vertraulich.</label>
           </div>
 
