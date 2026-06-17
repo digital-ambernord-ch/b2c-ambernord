@@ -90,45 +90,9 @@ window.initContact = async function () {
     }
   }
 
-  /* --------------------------------------------------------------------------
-     SCROLL REVEAL — IntersectionObserver; disconnects each target after reveal.
-     -------------------------------------------------------------------------- */
-
-  const targets = [
-    ...document.querySelectorAll('.contact-intro, .contact-card-section, .contact-form-section'),
-  ].filter(Boolean);
-
-  targets.forEach((el, i) => {
-    el.classList.add('page-reveal');
-    el.style.transitionDelay = `${Math.min(i * 0.12, 0.3)}s`;
-  });
-
-  const observer = new IntersectionObserver(
-    (entries) =>
-      entries.forEach((e) => {
-        if (e.isIntersecting) {
-          e.target.classList.add('is-visible');
-          observer.unobserve(e.target);
-        }
-      }),
-    { threshold: 0.12 }
-  );
-
-  targets.forEach((el) => observer.observe(el));
-
-  /* --------------------------------------------------------------------------
-     WILL-CHANGE CLEANUP — removes will-change once the entrance animation ends.
-     -------------------------------------------------------------------------- */
-
-  const container = document.querySelector('.contact-page-container');
-  if (container) {
-    container.classList.add('animating');
-    container.addEventListener(
-      'animationend',
-      () => container.classList.remove('animating'),
-      { once: true }
-    );
-  }
+  /* Scroll reveal + container entrance — shared helpers in js/ui.js. */
+  window.revealOnScroll('.contact-intro, .contact-card-section, .contact-form-section', { delayStep: 0.12 });
+  window.animateContainerEntry('.contact-page-container');
 
   /* --------------------------------------------------------------------------
      SECTION-NAV — in-page rail (js/section-nav.js); sections in document order,

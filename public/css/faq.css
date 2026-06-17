@@ -146,7 +146,7 @@
 .faq-answer-content {
     padding-bottom: 30px;
     padding-right: 40px;
-    color: #d0d0d0;
+    color: var(--color-text-muted);
     font-size: 16px;
     font-weight: 300;
     line-height: 1.8;

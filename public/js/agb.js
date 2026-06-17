@@ -9,13 +9,7 @@ window.initAgb = async function () {
   const lang = window.getLang();
   const data = await window.loadI18n(lang, 'agb');
 
-  const container = document.querySelector('.returns-page-container');
-  if (container) {
-    container.classList.add('animating');
-    container.addEventListener('animationend', () => {
-      container.classList.remove('animating');
-    }, { once: true });
-  }
+  window.animateContainerEntry('.returns-page-container');
 
   function renderSections(sections) {
     const wrapper = document.getElementById('agb-sections');
@@ -37,25 +31,9 @@ window.initAgb = async function () {
 
   renderSections(data.sections);
 
-  const targets = [
-    ...document.querySelectorAll('.returns-section.page-reveal'),
-    ...document.querySelectorAll('.returns-footer.page-reveal'),
-  ].filter(Boolean);
-
-  targets.forEach((el, i) => {
-    el.style.transitionDelay = `${Math.min(i * 0.08, 0.3)}s`;
-  });
-
-  const observer = new IntersectionObserver(
-    (entries) => entries.forEach((e) => {
-      if (e.isIntersecting) {
-        e.target.classList.add('is-visible');
-        observer.unobserve(e.target);
-      }
-    }),
-    { threshold: 0.12 }
-  );
-  targets.forEach((el) => observer.observe(el));
+  /* Scroll reveal — shared helper in js/ui.js; .page-reveal is rendered in the
+     section markup above, so addClass is off. */
+  window.revealOnScroll('.returns-section.page-reveal, .returns-footer.page-reveal', { addClass: false });
 
   if (typeof window.initSectionNav === 'function' && data && data.sectionNav) {
     window.initSectionNav({

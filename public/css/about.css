@@ -91,7 +91,7 @@
    than a marketing block. */
 .about-page-container p {
     font-family: var(--font-sans);
-    color: #d0d0d0;
+    color: var(--color-text-muted);
     font-size: 16px;
     font-weight: 300;
     line-height: 1.85;
@@ -365,7 +365,7 @@
     width: 18px;
     height: 18px;
     border-radius: 50%;
-    background-color: var(--color-bg, #0a0a0a);
+    background-color: var(--color-bg);
     border: 3px solid var(--color-gold);
     box-shadow: 0 0 15px rgba(237, 163, 35, 0.6);
 }

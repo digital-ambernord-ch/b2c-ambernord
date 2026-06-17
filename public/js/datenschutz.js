@@ -94,45 +94,10 @@ window.initDatenschutz = async function () {
   renderSections(data.sections);
   renderFooterNote(data.footer);
 
-  /* --------------------------------------------------------------------------
-     ENTRANCE ANIMATION — marks the container with .animating during the CSS
-     keyframe, then removes will-change to free compositor resources.
-     -------------------------------------------------------------------------- */
-
-  const container = document.querySelector('.datenschutz-page-container');
-  if (container) {
-    container.classList.add('animating');
-    container.addEventListener('animationend', () => {
-      container.classList.remove('animating');
-    }, { once: true });
-  }
-
-  /* --------------------------------------------------------------------------
-     SCROLL REVEAL — IntersectionObserver adds .is-visible to each section
-     and the footer note as they enter the viewport; disconnects after reveal.
-     -------------------------------------------------------------------------- */
-
-  const targets = [
-    ...document.querySelectorAll('.datenschutz-section-item, .datenschutz-footer-note'),
-  ].filter(Boolean);
-
-  targets.forEach((el, i) => {
-    el.style.transitionDelay = `${Math.min(i * 0.06, 0.3)}s`;
-  });
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) {
-          e.target.classList.add('is-visible');
-          observer.unobserve(e.target);
-        }
-      });
-    },
-    { threshold: 0.12 }
-  );
-
-  targets.forEach((el) => observer.observe(el));
+  /* Container entrance + scroll reveal — shared helpers in js/ui.js; the reveal
+     class is already on the rendered items, so addClass is off. */
+  window.animateContainerEntry('.datenschutz-page-container');
+  window.revealOnScroll('.datenschutz-section-item, .datenschutz-footer-note', { delayStep: 0.06, addClass: false });
 
   if (typeof window.initSectionNav === 'function' && data && data.sectionNav) {
     window.initSectionNav({

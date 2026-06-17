@@ -22,28 +22,7 @@
   animation: datenschutzReveal 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 
-/* --------------------------------------------------------------------------
-   SCROLL REVEAL — IntersectionObserver toggles .is-visible on .page-reveal.
-   -------------------------------------------------------------------------- */
-
-.page-reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-
-.page-reveal.is-visible {
-  opacity: 1;
-  transform: none;
-}
-
-/* --------------------------------------------------------------------------
-   REDUCED MOTION — disable all transitions and animations for users who
-   prefer reduced motion, making all elements immediately visible.
-   -------------------------------------------------------------------------- */
-
 @media (prefers-reduced-motion: reduce) {
-  .page-reveal,
   .datenschutz-page-container {
     animation: none;
     transition: none;
@@ -103,7 +82,7 @@
   font-size: 15px;
   font-weight: 300;
   line-height: 1.8;
-  color: #d0d0d0;
+  color: var(--color-text-muted);
   margin: 0;
 }
 
@@ -140,7 +119,7 @@
   font-size: 15px;
   font-weight: 300;
   line-height: 1.8;
-  color: #d0d0d0;
+  color: var(--color-text-muted);
   padding-left: 18px;
   position: relative;
 }
@@ -186,7 +165,7 @@
   font-family: var(--font-sans);
   font-size: 14px;
   font-weight: 300;
-  color: #d0d0d0;
+  color: var(--color-text-muted);
   line-height: 1.7;
 }
 

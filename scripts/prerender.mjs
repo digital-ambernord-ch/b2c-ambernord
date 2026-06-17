@@ -235,6 +235,70 @@ function buildSitemap() {
     entries.join('\n') + '\n</urlset>\n';
 }
 
+async function replaceAsync(str, re, fn) {
+  const parts = [];
+  let last = 0, m;
+  re.lastIndex = 0;
+  while ((m = re.exec(str)) !== null) {
+    parts.push(str.slice(last, m.index), await fn(...m));
+    last = m.index + m[0].length;
+    if (m[0].length === 0) re.lastIndex++;
+  }
+  parts.push(str.slice(last));
+  return parts.join('');
+}
+
+function walkHtml(dir, out = []) {
+  for (const entry of readdirSync(dir, { withFileTypes: true })) {
+    const p = join(dir, entry.name);
+    if (entry.isDirectory()) walkHtml(p, out);
+    else if (entry.name.endsWith('.html')) out.push(p);
+  }
+  return out;
+}
+
+/* Strip every comment from the shipped HTML — the <!-- --> markup comments
+   plus the comments inside inline <script>/<style> blocks — so nothing
+   explanatory survives in view-source. Source under public/ keeps all of its
+   comments; only the dist/ copies are cleaned, mirroring the CSS/JS minify
+   steps above. Inline JS is run through terser with mangle OFF (the boot
+   scripts touch globals, so locals are the only safe thing to rename and we
+   skip even that), inline CSS through csso; JSON-LD and the gated text/plain
+   vendor tags are left byte-identical so the cookie-consent clone still works.
+   Per-block fail-soft: any minify miss keeps that block verbatim. */
+async function cleanHtml(html, terserMin, cssoMin) {
+  const protectedBlocks = [];
+  const stash = (s) => {
+    protectedBlocks.push(s);
+    return ` P${protectedBlocks.length - 1} `;
+  };
+
+  html = await replaceAsync(html, /<script\b([^>]*)>([\s\S]*?)<\/script>/gi, async (full, attrs, body) => {
+    const type = (/\btype\s*=\s*["']([^"']*)["']/i.exec(attrs) || [, ''])[1].toLowerCase();
+    const isExternal = /\bsrc\s*=/.test(attrs);
+    const isJs = !type || type === 'text/javascript' || type === 'module' || type === 'application/javascript';
+    if (!isExternal && isJs && body.trim() && terserMin) {
+      try {
+        const r = await terserMin(body, { compress: true, mangle: false, format: { comments: false } });
+        if (r.code != null) return stash(`<script${attrs}>${r.code}</script>`);
+      } catch { /* parse miss → fall through to verbatim */ }
+    }
+    return stash(full);
+  });
+
+  if (cssoMin) {
+    html = html.replace(/<style\b([^>]*)>([\s\S]*?)<\/style>/gi, (full, attrs, body) => {
+      try { return stash(`<style${attrs}>${cssoMin(body).css}</style>`); }
+      catch { return stash(full); }
+    });
+  }
+
+  html = html.replace(/<(textarea|pre)\b[^>]*>[\s\S]*?<\/\1>/gi, (m) => stash(m));
+  html = html.replace(/<!--[\s\S]*?-->/g, '');
+  html = html.replace(/ P(\d+) /g, (_, i) => protectedBlocks[Number(i)]);
+  return html;
+}
+
 /* ----------------------------------------------------------------------- */
 
 rmSync(DIST, { recursive: true, force: true });
@@ -313,5 +377,25 @@ for (const route of ROUTES) {
 writeFileSync(join(DIST, 'sitemap.xml'), buildSitemap());
 writeFileSync(join(DIST, 'robots.txt'),
   `User-agent: *\nAllow: /\nDisallow: /pages/\nDisallow: /data/\n\nSitemap: ${ORIGIN}/sitemap.xml\n`);
+
+/* Strip comments from every shipped HTML file (prerendered pages, the copied
+   public/*.html and the page fragments under dist/pages). Same fail-soft
+   contract as the CSS/JS minify above: if neither minifier loads, HTML comments
+   are still removed and inline blocks stay verbatim. */
+try {
+  let terserMin = null, cssoMin = null;
+  try { terserMin = (await import('terser')).minify; } catch { /* keep inline JS verbatim */ }
+  try { cssoMin = (await import('csso')).minify; } catch { /* keep inline CSS verbatim */ }
+  let before = 0, after = 0, n = 0;
+  for (const p of walkHtml(DIST)) {
+    const src = readFileSync(p, 'utf8');
+    const out = await cleanHtml(src, terserMin, cssoMin);
+    before += src.length; after += out.length; n++;
+    writeFileSync(p, out);
+  }
+  console.log(`Cleaned HTML: ${(before / 1024).toFixed(0)}K -> ${(after / 1024).toFixed(0)}K raw (${n} files).`);
+} catch (err) {
+  console.warn('HTML clean skipped:', err.message);
+}
 
 console.log(`Prerendered ${pageCount} pages into dist/ (+ sitemap.xml, robots.txt).`);

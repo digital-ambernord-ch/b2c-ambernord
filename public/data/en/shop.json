@@ -1,13 +1,13 @@
 {
   "meta": {
-    "title": "Shop – Choose Your Sea Buckthorn Elixir | AmberNord",
-    "description": "Discover AmberNord's organic sea buckthorn elixirs: The Starter, The Habit and The Protocol. Pure Nordic vitality, shipped directly within Switzerland.",
-    "canonical": "https://ambernord.ch/shop/",
+    "title": "Shop – Choose Your Sea Buckthorn Essence | AmberNord",
+    "description": "Discover AmberNord's organic sea buckthorn essences: The Starter, The Habit and The Protocol. Pure Nordic life force, shipped direct from Aarau across Switzerland.",
+    "canonical": "https://ambernord.ch/en/shop/",
     "slug": "/shop/",
     "robots": "index, follow",
     "og": {
-      "title": "AmberNord Sea Buckthorn Elixirs – Choose Your Package",
-      "description": "The Starter, The Habit, The Protocol. Premium organic sea buckthorn for focus, energy and longevity. From CHF 24.90.",
+      "title": "AmberNord Sea Buckthorn Essences – Choose Your Pack",
+      "description": "The Starter, The Habit, The Protocol. Premium organic sea buckthorn for focus, energy and longevity. From 24.90 CHF.",
       "image": "https://res.cloudinary.com/dt6ksxuqf/image/upload/f_auto,q_auto,w_1200/v1774798926/ambernord-sanddornsaft-kur-3er-pack-longevity-biohacking.webp_cg74qe",
       "type": "website"
     },
@@ -20,7 +20,7 @@
     }
   },
   "header": {
-    "eyebrow": "Sea Buckthorn Elixirs",
+    "eyebrow": "Sea Buckthorn Essences",
     "h1": "Choose Your<br><span>Elixir</span>"
   },
   "sections": [
@@ -43,14 +43,14 @@
       "quantity": "1x 250ml",
       "price": "24.90 CHF",
       "daily": "≈ 2.49 CHF / day",
-      "subtitle": "Sea buckthorn in its pure form.",
-      "body": "Experience pure Nordic vitality. The uncompromising first step into your daily ritual.",
+      "subtitle": "Sea buckthorn in its purest form.",
+      "body": "Experience pure, Nordic life force. The uncompromising first step into your daily ritual.",
       "scienceBox": {
-        "heading": "Your Start",
+        "heading": "Your Entry",
         "items": [
-          "The first sip: bright, sour, alive — sea buckthorn in its pure form.",
+          "The first sip: bright, tart, alive — sea buckthorn in its purest form.",
           "One of the rare sources of all 4 omega fatty acids (3, 6, 7 & 9).",
-          "A 10-day ritual — exactly one bottle."
+          "10 days of ritual — exactly one bottle."
         ]
       },
       "buttons": {
@@ -62,7 +62,7 @@
       },
       "shipping": {
         "highlight": "Logistics:",
-        "text": " Direct dispatch from Aarau, CH."
+        "text": " Direct shipping from Aarau, CH."
       }
     },
     {
@@ -88,8 +88,8 @@
       "scienceBox": {
         "heading": "The Transformation",
         "items": [
-          "Vitamin C contributes to the reduction of tiredness and fatigue — no more afternoon slump.",
-          "Up to 42 % Omega-7 — one of nature's richest sources.",
+          "Vitamin C contributes to the reduction of tiredness — end the afternoon slump.",
+          "Up to 42 % omega-7 — one of nature's richest sources.",
           "The full matrix of the whole berry — oils from pulp and seed.",
           "30 days of uncompromising performance."
         ]
@@ -102,14 +102,14 @@
         "purchase": {
           "legend": "Choose purchase option",
           "oneTimeLabel": "One-time purchase 69.00 CHF",
-          "aboLabel": "Subscription 63.00 CHF/month — you save 6.– (−9 %) · cancel anytime",
+          "aboLabel": "Subscription 63.00 CHF/month — save 6.– (−9 %) · cancel anytime",
           "ctaOneTime": "Order now — 69.00 CHF",
           "ctaAbo": "Start subscription — 63.00 CHF/month",
           "aboHref": "https://buy.stripe.com/aFa6oJ71N60F4Kt3n9bQY04"
         }
       },
       "shipping": {
-        "highlight": "Free Premium Shipping",
+        "highlight": "Free premium shipping",
         "text": " CH."
       }
     },
@@ -118,7 +118,7 @@
       "slug": "/the-protocol/",
       "image": {
         "cloudinaryId": "v1774798936/ambernord-sanddorn-elixier-6er-vorratspack-premium-qualit%C3%A4t.webp_v9c6bd",
-        "alt": "The Protocol AmberNord Elixir – 6-bottle supply pack",
+        "alt": "The Protocol AmberNord Elixir – 6-pack supply",
         "width": 400,
         "height": 400
       },
@@ -129,13 +129,13 @@
       "savings": "−14 % vs. Starter",
       "daily": "≈ 2.15 CHF / day",
       "subtitle": "The ultimate biohacking tool.",
-      "body": "Designed for high performers. Vitamin C contributes to the normal function of the immune system — daily, for 60 days straight.",
+      "body": "Designed for high performers. Vitamin C contributes to the normal function of the immune system every day — 60 days straight.",
       "scienceBox": {
         "heading": "The Master Level",
         "items": [
           "Vitamin C contributes to the protection of cells from oxidative stress — 60 days without a gap.",
           "Natural carotenoids from the whole berry.",
-          "Over 190 bioactive compounds active.",
+          "Over 190 bioactive compounds at work.",
           "Maximum yield, best price."
         ]
       },
@@ -147,14 +147,14 @@
         "purchase": {
           "legend": "Choose purchase option",
           "oneTimeLabel": "One-time purchase 129.00 CHF",
-          "aboLabel": "Subscription 119.00 CHF/month — you save 10.– (−8 %) · cancel anytime",
+          "aboLabel": "Subscription 119.00 CHF/month — save 10.– (−8 %) · cancel anytime",
           "ctaOneTime": "Order now — 129.00 CHF",
           "ctaAbo": "Start subscription — 119.00 CHF/month",
           "aboHref": "https://buy.stripe.com/9B600lcm7bkZ0ud2j5bQY05"
         }
       },
       "shipping": {
-        "highlight": "Free Premium Shipping",
+        "highlight": "Free premium shipping",
         "text": " CH."
       }
     }

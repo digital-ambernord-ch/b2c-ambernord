@@ -29,27 +29,7 @@
   animation: contactReveal 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 
-/* --------------------------------------------------------------------------
-   SCROLL REVEAL — JS adds .page-reveal; IntersectionObserver adds .is-visible.
-   -------------------------------------------------------------------------- */
-
-.page-reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-
-.page-reveal.is-visible {
-  opacity: 1;
-  transform: none;
-}
-
-/* --------------------------------------------------------------------------
-   REDUCED MOTION — disables all animations for users who prefer it.
-   -------------------------------------------------------------------------- */
-
 @media (prefers-reduced-motion: reduce) {
-  .page-reveal,
   .contact-page-container {
     animation: none;
     transition: none;
@@ -76,7 +56,7 @@
   font-size: 16px;
   font-weight: 300;
   line-height: 1.8;
-  color: #d0d0d0;
+  color: var(--color-text-muted);
   max-width: 680px;
   margin: 0 auto 20px;
   text-align: center;
@@ -100,7 +80,7 @@
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(237, 163, 35, 0.2);
   border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  box-shadow: var(--shadow-card);
   padding: 50px 40px;
   transition: border-color var(--t-slow), transform var(--t-slow), box-shadow var(--t-slow);
 }
@@ -328,7 +308,7 @@
 }
 
 .contact-success p {
-  color: #d0d0d0;
+  color: var(--color-text-muted);
   font-family: var(--font-sans);
   font-size: 14px;
   font-weight: 300;

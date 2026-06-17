@@ -29,27 +29,7 @@
   animation: thankyouReveal 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 
-/* --------------------------------------------------------------------------
-   SCROLL REVEAL — elements fade up as they cross the viewport threshold.
-   -------------------------------------------------------------------------- */
-
-.page-reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-
-.page-reveal.is-visible {
-  opacity: 1;
-  transform: none;
-}
-
-/* --------------------------------------------------------------------------
-   REDUCED MOTION — removes all animation for users who prefer it.
-   -------------------------------------------------------------------------- */
-
 @media (prefers-reduced-motion: reduce) {
-  .page-reveal,
   .thankyou-page-container {
     animation: none;
     transition: none;
@@ -107,7 +87,7 @@
   font-size: 16px;
   font-weight: 300;
   line-height: 1.8;
-  color: #d0d0d0;
+  color: var(--color-text-muted);
   max-width: 650px;
   margin: 0;
 }

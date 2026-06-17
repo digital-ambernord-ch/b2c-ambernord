@@ -30,30 +30,7 @@ window.initBestellstatus = async function () {
     });
   }
 
-  /* --------------------------------------------------------------------------
-     SCROLL REVEAL — IntersectionObserver, disconnects after each reveal.
-     -------------------------------------------------------------------------- */
-
-  const targets = [
-    ...document.querySelectorAll('.bestellstatus-section, .bestellstatus-card'),
-  ].filter(Boolean);
-
-  targets.forEach((el, i) => {
-    el.classList.add('page-reveal');
-    el.style.transitionDelay = `${Math.min(i * 0.1, 0.3)}s`;
-  });
-
-  const observer = new IntersectionObserver(
-    (entries) =>
-      entries.forEach((e) => {
-        if (e.isIntersecting) {
-          e.target.classList.add('is-visible');
-          observer.unobserve(e.target);
-        }
-      }),
-    { threshold: 0.15 }
-  );
-
-  targets.forEach((el) => observer.observe(el));
+  /* Scroll reveal — shared helper in js/ui.js. */
+  window.revealOnScroll('.bestellstatus-section, .bestellstatus-card', { delayStep: 0.1, threshold: 0.15 });
 
 };

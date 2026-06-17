@@ -212,6 +212,53 @@
     }, { passive: true });
   }
 
+  /* Shared scroll-reveal — staggers transition-delay across the matched
+     elements, then toggles .is-visible the first time each scrolls into view
+     and stops observing it. Replaces the per-page IntersectionObserver copies
+     in contact / returns / agb / datenschutz / bestellstatus. Pass addClass:
+     false when the reveal class is already in the markup. prefers-reduced-
+     motion is handled in CSS on the reveal class itself. */
+  function revealOnScroll(selector, opts) {
+    opts = opts || {};
+    const delayStep   = opts.delayStep   != null ? opts.delayStep   : 0.08;
+    const maxDelay    = opts.maxDelay    != null ? opts.maxDelay    : 0.3;
+    const threshold   = opts.threshold   != null ? opts.threshold   : 0.12;
+    const revealClass = opts.revealClass || 'page-reveal';
+    const addClass    = opts.addClass !== false;
+
+    const targets = Array.prototype.slice.call(document.querySelectorAll(selector));
+    targets.forEach(function (el, i) {
+      if (addClass) el.classList.add(revealClass);
+      el.style.transitionDelay = Math.min(i * delayStep, maxDelay) + 's';
+    });
+
+    const observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: threshold });
+
+    targets.forEach(function (el) { observer.observe(el); });
+    return observer;
+  }
+  window.revealOnScroll = revealOnScroll;
+
+  /* Entrance helper — flags a container with .animating for the duration of its
+     CSS entrance keyframe (so will-change is only paid while it runs), then
+     drops the flag once on animationend. */
+  function animateContainerEntry(selector) {
+    const container = document.querySelector(selector);
+    if (!container) return;
+    container.classList.add('animating');
+    container.addEventListener('animationend', function () {
+      container.classList.remove('animating');
+    }, { once: true });
+  }
+  window.animateContainerEntry = animateContainerEntry;
+
   /* GA4 + TikTok Pixel are no longer auto-loaded here. They are gated by the
      consent module (cookie-consent.js) via <script type="text/plain"
      data-cookie-category="..."> placeholders in index.html. The placeholders

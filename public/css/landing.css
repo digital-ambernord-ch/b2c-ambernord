@@ -1831,7 +1831,7 @@
 /* Dark at both ends, image visible through the middle — a soft vignette.
    The top/bottom feathers are EASED (many closely-spaced stops near each edge
    that hold the black a touch longer, then open up) so the photo dissolves
-   into #0a0a0a with no perceptible horizontal seam instead of being clipped.
+   into var(--color-bg) with no perceptible horizontal seam instead of being clipped.
    Adjacent blocks meet black-on-black + a small breathing gap = the scenes
    read as separate "plates" that cross-fade rather than crammed-together
    rectangles (desktop AND mobile both use the full-bleed cinematic treatment). */
@@ -1842,7 +1842,7 @@
   z-index: 1;
   background: linear-gradient(
     to bottom,
-    #0a0a0a 0%,
+    var(--color-bg) 0%,
     rgba(10,10,10,0.96) 4%,
     rgba(10,10,10,0.74) 9%,
     rgba(10,10,10,0.44) 14%,
@@ -1852,7 +1852,7 @@
     rgba(10,10,10,0.70) 78%,
     rgba(10,10,10,0.90) 88%,
     rgba(10,10,10,0.98) 95%,
-    #0a0a0a 100%
+    var(--color-bg) 100%
   );
   transition: background var(--t-base) ease;
 }
@@ -1946,7 +1946,7 @@
   }
 
   /* A restrained pure-black gap between the full-bleed scenes: their eased
-     vignette ends already melt to #0a0a0a, and this breath separates them into
+     vignette ends already melt to var(--color-bg), and this breath separates them into
      distinct "plates" instead of one crammed-together run of photos. */
   .nature-hero-wrapper + .nature-hero-wrapper {
     margin-top: 48px;
@@ -2074,7 +2074,7 @@
      full-bleed backdrop melts into the neighbouring black sections. */
   background: linear-gradient(
     to bottom,
-    #0a0a0a 0%,
+    var(--color-bg) 0%,
     rgba(10,10,10,0.97) 4%,
     rgba(10,10,10,0.86) 9%,
     rgba(10,10,10,0.76) 16%,
@@ -2082,7 +2082,7 @@
     rgba(10,10,10,0.76) 84%,
     rgba(10,10,10,0.86) 91%,
     rgba(10,10,10,0.97) 96%,
-    #0a0a0a 100%
+    var(--color-bg) 100%
   );
 }
 
@@ -2304,29 +2304,6 @@
 .show-more-btn:hover {
   background-color: var(--color-gold-hover);
   color: var(--color-bg);
-}
-
-/* =========================================================================
-   BOTTOM ANNOUNCEMENT BAR
-   ========================================================================= */
-
-.bottom-announcement {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: var(--color-surface);
-  color: var(--color-gold);
-  text-align: center;
-  padding: 12px 20px;
-  font-family: var(--font-sans);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  z-index: var(--z-sticky);
-  border-top: 1px solid rgba(237, 163, 35, 0.2);
-  box-sizing: border-box;
 }
 
 /* =========================================================================
@@ -2579,8 +2556,6 @@
     border-top: 1px solid rgba(237, 163, 35, 0.38);
     border-bottom: 1px solid rgba(237, 163, 35, 0.38);
   }
-
-  .bottom-announcement { font-size: 9px; padding: 10px; }
 }
 
 @media (max-width: 768px) {
@@ -2727,31 +2702,6 @@
 }
 
 /* =========================================================================
-   HERO SECONDARY LINK (under primary CTA → #reviews)
-   ========================================================================= */
-
-.hero-secondary-link {
-  display: inline-block;
-  margin-top: 4px;
-  padding: 6px 4px;
-  font-family: var(--font-sans);
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: var(--color-text-muted);
-  border-bottom: 1px solid transparent;
-  transition: color var(--t-fast) ease, border-color var(--t-fast) ease;
-}
-
-.hero-secondary-link:hover,
-.hero-secondary-link:focus-visible {
-  color: var(--color-gold);
-  border-bottom-color: var(--color-gold-dim);
-}
-
-/* =========================================================================
    LANDING CLOSING CTA — final centred call-to-action after the gallery, just
    before the footer. Editorial-style: eyebrow / serif title with gold italic
    accent / italic sub / single primary pill button. The button anchors back
@@ -2861,7 +2811,7 @@
 
 /* Full-section background photo + dark overlay — same language as the other
    editorial sections (.exclusive-bg / .nature-hero-bg). The gradient fades to
-   solid #0a0a0a at the top and bottom so the section blends seamlessly with the
+   solid var(--color-bg) at the top and bottom so the section blends seamlessly with the
    black sections above and below, and darkens the middle so the comparison
    stays legible. */
 .purity-compare__bg {
@@ -2883,14 +2833,14 @@
      darker through the middle so the two comparison columns stay legible. */
   background: linear-gradient(
     to bottom,
-    #0a0a0a 0%,
+    var(--color-bg) 0%,
     rgba(10,10,10,0.97) 4%,
     rgba(10,10,10,0.88) 11%,
     rgba(10,10,10,0.82) 20%,
     rgba(10,10,10,0.82) 80%,
     rgba(10,10,10,0.88) 89%,
     rgba(10,10,10,0.97) 96%,
-    #0a0a0a 100%
+    var(--color-bg) 100%
   );
 }
 

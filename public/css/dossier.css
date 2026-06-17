@@ -25,7 +25,7 @@
     --d-accent-border: rgba(237, 163, 35, 0.2);
     --d-card-bg:       rgba(25, 25, 25, 0.6);
     --d-card-border:   rgba(255, 255, 255, 0.1);
-    --d-text-muted:    #d0d0d0;
+    --d-text-muted:    var(--color-text-muted);
     --d-overlay-dark:  rgba(20, 20, 20, 0.85);
     --d-overlay-mid:   rgba(20, 20, 20, 0.4);
 }

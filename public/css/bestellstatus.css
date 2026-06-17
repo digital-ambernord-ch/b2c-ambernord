@@ -1,70 +1,10 @@
 /* ==========================================================================
    BESTELLSTATUS — AmberNord
-   Scope: .bestellstatus-page-container and children.
+   Scope: .bestellstatus-section / .bestellstatus-card and children.
    Tokens: --color-gold --color-bg --color-text --color-border-gold
    --color-surface --nav-height --font-serif --font-sans
    --container-pad --t-fast --t-slow
    ========================================================================== */
-
-/* --------------------------------------------------------------------------
-   ROOT — positions container below the fixed nav with entrance animation.
-   -------------------------------------------------------------------------- */
-
-.bestellstatus-page-container {
-  padding: 0 0 120px;
-  position: relative;
-  z-index: 10;
-}
-
-/* --------------------------------------------------------------------------
-   ENTRANCE — single fade-up reveal triggered on page load.
-   -------------------------------------------------------------------------- */
-
-@keyframes bestellstatusReveal {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: none; }
-}
-
-.bestellstatus-page-container {
-  animation: bestellstatusReveal 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-}
-
-/* --------------------------------------------------------------------------
-   SCROLL REVEAL — base hidden state, toggled by IntersectionObserver in JS.
-   -------------------------------------------------------------------------- */
-
-.page-reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-
-.page-reveal.is-visible {
-  opacity: 1;
-  transform: none;
-}
-
-/* --------------------------------------------------------------------------
-   REDUCED MOTION — respects prefers-reduced-motion user preference.
-   -------------------------------------------------------------------------- */
-
-@media (prefers-reduced-motion: reduce) {
-  .page-reveal,
-  .bestellstatus-page-container {
-    animation: none;
-    transition: none;
-    opacity: 1;
-    transform: none;
-  }
-}
-
-/* --------------------------------------------------------------------------
-   WILL-CHANGE — only on actively animating container, removed after.
-   -------------------------------------------------------------------------- */
-
-.bestellstatus-page-container.animating {
-  will-change: opacity, transform;
-}
 
 /* Section — narrows and centers the lookup card on the page. */
 
@@ -83,7 +23,7 @@
   font-size: 16px;
   font-weight: 300;
   line-height: 1.8;
-  color: #d0d0d0;
+  color: var(--color-text-muted);
   margin: 0 0 40px;
 }
 
@@ -98,7 +38,7 @@
   border: 1px solid rgba(237, 163, 35, 0.2);
   border-left: 3px solid var(--color-gold);
   border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  box-shadow: var(--shadow-card);
   padding: 40px;
   text-align: left;
 }
@@ -166,7 +106,7 @@
   font-size: 13px;
   font-weight: 300;
   line-height: 1.6;
-  color: #d0d0d0;
+  color: var(--color-text-muted);
   margin: 0;
 }
 
