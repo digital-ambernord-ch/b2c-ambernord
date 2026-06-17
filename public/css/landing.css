@@ -833,6 +833,22 @@
   cursor: pointer;
 }
 
+/* The certificate item is a real link, so role="listitem" lives on the
+   wrapping .trust-item <div> and the <a> keeps its native link role — the
+   accessibility (and AI-agent) tree is then correct: list > listitem > link,
+   rather than an <a> whose link role was overwritten by role="listitem".
+   The link reproduces the centred column layout of a trust item and fills its
+   wrapper so the whole badge stays clickable. */
+.trust-item__link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  height: 100%;
+}
+
 .trust-item--reviews:hover {
   transform: translateY(-2px);
 }

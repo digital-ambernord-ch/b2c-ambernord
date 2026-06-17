@@ -1,0 +1,51 @@
+# AmberNord
+
+> AmberNord is a Swiss producer of premium organic sea-buckthorn (Sanddorn) elixir — single-origin Nordic berries, 100% hand-harvested and cold-pressed into a pure daily concentrate marketed as "the liquid gold of the North." Founded by Eriks Matisons and made by a small manufactory in Aarau, Switzerland.
+
+AmberNord makes one thing exceptionally well: a pure, organic sea-buckthorn essence taken as a 30-second daily ritual. The berries are single-origin and fully traceable from the Nordic coast, gently hand-harvested and cold-pressed (Zero-Waste) to preserve the full spectrum of the fruit. Each 250 ml bottle is a concentrate — the recommended "1:10 protocol" mixes 1 part essence with 10 parts still or sparkling water, ideally in the morning on an empty stomach.
+
+Key facts about the product:
+
+- 190+ bioactive compounds from a single botanical source.
+- Naturally high in Vitamin C — roughly 9× that of citrus fruit. Vitamin C contributes to the reduction of tiredness and fatigue and to the normal function of the immune system.
+- One of nature's rarest plant sources of Omega-7 (palmitoleic acid) — up to 42% of the pulp oil — alongside Omega 3, 6 and 9.
+- 100% hand-harvested, cold-pressed, single-origin and fully traceable.
+- Certified organic: ProCert (CH-BIO-038, certificate ID 141710) and EU Organic.
+- Ships within 24h from Aarau, Switzerland, with a 30-day money-back guarantee. Payment via TWINT, Apple Pay, Google Pay, PayPal, Visa and Mastercard.
+
+This site is a single-page application; the URLs below are the prerendered, crawlable pages. Content is available in German (the canonical root, https://ambernord.ch/), English (/en/), French (/fr/) and Italian (/it/). The links below point to the English versions.
+
+## Products
+
+- [The Starter — 1× 250 ml, CHF 24.90](https://ambernord.ch/en/shop/starter/): Single bottle — the entry point to try the daily ritual.
+- [The Habit — 3× 250 ml, CHF 69.00](https://ambernord.ch/en/shop/habit/): Three-bottle pack to establish a consistent routine.
+- [The Protocol — 6× 250 ml, CHF 129.00](https://ambernord.ch/en/shop/protocol/): Six-bottle supply for the full protocol.
+- [The Master Box — 20× 250 ml, CHF 370.00](https://ambernord.ch/en/shop/master-box/): Bulk ritual box, best value per bottle.
+- [Shop overview](https://ambernord.ch/en/shop/): All products and current pricing.
+
+## Brand & Science
+
+- [Home](https://ambernord.ch/en/): Brand overview and the daily ritual.
+- [Story](https://ambernord.ch/en/story/): The origin and philosophy behind AmberNord.
+- [Science (Wissenschaft)](https://ambernord.ch/en/wissenschaft/): The evidence dossier — compounds, sourcing and sourced claims.
+- [The Ritual](https://ambernord.ch/en/ritual/): How to use the essence (the 1:10 protocol) and why.
+- [Reviews (Bewertungen)](https://ambernord.ch/en/bewertungen/): Customer reviews and experiences.
+
+## Help & Support
+
+- [FAQ](https://ambernord.ch/en/hilfe/faq/): Common questions on the product, usage, shipping and returns.
+- [Contact](https://ambernord.ch/en/hilfe/kontakt/): Reach the AmberNord team.
+- [Returns (Rückgabe)](https://ambernord.ch/en/hilfe/rueckgabe/): The 30-day money-back guarantee and return process.
+- [Order status (Bestellstatus)](https://ambernord.ch/en/hilfe/bestellstatus/): Check the status of an existing order.
+
+## Business
+
+- [B2B & Wholesale](https://ambernord.ch/en/b2b/): Partnerships, retail and wholesale enquiries.
+
+## Optional
+
+- [Imprint (Impressum)](https://ambernord.ch/en/impressum/): Company and legal details.
+- [Privacy policy (Datenschutz)](https://ambernord.ch/en/datenschutz/): How customer data is handled.
+- [Terms & conditions (AGB)](https://ambernord.ch/en/agb/): Terms of sale.
+- [German site (canonical)](https://ambernord.ch/): The primary German-language version.
+- [Sitemap](https://ambernord.ch/sitemap.xml): All indexable URLs across every locale.
