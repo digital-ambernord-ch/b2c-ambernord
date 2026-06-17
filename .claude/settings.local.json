@@ -31,7 +31,11 @@
       "Bash(git -C \"C:/Users/eriks/Documents/GitHub/b2c-ambernord\" diff -- public/data/DE/the-habit.json public/data/fr/the-master-box.json)",
       "Bash(git merge *)",
       "Bash(git push *)",
-      "Bash(git branch *)"
+      "Bash(git branch *)",
+      "Bash(git rm *)",
+      "Bash(grep -co '/\\\\*' index.html)",
+      "Bash(git commit *)",
+      "Bash(git add *)"
     ]
   },
   "model": "claude-fable-5"
