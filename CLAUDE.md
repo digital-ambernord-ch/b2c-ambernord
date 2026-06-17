@@ -5,10 +5,11 @@ Swiss premium sea-buckthorn (Sanddorn) brand. Vanilla-JS SPA hosted on Cloudflar
 ## Stack & deploy
 
 - Static site under [public/](public/) — runs as-is for local dev. Production build: `npm run build` ([scripts/prerender.mjs](scripts/prerender.mjs)) emits ~84 prerendered pages (route × locale) into `dist/` with localized meta, self-canonical, hreflang cluster and JSON-LD per page; CF Pages build command `npm run build`, output dir `dist`.
+- **The build minifies and strips comments into `dist/` only** — CSS via csso, JS via terser, and a final pass removes all HTML `<!--…-->` comments plus the comments inside inline `<script>`/`<style>` blocks. Source under `public/` keeps every comment; nothing explanatory reaches view-source. Each step is fail-soft (a missing minifier leaves that file verbatim).
 - Locale URLs: `/en/`, `/fr/`, `/it/` path prefixes; DE = root (no `/de/`). The router strips the prefix before route matching (`getLocale()`/`localePath()` in [public/js/router.js](public/js/router.js)); the URL is the locale source of truth — no automatic redirects.
 - SPA fallback: [public/_redirects](public/_redirects) sends every path to `/index.html`.
 - Security headers + CSP allowlist (Cloudinary, Stripe, GA, TikTok, fonts.gstatic, Web3Forms): [public/_headers](public/_headers).
-- [functions/_middleware.js](functions/_middleware.js) adds `X-Robots-Tag: noindex, nofollow` on `*.pages.dev` preview hosts. [wrangler.toml](wrangler.toml), [functions/api/checkout.js](functions/api/checkout.js), [functions/api/contact.js](functions/api/contact.js), [functions/api/health.js](functions/api/health.js), [.env](.env) are **empty stubs** — no other server-side logic. Checkout uses Stripe payment links; contact form uses Web3Forms.
+- [functions/_middleware.js](functions/_middleware.js) adds `X-Robots-Tag: noindex, nofollow` on `*.pages.dev` preview hosts. The one live serverless endpoint is [functions/api/chat.js](functions/api/chat.js) — an AI chat backend (knowledge base [functions/api/_knowledge.js](functions/api/_knowledge.js), tool stubs [functions/api/_tools.js](functions/api/_tools.js) with `ENABLE_TOOLS=false`) consumed by the site-wide widget [public/assets/chat-widget.js](public/assets/chat-widget.js) which POSTs to `/api/chat`. [wrangler.toml](wrangler.toml), [functions/api/checkout.js](functions/api/checkout.js), [functions/api/contact.js](functions/api/contact.js), [functions/api/health.js](functions/api/health.js), [.env](.env) are **empty stubs**. Checkout uses Stripe payment links; contact form uses Web3Forms.
 - Third-party JS loaded from CDN: GSAP + ScrollTrigger 3.12.2 ([public/index.html:358-359](public/index.html#L358-L359)), Google Fonts (Montserrat + Playfair Display).
 
 ## SPA architecture
@@ -26,7 +27,8 @@ Swiss premium sea-buckthorn (Sanddorn) brand. Vanilla-JS SPA hosted on Cloudflar
 
 - Each route's init fn lives at `public/js/<page>.js` and registers itself on `window`. Loaded with `defer` from [public/index.html:360-382](public/index.html#L360-L382).
 - Init pattern: `await window.loadI18n(getLang(), '<page>')` first, then DOM bind. See [public/js/product.js](public/js/product.js), [public/js/landing.js](public/js/landing.js), [public/js/agb.js](public/js/agb.js).
-- Shared UI (mobile menu, dropdowns, language switcher, deferred analytics): [public/js/ui.js](public/js/ui.js).
+- Shared UI (mobile menu, dropdowns, language switcher, deferred analytics): [public/js/ui.js](public/js/ui.js). It also exposes two shared helpers used by the JSON-rendered subpages instead of per-page copies: `window.revealOnScroll(selector, opts)` (staggered IntersectionObserver fade-in via `.page-reveal`/`.is-visible`; `opts.addClass:false` when the class is already in the markup) and `window.animateContainerEntry(selector)` (flags `.animating` for the entrance keyframe, removes it on `animationend`).
+- Site-wide non-route modules, loaded once from index.html (not tied to a route): [aktion-bar.js](public/js/aktion-bar.js) (promo bar; sets `html.aktion-active`), [exit-intent.js](public/js/exit-intent.js) (exit-offer modal), [section-nav.js](public/js/section-nav.js) (`window.initSectionNav` in-page rail, torn down each nav), [webmcp.js](public/js/webmcp.js) (registers `navigator.modelContext` agent tools, feature-detected), and [assets/chat-widget.js](public/assets/chat-widget.js) (AI chat widget → `/api/chat`).
 
 ## i18n
 
@@ -42,8 +44,8 @@ Swiss premium sea-buckthorn (Sanddorn) brand. Vanilla-JS SPA hosted on Cloudflar
 
 - All CSS preloaded in [public/index.html:33-51](public/index.html#L33-L51) — global stylesheet stack, no scoping.
 - Design tokens (colors, gold palette, fonts, spacing scale, container/nav heights, z-index layers, easings/durations): [public/css/main.css:11-60](public/css/main.css#L11-L60). **Always use tokens, never hardcoded values.**
-- Globals (reset, typography, buttons, FAB, nav, footer, mobile menu, skip-link, `.subpage-header`, `.subpage-container`): [public/css/main.css](public/css/main.css).
-- Per-page CSS files mirror the page name: e.g. [public/css/landing.css](public/css/landing.css), [public/css/product.css](public/css/product.css), [public/css/shop.css](public/css/shop.css). AGB reuses returns styles by class.
+- Globals (reset, typography, buttons, FAB, nav, footer, mobile menu, skip-link, `.subpage-header`, `.subpage-container`, the shared `.page-reveal` scroll-reveal utility, `--shadow-card`): [public/css/main.css](public/css/main.css). `.page-reveal` is defined **once** here (single source of truth) — do not re-declare it per page.
+- Per-page CSS files mirror the page name: e.g. [public/css/landing.css](public/css/landing.css), [public/css/product.css](public/css/product.css), [public/css/shop.css](public/css/shop.css). AGB reuses returns styles by class. A few CSS files back the non-route modules rather than a page: [section-nav.css](public/css/section-nav.css), [exit-offer.css](public/css/exit-offer.css), [cookie-consent.css](public/css/cookie-consent.css), [aktion-bar.css](public/css/aktion-bar.css).
 - `aktion-active` is set synchronously on `<html>` in [public/index.html:53-65](public/index.html#L53-L65) to avoid layout shift; styling lives in [public/css/aktion-bar.css](public/css/aktion-bar.css). Bump `AKTION_VERSION` in [public/js/aktion-bar.js](public/js/aktion-bar.js) AND the localStorage key in index.html in lockstep when the message changes.
 
 ## Animation
@@ -51,7 +53,7 @@ Swiss premium sea-buckthorn (Sanddorn) brand. Vanilla-JS SPA hosted on Cloudflar
 - GSAP + ScrollTrigger globally available. Each page registers its own scroll triggers; the router calls `ScrollTrigger.getAll().forEach(t => t.kill())` on every nav: [router.js:381-385](public/js/router.js#L381-L385).
 - Landing hero scroll choreography (desktop + mobile branches via `gsap.matchMedia()`): [public/js/landing.js:34-84](public/js/landing.js#L34-L84).
 - All animations gated on `prefers-reduced-motion`: [public/js/landing.js:25](public/js/landing.js#L25).
-- Generic `.gsap-reveal` fade-up reveal: [public/js/landing.js:145-162](public/js/landing.js#L145-L162). Plain CSS `.page-reveal` is used by JSON-rendered pages.
+- Generic `.gsap-reveal` fade-up reveal: [public/js/landing.js:145-162](public/js/landing.js#L145-L162). Plain CSS `.page-reveal` (defined once in main.css) is used by JSON-rendered pages, toggled via `window.revealOnScroll()` in [ui.js](public/js/ui.js).
 
 ## Cookie consent
 
