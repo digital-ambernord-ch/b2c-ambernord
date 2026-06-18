@@ -1500,30 +1500,34 @@
 }
 
 /* CROSSFADE MORPH (C variant) — desktop ≥992px only via has-crossfade class.
-   Front face fades + scales down while benefit face fades + scales up.
+   Front face dissolves + softens out; benefit face sharpens + settles in.
+   Blur keeps the swap feeling like a lens pull rather than a snap.
    No 3D perspective, no GSAP involvement, pure CSS transitions. */
 #ritual-products.has-crossfade .product-card-slot {
   perspective: none;
 }
 
 #ritual-products.has-crossfade .premium-product-card > :not(.card-benefit-face) {
-  transition: opacity 0.35s ease, transform 0.35s ease;
+  transition: opacity 0.55s ease, transform 0.55s ease, filter 0.55s ease;
 }
 
 #ritual-products.has-crossfade .premium-product-card.is-flipped > :not(.card-benefit-face) {
   visibility: visible;
   opacity: 0;
-  transform: scale(0.97);
+  transform: scale(0.95);
+  filter: blur(4px);
 }
 
 #ritual-products.has-crossfade .premium-product-card .card-benefit-face {
-  transform: scale(1.04);
-  transition: opacity 0.45s ease 0.05s, transform 0.45s ease 0.05s;
+  transform: scale(1.06);
+  filter: blur(6px);
+  transition: opacity 0.75s ease 0.12s, transform 0.75s ease 0.12s, filter 0.75s ease 0.12s;
 }
 
 #ritual-products.has-crossfade .premium-product-card.is-flipped .card-benefit-face {
   opacity: 1;
   transform: scale(1);
+  filter: blur(0px);
 }
 
 /* Drop CSS hover-lift when crossfade owns the cards. */
