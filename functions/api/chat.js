@@ -30,7 +30,7 @@ const MAX_TOKENS = 400;
 const MAX_MSG_LEN = 1500;  // hard cap per message to bound prompt size
 
 // --- Daily kill-switch caps (KV). Soft budget guard for the free allocation. --
-const GLOBAL_DAILY_MAX = 2000; // total model calls/day across all visitors
+const GLOBAL_DAILY_MAX = 450;  // total model calls/day across all visitors (~10k CF neurons)
 const IP_DAILY_MAX = 60;       // model calls/day per IP
 const LIMIT_TTL_SECONDS = 172800; // 2 days — counters self-expire
 
