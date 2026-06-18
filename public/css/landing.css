@@ -1673,20 +1673,14 @@
   }
 }
 
-/* Payment-group separator — desktop only. On mobile this is part of the
-   same visual unit as the trailing info (both lift together with the
-   cards), so we drop the border + extra spacing to read as one block. */
+/* Payment logos sit directly under the product cards — no separator needed,
+   the card stack provides the visual break above. */
 .ritual-payment-group {
-  margin-top: 40px;
-  border-top: 1px solid rgba(255,255,255,0.08);
-  padding-top: 40px;
+  margin-top: 28px;
+  padding-bottom: 8px;
 }
 @media (max-width: 991px) {
-  .ritual-payment-group {
-    margin-top: 0;
-    border-top: 0;
-    padding-top: 20px;
-  }
+  .ritual-payment-group { margin-top: 20px; }
 }
 
 /* Mobile-only spacing: the product section is plain flow (no pin) — the fact
