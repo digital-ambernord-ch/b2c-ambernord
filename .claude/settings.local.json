@@ -30,7 +30,8 @@
       "Bash(git commit -m ' *)",
       "Bash(python -c ' *)",
       "Bash(npm run *)",
-      "Bash(grep -v \"comment\\\\|/\\\\*\")"
+      "Bash(grep -v \"comment\\\\|/\\\\*\")",
+      "Bash(awk '/max-width: 768px/{found=1} found && /premium-product-card[^_]/{print NR\": \"$0}' public/css/landing.css)"
     ]
   },
   "model": "claude-fable-5"

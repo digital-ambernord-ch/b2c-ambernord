@@ -1617,33 +1617,33 @@
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
 }
 
-/* Landing-page override — 3D gold pill that floats freely above the card.
-   ID selector wins the specificity battle against .premium-product-card .product-badge. */
+/* Landing-page override — 5D gold pill: pops off the card surface toward the viewer.
+   ID selector beats .premium-product-card .product-badge specificity. */
 #ritual-products .badge-bestseller {
   top: 20px;
-  right: 20px;
+  right: 22px;
   left: auto;
-  transform: none;
+  transform: rotate(-2deg);
   border-radius: 30px;
   padding: 8px 17px;
   min-height: unset;
   max-width: unset;
   width: max-content;
-  background: linear-gradient(150deg, #f7dc78 0%, #eda323 52%, #8b5200 100%);
+  background: linear-gradient(145deg, #fae680 0%, #eda323 48%, #7a4500 100%);
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   border: none;
-  color: #1a0c00;
+  color: #180b00;
   font-size: 11px;
   font-weight: 900;
   letter-spacing: 2px;
-  text-shadow: 0 1px 0 rgba(255, 235, 100, 0.7);
+  text-shadow: 0 1px 0 rgba(255, 240, 110, 0.65);
   box-shadow:
-    0 1px 0 rgba(255, 250, 175, 0.95),
-    0 6px 14px rgba(0, 0, 0, 0.55),
-    0 18px 36px rgba(0, 0, 0, 0.28),
-    inset 0 1px 2px rgba(255, 255, 195, 0.6),
-    inset 0 -1px 3px rgba(80, 35, 0, 0.45);
+    0 4px 8px rgba(0, 0, 0, 0.7),
+    0 14px 28px rgba(0, 0, 0, 0.45),
+    0 32px 56px rgba(0, 0, 0, 0.22),
+    0 0 22px rgba(237, 163, 35, 0.28),
+    inset 0 1px 3px rgba(255, 255, 200, 0.65);
 }
 
 .trust-payment-row {
@@ -2502,7 +2502,15 @@
   /* No benefit-face overrides here: the flip choreography is ≥992px only —
      below that the face is display:none (rule next to the face styles). */
 
-  #ritual-products .badge-bestseller { font-size: 10px; padding: 6px 14px; }
+  #ritual-products .badge-bestseller {
+    top: 14px;
+    right: auto;
+    left: 14px;
+    transform: rotate(-1.5deg);
+    font-size: 10px;
+    padding: 6px 13px;
+  }
+  #habit-card .card-title { margin-top: 30px; }
   .card-price-daily { font-size: 26px; }
   .protocol-info-block { text-align: left; }
   .protocol-info-text  { font-size: 13px; }
