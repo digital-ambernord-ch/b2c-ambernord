@@ -167,6 +167,7 @@
   position: absolute;
   top: 45px;
   left: 10px;
+  right: auto;
   z-index: var(--z-above);
 }
 

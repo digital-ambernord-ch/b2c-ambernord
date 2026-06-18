@@ -1,4 +1,4 @@
-{
+﻿{
   "sectionNav": {
     "aria": "Sections",
     "items": {
@@ -129,7 +129,7 @@
       }
     },
     "habit": {
-      "badge": "LE PLUS CHOISI",
+      "badge": "NR. 1",
       "price": {
         "daily": "2.30 CHF / jour",
         "full": "69.00 CHF achat unique",

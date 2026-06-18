@@ -1,4 +1,4 @@
-{
+﻿{
   "sectionNav": {
     "aria": "Sezioni",
     "items": {
@@ -129,7 +129,7 @@
       }
     },
     "habit": {
-      "badge": "IL PIÙ SCELTO",
+      "badge": "NR. 1",
       "price": {
         "daily": "2.30 CHF / giorno",
         "full": "69.00 CHF una tantum",
