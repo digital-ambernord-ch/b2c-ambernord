@@ -1499,33 +1499,36 @@
   .product-card-slot { perspective: 1200px; }
 }
 
-/* While the coin-flip system owns the cards' transform, the CSS hover-lift
-   must not fight GSAP — drop the transform transition (and the hover
-   translate), keep border-color, add box-shadow for the airborne grow/
-   contract. Class set by landing.js, ≥992px branch. */
-#ritual-products.has-coin-flip .premium-product-card {
-  transition: border-color var(--t-base) ease, box-shadow 0.35s ease;
+/* CROSSFADE MORPH (C variant) — desktop ≥992px only via has-crossfade class.
+   Front face fades + scales down while benefit face fades + scales up.
+   No 3D perspective, no GSAP involvement, pure CSS transitions. */
+#ritual-products.has-crossfade .product-card-slot {
+  perspective: none;
 }
 
-#ritual-products.has-coin-flip .premium-product-card:hover {
+#ritual-products.has-crossfade .premium-product-card > :not(.card-benefit-face) {
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+#ritual-products.has-crossfade .premium-product-card.is-flipped > :not(.card-benefit-face) {
+  visibility: visible;
+  opacity: 0;
+  transform: scale(0.97);
+}
+
+#ritual-products.has-crossfade .premium-product-card .card-benefit-face {
+  transform: scale(1.04);
+  transition: opacity 0.45s ease 0.05s, transform 0.45s ease 0.05s;
+}
+
+#ritual-products.has-crossfade .premium-product-card.is-flipped .card-benefit-face {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Drop CSS hover-lift when crossfade owns the cards. */
+#ritual-products.has-crossfade .premium-product-card:hover {
   transform: none;
-}
-
-/* Airborne: the card visibly leaves the page — shadow grows + blurs during
-   the lift, contracts on landing (class toggled from the flip timeline; the
-   box-shadow transition above animates both directions). The habit variant
-   keeps its gold ring/inset so the list interpolates instead of snapping. */
-.premium-product-card.is-airborne {
-  box-shadow:
-    0 18px 30px rgba(0, 0, 0, 0.35),
-    0 38px 70px rgba(0, 0, 0, 0.45);
-}
-
-.premium-product-card.highlight-habit.is-airborne {
-  box-shadow:
-    0 0 0 1px rgba(237, 163, 35, 0.15),
-    0 38px 70px rgba(237, 163, 35, 0.20),
-    inset 0 1px 0 rgba(237, 163, 35, 0.08);
 }
 
 /* LANDING SHIMMER — one-shot gold light sweep across the freshly revealed

@@ -480,190 +480,30 @@ window.initLanding = async function () {
       }
     );
 
-    /* GOLD COIN FLIP — in place, time-based (never scrubbed). Per card:
-       anticipation dip → lift off the page (shadow grows via .is-airborne,
-       CSS transition) → rotateX to 90° (edge-on: face swap + gold edge
-       glint are invisible-but-flashy) → rotate in from −90° with a ~+2°
-       overshoot → land (shadow contracts) → benefit content deals in
-       (3 bullets stagger, savings chip pops) → one-shot gold shimmer sweep.
-       Transform/opacity only on the card itself — zero layout shift.
-       Perspective lives on .ritual-cards-group (landing.css).
-       The .has-coin-flip class drops the CSS hover-lift transform
-       transition so it never fights the GSAP-driven transform. */
-    section.classList.add('has-coin-flip');
+    /* CROSSFADE MORPH — CSS-transition-based (no GSAP). Front face fades
+       out + scales down to 0.97; benefit face fades in from scale 1.04
+       to 1 with a 50ms offset so the reveal lands just after the fade
+       starts. Pure hover: enter = show benefit, leave = show sales.
+       Pointer-fine only; touch devices see the static sales face. */
+    section.classList.add('has-crossfade');
 
-    const group     = section.querySelector('.ritual-cards-group') || section;
     const hoverFine = window.matchMedia('(hover: hover) and (pointer: fine)');
-    /* Per-card: target face, in-flight guard, live timeline, deal-in-played. */
-    const state     = cards.map(function () { return { face: 'sales', busy: false, tl: null, dealt: false }; });
-    /* Per-card debounce timer for the hover toggle (see below). */
-    const hoverTimers = cards.map(function () { return null; });
-    let   engaged   = false;   /* true while scrolled past the flip trigger */
-    let   cascade   = null;
 
-    /* The shimmer is a one-shot CSS keyframe animation on a pseudo element —
-       remove its trigger class on animationend (bubbles from the benefit
-       face) so it can re-fire on the next flip. */
-    cards.forEach(function (card) {
-      card.addEventListener('animationend', function (e) {
-        if (e.animationName === 'an-face-shimmer') card.classList.remove('is-shimmering');
-      });
-    });
-
-    /* Fresh timeline per flip, each direction — never timeline.reverse():
-       the face swap + glint + deal-in are sets/class toggles and would
-       glitch when rewound. `quick` = 0.5s toggle version (hover, reverse
-       scroll, repeat visits); the full 5-beat choreography plays only on a
-       card's FIRST flip to the benefit face. Kills any in-flight timeline
-       first, so the new flip takes over from the current pose seamlessly. */
-    function buildFlip(card, i, face, quick) {
-      const st        = state[i];
-      const toBenefit = face === 'benefit';
-      const dealIn    = toBenefit && !st.dealt && !quick;
-      const items     = card.querySelectorAll('.card-benefit-face__list li');
-      const savings   = card.querySelector('.card-benefit-face__savings');
-
-      if (st.tl) st.tl.kill();
-      st.busy = true;
-      st.face = face;
-
-      const tl = gsap.timeline({
-        onComplete: function () {
-          st.busy = false;
-          st.tl   = null;
-          settleHover(card, i);
-        }
-      });
-      st.tl = tl;
-
-      /* 1+2 — somersault to edge-on. Quick (hover) flips rotate calmly in
-         place: no translate/scale, so the card stays put and the stable
-         .product-card-slot keeps the hover region steady. The full (sales-
-         reset) path still lifts off the page first. */
-      if (quick) {
-        tl.to(card, { rotationX: 90, duration: 0.34, ease: 'power2.inOut' });
-      } else {
-        tl.call(function () { card.classList.add('is-airborne'); });
-        tl.to(card, { y: 4, duration: 0.12, ease: 'power1.in' })
-          .to(card, { y: -25, scale: 1.03, duration: 0.3, ease: 'power2.out' })
-          .to(card, { rotationX: 90, duration: 0.18, ease: 'power1.in' });
-      }
-
-      /* Deal-in hidden states: applied INSIDE the timeline, right at the
-         edge-on moment — the benefit face never starts CSS-hidden. */
-      if (dealIn) {
-        tl.set(items,   { x: -14, opacity: 0 });
-        tl.set(savings, { scale: 0.85, opacity: 0 });
-      }
-
-      /* At exactly 90° (card edge-on, invisible): swap faces. */
-      tl.call(function () {
-        card.classList.toggle('is-flipped', toBenefit);
-      });
-      tl.set(card, { rotationX: -90 });
-
-      /* Quick flips to the benefit face force the deal-in content visible:
-         if a full flip was killed mid-flight (fast scroll jitter) between
-         its hidden-state sets and the deal-in, the bullets would otherwise
-         stay stuck at opacity 0. */
-      if (toBenefit && !dealIn) {
-        tl.set(items,   { x: 0, opacity: 1 });
-        tl.set(savings, { scale: 1, opacity: 1 });
-      }
-
-      /* 3 — rotate in from edge-on with a soft overshoot, then settle.
-         Quick path is ~0.84s total (0.34 + 0.34 + 0.16) for a calm,
-         deliberate flip; no shadow to contract since it never lifted. */
-      if (quick) {
-        tl.to(card, { rotationX: 2, duration: 0.34, ease: 'power2.out' })
-          .to(card, { rotationX: 0, duration: 0.16, ease: 'sine.inOut' });
-      } else {
-        tl.to(card, { rotationX: 2, duration: 0.22, ease: 'power1.out' })
-          .add('land')
-          .to(card, { rotationX: 0, duration: 0.18, ease: 'power1.inOut' }, 'land')
-          .to(card, { y: 0, scale: 1, duration: 0.3, ease: 'back.out(2)' }, 'land')
-          .call(function () { card.classList.remove('is-airborne'); }, null, 'land+=0.1');
-      }
-
-      /* 4+5 — content deal-in over the landing (heading is visible from the
-         swap itself), then the one-shot gold shimmer sweep across the face. */
-      if (dealIn) {
-        st.dealt = true;
-        tl.to(items,   { x: 0, opacity: 1, duration: 0.3, stagger: 0.08, ease: 'power2.out' }, 'land')
-          .to(savings, { scale: 1, opacity: 1, duration: 0.35, ease: 'back.out(1.7)' }, '>-0.1')
-          .call(function () { card.classList.add('is-shimmering'); });
-      }
-
-      return tl;
-    }
-
-    /* Cascade: card N starts at card N−1's apex (~50% of its flip). */
-    function flipAll(face) {
-      if (cascade) cascade.kill();
-      cascade = gsap.timeline();
-      cards.forEach(function (card, i) {
-        const st = state[i];
-        if (st.face === face && !st.busy) return;   /* already there */
-        const quick = face === 'sales' || st.dealt;
-        cascade.add(buildFlip(card, i, face, quick), i * (quick ? 0.25 : 0.9));
-      });
-      /* Global pacing: ~15% slower so the whole somersault reads as calm,
-         deliberate motion rather than a rapid snap. */
-      cascade.timeScale(0.85);
-    }
-
-    /* HOVER FLIP (pointer-fine only): cards rest on their sales face and
-       only somersault to the benefit face while the pointer is on them;
-       leaving flips back to sales. Nothing flips on scroll. Transform-only,
-       so the <a> keeps navigating on click. In-flight flips ignore the
-       events; settleHover() (called from every flip's onComplete) corrects
-       the face if the pointer moved mid-flip. */
-    function settleHover(card, i) {
-      if (!engaged || !hoverFine.matches || state[i].busy) return;
-      const target = slots[i].matches(':hover') ? 'benefit' : 'sales';
-      if (state[i].face !== target) buildFlip(card, i, target, true);
-    }
-
-    /* Debounced so a pointer merely sweeping across the stack doesn't set off
-       a chain of flips: each enter/leave schedules a settle 120ms out and
-       cancels any pending one, then re-reads the real :hover state and only
-       flips if the face is actually wrong. Quick passes net to no motion. */
     if (hoverFine.matches) {
-      function scheduleHover(card, i) {
-        if (hoverTimers[i]) clearTimeout(hoverTimers[i]);
-        hoverTimers[i] = setTimeout(function () {
-          hoverTimers[i] = null;
-          if (!engaged || state[i].busy) return;
-          const target = slots[i].matches(':hover') ? 'benefit' : 'sales';
-          if (state[i].face !== target) buildFlip(card, i, target, true);
-        }, 120);
-      }
-      cards.forEach(function (card, i) {
-        slots[i].addEventListener('mouseenter', function () { scheduleHover(card, i); });
-        slots[i].addEventListener('mouseleave', function () { scheduleHover(card, i); });
+      slots.forEach(function (slot, i) {
+        slot.addEventListener('mouseenter', function () {
+          cards[i].classList.add('is-flipped');
+        });
+        slot.addEventListener('mouseleave', function () {
+          cards[i].classList.remove('is-flipped');
+        });
       });
     }
-
-    /* Gate hover flips to when the stack is actually in view, and reset any
-       hovered card back to its sales face when scrolling back above. No
-       automatic flip-to-benefit — that is hover-driven only. */
-    const coinST = ScrollTrigger.create({
-      trigger: group,
-      start: 'top 85%',
-      invalidateOnRefresh: true,
-      onEnter:     function () { engaged = true;  },
-      onLeaveBack: function () { engaged = false; flipAll('sales'); }
-    });
 
     return function () {
-      coinST.kill();
-      if (cascade) cascade.kill();
-      hoverTimers.forEach(function (t) { if (t) clearTimeout(t); });
-      state.forEach(function (st) { if (st.tl) st.tl.kill(); });
-      section.classList.remove('has-coin-flip');
+      section.classList.remove('has-crossfade');
       cards.forEach(function (card) {
-        card.classList.remove('is-flipped', 'is-airborne', 'is-glinting', 'is-shimmering');
-        gsap.set(card, { clearProps: 'transform' });
+        card.classList.remove('is-flipped');
       });
     };
   });
