@@ -177,7 +177,9 @@
     "protocolInfo": {
       "eyebrow": "Anwendung",
       "title": "Das tägliche Ritual",
-      "text": "<strong>Anwendungshinweis:</strong> Das 1:10 Protokoll bedeutet, dass Sie 1 Teil AmberNord Essenz mit 10 Teilen Wasser (still oder prickelnd) mischen. Am besten morgens auf nüchternen Magen geniessen, um die optimale zelluläre Absorption zu gewährleisten. Vor Gebrauch stets gut schütteln."
+      "text": "1 Teil Essenz · 10 Teile Wasser — morgens auf nüchternen Magen.",
+      "chip1": "Shot", "chip2": "Smoothie", "chip3": "Joghurt",
+      "chip4": "Saft", "chip5": "Tee", "chip6": "Salat", "chip7": "Kochen"
     }
   },
   "manifest": {

@@ -177,7 +177,14 @@
     "protocolInfo": {
       "eyebrow": "Application",
       "title": "Le Rituel Quotidien",
-      "text": "<strong>Mode d'emploi :</strong> Le protocole 1:10 signifie que vous mélangez 1 part d'essence AmberNord avec 10 parts d'eau (plate ou pétillante). À déguster de préférence le matin à jeun pour assurer une absorption cellulaire optimale. Toujours bien agiter avant emploi."
+      "text": "1 part d’essence · 10 parts d’eau — de préférence le matin à jeun.",
+      "chip1": "Shot",
+      "chip2": "Smoothie",
+      "chip3": "Yaourt",
+      "chip4": "Jus",
+      "chip5": "Thé",
+      "chip6": "Salade",
+      "chip7": "Cuisine"
     }
   },
   "manifest": {

@@ -177,7 +177,14 @@
     "protocolInfo": {
       "eyebrow": "How to use",
       "title": "The Daily Ritual",
-      "text": "<strong>Usage instructions:</strong> The 1:10 protocol means you mix 1 part AmberNord essence with 10 parts water (still or sparkling). Best enjoyed in the morning on an empty stomach to ensure optimal cellular absorption. Always shake well before use."
+      "text": "1 part essence · 10 parts water — best taken in the morning on an empty stomach.",
+      "chip1": "Shot",
+      "chip2": "Smoothie",
+      "chip3": "Yoghurt",
+      "chip4": "Juice",
+      "chip5": "Tea",
+      "chip6": "Salad",
+      "chip7": "Cooking"
     }
   },
   "manifest": {

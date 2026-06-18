@@ -1723,14 +1723,29 @@
 .protocol-info-text {
   color: #a0a0a0;
   font-family: var(--font-sans);
-  font-size: 14px;
-  line-height: 1.7;
+  font-size: 13px;
+  line-height: 1.6;
   font-weight: 300;
+  margin-bottom: 20px;
 }
 
-.protocol-info-text strong {
-  color: var(--color-text);
+.protocol-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.protocol-chip {
+  font-family: var(--font-sans);
+  font-size: 11px;
   font-weight: 500;
+  letter-spacing: 0.5px;
+  color: var(--color-text-dim);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 100px;
+  padding: 5px 14px;
 }
 
 /* =========================================================================
