@@ -390,7 +390,13 @@ window.initShop = async function () {
     }
 
     function onClickCapture(e) {
-      if (suppressClick) { e.preventDefault(); e.stopPropagation(); suppressClick = false; }
+      if (suppressClick) {
+        // Always let purchase-toggle clicks through so tapping "Abo" on a
+        // side card works first try (the card centres simultaneously).
+        const inToggle = e.target && e.target.closest('[data-purchase-toggle]');
+        if (!inToggle) { e.preventDefault(); e.stopPropagation(); }
+        suppressClick = false;
+      }
     }
 
     function onResize() { if (active) { layout(); render(); } }
