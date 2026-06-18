@@ -2504,13 +2504,13 @@
 
   #ritual-products .badge-bestseller {
     top: 14px;
-    right: auto;
-    left: 14px;
+    right: 14px;
+    left: auto;
     transform: rotate(-1.5deg);
     font-size: 10px;
     padding: 6px 13px;
   }
-  #habit-card .card-title { margin-top: 30px; }
+  .premium-product-card.highlight-habit .card-img { width: 56px; top: 48px; }
   .card-price-daily { font-size: 26px; }
   .protocol-info-block { text-align: left; }
   .protocol-info-text  { font-size: 13px; }
