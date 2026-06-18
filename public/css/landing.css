@@ -1600,23 +1600,50 @@
   max-width: 90%;
 }
 
+/* Base style for product-page badges (position comes from .custom-badge-position
+   or .related-badge-position, not here). */
 .badge-bestseller {
-  top: 14px;
-  right: 14px;
-  left: auto;
-  transform: none;
-  border-radius: 40px;
-  background: rgba(8, 7, 5, 0.78);
+  border-radius: 30px;
+  background: rgba(8, 7, 5, 0.82);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(237, 163, 35, 0.4);
   color: var(--color-gold);
   font-size: 10px;
   font-weight: 700;
-  letter-spacing: 2.5px;
+  letter-spacing: 2px;
   padding: 5px 12px;
   min-height: auto;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Landing-page override — 3D gold pill that floats freely above the card.
+   ID selector wins the specificity battle against .premium-product-card .product-badge. */
+#ritual-products .badge-bestseller {
+  top: 20px;
+  right: 20px;
+  left: auto;
+  transform: none;
+  border-radius: 30px;
+  padding: 8px 17px;
+  min-height: unset;
+  max-width: unset;
+  width: max-content;
+  background: linear-gradient(150deg, #f7dc78 0%, #eda323 52%, #8b5200 100%);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: none;
+  color: #1a0c00;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-shadow: 0 1px 0 rgba(255, 235, 100, 0.7);
+  box-shadow:
+    0 1px 0 rgba(255, 250, 175, 0.95),
+    0 6px 14px rgba(0, 0, 0, 0.55),
+    0 18px 36px rgba(0, 0, 0, 0.28),
+    inset 0 1px 2px rgba(255, 255, 195, 0.6),
+    inset 0 -1px 3px rgba(80, 35, 0, 0.45);
 }
 
 .trust-payment-row {
@@ -2475,7 +2502,7 @@
   /* No benefit-face overrides here: the flip choreography is ≥992px only —
      below that the face is display:none (rule next to the face styles). */
 
-  .badge-bestseller { font-size: 10px; padding: 5px 11px; }
+  #ritual-products .badge-bestseller { font-size: 10px; padding: 6px 14px; }
   .card-price-daily { font-size: 26px; }
   .protocol-info-block { text-align: left; }
   .protocol-info-text  { font-size: 13px; }
