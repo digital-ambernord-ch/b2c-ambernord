@@ -1078,6 +1078,19 @@ window.initLanding = async function () {
   }
 
   /* =========================================================================
+     PURITY PILL TOGGLE — collapses the comparison table; opens on first tap.
+     ========================================================================= */
+  var purityToggle   = document.getElementById('purityToggle');
+  var purityCollapse = document.getElementById('purityCollapse');
+  if (purityToggle && purityCollapse) {
+    purityToggle.addEventListener('click', function () {
+      var open = purityCollapse.classList.toggle('is-open');
+      purityToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      purityCollapse.setAttribute('aria-hidden',  open ? 'false' : 'true');
+    });
+  }
+
+  /* =========================================================================
      SECTION-NAV RAIL (js/section-nav.js) — the same collapsible in-page table
      of contents the dossier uses. Sections in document order; short labels per
      locale come from home.json. The component skips any id not in the DOM and

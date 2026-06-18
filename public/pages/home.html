@@ -465,11 +465,18 @@
   </div>
 </div>
 
-<!-- Purity / traceability comparison — single-origin, fully traceable Nordic
-     sea-buckthorn vs. generic globally-sourced extracts. Category comparison
-     only (no competitor named); "others" claims are hedged. Links to the
-     detailed, sourced version on the Wissenschaft (dossier) page. -->
-<section class="purity-compare" id="landing-purity" aria-labelledby="purity-compare-title">
+<!-- Purity pill — collapses the full comparison table behind a single-row
+     toggle so the page flows: products → Manifest without a long detour.
+     The section nav anchors to #landing-purity on the pill row itself. -->
+<div id="landing-purity">
+  <button class="purity-pill" id="purityToggle"
+          aria-expanded="false" aria-controls="purityCollapse">
+    <span class="purity-pill__eyebrow" data-i18n="purity.eyebrow">Reinheit &amp; Herkunft</span>
+    <span class="purity-pill__title" data-i18n="purity.title">Eine Herkunft. Voll rückverfolgbar.</span>
+    <span class="purity-pill__icon" aria-hidden="true">+</span>
+  </button>
+  <div class="purity-collapse" id="purityCollapse" aria-hidden="true">
+<section class="purity-compare" aria-labelledby="purity-compare-title">
   <div class="purity-compare__bg" aria-hidden="true">
     <!-- Sits under an 82–100 % opaque black overlay (.purity-compare__bg-overlay):
          only ~18 % of the image is ever visible, behind the text columns, so it
@@ -512,6 +519,8 @@
     <a href="/wissenschaft/" class="purity-compare__more" data-link data-i18n="purity.more">Mehr über Herkunft &amp; Reinheit →</a>
   </div>
 </section>
+  </div><!-- /.purity-collapse -->
+</div><!-- /#landing-purity -->
 
 <div class="dynamic-editorial-wrapper" id="dynamicEditorialBg">
 

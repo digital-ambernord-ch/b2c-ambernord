@@ -2795,6 +2795,71 @@
 }
 
 /* ===========================================================================
+   PURITY PILL TOGGLE — collapses the comparison table behind a single row.
+   =========================================================================== */
+.purity-pill {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 18px var(--container-pad);
+  background: transparent;
+  border: none;
+  border-top: 1px solid rgba(237,163,35,0.18);
+  border-bottom: 1px solid rgba(237,163,35,0.18);
+  cursor: pointer;
+  text-align: left;
+  color: inherit;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+.purity-pill:hover { background: rgba(237,163,35,0.04); }
+
+.purity-pill__eyebrow {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--color-gold);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.purity-pill__title {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  color: var(--color-text);
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.purity-pill__icon {
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--color-gold);
+  flex-shrink: 0;
+  margin-left: auto;
+  transition: transform 0.35s var(--ease-out);
+}
+.purity-pill[aria-expanded="true"] .purity-pill__icon {
+  transform: rotate(45deg);
+}
+
+.purity-collapse {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.purity-collapse.is-open { max-height: 1400px; }
+
+@media (max-width: 767px) {
+  .purity-pill { gap: 10px; padding: 16px var(--container-pad); }
+  .purity-pill__title { font-size: 14px; }
+}
+
+/* ===========================================================================
    PURITY / TRACEABILITY COMPARISON — single-origin, fully traceable Nordic
    sea-buckthorn vs. generic globally-sourced extracts. Category comparison,
    no competitor named. Lives on the home page under the product cards; the
