@@ -1659,8 +1659,9 @@
    and the .ritual-payment-group (payment icons) — plain flow on every
    viewport now that the pinned choreography is gone. */
 .shop-trailing-info {
-  margin-top: 40px;
-  padding: 20px 0;
+  margin-top: 0;
+  padding: 44px 0 24px;
+  border-top: 1px solid rgba(255,255,255,0.07);
 }
 
 /* Mobile: clear breathing room between the trust badges row above and the
@@ -1698,14 +1699,25 @@
   .shop-heading-wrap { margin-bottom: 84px; }
 }
 
-.protocol-info-title {
+.protocol-info-eyebrow {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 600;
   color: var(--color-gold);
   font-family: var(--font-sans);
-  font-size: 12px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
+}
+
+.protocol-info-title {
+  color: var(--color-text);
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: -0.3px;
+  margin-bottom: 18px;
+  line-height: 1.2;
 }
 
 .protocol-info-text {
@@ -2835,16 +2847,13 @@
   text-overflow: ellipsis;
 }
 .purity-pill__icon {
-  font-size: 22px;
-  font-weight: 300;
-  line-height: 1;
   color: var(--color-gold);
   flex-shrink: 0;
   margin-left: auto;
   transition: transform 0.35s var(--ease-out);
 }
 .purity-pill[aria-expanded="true"] .purity-pill__icon {
-  transform: rotate(45deg);
+  transform: rotate(180deg);
 }
 
 .purity-collapse {
