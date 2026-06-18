@@ -79,7 +79,7 @@
       "items": [
         { "q": "Combien coûtent les frais de port et quels sont vos délais de livraison ?", "a": "Expédition en 24 h depuis le centre logistique d'Aarau. The Habit et The Protocol : livraison gratuite dans toute la Suisse. The Starter : frais de port en sus (affichés au moment du paiement)." },
         { "q": "Comment fonctionne la garantie satisfait ou remboursé de 30 jours ?", "a": "Pas convaincu ? Contactez-nous par e-mail dans les 30 jours suivant la réception — vous récupérez l'intégralité du prix d'achat, simplement et sans justification." },
-        { "q": "Quels moyens de paiement acceptez-vous ?", "a": "TWINT, Visa, Mastercard, Apple Pay, Google Pay et PayPal — tous les paiements sont traités de manière chiffrée via Stripe." },
+        { "q": "Quels moyens de paiement acceptez-vous ?", "a": "TWINT, Visa, Mastercard, Apple Pay, Google Pay et— tous les paiements sont traités de manière chiffrée via Stripe." },
         { "q": "Comment puis-je modifier ou résilier mon abonnement ?", "a": "À tout moment, sans préavis : via le lien dans votre confirmation de commande ou par e-mail. La prochaine livraison non expédiée est annulée." },
         { "q": "AmberNord convient-il aux femmes enceintes, allaitantes ou en cas de prise de médicaments ?", "a": "L'argousier est une denrée alimentaire. En cas de grossesse, d'allaitement ou de prise régulière de médicaments, discutez par principe de toute nouvelle routine alimentaire avec votre médecin." },
         { "q": "À partir de quel âge l'élixir convient-il ?", "a": "En tant que denrée alimentaire ordinaire, il convient en principe à toute la famille ; pour les enfants, nous recommandons une dilution plus forte, selon le goût." },

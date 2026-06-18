@@ -11,7 +11,7 @@ Key facts about the product:
 - One of nature's rarest plant sources of Omega-7 (palmitoleic acid) — up to 42% of the pulp oil — alongside Omega 3, 6 and 9.
 - 100% hand-harvested, cold-pressed, single-origin and fully traceable.
 - Certified organic: ProCert (CH-BIO-038, certificate ID 141710) and EU Organic.
-- Ships within 24h from Aarau, Switzerland, with a 30-day money-back guarantee. Payment via TWINT, Apple Pay, Google Pay, PayPal, Visa and Mastercard.
+- Ships within 24h from Aarau, Switzerland, with a 30-day money-back guarantee. Payment via TWINT, Apple Pay, Google Pay, Visa and Mastercard.
 
 This site is a single-page application; the URLs below are the prerendered, crawlable pages. Content is available in German (the canonical root, https://ambernord.ch/), English (/en/), French (/fr/) and Italian (/it/). The links below point to the English versions.
 

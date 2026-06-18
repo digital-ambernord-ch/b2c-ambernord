@@ -79,7 +79,7 @@
       "items": [
         { "q": "What does shipping cost and how fast do you deliver?", "a": "Shipped within 24 h from our logistics centre in Aarau. The Habit and The Protocol: free shipping throughout Switzerland. The Starter: plus shipping costs (shown at checkout)." },
         { "q": "How does the 30-day money-back guarantee work?", "a": "Not convinced? Contact us by e-mail within 30 days of receipt — you will get the full purchase price back, simply and without giving a reason." },
-        { "q": "Which payment methods do you accept?", "a": "TWINT, Visa, Mastercard, Apple Pay, Google Pay and PayPal — all payments run encrypted via Stripe." },
+        { "q": "Which payment methods do you accept?", "a": "TWINT, Visa, Mastercard, Apple Pay, Google Pay and— all payments run encrypted via Stripe." },
         { "q": "How can I change or cancel my subscription?", "a": "At any time, with no notice period: via the link in your order confirmation or by e-mail. The next unshipped delivery is stopped." },
         { "q": "Is AmberNord suitable during pregnancy, breastfeeding or when taking medication?", "a": "Sea buckthorn is a food. During pregnancy, while breastfeeding or when taking medication regularly, always discuss new dietary routines with your doctor." },
         { "q": "From what age is the elixir suitable?", "a": "As a normal food, it is in principle suitable for the whole family; for children we recommend a stronger dilution to taste." },

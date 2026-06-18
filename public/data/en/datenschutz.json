@@ -135,7 +135,7 @@
             },
             {
               "term": "Payment service providers:",
-              "desc": "For the secure processing of payments in our online shop (e.g. TWINT, Stripe, PayPal, credit card companies)."
+              "desc": "For the secure processing of payments in our online shop (e.g. TWINT, Stripe credit card companies)."
             },
             {
               "term": "IT service providers:",
