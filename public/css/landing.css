@@ -1702,7 +1702,7 @@
    viewport now that the pinned choreography is gone. */
 .shop-trailing-info {
   margin-top: 0;
-  padding: 44px 0 24px;
+  padding: 72px 0 32px;
   border-top: 1px solid rgba(255,255,255,0.07);
 }
 
@@ -1710,7 +1710,7 @@
    "Das tägliche Ritual" usage note — they read as separate blocks. */
 @media (max-width: 991px) {
   .shop-trailing-info {
-    margin-top: 44px;
+    margin-top: 64px;
     padding-top: 0;
   }
 }
@@ -1747,7 +1747,7 @@
 }
 
 .protocol-info-title {
-  color: var(--color-text);
+  color: #e8e0d4;
   font-family: var(--font-serif);
   font-size: 28px;
   font-weight: 400;
@@ -1757,7 +1757,7 @@
 }
 
 .protocol-info-text {
-  color: #a0a0a0;
+  color: #b0a89e;
   font-family: var(--font-sans);
   font-size: 13px;
   line-height: 1.6;
@@ -1777,9 +1777,9 @@
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.5px;
-  color: var(--color-text-dim);
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 100px;
   padding: 5px 14px;
 }
@@ -2512,8 +2512,9 @@
   }
   .premium-product-card.highlight-habit .card-img { width: 84px; max-height: 150px; top: 72px; right: 14px; }
   .card-price-daily { font-size: 26px; }
-  .protocol-info-block { text-align: left; }
-  .protocol-info-text  { font-size: 13px; }
+  .protocol-info-block { text-align: center; }
+  .protocol-info-title { font-size: 22px; margin-bottom: 12px; }
+  .protocol-info-text  { font-size: 12px; margin-bottom: 16px; }
 
   /* The bestseller card "breathes" once after its reveal — a soft gold
      border-glow pulse instead of motion, so the recommendation registers
