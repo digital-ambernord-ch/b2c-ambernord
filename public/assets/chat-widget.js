@@ -301,7 +301,7 @@
         var settled = false;
         tsResolve = function (t) { if (!settled) { settled = true; resolve(t || ''); } };
         // Safety timeout so a stuck challenge never hangs the UI.
-        setTimeout(function () { if (!settled) { settled = true; tsResolve = null; resolve(''); } }, 8000);
+        setTimeout(function () { if (!settled) { settled = true; tsResolve = null; resolve(''); } }, 15000);
         try { window.turnstile.reset(tsWidgetId); window.turnstile.execute(tsWidgetId); }
         catch (e) { if (!settled) { settled = true; tsResolve = null; resolve(''); } }
       });

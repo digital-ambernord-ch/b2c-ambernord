@@ -173,10 +173,13 @@ export async function onRequestPost(context) {
   }
 
   // 3) Human verification (Turnstile). Enforced only when a secret is configured.
+  //    Hard-block only on explicit forged-token signal; everything else (missing
+  //    token, timeout, network errors) falls through to KV rate-limiting so a
+  //    Turnstile hiccup never locks out real users.
   if (env && env.TURNSTILE_SECRET) {
-    const ok = await verifyTurnstile(body.turnstileToken, ip, env.TURNSTILE_SECRET);
-    if (!ok) {
-      return json({ reply: VERIFY_REPLY[lang] || VERIFY_REPLY.de, error: 'verify_failed' }, 403);
+    const ts = await verifyTurnstile(body.turnstileToken, ip, env.TURNSTILE_SECRET);
+    if (ts.hard) {
+      return json({ reply: VERIFY_REPLY[lang] || VERIFY_REPLY.de, error: 'verify_failed', ts_codes: ts.codes }, 403);
     }
   }
 
@@ -236,9 +239,18 @@ export async function onRequestPost(context) {
 }
 
 // --- Turnstile -------------------------------------------------------------
-// Verifies the client token against Cloudflare's siteverify endpoint.
+// Returns { ok, hard, codes }:
+//   ok   — token verified successfully
+//   hard — explicit invalid/forged token → block the request
+//   codes — Cloudflare error-codes array (for debugging)
+// Soft failures (missing token, widget timeout, network errors) return
+// { ok: false, hard: false } so the request falls through to KV rate-limiting.
 async function verifyTurnstile(token, ip, secret) {
-  if (!token || typeof token !== 'string') return false;
+  // Empty / missing token: widget timed out or was blocked by an ad-blocker.
+  // Treat as soft failure — KV rate-limiting still applies.
+  if (!token || typeof token !== 'string' || token === '') {
+    return { ok: false, hard: false, codes: ['missing-input-response'] };
+  }
   try {
     const form = new FormData();
     form.append('secret', secret);
@@ -249,9 +261,14 @@ async function verifyTurnstile(token, ip, secret) {
       body: form
     });
     const data = await res.json();
-    return !!(data && data.success);
+    if (data && data.success) return { ok: true, hard: false, codes: [] };
+    const codes = (data && Array.isArray(data['error-codes'])) ? data['error-codes'] : [];
+    // Only 'invalid-input-response' means a clearly forged / replayed token.
+    const hard = codes.includes('invalid-input-response');
+    return { ok: false, hard, codes };
   } catch {
-    return false; // fail closed
+    // Network / parse error — fail open so an outage doesn't lock out users.
+    return { ok: false, hard: false, codes: ['internal-error'] };
   }
 }
 
