@@ -180,6 +180,15 @@ window.initShop = async function () {
         cta.setAttribute('href', href);
         cta.textContent = label;
       });
+
+      // Update the price / savings / daily display under the product title.
+      const pur = p.buttons.purchase;
+      const priceEl   = card.querySelector('.shop-card__price');
+      const savingsEl = card.querySelector('.shop-card__savings');
+      const dailyEl   = card.querySelector('.shop-card__daily');
+      if (priceEl)   priceEl.textContent   = isAbo ? (pur.aboPrice   || p.price)       : p.price;
+      if (savingsEl) savingsEl.textContent = isAbo ? (pur.aboSavings || '')             : (p.savings || '');
+      if (dailyEl)   dailyEl.textContent   = isAbo ? (pur.aboDaily   || p.daily || '') : (p.daily   || '');
     });
   }
 

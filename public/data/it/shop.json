@@ -105,6 +105,9 @@
           "aboLabel": "Abbonamento 63.00 CHF/mese — risparmi 6.– (−9 %) · disdici quando vuoi",
           "ctaOneTime": "Ordina ora — 69.00 CHF",
           "ctaAbo": "Avvia abbonamento — 63.00 CHF/mese",
+          "aboPrice": "63.00 CHF/mese",
+          "aboSavings": "−16 % vs. Starter",
+          "aboDaily": "≈ 2.10 CHF / giorno",
           "aboHref": "https://buy.stripe.com/aFa6oJ71N60F4Kt3n9bQY04"
         }
       },
@@ -150,6 +153,9 @@
           "aboLabel": "Abbonamento 119.00 CHF/mese — risparmi 10.– (−8 %) · disdici quando vuoi",
           "ctaOneTime": "Ordina ora — 129.00 CHF",
           "ctaAbo": "Avvia abbonamento — 119.00 CHF/mese",
+          "aboPrice": "119.00 CHF/mese",
+          "aboSavings": "−20 % vs. Starter",
+          "aboDaily": "≈ 1.98 CHF / giorno",
           "aboHref": "https://buy.stripe.com/9B600lcm7bkZ0ud2j5bQY05"
         }
       },

@@ -105,6 +105,9 @@
           "aboLabel": "Abonnement 63.00 CHF/mois — économisez 6.– (−9 %) · résiliable à tout moment",
           "ctaOneTime": "Commander — 69.00 CHF",
           "ctaAbo": "Démarrer l'abonnement — 63.00 CHF/mois",
+          "aboPrice": "63.00 CHF/mois",
+          "aboSavings": "−16 % vs. Starter",
+          "aboDaily": "≈ 2.10 CHF / jour",
           "aboHref": "https://buy.stripe.com/aFa6oJ71N60F4Kt3n9bQY04"
         }
       },
@@ -150,6 +153,9 @@
           "aboLabel": "Abonnement 119.00 CHF/mois — économisez 10.– (−8 %) · résiliable à tout moment",
           "ctaOneTime": "Commander — 129.00 CHF",
           "ctaAbo": "Démarrer l'abonnement — 119.00 CHF/mois",
+          "aboPrice": "119.00 CHF/mois",
+          "aboSavings": "−20 % vs. Starter",
+          "aboDaily": "≈ 1.98 CHF / jour",
           "aboHref": "https://buy.stripe.com/9B600lcm7bkZ0ud2j5bQY05"
         }
       },
