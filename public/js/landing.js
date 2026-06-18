@@ -429,16 +429,12 @@ window.initLanding = async function () {
 
   /* =========================================================================
      PRODUCT CARDS.
-     ≥992px: NO pin, NO scrub — the page scrolls completely freely. Each card
-     does an in-place "gold coin" somersault flip to its benefit face once
-     the group scrolls past ~mid-viewport (cascaded; reversed when scrolling
-     back above), plus a hover toggle back to the sales face. Full system
-     below.
-     768–991px: NO flip — calm per-card fade-up (the choreography needs
-     desktop room). <768px: same fade-up, unchanged. Reduced motion:
-     everything static, sales faces only, no flips. CSS keeps the cards
-     visible by default; the hidden pre-reveal state is applied here,
-     JS-only, so content renders fine without JavaScript.
+     ≥992px: NO pin, NO scrub — crossfade morph on hover (CSS transitions,
+     no GSAP). Scroll-triggered fade-up reveal for the whole stack.
+     768–991px / <768px: fade-up only, no hover flip. Reduced motion:
+     everything static. CSS keeps the cards visible by default; the hidden
+     pre-reveal state is applied here, JS-only, so content renders fine
+     without JavaScript.
      ========================================================================= */
 
   mm.add('(min-width: 992px)', function () {
@@ -448,17 +444,15 @@ window.initLanding = async function () {
     const cards   = section ? Array.from(section.querySelectorAll('.premium-product-card')) : [];
     if (!cards.length) return;
 
-    /* The non-transforming wrapper around each card. Hover is detected on the
-       slot (stable box) instead of the card (whose rotateX foreshortens it
-       under the pointer), so a flip can never trip its own mouseleave. */
+    /* Hover is detected on the slot (stable box) so the card's CSS scale
+       transform on the benefit face never shrinks the hit area mid-hover. */
     const slots = cards.map(function (card) {
       return card.closest('.product-card-slot') || card.parentElement;
     });
 
-    /* Reset stray state from a previous init (SPA re-entry, GSAP retry):
-       no leaked faces, no leftover inline transforms, no one-shot classes. */
+    /* Reset stray state from a previous init (SPA re-entry, GSAP retry). */
     cards.forEach(function (card) {
-      card.classList.remove('is-flipped', 'is-airborne', 'is-glinting', 'is-shimmering');
+      card.classList.remove('is-flipped');
       gsap.set(card, { clearProps: 'all' });
     });
 

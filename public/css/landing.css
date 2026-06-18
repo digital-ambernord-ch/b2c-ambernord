@@ -1311,13 +1311,12 @@
 }
 
 /* --------------------------------------------------------------------------
-   CARD BENEFIT FACE — second "face" of each product card, revealed at the
-   edge-on 90° moment of the ≥992px "gold coin" somersault flip (landing.js
-   toggles .is-flipped while the card is a sliver). Two-column layout:
-   product column left (bottle shot + gold serif title + muted per-day
-   price), info column right (gold uppercase heading, 3 gold-bullet items,
-   highlighted savings chip, amber faux-CTA). Same card frame/radius,
-   slightly darker surface, thin gold accent line along the top edge.
+   CARD BENEFIT FACE — benefit overlay revealed on hover (≥992px crossfade,
+   landing.js toggles .is-flipped). Two-column layout: product column left
+   (bottle shot + gold serif title + muted per-day price), info column right
+   (gold uppercase heading, 3 gold-bullet items, highlighted savings chip,
+   amber faux-CTA). Same card frame/radius, slightly darker surface, thin
+   gold accent line along the top edge.
    pointer-events stays none in BOTH states: the face only paints — clicks
    always fall through to the card anchor underneath.
    The `.premium-product-card` prefix is required: it must outrank the
@@ -1481,24 +1480,6 @@
   opacity: 1;
 }
 
-/* --------------------------------------------------------------------------
-   GOLD COIN FLIP (≥992px, landing.js) — CSS half of the in-place somersault.
-   No pin, no scrub: GSAP plays time-based per-card timelines; this block
-   provides the perspective, the airborne shadow, the edge glint and the
-   landing shimmer.
-   -------------------------------------------------------------------------- */
-
-/* Shared vanishing point: perspective on the PARENT so all three cards
-   foreshorten toward the same horizon during their rotateX somersault. */
-@media (min-width: 992px) {
-  /* Stable hover region: the slot never transforms, so GSAP can rotate the
-     card inside it without the pointer ever falling outside the hit area —
-     which used to oscillate mouseenter/mouseleave and fire repeat flips.
-     Perspective lives on the slot so the card's rotateX keeps its 3D
-     foreshortening now that the card is one level deeper in the tree. */
-  .product-card-slot { perspective: 1200px; }
-}
-
 /* CROSSFADE MORPH (C variant) — desktop ≥992px only via has-crossfade class.
    Front face dissolves + softens out; benefit face sharpens + settles in.
    Blur keeps the swap feeling like a lens pull rather than a snap.
@@ -1535,40 +1516,6 @@
   transform: none;
 }
 
-/* LANDING SHIMMER — one-shot gold light sweep across the freshly revealed
-   benefit face (same visual language as .shop-card__btn-primary::after in
-   shop.css). landing.js adds .is-shimmering after the card lands and
-   removes it on animationend; keyframes drive opacity, so the band is
-   invisible outside the sweep. Clipped by the face's overflow:hidden. */
-.card-benefit-face::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -50%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(to right,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(237, 163, 35, 0.16) 50%,
-    rgba(255, 255, 255, 0) 100%);
-  transform: skewX(-25deg);
-  opacity: 0;
-  pointer-events: none;
-}
-
-.premium-product-card.is-shimmering .card-benefit-face::after {
-  animation: an-face-shimmer 0.9s ease-out;
-}
-
-@keyframes an-face-shimmer {
-  0%   { opacity: 0; transform: translateX(0) skewX(-25deg); }
-  20%  { opacity: 1; }
-  100% { opacity: 0; transform: translateX(420%) skewX(-25deg); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .premium-product-card.is-shimmering .card-benefit-face::after { animation: none; }
-}
 
 /* Centred "hanging tag" pinned to the card's TOP EDGE, fully INSIDE the
    card — the old `top:-12px` overhang was clipped by the highlight-habit
@@ -1703,7 +1650,6 @@
 .shop-trailing-info {
   margin-top: 0;
   padding: 72px 0 32px;
-  border-top: 1px solid rgba(255,255,255,0.07);
 }
 
 /* Mobile: clear breathing room between the trust badges row above and the
