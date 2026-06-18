@@ -23,19 +23,11 @@
       "PowerShell(node -c C:\\\\Users\\\\eriks\\\\Documents\\\\GitHub\\\\b2c-ambernord\\\\public\\\\js\\\\landing.js; if \\($?\\) { \"JS OK\" })",
       "PowerShell(git show b0cde4d:public/js/landing.js | Select-String -Pattern 'attachProductCardsExitDesktop' -Context 0,0; \\(git show b0cde4d:public/js/landing.js | Measure-Object -Line\\).Lines)",
       "PowerShell(Set-Content *)",
-      "Bash(npm run *)",
-      "Bash(curl *)",
-      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d.get\\('info',{}\\), ensure_ascii=False, indent=2\\)\\)\")",
-      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d, ensure_ascii=False, indent=2\\)\\)\")",
-      "Bash(git -C \"C:/Users/eriks/Documents/GitHub/b2c-ambernord\" diff --stat)",
-      "Bash(git -C \"C:/Users/eriks/Documents/GitHub/b2c-ambernord\" diff -- public/data/DE/the-habit.json public/data/fr/the-master-box.json)",
       "Bash(git merge *)",
+      "Bash(git stash *)",
       "Bash(git push *)",
-      "Bash(git branch *)",
-      "Bash(git rm *)",
-      "Bash(grep -co '/\\\\*' index.html)",
-      "Bash(git commit *)",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)"
     ]
   },
   "model": "claude-fable-5"
