@@ -20,13 +20,16 @@
      track and #shop follows in normal flow (NO overlap), so the heading never
      slides over the floating cards/bottle. This number is the pacing lever:
      lower = tighter/faster, higher = airier. */
-  height: 162vh;   /* fallback for browsers without svh support */
+  height: 150vh;   /* fallback for browsers without svh support */
   /* svh = SMALL viewport unit: a CONSTANT, sized to the viewport with the
      mobile URL bar visible. dvh was used before, but dvh is DYNAMIC — it
      grows/shrinks mid-scroll as the URL bar collapses, resizing this track
      and jolting all content below it (the "raustās" stutter on real
      devices). svh never changes during scroll. */
-  height: 162svh;
+  height: 150svh;   /* audit: tightened from 162 — trims the dead black scroll
+                       at the tail of the hero choreography (the "pacing lever"
+                       above). Desktop only in effect; mobile overrides to 145svh
+                       in landing.js. Still ~50vh of scrub for the full sequence. */
   background-color: var(--color-bg);
   width: 100%;
 }
