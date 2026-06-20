@@ -97,7 +97,21 @@
   .fx-cross .bottle__body:hover .face--front{opacity:0;transform:translateX(-24px)}
   .fx-cross .bottle__body:hover .face--back{opacity:1;transform:translateX(0)}
 
+  /* ===== real-image rows ===== */
+  .rb{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--border);
+    background:linear-gradient(155deg,rgba(40,32,22,.4),rgba(12,10,8,.95));
+    filter:drop-shadow(0 18px 30px rgba(0,0,0,.5))}
+  .rb__img{display:block;width:100%;height:auto}
+  .rb--beside{display:flex;align-items:center;gap:24px;padding:10px 30px 10px 10px}
+  .rb--beside .rb__img{width:56%;flex:none}
+  .rb--beside .rb__panel{flex:1;min-width:0}
+  .rb--over .rb__scrim{position:absolute;inset:0;
+    background:linear-gradient(90deg,rgba(8,7,6,.92) 0%,rgba(8,7,6,.6) 32%,rgba(8,7,6,0) 62%)}
+  .rb--over .rb__overlay{position:absolute;left:40px;top:50%;transform:translateY(-50%);max-width:52%;z-index:2}
+
   @media(max-width:640px){
+    .rb--beside{flex-direction:column;padding:18px}
+    .rb--beside .rb__img{width:100%}
     .bottle{height:auto;min-height:150px}
     .face{flex-wrap:wrap;gap:10px;padding:22px 26px;position:relative}
     .face--back{position:absolute}
@@ -117,6 +131,35 @@
 
   <h1>Ihr Ritual. <em>Drei Grössen.</em></h1>
   <p class="sub">Prototyp — horizontale Flaschen mit Inhalt als Etikett</p>
+
+  <!-- ROW 0 — ECHTES BILD (Cloudinary e_trim) -->
+  <div class="row">
+    <p class="effect-label">Echtes Bild · Variante 1: Inhalt rechts daneben</p>
+    <div class="rb rb--beside">
+      <img class="rb__img" src="https://res.cloudinary.com/dt6ksxuqf/image/upload/e_trim,f_auto,q_auto,w_1100/v1781987718/ambernord-bio-sanddornsaft-zelt-edition-250ml-schweiz.webp_horizontal_mocc4b.png" alt="The Habit Flasche">
+      <div class="rb__panel">
+        <div class="price__day">2.30<span style="font-size:13px"> /Tag</span></div>
+        <div class="name" style="margin-top:4px">The Habit</div>
+        <div class="tag">Das 30-Tage-Ritual · 3× 250 ml</div>
+        <ul class="blist"><li>30 Tage tägliches Ritual</li><li>Zellschutz dank Vitamin C</li><li>30 Tage Geld-zurück-Garantie</li></ul>
+        <a class="cta" href="#" style="margin-top:14px;display:inline-block">Jetzt bestellen — 69.00 CHF</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROW 0b — ECHTES BILD, Inhalt überlagert -->
+  <div class="row">
+    <p class="effect-label">Echtes Bild · Variante 2: Inhalt überlagert (Scrim)</p>
+    <div class="rb rb--over">
+      <img class="rb__img" src="https://res.cloudinary.com/dt6ksxuqf/image/upload/e_trim,f_auto,q_auto,w_1100/v1781987718/ambernord-bio-sanddornsaft-zelt-edition-250ml-schweiz.webp_horizontal_mocc4b.png" alt="The Habit Flasche">
+      <div class="rb__scrim"></div>
+      <div class="rb__overlay">
+        <div class="price__day">2.30<span style="font-size:13px"> /Tag</span> <span style="font-size:13px;color:var(--dim)">· 69.00 CHF</span></div>
+        <div class="name" style="margin-top:2px">The Habit</div>
+        <a class="cta" href="#" style="margin-top:10px;display:inline-block">Jetzt bestellen →</a>
+      </div>
+    </div>
+  </div>
 
   <!-- ROW 1 — 3D FLIP -->
   <div class="row fx-flip">
