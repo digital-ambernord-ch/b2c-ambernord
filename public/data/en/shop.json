@@ -23,6 +23,11 @@
     "eyebrow": "Sea Buckthorn Essences",
     "h1": "Choose Your<br><span>Elixir</span>"
   },
+  "reassure": {
+    "guarantee": "30-day money-back guarantee",
+    "bio": "Organic-certified · ProCert CH-BIO-038",
+    "shipping": "Ships from Switzerland · within 24 h"
+  },
   "sections": [
     {
       "id": "shop-grid",

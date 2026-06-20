@@ -23,6 +23,11 @@
     "eyebrow": "Essenze di olivello spinoso",
     "h1": "Scegli il tuo<br><span>Elisir</span>"
   },
+  "reassure": {
+    "guarantee": "Soddisfatti o rimborsati 30 giorni",
+    "bio": "Certificato bio · ProCert CH-BIO-038",
+    "shipping": "Spedito dalla Svizzera · entro 24 h"
+  },
   "sections": [
     {
       "id": "shop-grid",

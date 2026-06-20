@@ -48,6 +48,40 @@
 }
 
 /* --------------------------------------------------------------------------
+   REASSURANCE STRIP — honest trust line above the product cards (guarantee +
+   ProCert cert + Swiss dispatch). Centred, wraps on small screens.
+   -------------------------------------------------------------------------- */
+.shop-reassure {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px 28px;
+  list-style: none;
+  max-width: 1400px;
+  margin: 0 auto 36px;
+  padding: 0 var(--container-pad);
+}
+
+.shop-reassure__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: var(--color-text-muted);
+}
+
+.shop-reassure__item svg { color: var(--color-gold); flex: none; }
+
+@media (max-width: 640px) {
+  .shop-reassure { gap: 10px 18px; margin-bottom: 28px; }
+  .shop-reassure__item { font-size: 12px; }
+}
+
+/* --------------------------------------------------------------------------
    SR-ONLY HEADING — visually hidden h2 provides accessible section label.
    -------------------------------------------------------------------------- */
 

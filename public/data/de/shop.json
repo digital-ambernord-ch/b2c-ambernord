@@ -23,6 +23,11 @@
     "eyebrow": "Sanddorn-Essenzen",
     "h1": "Wählen Sie Ihr<br><span>Elixier</span>"
   },
+  "reassure": {
+    "guarantee": "30 Tage Geld-zurück-Garantie",
+    "bio": "Bio-zertifiziert · ProCert CH-BIO-038",
+    "shipping": "Versand aus der Schweiz · in 24 h"
+  },
   "sections": [
     {
       "id": "shop-grid",

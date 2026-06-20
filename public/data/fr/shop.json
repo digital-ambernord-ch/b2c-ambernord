@@ -23,6 +23,11 @@
     "eyebrow": "Essences d'argousier",
     "h1": "Choisissez votre<br><span>Élixir</span>"
   },
+  "reassure": {
+    "guarantee": "Satisfait ou remboursé 30 jours",
+    "bio": "Certifié bio · ProCert CH-BIO-038",
+    "shipping": "Expédié depuis la Suisse · sous 24 h"
+  },
   "sections": [
     {
       "id": "shop-grid",
