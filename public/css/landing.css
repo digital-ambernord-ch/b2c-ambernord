@@ -3200,3 +3200,228 @@ a.launch-trust__pillar:focus-visible {
 .bottle-external-bottom .card-shipping-note { font-size: 12px; color: #888; margin-bottom: 16px; }
 .bottle-animation-card.highlight-habit { border: 2px solid #EDA323; }
 .bottle-animation-card.highlight-habit .product-badge { position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%); background: #EDA323; color: #fff; padding: 4px 12px; border-radius: 12px; font-size: 11px; font-weight: 700; letter-spacing: 1px; z-index: 2; }
+/* --- REALISTIC 3D ROLLING BOTTLE --- */
+.product-card-slot {
+  display: flex;
+  justify-content: center;
+}
+
+.realistic-3d-bottle {
+  display: block;
+  width: 320px;
+  height: 520px;
+  position: relative;
+  text-decoration: none;
+  filter: drop-shadow(0 15px 35px rgba(237,163,35,0.25));
+  transition: filter 0.4s ease, transform 0.4s ease;
+  transform: translateZ(0);
+  margin-bottom: 40px;
+}
+
+.realistic-3d-bottle:hover {
+  filter: drop-shadow(0 20px 45px rgba(237,163,35,0.4));
+  transform: translateY(-5px);
+}
+
+.bottle-glass-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+}
+
+.bottle-liquid-bg {
+  position: absolute;
+  inset: 0;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: brightness(0.65) saturate(1.5) contrast(1.2);
+  z-index: 1;
+}
+
+.bottle-label-stage {
+  position: absolute;
+  top: 22%;
+  bottom: 22%;
+  left: 15%;
+  right: 15%;
+  perspective: 1200px;
+  z-index: 2;
+}
+
+.bottle-label-rotor {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.3, 1);
+  transform-origin: center center -112px;
+}
+
+.realistic-3d-bottle:hover .bottle-label-rotor {
+  transform: rotateY(-180deg);
+}
+
+.label-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.9), 0 0 15px rgba(0,0,0,0.7);
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.label-front {
+  transform: translateZ(112px);
+}
+
+.label-back {
+  transform: rotateY(180deg) translateZ(112px);
+}
+
+.bottle-lighting {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.0) 18%,
+    rgba(255, 255, 255, 0.25) 30%,
+    rgba(255, 255, 255, 0.0) 45%,
+    rgba(0, 0, 0, 0.1) 80%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+  mix-blend-mode: overlay;
+}
+
+.bottle-text-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  line-height: 1.1;
+  color: #fff;
+}
+
+.bottle-text-units {
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0.9;
+  margin-bottom: 24px;
+}
+
+.bottle-text-price-daily {
+  font-size: 22px;
+  font-weight: 700;
+  color: #FFF;
+  margin-bottom: 4px;
+}
+
+.bottle-text-price-full {
+  font-size: 14px;
+  opacity: 0.8;
+  margin-bottom: 24px;
+}
+
+.bottle-text-extra {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 24px;
+  color: #FFE5B4;
+}
+
+.bottle-text-btn {
+  background: #fff;
+  color: #0a0a0a;
+  text-shadow: none;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  transition: transform 0.2s, background 0.2s;
+  pointer-events: none;
+}
+
+.realistic-3d-bottle:hover .bottle-text-btn {
+  background: #EDA323;
+  color: #fff;
+}
+
+.bottle-back-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #FFF;
+}
+
+.bottle-back-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+  text-align: left;
+  font-size: 13px;
+  line-height: 1.4;
+  width: 100%;
+}
+
+.bottle-back-list li {
+  margin-bottom: 10px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.bottle-back-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #FFE5B4;
+  font-weight: bold;
+}
+
+.bottle-back-savings {
+  font-size: 13px;
+  font-weight: 700;
+  color: #FFE5B4;
+  margin-top: auto;
+  border-top: 1px solid rgba(255,255,255,0.3);
+  padding-top: 16px;
+  width: 100%;
+}
+
+.product-badge {
+  position: absolute;
+  top: 20px;
+  right: -10px;
+  background: #EDA323;
+  color: #fff;
+  padding: 6px 16px;
+  font-size: 11px;
+  font-weight: bold;
+  transform: rotate(45deg);
+  z-index: 10;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  text-shadow: none;
+  letter-spacing: 1px;
+}
+
