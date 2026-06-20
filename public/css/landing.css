@@ -3060,3 +3060,111 @@
   .purity-compare__lead { font-size: 14px; }
   .purity-compare__cols { grid-template-columns: 1fr; gap: 14px; }
 }
+
+/* ===========================================================================
+   LAUNCH TRUST — honest "young brand, transparent from day one" block.
+   Sits in normal flow before the closing CTA. Four pillars (provenance /
+   process / Swiss origin / risk-reversal), all built on facts already stated
+   elsewhere on the site. The cert + guarantee pillars are links (cursor +
+   hover lift); the lab + Swiss pillars are static. Mobile: single column.
+   =========================================================================== */
+.launch-trust {
+  padding: var(--space-2xl) var(--container-pad);
+  background: var(--color-bg);
+  text-align: center;
+}
+
+.launch-trust__inner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.launch-trust__eyebrow {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: var(--space-sm);
+}
+
+.launch-trust__title {
+  font-family: var(--font-serif);
+  font-size: clamp(26px, 4vw, 40px);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--color-text);
+  margin: 0 0 var(--space-md);
+}
+
+.launch-trust__intro {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+  max-width: 60ch;
+  margin: 0 auto var(--space-xl);
+}
+
+.launch-trust__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-sm);
+}
+
+.launch-trust__pillar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  padding: var(--space-md) var(--space-sm);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform var(--t-fast) var(--ease-out),
+              border-color var(--t-fast) ease,
+              box-shadow var(--t-fast) ease;
+}
+
+a.launch-trust__pillar { cursor: pointer; }
+
+a.launch-trust__pillar:hover,
+a.launch-trust__pillar:focus-visible {
+  transform: translateY(-4px);
+  border-color: var(--color-border-gold);
+  box-shadow: var(--shadow-card);
+}
+
+.launch-trust__icon {
+  color: var(--color-gold);
+  flex: none;
+}
+
+.launch-trust__pillar-title {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  color: var(--color-text);
+}
+
+.launch-trust__pillar-sub {
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--color-text-dim);
+}
+
+@media (max-width: 860px) {
+  .launch-trust__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .launch-trust { padding: var(--space-xl) var(--container-pad); }
+  .launch-trust__grid { grid-template-columns: 1fr; gap: 12px; }
+}

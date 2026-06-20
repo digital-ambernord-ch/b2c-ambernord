@@ -88,6 +88,15 @@
     "sub": "Three sizes — one for every rhythm.",
     "btn": "Choose your ritual →"
   },
+  "launchTrust": {
+    "eyebrow": "New from Switzerland",
+    "title": "A young brand — transparent from day one.",
+    "intro": "AmberNord is just getting started. Instead of advertising thousands of reviews, we put everything on the table from day one — origin, lab results and production. And if you're not convinced, we carry the risk, not you.",
+    "cert": { "title": "Organic-certified", "sub": "ProCert CH-BIO-038 — independently audited" },
+    "lab": { "title": "Every batch lab-tested", "sub": "Purity proven, not just claimed" },
+    "swiss": { "title": "Swiss manufacture", "sub": "Bottled & shipped from Aarau" },
+    "guarantee": { "title": "30-day money-back", "sub": "Not convinced? Full refund." }
+  },
   "trust": {
     "lab": {
       "title": "Lab Tested",

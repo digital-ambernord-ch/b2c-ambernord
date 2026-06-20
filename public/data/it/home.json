@@ -88,6 +88,15 @@
     "sub": "Tre formati — uno per ogni ritmo.",
     "btn": "Scelga il rituale →"
   },
+  "launchTrust": {
+    "eyebrow": "Nuovo, dalla Svizzera",
+    "title": "Un marchio giovane — trasparente fin dal primo giorno.",
+    "intro": "AmberNord è appena agli inizi. Invece di vantare migliaia di recensioni, mettiamo tutto in chiaro fin dal primo giorno — origine, analisi di laboratorio e produzione. E se non è convinto, il rischio lo corriamo noi, non Lei.",
+    "cert": { "title": "Certificato biologico", "sub": "ProCert CH-BIO-038 — verificato in modo indipendente" },
+    "lab": { "title": "Ogni lotto testato in laboratorio", "sub": "Purezza dimostrata, non solo dichiarata" },
+    "swiss": { "title": "Manifattura svizzera", "sub": "Imbottigliato e spedito da Aarau" },
+    "guarantee": { "title": "Soddisfatti o rimborsati 30 giorni", "sub": "Non è convinto? Rimborso totale." }
+  },
   "trust": {
     "lab": {
       "title": "Testato in laboratorio",

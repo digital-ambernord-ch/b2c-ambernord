@@ -88,6 +88,15 @@
     "sub": "Drei Grössen — eine für jeden Rhythmus.",
     "btn": "Ritual wählen →"
   },
+  "launchTrust": {
+    "eyebrow": "Neu aus der Schweiz",
+    "title": "Eine junge Marke — transparent von Anfang an.",
+    "intro": "AmberNord steht erst am Anfang. Statt mit Tausenden von Bewertungen zu werben, legen wir vom ersten Tag an alles offen — Herkunft, Labor und Herstellung. Und falls Sie nicht überzeugt sind, tragen wir das Risiko, nicht Sie.",
+    "cert": { "title": "Bio-zertifiziert", "sub": "ProCert CH-BIO-038 — unabhängig geprüft" },
+    "lab": { "title": "Jede Charge laborgeprüft", "sub": "Reinheit nachgewiesen, nicht behauptet" },
+    "swiss": { "title": "Schweizer Manufaktur", "sub": "Abgefüllt & versandt aus Aarau" },
+    "guarantee": { "title": "30 Tage Geld-zurück", "sub": "Nicht überzeugt? Voller Preis zurück." }
+  },
   "trust": {
     "lab": {
       "title": "Laborgeprüft",
