@@ -441,7 +441,7 @@ window.initLanding = async function () {
     if (reducedMotion) return;
 
     const section = document.getElementById('ritual-products');
-    const cards   = section ? Array.from(section.querySelectorAll('.premium-product-card')) : [];
+    const cards   = section ? Array.from(section.querySelectorAll('.bottle-animation-card')) : [];
     if (!cards.length) return;
 
     /* Hover is detected on the slot (stable box) so the card's CSS scale
@@ -509,7 +509,7 @@ window.initLanding = async function () {
        entry, then stays put — the user compares the three editions in peace.
        The Habit gets its border-glow "breath" right after its reveal. */
     var section   = document.getElementById('ritual-products');
-    var cards     = section ? Array.from(section.querySelectorAll('.premium-product-card')) : [];
+    var cards     = section ? Array.from(section.querySelectorAll('.bottle-animation-card')) : [];
     var trustWrap = section ? section.querySelector('.conversion-booster-wrapper') : null;
     var revealEls = cards.concat(trustWrap ? [trustWrap] : []);
 

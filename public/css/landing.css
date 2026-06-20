@@ -3171,3 +3171,32 @@ a.launch-trust__pillar:focus-visible {
   .launch-trust { padding: var(--space-xl) var(--container-pad); }
   .launch-trust__grid { grid-template-columns: 1fr; gap: 12px; }
 }
+
+/* --- BOTTLE ANIMATION CARDS --- */
+.bottle-animation-card { display: flex; flex-direction: column; background: #fff; border-radius: 20px; padding: 24px; text-decoration: none; color: #0a0a0a; position: relative; overflow: hidden; transform: translateZ(0); box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: transform 0.4s ease, box-shadow 0.4s ease; margin-bottom: 24px; }
+.bottle-animation-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
+.bottle-external-top { text-align: center; margin-bottom: 24px; }
+.bottle-external-top .card-title { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 500; margin-bottom: 4px; }
+.bottle-external-top .card-units { font-size: 13px; color: #666; font-weight: 500; letter-spacing: 0.5px; }
+.bottle-scene { perspective: 1000px; width: 100%; height: 340px; margin: 0 auto 24px auto; }
+.bottle-wrapper { width: 100%; height: 100%; position: relative; transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); transform-style: preserve-3d; }
+.bottle-animation-card:hover .bottle-wrapper { transform: rotateY(180deg); }
+.bottle-front, .bottle-back { position: absolute; top: 0; left: 0; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+.bottle-front { }
+.bottle-front .bottle-img { max-height: 100%; object-fit: contain; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.15)); }
+.bottle-back { transform: rotateY(180deg); background: #fdfaf6; border: 1px solid #eee; overflow: hidden; padding: 24px; box-sizing: border-box; }
+.bottle-fill-liquid { position: absolute; bottom: 0; left: 0; width: 100%; height: 0%; background: linear-gradient(180deg, rgba(237,163,35,0.1) 0%, rgba(237,163,35,0.4) 100%); transition: height 1s cubic-bezier(0.4, 0, 0.2, 1) 0.2s; z-index: 0; }
+.bottle-animation-card:hover .bottle-fill-liquid { height: 100%; }
+.bottle-back-content { position: relative; z-index: 1; text-align: center; display: flex; flex-direction: column; justify-content: center; height: 100%; }
+.bottle-back-heading { font-family: 'Playfair Display', serif; font-size: 20px; margin-bottom: 16px; color: #EDA323; }
+.bottle-back-list { list-style: none; padding: 0; margin: 0 0 16px 0; font-size: 13px; line-height: 1.5; text-align: left; }
+.bottle-back-list li { margin-bottom: 8px; padding-left: 16px; position: relative; }
+.bottle-back-list li::before { content: '·'; position: absolute; left: 0; color: #EDA323; font-weight: bold; }
+.bottle-back-savings { font-size: 12px; font-weight: 600; color: #333; margin-top: auto; padding-top: 12px; border-top: 1px solid rgba(0,0,0,0.05); }
+.bottle-external-bottom { text-align: center; }
+.bottle-external-bottom .card-price-block { margin-bottom: 16px; }
+.bottle-external-bottom .p-extra-info { font-size: 13px; font-weight: 600; margin-bottom: 12px; color: #EDA323; }
+.bottle-external-bottom .benefit-list { text-align: left; font-size: 13px; color: #555; margin-bottom: 20px; }
+.bottle-external-bottom .card-shipping-note { font-size: 12px; color: #888; margin-bottom: 16px; }
+.bottle-animation-card.highlight-habit { border: 2px solid #EDA323; }
+.bottle-animation-card.highlight-habit .product-badge { position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%); background: #EDA323; color: #fff; padding: 4px 12px; border-radius: 12px; font-size: 11px; font-weight: 700; letter-spacing: 1px; z-index: 2; }
