@@ -1,0 +1,81 @@
+/* =========================================================================
+   AMBERNORD — PREMIUM FX
+   css/premium-fx.css
+   Shared CTA polish + count-up support. Loaded site-wide from index.html.
+
+   Purpose: the shop cards already carry a gold shine-sweep on their primary
+   buy button (.shop-card__btn-primary::after in shop.css). The home and
+   product CTAs did NOT — so the "buy" gesture looked different on every page.
+   This file brings the SAME sweep to the remaining primary CTAs so the brand
+   reads consistently premium everywhere. Pure CSS, hover-driven, and fully
+   suppressed under prefers-reduced-motion.
+   ========================================================================= */
+
+/* --- Gold shine-sweep on the primary CTAs (home hero, closing CTA, product) -
+   All three are solid-gold filled buttons with no existing ::after, so the
+   pseudo-element is free. overflow:hidden clips the sweep to the button shape
+   (incl. the pill radius on the closing + product buttons). */
+
+.ambernord-btn-clean,
+.landing-closing-cta__btn,
+.order-btn-stripe {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;          /* keeps the sweep below text without z-index juggling */
+}
+
+.ambernord-btn-clean::after,
+.landing-closing-cta__btn::after,
+.order-btn-stripe::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0)    0%,
+    rgba(255, 255, 255, 0.40) 50%,
+    rgba(255, 255, 255, 0)    100%
+  );
+  transform: skewX(-22deg);
+  transition: left var(--t-slow) var(--ease-out);
+  pointer-events: none;
+  z-index: -1;                 /* under the label, above the gold fill */
+}
+
+.ambernord-btn-clean:hover::after,
+.ambernord-btn-clean:focus-visible::after,
+.landing-closing-cta__btn:hover::after,
+.landing-closing-cta__btn:focus-visible::after,
+.order-btn-stripe:hover::after,
+.order-btn-stripe:focus-visible::after {
+  left: 130%;
+}
+
+/* =========================================================================
+   COUNT-UP — the active-ingredient stats (190+, 100%) tick up from zero the
+   first time they scroll into view. js/premium-fx.js drives the value; this
+   only reserves the digits' width so the layout never jumps as the number
+   grows, and keeps tabular figures so the count reads cleanly.
+   ========================================================================= */
+
+[data-countup] {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+}
+
+/* =========================================================================
+   REDUCED MOTION — no sweep, no count animation artefacts. The number is
+   painted at its final value by the JS module (it checks the same query),
+   and the sweep pseudo is removed entirely here as a CSS-level guarantee.
+   ========================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .ambernord-btn-clean::after,
+  .landing-closing-cta__btn::after,
+  .order-btn-stripe::after {
+    display: none;
+  }
+}

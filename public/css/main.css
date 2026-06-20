@@ -19,7 +19,7 @@
   --color-gold-dimmer:     rgba(237, 163, 35, 0.15);
   --color-text:            #ffffff;
   --color-text-muted:      #d0d0d0;
-  --color-text-dim:        #888888;
+  --color-text-dim:        #9a9a9a;  /* readability: ~6.9:1 on --color-bg, lifts small letter-spaced fine print above the old #888 (~5.4:1) while staying clearly below --color-text-muted in the hierarchy */
   --color-border:          rgba(255, 255, 255, 0.07);
   --color-border-subtle:   rgba(255, 255, 255, 0.04);
   --color-border-gold:     rgba(237, 163, 35, 0.3);
