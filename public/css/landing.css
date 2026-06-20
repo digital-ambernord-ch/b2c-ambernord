@@ -3425,3 +3425,258 @@ a.launch-trust__pillar:focus-visible {
   letter-spacing: 1px;
 }
 
+/* --- HUGE HORIZONTAL BOTTLES --- */
+.product-card-slot {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.huge-horizontal-bottle {
+  display: block;
+  width: 100%;
+  max-width: 1200px;
+  aspect-ratio: 3.2 / 1;
+  min-height: 250px;
+  position: relative;
+  text-decoration: none;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
+  transition: filter 0.4s ease, transform 0.4s ease;
+  transform: translateZ(0);
+  margin-bottom: 60px;
+  background: transparent;
+}
+
+@media (max-width: 900px) {
+  .huge-horizontal-bottle {
+    aspect-ratio: auto;
+    height: 350px;
+  }
+}
+@media (max-width: 600px) {
+  .huge-horizontal-bottle {
+    height: 500px; /* If squished, it might need more height */
+  }
+}
+
+.huge-horizontal-bottle:hover {
+  filter: drop-shadow(0 30px 60px rgba(237,163,35,0.2));
+  transform: translateY(-5px);
+}
+
+.bottle-glass-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  -webkit-mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  mask-position: center;
+}
+
+.bottle-liquid-bg {
+  position: absolute;
+  inset: 0;
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
+  /* Darken slightly so white text stands out on the light orange */
+  filter: brightness(0.8) contrast(1.1);
+}
+
+/* OVERLAY TEXT ON THE LEFT */
+.bottle-fixed-info {
+  position: absolute;
+  top: 50%;
+  left: 8%;
+  transform: translateY(-50%);
+  z-index: 5;
+  color: #fff;
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.5);
+}
+
+.bottle-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.bottle-text-price-daily {
+  color: #EDA323;
+  font-weight: 700;
+  font-size: 28px;
+  letter-spacing: -0.5px;
+}
+
+.bottle-text-price-full {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.bottle-text-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 500;
+  margin-bottom: 16px;
+  line-height: 1.1;
+}
+
+.bottle-text-extra {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 24px;
+  opacity: 0.9;
+}
+
+.bottle-text-btn {
+  background: #EDA323;
+  color: #111;
+  text-shadow: none;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(237,163,35,0.4);
+  transition: transform 0.2s, background 0.2s;
+  align-self: flex-start;
+  pointer-events: none;
+}
+
+/* ROLLING LABEL AREA */
+.bottle-label-stage {
+  position: absolute;
+  top: 15%;
+  bottom: 15%;
+  left: 45%;
+  right: 10%;
+  perspective: 1200px;
+  z-index: 2;
+}
+
+.bottle-label-rotor {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1s cubic-bezier(0.25, 1, 0.3, 1);
+  transform-origin: center center -110px;
+}
+
+.huge-horizontal-bottle:hover .bottle-label-rotor {
+  transform: rotateX(180deg);
+}
+
+.label-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.label-front {
+  transform: translateZ(110px);
+  justify-content: flex-end;
+  padding-bottom: 20px;
+}
+
+.bottle-label-scroll-prompt {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.7);
+  animation: bounceDown 2s infinite;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+@keyframes bounceDown {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
+}
+
+.label-back {
+  transform: rotateX(180deg) translateZ(110px);
+  background: rgba(0,0,0,0.65);
+  border-radius: 12px;
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.bottle-lighting {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.0) 20%,
+    rgba(255, 255, 255, 0.3) 40%,
+    rgba(255, 255, 255, 0.0) 60%,
+    rgba(0, 0, 0, 0.2) 85%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+  mix-blend-mode: overlay;
+}
+
+.bottle-back-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #EDA323;
+  text-shadow: none;
+}
+
+.bottle-back-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px 0;
+  text-align: left;
+  font-size: 14px;
+  line-height: 1.5;
+  width: 100%;
+  text-shadow: none;
+}
+
+.bottle-back-list li {
+  margin-bottom: 8px;
+  padding-left: 24px;
+  position: relative;
+}
+
+.bottle-back-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #EDA323;
+  font-weight: bold;
+}
+
+.bottle-back-savings {
+  font-size: 14px;
+  font-weight: 700;
+  color: #FFF;
+  margin-top: auto;
+  text-shadow: none;
+}
+
