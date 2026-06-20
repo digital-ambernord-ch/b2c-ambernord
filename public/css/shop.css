@@ -218,7 +218,8 @@
 
 .shop-card__image-wrap {
   width: 100%;
-  height: 120px;
+  height: 190px;   /* audit: was 120px — the product is the hero of an e-commerce
+                      card; the bottles now carry real presence above the copy */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -231,7 +232,7 @@
 
 .shop-card__image-wrap img {
   max-width: 100%;
-  max-height: 100px;
+  max-height: 168px;   /* audit: was 100px */
   object-fit: contain;
   filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.5));
 }
@@ -618,11 +619,11 @@
   }
 
   .shop-card__image-wrap {
-    height: 160px;
+    height: 210px;
   }
 
   .shop-card__image-wrap img {
-    max-height: 140px;
+    max-height: 190px;
   }
 
   .shop-card__title {
