@@ -60,6 +60,10 @@
       "oneTimeHref": "https://buy.stripe.com/3cI6oJbi3gFjb8R8HtbQY02",
       "aboHref": "https://buy.stripe.com/9B600lcm7bkZ0ud2j5bQY05"
     },
+    "guarantee": {
+      "title": "30-day money-back guarantee",
+      "sub": "Not convinced? Full refund — no risk at all."
+    },
     "trust": {
       "bio": "Certified organic",
       "lab": "Lab-tested",

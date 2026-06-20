@@ -50,6 +50,10 @@
     "scienceItem4": "<strong>Purezza assoluta:</strong> senza zuccheri aggiunti, senza aromi artificiali. <span class=\"p-gold\">100 % natura.</span>",
     "shippingLabel": "Spedizione & Logistica",
     "shippingText": "Spedizione premium affidabile all'interno della Svizzera (spese di spedizione escluse). Spedizione diretta dal nostro centro logistico di Aarau.",
+    "guarantee": {
+      "title": "Soddisfatti o rimborsati 30 giorni",
+      "sub": "Non è convinto? Rimborso totale — senza alcun rischio."
+    },
     "trust": {
       "bio": "Certificato bio",
       "lab": "Testato in laboratorio",

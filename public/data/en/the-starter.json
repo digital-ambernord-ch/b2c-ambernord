@@ -50,6 +50,10 @@
     "scienceItem4": "<strong>Absolute purity:</strong> no added sugar, no artificial flavours. <span class=\"p-gold\">100% nature.</span>",
     "shippingLabel": "Shipping & Logistics",
     "shippingText": "Reliable premium shipping within Switzerland (excl. shipping costs). Direct shipping from our logistics centre in Aarau.",
+    "guarantee": {
+      "title": "30-day money-back guarantee",
+      "sub": "Not convinced? Full refund — no risk at all."
+    },
     "trust": {
       "bio": "Certified organic",
       "lab": "Lab-tested",

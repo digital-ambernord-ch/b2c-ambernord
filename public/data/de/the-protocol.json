@@ -60,6 +60,10 @@
       "oneTimeHref": "https://buy.stripe.com/3cI6oJbi3gFjb8R8HtbQY02",
       "aboHref": "https://buy.stripe.com/9B600lcm7bkZ0ud2j5bQY05"
     },
+    "guarantee": {
+      "title": "30 Tage Geld-zurück-Garantie",
+      "sub": "Nicht überzeugt? Voller Preis zurück — ganz ohne Risiko."
+    },
     "trust": {
       "bio": "Bio-zertifiziert",
       "lab": "Laborgeprüft",

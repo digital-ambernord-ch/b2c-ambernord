@@ -1538,6 +1538,53 @@ html.landing-hero-active .ambernord-topbar .ambernord-logo-eubio {
    PDP TRUST BAR — proof signals + payment icons next to the buy box.
    ========================================================================= */
 
+/* Guarantee bar — sits directly under the buy CTA on every product page.
+   The 30-day money-back is the strongest HONEST reassurance at the point of
+   purchase (a young brand with no reviews yet), so it gets a gold-tinted,
+   slightly louder treatment than the trust bar below it. Links to /rueckgabe/. */
+.pdp-guarantee {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 4px 0 14px;
+  padding: 14px 16px;
+  border: 1px solid var(--color-border-gold);
+  border-radius: 10px;
+  background: var(--color-gold-dimmer);
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: transform var(--t-fast) var(--ease-out),
+              border-color var(--t-fast) ease,
+              box-shadow var(--t-fast) ease;
+}
+
+.pdp-guarantee:hover,
+.pdp-guarantee:focus-visible {
+  transform: translateY(-2px);
+  border-color: var(--color-gold);
+  box-shadow: 0 8px 20px rgba(237, 163, 35, 0.18);
+}
+
+.pdp-guarantee__icon { color: var(--color-gold); flex: none; }
+
+.pdp-guarantee__text { display: flex; flex-direction: column; gap: 2px; }
+
+.pdp-guarantee__title {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  color: var(--color-text);
+}
+
+.pdp-guarantee__sub {
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--color-text-muted);
+}
+
 .pdp-trust-bar {
   margin: 4px 0 24px;
   padding: 14px 16px;

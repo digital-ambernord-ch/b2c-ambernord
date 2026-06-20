@@ -50,6 +50,10 @@
     "scienceItem4": "<strong>Absolute Reinheit:</strong> Ohne Zuckerzusatz, ohne künstliche Aromen. <span class=\"p-gold\">100 % Natur.</span>",
     "shippingLabel": "Versand & Logistik",
     "shippingText": "Zuverlässiger Premium-Versand innerhalb der Schweiz (exkl. Versandkosten). Direktversand aus unserem Logistikzentrum in Aarau.",
+    "guarantee": {
+      "title": "30 Tage Geld-zurück-Garantie",
+      "sub": "Nicht überzeugt? Voller Preis zurück — ganz ohne Risiko."
+    },
     "trust": {
       "bio": "Bio-zertifiziert",
       "lab": "Laborgeprüft",
