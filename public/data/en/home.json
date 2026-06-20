@@ -94,7 +94,7 @@
     "intro": "AmberNord is just getting started. Instead of advertising thousands of reviews, we put everything on the table from day one — origin, lab results and production. And if you're not convinced, we carry the risk, not you.",
     "cert": { "title": "Organic-certified", "sub": "ProCert CH-BIO-038 — independently audited" },
     "lab": { "title": "Every batch lab-tested", "sub": "Purity proven, not just claimed" },
-    "swiss": { "title": "Swiss manufacture", "sub": "Bottled & shipped from Aarau" },
+    "swiss": { "title": "Ships from Switzerland", "sub": "Straight from Aarau — within 24 h" },
     "guarantee": { "title": "30-day money-back", "sub": "Not convinced? Full refund." }
   },
   "trust": {
@@ -104,7 +104,7 @@
     },
     "premium": {
       "title": "Organic Certified",
-      "subtitle": "Swiss manufactory"
+      "subtitle": "Swiss organic importer"
     },
     "shipping": {
       "title": "Shipped in 24h",

@@ -94,7 +94,7 @@
     "intro": "AmberNord steht erst am Anfang. Statt mit Tausenden von Bewertungen zu werben, legen wir vom ersten Tag an alles offen — Herkunft, Labor und Herstellung. Und falls Sie nicht überzeugt sind, tragen wir das Risiko, nicht Sie.",
     "cert": { "title": "Bio-zertifiziert", "sub": "ProCert CH-BIO-038 — unabhängig geprüft" },
     "lab": { "title": "Jede Charge laborgeprüft", "sub": "Reinheit nachgewiesen, nicht behauptet" },
-    "swiss": { "title": "Schweizer Manufaktur", "sub": "Abgefüllt & versandt aus Aarau" },
+    "swiss": { "title": "Versand aus der Schweiz", "sub": "Direkt aus Aarau — in 24 h" },
     "guarantee": { "title": "30 Tage Geld-zurück", "sub": "Nicht überzeugt? Voller Preis zurück." }
   },
   "trust": {
@@ -104,7 +104,7 @@
     },
     "premium": {
       "title": "Bio-zertifiziert",
-      "subtitle": "Schweizer Manufaktur"
+      "subtitle": "Schweizer Bio-Importeur"
     },
     "shipping": {
       "title": "Versand in 24h",
