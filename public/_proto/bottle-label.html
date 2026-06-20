@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Prototype — Flasche als Etikett (AmberNord)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0a0a; --gold:#EDA323; --gold-hi:#f0b543;
+    --text:#fff; --muted:#e8e1d6; --dim:#b9b2a6;
+    --serif:'Playfair Display',Georgia,serif; --sans:'Montserrat',sans-serif;
+    --ease:cubic-bezier(.165,.84,.44,1);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:radial-gradient(120% 80% at 50% 0%,#141414 0%,var(--bg) 60%);
+    color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased;padding:44px 20px 120px}
+  .wrap{max-width:880px;margin:0 auto}
+  .proto-note{font-size:12.5px;line-height:1.6;color:var(--dim);border:1px dashed rgba(237,163,35,.3);
+    border-radius:10px;padding:14px 16px;margin-bottom:36px;background:rgba(237,163,35,.04)}
+  .proto-note b{color:var(--gold)}
+  h1{font-family:var(--serif);font-weight:500;font-size:34px;text-align:center;margin:0 0 4px}
+  h1 em{font-style:italic;color:var(--gold)}
+  .sub{text-align:center;color:var(--dim);font-size:14px;margin:0 0 30px}
+  .toolbar{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:40px}
+  .toolbar button{background:#1a1a1a;color:var(--muted);border:1px solid rgba(255,255,255,.12);
+    border-radius:30px;padding:8px 16px;font-family:var(--sans);font-size:12px;cursor:pointer;transition:.2s}
+  .toolbar button.active{background:var(--gold);color:#0a0a0a;border-color:var(--gold);font-weight:700}
+
+  /* ---- free-floating bottle, NO card/box ---- */
+  .bot{position:relative;width:100%;max-width:780px;margin:0 auto 8px;}
+  .bot__img{display:block;width:100%;height:auto;
+    filter:drop-shadow(0 24px 40px rgba(0,0,0,.55)) drop-shadow(0 0 60px rgba(237,163,35,.10))}
+
+  /* label sits ON the bottle body (left ~62% of the trimmed image) */
+  .label{position:absolute;left:6.5%;top:50%;width:54%;transform:translateY(-50%);
+    perspective:1200px}
+  .label__inner{position:relative;transform-style:preserve-3d;transition:transform .75s var(--ease);
+    min-height:128px}
+  .bot:hover .label__inner{transform:rotateY(180deg)}
+  .face{position:absolute;inset:0;backface-visibility:hidden;display:flex;flex-direction:column;
+    justify-content:center}
+  .face--back{transform:rotateY(180deg)}
+
+  /* subtle frosted "label" plate so text is legible ON the glass (not a card around the bottle) */
+  .plate{padding:16px 20px;border-radius:14px;
+    background:linear-gradient(160deg,rgba(20,14,8,.50),rgba(20,14,8,.34));
+    backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);
+    border:1px solid rgba(255,255,255,.08);box-shadow:0 6px 18px rgba(0,0,0,.25)}
+
+  .price__day{font-family:var(--serif);font-size:24px;font-weight:600;color:var(--gold);line-height:1}
+  .price__day small{font-size:12px;font-weight:600}
+  .price__full{font-size:11px;color:var(--dim);margin-top:3px}
+  .name{font-family:var(--serif);font-size:23px;margin:8px 0 1px;line-height:1}
+  .tag{font-size:11px;color:var(--gold);font-style:italic;margin-bottom:8px}
+  .blist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:3px}
+  .blist li{font-size:11.5px;color:var(--muted);padding-left:14px;position:relative;line-height:1.3}
+  .blist li::before{content:'';position:absolute;left:0;top:6px;width:4px;height:4px;border-radius:50%;background:var(--gold)}
+  .back-heading{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:6px}
+  .cta{margin-top:11px;align-self:flex-start;background:var(--gold);color:#0a0a0a;font-weight:700;
+    font-size:11px;letter-spacing:.8px;text-transform:uppercase;padding:10px 18px;border-radius:30px;
+    text-decoration:none;white-space:nowrap;transition:.2s}
+  .bot:hover .cta{background:var(--gold-hi)}
+  .hint{text-align:center;color:var(--dim);font-size:11px;margin:0 0 46px;letter-spacing:1px;text-transform:uppercase}
+
+  @media(max-width:640px){
+    .label{width:60%;left:5%}
+    .name{font-size:18px}.price__day{font-size:20px}
+    .blist li{font-size:10.5px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="proto-note">
+    <b>PROTOTYP — Weg 2:</b> Flasche frei auf dem Bildschirm (kein Block/Rahmen), Text als Etikett <b>auf</b> der Flasche, 3D-Flip beim Hover.
+    Hintergrund per Cloudinary <b>e_make_transparent</b> entfernt. Buttons oben: Transparenz-Stärke testen. Maus über die Flasche → Etikett dreht sich zu „Warum AmberNord“.
+  </div>
+
+  <h1>Ihr Ritual. <em>Drei Grössen.</em></h1>
+  <p class="sub">Weg 2 — Text als Etikett auf der Flasche, 3D-Flip</p>
+
+  <div class="toolbar" id="bar">
+    <button data-t="10">make_transparent:10</button>
+    <button data-t="20" class="active">:20</button>
+    <button data-t="30">:30</button>
+    <button data-t="40">:40</button>
+    <button data-t="bg">e_background_removal (KI)</button>
+  </div>
+
+  <p class="hint">↓ Maus über die Flasche bewegen ↓</p>
+
+  <!-- HABIT -->
+  <div class="bot">
+    <img class="bot__img" alt="The Habit" data-base="v1781988996/ChatGPT_Image_20._Juni_2026_22_56_03_selfbi.png">
+    <div class="label">
+      <div class="label__inner">
+        <div class="face face--front"><div class="plate">
+          <div class="price__day">2.30<small> /Tag</small></div>
+          <div class="price__full">69.00 CHF · 23.00 / Flasche</div>
+          <div class="name">The Habit</div>
+          <div class="tag">Das 30-Tage-Ritual · 3× 250 ml</div>
+          <ul class="blist"><li>30 Tage tägliches Ritual</li><li>Zellschutz dank Vitamin C</li></ul>
+          <a class="cta" href="#">30 Tage starten</a>
+        </div></div>
+        <div class="face face--back"><div class="plate">
+          <div class="back-heading">Warum AmberNord</div>
+          <ul class="blist"><li>100 % Handlese — keine Erntemaschinen</li><li>Kaltgepresst direkt an der Quelle</li><li>Bis zu 42 % Omega-7</li><li>30 Tage Geld-zurück-Garantie</li></ul>
+          <a class="cta" href="#">Jetzt bestellen — 69.00 CHF</a>
+        </div></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  var CDN='https://res.cloudinary.com/dt6ksxuqf/image/upload/';
+  function urlFor(t){
+    var fx = (t==='bg') ? 'e_background_removal' : 'e_make_transparent:'+t;
+    return CDN + fx + ',e_trim,f_png,q_auto,w_1200/' ;
+  }
+  function apply(t){
+    document.querySelectorAll('.bot__img').forEach(function(img){
+      img.src = urlFor(t) + img.getAttribute('data-base');
+    });
+  }
+  document.getElementById('bar').addEventListener('click',function(e){
+    var b=e.target.closest('button'); if(!b) return;
+    document.querySelectorAll('#bar button').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    apply(b.getAttribute('data-t'));
+  });
+  apply('20');
+</script>
+</body>
+</html>
