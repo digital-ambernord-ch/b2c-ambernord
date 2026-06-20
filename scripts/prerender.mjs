@@ -376,7 +376,7 @@ for (const route of ROUTES) {
 
 writeFileSync(join(DIST, 'sitemap.xml'), buildSitemap());
 writeFileSync(join(DIST, 'robots.txt'),
-  `User-agent: *\nAllow: /\nDisallow: /pages/\nDisallow: /data/\n\nSitemap: ${ORIGIN}/sitemap.xml\n`);
+  `User-agent: *\nContent-Signal: search=yes, ai-input=yes, ai-train=no\nAllow: /\nDisallow: /pages/\nDisallow: /data/\n\nSitemap: ${ORIGIN}/sitemap.xml\n`);
 
 /* Strip comments from every shipped HTML file (prerendered pages, the copied
    public/*.html and the page fragments under dist/pages). Same fail-soft

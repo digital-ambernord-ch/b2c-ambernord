@@ -488,7 +488,10 @@
 <div id="cookie-banner" class="cookie-banner" role="dialog" aria-labelledby="cookie-banner-title" aria-describedby="cookie-banner-text" hidden>
   <div class="cookie-banner__inner">
     <div class="cookie-banner__copy">
-      <h2 id="cookie-banner-title" class="cookie-banner__title" data-i18n="cookie.title">Datenschutz &amp; Cookies</h2>
+      <!-- Styled as a heading but rendered as a non-heading element so the
+           document exposes only ONE "Datenschutz & Cookies" H2 (the modal's).
+           Still labels the banner dialog via aria-labelledby. -->
+      <p id="cookie-banner-title" class="cookie-banner__title" data-i18n="cookie.title">Datenschutz &amp; Cookies</p>
       <p id="cookie-banner-text" class="cookie-banner__text" data-i18n="cookie.text">Wir verwenden Cookies, um diese Website zu betreiben sowie — mit Ihrer Einwilligung — Statistiken und Marketingmessungen durchzuführen.</p>
       <a href="/datenschutz/" class="cookie-banner__link" data-link data-i18n="cookie.policyLink">Datenschutzerklärung</a>
     </div>
@@ -585,7 +588,14 @@
       c.parentNode.insertBefore(s, c);
     };
     ttq.load('D75TCVJC77UD6SV8PER0');
-    ttq.page();
+    /* Pass a factual content_id on the page view to satisfy TikTok's Video
+       Shopping Ads requirement and clear the "Missing content_id parameter"
+       console warning. We use the current canonical path (stable, factual,
+       available on every route of this SPA) as the content identifier. */
+    ttq.page({
+      content_type: 'product_group',
+      content_id: (location.pathname || '/')
+    });
   })(window, document, 'ttq');
 </script>
 

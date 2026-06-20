@@ -59,7 +59,8 @@
     "taglineColdPress": "COLD-PRESSED",
     "taglineBio": "ORGANIC CERTIFIED",
     "bioLogoAlt": "EU Organic certified",
-    "h1": "The liquid <span class=\"ambernord-text-gold\">gold</span> of the North.<br><span>190+ bioactive compounds · A 30-second daily ritual.</span>",
+    "h1": "The liquid <span class=\"ambernord-text-gold\">gold</span> of the North.",
+    "subline": "190+ bioactive compounds · A 30-second daily ritual.",
     "productAlt": "AmberNord Premium Edition bottle",
     "benefit1": "Vitamin C contributes to the reduction of tiredness and fatigue — energy without the crash",
     "benefit2": "Omega-7 — one of nature's rarest sources, up to 42 % in the pulp oil",
@@ -189,27 +190,27 @@
   },
   "manifest": {
     "eyebrow": "Our Manifesto",
-    "h2": "The end of<br><span class=\"ambernord-text-gold\">synthetic shortcuts.</span>",
+    "h2": "The end of <br><span class=\"ambernord-text-gold\">synthetic shortcuts.</span>",
     "lead": "Synthetically isolated supplements and artificial stimulants lend the body energy that it must later repay with interest.",
     "pullquote": "“Real energy knows no debts.”",
     "body": "This is precisely where AmberNord begins — the answer to genuine cellular performance. Not a short-term kick, but a <strong class=\"ambernord-fw-500\">biological upgrade</strong>. We extract the purest essence of the nordic wilderness to bring you a tool for sustainable biohacking and an uncompromisingly pure ritual directly to Switzerland."
   },
   "ritualBlock": {
     "eyebrow": "The Ritual",
-    "h2": "One part gold.<br><span class=\"ambernord-text-gold\">Ten parts life.</span>",
+    "h2": "One part gold. <br><span class=\"ambernord-text-gold\">Ten parts life.</span>",
     "lead": "Most nutritional supplements are synthetically isolated, and conventional health drinks are full of hidden sugar. AmberNord takes a completely different path.",
     "pullquote": "“The essence, not the imitation.”",
     "body": "We offer you an uncompromisingly pure, highly concentrated raw essence – designed for perfect synergy with water. The 1:10 protocol (1 part essence, 10 parts water) is your daily catalyst. In this symbiosis, the rare Omega fatty acids, amino acids and natural Vitamin C are absorbed by the body to the maximum. The result: deep hydration — and Vitamin C, which contributes to the reduction of tiredness and fatigue and to the protection of cells from oxidative stress."
   },
   "sourcing": {
     "eyebrow": "Exclusive Sourcing",
-    "h2": "The source of the elixir.<br><span class=\"ambernord-text-gold\">Our plantation.</span>",
+    "h2": "The source of the elixir. <br><span class=\"ambernord-text-gold\">Our plantation.</span>",
     "text": "We leave nothing to chance. Our raw materials do not come from the anonymous global market, but from a single organic plantation personally selected by us. After a careful selection, we chose precisely this rare variety – grown in a microclimate whose purity and mineral richness give the juice its unmistakable character. Here, berries are produced with a nutrient density that sets new standards.",
     "imgAlt": "Exclusive organic plantation"
   },
   "craft": {
     "eyebrow": "Craft & Purity",
-    "h2": "No compromises.<br><span class=\"ambernord-text-gold\">Only the essence.</span>",
+    "h2": "No compromises. <br><span class=\"ambernord-text-gold\">Only the essence.</span>",
     "text": "From the moment of gentle hand-picking to cold-pressing at the source, only a moment passes. No industrial harvesting machines touch our fruit – so the delicate skin of the berries remains intact. We embrace whole-berry use: the entire berry – from the nutrient-rich skin to the valuable seed – is fully utilized. In this way, we preserve the precious Omega-7 oil and over 190 bioactive compounds in their purest form.",
     "videoLabel": "Play video: AmberNord craftsmanship",
     "videoAlt": "Video: Gentle harvest and cold-pressing"

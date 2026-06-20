@@ -477,15 +477,24 @@
   font-size: clamp(24px, 3.5vw, 38px);
   font-weight: 400;
   line-height: 1.2;
-  margin-bottom: 30px;
+  /* The subline (formerly an in-h1 block span) is now the sibling
+     .hero-subline below; it carries the 30px bottom gap that used to sit on
+     the h1, so the headline → subline gap stays the original 14px. */
+  margin-bottom: 0;
   margin-top: 0;
   letter-spacing: 0.5px;
 }
 
 /* H1 subhead — single factual spec line ("190+ Bioaktivstoffe · 30 Sekunden
    am Tag."). Roman sans, muted (was gold): a quiet spec line under the serif
-   headline, so the only gold in the headline is the accent word. */
-#scrollTrack h1 span {
+   headline, so the only gold in the headline is the accent word. Moved OUT of
+   the <h1> into a sibling .hero-subline <p> (the headline text now reads just
+   "Das flüssige Gold des Nordens."); the visual styling below is copied
+   verbatim so the line looks pixel-identical. The generic `#scrollTrack h1 span`
+   rule is retained because the gold accent word is still a <span> inside the h1
+   (it overrides this back to inline just below). */
+#scrollTrack h1 span,
+.hero-subline {
   display: block;
   margin-top: 14px;
   font-family: var(--font-sans);
@@ -495,6 +504,13 @@
   letter-spacing: 1.2px;
   line-height: 1.5;
   color: var(--color-text-muted);
+}
+
+/* The subline is now a standalone <p>; its top gap (14px) is shared above, and
+   it inherits the 30px bottom gap that previously lived on the h1 — so the
+   total vertical rhythm headline → subline → next element is unchanged. */
+.hero-subline {
+  margin-bottom: 30px;
 }
 
 /* Single gold accent word inside the serif headline (e.g. "Gold" / "or" /
@@ -2575,7 +2591,8 @@
 }
 
 @media (max-width: 768px) {
-  #scrollTrack h1 { font-size: clamp(20px, 5.5vw, 28px); margin-bottom: 25px; }
+  #scrollTrack h1 { font-size: clamp(20px, 5.5vw, 28px); margin-bottom: 0; }
+  .hero-subline { margin-bottom: 25px; }
   .ambernord-btn-clean { padding: 14px 35px; font-size: 13px; margin-bottom: 35px; }
   /* tighten side padding so the full label fits; fine print shrinks slightly */
   .ambernord-btn-clean--dual { padding: 12px 12px; }

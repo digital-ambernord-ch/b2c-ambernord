@@ -123,4 +123,105 @@
       return result('Navigating to ' + input.page + '.');
     }
   });
+
+  /* Goal → product fit. Reasons are grounded in BRAND.keyFacts / pack framing;
+     no new claims, prices or promotions are introduced. */
+  var RECOMMENDATIONS = {
+    'try-it': {
+      ids: ['starter'],
+      reason: 'The Starter is a single 250ml bottle (~10 days) — the lowest-commitment way to try the 1:10 ritual before committing to a larger pack.'
+    },
+    'energy': {
+      ids: ['habit'],
+      reason: 'Sustained effect benefits from a continuous daily ritual: ' + BRAND.keyFacts[1] + ' The Habit (3 bottles, ~30 days) covers a full month.'
+    },
+    'immunity': {
+      ids: ['habit', 'protocol'],
+      reason: BRAND.keyFacts[1] + ' Consistency matters, so a multi-month supply (The Habit or The Protocol) suits an immune-support routine.'
+    },
+    'daily-ritual': {
+      ids: ['protocol'],
+      reason: 'The Protocol is 6 bottles (~60 days), enough to make the ~30-second morning 1:10 ritual a settled daily habit.'
+    },
+    'family': {
+      ids: ['master-box'],
+      reason: 'The Master Box holds 20 bottles — the largest pack, suited to a household sharing the daily ritual.'
+    },
+    'best-value': {
+      ids: ['master-box', 'protocol'],
+      reason: 'Larger packs carry the lowest per-bottle CHF price; The Master Box (20 bottles) and The Protocol (6 bottles) are the most economical per bottle.'
+    }
+  };
+
+  register({
+    name: 'recommend_product',
+    description: 'Recommend the best-fit AmberNord product(s) for a stated goal or need, with a short factual reason.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        goal: {
+          type: 'string',
+          enum: Object.keys(RECOMMENDATIONS),
+          description: 'What the customer is after: try-it, energy, immunity, daily-ritual, family or best-value.'
+        }
+      },
+      required: ['goal']
+    },
+    annotations: { readOnlyHint: true },
+    execute: async function (input) {
+      var rec = RECOMMENDATIONS[input && input.goal];
+      if (!rec) return result({ error: 'Unknown goal. Valid goals: ' + Object.keys(RECOMMENDATIONS).join(', ') });
+      var picks = rec.ids.map(function (id) {
+        return PRODUCTS.filter(function (x) { return x.id === id; })[0];
+      }).filter(Boolean);
+      return result({ goal: input.goal, recommendations: picks, reason: rec.reason, currency: 'CHF' });
+    }
+  });
+
+  register({
+    name: 'get_pricing',
+    description: 'Get per-bottle and computed per-day price in CHF for every AmberNord product (the site frames 1 bottle = ~10 days of the ritual), plus which packs include free shipping.',
+    inputSchema: { type: 'object', properties: {} },
+    annotations: { readOnlyHint: true },
+    execute: async function () {
+      var DAYS_PER_BOTTLE = 10;   /* site framing: 1 × 250ml bottle ≈ 10 days */
+      var FREE_SHIPPING_FROM_BOTTLES = 3;   /* multi-bottle packs ship free */
+      var pricing = PRODUCTS.map(function (p) {
+        var perBottle = p.priceCHF / p.bottles;
+        var days = p.bottles * DAYS_PER_BOTTLE;
+        return {
+          id: p.id,
+          name: p.name,
+          bottles: p.bottles,
+          totalCHF: p.priceCHF,
+          perBottleCHF: Math.round(perBottle * 100) / 100,
+          ritualDays: days,
+          perDayCHF: Math.round((p.priceCHF / days) * 100) / 100,
+          freeShipping: p.bottles >= FREE_SHIPPING_FROM_BOTTLES,
+          url: p.url
+        };
+      });
+      return result({ currency: 'CHF', assumptions: '1 bottle (250ml) ≈ 10 days of the 1:10 ritual', products: pricing });
+    }
+  });
+
+  register({
+    name: 'get_usage_and_guarantee',
+    description: 'Get AmberNord recommended usage (the 1:10 protocol) and the money-back / shipping guarantee.',
+    inputSchema: { type: 'object', properties: {} },
+    annotations: { readOnlyHint: true },
+    execute: async function () {
+      return result({ usage: BRAND.usage, guarantee: BRAND.guarantee });
+    }
+  });
+
+  register({
+    name: 'get_certifications',
+    description: 'Get the organic certifications AmberNord holds.',
+    inputSchema: { type: 'object', properties: {} },
+    annotations: { readOnlyHint: true },
+    execute: async function () {
+      return result({ certifications: BRAND.certifications });
+    }
+  });
 })();

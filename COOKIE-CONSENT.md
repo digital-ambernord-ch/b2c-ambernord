@@ -1,8 +1,23 @@
 # Cookie consent — operator guide
 
-This site implements a GDPR/ePrivacy-compliant cookie consent system. Read this
-file before adding any third-party tag, changing the cookie policy, or moving
-analytics vendors.
+This site uses an **opt-out** cookie consent model (site owner's explicit
+choice). Read this file before adding any third-party tag, changing the cookie
+policy, or moving analytics vendors.
+
+> **Opt-out model (since `CONSENT_VERSION` `2026-q2`).** On a visitor's **first**
+> load — before any click — `analytics` and `marketing` are treated as
+> **granted by default**, so GA/GTM/TikTok fire immediately. The banner is still
+> shown so the visitor can decline or withdraw; once they make an explicit
+> choice it is stored and respected verbatim on every later load. `necessary`
+> is always on.
+>
+> ⚠️ **Compliance note:** opt-out (tracking before an affirmative opt-in) is
+> **legally grey** under GDPR and the Swiss revFADP/ePrivacy guidance, which
+> generally require *prior* opt-in for non-essential cookies. This is a
+> deliberate business decision, not a compliant default. If you need strict
+> compliance, flip `DEFAULT_UNDECIDED` in `cookie-consent.js` back to
+> `{ necessary:true, analytics:false, marketing:false }` and bump
+> `CONSENT_VERSION`.
 
 ## Files
 
@@ -16,11 +31,14 @@ analytics vendors.
 `cookie-consent.js` reads/writes a single first-party cookie `cookie_consent`
 (JSON: categories, version, timestamp). On every page load it scans for
 `<script type="text/plain" data-cookie-category="…">` placeholders and clones
-them into live `<script type="text/javascript">` only for granted categories.
-Categories: `necessary` (always on), `analytics`, `marketing`. The banner
-appears whenever no valid consent is stored; the modal is reachable from the
-footer at any time. Withdrawal clears the cookie record AND deletes the
-documented vendor cookies for the just-revoked category.
+them into live `<script type="text/javascript">` for granted categories.
+Categories: `necessary` (always on), `analytics`, `marketing`. **When no valid
+consent is stored, the granted set defaults to `DEFAULT_UNDECIDED`
+(analytics + marketing on — the opt-out model), so those placeholders activate
+immediately *and* the banner is shown.** Once a decision is stored it is used
+verbatim instead of the default. The modal is reachable from the footer at any
+time. Withdrawal/Reject clears the granted categories, sweeps the documented
+vendor cookies for the revoked category, and keeps it off on later loads.
 
 ## How to add a new vendor
 
@@ -40,9 +58,12 @@ Pick the category that matches the vendor's purpose:
 - `analytics` — usage measurement (GA, Plausible, Matomo when not anonymized)
 - `marketing` — ad pixels, retargeting (TikTok, Meta, LinkedIn, Google Ads)
 
-The consent module will activate the placeholder once the user grants the
-matching category. Nothing fires before that — including the network request
-to load the vendor's JS.
+The consent module activates the placeholder when the matching category is
+granted. Under the current **opt-out** model that means a first-time visitor's
+`analytics`/`marketing` placeholders fire on load (no click needed); they only
+stop once the visitor explicitly Rejects or withdraws that category. (Under a
+strict opt-in default, nothing — not even the network request — would fire
+before an Accept.)
 
 ### Pattern B — programmatic SDK with consent API
 
@@ -89,8 +110,9 @@ addition to* Pattern A, not instead of it.
 4. Update `public/_headers` CSP if the vendor lives on a new origin
    (`script-src`, `connect-src`, `img-src` for tracking pixels).
 
-5. Manually verify in DevTools Network panel that no request to the vendor
-   fires before clicking Accept.
+5. Manually verify in DevTools Network panel that the vendor behaves per the
+   opt-out model: on a first visit (no `cookie_consent`) the request fires by
+   default, and after **Reject all → reload** it no longer fires.
 
 ## How to bump the version
 
@@ -115,12 +137,14 @@ Run through this checklist before shipping any change to the consent system:
    Open DevTools → Application → Cookies → delete `cookie_consent`. Reload.
    Banner shown.
 
-2. **Zero third-party requests before consent.**
-   DevTools → Network → filter "googletagmanager" + "analytics.tiktok". Reload
-   the page. There must be **zero** matching requests until you click Accept.
+2. **First visit fires vendors by default (opt-out).**
+   DevTools → Network → filter "googletagmanager" + "analytics.tiktok". Delete
+   `cookie_consent` and reload. With no stored decision the vendor requests
+   **do** fire (opt-out default) and the banner is shown at the same time.
 
-3. **Reject all → reload → still zero requests.**
-   Click Reject. Reload. No requests to vendors.
+3. **Reject all → reload → zero requests.**
+   Click Reject. Reload. There must be **zero** requests to the vendors, and
+   their cookies (`_ga*`, `_ttp`, `_tt_*`) must be gone.
 
 4. **Accept all → reload → vendor scripts load.**
    Click Accept. Reload. `gtag/js` and `events.js` (TikTok) appear in Network.

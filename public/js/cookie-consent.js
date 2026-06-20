@@ -13,7 +13,17 @@
 (function () {
   'use strict';
 
-  const CONSENT_VERSION = '2025-q1';
+  const CONSENT_VERSION = '2026-q2';
+
+  /* Consent model: OPT-OUT by default (site owner's explicit choice).
+     On a visitor's FIRST load (no stored decision yet) analytics and marketing
+     are treated as GRANTED so GA/GTM/TikTok activate immediately, while the
+     banner is still shown so the visitor can decline/withdraw. Once a visitor
+     makes an explicit choice (Accept / Reject / Save selection) it is stored in
+     the cookie and respected verbatim on every later load — declining or
+     withdrawing a category sweeps its vendor cookies and keeps it off.
+     NOTE: opt-out tracking is legally grey under GDPR / Swiss revFADP. */
+  const DEFAULT_UNDECIDED = { necessary: true, analytics: true, marketing: true };
   const COOKIE_NAME     = 'cookie_consent';
   const LIFETIME_MS     = 365 * 24 * 60 * 60 * 1000;
   const SECURE_FLAG     = (typeof location !== 'undefined' && location.protocol === 'https:') ? '; Secure' : '';
@@ -108,7 +118,10 @@
   }
 
   function setState(partial) {
-    const current = getState() || { necessary: true, analytics: false, marketing: false };
+    /* When undecided, the live default is opt-out (analytics+marketing on), so
+       a teardown comparison must start from that same baseline — otherwise
+       declining on first visit would skip the cookie sweep. */
+    const current = getState() || Object.assign({}, DEFAULT_UNDECIDED);
     const next = Object.assign({}, current, partial, {
       necessary: true,
       v: CONSENT_VERSION,
@@ -207,8 +220,10 @@
     const modal = document.getElementById('cookie-modal');
     if (!modal) return;
 
-    /* Sync toggles with current state. */
-    const state = getState() || { analytics: false, marketing: false };
+    /* Sync toggles with current state. Undecided visitors see the opt-out
+       default (analytics+marketing pre-checked) so the toggles match what is
+       actually running. */
+    const state = getState() || DEFAULT_UNDECIDED;
     const aTog = document.getElementById('cookie-cat-analytics');
     const mTog = document.getElementById('cookie-cat-marketing');
     if (aTog) aTog.checked = !!state.analytics;
@@ -324,9 +339,12 @@
   };
 
   /* ------------------------------------------------------------------------
-     Initial check on page load.
-     - If no valid consent: show banner.
-     - If valid consent: activate gated scripts for granted categories. */
+     Initial check on page load (OPT-OUT model).
+     - No stored decision: activate gated scripts under the opt-out default
+       (analytics+marketing granted) AND show the banner so the visitor can
+       still decline/withdraw.
+     - Valid stored decision: respect it verbatim — activate only the granted
+       categories, no banner. */
 
   document.addEventListener('DOMContentLoaded', async function () {
     /* Wait for common i18n so banner/modal text is in the right language. */
@@ -336,9 +354,12 @@
 
     const state = getState();
     if (!state) {
+      activateGatedScripts(DEFAULT_UNDECIDED);
+      notifyListeners(DEFAULT_UNDECIDED);
       showBanner();
     } else {
       activateGatedScripts(state);
+      notifyListeners(state);
     }
   });
 })();
